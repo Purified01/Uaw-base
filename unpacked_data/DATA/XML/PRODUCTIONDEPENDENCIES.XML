@@ -2271,7 +2271,7 @@
 		<Strategic_Builder> Null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Superweapon_Reaper_Turret, Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 

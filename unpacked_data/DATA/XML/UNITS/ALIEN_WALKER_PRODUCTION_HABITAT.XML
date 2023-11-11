@@ -186,8 +186,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_Glyph </Tactical_Under_Construction_Object_Type>
-			<Tactical_Buildable_Beacon_Type> Alien_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Under_Construction_Object_Type> Alien_Walker_Production_Habitat_Glyph </Tactical_Under_Construction_Object_Type>
+			<Tactical_Buildable_Beacon_Type> Alien_Walker_Production_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -3281,152 +3281,6 @@
    </HardPoint>
 
 
-   <!-- ********************************************************************************************* -->
-   <!-- Plasma Cannon -->
-   <!-- ********************************************************************************************* -->
-
-
-   <HardPoint Name="Alien_Walker_Habitat_HP_Plasma_Cannon">
-      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
-
-      <!-- don't want to point back to generic as this will mess up novus cascade -->
-      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
-
-      <!-- ART -->
-      <Land_Model_Name>ABHP_Habitat_Plasma_cannon.alo</Land_Model_Name>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-      <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
-      <Select_Box_Scale>75</Select_Box_Scale>
-      <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
-      <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
-      <Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
-
-      <CategoryMask> CanAttack, HardPoint, LegSocketHP </CategoryMask>
-
-      <!-- CONFLICT -->
-      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
-      <Tactical_Health> 800 </Tactical_Health>
-
-      <!-- BEHAVIORS -->
-      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
-      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-      <Behavior>
-         SELECTABLE,
-         HARD_POINT
-      </Behavior>
-
-      <LandBehavior>
-         EFFECT_REGISTRY,
-         ATTRIBUTE_DIRECTORY,
-         ABILITY_COUNTDOWN,
-         TACTICAL_SELL,
-         TARGETING,
-         WEAPON,
-         IDLE,
-         TURRET
-      </LandBehavior>
-
-      <BehaviorType Name="WeaponBehaviorType">
-         <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
-         <Targeting_Priority_Set> Alien_Habitat_Walker_Target_Priority </Targeting_Priority_Set>
-         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
-         <Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
-
-         <Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Cannon </Projectile_Types>
-         <Projectile_Fire_Pulse_Count> 1 </Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
-         <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
-      </BehaviorType>
-
-      <BehaviorType Name="TurretBehaviorType">
-         <Turret_Targets_Ground_Vehicles> 1 </Turret_Targets_Ground_Vehicles>
-         <Turret_Targets_Ground_Infantry> 2 </Turret_Targets_Ground_Infantry>
-         <Turret_Targets_Air_Vehicles> 999 </Turret_Targets_Air_Vehicles>
-         <Turret_Targets_Anything_Else> 3 </Turret_Targets_Anything_Else>
-         <Turret_Rotate_Extent_Degrees> 360 </Turret_Rotate_Extent_Degrees>
-         <Turret_Elevate_Extent_Degrees> 180 </Turret_Elevate_Extent_Degrees>
-         <Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
-         <Barrel_Bone_Name> B_Barrel </Barrel_Bone_Name>
-         <Turret_Rotate_Speed> 5.0 </Turret_Rotate_Speed>
-         <Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
-         <Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
-         <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
-         <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
-      </BehaviorType>
-
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-      </BehaviorType>
-
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_a_walker_hp_plasma_cannon.tga </Icon_Name>
-      </BehaviorType>
-
-      <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
-         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
-      </BehaviorType>
-
-      <BehaviorType Name="BuildableObjectBehaviorType">
-         <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-         <Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Plasma_Cannon_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-	
-	<!-- PlasmaCannon Under Construction -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Plasma_Cannon_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
-
-		<!-- ART -->
-		<Land_Model_Name> ABHP_Habitat_Plasma_cannon.alo </Land_Model_Name>
-		<AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- CONFLICT -->
-		<Tactical_Health> 800 </Tactical_Health>
-		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
-
-		<!-- BEHAVIORS -->
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_plasma_cannon.tga </Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Plasma_Cannon </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 22 </Tactical_Build_Time_Seconds>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-
 	<!-- ************************************************************************************************* -->
 	<!-- ****** Arc Turret Hardpoint																					****** -->
 	<!-- ************************************************************************************************* -->
@@ -4999,7 +4853,7 @@
 
 
 	<!-- Crop circle that will act as "walker under construction" object -->
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Glyph">
+	<X10_Alien_Walkers Name="Alien_Walker_Production_Habitat_Glyph">
 		<!-- ART -->
 		<Text_ID> TEXT_UNIT_ALIEN_WALKER_HABITAT_GLYPH </Text_ID>
 		<Land_Model_Name> WO_Glyph_Habitat.alo </Land_Model_Name>
@@ -5105,16 +4959,16 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Beacon_Type> Alien_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
-			<Tactical_Buildable_Constructed> ALIEN_WALKER_Habitat </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Beacon_Type> Alien_Walker_Production_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Buildable_Constructed> ALIEN_WALKER_Production_Habitat </Tactical_Buildable_Constructed>
 			<Constructed_Object_Placement_Delay_Sec> 0 </Constructed_Object_Placement_Delay_Sec>
 			<Constructed_Object_Placement_Anim> Anim_FlyLandDrop </Constructed_Object_Placement_Anim>
 			<!-- <Destroy_Building_Object_On_Frame> 40 </Destroy_Building_Object_On_Frame> -->
-			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 27 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 7 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-			<Required_Pre_Build_Time_In_Secs> 38 </Required_Pre_Build_Time_In_Secs>
+			<Required_Pre_Build_Time_In_Secs> 8 </Required_Pre_Build_Time_In_Secs>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -5161,7 +5015,7 @@
 
 
 	<!-- Oksana: beacon for building the glyph. You'll need a builder unit to build from beacon -->
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Glyph_Beacon">
+	<X10_Alien_Walkers Name="Alien_Walker_Production_Habitat_Glyph_Beacon">
 		<!-- ART -->
 		<!-- STUB FOR ELIE -->
 		<Land_Model_Name>AB_Habitat_Radiation_Artillery_Projectile.alo</Land_Model_Name>
@@ -5216,7 +5070,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_Glyph </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Alien_Walker_Production_Habitat_Glyph </Tactical_Buildable_Constructed>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
