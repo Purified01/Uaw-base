@@ -91,6 +91,8 @@
 	<File> Units/ALIEN_WALKER_Habitat.xml </File>
 	<File> Units/ALIEN_WALKER_Assembly.xml </File>
 	<File> Units/ALIEN_WALKER_Science.xml </File>
+	<File> Units/ALIEN_WALKER_Production_Habitat.xml </File>
+	<File> Units/ALIEN_WALKER_Production_Assembly.xml </File>
 
 	<File> Units/ALIEN_HERO_Kamal_Rex.xml </File>
 	<File> Units/ALIEN_HERO_Orlok.xml </File>
