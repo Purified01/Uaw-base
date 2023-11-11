@@ -1,0 +1,699 @@
+<?xml version="1.0"?>
+
+<!-- *********************************************************************** --> 
+<!-- 360 / Game Controller based SpeechEvents                                --> 
+<!-- *********************************************************************** --> 
+
+<SpeechEvents>
+
+   <SpeechEvent Name="Test_360_Speech_Event_A">
+      <Files> MILTUT01_MOO0101_ENG.MP3 </Files>
+      <Text_ID> TEXT_SPEECH_TEST_EVENT </Text_ID>
+      <Volume_Percent> 100 </Volume_Percent>
+   </SpeechEvent>
+
+	<SpeechEvent Name="Test_360_Speech_Event_B">
+		<Files> MILTUT01_MOO0101_ENG.MP3 </Files>
+		<Text_ID> TEXT_SPEECH_TEST_EVENT </Text_ID>
+		<Volume_Percent> 100 </Volume_Percent>
+	</SpeechEvent>
+
+	<SpeechEvent Name="Test_360_Speech_Event_C">
+		<Files> MILTUT01_MOO0101_ENG.MP3 </Files>
+		<Text_ID> TEXT_SPEECH_TEST_EVENT </Text_ID>
+		<Volume_Percent> 100 </Volume_Percent>
+	</SpeechEvent>
+
+
+
+
+
+  <!-- ***********************************************************************-->
+
+  <!-- TUTORIAL 360 NOVUS -->
+  <!--   -->
+
+  <!-- ***********************************************************************-->
+
+  <SpeechEvent Name="TUT360_SCENE01_01">
+    <Files> TUT360_NCO0101_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE01_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE01_02">
+    <Files> TUT360_FOU0102_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE01_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE01_03">
+    <Files> TUT360_FOU0103_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE01_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE02_01">
+    <Files> TUT360_FOU0201_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE02_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE02_02">
+    <Files> TUT360_FOU0202_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE02_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE02_03">
+    <Files> TUT360_FOU0203_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE02_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE02_04">
+    <Files> TUT360_FOU0204_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE02_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE02_05">
+    <Files> TUT360_FOU0205_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE02_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE03_01">
+    <Files> TUT360_NCO0301_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE03_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE03_02">
+    <Files> TUT360_FOU0302_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE03_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE03_03">
+    <Files> TUT360_FOU0303_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE03_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE03_04">
+    <Files> TUT360_FOU0304_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE03_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE04_01">
+    <Files> TUT360_FOU0401_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_02">
+    <Files> TUT360_BTR0402_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_03">
+    <Files> TUT360_FOU0403_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_04">
+    <Files> TUT360_BTR0404_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_05">
+    <Files> TUT360_FOU0405_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_06">
+    <Files> TUT360_BTR0406_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_07">
+    <Files> TUT360_BTR0407_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_08">
+    <Files> TUT360_FOU0408_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_09">
+    <Files> TUT360_BTR0409_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_10">
+    <Files> TUT360_FOU0410_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_10 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_11">
+    <Files> TUT360_BTR0411_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_11 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_12">
+    <Files> TUT360_BTR0412_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_12 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE04_13">
+    <Files> TUT360_FOU0413_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE04_13 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE05_01">
+    <Files> TUT360_NCO0501_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_02">
+    <Files> TUT360_FOU0502_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_03">
+    <Files> TUT360_NCO0503_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_04">
+    <Files> TUT360_NCO0504_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_05">
+    <Files> TUT360_BTR0505_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_06">
+    <Files> TUT360_NCO0506_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_07">
+    <Files> TUT360_FOU0507_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_08">
+    <Files> TUT360_BTR0508_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_09">
+    <Files> TUT360_BTR0509_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_10">
+    <Files> TUT360_FOU0510_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_10 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE05_11">
+    <Files> TUT360_BTR0511_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE05_11 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE06_01">
+    <Files> TUT360_NCO0601_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_02">
+    <Files> TUT360_FOU0602_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_03">
+    <Files> TUT360_NCO0603_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_04">
+    <Files> TUT360_FOU0604_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_05">
+    <Files> TUT360_FOU0605_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_06">
+    <Files> TUT360_FOU0606_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_07">
+    <Files> TUT360_FOU0607_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_08">
+    <Files> TUT360_FOU0608_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_09">
+    <Files> TUT360_NCO0609_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_10">
+    <Files> TUT360_FOU0610_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_10 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_11">
+    <Files> TUT360_FOU0611_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_11 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_12">
+    <Files> TUT360_FOU0612_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_12 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_13">
+    <Files> TUT360_FOU0613_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_13 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_14">
+    <Files> TUT360_NCO0614_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_14 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_15">
+    <Files> TUT360_FOU0615_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_15 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_16">
+    <Files> TUT360_FOU0616_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_16 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE06_17">
+    <Files> TUT360_FOU0617_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE06_17 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE07_01">
+    <Files> TUT360_NCO0701_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_02">
+    <Files> TUT360_FOU0702_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_03">
+    <Files> TUT360_NCO0703_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_04">
+    <Files> TUT360_MIR0704_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_05">
+    <Files> TUT360_FOU0705_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_06">
+    <Files> TUT360_MIR0706_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_07">
+    <Files> TUT360_FOU0707_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_08">
+    <Files> TUT360_MIR0708_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_09">
+    <Files> TUT360_FOU0709_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_10">
+    <Files> TUT360_FOU0710_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_10 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_11">
+    <Files> TUT360_MIR0711_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_11 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_12">
+    <Files> TUT360_FOU0712_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_12 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE07_13">
+    <Files> TUT360_MIR0713_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE07_13 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE08_01">
+    <Files> TUT360_NCO0801_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE08_02">
+    <Files> TUT360_FOU0802_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE08_03">
+    <Files> TUT360_FOU0803_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE08_04">
+    <Files> TUT360_FOU0804_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE08_05">
+    <Files> TUT360_NCO0805_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE08_06">
+    <Files> TUT360_FOU0806_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE08_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE09_01">
+    <Files> TUT360_NCO0901_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_02">
+    <Files> TUT360_FOU0902_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_03">
+    <Files> TUT360_FOU0903_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_04">
+    <Files> TUT360_AMP0904_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_05">
+    <Files> TUT360_ANT0905_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_06">
+    <Files> TUT360_DER0906_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_07">
+    <Files> TUT360_BTR0907_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_08">
+    <Files> TUT360_MIR0908_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE09_09">
+    <Files> TUT360_FOU0909_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE09_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_SCENE10_01">
+    <Files> TUT360_FOU1001_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_02">
+    <Files> TUT360_FOU1002_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_03">
+    <Files> TUT360_FOU1003_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_04">
+    <Files> TUT360_FOU1004_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_04 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_05">
+    <Files> TUT360_FOU1005_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_06">
+    <Files> TUT360_FOU1006_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_07">
+    <Files> TUT360_FOU1007_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_08">
+    <Files> TUT360_FOU1008_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_08 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_SCENE10_09">
+    <Files> TUT360_FOU1009_ENG.MP3 </Files>
+    <Text_ID> TEXT_SPEECH_TUT360_SCENE10_09 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+
+
+
+
+
+
+
+  <SpeechEvent Name="TUT360_VID06_SCENE01_01">
+    <Files> TUT360VID06_NAR0101_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID06_SCENE01_01 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID08_SCENE01_02">
+    <Files> TUT360VID08_NAR0102_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID08_SCENE01_02 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID11_SCENE01_03">
+    <Files> TUT360VID11_NAR0103_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID11_SCENE01_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID12_SCENE01_03">
+    <Files> TUT360VID12_NAR0103_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID12_SCENE01_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID12_SCENE01_05">
+    <Files> TUT360VID12_NAR0105_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID12_SCENE01_05 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID12_SCENE01_06">
+    <Files> TUT360VID12_NAR0106_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID12_SCENE01_06 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID12_SCENE01_07">
+    <Files> TUT360VID12_NAR0107_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID12_SCENE01_07 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID13_SCENE01_03">
+    <Files> TUT360VID13_NAR0103_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID13_SCENE01_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+  <SpeechEvent Name="TUT360_VID14_SCENE01_03">
+    <Files> TUT360VID14_NAR0103_ENG.MP3 </Files>
+    <Text_ID> GAMEPAD_TEXT_SPEECH_TUT360_VID14_SCENE01_03 </Text_ID>
+    <Volume_Percent> 100 </Volume_Percent>
+  </SpeechEvent>
+
+</SpeechEvents>

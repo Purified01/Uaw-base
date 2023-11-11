@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<EnumDefinition>
+
+   <Bank_None> 0 </Bank_None>   <!-- This must be the 0 value.  It is used as the default bank -->
+   <Bank_Startup> 1 </Bank_Startup>
+   <Bank_LUA_Cache> 2 </Bank_LUA_Cache>
+   <Bank_Alien_UI> 3 </Bank_Alien_UI>
+   <Bank_Masari_UI> 4 </Bank_Masari_UI>
+   <Bank_Military_UI> 5 </Bank_Military_UI>
+   <Bank_Novus_UI> 6 </Bank_Novus_UI>
+	<Bank_Global_Conquest> 7 </Bank_Global_Conquest>
+   <Bank_Map_Preview> 8 </Bank_Map_Preview>
+   <Bank_Battle_Load_Novus> 9 </Bank_Battle_Load_Novus>
+   <Bank_Battle_Load_Alien> 10 </Bank_Battle_Load_Alien>
+   <Bank_Battle_Load_Masari> 11 </Bank_Battle_Load_Masari>
+   <Bank_Battle_Load_Military> 12 </Bank_Battle_Load_Military>
+   <Bank_Map_Specific_Campaign> 13 </Bank_Map_Specific_Campaign>
+   <Bank_Map_Specific_Audio> 14 </Bank_Map_Specific_Audio>
+   <Bank_Map_Specific> 15 </Bank_Map_Specific>   <!-- Anything here or above will not be saved out in art process. -->
+   <Bank_Military> 16 </Bank_Military>
+   <Bank_Alien> 17 </Bank_Alien>
+   <Bank_Novus> 18 </Bank_Novus>
+   <Bank_Masari> 19 </Bank_Masari>
+   <Bank_Global> 20 </Bank_Global>
+   <Bank_Always> 21 </Bank_Always> <!-- Keep this as the last value just in case.  Fixed one spot in code that assumed it was, but there could be others. -->
+
+</EnumDefinition>
+

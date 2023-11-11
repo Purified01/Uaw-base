@@ -1,0 +1,399 @@
+-- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Alien_Tactical_Command_Bar.lua#42 $
+--/////////////////////////////////////////////////////////////////////////////////////////////////
+--
+-- (C) Petroglyph Games, Inc.
+--
+--
+--  *****           **                          *                   *
+--  *   **          *                           *                   *
+--  *    *          *                           *                   *
+--  *    *          *     *                 *   *          *        *
+--  *   *     *** ******  * **  ****      ***   * *      * *****    * ***
+--  *  **    *  *   *     **   *   **   **  *   *  *    * **   **   **   *
+--  ***     *****   *     *   *     *  *    *   *  *   **  *    *   *    *
+--  *       *       *     *   *     *  *    *   *   *  *   *    *   *    *
+--  *       *       *     *   *     *  *    *   *   * **   *   *    *    *
+--  *       **       *    *   **   *   **   *   *    **    *  *     *   *
+-- **        ****     **  *    ****     *****   *    **    ***      *   *
+--                                          *        *     *
+--                                          *        *     *
+--                                          *       *      *
+--                                      *  *        *      *
+--                                      ****       *       *
+--
+--/////////////////////////////////////////////////////////////////////////////////////////////////
+-- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
+--/////////////////////////////////////////////////////////////////////////////////////////////////
+--
+--              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Alien_Tactical_Command_Bar.lua $
+--
+--    Original Author: Chris_Brooks
+--
+--            $Author: Maria_Teruel $
+--
+--            $Change: 84782 $
+--
+--          $DateTime: 2007/09/25 14:27:28 $
+--
+--          $Revision: #42 $
+--
+--/////////////////////////////////////////////////////////////////////////////////////////////////
+
+require("PGBase")
+require("Tactical_Command_Bar_Common")
+
+
+MODE_INVALID = -1
+MODE_CONSTRUCTION = 1 -- can make buildings
+MODE_SELECTION = 2    -- can control units
+Mode = MODE_CONSTRUCTION
+
+
+-- ---------------------------------------------------------------------------------------------------------------------------
+-- Initialization
+-- ---------------------------------------------------------------------------------------------------------------------------
+function On_Init()
+
+	-- Variable initialization.  This needs to be done within the body of a function to avoid problems when this script is pooled
+	Player = Find_Player("local")
+	
+	if Player == nil then 
+		MessageBox("the player is nil")
+	else
+		Scene.FactionText.Set_Text(Player.Get_Faction_Display_Name())
+	end
+	
+	CloseHuds = false
+		
+	-- Maria 06.19.2006 - button to display the list of walker blueprints
+	BlueprintsListButton = Scene.BlueprintsListButton
+	BlueprintsListButton.Set_Hidden(true)
+	BlueprintsListButton.Set_Texture("i_icon_a_blueprint.tga")
+	local key_map_txt = Get_Game_Command_Mapped_Key_Text("COMMAND_ACTIVATE_FACTION_SPECIFIC_QUEUE", 1)
+	if key_map_txt == nil then 
+		key_map_txt = false
+	end
+	
+	BlueprintsListButton.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_BLUEPRINTS_LIST", key_map_txt, "TEXT_UI_TACTICAL_BLUEPRINTS_LIST_DESCRIPTION"}})	
+	
+	Scene.Register_Event_Handler("Selectable_Icon_Clicked", BlueprintsListButton, On_Blueprints_List_Button_Clicked)
+	BlueprintMenuManager = Scene.AlienBlueprintMenuManager
+	BlueprintMenuManager.Init_Blueprints_Menu()
+	BlueprintMenuManager.Set_Hidden(true)
+	BlueprintMenuManager.Set_Tab_Order(0)
+	
+	-- Maria 07.07.2006
+	-- Start flashing the blueprints list button, research has been completed so there may be new build options available!
+	Scene.Register_Event_Handler("UI_Start_Flash_Blueprint_Button", nil, UI_Start_Flash_Blueprint_Button)
+	
+	-- We need to know when we are in customization mode so that we bring up the darkening curtain.
+	Scene.Register_Event_Handler("Start_Walker_Customization_Mode", nil, On_Start_Walker_Customization_Mode)
+	Scene.Register_Event_Handler("End_Walker_Customization_Mode", nil, On_End_Walker_Customization_Mode)	
+	Scene.Register_Event_Handler("HP_Selection_Changed", nil, On_Start_Customizing_Hardpoint)	
+	WalkerConfigurationData = nil
+	
+	-- JLH 01.04.2007
+	-- Population of the achievement buff window (only available in multiplayer).
+	Scene.Register_Event_Handler("Set_Achievement_Buff_Display_Model", nil, On_Set_Achievement_Buff_Display_Model)
+
+	Init_Tab_Orders()
+
+	Init_Tactical_Command_Bar_Common(Scene, Player)
+	
+	FactionSpecificMenuButton = BlueprintsListButton
+	FactionSpecificMenuButton.Set_Tab_Order(TAB_ORDER_FACTION_SPECIFIC_BUTTON)
+	
+	-- Update the scene now!
+	On_Update()
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Update_Faction_Specific_Tooltip_Data
+-- ------------------------------------------------------------------------------------------------------------------
+function Update_Faction_Specific_Tooltip_Data()
+	local key_map_txt = Get_Game_Command_Mapped_Key_Text("COMMAND_ACTIVATE_FACTION_SPECIFIC_QUEUE", 1)
+	if key_map_txt == nil then 
+		key_map_txt = false
+	end
+	
+	BlueprintsListButton.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_BLUEPRINTS_LIST", key_map_txt, "TEXT_UI_TACTICAL_BLUEPRINTS_LIST_DESCRIPTION"}})	
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Controller_Display_Specific_UI
+-- ------------------------------------------------------------------------------------------------------------------
+function Controller_Display_Specific_UI(on_off)
+	BlueprintMenuManager.Set_Hidden(not on_off)
+	
+	if on_off and BlueprintMenuManager.Is_List_Open() then
+		BlueprintMenuManager.Refresh_Focus()
+		return false
+	end
+	return true
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Is_Customization_Mode_On
+-- ------------------------------------------------------------------------------------------------------------------
+function Is_Customization_Mode_On()
+	return CustomizationModeOn
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Get_HP_Being_Configured
+-- ------------------------------------------------------------------------------------------------------------------
+function Get_HP_Being_Configured()
+	if WalkerConfigurationData then 
+		return WalkerConfigurationData.Object
+	end
+	return nil
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Start_Walker_Customization_Mode
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Start_Walker_Customization_Mode(event, source, walker)
+	if CommandBarEnabled == false then return end
+	CustomizationModeOn = true
+	WalkerConfigurationData = {}
+	WalkerConfigurationData.Parent = walker
+	-- The queue manager may be open so we close it down!
+	QueueManager.Close()	
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_End_Walker_Customization_Mode
+-- ------------------------------------------------------------------------------------------------------------------
+function On_End_Walker_Customization_Mode(event, source)
+	CustomizationModeOn = false
+	WalkerConfigurationData = nil
+end
+
+-- ------------------------------------------------------------------------------------------------------------------------------------
+-- On_Start_Customizing_Hardpoint
+-- ------------------------------------------------------------------------------------------------------------------------------------
+function On_Start_Customizing_Hardpoint(event, source, hard_point, parent)
+	if CommandBarEnabled == false then return end
+	if not hard_point and WalkerConfigurationData then 
+		WalkerConfigurationData.Object = nil
+	else
+		WalkerConfigurationData = {}
+		WalkerConfigurationData.Object = hard_point
+		WalkerConfigurationData.Parent = parent
+		CustomizationModeOn = true
+	end
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Blueprints_List_Button_Clicked
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Blueprints_List_Button_Clicked(event, source)	
+	if CommandBarEnabled == false then return end
+	
+	End_Sell_Mode()
+	
+	if source.Get_Hidden() == true or source.Is_Enabled() == false then 
+		return
+	end
+	
+	Update_Walker_Customization_Mode(false)
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Update_Walker_Customization_Mode
+-- ------------------------------------------------------------------------------------------------------------------
+function Update_Walker_Customization_Mode(force_open)
+
+	-- force_open = true -> if it is open do not close it.
+	if BlueprintsListButton.Is_Flashing() == true then
+		BlueprintsListButton.Stop_Flash()
+	end
+	
+	if BlueprintMenuManager.Get_Hidden() == true then
+		BlueprintMenuManager.Set_Hidden(false)
+	end
+	
+	local active = force_open
+	if force_open or BlueprintMenuManager.Is_List_Open() == false then
+		-- The queue manager may be open so we close it down!
+		QueueManager.Close()
+		
+		-- Close down the tree if opened!
+		Hide_Research_Tree()
+		
+		if not force_open then
+			active = BlueprintMenuManager.Display_Walker_List()
+		end	
+		
+	elseif not force_open then
+		BlueprintMenuManager.Hide_Menu()
+	end
+	
+	if active then 
+		-- We are now in HP customization mode so let's announce that to all pertinent scenes
+		Raise_Event_Immediate_All_Scenes("Start_Walker_Customization_Mode", nil)
+		CustomizationModeOn = true
+	elseif not force_open then
+		-- Reset HP customization mode
+		Raise_Event_Immediate_All_Scenes("End_Walker_Customization_Mode", nil)
+	end
+	
+	BuildModeOn = active
+	if Mode == MODE_CONSTRUCTION and CurrentSelectionNumTypes == 1 and #CurrentConstructorsList > 0 then 
+		-- if there's only constructor(s) selected, we want to be able to go back to its build menu is no other selection order is issued.
+		-- If more than one constructor and we go back with no new selection, then we will go back to the ability buttons.
+		Setup_Mode_Construction()	
+	else -- if there's more than one constructor or no constructor selected, then just update the selection mode dislpay.
+		Mode = MODE_SELECTION
+		Setup_Mode_Selection()
+	end
+end
+
+-- ------------------------------------------------------------------------------------------------------------------------------------
+-- Hide_Faction_Specific_Buttons
+-- ------------------------------------------------------------------------------------------------------------------------------------
+function Hide_Faction_Specific_Buttons(event, soruce)
+	-- close any specific components that are open.
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Process_Build_Queue_Button_Clicked
+-- ------------------------------------------------------------------------------------------------------------------
+function Process_Build_Queue_Button_Clicked()
+	if BlueprintMenuManager.Is_List_Open() == true then
+		-- close the list!
+		BlueprintMenuManager.Hide_Menu()	
+	end
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Update_Faction_Specific_UI
+-- ------------------------------------------------------------------------------------------------------------------
+function Update_Faction_Specific_UI()
+	
+	if CustomizationModeOn == true or BlueprintMenuManager.Is_Scene_Hidden() == false or BlueprintMenuManager.Is_List_Open() == true then
+		BlueprintMenuManager.Hide_Menu(CustomizationModeOn)	
+	end	
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- On_Update
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function On_Update()
+
+	local close_huds, credits_changed = Update_Common_Scene()
+	
+	Update_Blueprint_Menu()
+	
+	-- Are there any huds open!?
+	CloseHuds = close_huds 
+			  or BlueprintMenuManager.Is_List_Open() 
+			  or (not BlueprintMenuManager.Is_Scene_Hidden()) 
+			  or this.Research_Tree.Is_Open()
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Research_Tree_Open
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Research_Tree_Open()
+
+	BlueprintMenuManager.Hide_Menu(true)
+	if CustomizationModeOn == true then 
+		Raise_Event_Immediate_All_Scenes("End_Walker_Customization_Mode", nil)
+	end
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Update_Blueprint_Menu
+-- ------------------------------------------------------------------------------------------------------------------
+function Update_Blueprint_Menu()
+
+	local local_player = Find_Player("local")
+	if Is_Player_Of_Faction(local_player, "Alien") == false then
+		BlueprintsListButton.Set_Hidden(true)
+		
+		if BlueprintMenuManager.Is_List_Open() == true then
+			BlueprintMenuManager.Hide_Menu()	
+		end		
+		return
+	end
+	
+	if BlueprintMenuManager ~= nil and BlueprintMenuManager.Is_Initialized() == true then
+		local update = BlueprintMenuManager.Update()
+		if update == true then  -- ie. no enablers!
+			BlueprintsListButton.Set_Hidden(true)
+		else
+			if not IsLetterboxMode then
+				BlueprintsListButton.Set_Hidden(false)
+			else
+				BlueprintsListButton.Set_Hidden(true)
+			end
+		end
+	end
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Maria 
+-- UI_Start_Flash_Blueprint_Button
+-- ------------------------------------------------------------------------------------------------------------------
+function UI_Start_Flash_Blueprint_Button(event, source)
+
+	if BlueprintMenuManager.Is_List_Open() == false and BlueprintsListButton.Get_Hidden() == false then
+		BlueprintsListButton.Start_Flash()
+	end
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Close_All_Specific_Displays
+-- ------------------------------------------------------------------------------------------------------------------
+function Close_All_Specific_Displays()
+
+	if BlueprintMenuManager.Is_List_Open() == true or BlueprintMenuManager.Is_Scene_Hidden() == false then
+		BlueprintMenuManager.Hide_Menu()
+	end
+	
+	Raise_Event_Immediate_All_Scenes("End_Walker_Customization_Mode", nil)	
+end
+
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Maria 08.09.2006
+-- Hide_All_Faction_Specific_UI
+-- ------------------------------------------------------------------------------------------------------------------
+function Hide_All_Faction_Specific_UI(onoff)
+
+	if onoff == true then -- i.e., hide
+		-- Close all the huds first and then hide them!
+		if BlueprintMenuManager.Is_List_Open() == true or BlueprintMenuManager.Is_Scene_Hidden() == false then
+			BlueprintMenuManager.Hide_Menu()
+		end
+	end
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Is_Faction_Specific_Menu_Open
+-- ------------------------------------------------------------------------------------------------------------------
+function Is_Faction_Specific_Menu_Open()
+	if not TestValid(BlueprintMenuManager) then return false end
+	return BlueprintMenuManager.Is_List_Open()
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Disable_Faction_GUI_For_Replay
+-- ------------------------------------------------------------------------------------------------------------------
+function Disable_Faction_GUI_For_Replay()
+	if AlienBlueprintMenuManager then
+		AlienBlueprintMenuManager.Enable(false)
+	end
+end

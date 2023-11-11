@@ -1,0 +1,1428 @@
+<?xml version="1.0"?>
+
+<VibrationEvents>
+
+	<!-- ================== -->
+	<!-- Begin Test Events  -->
+	<!-- ================== -->
+
+	<VibrationEvent Name="Test_Left_Motor_Hold">
+
+		<Priority> 10 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 3000, <!-- Hold 50% for 3 seconds (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Right_Motor_Hold">
+
+		<Priority> 9 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 3000, <!-- Hold 50% for 3 seconds (no ramp up)  -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Left_Motor_Ramp">
+
+		<Priority> 8 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 5000, <!-- Ramp 0% to 100% over 5 seconds -->
+			MOTOR_COMMAND_RAMP, 100, 0, 5000, <!-- Ramp 100% to 0% over 5 seconds -->
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Right_Motor_Ramp">
+
+		<Priority> 7 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 5000, <!-- Ramp 0% to 100% over 5 seconds --> 
+			MOTOR_COMMAND_RAMP, 100, 0, 5000, <!-- Ramp 100% to 0% over 5 seconds --> 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Left_Motor_Loop">
+
+		<Priority> 6 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 1000, <!-- Ramp 0% to 100% over 1 second --> 
+			MOTOR_COMMAND_RAMP, 100, 0, 1000, <!-- Ramp 100% to 0% over 1 second --> 
+			MOTOR_COMMAND_LOOP,					 <!-- Repeat loop -->  		 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Right_Motor_Loop">
+
+		<Priority> 5 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 1000, <!-- Ramp 0% to 100% over 1 second -->
+			MOTOR_COMMAND_RAMP, 100, 0, 1000, <!-- Ramp 100% to 0% over 1 second -->
+			MOTOR_COMMAND_LOOP,					 <!-- Repeat loop -->                    		 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Dual_Motors_Cross_Ramp">
+
+		<Priority> 4 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 10000, <!-- Ramp 0% to 100% over 10 seconds --> 
+			MOTOR_COMMAND_RAMP, 100, 0, 10000, <!-- Ramp 100% to 0% over 10 seconda --> 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 10000, <!-- Ramp 100% to 0% over 10 seconds -->  
+			MOTOR_COMMAND_RAMP, 0, 100, 10000, <!-- Ramp 0% to 100% over 10 seconda -->  
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Dual_Motors_Loop">
+
+		<Priority> 3 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 10000, <!-- Ramp 0% to 100% over 10 seconds -->  
+			MOTOR_COMMAND_RAMP, 100, 0, 10000, <!-- Ramp 100% to 0% over 10 seconda -->  
+			MOTOR_COMMAND_LOOP,					  <!-- Repeat loop -->                    		 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 500, <!-- Ramp 100% to 0% over .5 seconds --> 
+			MOTOR_COMMAND_RAMP, 0, 100, 500, <!-- Ramp 0% to 100% over .5 seconda --> 
+			MOTOR_COMMAND_LOOP,	 				<!-- Repeat loop -->                    		   						 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<VibrationEvent Name="Test_Motors_No_Effect">
+
+		<Priority> 2 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+ 
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+	<!-- ================ -->
+	<!-- End Test Events  -->
+	<!-- ================ -->
+
+
+
+
+	<!-- ============================================================================================================================================================= -->
+	<!-- Event for when a GameEventSystem event occurs, where there is a visual indication on the radar map, and space bar or action button will take you right to it. -->
+	<!-- ============================================================================================================================================================= -->
+
+	<VibrationEvent Name="Game_Event_Notification_Vibration">
+
+		<Priority> 1 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> No </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			<!--turning off for right now. -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		
+		<!-- Mikes original stuff, turning off for right now.
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 75, 333,   Hold 75% for 333 MS (1/3 of a second) -->
+			<!--MOTOR_COMMAND_END
+		</Right_Motor_Script> -->
+
+	</VibrationEvent>
+
+
+	<!-- =================================================================================== -->
+	<!-- Event for when toggling on the controller vibration setting from the options menu.  -->
+	<!-- =================================================================================== -->
+
+	<VibrationEvent Name="Vibration_Toggled_On_Confirmation">
+
+		<Priority> 1 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 300,  
+			MOTOR_COMMAND_HOLD, 0, 300,  
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 0, 300,  
+			MOTOR_COMMAND_HOLD, 100, 300,  
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+
+
+
+
+
+	
+	
+	
+	<!-- jdg 11.08.07 Begin Joe G test rumble stuff here. -->
+	
+	<!-- ==================================================== -->
+	<!-- Event for a high-priority game event (called in the misc GameEventNotifications) -->
+	<!-- HIERARCHY_GameEventNotification.xml -->
+	<!-- MASARI_GameEventNotification.xml -->
+	<!-- NOVUS_GameEventNotification.xml -->
+	<!-- MILITARY_GameEventNotification.xml -->
+	<!-- ==================================================== -->
+	
+	<VibrationEvent Name="Vibration_GameEvent_HighPriority">
+
+		<Priority> 1 </Priority>  <!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> No </Is_Ambient>
+		<Is_Notification> Yes </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 500,  <!-- jdg .. holds at 100% for 1/2 sec then gives -->
+			MOTOR_COMMAND_HOLD, 0, 200,  		<!-- 3 quick buzzes... -->
+			MOTOR_COMMAND_HOLD, 100, 100,  	<!-- should feel artificial to catch peoples attention -->
+			MOTOR_COMMAND_HOLD, 0, 200,  
+			MOTOR_COMMAND_HOLD, 100, 100,  
+			MOTOR_COMMAND_HOLD, 0, 200,  
+			MOTOR_COMMAND_HOLD, 100, 200,  
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</VibrationEvent>
+	
+	<!-- ==================================================== -->
+	<!-- jdg BEGIN HIERARCHY RUMBLE EVENTS -->
+	<!-- ==================================================== -->
+	<Vibration_Event Name="Vibration_Alien_Walker_Impact_Large">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 2 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 600, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 600, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!--jdg 11/13/07 this guy is used on Reaper Turrets and Scan Drones...trying to make them feel lighter -->
+	<Vibration_Event Name="Vibration_Alien_Walker_Impact_Small">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 250.0 </Falloff_Distance>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 75, 300, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 75, 300, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!-- Events for big unit foot plants (called by SFXEvents -->
+	<!-- ==================================================== -->
+	<!-- jdg this guy gets played on Walkers--> 
+	<Vibration_Event Name="Vibration_Alien_Walker_Foot_Plant_Large">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 750.0 </Falloff_Distance>		<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 250, <!-- Hold 25% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			 MOTOR_COMMAND_HOLD, 0, 250,  
+			MOTOR_COMMAND_HOLD, 25, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg this guy gets played on Reaper Turrets, Scan Drone (and unfortunately the Science Walker)--> 
+	<Vibration_Event Name="Vibration_Alien_Walker_Foot_Plant_Small">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 150.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 15, 100,  <!--Hold 25% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+	
+	<!-- jdg this guy gets played on Glyph Carvers 
+		11/09/07 turning off for right now...too much "noise" --> 
+	<Vibration_Event Name="Vibration_Alien_Walker_Foot_Plant_Smallest">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 200.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			 <!--MOTOR_COMMAND_HOLD, 10, 100, Hold 10% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Brute_Foot_Plant">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 150.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 100,  <!--Hold 25% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Brute_Leap_Landing">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 500.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 100,  <!--Hold 25% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Defiler_Foot_Plant">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 75.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 20, 100,  <!--Hold 25% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!-- DEATH Events for ALIEN units -->
+	<!-- ==================================================== -->
+	
+	<!-- jdg this guy gets played each time a hardpoint is destroyed...shoud stack nicely 
+		during a walker death event-->
+	<Vibration_Event Name="Vibration_Alien_Walker_Hardpoint_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Walker_Death_Large">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 700.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 500, 
+			MOTOR_COMMAND_RAMP, 100, 0, 500, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 1000, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Small_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 150.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Medium_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Large_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Hierarchy STRUCTURE death rumbles -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Alien_Small_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 750, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Medium_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 750, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Large_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 750, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Hierarchy AIRCRAFT death rumbles -->
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 used on foos -->
+	<Vibration_Event Name="Vibration_Alien_Small_Aircraft_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 150.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!--jdg 11/13/07 used on cylinders -->
+	<Vibration_Event Name="Vibration_Alien_Medium_Aircraft_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 150.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	
+	
+	
+	
+	<!-- ==================================================== -->
+	<!-- Misc Hierarchy Weapons -->
+	<!-- ==================================================== -->
+	<Vibration_Event Name="Vibration_Alien_Plasma_Detonation">  <!-- currenlty only used for Grunts grenades and Lost Ones plasma bombs-->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 250.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Orlock_Siege_Ability">  <!-- currenlty used for Orlok's siege and Mass drop (SW) explosions-->
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Kamal_Abduct_Ability">  
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 2000, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Alien_Superweapon_Radiation_Cascade">  
+
+		<Priority> 2 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 750.0 </Falloff_Distance> 
+		
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 500, 
+			MOTOR_COMMAND_RAMP, 100, 0, 500, 
+			MOTOR_COMMAND_LOOP,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 1000, 
+			MOTOR_COMMAND_LOOP,
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	
+	
+	<!-- ==================================================== -->
+	<!-- BEGIN vibration events for NOVUS -->
+	<!-- ==================================================== -->
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Novus footsteps -->
+	<!-- ==================================================== -->
+		<Vibration_Event Name="Vibration_Novus_Mech_Foot_Plant">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 300.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 30, 120, <!-- Hold 100% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Founder_Foot_Plant">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 300.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 10, 120, <!-- Hold 100% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+
+	</Vibration_Event>
+
+<!-- jdg 11/12/07 used on Field Inverter foot steps -->
+	<Vibration_Event Name="Vibration_Novus_Walker_Foot_Plant">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>	<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Falloff_Distance> 100.0 </Falloff_Distance>   	<!-- Played only for 3D positional based events, usually attached to 3D sound effects --> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 40, 100, <!-- Hold 100% for less than a second (1000 MS = 1 second) (no ramp up) -->
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+
+	</Vibration_Event>
+
+
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Novus weapon effects -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Novus_BladeTrooper_BlackoutBomb">  
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 350.0 </Falloff_Distance> 
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Amplifier_Pulse">  
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 150.0 </Falloff_Distance> 
+		
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 25, 700, 
+			MOTOR_COMMAND_RAMP, 25, 0, 700, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Novus VEHICLE death rumbles -->
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 also gets used on Corruptors -->
+	<Vibration_Event Name="Vibration_Novus_Small_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Medium_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Large_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Novus STRUCTURE death rumbles -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Novus_Small_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Medium_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Large_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Novus AIRCRAFT death rumbles -->
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 used on Dervish Jets -->
+	<Vibration_Event Name="Vibration_Novus_Medium_Aircraft_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 100.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 Misc Novus SUPERWEAPON rumbles -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Novus_Superweapon_Gravity_Bomb_Suck_Loop">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 20, 1000, 
+			MOTOR_COMMAND_LOOP,
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Novus_Superweapon_Gravity_Bomb_Stop">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 2 </Priority>			<!-- this guy has to have a higher priority than the suck loop...else it wont play -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 1500, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	
+	
+	<!-- ==================================================== -->
+	<!-- jdg BEGIN MASARI RUMBLE EVENTS -->
+	<!-- ==================================================== -->
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/12/07 Misc Masari VEHICLE death rumbles -->
+	<!-- ==================================================== -->
+	<Vibration_Event Name="Vibration_Masari_Small_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Medium_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Large_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	
+	
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 Misc Masari STRUCTURE death rumbles -->
+	<!-- ==================================================== -->
+	
+	<!--jdg 11/13/07 used on Guardian Turrets -->
+	<Vibration_Event Name="Vibration_Masari_Small_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 25, 750, 
+			MOTOR_COMMAND_HOLD, 0, 400, 
+			MOTOR_COMMAND_HOLD, 50, 400, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!--jdg 11/13/07 used on Turrets -->
+	<Vibration_Event Name="Vibration_Masari_Medium_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 50, 500, 
+			MOTOR_COMMAND_HOLD, 0, 500, 
+			MOTOR_COMMAND_HOLD, 100, 500, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Large_Structure_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 50, 500, 
+			MOTOR_COMMAND_HOLD, 0, 500, 
+			MOTOR_COMMAND_HOLD, 100, 500, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Matter_Collector_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 2 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 500, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 Misc Masari AIRCRAFT death rumbles -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Masari_Small_Aircraft_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 100.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Large_Aircraft_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 100.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!--jdg 11/13/07 Misc MASARI SUPERWEAPON rumbles -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Masari_Superweapon_Vortex_Loop">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 1 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 80, 10000, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Masari_Superweapon_Dark_Loop">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 20, 1000, 
+			MOTOR_COMMAND_LOOP,
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- ==================================================== -->
+	<!-- jdg BEGIN MILITARY RUMBLE EVENTS -->
+	<!-- ==================================================== -->
+	<Vibration_Event Name="Vibration_Military_Detonation_ColMoore_Grenade">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 300.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 100, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Military_Small_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 150.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 500, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<Vibration_Event Name="Vibration_Military_Medium_Vehicle_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 10 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 200.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		
+		
+	</Vibration_Event>
+	
+	
+	<!-- ==================================================== -->
+	<!-- jdg BEGIN CIVILIAN/NEUTRAL/SOLO MISSION RUMBLE EVENTS -->
+	<!-- ==================================================== -->
+	
+	<Vibration_Event Name="Vibration_Oil_Tanker_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 0, 250, 
+			MOTOR_COMMAND_RAMP, 100, 0, 500,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg 11/14/07 this is used in ZM02 for the destruciton of the missle thingies-->
+	<Vibration_Event Name="Vibration_Military_Missile_Death">  
+
+		<Priority> 2 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 1000.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 50, 250, 
+			MOTOR_COMMAND_RAMP, 100, 0, 1250,
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 0, 250, 
+			MOTOR_COMMAND_RAMP, 100, 0, 1250,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg 11/14/07 this is used in ZM02 for the destruciton of the missle that tries to take off but fails-->
+	<Vibration_Event Name="Vibration_ZM02_Military_Missile02_Launch_and_Death">  
+
+		<Priority> 3 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 1000.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 100, 2000,
+
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+
+			MOTOR_COMMAND_RAMP, 0, 100, 2000,
+			MOTOR_COMMAND_HOLD, 0, 150, 
+			MOTOR_COMMAND_HOLD, 100, 150, 
+			MOTOR_COMMAND_HOLD, 0, 150, 
+			MOTOR_COMMAND_HOLD, 100, 150, 
+			MOTOR_COMMAND_HOLD, 0, 150, 
+			MOTOR_COMMAND_HOLD, 100, 150, 
+			MOTOR_COMMAND_HOLD, 0, 150, 
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg 11/14/07 this is used in ZM02 for the destruciton of the missle that falls over to its death-->
+	<Vibration_Event Name="Vibration_ZM02_Military_Missile03_Launch_and_Death">  
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 1000.0 </Falloff_Distance> 
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 20, 1000, 
+
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+	
+	</Vibration_Event>
+	
+	<!-- jdg 11/14/07 this is used for the destruciton of the Novus Home Portal (NM04)-->
+	<Vibration_Event Name="Vibration_Novus_Portal_Death">  
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+
+			MOTOR_COMMAND_RAMP, 0, 100, 1000,
+			MOTOR_COMMAND_HOLD, 100, 1500, 
+			MOTOR_COMMAND_RAMP, 100, 0, 1000,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+	
+	</Vibration_Event>
+	
+	<!-- jdg grouping down here cause this is a mission specific object (Hierarchy03) -->
+	<Vibration_Event Name="Vibration_Masari_Temple_Death">  <!-- Note: Called from SFXEvent with similar naming convention -->
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 0, 50, 500, 
+			MOTOR_COMMAND_HOLD, 0, 1250, 
+			MOTOR_COMMAND_HOLD, 100, 250, 
+			MOTOR_COMMAND_HOLD, 0, 2150, 
+			MOTOR_COMMAND_RAMP, 100, 0, 1000,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg this is a mission specific object (Nov06) -->
+	<Vibration_Event Name="Vibration_NM06_Power_Core_Death_2D_Rumble">  
+
+		<Priority> 1 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 1000,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg this is a mission specific object (Nov06) -->
+	<Vibration_Event Name="Vibration_NM06_Mirabels_Console_Death_2D_Rumble">  
+
+		<Priority> 1 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 50, 0, 500,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg this is a mission specific object (Nov06) -->
+	<Vibration_Event Name="Vibration_NM06_Volatile_Structure_Death">  
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+		
+		<Falloff_Distance> 500.0 </Falloff_Distance> 
+
+		<Left_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_RAMP, 100, 0, 500,
+			MOTOR_COMMAND_END
+		</Left_Motor_Script>
+		
+	</Vibration_Event>
+	
+	<!-- jdg this is a mission specific object (Nov06) -->
+	<Vibration_Event Name="Vibration_NM06_Camera_Shake_2D_Rumble">  
+
+		<Priority> 5 </Priority>			<!-- Priorities can be 1-10 or higher - Priority 1 is a top priority -->
+		<Is_Ambient> Yes </Is_Ambient>
+		<Is_Notification> No </Is_Notification>
+
+		<Right_Motor_Script>
+			MOTOR_COMMAND_INIT,
+			MOTOR_COMMAND_HOLD, 25, 1000, 
+			MOTOR_COMMAND_END
+		</Right_Motor_Script>
+		
+	</Vibration_Event>
+	
+	
+	
+	
+	
+	
+	
+
+</VibrationEvents>
+

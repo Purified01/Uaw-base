@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SpeechEvent_Files>
+
+	<File> SpeechEvents.xml </File>
+	<File> SpeechEvents360.xml </File>
+
+</SpeechEvent_Files>

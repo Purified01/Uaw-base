@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<GENERIC_Unit>
+
+	<X90_Other_Objects Name="Unit_In_Production">
+		<Variant_Of_Existing_Type>Marker_Generic</Variant_Of_Existing_Type>
+		<Behavior>MARKER, GLOBAL_UNDER_CONSTRUCTION</Behavior>
+      <!-- do not move GLOBAL_UNDER_CONSTRUCTION into StrategicBehavior behavior list - doing so breaks tactical pop cap!!! -Oksana-->
+	</X90_Other_Objects>
+
+</GENERIC_Unit>
+
+
+
