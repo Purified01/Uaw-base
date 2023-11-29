@@ -231,8 +231,8 @@
 	<File> Structures/Alien_Radiation_Spitter.xml </File>
 	<File> Structures/Alien_Gravitic_Manipulator.xml </File>
 	<File> Structures/Alien_Megaweapon_Purifier.xml </File>
-	<File> Structures/Alien_Superweapon_Purifier.xml </File>
 	<File> Structures/Alien_Superweapon_Mass_Drop.xml </File>
+	<File> Structures/Alien_Superweapon_Purifier.xml </File>
 
 
 	<File> Structures/Masari_Atlatea.xml </File>
