@@ -74,6 +74,7 @@
 
 		<Tactical_Health> 625 </Tactical_Health>
 
+
 		<!-- BEHAVIORS -->
 		<Behavior>
 			PERSISTENT_UNIT,
@@ -98,6 +99,7 @@
 			ABILITY_COUNTDOWN,
 			EFFECT_GENERATOR,
 			ATTRIBUTE_DIRECTORY,
+         HARD_POINT_MANAGER,
 			DAMAGE_TRACKING,
 			AI_RECRUITABLE,
 			AI_TARGET,
@@ -228,6 +230,9 @@
          </Researched_Upgrades>
 		</BehaviorType>
      
+		<Attached_Hard_Points>
+         Alien_Brute_Cannon, B_Bicep_L
+      </Attached_Hard_Points>
          
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03  0.03</Radar_Icon_Size>
@@ -673,6 +678,133 @@
 		</BehaviorType>
 
 	</Projectile>
+
+
+	<Projectile Name="Proj_Brute_Siege_Mode_Grenade">
+	
+		<!-- ART -->	
+		<Land_Model_Name>pp_orlok_siege_projectile.ALO</Land_Model_Name>
+		<Scale_Factor>0.65</Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+	
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+				
+		<!-- MOVEMENT -->
+		<Max_Speed>200.0</Max_Speed>
+		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
+		
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+				
+		<!-- BEHAVIORS -->
+		<Behavior>
+			PROJECTILE, 
+			HIDE_WHEN_FOGGED
+		</Behavior>
+		
+		<!-- BEHAVIOR TYPES -->
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Hero </Armor_Type>
+			<Damage_Type> Damage_Alien_Orlok_Siege_Grenade </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Category>GRENADE</Projectile_Category>
+			<Projectile_Grenade_Gravity>1.636363636</Projectile_Grenade_Gravity>
+			<Projectile_Grenade_Gravity_Lob_Mod>1.0</Projectile_Grenade_Gravity_Lob_Mod>
+			<Projectile_Grenade_Can_Lob_Slower>yes</Projectile_Grenade_Can_Lob_Slower>
+			<Projectile_Max_Lifetime>900.0</Projectile_Max_Lifetime>  <!-- Oksana: give it a few minutes... generally, it will die of collision. -->
+
+			<Projectile_Blast_Area_Damage>90.0</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Range>80.0</Projectile_Blast_Area_Range>
+			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>orlok_siege_hit</Projectile_Object_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>orlok_siege_hit</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle />
+			<Projectile_Absorbed_By_Shields_Particle />
+			
+			<SFXEvent_Projectile_Start_Flight> SFX_Alien_Seige_Fire </SFXEvent_Projectile_Start_Flight> 
+			<Projectile_SFXEvent_Detonate>SFX_Alien_Seige_Detonation_1</Projectile_SFXEvent_Detonate> <!-- Frank - Replace with new unique exp sfx -->
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Siege_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+			
+		</BehaviorType>
+	</Projectile>
+
+
+   <HardPoint Name="Alien_Brute_Cannon">
+      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- ART -->
+      <Land_Model_Name>ABHP_Habitat_Plasma_cannon.alo</Land_Model_Name>
+		<Scale_Factor>0.4</Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <CategoryMask> CanAttack, HardPoint, LegSocketHP </CategoryMask>
+
+      <!-- CONFLICT -->
+      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Tactical_Health> 9999 </Tactical_Health>
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         HARD_POINT
+      </Behavior>
+
+      <LandBehavior>
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         ABILITY_COUNTDOWN,
+         TARGETING,
+         WEAPON,
+         IDLE,
+         TURRET
+      </LandBehavior>
+
+      <BehaviorType Name="WeaponBehaviorType">
+         <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+         <Targeting_Priority_Set> Alien_Habitat_Walker_Target_Priority </Targeting_Priority_Set>
+         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
+		<Activation_Min_Range>0.0</Activation_Min_Range>
+		<Activation_Max_Range>250.0</Activation_Max_Range>
+         <Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
+
+         <Projectile_Types> Proj_Brute_Siege_Mode_Grenade </Projectile_Types>
+         <Projectile_Fire_Pulse_Count> 1 </Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
+         <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
+      </BehaviorType>
+
+      <BehaviorType Name="TurretBehaviorType">
+         <Turret_Targets_Ground_Vehicles> 1 </Turret_Targets_Ground_Vehicles>
+         <Turret_Targets_Ground_Infantry> 2 </Turret_Targets_Ground_Infantry>
+         <Turret_Targets_Air_Vehicles> 999 </Turret_Targets_Air_Vehicles>
+         <Turret_Targets_Anything_Else> 3 </Turret_Targets_Anything_Else>
+         <Turret_Rotate_Extent_Degrees> 360 </Turret_Rotate_Extent_Degrees>
+         <Turret_Elevate_Extent_Degrees> 180 </Turret_Elevate_Extent_Degrees>
+         <Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
+         <Barrel_Bone_Name> B_Barrel </Barrel_Bone_Name>
+         <Turret_Rotate_Speed> 5.0 </Turret_Rotate_Speed>
+         <Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
+         <Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
+         <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
+         <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
+      </BehaviorType>
+
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+      </BehaviorType>
+
+	</HardPoint>
 
 
 </Alien_INF_Brute_XML>
