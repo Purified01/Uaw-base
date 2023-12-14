@@ -678,7 +678,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Inventors_Lab, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 

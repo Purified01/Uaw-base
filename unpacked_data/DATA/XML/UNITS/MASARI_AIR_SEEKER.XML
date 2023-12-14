@@ -208,12 +208,12 @@
       <Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>4.0</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
 	  <!--
@@ -552,9 +552,9 @@
       <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>6.0</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>0.5</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
 	  <BehaviorType name="AIBehaviorType">
@@ -576,7 +576,7 @@
 	  </BehaviorType>
 
 	  <BehaviorType Name="SFXBehaviorType">
-      <SFXEvent_Fire> SFX_Masari_Pulse_Cannon_Fire </SFXEvent_Fire>
+      <SFXEvent_Fire> SFX_Alien_Mass_Driver_Fire </SFXEvent_Fire>
       <SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
       <SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
@@ -996,7 +996,8 @@
 	<Projectile Name="Proj_Seeker_Pulse_Cannon_Light">
 
 		<!-- ART -->
-		<Land_Model_Name>Laser_Masari_Seeker_Light_Bolt</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
+		<Land_Model_Name>ZV_Peacebringer.ALO</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
+    <Scale_Factor>0.70</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -1004,7 +1005,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>15.0</Max_Speed>
+		<Max_Speed>2.0</Max_Speed>
 		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1027,11 +1028,11 @@
 
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>8</Projectile_Damage>
-      <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
-      <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
-      <Projectile_SFXEvent_Detonate>SFX_Masari_Detonation_1</Projectile_SFXEvent_Detonate>
-      <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+      <Projectile_Damage>80</Projectile_Damage>
+      <Projectile_Blast_Area_Damage> 40 </Projectile_Blast_Area_Damage>
+      <Projectile_Blast_Area_Range> 60 </Projectile_Blast_Area_Range>
+      <Projectile_SFXEvent_Detonate>SFX_Alien_Mass_Driver_Detonation_1</Projectile_SFXEvent_Detonate>
+      <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Mass_Driver_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
       <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 
       <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
