@@ -482,7 +482,24 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 				</Effect_Generator_Entry>
-
+<Effect_Generator_Entry Name="Entry2">
+						<Base_Delay>.6</Base_Delay>
+                  <Effect_Name> KamalRexAbductionVisualEffect </Effect_Name>
+                  <Duration> 3 </Duration>
+                  <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+                  <Source_SFX_Event> SFX_Alien_Abduct_Fire </Source_SFX_Event>
+                  <Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>                  
+               </Effect_Generator_Entry>
+               
+                <Effect_Generator_Entry Name="Entry3">
+                   <Effect_Name> KamalRexAbductionEffect </Effect_Name>
+                   <Base_Delay>.6</Base_Delay>
+                   <Duration> 5 </Duration>
+                   <Target_Gathering_Mask> Target | TargetAE </Target_Gathering_Mask>
+                   <Can_Target_Allies>Yes</Can_Target_Allies>
+                   <Area_Effect_Radius> 75 </Area_Effect_Radius>                  
+                   <Target_Filter_C> Alien_Kamal_Rex_Abduction </Target_Filter_C>
+                </Effect_Generator_Entry>
 			</Effect_Generator>
 
 			<Effect_Generator Name="AbductionGenerator">
