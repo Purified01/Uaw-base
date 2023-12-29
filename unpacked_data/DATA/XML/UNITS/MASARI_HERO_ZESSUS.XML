@@ -536,7 +536,7 @@
 
 		<Abilities SubObjectList="Yes" Replace="False">
 
-			<Return_Projectile_Ability Name="Masari_Zessus_Range_Attack_Ability">
+			<Return_Projectile_Ability Name="Masari_Zessus_Range_Attack_Ability_5">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
 				<Activation_Min_Range> 0.0 </Activation_Min_Range>
 				<Activation_Max_Range> 200.0 </Activation_Max_Range>
@@ -545,10 +545,10 @@
 				<Catch_Animation> ATTACK_TOY_CATCH </Catch_Animation>
 				<Projectile_Type> Proj_Masari_Zessus_Toy_Fire </Projectile_Type>
 				<Projectile_Spawn_Bone_Name> B_hand_R </Projectile_Spawn_Bone_Name>
-				<Fire_Pojectile_Frame_Number> 5 </Fire_Pojectile_Frame_Number>
 				<Catch_Dist> 20 </Catch_Dist>
 				<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
 			</Return_Projectile_Ability>
+
 
 			<Effect_Generator_Ability Name="Masari_Zessus_Explode_Ability">
 				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
@@ -986,8 +986,8 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>6.0</Max_Speed>
-		<Max_Rate_Of_Turn>20.0</Max_Rate_Of_Turn>
+		<Max_Speed>12.0</Max_Speed>
+		<Max_Rate_Of_Turn>50.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
 		<AI_Combat_Power> 1 </AI_Combat_Power>
@@ -1007,9 +1007,9 @@
 			<Projectile_Max_Flight_Distance>1200.0</Projectile_Max_Flight_Distance>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-			<Projectile_Rocket_Straight_Distance>200</Projectile_Rocket_Straight_Distance>
-			<Projectile_Rocket_Curve_Distance>60</Projectile_Rocket_Curve_Distance>
-			<Projectile_Rocket_Curve_Offset>15</Projectile_Rocket_Curve_Offset>
+			<Projectile_Rocket_Straight_Distance>40</Projectile_Rocket_Straight_Distance>
+			<Projectile_Rocket_Curve_Distance>30</Projectile_Rocket_Curve_Distance>
+			<Projectile_Rocket_Curve_Offset>20</Projectile_Rocket_Curve_Offset>
 			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Object_Detonation_Particle> Masari_Zessus_Light_Bolo_Target </Projectile_Object_Detonation_Particle>
