@@ -333,7 +333,7 @@
 		</Effect_Generator_Data>
 
         <Attached_Hard_Points>
-            Novus_Material_Center_Basic_Defense_Upgrade, MuzzleA_00
+            Novus_Recycle_Center_Basic_Defense_Upgrade, MuzzleA_00
         </Attached_Hard_Points>
 
 	</X12_Novus_Structures>
@@ -590,7 +590,7 @@
 
 	</X12_Novus_Structures>
 
-        <HardPoint Name="Novus_Material_Center_Basic_Defense_Upgrade">
+        <HardPoint Name="Novus_Recycle_Center_Basic_Defense_Upgrade">
 		<Variant_Of_Existing_Type>Novus_Material_Center_HP</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_Antitank.ALO </Land_Model_Name>
 		<Scale_Factor> 0.75 </Scale_Factor>

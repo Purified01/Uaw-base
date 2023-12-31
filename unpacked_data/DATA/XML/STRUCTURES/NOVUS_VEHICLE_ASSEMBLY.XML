@@ -376,7 +376,7 @@
 	<X12_Novus_Structures Name="Novus_Vehicle_Assembly_Construction">
 
 		<!-- ART -->
-		<Land_Model_Name>NB_Vehicle_Assembly.alo</Land_Model_Name>
+		<Land_Model_Name>WO_Glyph_Superweapon.alo</Land_Model_Name>
 		<Scale_Factor>0.9</Scale_Factor>
 		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
@@ -385,7 +385,7 @@
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NOVUS_VEHICLE_ASSEMBLY</Text_ID>
-		<Icon_Name>i_icon_ab_mass_drop_SW.tga</Icon_Name>
+		<Icon_Name>i_icon_a_sw_mass_drop.tga</Icon_Name>
 		<Select_Box_Scale>115</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
