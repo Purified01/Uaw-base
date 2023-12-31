@@ -145,7 +145,7 @@
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-			<Build_Limit_Current_Per_Player>25</Build_Limit_Current_Per_Player>
+			<Build_Limit_Current_Per_Player>50</Build_Limit_Current_Per_Player>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -403,7 +403,7 @@
 			<Tactical_Buildable_Constructed> Masari_Guardian </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Multiplayer> 55 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 55 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 36 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 5 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
@@ -612,6 +612,9 @@
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+
+                        <Projectile_Fire_Spread_Amount> 5 </Projectile_Fire_Spread_Amount>
+                        <Projectile_Fire_Spread_Angle> 360 </Projectile_Fire_Spread_Angle>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -692,6 +695,10 @@
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+
+                        <Projectile_Fire_Spread_Amount> 5 </Projectile_Fire_Spread_Amount>
+                        <Projectile_Fire_Spread_Angle> 360 </Projectile_Fire_Spread_Angle>
+
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -790,7 +797,7 @@
 	<HardPoint Name="Masari_Guardian_HP">
 
 		<!-- ART -->
-		<Land_Model_Name> zb_ground_turret_upgrade.alo</Land_Model_Name>
+		<Land_Model_Name> mv_thumper_hp_gun.ALO</Land_Model_Name>
 		<Scale_Factor> 1.0 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -1035,8 +1042,8 @@
 			<Is_Turret_Entire_Body> false </Is_Turret_Entire_Body>
 			<Turret_Rotate_Extent_Degrees>360</Turret_Rotate_Extent_Degrees>
 			<Turret_Elevate_Extent_Degrees>60</Turret_Elevate_Extent_Degrees>
-			<Turret_Bone_Name>B_Turret</Turret_Bone_Name>
-			<Barrel_Bone_Name>Root</Barrel_Bone_Name>
+			<Turret_Bone_Name>b_turret</Turret_Bone_Name>
+			<Barrel_Bone_Name>b_barrel</Barrel_Bone_Name>
 			<Turret_Rotate_Speed>10.0</Turret_Rotate_Speed>
 			<Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
 			<Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
@@ -1143,6 +1150,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
+                        <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
@@ -1231,6 +1239,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
+                        <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>

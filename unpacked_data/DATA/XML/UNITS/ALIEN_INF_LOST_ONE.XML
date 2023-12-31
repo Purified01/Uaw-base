@@ -86,7 +86,7 @@
       <Tactical_Health> 230 </Tactical_Health>
 
       <Projectile_Types>Proj_Lost_One_Laser</Projectile_Types>
-      <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Count>0</Projectile_Fire_Pulse_Count>
       <Projectile_Fire_Pulse_Delay_Seconds>.3</Projectile_Fire_Pulse_Delay_Seconds>
       <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 
@@ -340,6 +340,47 @@
 				<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
 				<Unit_Ability_AI_Range> 60.0 </Unit_Ability_AI_Range>
          </Unit_Ability>
+
+                    <Lightning_Attack_Ability Name="Alien_Barracks_Lightning">
+				<Activation_Style> Special_Attack </Activation_Style>
+
+				<Activation_Chance> 1.0 </Activation_Chance>
+				<Activation_Min_Range> 0.0 </Activation_Min_Range>
+				<Activation_Max_Range> 280.0 </Activation_Max_Range>
+				<Applicable_Unit_Categories> Flying, CanAttack, Stationary </Applicable_Unit_Categories>
+
+				<Damage_Type> Damage_Alien_Walker_HP_Lightning </Damage_Type>
+				<Damage_Amount> 20.0 </Damage_Amount>
+				<Damage_Percentage> 0.001 </Damage_Percentage>
+				<Damage_Interval_In_Secs> 1.75 </Damage_Interval_In_Secs>
+
+				<!-- match Target_Light_Effect_Duration -->
+				<Ability_Duration_Time_In_Secs> 2.3893 </Ability_Duration_Time_In_Secs>
+				<Ability_Cooldown_Time_In_Secs> 3.0 </Ability_Cooldown_Time_In_Secs>
+				<!-- it's fast for demo purposes to show a contrast in anti-air effectiveness -->
+
+				<Start_Lightning_Frame_Number> 0 </Start_Lightning_Frame_Number>
+				<Lightning_Effect_Name> Arc_Trigger_Lightning </Lightning_Effect_Name>
+				<Lightning_Source_Bone_Name> Barrel </Lightning_Source_Bone_Name>
+				<Lightning_Target_Bone_Names> B_PELVIS, ROOT </Lightning_Target_Bone_Names>
+
+				<Lightning_Max_Targets> 4 </Lightning_Max_Targets>
+				<Lightning_Targets_Radius> 0.0 </Lightning_Targets_Radius>
+
+				<SFXEvent_Activate> SFX_Alien_Lightning_Fire </SFXEvent_Activate>
+				<SFXEvent_Target_Affected />
+
+				<Target_Particle_Effect />
+
+				<Target_Particle_Bone_Name> ROOT </Target_Particle_Bone_Name>
+				<Target_Light_Effect_Type> Linear_Pulse </Target_Light_Effect_Type>
+				<Target_Light_Effect_Color> 0.3, 0.3, 0.8 </Target_Light_Effect_Color>
+				<Target_Light_Effect_Color2 />
+				<Target_Light_Effect_Duration> 5.0 </Target_Light_Effect_Duration>
+				<Target_Light_Effect_Pulse_Count> 60 </Target_Light_Effect_Pulse_Count>
+
+			</Lightning_Attack_Ability>
+
 
       </Unit_Abilities_Data>
 

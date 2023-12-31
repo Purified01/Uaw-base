@@ -700,6 +700,9 @@
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+
+                        <Projectile_Fire_Spread_Amount> 2 </Projectile_Fire_Spread_Amount>
+                        <Projectile_Fire_Spread_Angle> 5 </Projectile_Fire_Spread_Angle>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">

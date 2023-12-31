@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>MV_Thumper.alo</Land_Model_Name>
-		<Scale_Factor>0.8</Scale_Factor>
+		<Scale_Factor>1.0</Scale_Factor>
 		<SurfaceFX_Name>Generic_Track</SurfaceFX_Name>
 		<Tread_Scroll_Rate>0.167</Tread_Scroll_Rate>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -31,7 +31,7 @@
 
 		<!-- ATTRIBUTES -->
         <LOD_Bias>4</LOD_Bias>
-		<Affiliation>Military</Affiliation>
+		<Affiliation>Masari</Affiliation>
 		<Is_Named_Hero>Yes</Is_Named_Hero>
 		<CategoryMask> Medium, Piloted, CanAttack, Hero, RadiationHurts </CategoryMask>
 		<Victory_Relevant> No </Victory_Relevant>
@@ -45,7 +45,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass>Tracked</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>1.2</Max_Speed>
+		<Max_Speed>2.2</Max_Speed>
 		<Max_Rate_Of_Turn>4.5</Max_Rate_Of_Turn>
 		<Space_Layer> LandDynamic </Space_Layer>
 		<UnitCollisionClass> Vehicle </UnitCollisionClass>
@@ -72,7 +72,7 @@
 		<Land_FOW_Reveal_Range>220.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>	
 
-		<Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 1300 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -150,10 +150,10 @@
 			<Targeting_Priority_Set> AntiDefault </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>		
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Military_Hero_Tank_Cannon</Projectile_Types>
+			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Alien_Walker_Assembly_Mass_Driver</Projectile_Types>
 			<!-- Note that the current attack animation rotates the barrels and does 5 bursts - this timing attempts to match -->
-			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Seconds>0.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.4</Projectile_Fire_Pulse_Delay_Seconds>
          <Attack_Animation_Is_Overlay>No</Attack_Animation_Is_Overlay>
@@ -207,7 +207,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire>SFX_Military_Hero_Tank_Fire</SFXEvent_Fire>
+			<SFXEvent_Fire>SFX_Alien_Mass_Driver_Fire</SFXEvent_Fire>
 			<SFXEvent_Select>Unit_Select_Military_Woolard</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Military_Woolard</SFXEvent_Move>
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Military_Woolard</SFXEvent_Move_At_Top_Speed>
@@ -318,7 +318,8 @@
 		<!-- HARDPOINTS -->
 		<!-- will be able to shoot on objects that have been revealed by dynamic scanner -->
 		<Attached_Hard_Points> 
-			HP_Military_Hero_Tank_Minigun, HP_HERO
+			Alien_Walker_Science_HP_Heat_Sink, HP_HERO
+                        HP_Military_Hero_Tank_Minigun, HP_HERO
 		</Attached_Hard_Points>
 		
 	</X11_Military_Heroes>
@@ -822,6 +823,18 @@
 			<Damage_Type> Damage_Military_Hero_Tank_Minigun </Damage_Type>
 			<Armor_Type> Armor_Military_Hero </Armor_Type>
 		</BehaviorType> 
+ 
+                <BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
+			<Tactical_Build_Cost_Campaign> 250 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 250 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 65 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
@@ -862,5 +875,125 @@
 		</BehaviorType>
 
 	</HardPoint>
+
+<HardPoint Name="Alien_Walker_Science_HP_Heat_Sink">
+		<Variant_Of_Existing_Type>Alien_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+		<!-- don't want to point back to generic as this will mess up novus cascade -->
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 99999 </Tactical_Health>
+		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Heat_Sink.alo</Land_Model_Name>
+		<Scale_Factor> 0.6 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior>
+			SELECTABLE,
+			HARD_POINT
+		</Behavior>
+
+		<LandBehavior>
+         DAMAGE_TRACKING,
+         EFFECT_GENERATOR,
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         TACTICAL_SELL,
+         ABILITY_COUNTDOWN
+		</LandBehavior>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+			<Tactical_Under_Construction_Object_Type> Alien_Walker_Science_HP_Heat_Sink_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_heat_sink.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_HEAT_SINK </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes">
+
+			<Effect_Generator Name="AlienWalkerScienceHeatSinkGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> AlienWalkerHeatSinkEffect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+
+		</Effect_Generator_Data>
+
+	</HardPoint>
+
+	<!-- Heatsink Under Construction  -->
+	<HardPoint Name="Alien_Walker_Science_HP_Heat_Sink_Under_Construction">
+		<Variant_Of_Existing_Type>Alien_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
+
+		<!-- ART -->
+		<Land_Model_Name> ABHP_Heat_Sink.alo </Land_Model_Name>
+		<Scale_Factor> 0.6 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 700 </Tactical_Health>
+		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+		<Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
+
+		<!-- BEHAVIORS -->
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_heat_sink.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_HEAT_SINK </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Buildable_Constructed> Alien_Walker_Science_HP_Heat_Sink </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+	</HardPoint>
+
 
 </Military_Hero_Tank_XML>

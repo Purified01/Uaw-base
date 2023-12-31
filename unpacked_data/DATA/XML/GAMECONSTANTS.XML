@@ -884,12 +884,12 @@
 
 	<MP_Color_Blue>78,150,255</MP_Color_Blue>	 
 	<MP_Color_Red>255,23,23</MP_Color_Red>		 
-	<MP_Color_Green>119,255,78</MP_Color_Green>	
+	<MP_Color_Green>66,111,66</MP_Color_Green>	
 	<MP_Color_Orange>255,149,23</MP_Color_Orange>
-	<MP_Color_Cyan>111,217,224</MP_Color_Cyan>	 
-	<MP_Color_Purple>255,111,209</MP_Color_Purple>
-	<MP_Color_Yellow>224,223,45</MP_Color_Yellow>
-	<MP_Color_Gray>150,150,150</MP_Color_Gray>	 
+	<MP_Color_Cyan>67,205,128</MP_Color_Cyan>	 
+	<MP_Color_Purple>125,38,205</MP_Color_Purple>
+	<MP_Color_Yellow>238,201,0</MP_Color_Yellow>
+	<MP_Color_Gray>232,241,212</MP_Color_Gray>	 
     
     <!-- Chat colors differ slightly from in-game colors for visibility in a chat window. -->
 	<MP_Chat_Color_Blue>78,150,255</MP_Chat_Color_Blue>	 

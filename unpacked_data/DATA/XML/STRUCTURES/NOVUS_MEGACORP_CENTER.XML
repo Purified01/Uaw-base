@@ -497,6 +497,7 @@
 		<Scale_Factor>0.42</Scale_Factor>
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 		<AssetBank> BANK_NOVUS </AssetBank>
+                <AssetBank> BANK_ALIEN </AssetBank>
 
 		<CategoryMask> HardPoint, CanAttack </CategoryMask>
 

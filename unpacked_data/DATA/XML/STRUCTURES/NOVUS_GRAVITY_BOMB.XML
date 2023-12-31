@@ -142,7 +142,7 @@
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-			<Build_Limit_Current_Per_Player>1</Build_Limit_Current_Per_Player>
+			<Build_Limit_Current_Per_Player>5</Build_Limit_Current_Per_Player>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -394,8 +394,8 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Novus_Superweapon_Gravity_Bomb_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Novus_Superweapon_Gravity_Bomb </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 4000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 4000 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 100 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 10 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
@@ -577,9 +577,9 @@
       </BehaviorType>
 
       <BehaviorType Name="TacticalSuperweaponBehaviorType">
-         <TSW_Cooldown_Countdown_Seconds> 311.0 </TSW_Cooldown_Countdown_Seconds>
+         <TSW_Cooldown_Countdown_Seconds> 150.0 </TSW_Cooldown_Countdown_Seconds>
          <TSW_Area_Effect_Radius> 250.0 </TSW_Area_Effect_Radius>
-         <TSW_Warm_Up_Seconds> 300.0 </TSW_Warm_Up_Seconds>
+         <TSW_Warm_Up_Seconds> 150.0 </TSW_Warm_Up_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="LightningBallEffectBehaviorType">

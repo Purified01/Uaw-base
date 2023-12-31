@@ -9,7 +9,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ZV_Figment.ALO</Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
+      <Scale_Factor>1.4</Scale_Factor>
       <!-- Surface FX doesnt work on this guy -->
       <!-- SurfaceFX_Name>Masari_Figment_Footprint</SurfaceFX_Name -->
       <Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -70,7 +70,7 @@
       <Ranged_Target_Z_Adjust>12.0</Ranged_Target_Z_Adjust>
       <Attack_Category_Restrictions> Resource | Resource_INST | Flying | Bridge </Attack_Category_Restrictions>
 
-      <Tactical_Health> 220 </Tactical_Health>
+      <Tactical_Health> 320 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -163,7 +163,7 @@
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -188,9 +188,9 @@
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
-         <Projectile_Types>Proj_Masari_Figment_Light_Energy_Bolt</Projectile_Types>
+         <Projectile_Types>Proj_Novus_Vertigo_Railgun</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
@@ -250,7 +250,7 @@
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
-         <SFXEvent_Fire> SFX_Masari_Pulse_Cannon_Fire </SFXEvent_Fire>
+         <SFXEvent_Fire> SFX_Novus_Field_Inverter_Fire </SFXEvent_Fire>
          <SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
          <SFXEvent_Select>Unit_Select_Masari_Figment</SFXEvent_Select>
          <SFXEvent_Move>Unit_Move_A_Masari_Figment</SFXEvent_Move>
@@ -369,7 +369,7 @@
       <Max_Speed>3.0</Max_Speed>
 
       <!-- CONFLICT -->
-      <Land_FOW_Reveal_Range>220.0</Land_FOW_Reveal_Range>
+      <Land_FOW_Reveal_Range>250.0</Land_FOW_Reveal_Range>
 
       <BehaviorType Name="ProductionBehaviorType">
          <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
@@ -387,7 +387,7 @@
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
-         <Projectile_Types>Proj_Masari_Figment_Light_Energy_Bolt</Projectile_Types>
+         <Projectile_Types>Proj_Novus_Vertigo_Railgun</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
@@ -398,7 +398,7 @@
          <Unit_Ability Name="Masary_Figment_Deploy_Mine_Ability">
             <Type>EFFECT_GENERATOR</Type>
             <Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
-            <Recharge_Seconds>40.0</Recharge_Seconds>
+            <Recharge_Seconds>10.0</Recharge_Seconds>
             <Is_Modal>No</Is_Modal>
 
             <Effect_Generator_Name>Masary_Figment_Deploy_Fire_Mine_Generator</Effect_Generator_Name>
@@ -452,7 +452,7 @@
       <Max_Speed>3.5</Max_Speed>
 
       <!-- CONFLICT -->
-      <Land_FOW_Reveal_Range>170.0</Land_FOW_Reveal_Range>
+      <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 
       <BehaviorType Name="WeaponBehaviorType">
          <Muzzle_Bone_Name> MuzzleB </Muzzle_Bone_Name>
@@ -461,7 +461,7 @@
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 150.0 </Targeting_Max_Attack_Distance>
-         <Projectile_Types>Proj_Masari_Figment_Dark_Energy_Bolt</Projectile_Types>
+         <Projectile_Types>Proj_Novus_Vertigo_Railgun</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
@@ -481,7 +481,7 @@
          <Unit_Ability Name="Masary_Figment_Deploy_Mine_Ability">
             <Type>EFFECT_GENERATOR</Type>
             <Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
-            <Recharge_Seconds>40.0</Recharge_Seconds>
+            <Recharge_Seconds>10.0</Recharge_Seconds>
             <Is_Modal>No</Is_Modal>
 
             <Effect_Generator_Name>Masary_Figment_Deploy_Ice_Mine_Generator</Effect_Generator_Name>
@@ -643,6 +643,58 @@
 
 
 
+   <!-- **************************************************************************************** -->
+	<!-- ****PROJECTILES************************************************************************* -->
+	<!-- **************************************************************************************** -->
+
+	<Projectile Name="Proj_Novus_Vertigo_Railgun">
+
+		<!-- ART -->
+		<Land_Model_Name> pp_nv_vertigo_rail_bullet.alo </Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
+      <AssetBank> BANK_NOVUS </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_NONE </Text_ID>
+		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+
+		<!-- MOVEMENT -->
+		<Max_Speed> 30.0 </Max_Speed>
+		<Max_Rate_Of_Turn> 0.0 </Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS -->
+		<Behavior> PROJECTILE, HIDE_WHEN_FOGGED </Behavior>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Novus_Vertigo_Railgun </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Category>DEFAULT</Projectile_Category>
+			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
+			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
+
+			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
+			<Projectile_Damage>30</Projectile_Damage>
+			<Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
+			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>Novus_Field_inverter_rail_hit</Projectile_Object_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>Novus_Field_inverter_rail_hit_ground</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle>Novus_Field_inverter_rail_die</Projectile_Lifetime_Detonation_Particle>
+			<Projectile_Absorbed_By_Shields_Particle>Novus_Field_inverter_rail_hit_shield</Projectile_Absorbed_By_Shields_Particle>
+			<!-- Does not die after hitting object, but keeps flying this distance, hitting all objects on the way -->
+			<Projectile_Post_Collision_Travel_Distance>120</Projectile_Post_Collision_Travel_Distance>
+
+		</BehaviorType>
+
+	</Projectile>
 
 
    <!--=================================================================================================

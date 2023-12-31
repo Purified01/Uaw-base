@@ -1079,7 +1079,7 @@
 
       <Effect_Component Type="Damage">
          <Damage_Type> Damage_Fire </Damage_Type>
-         <Damage_Amount> 5.0 </Damage_Amount>
+         <Damage_Amount> 100.0 </Damage_Amount>
       </Effect_Component>
 
       <Effect_Component Type="ParticleSystem">

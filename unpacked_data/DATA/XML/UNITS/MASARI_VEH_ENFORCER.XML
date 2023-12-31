@@ -186,7 +186,7 @@
       <Targeting_Priority_Set> Masari_Enforcer_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Masari_Enforcer_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
@@ -397,11 +397,11 @@
       <Targeting_Priority_Set> Masari_Enforcer_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Masari_Enforcer_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Seconds>2.3</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>0.25</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
     <BehaviorType Name="ProductionBehaviorType">
@@ -534,6 +534,8 @@
       <Projectile_Types>Proj_Masari_Enforcer_Dark</Projectile_Types>
       <Projectile_Fire_Recharge_Seconds>2.3</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Spread_Amount> 4 </Projectile_Fire_Spread_Amount>
+      <Projectile_Fire_Spread_Angle> 15 </Projectile_Fire_Spread_Angle>
       <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 

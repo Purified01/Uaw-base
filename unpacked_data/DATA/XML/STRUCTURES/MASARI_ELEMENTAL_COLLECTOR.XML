@@ -138,7 +138,7 @@
 
       <BehaviorType Name="ProductionBehaviorType">
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-         <Build_Limit_Current_Per_Player>5</Build_Limit_Current_Per_Player>
+         <Build_Limit_Current_Per_Player>25</Build_Limit_Current_Per_Player>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
@@ -237,9 +237,9 @@
          <!-- need to set all data as pooled scripts won't clear old data -->
          <Lua_Script_Data>
             MatterEngine = {}
-            MatterEngine.ResourcesPerTimeBlock = 4.0
+            MatterEngine.ResourcesPerTimeBlock = 5.0
             MatterEngine.ResourcesTimeSeconds = 3.0
-            MatterEngine.ResourcesStorage = 80.0
+            MatterEngine.ResourcesStorage = 100.0
          </Lua_Script_Data>
       </BehaviorType>
 

@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZB_Foundation.alo</Land_Model_Name>
-		<Scale_Factor>0.9</Scale_Factor>
+		<Scale_Factor>1.0</Scale_Factor>
 		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
 		<Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -175,6 +175,18 @@
 			<Death_Fade_Time> 0.25 </Death_Fade_Time>
 			<Death_Persistence_Duration> 5 </Death_Persistence_Duration>
 			<IsDeathCloneObstacle> true </IsDeathCloneObstacle>
+		</BehaviorType>
+
+
+		<BehaviorType Name="LuaScriptBehaviorType">
+			<Lua_Global_Behaviors> GlobalResourceStructureBehavior </Lua_Global_Behaviors>
+			<Lua_Land_Behaviors> GlobalResourceStructureBehavior </Lua_Land_Behaviors>
+			<Lua_Script_Data>
+				GlobalResourcesPerCycle = 60
+				GlobalResourceCap = 250
+				TacticalResourcesPerCycle = 300
+				TacticalResourceCap = 1000
+			</Lua_Script_Data>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">

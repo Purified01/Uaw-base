@@ -651,34 +651,35 @@
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
 
-			<Unit_Ability Name="Oracle_Piercing_Gaze_Light_Beam">
+			
+			<Unit_Ability Name="Turret_Laser_Beam">
 				<Type>EFFECT_GENERATOR</Type>
-				<Expiration_Seconds> 99999.0 </Expiration_Seconds>
-				<Recharge_Seconds>5.0</Recharge_Seconds>
-				<GUI_Activated_Ability_Name> Oracle_Piercing_Gaze_Light_Beam_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> OraclePiercingGazeLightBeamGenerator </Effect_Generator_Name>
-				<Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
+				<Expiration_Seconds> 99999 </Expiration_Seconds>
+				<Recharge_Seconds> 4 </Recharge_Seconds>
+				<GUI_Activated_Ability_Name> Turret_Laser_Beam_Ability </GUI_Activated_Ability_Name>
+				<Effect_Generator_Name> TurretLaserBeamGenerator </Effect_Generator_Name>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
 
 		<Abilities SubObjectList="Yes" Replace="No">
 
-			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Light_Beam_Ability">
+			<Effect_Generator_Ability Name="Turret_Laser_Beam_Ability">
+				<Cancel_Special_Ability_Attribute>Is_Phased</Cancel_Special_Ability_Attribute>
+
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
-				<Activation_Max_Range> 275 </Activation_Max_Range>
-				<Effect_Generator_Name> OraclePiercingGazeLightBeamGenerator </Effect_Generator_Name>
-				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
-				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
-				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 295 </Max_Channel_Range>
+				<Activation_Min_Range> 0 </Activation_Min_Range>
+				<Activation_Max_Range> 500 </Activation_Max_Range>
+				<Effect_Generator_Name> TurretLaserBeamGenerator </Effect_Generator_Name>
+
+				<Max_Channel_Range> 265 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
-				<Excluded_Unit_Categories> DummyTarget, Resource, Resource_INST, Flying </Excluded_Unit_Categories>
-
+				<Excluded_Unit_Categories> DummyTarget, Resource, Resource_INST </Excluded_Unit_Categories>
+				<Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
 			</Effect_Generator_Ability>
+
 
 		</Abilities>
 
@@ -723,34 +724,28 @@
 			</Effect_Generator>
 
 
-			<Effect_Generator Name="OraclePiercingGazeLightBeamGenerator">
+			
+                        <Effect_Generator Name="TurretLaserBeamGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+				<Modal_Refresh_Frequency>8.0</Modal_Refresh_Frequency>
 				<Keep_Target_On_Refresh>Yes</Keep_Target_On_Refresh>
-				<Modal_Refresh_Frequency>1.0</Modal_Refresh_Frequency>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> OraclePiercingGazeBeamLightEffect </Effect_Name>
-					<Duration> 1.1 </Duration>
+					<Effect_Name> TurretLaserBeamEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 					<Source_SFX_Event> SFX_Alien_Energy_Fire </Source_SFX_Event>
 					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
-					<Target_Filter_Categories>~Flying</Target_Filter_Categories>
-					<Target_Filter_C> Masari_Oracle_Piercing_Gaze_Beam_Target </Target_Filter_C>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Frames_Between_Remove_Invalid_Targets> 5 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> MasariPurifyingLightEffect </Effect_Name>
-					<Duration> 5.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_C> Purifying_Light_Target </Target_Filter_C>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Remove_On_Death> false </Remove_On_Death>
-					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+					<Effect_Name> TurretLaserSelfEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -807,33 +802,33 @@
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
 
-			<Unit_Ability Name="Oracle_Piercing_Gaze_Dark_Beam">
+			<Unit_Ability Name="Turret_Laser_Beam">
 				<Type>EFFECT_GENERATOR</Type>
-				<Expiration_Seconds> 99999.0 </Expiration_Seconds>
-				<Recharge_Seconds>5.0</Recharge_Seconds>
-				<GUI_Activated_Ability_Name> Oracle_Piercing_Gaze_Dark_Beam_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> OraclePiercingGazeDarkBeamGenerator </Effect_Generator_Name>
-				<Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
+				<Expiration_Seconds> 99999 </Expiration_Seconds>
+				<Recharge_Seconds> .5 </Recharge_Seconds>
+				<GUI_Activated_Ability_Name> Turret_Laser_Beam_Ability </GUI_Activated_Ability_Name>
+				<Effect_Generator_Name> TurretLaserBeamGenerator </Effect_Generator_Name>
 			</Unit_Ability>
+
 
 		</Unit_Abilities_Data>
 
 		<Abilities SubObjectList="Yes" Replace="No">
 
-			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Dark_Beam_Ability">
+			<Effect_Generator_Ability Name="Turret_Laser_Beam_Ability">
+				<Cancel_Special_Ability_Attribute>Is_Phased</Cancel_Special_Ability_Attribute>
+
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
-				<Activation_Max_Range> 230 </Activation_Max_Range>
-				<Effect_Generator_Name> OraclePiercingGazeDarkBeamGenerator </Effect_Generator_Name>
-				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
-				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
-				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 240 </Max_Channel_Range>
+				<Activation_Min_Range> 0 </Activation_Min_Range>
+				<Activation_Max_Range> 270 </Activation_Max_Range>
+				<Effect_Generator_Name> TurretLaserBeamGenerator </Effect_Generator_Name>
+
+				<Max_Channel_Range> 265 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
-				<Excluded_Unit_Categories> DummyTarget, Resource, Resource_INST, Flying </Excluded_Unit_Categories>
-
+				<Excluded_Unit_Categories> DummyTarget, Resource, Resource_INST </Excluded_Unit_Categories>
+				<Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
 			</Effect_Generator_Ability>
 
 		</Abilities>
@@ -855,38 +850,32 @@
 			<!-- Standard DMA generator - Oksana 05/14/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators_Structure.xml" -->
 
-			<Effect_Generator Name="OraclePiercingGazeDarkBeamGenerator">
+			
+
+                        <Effect_Generator Name="TurretLaserBeamGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+				<Modal_Refresh_Frequency>8.0</Modal_Refresh_Frequency>
 				<Keep_Target_On_Refresh>Yes</Keep_Target_On_Refresh>
-				<Modal_Refresh_Frequency>1.0</Modal_Refresh_Frequency>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> OraclePiercingGazeBeamDarkEffect </Effect_Name>
-					<Duration> 1.1 </Duration>
+					<Effect_Name> TurretLaserBeamEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 					<Source_SFX_Event> SFX_Alien_Energy_Fire </Source_SFX_Event>
 					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
-					<Target_Filter_Categories>~Flying</Target_Filter_Categories>
-					<Target_Filter_C> Masari_Oracle_Piercing_Gaze_Beam_Target </Target_Filter_C>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Frames_Between_Remove_Invalid_Targets> 5 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> MasariCripplingShotsEffect </Effect_Name>
-					<Duration> 5.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_C> Crippling_Shots_Target </Target_Filter_C>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Remove_On_Death> false </Remove_On_Death>
-					<Linked_Effect_Names> CripplingShotsVisualEffect </Linked_Effect_Names>
+					<Effect_Name> TurretLaserSelfEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
-
 			<!-- Standard generator for structures with upgrades being built - Maria 06.09.2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Generic_Upgrading_Structure_Effects\Generic_Upgrading_Structure_Generators.xml" -->
 

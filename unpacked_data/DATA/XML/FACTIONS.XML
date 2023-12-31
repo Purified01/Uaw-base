@@ -39,14 +39,14 @@
 			1,10,
 			8,5,
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
-		<Pop_Cap_For_Multiplayer_Games> 50 </Pop_Cap_For_Multiplayer_Games>
+		<Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 
 
 
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 
 		<!-- ============================================= -->
@@ -230,14 +230,14 @@
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
 		<Multiplayer_Starting_Credits> 10000 </Multiplayer_Starting_Credits>
         <Multiplayer_Starting_Credit_Level_Values> 4000,7000,20000 </Multiplayer_Starting_Credit_Level_Values>
-		<Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+		<Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 
 
 
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 		<!-- ============================================= -->
 		<!-- ALIEN WIN/LOSE MUSIC EVENTS                -->
@@ -404,7 +404,7 @@
          The category type is defined in PopCapCategoryType.xml.
       -->
       
-      <Pop_Cap_Categories_Build_Count_Limits> Walker, 3, -1 </Pop_Cap_Categories_Build_Count_Limits>      
+      <Pop_Cap_Categories_Build_Count_Limits> Walker, 20, -1 </Pop_Cap_Categories_Build_Count_Limits>      
 		<Loading_Texture_Name> splash_alien.dds </Loading_Texture_Name>
 
       <!-- Gamepad: Icon for automated control groups containing mind controlled units. -->
@@ -457,12 +457,12 @@
       </Land_Skirmish_Unit_Cap_By_Player_Count>
       <Multiplayer_Starting_Credits> 10000 </Multiplayer_Starting_Credits>
       <Multiplayer_Starting_Credit_Level_Values> 4000,7000,20000 </Multiplayer_Starting_Credit_Level_Values>
-      <Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+      <Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
       <!-- MULTIPLAYER DATA END	-->
 
 
       <!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-      <Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+      <Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
       <!-- ============================================= -->
       <!-- NOVUS WIN/LOSE MUSIC EVENTS                -->
@@ -664,7 +664,7 @@
       <!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
       <!-- Maria 11.15.2006 - For the tutorials we may need to trigger a mission on a neutral region so we need to be able
 		     to create a fleet on it, so for now I'm setting this up as a default capacity value for a fleet in such a case -->
-      <Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+      <Regional_Pop_Cap> 200 </Regional_Pop_Cap>
       <Region_Texture> wt_earth_neutral.tga </Region_Texture>
       <Region_Texture_Solid> wt_earth_neutral_solid.tga </Region_Texture_Solid>
    </Faction>
@@ -745,7 +745,7 @@
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
 		<Multiplayer_Starting_Credits> 1000 </Multiplayer_Starting_Credits>
         <Multiplayer_Starting_Credit_Level_Values> 400,700,2000 </Multiplayer_Starting_Credit_Level_Values>
-		<Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+		<Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 
 		<Strategic_Hero_Pad_Model_Name> region_pad_masari.alo </Strategic_Hero_Pad_Model_Name>
@@ -753,7 +753,7 @@
 
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 
 		<!-- ============================================= -->
@@ -972,7 +972,7 @@
 
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 
 
@@ -1120,13 +1120,13 @@
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
 		<Multiplayer_Starting_Credits> 10000 </Multiplayer_Starting_Credits>
         <Multiplayer_Starting_Credit_Level_Values> 5000,10000,15000 </Multiplayer_Starting_Credit_Level_Values>
-		<Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+		<Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 
 		<Strategic_Map_Music_Event> Alien_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 		<Music_Event_List_Ambient> Temperate, Temperate_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>
 		<Music_Event_List_Ambient> Arctic, Ice_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>
@@ -1220,13 +1220,13 @@
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
 		<Multiplayer_Starting_Credits> 6800 </Multiplayer_Starting_Credits>
         <Multiplayer_Starting_Credit_Level_Values> 5000,10000,15000 </Multiplayer_Starting_Credit_Level_Values>
-		<Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+		<Pop_Cap_For_Multiplayer_Games> 200 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 
 		<Strategic_Map_Music_Event> Novus_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
 
 		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
-		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
+		<Regional_Pop_Cap> 200 </Regional_Pop_Cap>
 
 		<Music_Event_List_Ambient> Temperate, Temperate_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>
 		<Music_Event_List_Ambient> Arctic, Ice_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>

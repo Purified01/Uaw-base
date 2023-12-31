@@ -604,7 +604,7 @@
 
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Alien_Spitter_Particle_Beam</Damage_Type>
-			<Damage_Amount>100.0</Damage_Amount>
+			<Damage_Amount>60.0</Damage_Amount>
 			<Damage_Percentage>0.0</Damage_Percentage>
 		</Effect_Component>
 

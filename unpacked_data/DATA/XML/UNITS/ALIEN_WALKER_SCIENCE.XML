@@ -872,7 +872,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.85 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1015,7 +1015,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.85 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1084,7 +1084,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Core.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.85 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1192,7 +1192,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.85 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1317,7 +1317,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn_Damaged.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.85 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 

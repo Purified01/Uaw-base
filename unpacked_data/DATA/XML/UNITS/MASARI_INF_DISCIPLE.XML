@@ -191,7 +191,7 @@
 			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 
          <!-- to prevent asserts -->
-         <Projectile_Types>Proj_Masari_Disciple_Light_Bolt</Projectile_Types>
+         <Projectile_Types>Proj_Masari_Skylord_Light_Bomb</Projectile_Types>
 		</BehaviorType>
 
 		<!--
@@ -478,7 +478,7 @@
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 225.0 </Targeting_Max_Attack_Distance>
 
-			<Projectile_Types>Proj_Masari_Disciple_Light_Bolt</Projectile_Types>
+			<Projectile_Types>Proj_Masari_Skylord_Light_Bomb</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>

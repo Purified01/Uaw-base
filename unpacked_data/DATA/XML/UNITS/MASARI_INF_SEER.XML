@@ -8,7 +8,7 @@
 	<X13_Masari_Units Name="Masari_Seer">
 
 		<!-- ART -->
-		<Land_Model_Name> ZI_Seer.ALO </Land_Model_Name>
+		<Land_Model_Name> ZV_Stormchaser.ALO </Land_Model_Name>
 		<!-- DEBUG: STUB SCALE AND MODEL -->
 		<Scale_Factor>1.2</Scale_Factor>
 		<Loop_Idle_Anim_00>No</Loop_Idle_Anim_00>
@@ -57,7 +57,7 @@
         <LOD_Bias>16</LOD_Bias>
 		<MovementClass> Infantry </MovementClass>
 		<Should_Move_At_Water_Level>True</Should_Move_At_Water_Level>
-		<Max_Speed>1.1</Max_Speed>
+		<Max_Speed>3.1</Max_Speed>
 		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 3.5 </Custom_Soft_Footprint_Radius>
@@ -85,11 +85,11 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
 		<Targeting_Opportunity_Fire_Enabled> false </Targeting_Opportunity_Fire_Enabled>
-		<Land_FOW_Reveal_Range>240.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>250.0</Land_FOW_Reveal_Range>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 175 </Tactical_Health>
+		<Tactical_Health> 375 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -169,8 +169,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
@@ -282,12 +282,12 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 10 </Crush_Defense>
-			<Crush_Power> 4 </Crush_Power>
+			<Crush_Defense> 50 </Crush_Defense>
+			<Crush_Power> 20 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="TeleportPadBehaviorType">
@@ -394,7 +394,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- CONFLICT -->
-		<Land_FOW_Reveal_Range>240.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>600.0</Land_FOW_Reveal_Range>
 
 		<!-- MOVEMENT -->
 		<Max_Speed>1.5</Max_Speed>
@@ -426,7 +426,7 @@
 
 			<Effect_Generator_Ability Name="Masari_Seer_Burning_Sight_Link_Special_Ability">
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 500 </Activation_Max_Range>
+				<Activation_Max_Range> 250 </Activation_Max_Range>
 				<Effect_Generator_Name> Masari_Seer_Burning_Sight_Link_Effect_Generator </Effect_Generator_Name>
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Max_Channel_Range> 1600.0 </Max_Channel_Range>
@@ -498,8 +498,8 @@
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> Burning_Sight_Fire_Damage </Effect_Name>
 					<Duration> 1 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<!-- <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C> -->
 					<!--MLL: According to design, the burning sight radius is linked to the FOW range. -->
 					<Area_Effect_Radius_Attribute> Spy_Increase_FOW_Range </Area_Effect_Radius_Attribute>
 				</Effect_Generator_Entry>
@@ -612,7 +612,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- CONFLICT -->
-		<Land_FOW_Reveal_Range>170.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>1000.0</Land_FOW_Reveal_Range>
 
 		<!-- MOVEMENT -->
 		<Max_Speed>1.8</Max_Speed>

@@ -144,6 +144,7 @@
 	<File> Units/NOVUS_HERO_Vertigo.xml </File>
 	<File> Units/NOVUS_HERO_Founder.xml </File>
 	<File> Units/NOVUS_INF_Reflex.xml </File>
+        <File> Units/Novus_Veh_Ship.xml </File>
 
 	<File> Units/MASARI_INF_Disciple.xml </File>
 	<File> Units/MASARI_AIR_Seeker.xml </File>
@@ -232,6 +233,7 @@
 	<File> Structures/Alien_Gravitic_Manipulator.xml </File>
 	<File> Structures/Alien_Megaweapon_Purifier.xml </File>
 	<File> Structures/Alien_Superweapon_Mass_Drop.xml </File>
+        <File> Structures/Alien_Supperweapon_Mass_Drop.xml </File>
 
 
 	<File> Structures/Masari_Atlatea.xml </File>

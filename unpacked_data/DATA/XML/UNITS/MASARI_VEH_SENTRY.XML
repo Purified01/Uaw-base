@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <Masari_VEH_Sentry_XML>
 
 	<!-- **************************************************************************************** -->
@@ -8,11 +8,12 @@
 	<X13_Masari_Units Name="Masari_Sentry">
 
 		<!-- ART -->
-		<Land_Model_Name>ZV_Sentry.ALO</Land_Model_Name>
-		<Scale_Factor>0.85</Scale_Factor>
+		<Land_Model_Name>mv_tank.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
 		<SurfaceFX_Name>Masari_Sentry_Wheel_track</SurfaceFX_Name>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
       <AssetBank> BANK_MASARI </AssetBank>
+      <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
 		<Icon_Name> i_icon_mv_sentry.tga  </Icon_Name>
@@ -75,7 +76,7 @@
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 700 </Tactical_Health>
 
 		<!-- BEHAVIORS AND ABILITIES -->
 		<Behavior>
@@ -211,14 +212,15 @@
 		<BehaviorType Name="TurretBehaviorType">
 			<Turret_Rotate_Extent_Degrees>180</Turret_Rotate_Extent_Degrees>
 			<Turret_Elevate_Extent_Degrees>90</Turret_Elevate_Extent_Degrees>
-         <Barrel_Bone_Name> Barrel_00 </Barrel_Bone_Name>
-         <Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
+         <Barrel_Bone_Name> B_Barrel </Barrel_Bone_Name>
+         <Turret_Bone_Name> B_Turret </Turret_Bone_Name>
          <Turret_Rotate_Speed>4.5</Turret_Rotate_Speed>
+         <Muzzle_Bone_Name> muzzleA </Muzzle_Bone_Name>
 			<Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
 			<Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
 			<Turret_Targets_Ground_Vehicles> 1 </Turret_Targets_Ground_Vehicles>
 			<Turret_Targets_Ground_Infantry> 2 </Turret_Targets_Ground_Infantry>
-			<Turret_Targets_Air_Vehicles> 9999 </Turret_Targets_Air_Vehicles>
+			<Turret_Targets_Air_Vehicles> 4 </Turret_Targets_Air_Vehicles>
 			<Turret_Targets_Anything_Else> 3 </Turret_Targets_Anything_Else>
 			<Turret_Rotate_To_Rest_Delay_Sec> 0 </Turret_Rotate_To_Rest_Delay_Sec>
 			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
@@ -234,7 +236,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire> SFX_Masari_Sentry_Fire </SFXEvent_Fire>
+			<SFXEvent_Fire> SFX_Alien_Mass_Driver_Fire </SFXEvent_Fire>
 			<SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
          <SFXEvent_Select>Unit_Select_Masari_Sentry</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Masari_Sentry</SFXEvent_Move>
@@ -264,7 +266,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 35 </Crush_Defense>
-			<Crush_Power> 8 </Crush_Power>
+			<Crush_Power> 20 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -273,7 +275,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 5 </Unit_Pop_Cap>
 		</BehaviorType>
 
       <BehaviorType Name="ElementalModeType">
@@ -292,6 +294,19 @@
 
 
       <Unit_Abilities_Data SubObjectList="Yes">
+
+         <Unit_Ability Name="Defiler_Radiation_Charge">
+            <Type>EFFECT_GENERATOR</Type>
+            <Expiration_Seconds>10.0</Expiration_Seconds>
+            <Recharge_Seconds>28.0</Recharge_Seconds>
+            <GUI_Activated_Ability_Name>Alien_Defiler_Radiation_Charge_Ability</GUI_Activated_Ability_Name>
+            <Effect_Generator_Name>RadiationChargeGenerator</Effect_Generator_Name>
+            <Area_Effect_Decal_Distance>75.0</Area_Effect_Decal_Distance>
+            <Turn_Off_Other_Effect_Generators>true</Turn_Off_Other_Effect_Generators>
+            <Should_Targeting_Ignore_Objects>true</Should_Targeting_Ignore_Objects>
+            <Targeting_Type>LAND_ANY_LOCATION</Targeting_Type>
+                <Check_Self_For_AOE> true </Check_Self_For_AOE>
+         </Unit_Ability>
 
 			<Unit_Ability Name="Masari_Sentry_Unload_Unit_Ability">
 				<Type>EFFECT_GENERATOR</Type>
@@ -353,6 +368,17 @@
 
       
 		<Abilities SubObjectList="Yes">
+
+
+         <Effect_Generator_Ability Name="Alien_Defiler_Radiation_Charge_Ability">
+            <Activation_Min_Range>0</Activation_Min_Range>
+            <Activation_Max_Range>200.0</Activation_Max_Range>
+            <Effect_Generator_Name>RadiationChargeGenerator</Effect_Generator_Name>
+            <Activation_Style>User_Input</Activation_Style>
+            <Excluded_Unit_Categories>Flying, TeamContainer</Excluded_Unit_Categories>
+            <Block_Other_Abilities_When_Active>True</Block_Other_Abilities_When_Active>
+                <Point_Turret_At_Target> true </Point_Turret_At_Target>
+            </Effect_Generator_Ability>
 
          <Effect_Generator_Ability Name="Masari_Sentry_Load_Seer_Special_Ability">
             <Activation_Min_Range> 0 </Activation_Min_Range>
@@ -535,8 +561,45 @@
                <Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
 
             </Effect_Generator_Entry>
+
          </Effect_Generator>
 
+            <Effect_Generator Name="RadiationChargeGenerator">
+                <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Is_Independent_Generator>Yes</Is_Independent_Generator>
+
+                <Effect_Generator_Entry Name="Entry1">
+                    <Effect_Name> RadiationChargeDotSelfVisualEffect </Effect_Name>
+                    <Remove_On_Death> false </Remove_On_Death>
+                    <Duration> 2.0 </Duration>
+                    <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+               <Source_SFX_Event> SFX_Alien_Radiation_2_Fire </Source_SFX_Event>
+                    <Deactivate_Parent_If_Idle> true</Deactivate_Parent_If_Idle>
+                    <Target_Filter_C> Source_Loco_Active </Target_Filter_C>
+                </Effect_Generator_Entry>
+
+                <Effect_Generator_Entry Name="Entry2">
+                    <Effect_Name>RadiationChargeVisualAttackEffect</Effect_Name>
+                    <Remove_On_Death> false </Remove_On_Death>
+                    <Duration>0.3</Duration>
+                    <Target_Gathering_Mask>Target</Target_Gathering_Mask>
+                </Effect_Generator_Entry>
+
+                <Effect_Generator_Entry Name="Entry3">
+                    <Effect_Name> RadiationChargeCreateRadiatingObjectEffect </Effect_Name>
+                    <Remove_On_Death> false </Remove_On_Death>
+                    <Duration> 2.0 </Duration>
+                    <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+                </Effect_Generator_Entry>
+
+                <Effect_Generator_Entry Name="Entry4">
+                    <Effect_Name> GammaRadiationChargeCreateRadiatingObjectEffect </Effect_Name>
+                    <Remove_On_Death> false </Remove_On_Death>
+                    <Duration> 2.0 </Duration>
+                    <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+                </Effect_Generator_Entry>
+
+            </Effect_Generator>
 
          <!-- Load DISCIPLE -->
          <Effect_Generator Name="Masari_Sentry_Load_Disciple_Effect_Generator">
@@ -715,7 +778,7 @@
      <Max_Speed>2.0</Max_Speed>
 
      <!-- CONFLICT -->
-     <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
+     <Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 
 
 		<!-- BEHAVIORS AND ABILITIES -->
@@ -765,7 +828,7 @@
 			<Targeting_Priority_Set> Masari_Sentry_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
 		</BehaviorType>
@@ -780,6 +843,7 @@
                NOTE: this flag defaults to No -->
 			<HP_Attachment_Modifies_Tooltip> Yes </HP_Attachment_Modifies_Tooltip>
 		</BehaviorType>
+
 
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
@@ -849,6 +913,11 @@
 
 		</Effect_Generator_Data>
 
+		
+    
+
+		
+
 	</X13_Masari_Units>
 
 
@@ -870,16 +939,16 @@
 		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
-         <Muzzle_Bone_Name> MuzzleB </Muzzle_Bone_Name>
+         <Muzzle_Bone_Name> muzzleA </Muzzle_Bone_Name>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Sentry_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 160.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Masari_Sentry_Missile</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Types>Proj_Alien_Walker_Assembly_Mass_Driver</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.6</Projectile_Fire_Pulse_Delay_Seconds>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
 		</BehaviorType>
@@ -1160,7 +1229,7 @@
       <Text_ID> TEXT_UNIT_MASARI_DISCIPLE </Text_ID>
       
 		<!-- ART -->
-		<Land_Model_Name> ZI_Disciple.ALO </Land_Model_Name>
+		<Land_Model_Name> zb_ground_turret_upgrade.alo </Land_Model_Name>
       <AssetBank> BANK_MASARI </AssetBank>
 
 		<LandBehavior>
@@ -1192,11 +1261,11 @@
          <Targeting_Priority_Set> Masari_Disciple_Target_Priority </Targeting_Priority_Set>
 
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 215.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Masari_Disciple_Light_Bolt</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds> 4.0 </Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Guardian_Light_Bolt</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="TurretBehaviorType">
@@ -1233,10 +1302,10 @@
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
 
-			<Projectile_Types>Proj_Masari_Disciple_Ice</Projectile_Types>
+			<Projectile_Types>Proj_Guardian_Dark_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 4.0 </Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
    </HardPoint>

@@ -362,6 +362,12 @@
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
 		</Attributes>
 
+
+		<Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
+
 		<!-- MOVEMENT -->
 		<MovementClass> Infantry </MovementClass>
 
@@ -400,7 +406,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 175 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<Land_FOW_Reveal_Range>150.0</Land_FOW_Reveal_Range>
 
 		<Attack_Category_Restrictions> Flying | Resource | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>
@@ -444,6 +450,8 @@
 			<Armor_Type> Armor_Alien_Infantry_Heavy </Armor_Type>
 		</BehaviorType>
 
+
+
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 10 </Build_Cost_Credits>
@@ -454,9 +462,10 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 10 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 10 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 5 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 200 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 200 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 10 </Tactical_Build_Time_Seconds>
+                        <Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -547,7 +556,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 0.1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
 		</BehaviorType>
 
 
@@ -555,8 +564,8 @@
 
 			<Unit_Ability Name="Zombie_Cow_Attack_Ability">
 				<Type>EFFECT_GENERATOR</Type>
-				<Expiration_Seconds> 1.8 </Expiration_Seconds>
-				<Recharge_Seconds>0.0</Recharge_Seconds>
+				<Expiration_Seconds> 0.5 </Expiration_Seconds>
+				<Recharge_Seconds>0.25</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Zombie_Cow_Melee_Attack </GUI_Activated_Ability_Name>
 			</Unit_Ability>
 
@@ -572,8 +581,8 @@
 				<Damage_Percentage>0.0</Damage_Percentage>
 				<Damage_Type> Damage_Alien_Mutant_Slave_Knockback </Damage_Type>
 				<Attack_Animation> ANIM_ATTACK </Attack_Animation>
-				<Animation_Duration_Override>1.8</Animation_Duration_Override>
-				<Damage_Frame_Number>8</Damage_Frame_Number>
+				<Animation_Duration_Override>0.5</Animation_Duration_Override>
+				<Damage_Frame_Number>5</Damage_Frame_Number>
 				<Projectile_Type> Proj_Mutant_Cow_Slave_Bite </Projectile_Type>
 				<SFXEvent_Apply_Damage />
 

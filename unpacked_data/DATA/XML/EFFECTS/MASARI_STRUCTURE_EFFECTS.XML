@@ -1554,7 +1554,7 @@
 	== MagmaChannelSelfDestructEffect: self destruct
 	================================================================================================== -->
    <Effect Name="MagmaChannelSelfDestructEffect">
-      <Duration> 10.1 </Duration>
+      <Duration> 60 </Duration>
       <Effect_Class> MagmaChannel </Effect_Class>
 
       <Effect_Component Type="Damage">
@@ -1576,7 +1576,7 @@
    == in upgraded effect because the regular effect is still not deleted, causing the weapon stay around forever. - Oksana
 	================================================================================================== -->
    <Effect Name="MagmaChannelSelfDestructUpgradedEffect">
-      <Duration> 10.1 </Duration>
+      <Duration> 60 </Duration>
       <Effect_Class> MagmaChannelUpgraded </Effect_Class>
 
       <Effect_Component Type="Damage">

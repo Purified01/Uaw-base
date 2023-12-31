@@ -42,7 +42,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -55,7 +55,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -68,7 +68,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -81,7 +81,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 	
@@ -194,7 +194,7 @@
 		<Strategic_Builder> Masari_Will_Processor </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1063,7 +1063,6 @@
 		<Tactical_Builder> Masari_Atlatea </Tactical_Builder>
 	</Dependency>
 
-
 <!--************************************************************************
 ******** MASARI UNITS ****************************************************-->
 
@@ -1373,6 +1372,7 @@
 		<Tactical_Required_Objects> Masari_Masters_Lab_Upgrade_HP </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Ground_Inspiration </Tactical_Builder>
 	</Dependency>
+
 	
 	<!-- UNIT: Masari_Seeker -->
 	<Dependency>
@@ -1476,7 +1476,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1489,7 +1489,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1502,7 +1502,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1515,7 +1515,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1716,7 +1716,7 @@
 		<Strategic_Builder> Alien_Abduction_Core </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1770,6 +1770,18 @@
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+        <Dependency>
+		<Built_Object> Alien_Relocator </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Superweapon_Reaper_Turret, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -2418,29 +2430,6 @@
 		<Tactical_Builder> Alien_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
 	</Dependency>
 
-	<Dependency>
-		<Built_Object> Alien_Walker_Assembly_HP_Scarn_Beam </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Alien_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Alien_Walker_Assembly_HP_Scarn_Beam </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Alien_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Assembly_HP_Armor_Leg </Built_Object>
@@ -2453,6 +2442,19 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Assembly_Leg </Tactical_Builder>
 	</Dependency>
+
+        <Dependency>
+		<Built_Object> Alien_Creation_Core_Basic_Defense_Upgrade </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly_Leg </Tactical_Builder>
+	</Dependency>
+
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Assembly_HP_Foo_Chamber </Built_Object>
@@ -2519,6 +2521,18 @@
 
 	
 	<!-- HARDPOINTS: Habitat Walker -->
+
+        <Dependency>
+		<Built_Object> Alien_Walker_Assembly_HP_Mass_Driver </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Habitat_Body_Socket </Tactical_Builder>
+	</Dependency>
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Habitat_HP_Lost_One_Mutator </Built_Object>
@@ -2598,6 +2612,18 @@
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Habitat_Leg </Tactical_Builder>
+	</Dependency>
+
+        <Dependency>
+		<Built_Object> Alien_Creation_Core_Basic_Defense_Upgrade </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
@@ -2817,6 +2843,8 @@
 
 	<!-- HARDPOINTS: Science Walker -->
 
+
+
 	<Dependency>
 		<Built_Object> Alien_Walker_Science_HP_Mind_Magnet </Built_Object>
 
@@ -2866,6 +2894,56 @@
 		<Tactical_Required_Objects> Alien_Scan_Drone </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Science_Horn </Tactical_Builder>
 	</Dependency>
+
+        <Dependency>
+		<Built_Object> Alien_Creation_Core_Basic_Defense_Upgrade </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Science_Horn </Tactical_Builder>
+	</Dependency>
+
+<Dependency>
+		<Built_Object> Alien_Hero_Orlok_Shoulder_Mount </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Science_Leg </Tactical_Builder>
+	</Dependency>
+
+<Dependency>
+    <Built_Object> Alien_Walker_Habitat_HP_Terrain_Conditioner </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Alien_Walker_Science_Horn </Tactical_Builder>
+  </Dependency>
+
+<Dependency>
+		<Built_Object> Alien_Walker_Assembly_HP_Scarn_Beam </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Science_Horn </Tactical_Builder>
+	</Dependency>
+
+	
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Science_HP_Dark_Matter_Vent </Built_Object>
@@ -3121,6 +3199,19 @@
 ******** HIERARCHY UNITS *************************************************-->
 
 	<!-- UNIT: Alien Glyph Carver -->
+
+        <Dependency>
+		<Built_Object> Alien_Glyph_Carver </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Habitat </Tactical_Builder>
+	</Dependency>
+
 	<Dependency>
 		<Built_Object> Alien_Glyph_Carver </Built_Object>
 
@@ -3180,6 +3271,79 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Abduction_Core </Tactical_Builder>
 	</Dependency>
+
+        <Dependency>
+		<Built_Object> Alien_Mutant_Slave_Cow </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Arrival_Site </Tactical_Builder>
+	</Dependency>
+
+<Dependency>
+		<Built_Object> Alien_Mutant_Slave_Cow </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Hierarchy_Core </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Mutant_Slave_Cow </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Creation_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Creation_Core </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Mutant_Slave_Cow </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Theory_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Theory_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Theory_Core </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Mutant_Slave_Cow </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Abduction_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Abduction_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Abduction_Core </Tactical_Builder>
+	</Dependency>
+
+        <Dependency>
+		<Built_Object> ALIEN_Air_Invasion_Transport </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
+	</Dependency>
+
 
 
 	<!-- UNIT: Alien Grunt -->
@@ -3410,7 +3574,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3423,7 +3587,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3436,7 +3600,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3449,7 +3613,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -4293,6 +4457,18 @@
 		<Tactical_Builder> Novus_Material_Center </Tactical_Builder>
 	</Dependency>
 
+        <Dependency>
+		<Built_Object> Novus_Collector </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Material_Center </Tactical_Builder>
+	</Dependency>
+
 	<Dependency>
 		<Built_Object> Novus_Constructor </Built_Object>
 
@@ -4360,6 +4536,18 @@
 
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
 		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
+	</Dependency>
+
+        <Dependency>
+		<Built_Object> Novus_Collector </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
@@ -4583,7 +4771,7 @@
 		<Strategic_Builder> Novus_Nanocenter </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Vehicle_Assembly_Inversion </Tactical_Required_Objects>
 		<Tactical_Builder> Null </Tactical_Builder>
 	</Dependency>
 
@@ -4608,7 +4796,7 @@
 		<Strategic_Builder> Novus_Nanocenter </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Vehicle_Assembly_Resonation </Tactical_Required_Objects>
 		<Tactical_Builder> Null </Tactical_Builder>
 	</Dependency>
 
@@ -4646,6 +4834,18 @@
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Novus_Aircraft_Assembly_Scramjet </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Aircraft_Assembly </Tactical_Builder>
+	</Dependency>
+
+        <Dependency>
+		<Built_Object> Novus_Ship </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Novus_Aircraft_Assembly_Scramjet, Novus_Science_Lab_Upgrade_Singularity_Processor </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Aircraft_Assembly </Tactical_Builder>
 	</Dependency>
 

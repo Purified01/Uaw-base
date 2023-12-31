@@ -9,7 +9,7 @@
 
     <!-- ART -->
     <Land_Model_Name>AB_purifier.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
+    <Scale_Factor>.50</Scale_Factor>
     <Multisample_FOW_Check>Yes</Multisample_FOW_Check>
     <Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
     <AssetBank> BANK_ALIEN </AssetBank>
@@ -38,7 +38,7 @@
 	  <Custom_Hard_YExtent> 130.0 </Custom_Hard_YExtent>
 	  <Movement_Animation_Speed> .625 </Movement_Animation_Speed>
 	  <Rotation_Animation_Speed> 0.45 </Rotation_Animation_Speed>
-	  <Max_Speed> 0.3 </Max_Speed>
+	  <Max_Speed> 0.6 </Max_Speed>
 	  <Min_Speed> 0.1 </Min_Speed>
 	  <Max_Rate_Of_Turn> .6 </Max_Rate_Of_Turn>
 	  <Stopped_Rate_Of_Turn> .5 </Stopped_Rate_Of_Turn>
@@ -122,6 +122,11 @@
       <Armor_Type> Armor_Alien_Structure_Heavy </Armor_Type>
     </BehaviorType>
 
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
+         <Build_Limit_Current_Per_Player>5</Build_Limit_Current_Per_Player>
+      </BehaviorType>
+
     <BehaviorType Name="ProductionBehaviorType">
       <Size_Value> 10 </Size_Value>
       <Build_Cost_Credits> 28000 </Build_Cost_Credits>
@@ -159,6 +164,16 @@
 		 <Death_Clone> Damage_Default, Alien_Walker_Purifier_Death_Clone </Death_Clone>
 		 <Death_Fade_Time> 3 </Death_Fade_Time>
 	 </BehaviorType>
+
+
+      <BehaviorType Name="LuaScriptBehaviorType">
+         <Lua_Land_Behaviors> SuperWeaponEnablerBehavior </Lua_Land_Behaviors>
+         <Lua_Script_Data>
+            <!-- PLEASE USE CAPS!!!! -->
+            SWOwnerList = {}
+            SWOwnerList[Find_Object_Type("Alien_Superweapon_Mass_Drop")]="ALIEN_SUPERWEAPON_MASS_DROP_WEAPON"
+         </Lua_Script_Data>
+      </BehaviorType>
 
 	  <BehaviorType Name="RadarMapBehaviorType">
       <Radar_Icon_Size>0.05  0.05</Radar_Icon_Size>
@@ -253,8 +268,11 @@
 		</BehaviorType>
 	  
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range>600.0</Land_FOW_Reveal_Range>
 		</BehaviorType>
+
+
+
 
 	  <Effect_Generator_Data SubObjectList="Yes">
 		  <Effect_Generator Name="AlienMegaweaponRegionHOTEffectGenerator">
@@ -323,7 +341,7 @@
 	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Death_Clone">
 
 		<Land_Model_Name> AB_Purifier_DC.ALO </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> .50 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
@@ -378,8 +396,6 @@
 
 
 
-
-
 	<!-- **************************************************************************************** -->
   <!-- *** HARDPOINTS ************************************************************************* -->
   <!-- **************************************************************************************** -->
@@ -388,9 +404,9 @@
 	<HardPoint Name="Alien_Walker_Purifier_Weapon_HP">
 
 		<!-- ART -->
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.25 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
-		<Land_Model_Name>AB_purifier_crown.alo</Land_Model_Name>
+		<Land_Model_Name>AB_Matter_Uplink.alo</Land_Model_Name>
 
 		<!-- _00, _01, _02, etc. is automatically attached -->
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
@@ -515,6 +531,8 @@
 			<SFXEvent_Teleport_End> SFX_Alien_Teleport_Out_End </SFXEvent_Teleport_End>
 		</BehaviorType>
 
+
+
 	</HardPoint>
 
 	<!-- **************************************************************************************** -->
@@ -524,7 +542,7 @@
 	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Foot_Proxy">
 
 		<!-- ART -->
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.50 </Scale_Factor>
 		<Is_Decoration> No </Is_Decoration>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -551,7 +569,7 @@
 	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Air_Proxy">
 
 		<!-- ART -->
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.50 </Scale_Factor>
 		<Is_Decoration> No </Is_Decoration>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -578,6 +596,8 @@
 		<LandBehavior> FOLLOW_PARENT, SLAVE_TO_PARENT_LOCOMOTOR </LandBehavior>
 
 	</X10_Alien_Walkers>
+
+
 
   <!-- This is a non-buildable version of the purifier for story mode purposes -->
   <X10_Alien_Structures Name="Alien_Megaweapon_Purifier_Story">

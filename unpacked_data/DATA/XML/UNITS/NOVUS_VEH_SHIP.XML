@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<Novus_Veh_Dervish_Jet_XML>
+<Novus_Veh_Ship_XML>
 
 	<!-- **************************************************************************************** -->
 	<!-- *** UNIT(S) **************************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X12_Novus_Units Name="Novus_Dervish_Jet">
+	<X12_Novus_Units Name="Novus_Ship">
 
 		<!-- To provide the effect that modifies the category mask when landed -->
 		<Variant_Of_Existing_Type> Generic_Air_Unit </Variant_Of_Existing_Type>
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
 		<!-- ART -->
-		<Land_Model_Name> NV_Dervish.ALO </Land_Model_Name>
-		<Scale_Factor> 0.75 </Scale_Factor>
+		<Land_Model_Name> NV_Reflector.ALO </Land_Model_Name>
+		<Scale_Factor> 1.75 </Scale_Factor>
 		<No_Reflection_Below_Detail_Level> 1 </No_Reflection_Below_Detail_Level>
 		<Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>
 		<Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
@@ -21,7 +21,7 @@
 		<AssetBank> BANK_NOVUS </AssetBank>
 
 		<!-- INTERFACE -->
-		<Icon_Name> i_icon_nv_dervish_jet.tga  </Icon_Name>
+		<Icon_Name> i_icon_nv_reflector.tga  </Icon_Name>
 		<Text_ID> TEXT_UNIT_NOVUS_DERVISH_JET </Text_ID>
 		<GUI_Scene_Name> HealthBar_Scene_Medium </GUI_Scene_Name>
 		<GUI_Receives_Input> false </GUI_Receives_Input>
@@ -60,13 +60,13 @@
 		<UnitCollisionClass> Vehicle </UnitCollisionClass>
 
 		<OccupationStyle> 1x1 </OccupationStyle>
-		<Max_Speed> 5.2 </Max_Speed>
+		<Max_Speed> 2.0 </Max_Speed>
 		<Min_Speed> 1.0 </Min_Speed>
 
 		<OverrideAcceleration> .5 </OverrideAcceleration>
 		<OverrideDeceleration> .5 </OverrideDeceleration>
 
-		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 8.0 </Max_Rate_Of_Turn>
 		<ROT_Acceleration> .3 </ROT_Acceleration>
 		<ROT_Deceleration> .3 </ROT_Deceleration>
 
@@ -130,9 +130,9 @@
 		<Collidable_By_Projectile_Dead> Yes </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
-		<Land_FOW_Reveal_Range> 240.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 700.0 </Land_FOW_Reveal_Range>
 
-		<Tactical_Health> 525 </Tactical_Health>
+		<Tactical_Health> 2500 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -154,6 +154,8 @@
 			STUNNABLE,
 			GUI,
 			RADAR_MAP_VISIBLE,
+                        HARD_POINT_MANAGER,
+			HARDPOINT_PRIMARY_ATTACK_MANAGER,
 			VTOL_LOCOMOTOR,
 			FORMATION,
 			IDLE,
@@ -211,10 +213,10 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 550 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 550 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+			<Tactical_Build_Cost_Campaign> 1500 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 1500 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 33 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
@@ -239,7 +241,7 @@
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Novus_Dervish_Antimatter_Bomb</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Seconds>0.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>8</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.025</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
@@ -294,7 +296,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 4 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 6 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -339,14 +341,15 @@
 		</BehaviorType>
 			 -->
 
-		<Unit_Abilities_Data SubObjectList="Yes">
+		
+                <Unit_Abilities_Data SubObjectList="Yes">
 
 			<!-- Activates Dervish_Spin_Attack special ability below -->
 			<Unit_Ability Name="Unit_Ability_Dervish_Spin_Attack">
 				<Type> DERVISH_SPIN_ATTACK </Type>
 				<Is_Modal>yes</Is_Modal>
-				<Expiration_Seconds> 10.0 </Expiration_Seconds>
-				<Recharge_Seconds> 35.0 </Recharge_Seconds>
+				<Expiration_Seconds> 0.0 </Expiration_Seconds>
+				<Recharge_Seconds> 0.0 </Recharge_Seconds>
 				<Can_Be_Canceled_By_User>No</Can_Be_Canceled_By_User>
 				<Should_Targeting_Ignore_Objects> YES </Should_Targeting_Ignore_Objects>
 				<GUI_Activated_Ability_Name> Dervish_Spin_Attack </GUI_Activated_Ability_Name>
@@ -365,11 +368,11 @@
 
 			<Dervish_Spin_Attack_Ability Name="Dervish_Spin_Attack">
 				<Activation_Style>USER_INPUT</Activation_Style>
-				<Attack_Duration_Seconds> 3.0 </Attack_Duration_Seconds>
-				<Attack_Radius> 100.0 </Attack_Radius>
+				<Attack_Duration_Seconds> 0.0 </Attack_Duration_Seconds>
+				<Attack_Radius> 00.0 </Attack_Radius>
 				<AOE_Damage_Per_Second> 0.0 </AOE_Damage_Per_Second>
 				<AOE_Additional_Random_Damage> 23.0 </AOE_Additional_Random_Damage>
-				<Spin_Up_Seconds> 3.0 </Spin_Up_Seconds>
+				<Spin_Up_Seconds> 0.0 </Spin_Up_Seconds>
 				<Attack_Animation> Attack_Special_A </Attack_Animation>
 				<SFXEvent_Activate> SFX_Novus_Dervish_Spin_Attack </SFXEvent_Activate>
 				<Effect_Generator> DervishSpinAttackEffectGenerator </Effect_Generator>
@@ -377,7 +380,7 @@
 				<Damage_Type> Damage_Novus_Dervish_Weapon </Damage_Type>
 			</Dervish_Spin_Attack_Ability>
 
-		</Abilities>
+		</Abilities> 
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
 
@@ -403,6 +406,14 @@
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
 
 		</Effect_Generator_Data>
+              
+
+                <Attached_Hard_Points>
+			Novus_Material_Center_Basic_Defense_Upgrade, HP_attach_00
+			Novus_Material_Center_Basic_Defense_Upgrade_00, HP_attach_03
+			HP_Peacebringer_Tractor_Beam,   HP_attach_01
+			HP_Peacebringer_Tractor_Beam_00, 	HP_attach_02
+		</Attached_Hard_Points>
 
 	</X12_Novus_Units>
 
@@ -788,7 +799,7 @@
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 3 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 1 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 15 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
@@ -801,10 +812,278 @@
 			<Projectile_Explosion_Causes_Chaining>true</Projectile_Explosion_Causes_Chaining>
 			<Projectile_Chaining_Damage_Increase_Percent>20.0</Projectile_Chaining_Damage_Increase_Percent>
 			<Projectile_Chaining_Distance_Increase>0</Projectile_Chaining_Distance_Increase>
-			<Projectile_Bomb_Timer_In_Secs>2.0</Projectile_Bomb_Timer_In_Secs>
+			<Projectile_Bomb_Timer_In_Secs>1.0</Projectile_Bomb_Timer_In_Secs>
 		</BehaviorType>
 
 	</Projectile>
 
 
-</Novus_Veh_Dervish_Jet_XML>
+        <HardPoint Name="Novus_Material_Center_Basic_Defense_Upgrade">
+		<Variant_Of_Existing_Type>Novus_Material_Center_HP</Variant_Of_Existing_Type>
+		<Land_Model_Name>NBHQ_Basic_Defenses.alo </Land_Model_Name>
+		<Scale_Factor> 0.1 </Scale_Factor>
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+		<AssetBank> BANK_NOVUS </AssetBank>
+
+		<CategoryMask> HardPoint, CanAttack </CategoryMask>
+		<Ranged_Target_Z_Adjust> 10.0 </Ranged_Target_Z_Adjust>
+
+		<Text_ID>TEXT_NOVUS_STRATEGIC_UPGRADE_BASIC_DEFENSE</Text_ID>
+
+		<Behavior>
+			HARD_POINT,
+			SELECTABLE,
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
+			ATTRIBUTE_DIRECTORY,
+			PERSISTENT_UNIT
+		</Behavior>
+
+		<LandBehavior>
+			IDLE,
+			UNIT_AI,
+			DAMAGE_TRACKING,
+			AI_TARGET,
+			AI_RECRUITABLE,
+			HIDE_WHEN_FOGGED,
+			TARGETING,
+			WEAPON,
+			TURRET
+		</LandBehavior>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Size_Value>10</Size_Value>
+			<Score_Cost_Credits>1</Score_Cost_Credits>
+			<Build_Cost_Credits>2000</Build_Cost_Credits>
+			<Build_Time_Seconds>30</Build_Time_Seconds>
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Strategic_Sell_Percentage>0.5</Strategic_Sell_Percentage>
+			<Is_Command_Center_Upgrade> Yes </Is_Command_Center_Upgrade>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name> i_icon_n_strategic_upgrade_basic_defense.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_STRATEGIC_UPGRADE_BASIC_DEFENSE </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Influences_Region> true </HP_Influences_Region>
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+			<HP_Replacement_Object_Type_When_Destroyed />
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<!-- Destroying this one hard point will trigger the parent object to be destroyed -->
+		</BehaviorType>
+
+		<BehaviorType Name="WeaponBehaviorType">
+			<Targeting_Priority_Set> Global_HQ_Defense_Turret_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
+
+			<Projectile_Types> Proj_Field_Invertor_RailGun </Projectile_Types>
+			<Projectile_Fire_Pulse_Count> 10 </Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Recharge_Seconds> 6.0 </Projectile_Fire_Recharge_Seconds>
+		</BehaviorType>
+
+		<BehaviorType Name="TurretBehaviorType">
+			<Turret_Rotate_Extent_Degrees> 360 </Turret_Rotate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 180 </Turret_Elevate_Extent_Degrees>
+			<Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
+			<Barrel_Bone_Name> Barrel_00 </Barrel_Bone_Name>
+			<Turret_Rotate_Speed> 5.0 </Turret_Rotate_Speed>
+			<Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
+			<Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
+			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
+			<Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MaterialCenterBasicDefenseEffectGenerator">
+				<Starts_Active> yes </Starts_Active>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> GenericGlobalRegionDefenseEffect </Effect_Name>
+					<Duration> 3.2 </Duration>
+					<Target_Gathering_Mask> GlobalRegion </Target_Gathering_Mask>
+					<Target_Filter_C> Has_Behavior_Region </Target_Filter_C>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+		</Effect_Generator_Data>
+
+	</HardPoint>
+
+        <HardPoint Name="Novus_Material_Center_Basic_Defense_Upgrade_00">
+		<Variant_Of_Existing_Type>Novus_Material_Center_Basic_Defense_Upgrade</Variant_Of_Existing_Type>
+	</HardPoint>
+
+
+
+        <HardPoint Name="HP_Peacebringer_Tractor_Beam">
+
+		<!-- ART -->
+		<Land_Model_Name>  ZV_Peacebringer_beam.ALO </Land_Model_Name>
+		<Scale_Factor> 1.0 </Scale_Factor>
+		<AssetBank> BANK_MASARI </AssetBank>
+                <AssetBank> BANK_NOVUS </AssetBank>
+
+		<!-- INTERFACE -->
+		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Affiliation> Novus </Affiliation>
+		<CategoryMask> HardPoint </CategoryMask>
+		<Victory_Relevant> No </Victory_Relevant>
+
+
+		<!-- CONFLICT -->
+		<Is_Attackable> False </Is_Attackable>
+		<Collidable_By_Projectile_Living> True </Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
+		<Target_Bones> </Target_Bones>
+		<HP_Is_Immune_To_Damage>Yes</HP_Is_Immune_To_Damage>
+		<Ranged_Target_Z_Adjust>0.5</Ranged_Target_Z_Adjust>
+
+		<Tactical_Health> 400 </Tactical_Health>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior> HARD_POINT </Behavior>
+
+		<LandBehavior>
+			DAMAGE_TRACKING,
+			TURRET,
+			TARGETING,
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
+			ATTRIBUTE_DIRECTORY,
+			ABILITY_COUNTDOWN
+		</LandBehavior>
+
+		<Attributes SubObjectList="Yes">
+			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+		</Attributes>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Masari_Vehicle_Light </Armor_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<!-- Whatever damage is inflicted to this hard point gets passed down to its parent as well. -->
+		</BehaviorType>
+
+		<BehaviorType Name="WeaponBehaviorType">
+			<Targeting_Stickiness_Time_Threshold> 30.0 </Targeting_Stickiness_Time_Threshold>
+			<Muzzle_Bone_Name> muzzleA </Muzzle_Bone_Name>
+			<Targeting_Opportunity_Fire_Enabled> true </Targeting_Opportunity_Fire_Enabled>
+			<Targeting_Priority_Set> Masari_Peacebringer_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+			<Can_Attack_Without_Weapon_Behavior> Yes </Can_Attack_Without_Weapon_Behavior>
+			<Always_Choose_Closest_Target> false </Always_Choose_Closest_Target>
+		</BehaviorType>
+
+		<BehaviorType Name="TurretBehaviorType">
+			<Turret_Bone_Name> B_turret </Turret_Bone_Name>
+			<Barrel_Bone_Name> B_barrel </Barrel_Bone_Name>
+			<Turret_Rotate_Speed> 6.0 </Turret_Rotate_Speed>
+			<Apply_Z_Turret_Rotate_To_Axis>1</Apply_Z_Turret_Rotate_To_Axis>
+			<Apply_Y_Turret_Rotate_To_Axis>2</Apply_Y_Turret_Rotate_To_Axis>
+			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 90.0 </Turret_Elevate_Extent_Degrees>
+		</BehaviorType>
+
+		<BehaviorType Name="SFXBehaviorType">
+			<SFXEvent_Fire> SFX_Masari_Vehicle_Fire </SFXEvent_Fire>
+			<Death_SFXEvent_Start_Die> SFX_Masari_HP_Weapon_1_Death </Death_SFXEvent_Start_Die>
+			<SFXEvent_Turret_Rotating_Loop> SFX_Masari_Medium_Turret_Loop </SFXEvent_Turret_Rotating_Loop>
+		</BehaviorType>
+
+		<BehaviorType Name="DeathFXBehaviorType">
+			<Remove_Upon_Death> Yes </Remove_Upon_Death>
+			<!-- Yes: Instantly destroy death clone when effects are started -->
+		</BehaviorType>
+
+		<Unit_Abilities_Data SubObjectList="Yes">
+
+			<!-- Tractor Beam Unit Ability -->
+			<Unit_Ability Name="Masari_Peacebringer_Tractor_Beam_Unit_Ability">
+				<Type>EFFECT_GENERATOR</Type>
+				<Expiration_Seconds> 15 </Expiration_Seconds>
+				<Recharge_Seconds>1.0</Recharge_Seconds>
+				<GUI_Activated_Ability_Name> Masari_Peacebringer_Tractor_Beam_Special_Ability </GUI_Activated_Ability_Name>
+				<Effect_Generator_Name> Masari_Peacebringer_Tractor_Beam_Effect_Generator </Effect_Generator_Name>
+				<Is_Modal>Yes</Is_Modal>
+				<Targeting_Type> ENEMY_OBJECT </Targeting_Type>
+			</Unit_Ability>
+		</Unit_Abilities_Data>
+
+		<Abilities SubObjectList="Yes">
+
+			<!-- Tractor Beam Special Ability -->
+			<Effect_Generator_Ability Name="Masari_Peacebringer_Tractor_Beam_Special_Ability">
+				<Activation_Min_Range> 0.0  </Activation_Min_Range>
+				<Activation_Max_Range> 170.0 </Activation_Max_Range>
+				<Max_Channel_Range> 190.0 </Max_Channel_Range>
+				<Pre_Generate_Anim_Type> </Pre_Generate_Anim_Type>
+				<Post_Generate_Anim_Type> </Post_Generate_Anim_Type>
+				<Generating_Anim_Type>  </Generating_Anim_Type>
+				<Effect_Generator_Name> Masari_Peacebringer_Tractor_Beam_Effect_Generator </Effect_Generator_Name>
+				<Activation_Style> Special_Attack </Activation_Style>
+				<Point_Turret_At_Target> true </Point_Turret_At_Target>
+				<Terminate_Effect_On_Move_Command> false </Terminate_Effect_On_Move_Command>
+				<Applicable_Unit_Categories>All</Applicable_Unit_Categories>
+				<Excluded_Unit_Categories> Stationary | Resource | Resource_INST | HardPoint </Excluded_Unit_Categories>
+				<Can_Target_Allies>No</Can_Target_Allies>
+				<Can_Target_Enemies>Yes</Can_Target_Enemies>
+				<Can_Target_Neutral>No</Can_Target_Neutral>
+			</Effect_Generator_Ability>
+
+		</Abilities>
+
+		<Effect_Generator_Data SubObjectList="Yes">
+
+			<!-- Tractor Beam Effect Generator -->
+			<Effect_Generator Name="Masari_Peacebringer_Tractor_Beam_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Is_Independent_Generator> No </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Masari_Peacebringer_Tractor_Beam_Effect </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+					<Frames_Between_Remove_Invalid_Targets> 1 </Frames_Between_Remove_Invalid_Targets>
+				</Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> Masari_Peacebringer_Tractor_Beam_Visual_Effect </Effect_Name>
+               <Duration> -1.0 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+             </Effect_Generator_Entry>
+
+			</Effect_Generator>
+
+			<!-- Standard DMA generator - Oksana 05/14/2007 -->
+			<!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Hardpoint_Generators.xml" -->
+
+		</Effect_Generator_Data>
+
+	</HardPoint>
+
+        <HardPoint Name="HP_Peacebringer_Tractor_Beam_00">
+		<Variant_Of_Existing_Type>HP_Peacebringer_Tractor_Beam</Variant_Of_Existing_Type>
+	</HardPoint>
+
+
+
+</Novus_Veh_Ship_XML>

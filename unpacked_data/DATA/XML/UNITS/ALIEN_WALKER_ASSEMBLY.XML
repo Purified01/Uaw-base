@@ -2760,6 +2760,7 @@
 
 
 
+   
    <!-- ********************************************************************************************* -->
    <!-- ****** Mass_Driver																							  ****** -->
    <!-- ********************************************************************************************* -->
@@ -2771,7 +2772,7 @@
       <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
       <!-- ART -->
-      <Land_Model_Name>ABHP_AssemblyWalker_MassDriver.alo</Land_Model_Name>
+      <Land_Model_Name>AB_Grav_Manipulator.alo</Land_Model_Name>
       <Scale_Factor> 0.70 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -2870,7 +2871,7 @@
             <Activation_Style> Special_Attack </Activation_Style>
             <Activation_Chance> 1 </Activation_Chance>
             <Activation_Min_Range> 0.0 </Activation_Min_Range>
-            <Activation_Max_Range> 260.0 </Activation_Max_Range>
+            <Activation_Max_Range> 300.0 </Activation_Max_Range>
 
             <Activation_Recharge_Time> 2.0 </Activation_Recharge_Time>
 
@@ -2882,12 +2883,12 @@
             <Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
             <Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
 
-            <Projectile_Type> Proj_Alien_Walker_Assembly_Mass_Driver </Projectile_Type>
+            <Projectile_Type> Proj_Masari_Enforcer_Dark </Projectile_Type>
             <Is_Looping_Attack> false </Is_Looping_Attack>
             <Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
             <Face_Target_Before_Firing> true </Face_Target_Before_Firing>
             <Activated_By_User> false </Activated_By_User>
-            <SFXEvent_Apply_Damage>SFX_Alien_Mass_Driver_Fire</SFXEvent_Apply_Damage>
+            <SFXEvent_Apply_Damage>SFX_Masari_Vehicle_Fire</SFXEvent_Apply_Damage>
 
          </Generic_Attack_Ability>
 
@@ -2902,7 +2903,7 @@
       <Text_ID> TEXT_ALIEN_HP_MASS_DRIVER </Text_ID>
 
       <!-- ART -->
-      <Land_Model_Name> ABHP_AssemblyWalker_MassDriver.alo </Land_Model_Name>
+      <Land_Model_Name> AB_Grav_Manipulator.alo </Land_Model_Name>
       <Scale_Factor> 0.70 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -2934,6 +2935,7 @@
       </BehaviorType>
 
    </HardPoint>
+
 
 
 
@@ -3207,7 +3209,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ABHP_AssemblyWalker_ScarnBeam.alo</Land_Model_Name>
-      <Scale_Factor> 0.70 </Scale_Factor>
+      <Scale_Factor> 0.225 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
@@ -3370,7 +3372,7 @@
    <!-- Scarn Beam Under Construction  -->
    <HardPoint Name="Alien_Walker_Assembly_HP_Scarn_Beam_Under_Construction">
       <Variant_Of_Existing_Type>Alien_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-      <Scale_Factor> 0.70 </Scale_Factor>
+      <Scale_Factor> 0.25 </Scale_Factor>
       <Text_ID> TEXT_ALIEN_HP_SCARN_BEAM </Text_ID>
 
       <!-- ART -->
@@ -4014,7 +4016,7 @@
             <Activation_Chance> 1.0 </Activation_Chance>
             <Activation_Min_Range> 0.0 </Activation_Min_Range>
             <Activation_Max_Range> 270.0 </Activation_Max_Range>
-            <Applicable_Unit_Categories> Flying </Applicable_Unit_Categories>
+            <Applicable_Unit_Categories> Flying, Organic, Piloted </Applicable_Unit_Categories>
 
             <Damage_Type> Damage_Alien_Walker_HP_Lightning </Damage_Type>
             <Damage_Amount> 0.0 </Damage_Amount>

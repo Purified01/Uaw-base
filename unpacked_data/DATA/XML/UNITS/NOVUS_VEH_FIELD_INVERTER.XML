@@ -58,9 +58,9 @@
 		<MaxJiggleDistance> 5 </MaxJiggleDistance>
 		<Custom_Hard_XExtent> 8.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 9.0 </Custom_Hard_YExtent>
-		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
-		<Rotation_Animation_Speed> 2.25 </Rotation_Animation_Speed>
-		<Walk_Animation_Speed> .5 </Walk_Animation_Speed>
+		<Movement_Animation_Speed> 2.0 </Movement_Animation_Speed>
+		<Rotation_Animation_Speed> 5.5 </Rotation_Animation_Speed>
+		<Walk_Animation_Speed> 1.0 </Walk_Animation_Speed>
 		<Has_Looping_Turn_Animations> true </Has_Looping_Turn_Animations>
 		<Walk_Transition> true </Walk_Transition>
 
@@ -70,8 +70,8 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust>26.0</Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range> 240.0 </Land_FOW_Reveal_Range>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Land_FOW_Reveal_Range> 300.0 </Land_FOW_Reveal_Range>
+		<Tactical_Health> 700 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -133,7 +133,7 @@
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 500 </Build_Cost_Credits>
 			<Build_Time_Seconds> 16 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
 				Maria 11.07.2006 
@@ -173,11 +173,13 @@
 			<Targeting_Priority_Set> Novus_Field_Inverter_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Field_Invertor_RailGun</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>1.5</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+                        <Projectile_Fire_Spread_Amount> 2 </Projectile_Fire_Spread_Amount>
+                        <Projectile_Fire_Spread_Angle> 2 </Projectile_Fire_Spread_Angle>
 		</BehaviorType>
 
 		<!--
@@ -422,9 +424,9 @@
       <MaxJiggleDistance> 5 </MaxJiggleDistance>
       <Custom_Hard_XExtent> 14.0 </Custom_Hard_XExtent>
       <Custom_Hard_YExtent> 14.0 </Custom_Hard_YExtent>
-      <Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
-      <Rotation_Animation_Speed> 2.25 </Rotation_Animation_Speed>
-      <Walk_Animation_Speed> .5 </Walk_Animation_Speed>
+      <Movement_Animation_Speed> 2.0 </Movement_Animation_Speed>
+      <Rotation_Animation_Speed> 5.5 </Rotation_Animation_Speed>
+      <Walk_Animation_Speed> 1 </Walk_Animation_Speed>
       <Has_Looping_Turn_Animations> true </Has_Looping_Turn_Animations>
       <Walk_Transition> true </Walk_Transition>
 
@@ -435,7 +437,7 @@
       <Ranged_Target_Z_Adjust>32.0</Ranged_Target_Z_Adjust>
       <Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 
-      <Tactical_Health> 600 </Tactical_Health>
+      <Tactical_Health> 700 </Tactical_Health>
 
       <!-- BEHAVIORS AND ABILITIES -->
       <Behavior> SELECTABLE </Behavior>
@@ -470,7 +472,7 @@
 
       <BehaviorType Name="ProductionBehaviorType">
          <Size_Value> 10 </Size_Value>
-         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+         <Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
          <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
       </BehaviorType>
 
@@ -498,16 +500,18 @@
 		</BehaviorType>
 
       <BehaviorType Name="WeaponBehaviorType">
-         <Muzzle_Bone_Name>MuzzleA</Muzzle_Bone_Name>
          <Can_Attack_Without_Weapon_Behavior> Yes </Can_Attack_Without_Weapon_Behavior>
-         <Targeting_Priority_Set> Novus_Field_Inverter_Target_Priority </Targeting_Priority_Set>
-         <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
-         <Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds>1.5</Projectile_Fire_Pulse_Delay_Seconds>
+			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+			<Targeting_Priority_Set> Novus_Field_Inverter_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Field_Invertor_RailGun</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+                        <Projectile_Fire_Spread_Amount> 2 </Projectile_Fire_Spread_Amount>
+                        <Projectile_Fire_Spread_Angle> 2 </Projectile_Fire_Spread_Angle>
       </BehaviorType>
 
       <BehaviorType Name="ShieldBehaviorType">
@@ -633,7 +637,7 @@
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 4 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 3 </Unit_Pop_Cap>
       </BehaviorType>
 
       <!-- =================================================================================================
@@ -980,7 +984,7 @@
 
       <!-- ART -->
       <Land_Model_Name>NV_Chunk_Small.ALO</Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
+      <Scale_Factor>2.0</Scale_Factor>
       <AssetBank> BANK_NOVUS </AssetBank>
 
       <!-- INTERFACE -->
@@ -1025,7 +1029,7 @@
 
       <!-- ART -->
       <Land_Model_Name>NV_Field_Inverter_PodArm.ALO</Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
+      <Scale_Factor>2.0</Scale_Factor>
       <AssetBank> BANK_NOVUS </AssetBank>
 
       <!-- INTERFACE -->
@@ -1070,7 +1074,7 @@
 
       <!-- ART -->
       <Land_Model_Name>NV_Field_Inverter_RingChunk.ALO</Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
+      <Scale_Factor>2.0</Scale_Factor>
       <AssetBank> BANK_NOVUS </AssetBank>
 
       <!-- INTERFACE -->

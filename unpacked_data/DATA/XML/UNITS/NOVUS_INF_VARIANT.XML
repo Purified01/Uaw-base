@@ -70,7 +70,7 @@
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Land_FOW_Reveal_Range>185</Land_FOW_Reveal_Range>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 400 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST | Flying </Attack_Category_Restrictions>
 
@@ -147,7 +147,7 @@
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 350 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 350 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -172,10 +172,12 @@
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 165.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Novus_Flechette_Cannon</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Types>Proj_Novus_Mech_Rocketlauncher</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>2.5</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+                        <Projectile_Fire_Spread_Amount> 4 </Projectile_Fire_Spread_Amount>
+		        <Projectile_Fire_Spread_Angle> 5 </Projectile_Fire_Spread_Angle>
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
@@ -208,7 +210,7 @@
       <Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
       <Turret_Targets_Ground_Vehicles> 1 </Turret_Targets_Ground_Vehicles>
       <Turret_Targets_Ground_Infantry> 2 </Turret_Targets_Ground_Infantry>
-      <Turret_Targets_Air_Vehicles> 9999 </Turret_Targets_Air_Vehicles>
+      <Turret_Targets_Air_Vehicles> 4 </Turret_Targets_Air_Vehicles>
       <Turret_Targets_Anything_Else> 3 </Turret_Targets_Anything_Else>
       <Turret_Rotate_To_Rest_Delay_Sec> 0 </Turret_Rotate_To_Rest_Delay_Sec>
       <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
@@ -264,7 +266,7 @@
 
     <BehaviorType Name="FleetBehaviorType">
       <!-- Maria 05.24.2006 - How much space does the unit take up -->
-      <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
+      <Unit_Pop_Cap> 3 </Unit_Pop_Cap>
     </BehaviorType>
 
 		<!--
@@ -296,6 +298,23 @@
          <SFXEvent_GUI_Unit_Ability_Deactivated>GUI_NOVUS_ABILITY_SWITCH_WEAPONS</SFXEvent_GUI_Unit_Ability_Deactivated>
       </Unit_Ability>
 
+
+			<Unit_Ability Name="Unit_Ability_Mech_Minirocket_Barrage">
+				<Type>ATTACK_POSITION</Type>
+				<Recharge_Seconds>60.0</Recharge_Seconds>
+				<GUI_Activated_Ability_Name> Special_Ability_Mech_Minirocket_Barrage </GUI_Activated_Ability_Name>
+				<SFXEvent_GUI_Unit_Ability_Activated> GUI_NOVUS_ABILITY_ROCKET </SFXEvent_GUI_Unit_Ability_Activated>
+				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
+				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
+				<Area_Effect_Decal_Distance> 60.0 </Area_Effect_Decal_Distance>
+				<SFXEvent_GUI_Unit_Ability_Activated> Unit_Ability_A_Novus_Mirabel </SFXEvent_GUI_Unit_Ability_Activated>
+				<SFXEvent_Target_Ability />
+				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
+				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
+				<Unit_Ability_AI_Unit_Categories> ~Flying </Unit_Ability_AI_Unit_Categories>
+				<Unit_Ability_AI_Range> 400.0 </Unit_Ability_AI_Range>
+			</Unit_Ability>
+
     </Unit_Abilities_Data>
 
       <!-- ABILITIES -->
@@ -311,6 +330,26 @@
          <Deactivate_On_User_Attack_Order>Yes</Deactivate_On_User_Attack_Order>
          <Deactivate_On_User_Move_Order>No</Deactivate_On_User_Move_Order>
       </Effect_Generator_Ability>
+
+                   <Generic_Attack_Ability Name="Special_Ability_Mech_Minirocket_Barrage">
+				<Activation_Style>USER_INPUT</Activation_Style>
+				<Activation_Chance>1.0</Activation_Chance>
+				<Activation_Min_Range>0.0</Activation_Min_Range>
+				<Activation_Max_Range>225.0</Activation_Max_Range>
+				<Activation_Recharge_Time> 0.5 </Activation_Recharge_Time>
+				<Damage_Frame_Number>5</Damage_Frame_Number>
+				<Applicable_Unit_Categories> ~Flying </Applicable_Unit_Categories>
+				<Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
+				<Only_Appropriate_When_Ready> false </Only_Appropriate_When_Ready>
+				<Projectile_Type> Proj_Novus_Mech_Rocketlauncher </Projectile_Type>
+				<Is_Looping_Attack> false </Is_Looping_Attack>
+				<Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
+				<Projectile_Spawn_Pick_Random_Bone> true </Projectile_Spawn_Pick_Random_Bone>
+				<Projectile_Count> 16 </Projectile_Count>
+				<Effect_Generator_Name>IncreaseInaccuracyEffectGenerator</Effect_Generator_Name>
+				<Spread_Angle> 90 </Spread_Angle>
+			</Generic_Attack_Ability>
+
     </Abilities>
 
 

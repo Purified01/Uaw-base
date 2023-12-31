@@ -108,8 +108,8 @@
 
 			<Effect_Component Type="DamageOverTime">
 			<Damage_Type>Damage_Alien_Grav_Turret_Beam</Damage_Type>
-			<Amount_Per_Second> 50.0 </Amount_Per_Second>
-			<Percentage_Per_Second> 0 </Percentage_Per_Second>
+			<Amount_Per_Second> 1000.0 </Amount_Per_Second>
+			<Percentage_Per_Second> 20 </Percentage_Per_Second>
 		</Effect_Component>
 
 		<Effect_Component Type="Lightning">
@@ -178,8 +178,8 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type>Damage_Alien_Grav_Turret_Beam</Damage_Type>
-			<Amount_Per_Second> 26.0 </Amount_Per_Second>
-			<Percentage_Per_Second> 0.0 </Percentage_Per_Second>
+			<Amount_Per_Second> 1000.0 </Amount_Per_Second>
+			<Percentage_Per_Second> 20.0 </Percentage_Per_Second>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">

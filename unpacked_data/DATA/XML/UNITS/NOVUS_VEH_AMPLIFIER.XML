@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>NV_Amplifier.ALO</Land_Model_Name>
-		<Scale_Factor>0.9</Scale_Factor>
+		<Scale_Factor>0.5</Scale_Factor>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
         <AssetBank> BANK_NOVUS </AssetBank>
 
@@ -140,7 +140,7 @@
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 400 </Build_Cost_Credits>
 			<Build_Time_Seconds> 14 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
 				Maria 11.07.2006 
@@ -294,7 +294,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 4 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<Unit_Abilities_Data SubObjectList="Yes">
@@ -625,7 +625,7 @@
 
       <!-- ART -->
       <Land_Model_Name>NV_amplifier_DC.ALO</Land_Model_Name>
-      <Scale_Factor>0.9</Scale_Factor>
+      <Scale_Factor>0.5</Scale_Factor>
       <AssetBank> BANK_NOVUS </AssetBank>
 
       <!-- INTERFACE -->
@@ -948,7 +948,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>p_av_tank_cannon_bullet.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>0.5</Scale_Factor>
       <AssetBank> BANK_NOVUS </AssetBank>
 
 		<!-- INTERFACE -->

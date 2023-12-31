@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> NI_Constructor.ALO </Land_Model_Name>		
-		<Scale_Factor> 0.85 </Scale_Factor>
+		<Scale_Factor> 1.0 </Scale_Factor>
 		<Target_Bones> B_PELVIS </Target_Bones>
 		<Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
 		<Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>

@@ -308,7 +308,7 @@
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 10.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 2500 </Tactical_Health>
+      <Tactical_Health> 5000 </Tactical_Health>
       <Dense_FOW_Reveal_Range_Multiplier> 0.0 </Dense_FOW_Reveal_Range_Multiplier>
       <Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -346,9 +346,9 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Beacon_Type> Masari_Elemental_Controller_Beacon </Tactical_Buildable_Beacon_Type>
          <Tactical_Buildable_Constructed> Masari_Elemental_Controller </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 450 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Cost_Campaign> 450 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 170 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Time_Seconds> 100 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 9 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
       </BehaviorType>
@@ -567,7 +567,7 @@
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> MasariResearchBurningAuraEffect </Effect_Name>
-               <Duration> 1.8 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
                <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
                <Target_Filter_C> Is_Enemy </Target_Filter_C>
@@ -576,7 +576,7 @@
 
             <Effect_Generator_Entry Name="Entry2">
                <Effect_Name> MasariResearchBurningAuraSelfEffect </Effect_Name>
-               <Duration> 2.1 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> Self </Target_Gathering_Mask>
             </Effect_Generator_Entry>
 
@@ -714,7 +714,7 @@
       <!-- MOVEMENT -->
       <MovementClass> Flying </MovementClass>
       <OccupationStyle> 1x1 </OccupationStyle>
-      <Max_Speed>1.5</Max_Speed>
+      <Max_Speed>4.0</Max_Speed>
       <Min_Speed> 0.5 </Min_Speed>
       <OverrideAcceleration> .15 </OverrideAcceleration>
       <OverrideDeceleration> .15 </OverrideDeceleration>
@@ -808,9 +808,9 @@
       </BehaviorType>
 
       <BehaviorType Name="TacticalSuperweaponBehaviorType">
-         <TSW_Cooldown_Countdown_Seconds> 188.0 </TSW_Cooldown_Countdown_Seconds>
+         <TSW_Cooldown_Countdown_Seconds> 100.0 </TSW_Cooldown_Countdown_Seconds>
          <TSW_Area_Effect_Radius> 25.0 </TSW_Area_Effect_Radius>
-         <TSW_Warm_Up_Seconds> 180.0 </TSW_Warm_Up_Seconds>
+         <TSW_Warm_Up_Seconds> 100.0 </TSW_Warm_Up_Seconds>
 
          <!-- Frank TODO -->
          <TSW_SFXEvent_GUI_Button_Press>GUI_Masari_Magma_Power_Up</TSW_SFXEvent_GUI_Button_Press>
@@ -897,7 +897,7 @@
 
             <Effect_Generator_Entry Name="Entry2">
                <Effect_Name> MagmaChannelCreateFireEffect </Effect_Name>
-               <Duration> 5.0 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> Self </Target_Gathering_Mask>
             </Effect_Generator_Entry>
 
@@ -979,7 +979,7 @@
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> MagmaChannelBurnAEEffect </Effect_Name>
-               <Duration> 1.6 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
                <Target_Filter_Categories> ~Untargetable </Target_Filter_Categories>
                <Target_Filter_C> Not_Has_Behavior_Debris </Target_Filter_C>
@@ -1095,9 +1095,9 @@
 
 
       <BehaviorType Name="TacticalSuperweaponBehaviorType">
-         <TSW_Cooldown_Countdown_Seconds> 187.0 </TSW_Cooldown_Countdown_Seconds>
+         <TSW_Cooldown_Countdown_Seconds> 100.0 </TSW_Cooldown_Countdown_Seconds>
          <TSW_Area_Effect_Radius> 220.0 </TSW_Area_Effect_Radius>
-         <TSW_Warm_Up_Seconds> 180.0 </TSW_Warm_Up_Seconds>
+         <TSW_Warm_Up_Seconds> 100.0 </TSW_Warm_Up_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -1138,8 +1138,8 @@
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> MagmaChannelSelfDestructUpgradedEffect </Effect_Name>
-               <Base_Delay> 14.0 </Base_Delay>
-               <Duration> 14.1 </Duration>
+               <Base_Delay> 99999.0 </Base_Delay>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> Self </Target_Gathering_Mask>
             </Effect_Generator_Entry>
 
@@ -1160,7 +1160,7 @@
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> DarkWeaponAEEffect </Effect_Name>
-               <Duration> 2.1 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
                <Target_Filter_C> Is_Enemy </Target_Filter_C>
                <Area_Effect_Radius> 200.0 </Area_Effect_Radius>
@@ -1170,7 +1170,7 @@
 
             <Effect_Generator_Entry Name="Entry2">
                <Effect_Name> DarkWeaponFriendlyAEEffect </Effect_Name>
-               <Duration> 1.9 </Duration>
+               <Duration> 99999.0 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
                <Target_Filter_C> Masari_Dark_Superweapon_Recharge_DMA </Target_Filter_C>
                <Area_Effect_Radius> 200.0 </Area_Effect_Radius>

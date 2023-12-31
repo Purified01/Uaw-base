@@ -168,6 +168,17 @@
 			<SFXEvent_Teleport_End> SFX_Alien_Teleport_Out_End </SFXEvent_Teleport_End>
 		</BehaviorType>
 
+          <BehaviorType Name="LuaScriptBehaviorType">
+		  <Lua_Global_Behaviors> GlobalResourceStructureBehavior </Lua_Global_Behaviors>
+		  <Lua_Land_Behaviors> GlobalResourceStructureBehavior </Lua_Land_Behaviors>
+		  <Lua_Script_Data>
+			  GlobalResourcesPerCycle = 1000
+			  GlobalResourceCap = 4000.0
+			  TacticalResourcesPerCycle = 5000
+			  TacticalResourceCap = nil
+		  </Lua_Script_Data>
+	  </BehaviorType>
+
 		<BehaviorType Name="ResourceDepot">
 			<Resource_Depot_Active_Drones>2</Resource_Depot_Active_Drones>
 			<Resource_Depot_Seconds_To_Build_Drone>2</Resource_Depot_Seconds_To_Build_Drone>

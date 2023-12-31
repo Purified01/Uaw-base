@@ -70,9 +70,9 @@
 		<Custom_Hard_YExtent> 115.0 </Custom_Hard_YExtent>
 		<Movement_Animation_Speed> .625 </Movement_Animation_Speed>
 		<Rotation_Animation_Speed> 0.45 </Rotation_Animation_Speed>
-		<Max_Speed> 0.25 </Max_Speed>
+		<Max_Speed> 0.35 </Max_Speed>
 		<Min_Speed> 0.1 </Min_Speed>
-		<Max_Rate_Of_Turn> .6 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> .8 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> .5 </Stopped_Rate_Of_Turn>
 		<Strafe_Animation_Speed> .625 </Strafe_Animation_Speed>
 		<Backpedal_Animation_Speed> .625 </Backpedal_Animation_Speed>
@@ -110,9 +110,9 @@
 		<Tactical_Health> 999999 </Tactical_Health>
 		<Land_Damage_Thresholds> 1, 0.66, 0.33 </Land_Damage_Thresholds>
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
-		<Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Blob </Projectile_Types>
-		<Projectile_Fire_Pulse_Count> 4 </Projectile_Fire_Pulse_Count>
-		<Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
+		<Projectile_Types> Proj_Alien_Walker_Assembly_Mass_Driver </Projectile_Types>
+		<Projectile_Fire_Pulse_Count> 6 </Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds> 1.25 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
 
       <!-- Maria 02.08.2008 (Fixing bug #3572 SEGA DB)
@@ -177,7 +177,7 @@
 				This flag determines which types are used to populate the
 				build menu in global mode.
 			-->
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -275,7 +275,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
+			<SFXEvent_Fire> SFX_Alien_Mass_Driver_Fire </SFXEvent_Fire>
 			<SFXEvent_Select> Unit_Select_Alien_Habitat </SFXEvent_Select>
 			<SFXEvent_Move> Unit_Move_Alien_Habitat </SFXEvent_Move>
 			<SFXEvent_Attack> Unit_Attack_Alien_Habitat </SFXEvent_Attack>
@@ -728,9 +728,9 @@
 		<Land_Damage_Thresholds> 1, 0.5, 0.3 </Land_Damage_Thresholds>
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
 		<Land_Damage_SFX> null,SFX_GENERIC_DETONATION, null </Land_Damage_SFX>
-		<Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Blob </Projectile_Types>
-		<Projectile_Fire_Pulse_Count> 4 </Projectile_Fire_Pulse_Count>
-		<Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
+		<Projectile_Types> Proj_Alien_Walker_Assembly_Mass_Driver </Projectile_Types>
+		<Projectile_Fire_Pulse_Count> 6 </Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds> 1.25 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
 
 		<!-- BEHAVIORS -->
@@ -1770,8 +1770,8 @@
 	
 	
 	<HardPoint Name="Alien_Walker_Habitat_Leg">
-		<!-- ART -->
-		<Land_Model_Name> AB_Habitat_Leg.alo </Land_Model_Name>
+		<!-- ART AB_Habitat_Leg.alo -->
+		<Land_Model_Name> AB_AssemblyWalker_leg.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
@@ -1900,8 +1900,8 @@
 
 	
 	<HardPoint Name="Alien_Walker_Habitat_Leg_Damage">
-		<!-- ART -->
-		<Land_Model_Name> AB_Habitat_Leg_Damaged.alo </Land_Model_Name>
+		<!-- ART AB_Habitat_Leg_Damaged.alo -->
+		<Land_Model_Name> AB_AssemblyWalker_Leg_Damaged.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
@@ -2528,6 +2528,183 @@
 		</BehaviorType>
 
 	</HardPoint>
+
+
+
+   <!-- ********************************************************************************************* -->
+   <!-- ****** Mass_Driver																							  ****** -->
+   <!-- ********************************************************************************************* -->
+
+   <HardPoint Name="Alien_Walker_Assembly_HP_Mass_Driver">
+      <Variant_Of_Existing_Type>Alien_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- ART -->
+      <Land_Model_Name>AB_Grav_Manipulator.alo</Land_Model_Name>
+      <Scale_Factor> 0.70 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- INTERFACE -->
+      <Select_Box_Scale>75</Select_Box_Scale>
+      <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
+      <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
+      <Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
+      <Text_ID> TEXT_ALIEN_HP_MASS_DRIVER </Text_ID>
+
+      <!-- CONFLICT -->
+      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Tactical_Health> 1000 </Tactical_Health>
+      <CategoryMask> HardPoint, CanAttack, BodySocketHP </CategoryMask>
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         SELECTABLE,
+         HARD_POINT
+      </Behavior>
+
+      <LandBehavior>
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         ABILITY_COUNTDOWN,
+         TACTICAL_SELL,
+         TARGETING,
+         WEAPON
+         IDLE,
+         TURRET
+         <!-- Maria 12.14.2007: We will only allow the socket to have a GUI scene which will get updated based on the contents
+           of the socket. Thus, the hard points and their under construction versions won't need the GUI behavior nor the 
+           GUIBehaviorType data.
+         -->
+         <!-- ,GUI -->
+      </LandBehavior>
+
+      <BehaviorType Name="WeaponBehaviorType">
+         <Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
+         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
+         <Targeting_Priority_Set> Alien_Assembly_Mass_Driver_Priority </Targeting_Priority_Set>
+      </BehaviorType>
+
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_Mass_Driver.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MASS_DRIVER </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_TURRETS </Tooltip_Good_Against>
+      </BehaviorType>
+
+      <BehaviorType Name="TurretBehaviorType">
+         <Is_Turret_Entire_Body> false </Is_Turret_Entire_Body>
+         <Turret_Rotate_Extent_Degrees>200</Turret_Rotate_Extent_Degrees>
+         <Turret_Elevate_Extent_Degrees>140</Turret_Elevate_Extent_Degrees>
+         <Turret_Bone_Name>B_Turret</Turret_Bone_Name>
+         <Barrel_Bone_Name>B_Barrel</Barrel_Bone_Name>
+         <Turret_Rotate_Speed>10.0</Turret_Rotate_Speed>
+         <Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
+         <Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
+         <Turret_Targets_Ground_Vehicles> 2 </Turret_Targets_Ground_Vehicles>
+         <Turret_Targets_Ground_Infantry> 3 </Turret_Targets_Ground_Infantry>
+         <Turret_Targets_Air_Vehicles> 9999 </Turret_Targets_Air_Vehicles>
+         <Turret_Targets_Anything_Else> 1 </Turret_Targets_Anything_Else>
+         <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+         <Tactical_Under_Construction_Object_Type> Alien_Walker_Assembly_HP_Mass_Driver_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <BehaviorType Name="SFXBehaviorType">
+         <Death_SFXEvent_Start_Die> SFX_Alien_HP_Weapon_3_Death </Death_SFXEvent_Start_Die>
+      </BehaviorType>
+
+      <Abilities SubObjectList="Yes">
+
+         <Generic_Attack_Ability Name="Walker_Mass_Driver_Ability">
+
+            <Activation_Style> Special_Attack </Activation_Style>
+            <Activation_Chance> 1 </Activation_Chance>
+            <Activation_Min_Range> 0.0 </Activation_Min_Range>
+            <Activation_Max_Range> 300.0 </Activation_Max_Range>
+
+            <Activation_Recharge_Time> 2.0 </Activation_Recharge_Time>
+
+            <Attack_Animation>ATTACK_SPECIAL_B</Attack_Animation>
+            <Damage_Frame_Number>0</Damage_Frame_Number>
+
+            <Applicable_Unit_Categories> ~Flying </Applicable_Unit_Categories>
+
+            <Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
+            <Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
+
+            <Projectile_Type> Proj_Masari_Enforcer_Dark </Projectile_Type>
+            <Is_Looping_Attack> false </Is_Looping_Attack>
+            <Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
+            <Face_Target_Before_Firing> true </Face_Target_Before_Firing>
+            <Activated_By_User> false </Activated_By_User>
+            <SFXEvent_Apply_Damage>SFX_Masari_Vehicle_Fire</SFXEvent_Apply_Damage>
+
+         </Generic_Attack_Ability>
+
+      </Abilities>
+
+   </HardPoint>
+
+
+   <!-- MassDriver Under Construction -->
+   <HardPoint Name="Alien_Walker_Assembly_HP_Mass_Driver_Under_Construction">
+      <Variant_Of_Existing_Type>Alien_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+      <Text_ID> TEXT_ALIEN_HP_MASS_DRIVER </Text_ID>
+
+      <!-- ART -->
+      <Land_Model_Name> AB_Grav_Manipulator.alo </Land_Model_Name>
+      <Scale_Factor> 0.70 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 1000 </Tactical_Health>
+      <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+      <!-- BEHAVIORS -->
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_Mass_Driver.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MASS_DRIVER </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
+         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_TURRETS </Tooltip_Good_Against>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <Tactical_Buildable_Constructed> Alien_Walker_Assembly_HP_Mass_Driver</Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign>1000</Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 24 </Tactical_Build_Time_Seconds>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+   </HardPoint>
 
 
 
@@ -3337,7 +3514,7 @@
          <Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 
          <Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Cannon </Projectile_Types>
-         <Projectile_Fire_Pulse_Count> 1 </Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count> 2 </Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
          <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
       </BehaviorType>

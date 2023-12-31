@@ -1169,7 +1169,7 @@
 	<X19_Civilian_Vehicles Name="Civilian_Sports_Car_01">
 
 		<!-- ART -->
-		<Land_Model_Name> WV_Sport.alo </Land_Model_Name>
+		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
 		<Scale_Factor> 1.0 </Scale_Factor>
 
 		<!-- INTERFACE -->
@@ -1191,7 +1191,7 @@
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<Tactical_Health> 250 </Tactical_Health>
+		<Tactical_Health> 99999 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<LandBehavior>
@@ -1228,13 +1228,13 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 20 </Crush_Defense>
+			<Crush_Defense> 99 </Crush_Defense>
 			<Crush_Power> 15 </Crush_Power>
 			<Should_Check_Faction_On_Crush> false </Should_Check_Faction_On_Crush>
 		</BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 325 </Resource_Units>
+			<Resource_Units> 800 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
@@ -1479,8 +1479,8 @@
 	<X19_Civilian_Vehicles Name="Civilian_SUV_01">
 
 		<!-- ART -->
-		<Land_Model_Name> WV_SUV.alo </Land_Model_Name>
-		<Scale_Factor> 1.1 </Scale_Factor>
+		<Land_Model_Name> ABHP_Heat_Sink.alo </Land_Model_Name>
+		<Scale_Factor> 0.9 </Scale_Factor>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_UNIT_CIVILIAN_CAR </Text_ID>
@@ -1501,7 +1501,7 @@
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<Tactical_Health> 250 </Tactical_Health>
+		<Tactical_Health> 99999 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<LandBehavior>
@@ -1532,7 +1532,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 20 </Crush_Defense>
+			<Crush_Defense> 99 </Crush_Defense>
 			<Crush_Power> 15 </Crush_Power>
 			<Should_Check_Faction_On_Crush> false </Should_Check_Faction_On_Crush>
 		</BehaviorType>
@@ -2025,7 +2025,7 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 75 </Resource_Units>
+			<Resource_Units> 750 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	

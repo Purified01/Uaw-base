@@ -751,7 +751,7 @@
 		<!-- HARDPOINTS -->
 		<Attached_Hard_Points>
 			Alien_Hero_Orlok_Head_HP, HP_attach_00,
-			Alien_Hero_Orlok_Endure_Armor_HP, HP_attach_00,
+			Alien_Walker_Assembly_HP_Scarn_Beam, HP_attach_00,
 		</Attached_Hard_Points>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">

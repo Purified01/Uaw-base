@@ -30,7 +30,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -136,7 +136,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -240,7 +240,7 @@
 			<Size_Value>10</Size_Value>
 			<Score_Cost_Credits>3</Score_Cost_Credits>
 			<Build_Cost_Credits>0</Build_Cost_Credits>
-			<Build_Time_Seconds>5</Build_Time_Seconds>
+			<Build_Time_Seconds>0</Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 
@@ -261,7 +261,7 @@
 			<Is_Patch_Object> true </Is_Patch_Object>
 			<!-- NOTE: if the patch has no duration (that is, it stays active until destroyed) this value should be set to -1.0 -->
          <!-- MARIA 06.02.2007 PLEASE DO NOT REMOVE THIS FIELD!!! IT IS USED!!!!!!!!!!!!!! -->
-         <Patch_Duration_Time_Seconds> 20.0 </Patch_Duration_Time_Seconds>
+         <Patch_Duration_Time_Seconds> -1.0 </Patch_Duration_Time_Seconds>
       </BehaviorType>
 
       <Effect_Generator_Data SubObjectList="Yes">
@@ -326,7 +326,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -431,7 +431,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -516,7 +516,7 @@
 			<Size_Value>10</Size_Value>
 			<Score_Cost_Credits>3</Score_Cost_Credits>
 			<Build_Cost_Credits>0</Build_Cost_Credits>
-			<Build_Time_Seconds>5</Build_Time_Seconds>
+			<Build_Time_Seconds>0</Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 
@@ -637,7 +637,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -725,7 +725,7 @@
 			<Size_Value>10</Size_Value>
 			<Score_Cost_Credits>3</Score_Cost_Credits>
 			<Build_Cost_Credits>0</Build_Cost_Credits>
-			<Build_Time_Seconds>5</Build_Time_Seconds>
+			<Build_Time_Seconds>0</Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 
@@ -812,7 +812,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -897,7 +897,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -997,7 +997,7 @@
          <Size_Value>10</Size_Value>
          <Score_Cost_Credits>3</Score_Cost_Credits>
          <Build_Cost_Credits>0</Build_Cost_Credits>
-         <Build_Time_Seconds>5</Build_Time_Seconds>
+         <Build_Time_Seconds>0</Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
       </BehaviorType>
 
@@ -1152,7 +1152,7 @@
 			<Size_Value>10</Size_Value>
 			<Score_Cost_Credits>3</Score_Cost_Credits>
 			<Build_Cost_Credits>0</Build_Cost_Credits>
-			<Build_Time_Seconds>5</Build_Time_Seconds>
+			<Build_Time_Seconds>0</Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 

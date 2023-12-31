@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Alien_Superweapon_Mass_Drop_XML>
+<Alien_Supperweapon_Mass_Drop_XML>
 
    <!-- **************************************************************************************** -->
    <!-- *** STRUCTURE ************************************************************************** -->
    <!-- **************************************************************************************** -->
 
-   <X10_Alien_Structures Name="Alien_Superweapon_Mass_Drop">
+   <X10_Alien_Structures Name="Alien_Supperweapon_Mass_Drop">
 
       <!-- ART -->
       <Land_Model_Name>AB_Matter_Uplink.alo</Land_Model_Name>
@@ -160,7 +160,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_ab_Megaweapon_Purifier.tga </Icon_Name>
+         <Icon_Name>i_icon_ab_mass_drop_SW.tga </Icon_Name>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
@@ -351,9 +351,9 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Beacon_Type> Alien_Superweapon_Mass_Drop_Beacon </Tactical_Buildable_Beacon_Type>
-         <Tactical_Buildable_Constructed> Alien_Megaweapon_Purifier </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 5000 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 5000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Buildable_Constructed> Alien_Superweapon_Mass_Drop </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 2600 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 2600 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 11 </Tactical_UI_Build_Queue_Order>
          <Required_Pre_Build_Time_In_Secs> 30 </Required_Pre_Build_Time_In_Secs>
@@ -398,7 +398,7 @@
       </BehaviorType>
 		
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_ab_Megaweapon_Purifier.tga </Icon_Name>
+         <Icon_Name>i_icon_ab_material_superturret.tga </Icon_Name>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
@@ -607,7 +607,8 @@
       <BehaviorType Name="OrbitalBombardmentBehaviorType">
 
 			<Bombardment_Projectile>
-				Proj_Alien_Mass_Drop_Projectile_01,
+				Proj_Alien_Mass_Drop_Projectile_01
+                                <!--,
 				Proj_Alien_Mass_Drop_Projectile_02,
 				Proj_Alien_Mass_Drop_Projectile_03,
 				Proj_Alien_Mass_Drop_Projectile_04,
@@ -630,13 +631,13 @@
 				Proj_Alien_Mass_Drop_Projectile_21,
 				Proj_Alien_Mass_Drop_Projectile_22,
 				Proj_Alien_Mass_Drop_Projectile_23,
-				Proj_Alien_Mass_Drop_Projectile_24
+				Proj_Alien_Mass_Drop_Projectile_24-->
 			</Bombardment_Projectile>
 
 			<Bombardment_Particles/>
 
 			<Bombardment_Number_Of_Salvos> 1 </Bombardment_Number_Of_Salvos>
-			<Bombardment_Shots_Per_Salvo> 10 </Bombardment_Shots_Per_Salvo>
+			<Bombardment_Shots_Per_Salvo> 1 </Bombardment_Shots_Per_Salvo>
 			<Bombardment_Shot_Delay> 0.5 </Bombardment_Shot_Delay>
 			<Bombardment_Salvo_Delay> 1.3 </Bombardment_Salvo_Delay>
 			<Bombardment_Offset>0 0 603</Bombardment_Offset>
@@ -702,7 +703,7 @@
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_01">
 
 		<!-- ART -->
-		<Land_Model_Name>WO_Dumpster_mass.alo</Land_Model_Name>
+		<Land_Model_Name>AB_purifier_crown.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
 		<AssetBank> BANK_NONE </AssetBank>
 
@@ -764,8 +765,8 @@
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 
-			<Projectile_Blast_Area_Damage> 30 </Projectile_Blast_Area_Damage>
-			<Projectile_Blast_Area_Range> 75 </Projectile_Blast_Area_Range>
+			<Projectile_Blast_Area_Damage> 1000 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Range> 2000 </Projectile_Blast_Area_Range>
 
 		   <Projectile_Object_Detonation_Particle>mass_drop_hit</Projectile_Object_Detonation_Particle>
 		   <Projectile_Ground_Detonation_Particle>mass_drop_hit</Projectile_Ground_Detonation_Particle>
@@ -1162,7 +1163,7 @@
 	
 	
 
-</Alien_Superweapon_Mass_Drop_XML>
+</Alien_Supperweapon_Mass_Drop_XML>
 
 
 
