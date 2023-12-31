@@ -75,7 +75,7 @@
 		<Ranged_Target_Z_Adjust>14.0</Ranged_Target_Z_Adjust>
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Tactical_Health> 425 </Tactical_Health>
-		<Projectile_Types>Proj_Novus_Antimatter_Cannon</Projectile_Types>
+		<Projectile_Types>Proj_Firetank_Flamethrower</Projectile_Types>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -106,11 +106,16 @@
       EFFECT_GENERATOR,
       ATTRIBUTE_DIRECTORY,
       AI_RECRUITABLE,
+         HARD_POINT_MANAGER,
       TACTICAL_SELL,
 		TACTICAL_AI,
       SQUASH,
       AI_TARGET
     </LandBehavior>
+
+		<Attached_Hard_Points>
+         Alien_Flame_Shield, B_Cockpit
+      </Attached_Hard_Points>
 
 		<BehaviorType Name="SelectableBehaviorType">
 			<!-- DME 02/05/08 magnetism testing-->
@@ -164,13 +169,21 @@
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
-			<Targeting_Priority_Set> Novus_Antimatter_Tank_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 0.9 </Targeting_Fire_Inaccuracy>
+			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+			<Targeting_Priority_Set> Military_Flame_Marine_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Fire_Recharge_Seconds>1.2</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>1.2</Projectile_Fire_Pulse_Delay_Seconds>
+			<Targeting_Max_Attack_Distance> 70.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Firetank_Flamethrower</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>0.05</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
+			<Projectile_Fire_Pulse_Count>20</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.1</Projectile_Fire_Pulse_Delay_Seconds>
+			<Looping_Attack_Particle_System> </Looping_Attack_Particle_System>
+			<Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
+			<Looped_Attack_Anim_Timeout> 8 </Looped_Attack_Anim_Timeout>
+			<Delay_Looped_Attack_Sound_Termination>0.1</Delay_Looped_Attack_Sound_Termination>
+			<Blend_After_Attack>false </Blend_After_Attack>
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
@@ -220,11 +233,11 @@
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire>SFX_Novus_Antimatter_Fire</SFXEvent_Fire>
+			<SFXEvent_Fire>SFX_Military_Flamethrower_Loop</SFXEvent_Fire>
 			<SFXEvent_Select>Unit_Select_Novus_Antimatter_Tank</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Novus_Antimatter_Tank</SFXEvent_Move>
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Novus_Antimatter_Tank</SFXEvent_Move_At_Top_Speed>
-			<SFXEvent_Attack>Unit_Attack_A_Novus_Antimatter_Tank</SFXEvent_Attack>
+			<SFXEvent_Attack>Unit_Attack_A_Military_Flamethrower</SFXEvent_Attack>
 			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Novus_Antimatter_Tank</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Guard />
 			<SFXEvent_Turret_Rotating_Loop> SFX_Novus_Small_Turret_Loop </SFXEvent_Turret_Rotating_Loop>
@@ -241,6 +254,7 @@
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>
 
 		</BehaviorType>
+
 
 		<BehaviorType Name="BlobShadowBehaviorType">
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
@@ -356,6 +370,30 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
+         <!-- <Effect_Generator Name="MatterEngineOnDeathExplosionGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Starts_Active> true </Starts_Active>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> MatterEngineOnDeathExplosionEffect </Effect_Name>
+               <Remove_On_Death> false </Remove_On_Death>
+               <Duration> 3.0 </Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+               <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+               <Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+               <Target_Filter_Categories> All </Target_Filter_Categories>
+               <Linked_Effect_Names> MatterEngineOnDeathExplosionDamageEffect2 </Linked_Effect_Names>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> MatterEngineOnDeathExplosionSelfEffect </Effect_Name>
+               <Remove_On_Death> false </Remove_On_Death>
+               <Duration> 3.0 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator> -->
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
 
@@ -689,9 +727,97 @@
    </X12_Novus_Units>
 
 
+   <HardPoint Name="Alien_Flame_Shield">
+      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- ART -->
+      <Land_Model_Name>AV_Tank_Ground.alo</Land_Model_Name>
+		<Scale_Factor>1.5</Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+      <!-- CONFLICT -->
+      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Tactical_Health> 9999 </Tactical_Health>
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         HARD_POINT
+      </Behavior>
+
+		<Attributes SubObjectList="Yes">
+			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+		</Attributes>
+
+		<Is_Attackable> false </Is_Attackable>
+      <LandBehavior>
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         ABILITY_COUNTDOWN,
+         IDLE
+      </LandBehavior>
+
+	</HardPoint>
 	<!-- **************************************************************************************** -->
 	<!-- *** PROJECTILES ************************************************************************ -->
 	<!-- **************************************************************************************** -->
+
+
+	<Projectile Name="Proj_Firetank_Flamethrower">
+
+		<!-- ART -->
+		<Scale_Factor>2.0</Scale_Factor>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- MOVEMENT -->
+		<Max_Speed>4.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+		
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS-->
+		<Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
+		
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Military_Flamethrower </Damage_Type>
+		</BehaviorType>
+		
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Can_Projectile_Collide_With_Objects> false </Can_Projectile_Collide_With_Objects>
+			<Is_Projectile_Conical_AE> true </Is_Projectile_Conical_AE>
+			<Projectile_Conical_XY_Angle> 45 </Projectile_Conical_XY_Angle>
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Category>DEFAULT</Projectile_Category>
+			<Projectile_Max_Flight_Distance>100.0</Projectile_Max_Flight_Distance>
+			<Projectile_Damage>6.0</Projectile_Damage>
+			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle />
+			<Projectile_Object_Armor_Reduced_Detonation_Particle />
+			<Projectile_Ground_Detonation_Particle />
+			<Projectile_Lifetime_Detonation_Particle />
+			<Projectile_Absorbed_By_Shields_Particle />
+			<Projectile_SFXEvent_Detonate />
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> </Projectile_SFXEvent_Detonate_Reduced_By_Armor>		
+			<Projectile_Causes_Terrain_Damage>false</Projectile_Causes_Terrain_Damage>
+			<Projectile_Causes_Blackening>false</Projectile_Causes_Blackening>
+			<Terrain_Damage_Radius>25.0</Terrain_Damage_Radius>
+         <Can_Be_Redirected>False</Can_Be_Redirected>
+		</BehaviorType>
+		
+	</Projectile>
+	
 
 	<Projectile Name="Proj_Novus_Antimatter_Cannon">
 

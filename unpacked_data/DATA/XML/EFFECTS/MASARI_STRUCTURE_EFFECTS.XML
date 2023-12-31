@@ -219,6 +219,19 @@
 
 	</Effect>
 
+	<Effect Name="MatterEngineOnDeathExplosionDamageEffect2">
+
+		<Effect_Class> MatterEngineExplosionVisual </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>false</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type> Damage_Masari_Matter_Engine </Damage_Type>
+			<Damage_Amount> 200.0 </Damage_Amount>
+		</Effect_Component>
+
+	</Effect>
+
 
 	
    <!-- KDB 03-08-2007 on death radiation death self visual -->

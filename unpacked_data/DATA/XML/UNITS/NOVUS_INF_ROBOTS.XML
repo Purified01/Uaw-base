@@ -487,6 +487,7 @@
 
 		<BehaviorType Name="SFXBehaviorType">
 			<Death_SFXEvent_Start_Die>SFX_Novus_Small_Vehicle_Death</Death_SFXEvent_Start_Die>
+			<On_Death_Spawn_Object_Type> Novus_Robotic_Infantry </On_Death_Spawn_Object_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -549,6 +550,8 @@
          <Death_Fade_Time>0.01</Death_Fade_Time>
          <Remove_Upon_Death>Yes</Remove_Upon_Death>
          <Death_Explosions>Novus_Large_Explosion_Land</Death_Explosions>
+		 
+			<On_Death_Spawn_Object_Type> Novus_Robotic_Infantry </On_Death_Spawn_Object_Type>
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
