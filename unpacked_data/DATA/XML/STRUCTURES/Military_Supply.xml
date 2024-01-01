@@ -60,7 +60,7 @@
 		<!-- BEHAVIORS -->
 		<Behavior>
 			GROUND_STRUCTURE,
-			SELECTABLE
+			SELECTABLE,
             TACTICAL_ENABLER
 		</Behavior>
 		
@@ -373,7 +373,7 @@
 
     <BehaviorType Name="BuildableObjectBehaviorType">
       <Tactical_Buildable_Beacon_Type> Military_Supply_Beacon </Tactical_Buildable_Beacon_Type>
-      <Tactical_Buildable_Constructed> Military_Supply </Tactical_Buildable_Constructed>
+      <Tactical_Buildable_Constructed> Military_Supply_Depot </Tactical_Buildable_Constructed>
       <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
       <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
       <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
