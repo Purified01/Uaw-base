@@ -130,7 +130,7 @@
 			<Resource_Depot_Active_Drones>2</Resource_Depot_Active_Drones>
 			<Resource_Depot_Seconds_To_Build_Drone>2</Resource_Depot_Seconds_To_Build_Drone>
 			<Resource_Depot_Seconds_Between_Drone_Launch>2</Resource_Depot_Seconds_Between_Drone_Launch>
-			<Resource_Depot_Collection_Radius>500</Resource_Depot_Collection_Radius>
+			<Resource_Depot_Collection_Radius>10000</Resource_Depot_Collection_Radius>
 		</BehaviorType>
 			
 		<BehaviorType Name="DeathFXBehaviorType">

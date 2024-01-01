@@ -24,6 +24,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size>1</GUI_Bracket_Size>
 		<Select_Box_Scale>55</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -139,12 +140,15 @@
 		<SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>		
 
 		<!-- BEHAVIORS -->
-		<Behavior> RADAR_MAP_VISIBLE </Behavior>
+		<Behavior> 
+			RADAR_MAP_VISIBLE,
+			EFFECT_REGISTRY
+		</Behavior>
 		
-		<LandBehavior>
-			EFFECT_REGISTRY, 
+		<LandBehavior> 
+			DAMAGE_TRACKING, 
 			STUNNABLE, 
-			GUI, 
+			GUI,
 			RADAR_MAP_VISIBLE, 
 			VTOL_LOCOMOTOR, 
 			FORMATION, 
@@ -152,18 +156,13 @@
 			REVEAL, 
 			HIDE_WHEN_FOGGED, 
 			UNIT_AI, 
-			DAMAGE_TRACKING, 
 			TARGETING, 
-			AI_RECRUITABLE, 
-			AI_TARGET
+			EFFECT_GENERATOR, 
+			ATTRIBUTE_DIRECTORY, 
+			BALLISTIC,
+			COLLECTOR,
+			FLOW
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Aircraft </Armor_Type>
@@ -183,17 +182,28 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 20.0 </Idle_Chase_Range>
-      <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 100.0 </Guard_Chase_Range>
-      <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>
-      <!--Range outside of guard area unit will move-->
-      <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>
-      <!-- When given a attack move command unit will travel this distance from path to attack-->
+      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 0.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Attack_Move_Response_Range> 0.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
-    </BehaviorType>
-
+		 <Attack_Score_Rating> 0.0 </Attack_Score_Rating>
+		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
+		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
+		 <Resource_Unit_Ability> Gather_Resources_Visual_Ability </Resource_Unit_Ability>
+		 <Single_Resource_Capacity> 500.0 </Single_Resource_Capacity>
+		 <Single_Resource_Grab_Seconds> 1.0 </Single_Resource_Grab_Seconds>
+		 <Drone_Capacity> 220.0 </Drone_Capacity>
+		 <Resources_Per_Grab> 110.0 </Resources_Per_Grab>
+		 <Resources_Seconds_Per_Grab> 1.0 </Resources_Seconds_Per_Grab>
+		 <Resource_Lock_Level> 110.0 </Resource_Lock_Level>
+		 <Resource_Depot_Required> true </Resource_Depot_Required>
+		 <Resource_Drone_Search_Radius> 10000.0 </Resource_Drone_Search_Radius>
+		 <Resource_Delivery_Seconds> 0.0 </Resource_Delivery_Seconds>
+		 <Resource_Gather_Range> 80.0 </Resource_Gather_Range>
+		 <Resource_Depot_Type> Military_Supply_Depot </Resource_Depot_Type>
+	 </BehaviorType>
+    
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Priority_Set> AntiDefault </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>		
@@ -226,9 +236,17 @@
 			<Crush_Power> 0 </Crush_Power>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 0 </Unit_Pop_Cap>
 		</BehaviorType>
 
 	</X11_Military_Units>

@@ -68,7 +68,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 15000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -90,7 +90,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -125,7 +125,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -162,7 +162,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -201,7 +201,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -225,7 +225,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -255,7 +255,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 7000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -284,7 +284,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -319,7 +319,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -354,7 +354,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -378,7 +378,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -409,7 +409,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 8000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -452,7 +452,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -486,7 +486,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -513,7 +513,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 9500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -556,7 +556,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -590,7 +590,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -616,7 +616,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 9500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -659,7 +659,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -693,7 +693,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -781,7 +781,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -862,7 +862,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 16000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -970,7 +970,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 16000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1060,7 +1060,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1100,7 +1100,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1148,7 +1148,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1188,7 +1188,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1202,7 +1202,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 130 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1217,7 +1217,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1231,7 +1231,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 70 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1252,7 +1252,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 350 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1266,7 +1266,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 60 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1305,7 +1305,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 80 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1320,7 +1320,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1361,7 +1361,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1407,7 +1407,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 25 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1464,7 +1464,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1544,7 +1544,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 350 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1560,7 +1560,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1602,7 +1602,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1615,7 +1615,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1628,7 +1628,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1641,7 +1641,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1654,7 +1654,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1667,7 +1667,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1680,7 +1680,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1718,7 +1718,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1731,7 +1731,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1770,7 +1770,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1785,7 +1785,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1838,7 +1838,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 175 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> True </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1878,7 +1878,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 850 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1892,7 +1892,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1910,7 +1910,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2017,7 +2017,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2031,7 +2031,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 275 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2045,7 +2045,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2097,7 +2097,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2111,7 +2111,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2151,7 +2151,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 900 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2218,7 +2218,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2260,7 +2260,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2301,7 +2301,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2342,7 +2342,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2362,7 +2362,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2376,7 +2376,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2390,7 +2390,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2404,7 +2404,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2461,7 +2461,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2509,7 +2509,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2554,7 +2554,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2568,7 +2568,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 7000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2582,7 +2582,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 6000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2597,7 +2597,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 20000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2649,7 +2649,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2663,7 +2663,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2677,7 +2677,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2745,7 +2745,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2788,7 +2788,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2805,7 +2805,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 450 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2821,7 +2821,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2892,7 +2892,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 23000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3000,7 +3000,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3103,7 +3103,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 18000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3176,7 +3176,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 50 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3196,7 +3196,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 50 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3216,7 +3216,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 50 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3236,7 +3236,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 50 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3256,7 +3256,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 50 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
