@@ -33,12 +33,19 @@
 		<Victory_Relevant> No</Victory_Relevant>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 		<Importance> 0.6 </Importance>
-		<Shot_Type> vehicle </Shot_Type>
+		<Shot_Type> Vehicle </Shot_Type>
+
+
+		<Attributes SubObjectList="Yes">
+			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
 		
 		<!-- MOVEMENT -->
 		<MovementClass>Tracked</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>0.7</Max_Speed>
+		<Max_Speed>1.5</Max_Speed>
 		<Max_Rate_Of_Turn>1.0</Max_Rate_Of_Turn>
 		<Space_Layer> LandDynamic </Space_Layer>
 		<UnitCollisionClass> Vehicle </UnitCollisionClass>
@@ -61,11 +68,11 @@
 		<Land_FOW_Reveal_Range>450.0</Land_FOW_Reveal_Range><!--jdg tweaking ... originally 210 -->
 		<Ranged_Target_Z_Adjust>6.0</Ranged_Target_Z_Adjust>
 		<Fire_Weapon_When_Deployed>Yes</Fire_Weapon_When_Deployed>
-		<Fire_Weapon_When_Undeployed>No</Fire_Weapon_When_Undeployed>
+		<Fire_Weapon_When_Undeployed>Yes</Fire_Weapon_When_Undeployed>
 
-		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 900 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -74,7 +81,7 @@
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER -->
 		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-		<Behavior> SELECTABLE  </Behavior>
+		<Behavior> SELECTABLE, PERSISTENT_UNIT  </Behavior>
 		
 		<LandBehavior>
 			EFFECT_REGISTRY, 
@@ -99,15 +106,9 @@
 			DAMAGE_TRACKING, 
 			BALLISTIC, 
 			AI_RECRUITABLE, 
-			AI_TARGET
+			AI_TARGET,
+			TACTICAL_SELL
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Vehicle_Heavy </Armor_Type>
@@ -115,25 +116,34 @@
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
+			<Build_Cost_Credits> 650 </Build_Cost_Credits>
+			<Build_Time_Seconds> 18 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
+			<Strategic_UI_Build_Menu_Order>7</Strategic_UI_Build_Menu_Order>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 1200 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 1200 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 1150 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 250.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 325.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+	  <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
+         <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
+         <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
     </BehaviorType>
+	
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Opportunity_Fire_Enabled> false </Targeting_Opportunity_Fire_Enabled>
@@ -171,6 +181,13 @@
          		<Death_Ang_Max> 2.0 </Death_Ang_Max>
          		<Death_Horizontal_Speed>10.0</Death_Horizontal_Speed>
       		</BehaviorType>
+
+	<BehaviorType Name="TooltipBehaviorType">
+		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_DRAGOON </Tooltip_Description_Text_ID>
+		<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
+		<Tooltip_Good_Against> </Tooltip_Good_Against>
+		<Tooltip_Vulnerable_To> </Tooltip_Vulnerable_To>
+	</BehaviorType>
 		
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire>SFX_Military_Target_Fire</SFXEvent_Fire>
@@ -214,7 +231,16 @@
 		
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 6 </Unit_Pop_Cap>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.03 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<!-- HARDPOINTS - will be able to shoot on objects that have been revealed by dynamic scanner -->
@@ -227,6 +253,16 @@
 			HP_Military_Dragoon_Right_Flap, HP_FLAP_05
 			HP_Military_Dragoon_TargetingTurret, HP_MARKING
 		</Attached_Hard_Points>
+		
+		<BehaviorType NAme="LuaScriptBehaviorType">
+		  <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
+		  <Lua_Land_Behaviors>Military_Dragoon_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
+		  <Lua_Script_Data>
+				MTRVScanBehavior = {}
+				MTRVScanBehavior.AbilityName = "Dragoon_Scan"
+				MTRVScanBehavior.CleanMindControl = true
+			</Lua_Script_Data>
+		</BehaviorType>
 
 		<!-- ABILITIES -->
 		<Unit_Abilities_Data SubObjectList="Yes">
@@ -234,19 +270,55 @@
 			<!-- Primary ability -->
 			<Unit_Ability Name="Dragoon_Deploy">
 				<Type>DEPLOY</Type>
+				<!--<Active_By_Default> true </Active_By_Default>-->
+				<!--<GUI_Activated_Ability_Name> DragoonDeploy </GUI_Activated_Ability_Name>-->
 			</Unit_Ability>
 			
 			<Unit_Ability Name="Dragoon_Scan">
 				<Type>DRAGOON_SCAN</Type>
-				<Expiration_Seconds> 30.0 </Expiration_Seconds>
-				<Recharge_Seconds>3</Recharge_Seconds>
-				<Area_Effect_Decal_Distance> 250.0 </Area_Effect_Decal_Distance> 
+				<Expiration_Seconds> 13.0 </Expiration_Seconds>
+				<Recharge_Seconds>30.0</Recharge_Seconds>
+				<Effective_Max_Radius> 0.0 </Effective_Max_Radius> <!-- 0.0 means no distance factor, unlimited to entire map -->
+				<Area_Effect_Decal_Distance> 200.0 </Area_Effect_Decal_Distance> 
 				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
 				<Is_Modal> Yes </Is_Modal>
-				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>			
+				<Effect_Generator_Name>MTRVScanPulseFriendlyEffectGenerator</Effect_Generator_Name>
+				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>	
 			</Unit_Ability>
 			
 		</Unit_Abilities_Data>
+		
+		<Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MilitaryVehicleBoostArmorGenerator">
+				<!-- 15% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryVehicleBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MTRVScanPulseFriendlyEffectGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> MTRVScanPulseFriendlyEffect </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 180.0 </Area_Effect_Radius>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+		</Effect_Generator_Data>
 		
 	</X11_Military_Units>
 
@@ -637,6 +709,10 @@
 			<Attack_Move_Response_Range> 1.0 </Attack_Move_Response_Range>
 			<Autonomous_Move_Extension_Vs_Attacker> 1.0 </Autonomous_Move_Extension_Vs_Attacker>
 			<AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+			<Attack_Score_Rating> 0.6 </Attack_Score_Rating><!--Remove Testing-->
+			<Scout_Score_Rating> 0.8 </Scout_Score_Rating><!--Remove Testing-->
+			<Guerilla_Score_Rating> 0.3 </Guerilla_Score_Rating><!--Remove Testing-->
+			<Tactical_AI_Search_Range> 175.0 </Tactical_AI_Search_Range><!--Remove Testing-->
 		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -644,10 +720,10 @@
 			<Targeting_Stickiness_Time_Threshold>30.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Military_Dragoon_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>		
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 550.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 10.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 280.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types> Proj_Dynamic_Scanner_Fixed_Weapon </Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>7.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Seconds>4.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>1</Projectile_Fire_Pulse_Delay_Seconds>		
 		</BehaviorType>
@@ -692,6 +768,10 @@
 
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
 		</BehaviorType>
 
 		<BehaviorType Name="BallisticBehaviorType">
@@ -831,6 +911,10 @@
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
+		</BehaviorType>
+
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire>SFX_Military_Tank_Fire</SFXEvent_Fire>
 			<Death_SFXEvent_Start_Die>SFX_Military_Turret_Death</Death_SFXEvent_Start_Die>
@@ -892,10 +976,11 @@
 	</Projectile>
 	
 	<Projectile Name="Proj_Dynamic_Scanner_Fixed_Weapon">
-		<Text_ID>TEXT_NONE</Text_ID>
+		<Text_ID>TEXT_UNIT_MILITARY_DRAGOON_MTRV</Text_ID>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Land_Model_Name>wf_dsa_missile.alo</Land_Model_Name>	
+		<Land_Model_Name>wf_dsa_missile.alo</Land_Model_Name>
+		<Projectile_Custom_Render>0</Projectile_Custom_Render>		
 		<Scale_Factor>1.0</Scale_Factor>
 		<Max_Speed>7.0</Max_Speed>
       <AssetBank> BANK_MILITARY </AssetBank>
@@ -909,6 +994,7 @@
 		<!-- <Explode_When_Reached_Target_Radius>Yes</Explode_When_Reached_Target_Radius> -->
 	
 		<AI_Combat_Power>200</AI_Combat_Power>
+		
 		<BehaviorType Name="ProjectileBehaviorType">
 			<Projectile_Texture_Slot>1, 0</Projectile_Texture_Slot>
 			<Projectile_Width>0.8</Projectile_Width>
@@ -916,7 +1002,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>100.0</Projectile_Damage>
+			<Projectile_Damage>110.0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage>75</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
@@ -935,7 +1021,7 @@
 			<Projectile_Rocket_Curve_Offset>50</Projectile_Rocket_Curve_Offset>
 			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
-         <SFXEvent_Projectile_Flying_Loop>  SFX_Military_Missile_Loop </SFXEvent_Projectile_Flying_Loop> 
+			<SFXEvent_Projectile_Flying_Loop>  SFX_Military_Missile_Loop </SFXEvent_Projectile_Flying_Loop> 
 			<SFXEvent_Projectile_Start_Flight>  SFX_Military_Missile_Fire </SFXEvent_Projectile_Start_Flight>
 		</BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -955,13 +1041,13 @@
 		<Behavior>DYNAMIC_SCANNER, REVEAL</Behavior> <!-- how long does the lock on targets lasts -->   <!-- how much time does this scanner needs to scan (lifetime) -->
       <AssetBank> BANK_MILITARY </AssetBank>
 
-		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range> <!-- REVEAL for FOW -->
-		<Dense_FOW_Reveal_Range_Multiplier>300.0</Dense_FOW_Reveal_Range_Multiplier> <!-- REVEAL for FOW -->
+		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range> <!-- REVEAL for FOW -->
+		<Dense_FOW_Reveal_Range_Multiplier>100.0</Dense_FOW_Reveal_Range_Multiplier> <!-- REVEAL for FOW -->
 
 		<BehaviorType Name="DynamicScannerBehaviorType">
-			<Dynamic_Scan_Radius>300</Dynamic_Scan_Radius>
+			<Dynamic_Scan_Radius>180</Dynamic_Scan_Radius>
 			<Dynamic_Scan_Lock_Duration_Seconds>8.0</Dynamic_Scan_Lock_Duration_Seconds>
-			<Dynamic_Scan_Duration_Seconds>15.25</Dynamic_Scan_Duration_Seconds>
+			<Dynamic_Scan_Duration_Seconds>3</Dynamic_Scan_Duration_Seconds>
 			<Scanner_Delay_Scan_Seconds>0.01</Scanner_Delay_Scan_Seconds>
 			<Dynamic_Scan_Max_Number_Targets>50</Dynamic_Scan_Max_Number_Targets>
 		</BehaviorType>

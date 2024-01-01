@@ -254,7 +254,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>35</Crush_Defense>
+			<Crush_Defense>38</Crush_Defense>
       <Crush_Power>6</Crush_Power>
 		</BehaviorType>
 
@@ -738,7 +738,7 @@
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 10 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 20 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 20 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
@@ -802,7 +802,7 @@
 			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
 			<Projectile_Damage>0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage> 35 </Projectile_Blast_Area_Damage>
-			<Projectile_Blast_Area_Range> 30 </Projectile_Blast_Area_Range>
+			<Projectile_Blast_Area_Range> 35 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

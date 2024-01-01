@@ -5,33 +5,29 @@
 
 	<Faction Name="Military">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> 0 </SFX_Bank_Index>
-
+     <Multiplayer_Beacon_Type> Multiplayer_Beacon </Multiplayer_Beacon_Type>
+	 <Structure_Rally_Point_Type> Masari_Structure_Rally_Flag </Structure_Rally_Point_Type>
+	 
 		<!-- MARIA 10.18.2006 
 			 This field is to determine how "tactical money" (raw materials) will be converted into
 			 "strategic money" (credits) once the tactical battle is over -->
 		<Raw_Materials_To_Credits_Conversion_Rate> 0.0 </Raw_Materials_To_Credits_Conversion_Rate>
-		
+
+		<Tactical_GUI_Scene_Name> MILITARY_Tactical_Command_Bar </Tactical_GUI_Scene_Name>
+		<GUI_Mega_Texture_Name> MT_CommandBar_Military_Megatexture </GUI_Mega_Texture_Name>
+                <Strategic_GUI_Scene_Name> Military_global_Command_Bar </Strategic_GUI_Scene_Name>
 		<Is_Debug_Switchable_To> Yes </Is_Debug_Switchable_To>
 		<Text_ID> TEXT_FACTION_MILITARY </Text_ID>
-		<Is_Human_Playable> No </Is_Human_Playable>
+		<Is_Human_Playable> Yes </Is_Human_Playable>
 		<Is_AI_Playable> Yes </Is_AI_Playable>
 		<Primary_Enemy />
 		<Is_Neutral> No </Is_Neutral>
 		<Basic_AI>DefaultAIPlayer</Basic_AI>
 		<Radar_Color> 10, 180, 80, 255 </Radar_Color>
 		<No_Colorization_Color> 109, 124, 55, 255 </No_Colorization_Color>
-		<Fleet_Icon_Name>i_button_uea_fleettag.tga</Fleet_Icon_Name>
-		<Create_Player_In_Multiplayer_Games> true </Create_Player_In_Multiplayer_Games>
-		<!-- Military do not feature in global; since, however, it's possible to switch to them by sneaky means, we had better -->
-		<!-- give them some UI.  They can share Novus's for now. -->
-		<Strategic_GUI_Scene_Name> Novus_Global_Command_Bar </Strategic_GUI_Scene_Name>
-		<Tactical_GUI_Scene_Name> MILITARY_Tactical_Command_Bar </Tactical_GUI_Scene_Name>
-		<GUI_Mega_Texture_Name> MT_CommandBar_Military_Megatexture </GUI_Mega_Texture_Name>
+		<Fleet_Icon_Name>i_button_novus_fleettag.tga</Fleet_Icon_Name>
+		<Create_Player_In_Multiplayer_Games> false </Create_Player_In_Multiplayer_Games>
       <AssetBank> BANK_MILITARY </AssetBank>
-      <UIAssetBank> BANK_MILITARY_UI </UIAssetBank>
-      <BattleLoadAssetBank> BANK_BATTLE_LOAD_MILITARY </BattleLoadAssetBank>
 
 		<!-- MULTIPLAYER DATA BEGIN	-->
 		<Land_Skirmish_Unit_Cap_By_Player_Count>
@@ -39,13 +35,15 @@
 			1,10,
 			8,5,
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
-		<Pop_Cap_For_Multiplayer_Games> 50 </Pop_Cap_For_Multiplayer_Games>
-		<!-- MULTIPLAYER DATA END	-->
+    <Multiplayer_Starting_Credits> 10000 </Multiplayer_Starting_Credits>
+    <Multiplayer_Starting_Credit_Level_Values> 4000,7000,20000 </Multiplayer_Starting_Credit_Level_Values>
+    <Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
+    <!-- MULTIPLAYER DATA END	-->
 
 
 
 
-		<!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
+    <!-- Maria 05.01.2006 - Adding new field to support limiting the pop cap of a region based on the owning faction -->
 		<Regional_Pop_Cap> 90 </Regional_Pop_Cap>
 
 
@@ -88,7 +86,6 @@
 		<!-- ============================================= -->
 
 		<Strategic_Map_Music_Event> Military_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
-		<Music_Event_Battle_Load_Screen> Military_Strategic_Map_Music_Event </Music_Event_Battle_Load_Screen>
 
 		<Music_Event_List_Ambient> Temperate, 	Temperate_Land_Military_Ambient_Music_Event </Music_Event_List_Ambient>
 		<Music_Event_List_Ambient> Arctic, 		Ice_Land_Military_Ambient_Music_Event </Music_Event_List_Ambient>
@@ -118,8 +115,14 @@
 		<SFXEvent_Tactical_Object_Building_Loop> SFX_Structure_Buildable_Loop </SFXEvent_Tactical_Object_Building_Loop> <!-- An object is currently under construction (loop) in the world -->
 		<SFXEvent_Tactical_Object_Building_Complete> SFX_Structure_Buildable_End </SFXEvent_Tactical_Object_Building_Complete> <!-- An object has just completed construction in the world -->
 		<SFXEvent_Tactical_Object_Sold> SFX_Structure_Buildable_Sold </SFXEvent_Tactical_Object_Sold> <!-- An object is sold in the world -->
+		<Music_Event_Tactical_Win> Alien_Win_Tactical_Event </Music_Event_Tactical_Win>
+		<Music_Event_Tactical_Lose>  </Music_Event_Tactical_Lose>
+		<Music_Event_Strategic_Win> Alien_Win_Strategic_Event </Music_Event_Strategic_Win>
+		<Music_Event_Strategic_Lose>  </Music_Event_Strategic_Lose>
+		
 
-		<!-- ============================================== -->
+
+                <!-- ============================================== -->
 		<!-- SFX OBJECT SPOTTED ANNOUNCEMENTS	                -->
 		<!-- ============================================== -->
 
@@ -147,19 +150,19 @@
 		<SFXEvent_GC_Tactical_Traverse_GUI_Option> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Traverse_GUI_Option>
 		<SFXEvent_GC_Tactical_Sub_Select_Next_Unit> GUI_Main_Menu_Options_Select </SFXEvent_GC_Tactical_Sub_Select_Next_Unit>
 		<SFXEvent_GC_Tactical_Clear_GUI_Key_Focus> GUI_Main_Menu_Button_Select </SFXEvent_GC_Tactical_Clear_GUI_Key_Focus>
-		<SFXEvent_GC_Tactical_Start_Paint_Select> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Start_Paint_Select>
 		<!-- End SFXEvents for playing in tactical mode with the Game Controller -->
 
 
+		<Lua_Script>Military_Player</Lua_Script>
 
 		<Allies />
 		<Enemies>Alien, Hostile, Novus, Masari</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Military_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 199, 226, 23, 255 </Highlight_Blob_RGBA>
-		
+
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
+
+        <Invasion_Transport> Military_Dropship </Invasion_Transport>
 
 		<Reinforcements_Shadow_Blob_Material_Name> Reinforcement_Overlay_Human </Reinforcements_Shadow_Blob_Material_Name>
 
@@ -172,26 +175,27 @@
 		<Radar_Map_Background_Tint>220, 255, 220, 255</Radar_Map_Background_Tint>
 		<Radar_Map_Filter>Military_Radar_Map_Filter</Radar_Map_Filter>
 		<Campaign_Radar_Map_Filter>Military_Radar_Map_Filter</Campaign_Radar_Map_Filter>
-
-		<Disregard_Strategic_Fleet> true </Disregard_Strategic_Fleet>
-		<Strategic_Hero_Pad_Model_Name> region_pad_military.alo </Strategic_Hero_Pad_Model_Name>
+		<Strategic_Hero_Pad_Model_Name> REGION_PAD_MILITARY.alo </Strategic_Hero_Pad_Model_Name>
 
 		<Tactical_Production_Num_Units_Per_Batch>1</Tactical_Production_Num_Units_Per_Batch>
 		<Tactical_Production_Num_Batches_Per_UI_Slot>1</Tactical_Production_Num_Batches_Per_UI_Slot>
 		<Region_Texture> wt_earth_neutral.tga </Region_Texture>
 		<Region_Texture_Solid> wt_earth_neutral_solid.tga </Region_Texture_Solid>
-      <Structure_Rally_Point_Type> Military_Structure_Rally_Flag </Structure_Rally_Point_Type>
+                <Structure_Rally_Point_Type> Military_Structure_Rally_Flag </Structure_Rally_Point_Type>
 		<Waypoint_Flag_Model_Name> W_flag_rally_military.alo </Waypoint_Flag_Model_Name>
 		<Loading_Texture_Name> splash_military.dds </Loading_Texture_Name>
+                <Headquarters_Type> Military_Central_Processor </Headquarters_Type>
+                <Global_Transport_Blip_Type> Military_Global_Transport_Blip </Global_Transport_Blip_Type>
 
-      <Controller_Custom_CG_Texture_Prefix> i_icon_m_ctrl_ </Controller_Custom_CG_Texture_Prefix>
+
+
+      <Production_Tooltip_Category_Text> Command_Center, TEXT_NOVUS_PRODUCTION_TOOLTIP_CATEGORY_COMMAND_CENTER </Production_Tooltip_Category_Text>
+
+
    </Faction>
 
 
 	<Faction Name="Alien">
-
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> 1 </SFX_Bank_Index>
 
       <Multiplayer_Beacon_Type> Multiplayer_Beacon </Multiplayer_Beacon_Type>
       <Structure_Rally_Point_Type> Alien_Structure_Rally_Flag </Structure_Rally_Point_Type>
@@ -218,8 +222,6 @@
 		<Fleet_Icon_Name>i_button_alien_fleettag.tga</Fleet_Icon_Name>
 		<Create_Player_In_Multiplayer_Games> false </Create_Player_In_Multiplayer_Games>
       <AssetBank> BANK_ALIEN </AssetBank>
-      <UIAssetBank> BANK_ALIEN_UI </UIAssetBank>
-      <BattleLoadAssetBank> BANK_BATTLE_LOAD_ALIEN </BattleLoadAssetBank>
 
 
 		<!-- MULTIPLAYER DATA BEGIN	-->
@@ -278,7 +280,6 @@
 		<!-- ============================================= -->
 
 		<Strategic_Map_Music_Event> Alien_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
-		<Music_Event_Battle_Load_Screen> Alien_Strategic_Map_Music_Event </Music_Event_Battle_Load_Screen>
 
 		<Music_Event_List_Ambient> Temperate, 	Temperate_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>
 		<Music_Event_List_Ambient> Arctic, 		Ice_Land_Alien_Ambient_Music_Event </Music_Event_List_Ambient>
@@ -343,7 +344,6 @@
 		<SFXEvent_GC_Tactical_Traverse_GUI_Option> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Traverse_GUI_Option>
 		<SFXEvent_GC_Tactical_Sub_Select_Next_Unit> GUI_Main_Menu_Options_Select </SFXEvent_GC_Tactical_Sub_Select_Next_Unit>
 		<SFXEvent_GC_Tactical_Clear_GUI_Key_Focus> GUI_Main_Menu_Button_Select </SFXEvent_GC_Tactical_Clear_GUI_Key_Focus>
-		<SFXEvent_GC_Tactical_Start_Paint_Select> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Start_Paint_Select>
 		<!-- End SFXEvents for playing in tactical mode with the Game Controller -->
 
 
@@ -353,8 +353,6 @@
 		<Enemies>Alien_ZM06_KamalRex, Military, Hostile, Novus, Masari, Civilian</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Alien_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 198, 79, 50, 255 </Highlight_Blob_RGBA>
 		
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 		
@@ -406,18 +404,12 @@
       
       <Pop_Cap_Categories_Build_Count_Limits> Walker, 3, -1 </Pop_Cap_Categories_Build_Count_Limits>      
 		<Loading_Texture_Name> splash_alien.dds </Loading_Texture_Name>
-
-      <!-- Gamepad: Icon for automated control groups containing mind controlled units. -->
-      <Mind_Controlled_Control_Group_Icon_Name> i_icon_mind_control.tga </Mind_Controlled_Control_Group_Icon_Name>
-      <Controller_Custom_CG_Texture_Prefix> i_icon_a_ctrl_ </Controller_Custom_CG_Texture_Prefix>
+      
    </Faction>
 
 	<Faction Name="Novus">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> 2 </SFX_Bank_Index>
-
-      <Multiplayer_Beacon_Type> Multiplayer_Beacon </Multiplayer_Beacon_Type>
+     <Multiplayer_Beacon_Type> Multiplayer_Beacon </Multiplayer_Beacon_Type>
       <Structure_Rally_Point_Type> Novus_Structure_Rally_Flag </Structure_Rally_Point_Type>
 
       <!-- MARIA 06.02.2007   - DO NOT REMOVE THIS ENTRY!!!!! THIS IS USED BY THE PATCHES SYSTEM FOR NOVUS!!!!! -->
@@ -444,8 +436,6 @@
       <Fleet_Icon_Name>i_button_novus_fleettag.tga</Fleet_Icon_Name>
       <Create_Player_In_Multiplayer_Games> false </Create_Player_In_Multiplayer_Games>
       <AssetBank> BANK_NOVUS </AssetBank>
-      <UIAssetBank> BANK_NOVUS_UI </UIAssetBank>
-      <BattleLoadAssetBank> BANK_BATTLE_LOAD_NOVUS </BattleLoadAssetBank>
 
       <Strategic_Hero_Pad_Model_Name> region_pad_novus.alo </Strategic_Hero_Pad_Model_Name>
 
@@ -503,7 +493,6 @@
       <!-- ============================================= -->
 
       <Strategic_Map_Music_Event> Novus_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
-      <Music_Event_Battle_Load_Screen> Novus_Strategic_Map_Music_Event </Music_Event_Battle_Load_Screen>
 
       <Music_Event_List_Ambient> Temperate, 	Temperate_Land_Novus_Ambient_Music_Event </Music_Event_List_Ambient>
       <Music_Event_List_Ambient> Arctic, 		Ice_Land_Novus_Ambient_Music_Event </Music_Event_List_Ambient>
@@ -572,8 +561,7 @@
       <SFXEvent_GC_Tactical_Traverse_GUI_Option> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Traverse_GUI_Option>
       <SFXEvent_GC_Tactical_Sub_Select_Next_Unit> GUI_Main_Menu_Options_Select </SFXEvent_GC_Tactical_Sub_Select_Next_Unit>
       <SFXEvent_GC_Tactical_Clear_GUI_Key_Focus> GUI_Main_Menu_Button_Select </SFXEvent_GC_Tactical_Clear_GUI_Key_Focus>
-		<SFXEvent_GC_Tactical_Start_Paint_Select> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Start_Paint_Select>
-		<!-- End SFXEvents for playing in tactical mode with the Game Controller -->
+      <!-- End SFXEvents for playing in tactical mode with the Game Controller -->
 
 
       <!-- ============================================== -->
@@ -588,16 +576,18 @@
       <SFXEvent_GUI_Enemy_Toggle_Non_Hero_Ability_On> </SFXEvent_GUI_Enemy_Toggle_Non_Hero_Ability_On>
       <SFXEvent_GUI_Enemy_Toggle_Non_Hero_Ability_Off> </SFXEvent_GUI_Enemy_Toggle_Non_Hero_Ability_Off>
 
+
+
+
+
       <Reinforcements_Shadow_Blob_Material_Name> Reinforcement_Overlay_Novus </Reinforcements_Shadow_Blob_Material_Name>
 
       <Lua_Script>Novus_Player</Lua_Script>
-      <Allies> Novus_Two </Allies>
+      <Allies />
       <Enemies>Hostile, Alien, Military, Masari</Enemies>
 
       <Selection_Blob_Material_Name>Selection_Novus_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 140, 255, 234, 255 </Highlight_Blob_RGBA>
-		
+
       <Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 
       <Invasion_Transport> NOVUS_Air_Invasion_Transport </Invasion_Transport>
@@ -641,16 +631,9 @@
       <!-- ************************************************************************************************* -->
 		<Loading_Texture_Name> splash_novus.dds </Loading_Texture_Name>
 
-      <!-- Gamepad: Icon for automated control groups containing mind controlled units. -->
-      <Mind_Controlled_Control_Group_Icon_Name> i_icon_viral_control.tga </Mind_Controlled_Control_Group_Icon_Name>
-      <Controller_Custom_CG_Texture_Prefix> i_icon_n_ctrl_ </Controller_Custom_CG_Texture_Prefix>
-
    </Faction>
 
    <Faction Name="Neutral">
-
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
 
       <Is_Debug_Switchable_To> No </Is_Debug_Switchable_To>
       <Text_ID> TEXT_FACTION_NEUTRAL </Text_ID>
@@ -671,9 +654,6 @@
 
    <Faction Name="Civilian">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
-
       <Is_Debug_Switchable_To> No </Is_Debug_Switchable_To>
       <Text_ID> TEXT_FACTION_CIVILIAN </Text_ID>
       <Is_Human_Playable> No </Is_Human_Playable>
@@ -686,9 +666,6 @@
    </Faction>
 
    <Faction Name="Hostile">
-
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
 
       <Is_Debug_Switchable_To> No </Is_Debug_Switchable_To>
       <Text_ID> TEXT_FACTION_HOSTILE </Text_ID>
@@ -706,8 +683,6 @@
 
    <Faction Name="Masari">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> 3 </SFX_Bank_Index>
 
       <Multiplayer_Beacon_Type> Multiplayer_Beacon </Multiplayer_Beacon_Type>
       <Structure_Rally_Point_Type> Masari_Structure_Rally_Flag </Structure_Rally_Point_Type>
@@ -734,8 +709,6 @@
 		<Create_Player_In_Multiplayer_Games> false </Create_Player_In_Multiplayer_Games>
 		<Is_Elemental_Influenced> true </Is_Elemental_Influenced>
       <AssetBank> BANK_MASARI </AssetBank>
-      <UIAssetBank> BANK_MASARI_UI </UIAssetBank>
-      <BattleLoadAssetBank> BANK_BATTLE_LOAD_MASARI </BattleLoadAssetBank>
 
 		<!-- MULTIPLAYER DATA BEGIN	-->
 		<Land_Skirmish_Unit_Cap_By_Player_Count>
@@ -795,7 +768,6 @@
 		<!-- ============================================= -->
 
 		<Strategic_Map_Music_Event> Masari_Strategic_Map_Music_Event </Strategic_Map_Music_Event>
-		<Music_Event_Battle_Load_Screen> Masari_Strategic_Map_Music_Event </Music_Event_Battle_Load_Screen>
 
 		<Music_Event_List_Ambient> Temperate, 	Temperate_Land_Masari_Ambient_Music_Event </Music_Event_List_Ambient>
 		<Music_Event_List_Ambient> Arctic, 		Ice_Land_Masari_Ambient_Music_Event </Music_Event_List_Ambient>
@@ -862,7 +834,6 @@
 		<SFXEvent_GC_Tactical_Traverse_GUI_Option> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Traverse_GUI_Option>
 		<SFXEvent_GC_Tactical_Sub_Select_Next_Unit> GUI_Main_Menu_Options_Select </SFXEvent_GC_Tactical_Sub_Select_Next_Unit>
 		<SFXEvent_GC_Tactical_Clear_GUI_Key_Focus> GUI_Main_Menu_Button_Select </SFXEvent_GC_Tactical_Clear_GUI_Key_Focus>
-		<SFXEvent_GC_Tactical_Start_Paint_Select> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Start_Paint_Select>
 		<!-- End SFXEvents for playing in tactical mode with the Game Controller -->
 
 
@@ -885,8 +856,6 @@
 		<Enemies>Hostile, Alien, Military, Novus</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Masari_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 199, 226, 23, 255 </Highlight_Blob_RGBA>
 
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 
@@ -931,14 +900,11 @@
 		<!-- This is the capacity of the Masari bank without any Matter Engines -->
 		<Baseline_Bank_Capacity> 400 </Baseline_Bank_Capacity>
 		<Loading_Texture_Name> splash_masari.dds </Loading_Texture_Name>
-      <Controller_Custom_CG_Texture_Prefix> i_icon_z_ctrl_ </Controller_Custom_CG_Texture_Prefix>
 	
 </Faction>
 
 	<Faction Name="MilitaryTwo">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
 
 		<!-- MARIA 10.18.2006 
 			 This field is to determine how "tactical money" (raw materials) will be converted into
@@ -955,7 +921,7 @@
 		<Radar_Color> 109, 124, 55, 255 </Radar_Color>
 		<No_Colorization_Color> 109, 124, 55, 255 </No_Colorization_Color>
 		<Fleet_Icon_Name>i_button_uea_fleettag.tga</Fleet_Icon_Name>
-		<Create_Player_In_Multiplayer_Games> false </Create_Player_In_Multiplayer_Games>
+		<Create_Player_In_Multiplayer_Games> true </Create_Player_In_Multiplayer_Games>
 		<Tactical_GUI_Scene_Name> MILITARY_Tactical_Command_Bar </Tactical_GUI_Scene_Name>
 		<GUI_Mega_Texture_Name> MT_CommandBar_Military_Megatexture </GUI_Mega_Texture_Name>
 
@@ -1052,17 +1018,16 @@
 		<SFXEvent_GC_Tactical_Traverse_GUI_Option> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Traverse_GUI_Option>
 		<SFXEvent_GC_Tactical_Sub_Select_Next_Unit> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Sub_Select_Next_Unit>
 		<SFXEvent_GC_Tactical_Clear_GUI_Key_Focus> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Clear_GUI_Key_Focus>
-		<SFXEvent_GC_Tactical_Start_Paint_Select> GUI_Common_Dialog_Button_Press </SFXEvent_GC_Tactical_Start_Paint_Select>
 		<!-- End SFXEvents for playing in tactical mode with the Game Controller -->
 
 
+
+		<Lua_Script>Military_Player</Lua_Script>
 
 		<Allies />
 		<Enemies>Alien, Hostile, Novus, Masari</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Military_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 199, 226, 23, 255 </Highlight_Blob_RGBA>
 
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 
@@ -1087,9 +1052,6 @@
 	</Faction>
 	
 	<Faction Name="Alien_ZM06_KamalRex">
-
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
 
 		<!-- MARIA 10.18.2006 
 			This field is to determine how "tactical money" (raw materials) will be converted into
@@ -1161,8 +1123,6 @@
 		<Enemies>Alien, Military, Hostile, Novus, Masari, Civilian</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Alien_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 198, 79, 50, 255 </Highlight_Blob_RGBA>
 		
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 		
@@ -1187,8 +1147,6 @@
 
 	<Faction Name="NovusTwo">
 
-		<!-- For Xbox 360 faction-specific SFX Megafile "banks" - See SFXMegaFileManager.h SFXMegaFileType for more -->
-		<SFX_Bank_Index> -1 </SFX_Bank_Index>
 
 		<!-- MARIA 10.18.2006 
 			This field is to determine how "tactical money" (raw materials) will be converted into
@@ -1276,13 +1234,11 @@
 		<Reinforcements_Shadow_Blob_Material_Name> Reinforcement_Overlay_Novus </Reinforcements_Shadow_Blob_Material_Name>
 
 		<Lua_Script>Novus_Player</Lua_Script>
-		<Allies> Novus </Allies>
+		<Allies />
 		<Enemies>Hostile, Alien, Military, Masari</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Novus_Land</Selection_Blob_Material_Name>
-		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
-		<Highlight_Blob_RGBA> 140, 255, 234, 255 </Highlight_Blob_RGBA>
-		
+
 		<Targeting_Range_Material_Name>	Reinforcement_Overlay_Human </Targeting_Range_Material_Name>
 
 		<Invasion_Transport> NOVUS_Air_Invasion_Transport </Invasion_Transport>

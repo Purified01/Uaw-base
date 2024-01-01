@@ -211,8 +211,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 850 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 750 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 750 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
@@ -239,8 +239,8 @@
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Novus_Dervish_Antimatter_Bomb</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 

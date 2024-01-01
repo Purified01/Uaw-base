@@ -1,0 +1,25 @@
+<?xml version="1.0" ?> 
+ 
+<Mega_Files> 
+ 
+<File> Data\Music.meg </File> 
+<File> Data\Maps.meg </File> 
+<File> Data\Retailers.meg </File> 
+<File> Data\Models.meg </File> 
+<File> Data\Movies.meg </File> 
+<File> Data\TutorialMovies.meg </File> 
+<File> Data\NovusMovies.meg </File> 
+<File> Data\MasariMovies.meg </File> 
+<File> Data\HierarchyMovies.meg </File> 
+<File> Data\Textures.meg </File> 
+<File> Data\Cinematics.meg </File> 
+<File> Data\Shaders.meg </File> 
+<File> Data\EnglishSpeech.meg </File> 
+<File> Data\FrenchSpeech.meg </File> 
+<File> Data\GermanSpeech.meg </File> 
+<File> Data\RussianSpeech.meg </File> 
+<File> Data\Patch.meg </File> 
+<File> Data\Config.meg </File>
+<File> Data\Mod.meg </File>
+
+</Mega_Files> 

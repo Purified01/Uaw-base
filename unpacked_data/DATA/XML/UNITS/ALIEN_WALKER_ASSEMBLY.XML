@@ -266,7 +266,9 @@
          <SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
          <SFXEvent_Select> Unit_Select_Alien_Assembly </SFXEvent_Select>
          <SFXEvent_Move> Unit_Move_Alien_Assembly </SFXEvent_Move>
+         <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Habitat</SFXEvent_Move_At_Top_Speed>
          <SFXEvent_Attack> Unit_Attack_Alien_Assembly </SFXEvent_Attack>
+         <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Habitat</SFXEvent_Attack_At_Top_Speed>
          <SFXEvent_Guard> Unit_Move_Alien_Assembly </SFXEvent_Guard>
          <SFXEvent_Ambient_Moving> SFX_Alien_Walker_Random_Breath </SFXEvent_Ambient_Moving>
          <SFXEvent_Engine_Idle_Loop> SFX_Alien_Assembly_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -365,18 +367,44 @@
 
          <Effect_Generator Name="AssemblyWalkerHardPointArmorGenerator">
 
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-            <Effect_Generator_Entry Name="Entry1">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
 
-               <Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
-               <Duration> 3.1 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-               <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
 
-            </Effect_Generator_Entry>
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
+
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
 
          </Effect_Generator>
 
@@ -2603,7 +2631,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -2669,7 +2697,7 @@
       <Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2712,7 +2740,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2741,7 +2769,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="BuildableObjectBehaviorType">

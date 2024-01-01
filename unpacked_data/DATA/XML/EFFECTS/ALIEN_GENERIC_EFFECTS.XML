@@ -171,7 +171,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>    
 
 	</Effect>
@@ -191,7 +190,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
       <Effect_Component Type="Lightning">
@@ -360,9 +358,9 @@
 	
 	<Effect Name="WalkerVolatileReactorExplosionVisualEffect">
 
-		<Duration> 3.0 </Duration>
+		<Duration> 20.0 </Duration>
 		<Effect_Class> DefilerBleedVisual </Effect_Class>
-		<Priority> 3.0 </Priority>
+		<Priority> 20.0 </Priority>
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Radiation_Core_Detonate_WALK </Particle_System_Type>
@@ -372,7 +370,7 @@
 
 	<Effect Name="WalkerVolatileReactorDamageEffect">
 
-		<Duration> 10.0 </Duration>
+		<Duration> 20.0 </Duration>
 		<Effect_Class> DefilerRadiation </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
@@ -397,9 +395,9 @@
 	
 	<Effect Name="WalkerVolatileReactorGammaExplosionVisualEffect">
 
-		<Duration> 3.0 </Duration>
+		<Duration> 20.0 </Duration>
 		<Effect_Class> DefilerBleedVisualGamma </Effect_Class>
-		<Priority> 3.0 </Priority>
+		<Priority> 20.0 </Priority>
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Gamma_Radiation_Core_Detonate_WALK </Particle_System_Type>
@@ -409,7 +407,7 @@
 
 	<Effect Name="WalkerVolatileReactorGammaDamageEffect">
 
-		<Duration> 10.0 </Duration>
+		<Duration> 20.0 </Duration>
 		<Effect_Class> DefilerRadiation </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
@@ -431,14 +429,74 @@
 
 	</Effect>
 	
+	<!--Test effects-->
+	
+	<Effect Name="NukeVolatileReactorExplosionVisualEffect">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> DefilerBleedVisual </Effect_Class>
+		<Priority> 3.0 </Priority>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Radiation_Core_Detonate_WALK </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="NukeVolatileReactorDamageEffect">
+
+		<Duration> 32.0 </Duration>
+		<Effect_Class> DefilerRadiation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Alien_NU_Radiation </Damage_Type>
+			<Amount_Per_Second> 8.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Radiation_Harmful_Glow </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	<Effect Name="NukeVolatileReactorGammaExplosionVisualEffect">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> DefilerBleedVisualGamma </Effect_Class>
+		<Priority> 3.0 </Priority>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Gamma_Radiation_Core_Detonate_WALK </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="NukeVolatileReactorGammaDamageEffect">
+
+		<Duration> 32.0 </Duration>
+		<Effect_Class> DefilerRadiation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Alien_NU_Radiation </Damage_Type><!--Damage_Alien_NU_Radiation-->
+			<Amount_Per_Second> 11.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Gamma_Radiation_Harmful_Glow </Particle_System_Type>
+		</Effect_Component>
+		
+		<!--<Effect_Component Type="AttributeModifier">
+			<Attribute> Create_Radiation_Mutant </Attribute>
+			<Modifier_Value> 0.2 </Modifier_Value>
+		</Effect_Component>-->
+
+	</Effect>
+		
 </Effects>

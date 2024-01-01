@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>MV_Dragonfly.ALO</Land_Model_Name>
-		<Scale_Factor>0.8</Scale_Factor>
+		<Scale_Factor>0.9</Scale_Factor>
 		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 		<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -26,6 +26,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size>1</GUI_Bracket_Size>
 		<Select_Box_Scale>55</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -38,13 +39,19 @@
 		<Victory_Relevant> No </Victory_Relevant>
 		<Weather_Category>Flying</Weather_Category>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
-		<Importance> 0.4 </Importance>
+		<Importance> 0.3 </Importance>
 		<Shot_Type> Flying </Shot_Type>
+	
+	    <Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
+
 
 		<!-- MOVEMENT -->
 		<MovementClass>Flying</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>3.0</Max_Speed>
+		<Max_Speed>2.5</Max_Speed>
   		<Min_Speed> .5 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .05 </OverrideDeceleration>
@@ -105,7 +112,7 @@
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 50 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -144,12 +151,14 @@
 
 		<!-- BEHAVIORS -->
 		<Behavior> 
-			SELECTABLE, 
-			RADAR_MAP_VISIBLE 
+			PERSISTENT_UNIT,
+			SELECTABLE,
+			EFFECT_REGISTRY,
+			RADAR_MAP_VISIBLE
 		</Behavior>
 		
 		<LandBehavior>
-			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
 			STUNNABLE, 
 			GUI, 
 			RADAR_MAP_VISIBLE, 
@@ -164,15 +173,9 @@
 			WEAPON, 
 			TURRET, 
 			AI_RECRUITABLE, 
-			AI_TARGET
+			AI_TARGET,
+			TACTICAL_SELL
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Aircraft </Armor_Type>
@@ -180,7 +183,12 @@
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
+			<Build_Cost_Credits> 300 </Build_Cost_Credits>
+			<Build_Time_Seconds> 10 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
+			<Strategic_UI_Build_Menu_Order>8</Strategic_UI_Build_Menu_Order>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -205,11 +213,14 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 185.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+	  <Attack_Score_Rating> 0.8 </Attack_Score_Rating>
+         <Scout_Score_Rating> 0.4 </Scout_Score_Rating>
+         <Guerilla_Score_Rating> 0.3 </Guerilla_Score_Rating>
     </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -221,7 +232,7 @@
 			<Projectile_Types>Proj_Military_Dragonfly</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
-			<Projectile_Fire_Pulse_Count>120</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Count>60</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.1</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -236,9 +247,17 @@
 			<Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
 			<Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
 			<Turret_Rotate_Extent_Degrees> 10.0 </Turret_Rotate_Extent_Degrees>
-			<Turret_Elevate_Extent_Degrees> 40.0 </Turret_Elevate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 80.0 </Turret_Elevate_Extent_Degrees>
 			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 		</BehaviorType>
+
+
+	<BehaviorType Name="TooltipBehaviorType">
+		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_DRAGONFLY </Tooltip_Description_Text_ID>
+		<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
+		<Tooltip_Good_Against> </Tooltip_Good_Against>
+		<Tooltip_Vulnerable_To> </Tooltip_Vulnerable_To>
+	</BehaviorType>
 				
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Remove_Upon_Death> Yes </Remove_Upon_Death> <!-- Yes: Instantly destroy death clone when effects are started -->
@@ -254,10 +273,83 @@
 			<Crush_Power> 0 </Crush_Power>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 6 </Unit_Pop_Cap>
 		</BehaviorType>
+		
+		<Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MilitaryVehicleBoostArmorGenerator">
+				<!-- 15% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryVehicleBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryUAVSpeedBoostEffectGenerator">
+				<!-- 15% Speed Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryUAVSpeedBoostEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+				
+			</Effect_Generator>	
+
+			<Effect_Generator Name="UavDroneRevealStealth">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> RevealCloakingEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 150.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+
+			<Effect_Generator Name="ClearMindControlUAV">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Military_UAV_AntiMind_Control </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+
+		</Effect_Generator_Data>
 
 	</X11_Military_Units>
 
@@ -269,7 +361,7 @@
 
       <!-- ART -->
       <Land_Model_Name>MV_Dragonfly_DC.ALO</Land_Model_Name>
-      <Scale_Factor>0.8</Scale_Factor>
+      <Scale_Factor>0.6</Scale_Factor>
       <AssetBank> BANK_MILITARY </AssetBank>
 
       <!-- INTERFACE -->
@@ -589,7 +681,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>6.0</Projectile_Damage>
+			<Projectile_Damage>15.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Tiny_Dud</Projectile_Object_Detonation_Particle>

@@ -48,8 +48,8 @@
 
         <!-- Using splines overrides these values -->
 
-		<Distance_Default>550.0</Distance_Default> 
-		<Distance_Max>700.0</Distance_Max>   
+		<Distance_Default>800.0</Distance_Default> 
+		<Distance_Max>800.0</Distance_Max>   
 		<Distance_Min>250.0</Distance_Min>
 		<Distance_Smooth_Time>0.21</Distance_Smooth_Time>
 		<Distance_Per_Mouse_Unit>100.0</Distance_Per_Mouse_Unit>  <!-- 70 -->
@@ -60,7 +60,7 @@
 
 		<Use_Splines>yes</Use_Splines>
 		<Pitch_Spline> 0,20, 0.5,40, 1.0,45 </Pitch_Spline>
-		<Distance_Spline> 0.0, 300.0, 0.5, 525.0, 1.0, 700.0 </Distance_Spline> 
+		<Distance_Spline> 0.0, 300.0, 0.5, 800.0, 1.0, 800.0 </Distance_Spline> 
    		<Spline_Steps>20</Spline_Steps>
 		
 		<!-- Smoothness of terrain height following -->
@@ -255,7 +255,7 @@
 		<Fov_Per_Mouse_Unit>0.0</Fov_Per_Mouse_Unit>
 		<Fov_Smooth_time>0.1</Fov_Smooth_time>
 		
-		<Distance_Default>900.0</Distance_Default>
+		<Distance_Default>800.0</Distance_Default>
 		<Distance_Max>60000.0</Distance_Max>
 		<Distance_Min>0.0</Distance_Min>
 		<Distance_Per_Mouse_Unit>50.0</Distance_Per_Mouse_Unit>

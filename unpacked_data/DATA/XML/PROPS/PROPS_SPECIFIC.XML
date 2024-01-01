@@ -843,7 +843,7 @@
 	
 	
    <X45_Props_Specific Name="Military_Wall_Straight">
-		<Text_ID>TEXT_NONE</Text_ID>
+		<Text_ID>TEXT_BUILDING_MILITARY_WALL</Text_ID>
 		<Land_Model_Name>MB_Wall.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>No</Is_Decoration>
@@ -882,7 +882,7 @@
 		<Scale_Factor>1.0</Scale_Factor>
 
 		<!-- INTERFACE -->
-		<Text_ID>TEXT_NONE</Text_ID>
+		<Text_ID>TEXT_WALL_DESTROYED</Text_ID>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Is_Attackable> False </Is_Attackable>
 

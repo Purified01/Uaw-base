@@ -9,7 +9,7 @@
 
       <!-- ART -->
       <Land_Model_Name>mv_hummer.ALO</Land_Model_Name>
-      <Scale_Factor>.85</Scale_Factor>
+      <Scale_Factor>0.9</Scale_Factor>
       <SurfaceFX_Name>Generic_Tire_Half</SurfaceFX_Name>
       <Tread_Scroll_Rate>0.167</Tread_Scroll_Rate>
       <Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -35,6 +35,11 @@
       <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
       <Shot_Type>Vehicle</Shot_Type>
       <Importance> 0.5 </Importance>
+	  
+	  <Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
 
       <!-- MOVEMENT -->
       <MovementClass>Tracked</MovementClass>
@@ -61,9 +66,9 @@
       <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
       <Ranged_Target_Z_Adjust>3.0</Ranged_Target_Z_Adjust>
 
-      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
-      <Tactical_Health> 325 </Tactical_Health>
+      <Tactical_Health> 375 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -73,7 +78,7 @@
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER -->
       <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
       <!-- MBL TEMP DISABLE <Behavior> SELECTABLE, HARD_POINT_MANAGER </Behavior> -->
-      <Behavior> SELECTABLE </Behavior>
+      <Behavior> SELECTABLE, PERSISTENT_UNIT </Behavior>
 
       <LandBehavior>
          GUI,
@@ -94,10 +99,12 @@
          DAMAGE_TRACKING,
          BALLISTIC,
          EFFECT_REGISTRY,
+		 EFFECT_GENERATOR,
          ATTRIBUTE_DIRECTORY,
          WHEEL,
          AI_RECRUITABLE,
-         AI_TARGET
+         AI_TARGET,
+		 TACTICAL_SELL
       </LandBehavior>
 
 		<BehaviorType Name="SelectableBehaviorType">
@@ -113,15 +120,20 @@
 
       <BehaviorType Name="ProductionBehaviorType">
          <Size_Value> 10 </Size_Value>
+		 <Build_Cost_Credits> 175 </Build_Cost_Credits>
+		 <Build_Time_Seconds> 7 </Build_Time_Seconds>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			 <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
+			<Strategic_UI_Build_Menu_Order>4</Strategic_UI_Build_Menu_Order>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 600 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 8 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+         <Tactical_Build_Cost_Multiplayer> 550 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 10 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
      <BehaviorType name="AIBehaviorType">
@@ -130,7 +142,11 @@
        <Guard_Chase_Range> 150.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
        <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
-       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+       <AI_Target_Level>Group_Member</AI_Target_Level>
+	   <Attack_Score_Rating> 0.6 </Attack_Score_Rating>
+		<Scout_Score_Rating> 0.1 </Scout_Score_Rating>
+		<Guerilla_Score_Rating> 0.9 </Guerilla_Score_Rating>
+		<Tactical_AI_Search_Range> 150.0 </Tactical_AI_Search_Range>
      </BehaviorType>
 
      <BehaviorType Name="WeaponBehaviorType">
@@ -141,7 +157,7 @@
          <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Veh_hummer</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
@@ -195,8 +211,8 @@
       </BehaviorType>
 
       <BehaviorType Name="CrushBehaviorType">
-         <Crush_Defense>20</Crush_Defense>
-         <Crush_Power>15</Crush_Power>
+         <Crush_Defense>30</Crush_Defense>
+         <Crush_Power>9</Crush_Power>
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -238,8 +254,27 @@
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
       </BehaviorType>
+	  
+	    <Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MilitaryVehicleBoostArmorGenerator">
+				<!-- 15% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryVehicleBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+		</Effect_Generator_Data>
 
    </X11_Military_Units>
 
@@ -573,7 +608,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>15.0</Projectile_Damage>
+         <Projectile_Damage>33.0</Projectile_Damage>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

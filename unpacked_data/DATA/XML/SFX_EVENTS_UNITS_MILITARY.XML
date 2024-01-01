@@ -2,7 +2,65 @@
 
 <SFXEvents>
 	
-
+	<SFXEvent Name="Unit_Select_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_SELECT.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_SELECT_1</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Special_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_B_SPECIAL.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_SPECIAL_1</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Attack_A_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_ATTACK.wav, HEROJET_ATTACK_01.wav, HEROJET_B_SPECIAL.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_ATTACK_1, TEXT_SFX_JET_ATTACK_2, TEXT_SFX_JET_ATTACK_2</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Build_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_BUILT.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_BUILD_1</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Die_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_DYING.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_DIE_1</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Move_Military_Jet">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> HEROJET_MOVE_01.wav, HEROJET_MOVE.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_JET_MOVE_1, TEXT_SFX_JET_MOVE_2</Text_ID>       
+		<Overlap_Test> Unit_Military_Hero_Jet </Overlap_Test>
+	</SFXEvent>
+	
+	<SFXEvent Name="Unit_Build_Beam_Military_Build_Bot">
+		<Use_Preset>Preset_EGL_Large</Use_Preset>
+		<Samples> BUILDBOT_WELDING_REDUCED.wav </Samples>
+	</SFXEvent>
+	
 	<SFXEvent Name="Unit_Select_Military_Moore">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples> U000_MOO0101_ENG.wav U000_MOO0102_ENG.wav U000_MOO0103_ENG.wav U000_MOO0104_ENG.wav U000_MOO0105_ENG.wav</Samples>
@@ -388,10 +446,6 @@
 -->
 
 
-
-
-
-
 	<SFXEvent Name="Unit_Select_Military_Apache">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>U000_APA0101_ENG.wav U000_APA0102_ENG.wav U000_APA0103_ENG.wav U000_APA0104_ENG.wav U000_APA0105_ENG.wav</Samples>
@@ -437,13 +491,6 @@
 		<Overlap_Test> Unit_Military_Apache </Overlap_Test>
 	</SFXEvent>
 
-
-
-
-
-
-
-
 	<SFXEvent Name="Unit_Select_Military_Dragonfly">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>Dragonfly_Select_1.wav</Samples>
@@ -478,17 +525,6 @@
 		<Play_Sequentially> Yes </Play_Sequentially>		    
 		<Overlap_Test> Unit_UEA_Dragonfly </Overlap_Test>
 	</SFXEvent>
-
-
-
-
-
-
-
-
-
-
-
 
 	<SFXEvent Name="Unit_Select_Military_Woolard">
 		<Use_Preset>Preset_UR</Use_Preset>
@@ -551,15 +587,6 @@
 		<Overlap_Test> Unit_Woolard </Overlap_Test>
 	</SFXEvent>
 
-
-
-
-
-
-
-
-
-
 	<SFXEvent Name="Unit_Afraid_Male_Civilian_1">
 		<Use_Preset>Preset_EGB</Use_Preset>
 		<Samples>U000_MC12101_ENG.wav U000_MC12102_ENG.wav U000_MC12103_ENG.wav U000_MC12104_ENG.wav U000_MC12105_ENG.wav U000_MC12106_ENG.wav U000_MC12107_ENG.wav U000_MC12108_ENG.wav U000_MC12109_ENG.wav U000_MC12110_ENG.wav</Samples>
@@ -588,7 +615,16 @@
 	<SFXEvent Name="Unit_Male_Civilian_Death_Scream">
 			<Use_Preset>Preset_UR_3D</Use_Preset>
 			<Samples>Male_Civilian_Death_Scream_1.wav Male_Civilian_Death_Scream_2.wav Male_Civilian_Death_Scream_3.wav Male_Civilian_Death_Scream_4.wav Male_Civilian_Death_Scream_5.wav Male_Civilian_Death_Scream_6.wav </Samples>
-    </SFXEvent>
+    </SFXEvent>   
+
+	<SFXEvent Name="Unit_ABILITY_A_Military_Constructor">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>I000_COM0102_ENG.wav I000_COM0103_ENG.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Text_ID>TEXT_SFX_CON_ABILITY_A_1, TEXT_SFX_CON_ABILITY_A_2, TEXT_SFX_CON_ABILITY_A_3, TEXT_SFX_CON_ABILITY_A_4</Text_ID>			     
+		<!-- Overlap_Test> Unit_Military_Build_Bot </Overlap_Test -->
+	</SFXEvent>
 
 
 	<SFXEvent Name="Unit_Afraid_Female_Civilian_1">
@@ -621,10 +657,6 @@
 			<Samples>Female_Civilian_Death_Scream_1.wav Female_Civilian_Death_Scream_2.wav Female_Civilian_Death_Scream_3.wav Female_Civilian_Death_Scream_4.wav</Samples>
     </SFXEvent>
 
-
-
-
-
 	<SFXEvent Name="Unit_Select_Military_Ambulance">
 		<Use_Preset>Preset_UR_3D</Use_Preset>
 		<Samples>Ambulance_Select_1.wav</Samples>
@@ -632,6 +664,20 @@
 		<Min_Pitch>90</Min_Pitch>
 		<Max_Pitch>110</Max_Pitch>
 		<Overlap_Test> Ambulance_Select_1 </Overlap_Test>
+	</SFXEvent>
+
+	<SFXEvent Name="Military_BUILD_Structure">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>I000_COM0103_ENG.wav</Samples>
+		<Localize> Yes </Localize>
+		<Play_Sequentially> Yes </Play_Sequentially>
+	</SFXEvent>
+
+	<SFXEvent Name="Military_Construction_Complete">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>I000_COM0107_ENG.wav</Samples>
+		<Localize> Yes </Localize>
+		<Play_Sequentially> Yes </Play_Sequentially>
 	</SFXEvent>
 
 

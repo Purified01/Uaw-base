@@ -42,15 +42,15 @@
 		<Ranking_In_Category> 1 </Ranking_In_Category>
 		<CategoryMask>Small, Organic, CanAttack, Hero</CategoryMask>
 		<Affiliation>Military</Affiliation>
-		<Victory_Relevant>Yes</Victory_Relevant>
+		<Victory_Relevant>No</Victory_Relevant>
 		<Weather_Category>Infantry</Weather_Category>
 		<Create_Team>Yes</Create_Team>
 		<Importance> 0.85 </Importance>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
-      <Attributes SubObjectList="Yes">
+        <Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
@@ -90,7 +90,7 @@
 		<Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
-		<Tactical_Health> 1600 </Tactical_Health><!-- jdg ... tut01 balancing -->
+		<Tactical_Health> 950 </Tactical_Health><!-- jdg ... tut01 balancing -->
 
 		<Behavior>
 			SELECTABLE,
@@ -98,7 +98,7 @@
 		</Behavior>
 
 		<!-- BEHAVIORS-->
-		<LandBehavior>  
+		<LandBehavior> 		
 			GUI,
 			SURFACE_FX, 
 			RADAR_MAP_VISIBLE, 
@@ -115,19 +115,21 @@
 			EFFECT_GENERATOR, 
 			ATTRIBUTE_DIRECTORY,
 			ABILITY_COUNTDOWN,
-			EFFECT_REGISTRY,
-			BALLISTIC
+			BALLISTIC,
+			RETREAT_FROM_TACTICAL,
+			SWITCH_TYPE,
+			AI_RECRUITABLE,
+			AI_TARGET,
+			SQUASH,
+			TACTICAL_SELL,
+			TELEPORT_PAD
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
-		<StrategicBehavior>GLOBAL_ICON</StrategicBehavior>
+		<StrategicBehavior>
+			GLOBAL_ICON,
+			RESPAWN
+		</StrategicBehavior>
 
 		<BehaviorType Name="GameEventSourceBehaviorType">
 			<Game_Event_Source_Category> Hero </Game_Event_Source_Category>
@@ -138,17 +140,38 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
+			<Size_Value> 10 </Size_Value>
+			<Build_Cost_Credits> 10 </Build_Cost_Credits>
+			<Build_Time_Seconds> 5 </Build_Time_Seconds>
 			<Build_Limit_Current_Per_Player> 1 </Build_Limit_Current_Per_Player>
+			<Build_Limit_Lifetime_Per_Player> 1 </Build_Limit_Lifetime_Per_Player>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
+			<Build_Only_In_Skirmish> true </Build_Only_In_Skirmish>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
+			<Tactical_Build_Cost_Campaign> 1500 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
+		        <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
 		</BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
       <Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 150.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Guard_Chase_Range> 190.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+	  <Attack_Score_Rating> 0.1 </Attack_Score_Rating>
+		  <Scout_Score_Rating> 0.1 </Scout_Score_Rating>
+		  <Guerilla_Score_Rating> 1.8 </Guerilla_Score_Rating>
+		  <Tactical_AI_Search_Range> 200.0 </Tactical_AI_Search_Range>
+		  <Retreat_At_Health> 0.5 </Retreat_At_Health>
     </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -156,8 +179,7 @@
 			<Targeting_Priority_Set> Military_Col_Moore_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 5.0 </Targeting_Fire_Inaccuracy>		<!-- jdg ... was 10 -->
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 100.0 </Targeting_Max_Attack_Distance><!-- jdg ... was 180 -->
-			
+			<Targeting_Max_Attack_Distance> 100.0 </Targeting_Max_Attack_Distance><!-- jdg ... was 180 -->			
 			<Projectile_Types>Proj_Military_Hero_Randal_Moore_Minigun_1, Proj_Military_Hero_Randal_Moore_Minigun_2, Proj_Military_Hero_Randal_Moore_Minigun_3</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>30</Projectile_Fire_Pulse_Count>
@@ -170,7 +192,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_hero_military_moore.tga</Icon_Name>
+			<Icon_Name> i_hero_military_moore.tga </Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -182,16 +204,15 @@
 		
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Global_Behaviors> HeroIcon </Lua_Global_Behaviors>
-			<Lua_Land_Behaviors> HeroIcon </Lua_Land_Behaviors>
+			<Lua_Land_Behaviors> HeroIcon, Military_Hero_General_Randal_Moore_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
             HERO_ICON = {}
-            HERO_ICON.PRIORITY = 1
+            HERO_ICON.PRIORITY = 2
             HERO_ICON.TEXTURE = "i_hero_military_moore.tga"
             HERO_ICON.HEADMODEL = "mh_moore_pip_head"
             NOT_TACTICALLY_PRESENT = false
             IS_SCIENTIST = false
             IS_COMM_OFFICER = false
-            DefensiveAI = false
          </Lua_Script_Data>
 		</BehaviorType>
      
@@ -215,16 +236,34 @@
 				
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 4 </Crush_Power>
+			<Crush_Power> 0 </Crush_Power>
 		</BehaviorType>
 
-      <BehaviorType Name="FleetBehaviorType">
-         <Associated_Pop_Cap> 20 </Associated_Pop_Cap>
-         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
-			<Travel_Range> 100.0 </Travel_Range>
-			<Global_Travel_Speed> 1.0 </Global_Travel_Speed>
-			<Reinforcement_Travel_Speed> 1.0 </Reinforcement_Travel_Speed>
+		<!-- MARIA 05.10.2006 -->
+		<!-- This behavior tye determines the type of 3D global icon that will represent this object!-->
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<Global_Icon_Object_Type_Name> Military_Hero3_Icon </Global_Icon_Object_Type_Name>
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> No </Is_Dummy_Global_Icon>
+			<Show_Sub_Object_On_Select_Name> light_cone </Show_Sub_Object_On_Select_Name>
 		</BehaviorType>
+
+	  <BehaviorType Name="FleetBehaviorType">
+		  <!-- Maria 05.10.2006 - Adding new field to support limiting the 3 cap of a the hero's fleet -->
+		  <!-- Maria 09.05.2006 - changing the pop cap associated to a hero so that it is ALWAYS <= the regional pop cap -->
+		  <!-- associated to the hero's faction (refer to field <Regional_Pop_Cap> in Factions.xml for each of the playable factions) -->
+		  <Associated_Pop_Cap> 35 </Associated_Pop_Cap>
+		  <!-- Maria 05.24.2006 - How much space does the unit take up -->
+		  <Unit_Pop_Cap> 6 </Unit_Pop_Cap>
+
+		  <!-- The distance this hero can move in strategic mode.  Currently the units are regions.  If we remove the -->
+		  <!-- Fixed_Travel_Cost from trade routes then we'd need to convert this to arc distance -->
+		  <Travel_Range> 2.0 </Travel_Range>
+		  <Global_Travel_Speed> 1.5 </Global_Travel_Speed>
+		  <Reinforcement_Travel_Speed> 0.03 </Reinforcement_Travel_Speed>
+		  <Reinforcement_Cost_Per_Second> 7.2 </Reinforcement_Cost_Per_Second>
+		  <Use_Production_Queue_Type> Hero_1 </Use_Production_Queue_Type>
+	  </BehaviorType>
             
 		<BehaviorType Name="BlobShadowBehaviorType">
 			<Blob_Shadow_Below_Detail_Level>1</Blob_Shadow_Below_Detail_Level>
@@ -234,6 +273,38 @@
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
+
+	  <BehaviorType Name="RetreatFromTacticalBehaviorType">
+		  <Retreat_Zone_Radius> 150.0 </Retreat_Zone_Radius>
+		  <Retreat_Zone_Blob_Material_Name> Military_Highlight_Retreat_Area_Range </Retreat_Zone_Blob_Material_Name>
+	  </BehaviorType>
+
+	<BehaviorType Name="TacticalSettingsBehaviorType">
+		<!-- Maria [10/18/2006]
+		 At the beginning of each tactical battle, the player starts with a given amount of tactical credits (or raw materials)
+		 this amount is determined by the hero present (if invading) or the command center (if defending) -->
+		<Starting_Tactical_Credits> 6000 </Starting_Tactical_Credits>
+		<Starting_Tactical_Units> Military_Build_Bot </Starting_Tactical_Units>
+		<!-- This unit will be created for tactical battles where Vertigo is present in strategic in a region other than -->
+		<!-- the one where the battle is occurring.  It exits to reserve a hero icon and allow interaction with the strategic -->
+		<!-- Vertigo through the hero reinforcement mechanic -->
+		<Tactical_Stand_In> Military_Hero_Randal_Moore_Tactical_Stand_In </Tactical_Stand_In>
+		<Transport_Type> Military_Air_Invasion_Transport_Moore </Transport_Type>
+	</BehaviorType>
+
+
+	  <BehaviorType Name="SignalTransmitterBehaviorType">
+		  <Transmitter_Attribute_Name>Transmits_Novus_Signal</Transmitter_Attribute_Name>
+		  <Radius_Attribute_Name>Generator_Area_Effect_Radius_1</Radius_Attribute_Name>
+		  <Speed_Percent_Modifier>2.0</Speed_Percent_Modifier>
+		  <!-- 200% increase -->
+		  <Transmitter_Bone_Name />
+	  </BehaviorType>
+
+	  <BehaviorType Name="RespawnBehaviorType">
+		  <Strategic_Respawn_Time_Seconds> 180.0 </Strategic_Respawn_Time_Seconds>
+		  <Strategic_Respawn_Cost_Progression> 2000.0, 5000.0, 10000.0 </Strategic_Respawn_Cost_Progression>
+	  </BehaviorType>
 		
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire/>
@@ -268,12 +339,33 @@
 			<IsDeathCloneObstacle> false </IsDeathCloneObstacle>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="False">
+		
+			<Unit_Ability Name="Randal_Moore_Retreat_From_Tactical_Ability">
+				<Type> RETREAT_TAKE_OFF </Type>
+				<Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
+				<Recharge_Seconds>60.0</Recharge_Seconds>
+				<Should_Targeting_Ignore_Objects> Yes </Should_Targeting_Ignore_Objects>
+				<Targeting_Type> LAND_PASSIBLE_LOCATION </Targeting_Type>
+				<GUI_Activated_Ability_Name> Randal_Moore_Retreat_From_Tactical_Special_Ability </GUI_Activated_Ability_Name>
+				<Area_Effect_Decal_Distance> 150.0 </Area_Effect_Decal_Distance>
+			</Unit_Ability>
 
          <Unit_Ability Name="Randal_Moore_MedPac_Ability">
             <Type>EFFECT_GENERATOR</Type>
-            <Expiration_Seconds> 0.000001 </Expiration_Seconds>
-            <Recharge_Seconds>30.0</Recharge_Seconds>
+            <Expiration_Seconds> 2.000001 </Expiration_Seconds>
+            <Recharge_Seconds>90.0</Recharge_Seconds>
             <Effect_Generator_Name> Randal_Moore_MedPac_Effect_Generator </Effect_Generator_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Military_Moore</SFXEvent_GUI_Unit_Ability_Activated>
             <Is_Modal>No</Is_Modal>
@@ -292,7 +384,7 @@
             <Area_Effect_Decal_Distance> 50.0 </Area_Effect_Decal_Distance>
          </Unit_Ability>
 
-      </Unit_Abilities_Data>
+        </Unit_Abilities_Data>
 
       <Abilities SubObjectList="Yes" Replace="No">
 
@@ -313,6 +405,15 @@
             <Is_Looping_Attack> false </Is_Looping_Attack>
             <Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
          </Generic_Attack_Ability>
+		 
+		 <Activate_Behavior_Ability Name="Randal_Moore_Retreat_From_Tactical_Special_Ability">
+				<Activation_Min_Range> 0.0 </Activation_Min_Range>
+				<Activation_Max_Range> 15.0 </Activation_Max_Range>
+				<Activate_Behavior_Type> RETREAT_FROM_TACTICAL </Activate_Behavior_Type>
+				<Activation_Style> User_Input </Activation_Style>
+				<Can_Target_Allies> Yes </Can_Target_Allies>
+				<Applicable_Unit_Categories> DummyTarget </Applicable_Unit_Categories>
+		</Activate_Behavior_Ability>
 
       </Abilities>
 
@@ -347,6 +448,18 @@
 	</X11_Military_Heroes>
 		
    
+   <!-- **************************************************************************************** -->
+	<!-- *** MISC OBJECTS *********************************************************************** -->
+	<!-- **************************************************************************************** -->
+
+	<!-- Object type to provide access to hero reinforcement -->
+	<X11_Military_Heroes Name="Military_Hero_Randal_Moore_Tactical_Stand_In">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Behavior> GHOST </Behavior>
+		<LandBehavior> AI_RECRUITABLE </LandBehavior>
+		<Affiliation> Military </Affiliation>
+	</X11_Military_Heroes>
    
    
 		
@@ -520,7 +633,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>40.0</Projectile_Damage>
+			<Projectile_Damage>60.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Bullets_hit</Projectile_Object_Detonation_Particle>
@@ -579,10 +692,8 @@
          <Projectile_Ground_Detonation_Particle>Col_Moore_grenade_ground_blast</Projectile_Ground_Detonation_Particle>
          <Projectile_Lifetime_Detonation_Particle>Col_Moore_grenade_blast</Projectile_Lifetime_Detonation_Particle>
          <Projectile_Absorbed_By_Shields_Particle>Col_Moore_grenade_blast</Projectile_Absorbed_By_Shields_Particle>
-         <!--  jdg 11/14/07 need to seperate out Col Moores grenade sound from the generic 	SFX_Military_Detonation_1 	
-			for rumble purposes			-->
-			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_ColMoore_Grenade</Projectile_SFXEvent_Detonate>
-         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_ColMoore_Grenade </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+         <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
+         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Causes_Blackening>true</Projectile_Causes_Blackening>
          <Terrain_Damage_Radius>40.0</Terrain_Damage_Radius>
       </BehaviorType>

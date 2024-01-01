@@ -1058,7 +1058,7 @@
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
       </BehaviorType>
 
@@ -1099,7 +1099,7 @@
 
          <Effect_Generator_Ability Name="Sky_Guardian_Light_Beam_Ability">
             <Activation_Style>SPECIAL_ATTACK</Activation_Style>
-            <Activation_Min_Range> 40.0 </Activation_Min_Range>
+            <Activation_Min_Range> 1 </Activation_Min_Range>
             <Activation_Max_Range> 255.0 </Activation_Max_Range>
             <Effect_Generator_Name> SkyGuardianLightBeamGenerator </Effect_Generator_Name>
             <Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
@@ -1218,7 +1218,7 @@
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
 
          <Projectile_Types>Proj_Sky_Guardian_Bolt</Projectile_Types>

@@ -145,8 +145,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 350 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 350 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 380 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 380 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
@@ -335,6 +335,8 @@
             <!--<Source_SFX_Event>SFX_Novus_Mimic</Source_SFX_Event>-->
 			</Effect_Generator_Entry>
 
+      
+
 		</Effect_Generator>
 
 		 
@@ -353,6 +355,27 @@
            <!--<Source_SFX_Event>SFX_Novus_Mimic</Source_SFX_Event>-->
         </Effect_Generator_Entry>
       </Effect_Generator>
+
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> Alien_Brute_Regenerate_Irradiated_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
 
 
 
@@ -681,7 +704,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>5.0</Projectile_Damage>
+			<Projectile_Damage>5.6</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Detonation_Particle>

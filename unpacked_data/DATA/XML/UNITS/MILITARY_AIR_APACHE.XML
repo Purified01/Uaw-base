@@ -26,6 +26,7 @@
       <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
       <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
       <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
       <Select_Box_Scale>55</Select_Box_Scale>
       <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
       <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -38,17 +39,22 @@
       <CategoryMask> Medium, Flying, Piloted, CanAttack </CategoryMask>
       <Weather_Category>Flying</Weather_Category>
       <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
-      <Importance> 0.65 </Importance>
+      <Importance> 0.5 </Importance>
       <Shot_Type> Floating </Shot_Type>
+	  
+	  <Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
 
       <!-- MOVEMENT -->
       <MovementClass>Flying</MovementClass>
       <OccupationStyle>1x1</OccupationStyle>
-      <Max_Speed>3.0</Max_Speed>
+      <Max_Speed>4.0</Max_Speed>
       <Min_Speed> .5 </Min_Speed>
       <OverrideAcceleration> .15 </OverrideAcceleration>
       <OverrideDeceleration> .05 </OverrideDeceleration>
-      <Max_Rate_Of_Turn>4.5</Max_Rate_Of_Turn>
+      <Max_Rate_Of_Turn>6.0</Max_Rate_Of_Turn>
       <ROT_Acceleration> .25 </ROT_Acceleration>
       <ROT_Deceleration> .12 </ROT_Deceleration>
       <Max_Thrust> 1.2 </Max_Thrust>
@@ -104,7 +110,7 @@
       <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
       <Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 400 </Tactical_Health>
+      <Tactical_Health> 450 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -145,12 +151,14 @@
 
       <!-- BEHAVIORS -->
       <Behavior>
+		 PERSISTENT_UNIT,
          SELECTABLE,
-         RADAR_MAP_VISIBLE
+         RADAR_MAP_VISIBLE,
+		 EFFECT_REGISTRY
       </Behavior>
 
       <LandBehavior>
-         EFFECT_REGISTRY,
+		 EFFECT_GENERATOR,
          STUNNABLE,
          GUI,
          RADAR_MAP_VISIBLE,
@@ -168,50 +176,52 @@
          TURRET,
          ATTRIBUTE_DIRECTORY,
          AI_RECRUITABLE,
-         AI_TARGET
+         AI_TARGET,
+		 TACTICAL_SELL
       </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Aircraft </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
-			<Size_Value> 10 </Size_Value>
+			<Size_Value> 50 </Size_Value>
+			<Build_Cost_Credits> 28 </Build_Cost_Credits>
+			<Build_Time_Seconds> 5 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 850 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 775 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 12 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+			<Strategic_UI_Build_Menu_Order>9</Strategic_UI_Build_Menu_Order>
 		</BehaviorType>
 
      <BehaviorType name="AIBehaviorType">
        <AI_Combat_Power> 1 </AI_Combat_Power>
-       <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+       <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
        <Guard_Chase_Range> 180.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
        <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>   <!-- When given a attack move command unit will travel this distance from path to attack-->
        <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+	   <Attack_Score_Rating> 0.8 </Attack_Score_Rating>
+         <Scout_Score_Rating> 0.3 </Scout_Score_Rating>
+         <Guerilla_Score_Rating> 0.4 </Guerilla_Score_Rating>
      </BehaviorType>
 
       <BehaviorType Name="WeaponBehaviorType">
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Military_Apache_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 15.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 20.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 10.0 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 185.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Apache</Projectile_Types>
-         <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+         <Projectile_Fire_Recharge_Seconds>1.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
          <Projectile_Fire_Pulse_Count>8</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
@@ -259,40 +269,49 @@
       </BehaviorType>
 
       <BehaviorType Name="CrushBehaviorType">
-         <Crush_Defense> 30 </Crush_Defense>
+         <Crush_Defense> 50 </Crush_Defense>
          <Crush_Power> 0 </Crush_Power>
+      </BehaviorType>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+         <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
       </BehaviorType>
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 4 </Unit_Pop_Cap>
       </BehaviorType>
 
       <!-- ABILITIES -->
       <Unit_Abilities_Data SubObjectList="Yes">
+		<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
          <Unit_Ability Name="Unit_Ability_Apache_Rocket_Barrage">
             <Type>ATTACK_POSITION</Type>
-            <Recharge_Seconds>15</Recharge_Seconds>
+            <Recharge_Seconds>35</Recharge_Seconds>
             <GUI_Activated_Ability_Name> Special_Ability_Apache_Rocket_Barrage </GUI_Activated_Ability_Name>
             <SFXEvent_GUI_Unit_Ability_Activated> </SFXEvent_GUI_Unit_Ability_Activated>
             <Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
-            <Area_Effect_Decal_Distance> 60.0 </Area_Effect_Decal_Distance>
+            <Area_Effect_Decal_Distance> 70.0 </Area_Effect_Decal_Distance>
 				<Should_Targeting_Ignore_Objects> Yes </Should_Targeting_Ignore_Objects>
 			</Unit_Ability>
       </Unit_Abilities_Data>
 
-      <Abilities SubObjectList="Yes">
+		<Abilities SubObjectList="Yes">
          <Generic_Attack_Ability Name="Special_Ability_Apache_Rocket_Barrage">
             <Activation_Style>USER_INPUT</Activation_Style>
             <Activation_Chance>1.0</Activation_Chance>
-            <Activation_Min_Range>0.0</Activation_Min_Range>
-            <Activation_Max_Range>1500.0</Activation_Max_Range>
+            <Activation_Min_Range>15.0</Activation_Min_Range>
+            <Activation_Max_Range>370.0</Activation_Max_Range>
             <Activation_Recharge_Time> 0.5 </Activation_Recharge_Time>
-            <Attack_Animation>ANIM_IDLE</Attack_Animation>
+            <!-- Attack_Animation>ANIM_IDLE</Attack_Animation -->
 
 				<Damage_Frame_Number>1</Damage_Frame_Number>
 				<Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
-				<Only_Appropriate_When_Ready> false </Only_Appropriate_When_Ready>
+				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
 				
 				<Projectile_Spawn_Bone_Name> MUZZLEB_</Projectile_Spawn_Bone_Name>
 				<Projectile_Spawn_Pick_Random_Bone> true </Projectile_Spawn_Pick_Random_Bone>
@@ -304,6 +323,42 @@
 			</Generic_Attack_Ability>
 
 		</Abilities>
+		
+		<Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MilitaryVehicleBoostArmorGenerator">
+				<!-- 20% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryVehicleBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryAccuracyBoostEffectGenerator">
+				<!-- 100% Accuracy Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryAccuracyBoostEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+		</Effect_Generator_Data>
 
    </X11_Military_Units>
 
@@ -644,7 +699,7 @@
          <Projectile_Category>DEFAULT</Projectile_Category>
 
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
-         <Projectile_Damage>12.0</Projectile_Damage>
+         <Projectile_Damage>50.0</Projectile_Damage>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Bullets_hit</Projectile_Object_Detonation_Particle>
@@ -662,6 +717,7 @@
 
       <!-- ART -->
       <Land_Model_Name>MV_Apache_pod.alo</Land_Model_Name>
+      <Projectile_Custom_Render>0</Projectile_Custom_Render>
       <Scale_Factor>0.8</Scale_Factor>
       <AssetBank> BANK_MILITARY </AssetBank>
 
@@ -689,8 +745,8 @@
          <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
          <Projectile_Category>ROCKET</Projectile_Category>
          <Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
-         <Projectile_Damage>0.0</Projectile_Damage>
-         <Projectile_Blast_Area_Damage>50</Projectile_Blast_Area_Damage>
+         <Projectile_Damage>20</Projectile_Damage>
+         <Projectile_Blast_Area_Damage>54</Projectile_Blast_Area_Damage>
          <Projectile_Blast_Area_Range>40</Projectile_Blast_Area_Range>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>

@@ -72,7 +72,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>22.0</Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 625 </Tactical_Health>
+		<Tactical_Health> 800 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -289,8 +289,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 36 </Crush_Defense> <!-- MLL Increased to be greater than the peacebringers crush power-->
-			<Crush_Power> 11 </Crush_Power><!-- jdg...4.12.07...upped from 7...I need this guy to stomp military infantry-->
+			<Crush_Defense> 40 </Crush_Defense> <!-- MLL Increased to be greater than the peacebringers crush power-->
+			<Crush_Power> 31 </Crush_Power><!-- jdg...4.12.07...upped from 7...I need this guy to stomp military infantry-->
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">

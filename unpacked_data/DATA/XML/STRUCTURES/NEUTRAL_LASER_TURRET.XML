@@ -227,6 +227,12 @@
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Frames_Between_Remove_Invalid_Targets> 5 </Frames_Between_Remove_Invalid_Targets>
+					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
+					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
+					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
+					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
+					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">

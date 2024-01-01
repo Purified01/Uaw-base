@@ -1975,8 +1975,79 @@
 
     <Light_Source_Name>L_Novus_Constructor_Beam</Light_Source_Name>
   </LightningEffect>
+  
+  <LightningEffect name="Military_Constructor_Repair_Beam">
+		<Texture_Name>lightning_Novus_Signal_tower_01.tga</Texture_Name>
+		<Texture_Repeat>10</Texture_Repeat>
+		<Texture_Scroll>0</Texture_Scroll>
 
+		<Width_Max>2</Width_Max>
+		<Width_Min>1</Width_Min>
+		<Displace>0.01, 0.01, 0.01</Displace>
+		<Detail>0.1</Detail>
+		<Color_Start>100,150,60,255</Color_Start>
+		<Color_End>100,150,60,255</Color_End>
+		<Fadeout_Time_Max>101</Fadeout_Time_Max>
+		<Fadeout_Time_Min>100</Fadeout_Time_Min>
+		<Update_All>true</Update_All>
+		<Cycles_Per_Distance>-0.01</Cycles_Per_Distance>
+		<Rotations_Per_Second>-2</Rotations_Per_Second>
+		<Radius>5</Radius>
 
+		<Number_Bolts>3</Number_Bolts>
+		<Bolt_Creation_Interval_Min>0.0</Bolt_Creation_Interval_Min>
+		<Bolt_Creation_Interval_Max>0.1</Bolt_Creation_Interval_Max>
+
+		<Light_Source_Name>L_Novus_Constructor_Beam</Light_Source_Name>
+	</LightningEffect>
+  
+  <LightningEffect name="Military_Constructor_Beam">
+	
+	  <Texture_Name>lightning_Novus_Signal_tower_dust.tga</Texture_Name>
+      <Texture_Repeat>10.0</Texture_Repeat>
+      <Texture_Scroll>-5.0</Texture_Scroll>
+
+      <Width_Max>4</Width_Max>
+      <Width_Min>3</Width_Min>
+      <Displace>0.001, 0.001, 0.001</Displace>
+      <Detail>1000</Detail>
+      <Color_Start>100,150,60,255</Color_Start>
+      <Color_End>100,150,60,255</Color_End>
+      <Fadeout_Time_Max>100</Fadeout_Time_Max>
+      <Fadeout_Time_Min>100</Fadeout_Time_Min>
+
+      <Update_All>true</Update_All>
+      <Number_Bolts>1</Number_Bolts>
+      <Bolt_Creation_Interval_Min>0.1</Bolt_Creation_Interval_Min>
+      <Bolt_Creation_Interval_Max>0.2</Bolt_Creation_Interval_Max>
+      <Light_Source_Name>L_Masari_Sentry</Light_Source_Name>	
+	</LightningEffect>
+
+	<LightningEffect name="Military_Laser_Turret_Beam_APC">
+
+    <Texture_Name>lightning_Novus_Signal_tower_01.tga</Texture_Name>
+    <Texture_Repeat>10</Texture_Repeat>
+    <Texture_Scroll>0</Texture_Scroll>
+
+    <Width_Max>1</Width_Max>
+    <Width_Min>0.5</Width_Min>
+    <Displace>0.01, 0.01, 0.01</Displace>
+    <Detail>0.1</Detail>
+    <Color_Start>249, 67, 37,0</Color_Start>
+    <Color_End>251, 58, 58,255</Color_End>
+    <Fadeout_Time_Max>101</Fadeout_Time_Max>
+    <Fadeout_Time_Min>100</Fadeout_Time_Min>
+    <Update_All>true</Update_All>
+    <Cycles_Per_Distance>-0.01</Cycles_Per_Distance>
+    <Rotations_Per_Second>-2</Rotations_Per_Second>
+    <Radius>2</Radius>
+
+    <Number_Bolts>3</Number_Bolts>
+    <Bolt_Creation_Interval_Min>0.0</Bolt_Creation_Interval_Min>
+    <Bolt_Creation_Interval_Max>0.1</Bolt_Creation_Interval_Max>
+
+    <Light_Source_Name>L_Novus_Constructor_Beam</Light_Source_Name>
+  </LightningEffect>
 
 
 	<LightningEffect name="Orlok_Crush_Beam_Layer_01">
@@ -2067,6 +2138,26 @@
     <Bolt_Creation_Interval_Max>0.1</Bolt_Creation_Interval_Max>
   </LightningEffect>
 
+	<LightningEffect name="Orlok_Crush_Beam_Layer_04_APC">
+    <Texture_Name>lightning_wave.tga</Texture_Name>
+
+    <Texture_Repeat>500</Texture_Repeat>
+    <Texture_Scroll>3</Texture_Scroll>
+
+    <Width_Max>1.5</Width_Max>
+    <Width_Min>1.0</Width_Min>
+    <Displace>0.01, 0.01, 0.01</Displace>
+    <Detail>700</Detail>
+    <Color_Start>246,90,36,0</Color_Start>
+    <Color_End>246,90,36,0</Color_End>
+    <Fadeout_Time_Max>3.0</Fadeout_Time_Max>
+    <Fadeout_Time_Min>3.0</Fadeout_Time_Min>
+
+    <Update_All>true</Update_All>
+    <Number_Bolts>1</Number_Bolts>
+    <Bolt_Creation_Interval_Min>0.1</Bolt_Creation_Interval_Min>
+    <Bolt_Creation_Interval_Max>0.1</Bolt_Creation_Interval_Max>
+  </LightningEffect>
 
 	<LightningEffect name="Hacker_Viral_Bomb_Activate_Lightning">
 		<Texture_Name>p_Line_Globs.tga</Texture_Name>

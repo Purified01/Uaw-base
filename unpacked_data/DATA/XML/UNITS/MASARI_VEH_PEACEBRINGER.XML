@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Peacebringer.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>0.95</Scale_Factor>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
 		<SurfaceFX_Name>Masari_Peacebringer_Wheel_track</SurfaceFX_Name>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -300,7 +300,7 @@
 				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
 				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
 				<Unit_Ability_AI_Unit_Categories> ~Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 180.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Range> 190.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -310,7 +310,7 @@
 			<Effect_Generator_Ability Name="Masari_Peacebringer_Disintegrate_Special_Ability">
 				<Excluded_Unit_Categories>  Flying </Excluded_Unit_Categories>
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 180 </Activation_Max_Range>
+				<Activation_Max_Range> 190 </Activation_Max_Range>
 				<Effect_Generator_Name> Masari_Peacebringer_Disintegrate_Generator </Effect_Generator_Name>
 				<Activation_Style> User_Input </Activation_Style>
 				<Can_Target_Enemies>Yes</Can_Target_Enemies>
@@ -406,7 +406,7 @@
 
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Max_Speed>1.0</Max_Speed>
+		<Max_Speed>1.2</Max_Speed>
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -504,7 +504,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>MV_tank_debri_A.ALO</Land_Model_Name>
-		<Scale_Factor>0.9</Scale_Factor>
+		<Scale_Factor>0.95</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -583,7 +583,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Wheel.ALO</Land_Model_Name>
-		<Scale_Factor>1.4</Scale_Factor>
+		<Scale_Factor>1.35</Scale_Factor>
 		<AssetBank> BANK_NOVUS </AssetBank>
 
 		<!-- INTERFACE -->
@@ -624,7 +624,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Blade.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>0.95</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -665,7 +665,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Blade.ALO</Land_Model_Name>
-		<Scale_Factor>0.5</Scale_Factor>
+		<Scale_Factor>0.45</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -819,7 +819,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ZV_Peacebringer_gunner.ALO </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.95 </Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -963,7 +963,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>  ZV_Peacebringer_beam.ALO </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.95 </Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->

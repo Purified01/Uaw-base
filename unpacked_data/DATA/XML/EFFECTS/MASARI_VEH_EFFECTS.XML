@@ -522,7 +522,7 @@
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
 		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+			<Amount_Per_Second> 3.0 </Amount_Per_Second>
       <Percentage_Per_Second>0.02</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -530,6 +530,18 @@
          <Application_Probability> 1 </Application_Probability>
 			<Particle_System_Type> Masari_Sentry_Repair_Target </Particle_System_Type>
 		</Effect_Component>
+	</Effect>
+
+
+
+
+	<Effect Name="MasariAlateaBeneficialFieldSelfEffect">
+   	<Effect_Class> HealTerrain </Effect_Class>
+   	<Duration> 2.0 </Duration>
+
+   	<Effect_Component Type="HealTerrain">
+	  <Radius> 130 </Radius>
+   	</Effect_Component>
 	</Effect>
 
 

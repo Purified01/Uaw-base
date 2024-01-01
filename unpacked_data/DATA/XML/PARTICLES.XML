@@ -1,11 +1,96 @@
 <?xml version="1.0"?>
 <Particles>
 	
-	
 	<!-- ************************************************************************************************* -->
 	<!-- ******  GENERAL GROUND HITS/PUFFS																				****** -->
 	<!-- ************************************************************************************************* -->
+	<Particle Name="Jet_Explosion_Particle">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>P_AV_Defiler_Bleed_ground_1.alo</Land_Model_Name>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+
+		<Custom_Hard_XExtent> 70.0 </Custom_Hard_XExtent>
+		<Custom_Hard_YExtent> 70.0 </Custom_Hard_YExtent>
+		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
+
+		<Behavior>EFFECT_GENERATOR, HIDE_WHEN_FOGGED, UNIT_AI</Behavior>
+
+		<!-- EFFECT GENERATORS -->
+		<Effect_Generator_Data SubObjectList="Yes">
+
+			<Effect_Generator Name="RadiationBleedGenerator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Starts_Active> true </Starts_Active>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> RadiationBleedDotEffect </Effect_Name>
+					<Duration> 3.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 70 </Area_Effect_Radius>
+					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+					<Target_Filter_Categories> ~Flying + ~DeathCloneResource </Target_Filter_Categories>
+					<Target_Filter_C> Radiation_Field_Damage </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RadiationBleedInfantryEffect </Effect_Name>
+					<Duration> 3.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 70 </Area_Effect_Radius>
+					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+					<Can_Target_Allies>No</Can_Target_Allies>
+					<Target_Filter_Categories> Small + Organic + ~RadiationHelps </Target_Filter_Categories>
+					<Target_Filter_C> Is_Mutant_Slave</Target_Filter_C>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> DefilerFieldHealEffect </Effect_Name>
+					<Duration> 3.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 70 </Area_Effect_Radius>
+					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+					<Target_Filter_Categories> Organic + ~RadiationHurts </Target_Filter_Categories>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+
+		</Effect_Generator_Data>
+	</Particle>
 	
+	<Particle Name="MuzzleFlash50cal">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>P_Dragonfly_Flash.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior>PARTICLE</Behavior>
+		<Particle_Lifetime_Frames>1500</Particle_Lifetime_Frames>
+		<BehaviorType Name="BlobShadowBehaviorType">
+			<No_Particle_Below_Detail_Level>0.7</No_Particle_Below_Detail_Level>
+		</BehaviorType>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
+	
+	<Particle Name="Bullets_hit_Large">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_MI_Bullet_hit.alo</Land_Model_Name>
+		<Scale_Factor>3.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior>PARTICLE</Behavior>
+		<Particle_Lifetime_Frames>1500</Particle_Lifetime_Frames>
+		<BehaviorType Name="BlobShadowBehaviorType">
+			<No_Particle_Below_Detail_Level>0.7</No_Particle_Below_Detail_Level>
+		</BehaviorType>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
 
    <Particle Name="Small_Dirt_puff">
       <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -708,6 +793,17 @@
 		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	<Particle Name="Nuke_Ground_Hit">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>p_explosion_big01.alo</Land_Model_Name>
+		<Scale_Factor>3.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
+		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 	<Particle Name="Tank_Direct_Hit">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -832,7 +928,15 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
-
+	
+	<Particle Name="Military_Laser_Target_Glow_APC">
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_nb_laser_turret.alo</Land_Model_Name>
+		<Scale_Factor>0.25</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 	<Particle Name="Marine_Flamethrower_Flames">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -1672,6 +1776,18 @@
 		<Behavior> PARTICLE  </Behavior>
 		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
 		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
+	
+	<Particle Name="Nuke_hit">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_WO_LAUNCH_ROCKET_EXPLODE.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<Behavior> PARTICLE  </Behavior>
+		<Explosion_Jitter_Factor>10.0</Explosion_Jitter_Factor>
+		<Particle_Lifetime_Frames>60</Particle_Lifetime_Frames>
+		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_WALKER_LARGE</Explosion_Scorch_Mark>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
@@ -2558,7 +2674,7 @@
 
 	<Particle Name="Defiler_Bleed_Glow_Aura">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<Land_Model_Name>AV_Defiler_particles_bleed.alo</Land_Model_Name>
+		<Land_Model_Name>P_AV_Defiler_Bleed_ground.alo</Land_Model_Name>
 
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>

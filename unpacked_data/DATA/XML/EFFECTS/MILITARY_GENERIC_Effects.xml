@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effects>
+	<!--Testing Mutant Spawn Effect-->
+	
+	<Effect Name="TestRadiationChargeRaiseDeadEffect">
+
+		<Duration> 0.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Remove_On_Death> Yes </Remove_On_Death>
+		
+		<Effect_Component Type="ApplyEffectOnRemove">
+			<Apply_On_Expiration_Only> true </Apply_On_Expiration_Only>
+			<Effect_Name> DestroyObject </Effect_Name>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="TestRadiationChargeRaiseDeadVisualEffect">
+
+		<Duration> 3.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Radiation_Healing_Glow </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="SwitchingTestEffect">
+
+		<Duration> 32.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Remove_On_Death> Yes </Remove_On_Death>
+		
+		<Effect_Component Type="ApplyBehavior">
+			<Behavior_Name> SWITCH_TYPE </Behavior_Name>
+		</Effect_Component>
+
+	</Effect>
+	
+	<!--<Effect Name="TurretAirTargetingEffect">
+		<Duration> 1.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration>Yes</Extends_Existing_Duration>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Targeting_Priority_Set </Attribute>
+			<Modifier_Value> Military_Turret_Target_Priority </Modifier_Value>
+			<Modifier_Type>String_Replacement</Modifier_Type>
+		</Effect_Component>
+	</Effect>-->
+	
+	<Effect Name="TurretAirTargetingEffect">
+      <Duration> -1.0 </Duration>
+      <Effect_Class> MasariPhoenix </Effect_Class>
+      <Extends_Existing_Duration>Yes</Extends_Existing_Duration>
+
+      <!-- Regenerate Phoenix instead of Avenger -->
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Targeting_Priority_Set </Attribute>
+		 <Modifier_Value> Military_Turret_Target_Priority </Modifier_Value>
+         <Modifier_Type> String_Replacement </Modifier_Type>
+     </Effect_Component>
+
+   </Effect>
+	
+	<Effect Name="NukeShockwaveEffect">
+		<Duration> 8.5 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<Effect_Component Type="KnockBack">
+			<Knock_Back_Strength> 100.0 </Knock_Back_Strength>
+			<Dampening_Fraction>.8 </Dampening_Fraction>
+			<Gravity_Fraction>0</Gravity_Fraction>
+			<XY_Knock_Back_Only> true </XY_Knock_Back_Only>
+		</Effect_Component>
+		
+		<Effect_Component Type="Shake">
+			<Shake_Speed> .006 </Shake_Speed>
+			<Shake_Min> -0.8f, -0.8f, 0.8f </Shake_Min>
+			<Shake_Max> 0.8f, 0.8f, 0.8f </Shake_Max>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="Spawn_Marine_Team_Effect">
+		<Duration> 0.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<!-- spawn x lost -->
+		<Effect_Component Type="CreateObject">
+			<!-- replace with lost when they are available -->
+			<Create_Object_Type> Military_Team_Marines_Spawner </Create_Object_Type>
+			<Destroy_On_Remove> false </Destroy_On_Remove>
+			<Position_Type> AtSource </Position_Type>
+			<Use_Source_Player_ID> true </Use_Source_Player_ID>
+			<Check_Pop_Cap> true </Check_Pop_Cap>
+			<Number_To_Create> 1 </Number_To_Create>
+			<Validate_Creation_Position> true </Validate_Creation_Position>
+		</Effect_Component>
+    </Effect>
+	
+	<Effect Name="Spawn_Rocket_Team_Effect">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<!-- spawn x lost -->
+		<Effect_Component Type="CreateObject">
+			<!-- replace with lost when they are available -->
+			<Create_Object_Type> Military_Team_Variety_Spawner </Create_Object_Type>
+			<Destroy_On_Remove> false </Destroy_On_Remove>
+			<Position_Type> AtSource </Position_Type>
+			<Use_Source_Player_ID> true </Use_Source_Player_ID>
+			<Check_Pop_Cap> true </Check_Pop_Cap>
+			<Number_To_Create> 1 </Number_To_Create>
+			<Validate_Creation_Position> true </Validate_Creation_Position>
+		</Effect_Component>
+    </Effect>
+	
+	<Effect Name="Spawn_Builder_Rig_Effect">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<!-- spawn x lost -->
+		<Effect_Component Type="CreateObject">
+			<!-- replace with lost when they are available -->
+			<Create_Object_Type> Spawn_Builder_Rig </Create_Object_Type>
+			<Destroy_On_Remove> false </Destroy_On_Remove>
+			<Position_Type> AtSource </Position_Type>
+			<Use_Source_Player_ID> true </Use_Source_Player_ID>
+			<Check_Pop_Cap> true </Check_Pop_Cap>
+			<Number_To_Create> 1 </Number_To_Create>
+			<Validate_Creation_Position> true </Validate_Creation_Position>
+		</Effect_Component>
+    </Effect>
+	
+	<Effect Name="MilitaryFactoryEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Structure_Speed_Build </Attribute>
+			<!-- +0% build speed -->
+			<Modifier_Value> 0.0 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
+			<!-- +20% unit build speed -->
+			<Modifier_Value> 0.1 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="Military_UAV_AntiMind_Control">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> ClearMindControl </Effect_Class>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlAuraEffect </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
+		</Effect_Component>		
+	</Effect>
+	
+	<Effect Name="MilitaryReactorEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Structure_Speed_Build </Attribute>
+			<!-- +0% build speed -->
+			<Modifier_Value> 0.0 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
+			<!-- +20% unit build speed -->
+			<Modifier_Value> 0.10 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+   
+   <Effect Name="Military_APC_Load_Target_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Upload </Effect_Class>
+
+		<!-- Upload the target -->
+		<Effect_Component Type="Upload"/>
+
+      <Effect_Component Type="CreateObject">
+         <Create_Object_Type> Masari_Teleport_Effect </Create_Object_Type>
+         <Position_Type> AtTarget </Position_Type>
+         <Use_Source_Player_ID> true </Use_Source_Player_ID>
+      </Effect_Component>
+   </Effect>
+   
+    <Effect Name="Military_APC_Load_Marines_Effect">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> Upload </Effect_Class>
+		<Remove_On_Death> Yes </Remove_On_Death>
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Passenger_Onboard </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="ApplyEffectOnRemove">
+			<Effect_Name> NoDeathCloneDestroyObject </Effect_Name>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="Military_APC_Unload_Effect">
+		<Effect_Class> Download </Effect_Class>
+		<Duration> .1 </Duration>
+
+		<!-- Release uploaded unit -->
+		<Effect_Component Type="Download"/>
+
+		<!-- Detach any attached hardpoints and lock back bonus abilities -->
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Upload </Remove_Effect_Class>
+		</Effect_Component>
+
+      <Effect_Component Type="CreateObject">
+         <Create_Object_Type> Masari_Teleport_Effect </Create_Object_Type>
+         <Position_Type> AtTarget </Position_Type>
+         <Use_Source_Player_ID> true </Use_Source_Player_ID>
+      </Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="Military_Elementalist_Remove_Radiation_Effect">
+      <Effect_Class> Reformat </Effect_Class>
+      <Duration> -1 </Duration>
+      <Extends_Existing_Duration> true </Extends_Existing_Duration>
+	  
+	  <!--<Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> DefilerRadiation </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> DefilerRadiationDefile </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> DefilerBleedVisual </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> DefilerExpandBleedRadius </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> WalkerTerrainConditioner </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> Radiation </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> MutantGlob </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> MutantClaws </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Name> CylinderRadiationBeamEffect </Remove_Effect_Name>
+      </Effect_Component>
+	  
+	  -->
+		<Effect_Component Type="ModifyArmor"><!-- Why does this not work? It makes radiation do the same or more damage NOT LESS! WTF!!!???-->
+         <!-- reduce radiation damage by 200% -->
+         <Amount> -2.0f </Amount>
+         <Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
+		</Effect_Component>
+    </Effect>
+	
+	<Effect Name="NukeShockwaveEffect">
+		<Duration> 0.5 </Duration>
+		<Effect_Class> KnockBack </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> false </Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="KnockBack">
+			<Knock_Back_Strength> 100.0 </Knock_Back_Strength>
+			<Dampening_Fraction>.8 </Dampening_Fraction>
+			<Gravity_Fraction>0</Gravity_Fraction>
+			<XY_Knock_Back_Only> true </XY_Knock_Back_Only>
+		</Effect_Component>
+		
+		<Effect_Component Type="Shake">
+			<Shake_Speed> .003 </Shake_Speed>
+			<Shake_Min> -0.2f, -0.2f, 0.2f </Shake_Min>
+			<Shake_Max> 0.2f, 0.2f, 0.3f </Shake_Max>
+		</Effect_Component>
+
+	</Effect>
+   
+</Effects>

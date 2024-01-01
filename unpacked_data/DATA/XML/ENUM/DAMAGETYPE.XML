@@ -58,6 +58,7 @@
 	<Damage_Military_Hummer/>
 	<Damage_Military_Turret/>
 	<Damage_Military_Flamethrower/>
+	<Damage_Superweapon_Nuke_Explosion/>
 
 
 	<!-- Alien Damage Types -->
