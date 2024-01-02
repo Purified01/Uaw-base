@@ -5790,7 +5790,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Motor_Pool </Tactical_Required_Objects>
     <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
   </Dependency>
   
@@ -5928,7 +5928,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Nuclear_Reactor </Tactical_Required_Objects>
     <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
   </Dependency>
   

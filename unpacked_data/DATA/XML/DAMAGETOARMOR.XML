@@ -215,7 +215,7 @@
 
 	<!-- DAMAGE_MILITARY_APACHE_GUNS -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Shield, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Shield, 0.8 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
@@ -225,18 +225,18 @@
 
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Infantry_Light, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Infantry_Heavy, 0.8 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Vehicle_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Aircraft, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker_Hardpoint, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker_Hardpoint_Armor, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Hero, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Reaper, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Hero_Endure, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Aircraft, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker, 1.02 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker_Hardpoint, 1.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Walker_Hardpoint_Armor, 1.13 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Turret, 0.95 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Light, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Structure_Heavy, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Hero, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Reaper, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Alien_Hero_Endure, 0.5 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Military_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Military_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
@@ -249,27 +249,27 @@
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Military_Hero, 0.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Military_Hero_Tank, 0.2 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Infantry_Heavy, 0.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Vehicle_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Aircraft, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Heavy, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Hero, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Aircraft, 0.6 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Turret, 0.95 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Light, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Structure_Heavy, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Novus_Hero, 0.85 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Infantry_Heavy, 0.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Elite, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Aircraft, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Heavy, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Dark_Matter_Armor, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Vehicle_Elite, 0.70 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Aircraft, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Turret, 0.95 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Light, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Structure_Heavy, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Masari_Hero, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Apache_Guns, Armor_Dark_Matter_Armor, 2.2 </Damage_To_Armor_Mod>
 
 	
 
@@ -334,7 +334,7 @@
 
 	<!-- DAMAGE_MILITARY_APACHE_HELLFIRE -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Shield, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Shield, 0.1 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
@@ -342,7 +342,7 @@
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Civilian_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Vehicle_Light, 0.1 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Vehicle_Heavy, 0.01</Damage_To_Armor_Mod>
@@ -357,7 +357,7 @@
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Reaper, 0.01	</Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Alien_Hero_Endure, 0.01</Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Vehicle_Light, 0.2 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Vehicle_Heavy, 0.01</Damage_To_Armor_Mod>
@@ -368,7 +368,7 @@
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Hero, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Military_Hero_Tank, 0.1 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Infantry_Light, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Vehicle_Light, 0.1 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Vehicle_Heavy, 0.05 </Damage_To_Armor_Mod>
@@ -378,7 +378,7 @@
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Structure_Heavy, 0.005 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Novus_Hero, 0.25 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Masari_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Masari_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Masari_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Masari_Vehicle_Light, 0.1 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Dragonfly, Armor_Masari_Vehicle_Heavy, 0.01 </Damage_To_Armor_Mod>
@@ -404,16 +404,16 @@
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Vehicle_Light, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Vehicle_Heavy, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Aircraft, 2.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Walker, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Walker_Hardpoint, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Walker_Hardpoint_Armor, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Hero, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Reaper, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Walker_Hardpoint, 1.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Walker_Hardpoint_Armor, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Hero, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Reaper, 0.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Alien_Hero_Endure, 0.5 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
@@ -421,33 +421,33 @@
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Vehicle_Light, 2.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Aircraft, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Hero, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Hero_Tank, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Hero, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Military_Hero_Tank, 1.0 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Vehicle_Light, 2.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Aircraft, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Hero, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Novus_Hero, 1.2 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Infantry_Light, 1.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Infantry_Heavy, 1.15 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Vehicle_Light, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Vehicle_Elite, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Vehicle_Heavy, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Vehicle_Elite, 1.46 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Aircraft, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Hero, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Dark_Matter_Armor, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Masari_Hero, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Maverick_Gun, Armor_Dark_Matter_Armor, 1.35 </Damage_To_Armor_Mod>
 
 
 
@@ -463,54 +463,54 @@
 	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Tut01_Civilian_Oil_Tanker_Trailer, 0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Infantry_Heavy, 0.3 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Infantry_Heavy, 1.4 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Brute_Tut01, 0.3 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Vehicle_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Vehicle_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Aircraft, 0.3 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker, 0.01 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker_Hardpoint, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker_Hardpoint_Armor, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Reaper, 0.2 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Hero_Endure, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Vehicle_Light, 1.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Aircraft, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker, 1.3 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker_Hardpoint, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Walker_Hardpoint_Armor, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Structure_Heavy, 1.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Hero, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Reaper, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Alien_Hero_Endure, 0.7 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Vehicle_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Aircraft, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Hero_Tank, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Infantry_Heavy, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Vehicle_Light, 1.04 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Aircraft, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Hero, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Military_Hero_Tank, 0.7 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Infantry_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Vehicle_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Vehicle_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Aircraft, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Hero, 0.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Infantry_Heavy, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Vehicle_Light, 1.03 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Aircraft, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Novus_Hero, 0.7 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Infantry_Light, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Infantry_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Elite, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Aircraft, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Dark_Matter_Armor, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Infantry_Light, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Infantry_Heavy, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Light, 1.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Vehicle_Elite, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Aircraft, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Masari_Hero, 0.7 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Moore_Minigun, Armor_Dark_Matter_Armor, 1.40 </Damage_To_Armor_Mod>
 
 
 	<!-- DAMAGE_MILITARY_MOORE_GRENADE -->
@@ -647,21 +647,21 @@
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Tut01_Civilian_Oil_Tanker_Trailer, 0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->	
 
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Infantry_Light, 0.6 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Infantry_Light, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Brute_Tut01, 0.5 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Vehicle_Light, 0.02 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Vehicle_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Aircraft, 0.03 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker, 0.01 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker_Hardpoint, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker_Hardpoint_Armor, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Turret, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Light, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Reaper, 0.05 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Hero_Endure, 0.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Vehicle_Light, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Vehicle_Heavy, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Aircraft, 1.3 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker, 0.9 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker_Hardpoint, 0.70 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Walker_Hardpoint_Armor, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Turret, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Reaper, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Alien_Hero_Endure, 0.45 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Military_Infantry_Light, 0.7 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Military_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod>
@@ -674,32 +674,32 @@
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Military_Hero, 0.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Military_Hero_Tank, 0.07 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Infantry_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Infantry_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Vehicle_Light, 0.02 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Vehicle_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Aircraft, 0.03 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Turret, 0.03 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Light, 0.03 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Hero, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Vehicle_Light, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Vehicle_Heavy, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Aircraft, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Novus_Hero, 1.0 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Infantry_Heavy, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Light, 0.02 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Elite, 0.001 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Aircraft, 0.03 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Turret, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Light, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Heavy, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Dark_Matter_Armor, 0.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Infantry_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Light, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Heavy, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Vehicle_Elite, 0.60 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Aircraft, 1.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Masari_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Marine, Armor_Dark_Matter_Armor, 1.0 </Damage_To_Armor_Mod>
 
 
 	<!-- DAMAGE_MILITARY_ROCKET_LAUNCHER -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Shield, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Shield, 0.5 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
@@ -711,21 +711,21 @@
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Infantry_Heavy, 0.2 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Brute_Tut01, 0.3 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Vehicle_Light, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Vehicle_Heavy, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Aircraft, 0.5 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Walker, 0.2 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Walker_Hardpoint, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Walker_Hardpoint_Armor, 0.15 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Structure_Turret, 0.75 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Structure_Heavy, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Structure_Light, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Structure_Heavy, 0.3 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Hero, 0.3 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Reaper, 0.4 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Alien_Hero_Endure, 0.25 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Infantry_Light, 0.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Infantry_Light, 0.6 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Infantry_Heavy, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Vehicle_Heavy, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Aircraft, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Military_Structure_Turret, 0.75 </Damage_To_Armor_Mod>
@@ -740,9 +740,9 @@
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Vehicle_Heavy, 0.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Aircraft, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Structure_Turret, 0.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Structure_Heavy, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Hero, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Structure_Light, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Structure_Heavy, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Novus_Hero, 0.5 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
@@ -751,15 +751,15 @@
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Vehicle_Elite, 0.25 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Aircraft, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Structure_Turret, 0.65 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Structure_Heavy, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Hero, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Dark_Matter_Armor, 0.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Structure_Light, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Structure_Heavy, 0.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Masari_Hero, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Rocketlauncher, Armor_Dark_Matter_Armor, 0.6 </Damage_To_Armor_Mod>
 
 
 	<!-- DAMAGE_MILITARY_ABRAMSM2_TANK -->
 
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Shield, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Shield, 1.15 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
@@ -767,54 +767,54 @@
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Civilian_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Infantry_Light, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Infantry_Heavy, 1.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Infantry_Light, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Infantry_Heavy, 1.15 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Brute_Tut01, 2.0 </Damage_To_Armor_Mod><!-- jdg tut01 balancing -->
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Vehicle_Light, 1.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Vehicle_Heavy, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Vehicle_Light, 1.40 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Vehicle_Heavy, 1.32 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Aircraft, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Walker, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Walker_Hardpoint, 1.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Walker_Hardpoint_Armor, 1.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Walker_Hardpoint, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Walker_Hardpoint_Armor, 0.85 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Structure_Light, 0.95 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Structure_Heavy, 0.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Hero, 0.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Reaper, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Hero_Endure, 0.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Hero, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Reaper, 1.4 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Alien_Hero_Endure, 0.85 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Infantry_Light, 2.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Infantry_Heavy, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Vehicle_Heavy, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Aircraft, 0.7 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Aircraft, 1.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Structure_Turret, 0.7 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Structure_Light, 1.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Structure_Heavy, 0.95 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Hero, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Hero_Tank, 0.7 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Hero 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Military_Hero_Tank, 1.0 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Infantry_Light, 1.9 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Infantry_Heavy, 1.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Vehicle_Light, 1.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Vehicle_Heavy, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Infantry_Light, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Infantry_Heavy, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Vehicle_Light, 1.40 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Vehicle_Heavy, 1.45 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Aircraft, 0.7 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Structure_Light, 1.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Structure_Heavy, 0.95 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Hero, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Novus_Hero, 1.2 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Infantry_Light, 2.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Infantry_Heavy, 1.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Light, 1.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Heavy, 0.85 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Elite, 0.75 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Aircraft, 0.7 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Infantry_Light, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Infantry_Heavy, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Light, 1.48 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Heavy, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Vehicle_Elite, 1.46 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Aircraft, 1.7 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Structure_Light, 1.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Structure_Heavy, 0.95 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Hero, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Dark_Matter_Armor, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Masari_Hero, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_AbramsM2_Tank, Armor_Dark_Matter_Armor, 1.5 </Damage_To_Armor_Mod>
 
 
 	<!-- DAMAGE_MILITARY_DEFENDER_GUN -->
@@ -827,52 +827,52 @@
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Civilian_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Infantry_Heavy, 0.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Vehicle_Light, 0.6 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Vehicle_Heavy, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Aircraft, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Aircraft, 1.45 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Walker, 0.1 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Walker_Hardpoint, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Walker_Hardpoint_Armor, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Hero, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Reaper, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Hero_Endure, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Reaper, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Alien_Hero_Endure, 0.6 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Vehicle_Light, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Vehicle_Heavy, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Aircraft, 0.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Hero, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Hero_Tank, 0.3 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Aircraft, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Hero, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Military_Hero_Tank, 0.6 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Infantry_Heavy, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Vehicle_Heavy, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Aircraft, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Hero, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Vehicle_Heavy, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Aircraft, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Novus_Hero, 0.6 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Infantry_Light, 0.8 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Infantry_Heavy, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Heavy, 0.6 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Elite, 0.6 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Aircraft, 0.7 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Turret, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Hero, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Infantry_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Vehicle_Elite, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Aircraft, 1.45 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Masari_Hero, 0.6 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Defender_Gun, Armor_Dark_Matter_Armor, 0.2 </Damage_To_Armor_Mod>
 
 
@@ -937,61 +937,61 @@
 
 	<!-- DAMAGE_MILITARY_HUMMER -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Shield, 0.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Shield, 0.65 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Vehiclre_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Structure_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Infantry, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Vehiclre_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Civilian_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Infantry_Light, 0.5 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Infantry_Heavy, 0.55 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Vehicle_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Vehicle_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Aircraft, 0.4 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker_Hardpoint, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker_Hardpoint_Armor, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Turret, 0.2 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Heavy, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Reaper, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Hero_Endure, 0.05 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Infantry_Light, 2.0 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Infantry_Heavy, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Vehicle_Heavy, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Aircraft, 1.0 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker, 0.40 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker_Hardpoint, 0.48 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Walker_Hardpoint_Armor, 0.48 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Turret, 0.70 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Light, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Structure_Heavy, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Hero, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Reaper, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Alien_Hero_Endure, 0.3 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Infantry_Heavy, 1.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Vehicle_Heavy, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Aircraft, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Heavy, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Hero, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Hero_Tank, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Infantry_Light, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Infantry_Heavy, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Vehicle_Light, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Vehicle_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Aircraft, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Turret, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Structure_Heavy, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Hero, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Military_Hero_Tank, 0.9 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Infantry_Light, 1.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Infantry_Heavy, 0.45 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Vehicle_Light, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Vehicle_Heavy, 0.1 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Aircraft, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Turret, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Heavy, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Hero, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Infantry_Light, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Infantry_Heavy, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Aircraft, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Turret, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Light, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Structure_Heavy, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Novus_Hero, 0.75 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Infantry_Heavy, 0.55 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Heavy, 0.05 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Elite, 0.005 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Infantry_Light, 1.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Infantry_Heavy, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Light, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Heavy, 0.8 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Vehicle_Elite, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Aircraft, 0.4 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Turret, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Light, 0.2 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Heavy, 0.005 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Hero, 0.3 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Dark_Matter_Armor, 0.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Turret, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Light, 0.85 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Structure_Heavy, 0.9 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Masari_Hero, 0.75 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Hummer, Armor_Dark_Matter_Armor, 0.4 </Damage_To_Armor_Mod>
 
 
 	<!-- DAMAGE_MILITARY_TURRET -->
@@ -1004,59 +1004,59 @@
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Civilian_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Civilian_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Infantry_Heavy, 0.55 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Vehicle_Heavy, 0.25 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Aircraft, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker, 0.01 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker_Hardpoint, 0.20 </Damage_To_Armor_Mod><!-- jdg not really tut01 balance -->
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker_Hardpoint_Armor, 0.20 </Damage_To_Armor_Mod><!-- jdg not really tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Infantry_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Infantry_Heavy, 1.35 </Damage_To_Armor_Mod><!-- jdg tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Vehicle_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Vehicle_Heavy, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Aircraft, 1.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker_Hardpoint, 1.35 </Damage_To_Armor_Mod><!-- jdg not really tut01 balance -->
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Walker_Hardpoint_Armor, 1.20 </Damage_To_Armor_Mod><!-- jdg not really tut01 balance -->
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Hero, 0.25 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Reaper, 0.25 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Hero_Endure, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Reaper, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Alien_Hero_Endure, 0.3 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Vehicle_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Aircraft, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Infantry_Light, 1.15 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Infantry_Heavy, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Vehicle_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Vehicle_Heavy, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Aircraft, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Hero, 0.25 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Hero_Tank, 0.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Military_Hero_Tank, 0.9 </Damage_To_Armor_Mod>
 
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Vehicle_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Aircraft, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Infantry_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Infantry_Heavy, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Vehicle_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Vehicle_Heavy, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Aircraft, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Hero, 0.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Novus_Hero, 1.0 </Damage_To_Armor_Mod>
 	
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Infantry_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Infantry_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Elite, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Aircraft, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Infantry_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Infantry_Heavy, 1.35 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Light, 1.25 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Heavy, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Vehicle_Elite, 1.2 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Aircraft, 1.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Structure_Turret, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Structure_Light, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Structure_Heavy, 0.5 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Hero, 0.25 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Dark_Matter_Armor, 0.5 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Masari_Hero, 1.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Turret, Armor_Dark_Matter_Armor, 0.50 </Damage_To_Armor_Mod>
 
 
 
 	<!-- DAMAGE_MILITARY_FLAMETHROWER -->
 
-	<Damage_To_Armor_Mod> Damage_Military_Flamethrower, Armor_Shield, 0.1 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Military_Flamethrower, Armor_Shield, 0.4 </Damage_To_Armor_Mod>
 
 	<Damage_To_Armor_Mod> Damage_Military_Flamethrower, Armor_Civilian_Infantry, 0.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Military_Flamethrower, Armor_Civilian_Vehicle_Light, 0.5 </Damage_To_Armor_Mod>

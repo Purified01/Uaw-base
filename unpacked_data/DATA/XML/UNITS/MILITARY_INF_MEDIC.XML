@@ -81,7 +81,7 @@
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
-		<Tactical_Health> 100 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<!-- BEHAVIORS-->
 		<Behavior>

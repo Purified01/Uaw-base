@@ -51,7 +51,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass>Flying</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>2.5</Max_Speed>
+		<Max_Speed>2.0</Max_Speed>
   		<Min_Speed> .5 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .05 </OverrideDeceleration>
@@ -232,7 +232,7 @@
 			<Projectile_Types>Proj_Military_Dragonfly</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
-			<Projectile_Fire_Pulse_Count>60</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Count>25</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.1</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -331,7 +331,7 @@
 					<Duration> 2.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 150.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 250.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 

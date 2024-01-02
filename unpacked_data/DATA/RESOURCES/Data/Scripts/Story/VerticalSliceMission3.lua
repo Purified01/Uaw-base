@@ -950,7 +950,7 @@ function Thread_Act03_Story_Mode_Service()
 		-- Check if the blue debug car has been destroyed. Spawn additional Dragoons on the beach if so.
 		
 		if not TestValid(debug_2) and not debug_spawned_dragoons then
-			dragoon_squad = SpawnList(dragoon_spawn_list2, marker_alien_arrival_01, uea, false, true)
+			_squad = SpawnList(dragoon_spawn_list2, marker_alien_arrival_01, uea, false, true)
 			dragoon_squad2 = SpawnList(dragoon_spawn_list2, marker_alien_spawn_02, uea, false, true)
 			if table.getn(dragoon_squad2) then
 				debug_spawned_dragoons = true

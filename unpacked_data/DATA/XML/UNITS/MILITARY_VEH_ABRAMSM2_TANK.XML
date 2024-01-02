@@ -69,7 +69,7 @@
 
       <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-      <Tactical_Health> 950 </Tactical_Health>
+      <Tactical_Health> 550 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -133,8 +133,8 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 900 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 900 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -158,8 +158,8 @@
          <Targeting_Max_Attack_Distance> 190.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_AbramsM2_Tank</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+         <Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Delay_Seconds>1.4</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
@@ -804,8 +804,8 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>40.0</Projectile_Damage>
-         <Projectile_Blast_Area_Damage> 18 </Projectile_Blast_Area_Damage>
+         <Projectile_Damage>27.0</Projectile_Damage>
+         <Projectile_Blast_Area_Damage> 21 </Projectile_Blast_Area_Damage>
          <Projectile_Blast_Area_Range> 40 </Projectile_Blast_Area_Range>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
@@ -860,7 +860,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>48.0</Projectile_Damage>
+         <Projectile_Damage>20.0</Projectile_Damage>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

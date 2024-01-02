@@ -154,7 +154,7 @@
 			<!-- This will make sure all the left flap hardpoints are in-range before allowing the unit to fire.  -->
 			<!-- This value also has to allow for an arced flight path of the missles.  If the difference is less than 100 the missles -->
 			<!-- may blow up before hitting the target.  5/13/2006 4:47:27 PM BMH -->
-			<Targeting_Max_Attack_Distance>450.0</Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance>280.0</Targeting_Max_Attack_Distance>
 			<Targeting_Min_Attack_Distance>50</Targeting_Min_Attack_Distance><!-- tweaking ... jdg -->
 		</BehaviorType>
 
@@ -221,8 +221,8 @@
 		</BehaviorType>
 				
 		<BehaviorType Name="DeployBehaviorType">
-			<Deploy_Category>SEMI_AUTOMATIC</Deploy_Category>
-			<Deployment_Anim_Rate>1.5</Deployment_Anim_Rate>
+			<Deploy_Category>AUTOMATIC</Deploy_Category>
+			<Deployment_Anim_Rate>3.0</Deployment_Anim_Rate>
 		</BehaviorType>
 		
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -231,7 +231,7 @@
 		
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 6 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 7 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
@@ -263,17 +263,16 @@
 				MTRVScanBehavior.CleanMindControl = true
 			</Lua_Script_Data>
 		</BehaviorType>
+		                  <!-- ABILITIES -->
+	    <Unit_Abilities_Data SubObjectList="Yes">
 
-		<!-- ABILITIES -->
-		<Unit_Abilities_Data SubObjectList="Yes">
-		
-			<!-- Primary ability -->
-			<Unit_Ability Name="Dragoon_Deploy">
-				<Type>DEPLOY</Type>
-				<!--<Active_By_Default> true </Active_By_Default>-->
-				<!--<GUI_Activated_Ability_Name> DragoonDeploy </GUI_Activated_Ability_Name>-->
-			</Unit_Ability>
-			
+                    <!-- Primary ability -->
+            <Unit_Ability Name="Dragoon_Deploy">
+                <Type>DEPLOY</Type>
+                <Active_By_Default> false </Active_By_Default>
+                <GUI_Activated_Ability_Name> DragoonDeploy </GUI_Activated_Ability_Name>
+            </Unit_Ability>
+
 			<Unit_Ability Name="Dragoon_Scan">
 				<Type>DRAGOON_SCAN</Type>
 				<Expiration_Seconds> 13.0 </Expiration_Seconds>
@@ -673,7 +672,7 @@
 		<Is_Attackable> false </Is_Attackable>
 		<Collidable_By_Projectile_Living>No</Collidable_By_Projectile_Living>
 		<Fire_Weapon_When_Deployed>Yes</Fire_Weapon_When_Deployed>
-		<Fire_Weapon_When_Undeployed>No</Fire_Weapon_When_Undeployed>
+		<Fire_Weapon_When_Undeployed>Yes</Fire_Weapon_When_Undeployed>
 		<Ranged_Target_Z_Adjust>0.5</Ranged_Target_Z_Adjust>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>	
 		<Is_Weapon_Dynamic_Scanner>No</Is_Weapon_Dynamic_Scanner>
@@ -800,7 +799,7 @@
 		<Variant_Of_Existing_Type>HP_Military_Dragoon_Left_Flap</Variant_Of_Existing_Type>
 		<Land_Model_Name> MV_Dragoon_Flap_R.alo </Land_Model_Name>
 		<Fire_Weapon_When_Deployed>Yes</Fire_Weapon_When_Deployed>
-		<Fire_Weapon_When_Undeployed>No</Fire_Weapon_When_Undeployed>
+		<Fire_Weapon_When_Undeployed>Yes</Fire_Weapon_When_Undeployed>
       <AssetBank> BANK_MILITARY </AssetBank>
 	</HardPoint>
 
@@ -830,7 +829,7 @@
 		<Land_FOW_Reveal_Range>220.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>	
 		<Fire_Weapon_When_Deployed>Yes</Fire_Weapon_When_Deployed>
-		<Fire_Weapon_When_Undeployed>No</Fire_Weapon_When_Undeployed>
+		<Fire_Weapon_When_Undeployed>Yes</Fire_Weapon_When_Undeployed>
 		<Ranged_Target_Z_Adjust>0.5</Ranged_Target_Z_Adjust>
 		<Is_Weapon_Dynamic_Scanner>Yes</Is_Weapon_Dynamic_Scanner>
 		<Fire_Weapon_At_Locked_Targets_Only>No</Fire_Weapon_At_Locked_Targets_Only>
@@ -1002,8 +1001,8 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>110.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>75</Projectile_Blast_Area_Damage>
+			<Projectile_Damage>40.0</Projectile_Damage>
+			<Projectile_Blast_Area_Damage>55</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			 

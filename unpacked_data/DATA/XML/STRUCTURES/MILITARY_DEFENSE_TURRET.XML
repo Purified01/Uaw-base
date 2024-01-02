@@ -66,8 +66,8 @@
 
 		<Projectile_Fire_Recharge_Seconds>1.85</Projectile_Fire_Recharge_Seconds>
 		<Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-		<Projectile_Fire_Pulse_Count>30</Projectile_Fire_Pulse_Count>
-		<Projectile_Fire_Pulse_Delay_Seconds>0.18</Projectile_Fire_Pulse_Delay_Seconds>
+		<Projectile_Fire_Pulse_Count>20</Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
 
         <Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
 
@@ -424,7 +424,7 @@
       <Tactical_Buildable_Beacon_Type> Military_Defence_Beacon </Tactical_Buildable_Beacon_Type>
       <Tactical_Buildable_Constructed> Military_Turret_Ground </Tactical_Buildable_Constructed>
       <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-      <Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
+      <Tactical_Build_Cost_Campaign> 640 </Tactical_Build_Cost_Campaign>
       <Tactical_Build_Time_Seconds> 30 </Tactical_Build_Time_Seconds>
       <Tactical_UI_Build_Queue_Order> 6 </Tactical_UI_Build_Queue_Order>
       <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
@@ -630,7 +630,7 @@
 			<Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-			<Projectile_Damage>25.0</Projectile_Damage>
+			<Projectile_Damage>12.0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage> 2 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 10 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>

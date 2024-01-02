@@ -110,7 +110,7 @@
       <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
       <Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 450 </Tactical_Health>
+      <Tactical_Health> 252 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -223,7 +223,7 @@
          <Projectile_Types>Proj_Military_Apache</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>1.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
-         <Projectile_Fire_Pulse_Count>8</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
@@ -699,7 +699,7 @@
          <Projectile_Category>DEFAULT</Projectile_Category>
 
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
-         <Projectile_Damage>50.0</Projectile_Damage>
+         <Projectile_Damage>8.0</Projectile_Damage>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Bullets_hit</Projectile_Object_Detonation_Particle>
@@ -745,8 +745,8 @@
          <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
          <Projectile_Category>ROCKET</Projectile_Category>
          <Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
-         <Projectile_Damage>20</Projectile_Damage>
-         <Projectile_Blast_Area_Damage>54</Projectile_Blast_Area_Damage>
+         <Projectile_Damage>15</Projectile_Damage>
+         <Projectile_Blast_Area_Damage>25</Projectile_Blast_Area_Damage>
          <Projectile_Blast_Area_Range>40</Projectile_Blast_Area_Range>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
