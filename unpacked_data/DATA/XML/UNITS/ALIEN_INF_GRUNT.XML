@@ -89,7 +89,7 @@
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | DeathCloneResource | Resource_INST </Attack_Category_Restrictions>
 
-		<Projectile_Types>Proj_Masari_Zessus_Toy_Fire</Projectile_Types>
+		<Projectile_Types>Proj_Grunt_Shotgun_Pellet</Projectile_Types>
 		<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
 		<Projectile_Fire_Pulse_Delay_Seconds>0.02</Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>

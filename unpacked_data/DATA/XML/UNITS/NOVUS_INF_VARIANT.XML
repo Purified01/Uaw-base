@@ -219,6 +219,7 @@
       <Death_Explosions>Novus_Large_Explosion_Land</Death_Explosions>
 		<Death_Speed_Min> 2 </Death_Speed_Min>
 		<Death_Speed_Max> 4 </Death_Speed_Max>
+			  <On_Death_Spawn_Object_Type> Novus_Variant_Z1 </On_Death_Spawn_Object_Type>
     </BehaviorType>
 
     <BehaviorType Name="BallisticBehaviorType">
@@ -415,6 +416,68 @@
     </Effect_Generator_Data>
 
   </X12_Novus_Units>
+
+<X12_Novus_Units Name="Novus_Variant_Z1">
+		  
+		<Variant_Of_Existing_Type> Novus_Variant </Variant_Of_Existing_Type>
+
+		<Scale_Factor>1.2</Scale_Factor>
+		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+		
+		<BehaviorType Name="WeaponBehaviorType">
+			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
+			<Ranged_Target_Z_Adjust>13.0</Ranged_Target_Z_Adjust>
+			<Targeting_Priority_Set> Novus_Variant_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 165.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Novus_Flechette_Cannon_MK2</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>1.2</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>8</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+		</BehaviorType>
+
+    <BehaviorType Name="DeathFXBehaviorType">
+      <Death_Clone> Damage_Default, Novus_Variant_Death_Clone </Death_Clone>
+      <Death_Explosions>Novus_Large_Explosion_Land</Death_Explosions>
+		<Death_Speed_Min> 2 </Death_Speed_Min>
+		<Death_Speed_Max> 4 </Death_Speed_Max>
+			  <On_Death_Spawn_Object_Type> Novus_Variant_Z2 </On_Death_Spawn_Object_Type>
+    </BehaviorType>
+
+	</X12_Novus_Units>
+
+<X12_Novus_Units Name="Novus_Variant_Z2">
+		  
+		<Variant_Of_Existing_Type> Novus_Variant </Variant_Of_Existing_Type>
+
+		<Scale_Factor>2.0</Scale_Factor>
+		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+		
+		<BehaviorType Name="WeaponBehaviorType">
+			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
+			<Ranged_Target_Z_Adjust>13.0</Ranged_Target_Z_Adjust>
+			<Targeting_Priority_Set> Novus_Variant_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Novus_Flechette_Cannon_MK3</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds>1.2</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+		</BehaviorType>
+
+    <BehaviorType Name="DeathFXBehaviorType">
+      <Death_Clone> Damage_Default, Novus_Variant_Death_Clone </Death_Clone>
+      <Death_Explosions>Novus_Large_Explosion_Land</Death_Explosions>
+		<Death_Speed_Min> 2 </Death_Speed_Min>
+		<Death_Speed_Max> 4 </Death_Speed_Max>
+			  <On_Death_Spawn_Object_Type> Novus_Gravity_Bomb_Singularity </On_Death_Spawn_Object_Type>
+    </BehaviorType>
+
+	</X12_Novus_Units>
 
 	<!-- **************************************************************************************** -->
 	<!-- *** DEATH CLONE(S)********************************************************************** -->
@@ -695,5 +758,92 @@
 
 	</Projectile>
 
+	<Projectile Name="Proj_Novus_Flechette_Cannon_MK2">
+
+		<!-- ART -->
+		<Land_Model_Name>Laser_Novus_Flechette_Cannon_variant</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
+		<AssetBank> BANK_NOVUS </AssetBank>
+		<Scale_Factor>2.0</Scale_Factor>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Max_Speed>14.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS-->
+		<Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Novus_Hero_Variant_Flechette </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Category>DEFAULT</Projectile_Category>
+
+			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
+			<Projectile_Damage>10.0</Projectile_Damage>
+			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Detonation_Particle>
+			<Projectile_Object_Armor_Reduced_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Armor_Reduced_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>Military_Rifle_Dirt_Collide</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle>Tiny_Dud</Projectile_Lifetime_Detonation_Particle>
+			<Projectile_Absorbed_By_Shields_Particle />
+			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+		</BehaviorType>
+
+	</Projectile>
+  
+	<Projectile Name="Proj_Novus_Flechette_Cannon_MK3">
+
+		<!-- ART -->
+		<Land_Model_Name>Laser_Novus_Flechette_Cannon_variant</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
+		<AssetBank> BANK_NOVUS </AssetBank>
+		<Scale_Factor>3.0</Scale_Factor>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Max_Speed>14.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS-->
+		<Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Novus_Hero_Variant_Flechette </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Category>DEFAULT</Projectile_Category>
+
+			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
+			<Projectile_Damage>25.0</Projectile_Damage>
+			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Detonation_Particle>
+			<Projectile_Object_Armor_Reduced_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Armor_Reduced_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>Military_Rifle_Dirt_Collide</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle>Tiny_Dud</Projectile_Lifetime_Detonation_Particle>
+			<Projectile_Absorbed_By_Shields_Particle />
+			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+		</BehaviorType>
+
+	</Projectile>
 
 </Novus_INF_Variant_XML>
