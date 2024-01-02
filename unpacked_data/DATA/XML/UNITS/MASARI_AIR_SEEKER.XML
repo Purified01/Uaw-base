@@ -208,12 +208,12 @@
       <Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-      <Projectile_Fire_Recharge_Seconds>4.0</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
 	  <!--
@@ -340,6 +340,7 @@
         <Type>EFFECT_GENERATOR</Type>
         <Recharge_Seconds>30.0</Recharge_Seconds>
         <Expiration_Seconds>8.0</Expiration_Seconds>
+        <SFXEvent_Target_Ability>Unit_ABILITY_B_Masari_Inquisitor</SFXEvent_Target_Ability>
         <GUI_Activated_Ability_Name>Inquisitor_Destabilize_Ability</GUI_Activated_Ability_Name>
         <Targeting_Type>ANY_OBJECT</Targeting_Type>
         <Effect_Generator_Name>Masari_Inquisitor_Destabilize_Generator</Effect_Generator_Name>
@@ -417,6 +418,7 @@
       <Effect_Generator Name="MasariSpawnPhoenixOnDeathGenerator">
         <Starts_Active>Yes</Starts_Active>
         <Modal_Refresh_Frequency>1</Modal_Refresh_Frequency>
+        <SFXEvent_Target_Ability>Unit_ABILITY_A_Masari_Inquisitor</SFXEvent_Target_Ability>
         <Effect_Generator_Entry Name="Entry1">
           <Duration> 1.1 </Duration>
           <Effect_Name> MasariPhoenixEffect </Effect_Name>
@@ -552,9 +554,9 @@
       <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-      <Projectile_Fire_Recharge_Seconds>6.0</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.5</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
 	  <BehaviorType name="AIBehaviorType">
@@ -576,13 +578,13 @@
 	  </BehaviorType>
 
 	  <BehaviorType Name="SFXBehaviorType">
-      <SFXEvent_Fire> SFX_Alien_Mass_Driver_Fire </SFXEvent_Fire>
+      <SFXEvent_Fire> SFX_Masari_Pulse_Cannon_Fire </SFXEvent_Fire>
       <SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
       <SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
       <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-      <SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-      <SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+      <SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+      <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
       <Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
       <SFXEvent_Ambient_Moving> SFX_Masari_Inquisitor_Fly_By </SFXEvent_Ambient_Moving>
@@ -708,8 +710,8 @@
 			<SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-			<SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-			<SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+			<SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
 			<Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
 			<SFXEvent_Ambient_Moving>  </SFXEvent_Ambient_Moving>
@@ -739,31 +741,6 @@
         </Effect_Generator_Entry>
 
       </Effect_Generator>
-
-      <!-- Increases DMA regen rate of objects in a radius  -->
-      <Effect_Generator Name="MasariSeekerAE_DMARegenGenerator">
-        <Is_Independent_Generator> true </Is_Independent_Generator>
-        <Starts_Active> true </Starts_Active>
-        <Modal_Refresh_Frequency> 4.9 </Modal_Refresh_Frequency>
-        <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-        <Effect_Generator_Entry Name="Entry1">
-          <Effect_Name> MasariSeekerDMARegenEffect </Effect_Name>
-          <Duration> 5.0 </Duration>
-          <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-          <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
-          <Area_Effect_Radius> 100.0 </Area_Effect_Radius>
-        </Effect_Generator_Entry>
-
-         <Effect_Generator_Entry Name="Entry2">
-            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
-            <Duration> 5.0 </Duration>
-            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-         </Effect_Generator_Entry>
-
-      </Effect_Generator>
-
-
 
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
@@ -996,8 +973,7 @@
 	<Projectile Name="Proj_Seeker_Pulse_Cannon_Light">
 
 		<!-- ART -->
-		<Land_Model_Name>ZV_Peacebringer.ALO</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
-    <Scale_Factor>0.70</Scale_Factor>
+		<Land_Model_Name>Laser_Masari_Seeker_Light_Bolt</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -1005,7 +981,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>2.0</Max_Speed>
+		<Max_Speed>15.0</Max_Speed>
 		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1028,11 +1004,11 @@
 
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>80</Projectile_Damage>
-      <Projectile_Blast_Area_Damage> 40 </Projectile_Blast_Area_Damage>
-      <Projectile_Blast_Area_Range> 60 </Projectile_Blast_Area_Range>
-      <Projectile_SFXEvent_Detonate>SFX_Alien_Mass_Driver_Detonation_1</Projectile_SFXEvent_Detonate>
-      <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Mass_Driver_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+      <Projectile_Damage>8</Projectile_Damage>
+      <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
+      <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
+      <Projectile_SFXEvent_Detonate>SFX_Masari_Detonation_1</Projectile_SFXEvent_Detonate>
+      <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
       <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 
       <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
@@ -1084,7 +1060,7 @@
       <Projectile_Category>laser</Projectile_Category>
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>8.0</Projectile_Damage>
+      <Projectile_Damage>9.0</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
       <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
       <Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_1</Projectile_SFXEvent_Detonate>

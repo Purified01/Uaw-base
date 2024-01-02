@@ -1066,11 +1066,11 @@
 				<Starts_Active> false </Starts_Active>
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
 				<Is_Independent_Generator> false </Is_Independent_Generator>
-				<Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 25.0 </Modal_Refresh_Frequency>
 
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> Novus_Virus_Stage_I_Effect </Effect_Name>
-					<Duration> 20.0 </Duration>
+					<Duration> 25.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius_Attribute> Novus_Power_Powerup_Radius </Area_Effect_Radius_Attribute>
 					<Target_Filter_C> Virus_Infect_Enemy </Target_Filter_C>
@@ -1078,7 +1078,7 @@
 
 				<Effect_Generator_Entry Name="Entry2">
 					<Effect_Name> Novus_Virus_Copy_Aura_Generator </Effect_Name>
-					<Duration> 20.0 </Duration>
+					<Duration> 25.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius_Attribute> Novus_Power_Powerup_Radius </Area_Effect_Radius_Attribute>
           <Target_Filter_C> Virus_Infect_Enemy </Target_Filter_C>
@@ -1094,12 +1094,12 @@
 				<Starts_Active> false </Starts_Active>
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
 				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 25.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> Novus_Virus_Stage_I_Effect </Effect_Name>
-					<Duration> 20.0 </Duration>
+					<Duration> 25.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 50 </Area_Effect_Radius>
 					<Target_Filter_C> Virus_Infect_Ally </Target_Filter_C>
@@ -1109,11 +1109,11 @@
 
 				<Effect_Generator_Entry Name="Entry2">
 					<Effect_Name> Novus_Virus_Copy_Aura_Generator_No_Activate </Effect_Name>
-					<Duration> 20.0 </Duration>
+					<Duration> 25.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 50 </Area_Effect_Radius>
 					<Target_Filter_C> Virus_Infect_Ally </Target_Filter_C>
-					<Base_Delay> 5.0 </Base_Delay>
+					<Base_Delay> 25.0 </Base_Delay>
 				</Effect_Generator_Entry>
 				
 			</Effect_Generator>

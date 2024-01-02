@@ -181,9 +181,99 @@
 		
 	</Effect>
 	
+	<Effect Name="Medic_Heal_Effect">
+		<Duration> 3.1 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0.015</Percentage_Per_Second>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="Medic_Heal_Visual_Effect">
+		<Duration> 3.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Unit_Healed_Particles </Particle_System_Type>
+		</Effect_Component>
+		
+	</Effect>
 	
-	
-	
+	<!--<Effect Name="WalkerVolatileReactorExplosionVisualEffect">
+
+					<Duration> 20.0 </Duration>
+					<Effect_Class> DefilerBleedVisual </Effect_Class>
+					<Priority> 20.0 </Priority>
+
+					<Effect_Component Type="ParticleSystem">
+						<Particle_System_Type> Radiation_Core_Detonate_WALK </Particle_System_Type>
+					</Effect_Component>
+
+				</Effect>
+
+				<Effect Name="WalkerVolatileReactorGammaExplosionVisualEffect">
+
+					<Duration> 20.0 </Duration>
+						<Effect_Class> DefilerBleedVisualGamma </Effect_Class>
+					<Priority> 20.0 </Priority>
+
+					<Effect_Component Type="ParticleSystem">
+						<Particle_System_Type> Gamma_Radiation_Core_Detonate_WALK </Particle_System_Type>
+					</Effect_Component>
+				</Effect>
+
+				<Effect Name="WalkerVolatileReactorDamageEffect">
+
+					<Duration> 20.0 </Duration>
+					<Effect_Class> DefilerRadiation </Effect_Class>
+					<Extends_Existing_Duration> true </Extends_Existing_Duration>
+					<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+					<Effect_Component Type="DamageOverTime">
+						<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
+						<Amount_Per_Second> 8.0 </Amount_Per_Second>
+						<Percentage_Per_Second>0</Percentage_Per_Second>
+					</Effect_Component>
+
+					<Effect_Component Type="ParticleSystem">
+						<Particle_System_Type> Radiation_Harmful_Glow </Particle_System_Type>
+					</Effect_Component>
+
+					<Effect_Component Type="AttributeModifier">
+						<Attribute> Create_Radiation_Mutant </Attribute>
+						<Modifier_Value> 0.2 </Modifier_Value>
+					</Effect_Component>
+				</Effect>
+
+				<Effect Name="WalkerVolatileReactorGammaDamageEffect">
+
+					<Duration> 20.0 </Duration>
+					<Effect_Class> DefilerRadiation </Effect_Class>
+					<Extends_Existing_Duration> true </Extends_Existing_Duration>
+					<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+					<Effect_Component Type="DamageOverTime">
+						<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
+						<Amount_Per_Second> 11.0 </Amount_Per_Second>
+						<Percentage_Per_Second>0</Percentage_Per_Second>
+					</Effect_Component>
+
+					<Effect_Component Type="ParticleSystem">
+						<Particle_System_Type> Gamma_Radiation_Harmful_Glow </Particle_System_Type>
+					</Effect_Component>
+
+					<Effect_Component Type="AttributeModifier">
+						<Attribute> Create_Radiation_Mutant </Attribute>
+						<Modifier_Value> 0.2 </Modifier_Value>
+					</Effect_Component>
+				</Effect>-->
 	
 	<!--=================================================================================================
 	== Capturable Military Laser Turret Beam Effect
@@ -197,8 +287,98 @@
 		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
 
 		<Effect_Component Type="DamageOverTime">
-			<Damage_Type> Damage_Alien_Spitter_Particle_Beam </Damage_Type>
-			<Amount_Per_Second> 4.0 </Amount_Per_Second>
+			<Damage_Type> Damage_Alien_Spitter_Particle_Beam </Damage_Type><!--Default Damage_Alien_Spitter_Particle_Beam-->
+			<Amount_Per_Second> 4.0 </Amount_Per_Second><!--4.0 Default-->
+			<Percentage_Per_Second>.12</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Military_Laser_Turret_Beam </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Orlok_Crush_Beam_Layer_04 </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Military_Laser_Target_Glow </Particle_System_Type>
+		</Effect_Component>
+		
+	</Effect>
+	
+	<Effect Name="TurretLaserBeamEffectMilitary01">
+		<Duration> 3.0 </Duration>
+		<Effect_Class> LightBeam </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Military_Laser_Particle_Beam </Damage_Type><!--Default Damage_Alien_Spitter_Particle_Beam-->
+			<Amount_Per_Second> 0.8 </Amount_Per_Second><!--4.0 Default-->
+			<Percentage_Per_Second>.07</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Military_Laser_Turret_Beam </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Orlok_Crush_Beam_Layer_04 </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Military_Laser_Target_Glow </Particle_System_Type>
+		</Effect_Component>
+		
+	</Effect>
+	
+	<Effect Name="TurretLaserBeamEffectMilitary02">
+		<Duration> 3.0 </Duration>
+		<Effect_Class> LightBeam </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Military_Laser_Particle_Beam </Damage_Type><!--Default Damage_Alien_Spitter_Particle_Beam-->
+			<Amount_Per_Second> 0.2 </Amount_Per_Second><!--4.0 Default-->
+			<Percentage_Per_Second>.02</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Military_Laser_Turret_Beam_APC </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Orlok_Crush_Beam_Layer_04_APC </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Military_Laser_Target_Glow_APC </Particle_System_Type>
+		</Effect_Component>
+		
+	</Effect>
+	
+	<Effect Name="TurretLaserBeamEffectMilitary">
+		<Duration> 3.0 </Duration>
+		<Effect_Class> LightBeam </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Military_Laser_Particle_Beam </Damage_Type><!--Default Damage_Alien_Spitter_Particle_Beam-->
+			<Amount_Per_Second> 4.0 </Amount_Per_Second><!--4.0 Default-->
 			<Percentage_Per_Second>.12</Percentage_Per_Second>
 		</Effect_Component>
 

@@ -791,6 +791,29 @@
             </Effect_Generator_Entry>
 
          </Effect_Generator>
+
+      <!-- Increases DMA regen rate of objects in a radius  -->
+      <Effect_Generator Name="MasariSeekerAE_DMARegenGenerator">
+        <Is_Independent_Generator> true </Is_Independent_Generator>
+        <Starts_Active> true </Starts_Active>
+        <Modal_Refresh_Frequency> 4.9 </Modal_Refresh_Frequency>
+        <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+        <Effect_Generator_Entry Name="Entry1">
+          <Effect_Name> MasariSeekerDMARegenEffect </Effect_Name>
+          <Duration> 5.0 </Duration>
+          <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+          <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
+          <Area_Effect_Radius> 100.0 </Area_Effect_Radius>
+        </Effect_Generator_Entry>
+
+         <Effect_Generator_Entry Name="Entry2">
+            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
+            <Duration> 5.0 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+         </Effect_Generator_Entry>
+
+      </Effect_Generator>      
          
 
          <!-- Standard DMA generator - Oksana 05/14/2007 -->

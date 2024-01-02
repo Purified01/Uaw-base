@@ -92,7 +92,7 @@
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
       <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
-      <Tactical_Health> 850 </Tactical_Health>
+      <Tactical_Health> 950 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -273,7 +273,7 @@
 	
 			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
 			<SFXEvent_Build_Started>GUI_BUILD_Hero</SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete>Unit_Select_Masari_Zessus</SFXEvent_Build_Complete>
+			<SFXEvent_Build_Complete>Unit_TAUNT_Masari_Zessus</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 			<SFXEvent_Cant_Move_Unit_In_Production> MCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 
@@ -546,26 +546,9 @@
 				<Projectile_Type> Proj_Masari_Zessus_Toy_Fire </Projectile_Type>
 				<Projectile_Spawn_Bone_Name> B_hand_R </Projectile_Spawn_Bone_Name>
 				<Fire_Pojectile_Frame_Number> 5 </Fire_Pojectile_Frame_Number>
-				<Projectile_Count> 6 </Projectile_Count>
-				<Effect_Generator_Name>IncreaseInaccuracyEffectGenerator</Effect_Generator_Name>
-				<Spread_Angle> 60 </Spread_Angle>
 				<Catch_Dist> 20 </Catch_Dist>
 				<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
 			</Return_Projectile_Ability>
-
-			<Generic_Attack_Ability Name="Masari_Zessus_Range_Attack_Ability_Spam">
-				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range>0.0</Activation_Min_Range>
-				<Activation_Max_Range>300.0</Activation_Max_Range>
-				<Attack_Animation> ATTACK_TOY_THROW </Attack_Animation>
-				<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
-				<Projectile_Type> Proj_Masari_Zessus_Toy_Fire_Spread </Projectile_Type>
-				<Is_Looping_Attack> false </Is_Looping_Attack>
-				<Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
-				<Projectile_Count> 24 </Projectile_Count>
-				<Effect_Generator_Name>IncreaseInaccuracyEffectGenerator</Effect_Generator_Name>
-				<Spread_Angle> 200 </Spread_Angle>
-			</Generic_Attack_Ability>
 
 			<Effect_Generator_Ability Name="Masari_Zessus_Explode_Ability">
 				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
@@ -1003,8 +986,8 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>12.0</Max_Speed>
-		<Max_Rate_Of_Turn>50.0</Max_Rate_Of_Turn>
+		<Max_Speed>6.0</Max_Speed>
+		<Max_Rate_Of_Turn>20.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
 		<AI_Combat_Power> 1 </AI_Combat_Power>
@@ -1024,9 +1007,9 @@
 			<Projectile_Max_Flight_Distance>1200.0</Projectile_Max_Flight_Distance>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-			<Projectile_Rocket_Straight_Distance>40</Projectile_Rocket_Straight_Distance>
-			<Projectile_Rocket_Curve_Distance>30</Projectile_Rocket_Curve_Distance>
-			<Projectile_Rocket_Curve_Offset>20</Projectile_Rocket_Curve_Offset>
+			<Projectile_Rocket_Straight_Distance>200</Projectile_Rocket_Straight_Distance>
+			<Projectile_Rocket_Curve_Distance>60</Projectile_Rocket_Curve_Distance>
+			<Projectile_Rocket_Curve_Offset>15</Projectile_Rocket_Curve_Offset>
 			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Object_Detonation_Particle> Masari_Zessus_Light_Bolo_Target </Projectile_Object_Detonation_Particle>
@@ -1107,104 +1090,6 @@
 					<Remove_On_Death> false </Remove_On_Death>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 				</Effect_Generator_Entry>
-
-			</Effect_Generator>
-
-		</Effect_Generator_Data>
-
-	</Projectile>
-
-	<Projectile Name="Proj_Masari_Zessus_Toy_Fire_Spread">
-
-		<!-- ART -->
-		<Land_Model_Name>AB_ArrivalSite.alo</Land_Model_Name>
-		<Scale_Factor>0.2</Scale_Factor>
-		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-
-		<!-- INTERFACE -->
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-
-		<!-- MOVEMENT -->
-		<Max_Speed>12.0</Max_Speed>
-		<Max_Rate_Of_Turn>50.0</Max_Rate_Of_Turn>
-
-		<!-- CONFLICT -->
-		<AI_Combat_Power> 1 </AI_Combat_Power>
-
-		<!-- BEHAVIORS -->
-		<Behavior>
-			PROJECTILE,
-			HIDE_WHEN_FOGGED,
-			IDLE,
-			EFFECT_REGISTRY,
-			EFFECT_GENERATOR
-		</Behavior>
-
-		<BehaviorType Name="ProjectileBehaviorType">
-			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
-			<Projectile_Category>BOOMERANG</Projectile_Category>
-			<Projectile_Max_Flight_Distance>1200.0</Projectile_Max_Flight_Distance>
-			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
-			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-			<Projectile_Rocket_Straight_Distance>20</Projectile_Rocket_Straight_Distance>
-			<Projectile_Rocket_Curve_Distance>60</Projectile_Rocket_Curve_Distance>
-			<Projectile_Rocket_Curve_Offset>80</Projectile_Rocket_Curve_Offset>
-			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
-			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
-         <Projectile_Object_Detonation_Particle> Masari_Zessus_Light_Bolo_Target </Projectile_Object_Detonation_Particle>
-         <Projectile_Ground_Detonation_Particle> Masari_Zessus_Light_Bolo_Target </Projectile_Ground_Detonation_Particle>
-         <SFXEvent_Projectile_Flying_Loop>  SFX_Military_Missile_Loop </SFXEvent_Projectile_Flying_Loop>
-			<SFXEvent_Projectile_Start_Flight>  SFX_Military_Missile_Fire </SFXEvent_Projectile_Start_Flight>
-			<Impact_Effect_Generator_Name>MasariZessusToyImpactAEGenerator</Impact_Effect_Generator_Name>
-			<Can_Be_Redirected>False</Can_Be_Redirected>
-		</BehaviorType>
-
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Damage_Type> Damage_Masari_Zessus_Toy </Damage_Type>
-		</BehaviorType>
-
-		<!-- EFFECT GENERATORS -->
-		<Effect_Generator_Data SubObjectList="Yes">
-
-			<Effect_Generator Name="MasariZessusToyImpactAEGenerator">
-				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Effect_Generator_Entry Name="Entry1">
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Remove_On_Death> false </Remove_On_Death>
-					<Effect_Name> MasariZessusToyDamageEffect </Effect_Name>
-               <Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Duration> .25 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> MasariPurifyingLightEffect </Effect_Name>
-					<Duration> 5.0 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Remove_On_Death> false </Remove_On_Death>
-					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry3">
-					<Effect_Name> MasariPurifyingLightVisualEffectSmall </Effect_Name>
-					<Duration> 5.0 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Small </Target_Filter_Categories>
-					<Target_Filter_C> Is_Enemy</Target_Filter_C>
-					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Remove_On_Death> false </Remove_On_Death>
-					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
-				</Effect_Generator_Entry>
-
 
 			</Effect_Generator>
 

@@ -89,7 +89,7 @@
 		<!-- CONFLICT -->
 		<Is_Attackable>true</Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 850 </Tactical_Health>
 		<Land_FOW_Reveal_Range>220</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>	
 				
@@ -257,7 +257,7 @@
 
 			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
 			<SFXEvent_Build_Started>GUI_BUILD_Hero</SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete>Unit_Select_Alien_Nufai</SFXEvent_Build_Complete>
+			<SFXEvent_Build_Complete>Unit_TAUNT_Alien_Nufai</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 			<SFXEvent_Cant_Move_Unit_In_Production> HCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 

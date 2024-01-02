@@ -485,20 +485,22 @@
 	<!-- Viral Cascade: All enemy units under novus signal radius are instantly virally infected. -->
 	<Effect Name="NovusPatchViralCascadeEffect">
 		<Effect_Class> PatchViralCascadeAura </Effect_Class>
-		<Duration> 10.0 </Duration>
+		<Duration> 0 </Duration>
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
 		<!-- Apply the ViralCascadeAura effect generator, which will make the target pulse an AE that virally infects nearby enemy objects. -->
 		<Effect_Component Type="ApplyGenerator">
 			<Effect_Generator_Name> ViralCascadeAuraEffectGenerator </Effect_Generator_Name>
-			<Activate_Generator> true </Activate_Generator>
+			<Duration> 0 </Duration>
+			<Activate_Generator> true </Activate_Generator>		
 		</Effect_Component>
+		
 	</Effect>
 
-	<!-- Viral Reboot: All currently virused enemy units are shut down for 10 seconds. -->
+	<!-- Viral Reboot: All currently virused enemy units are shut down for 5 seconds. -->
 	<Effect Name="NovusPatchViralRebootEffect">
 		<Effect_Class> PatchViralReboot </Effect_Class>
-		<Duration> 10.0 </Duration>
+		<Duration> 5.0 </Duration>
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
 		<Effect_Component Type="RemoveEffect">

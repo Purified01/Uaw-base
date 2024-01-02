@@ -254,11 +254,11 @@
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
       </BehaviorType>
 
       <BehaviorType Name="CrushBehaviorType">
-         <Crush_Defense> 10 </Crush_Defense>
+         <Crush_Defense> 22 </Crush_Defense>
          <Crush_Power> 4 </Crush_Power>
       </BehaviorType>
 

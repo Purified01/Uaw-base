@@ -110,7 +110,7 @@
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
 
 		<Projectile_Types> Proj_Alien_Walker_Science_Plasma_Blob </Projectile_Types>
-		<Projectile_Fire_Pulse_Count> 3 </Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Count> 5 </Projectile_Fire_Pulse_Count>
 		<Projectile_Fire_Pulse_Delay_Seconds> 2.0 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 5.0 </Projectile_Fire_Recharge_Seconds>
 
@@ -266,6 +266,8 @@
          <SFXEvent_Select> Unit_Select_Alien_Assembly </SFXEvent_Select>
          <SFXEvent_Move> Unit_Move_Alien_Assembly </SFXEvent_Move>
          <SFXEvent_Attack> Unit_Attack_Alien_Assembly </SFXEvent_Attack>
+         <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Habitat</SFXEvent_Attack_At_Top_Speed>
+         <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Habitat</SFXEvent_Move_At_Top_Speed>
          <SFXEvent_Guard> Unit_Move_Alien_Assembly </SFXEvent_Guard>
          <SFXEvent_Ambient_Moving> SFX_Alien_Walker_Random_Breath </SFXEvent_Ambient_Moving>
          <SFXEvent_Engine_Idle_Loop> SFX_Alien_Science_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -541,15 +543,41 @@
 				<Starts_Active> true </Starts_Active>
 				<Is_Independent_Generator> true </Is_Independent_Generator>
 				<Effect_Generator_Entry Name="Entry1">
-					
-					<Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
+
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
 					<Duration> 3.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
-					
+
 				</Effect_Generator_Entry>
 				
-			</Effect_Generator>
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
+
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+
+         </Effect_Generator>
 
 			<Effect_Generator Name="ScienceWalkerSpeedIncreaseGenerator">
 
@@ -897,7 +925,7 @@
       <Land_Damage_SFX> null,SFX_GENERIC_DETONATION, null </Land_Damage_SFX>
 
       <Projectile_Types> Proj_Alien_Walker_Science_Laser </Projectile_Types>
-      <Projectile_Fire_Pulse_Count> 3 </Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Count> 5 </Projectile_Fire_Pulse_Count>
       <Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
       <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
       <Targeting_Priority_Set> Alien_Science_Walker_Target_Priority </Targeting_Priority_Set>
@@ -3062,7 +3090,7 @@
 					<Duration> 2.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 350 </Area_Effect_Radius>
+					<Area_Effect_Radius> 700 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

@@ -8,8 +8,8 @@
    <X11_Military_Units Name="Military_AbramsM2_Tank">
 
       <!-- ART -->
-      <Land_Model_Name>mv_tank.ALO</Land_Model_Name>
-      <Scale_Factor>0.9</Scale_Factor>
+      <Land_Model_Name>MV_TANK_HP_MODEL.ALO</Land_Model_Name>
+      <Scale_Factor>1.0</Scale_Factor>
       <SurfaceFX_Name>Generic_Track_Half</SurfaceFX_Name>
       <Tread_Scroll_Rate>0.167</Tread_Scroll_Rate>
       <Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -35,12 +35,16 @@
       <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
       <Importance> 0.4 </Importance>
       <Shot_Type> Vehicle </Shot_Type>
-
+	  
+	  <Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+		</Attributes>
 
       <!-- MOVEMENT -->
       <MovementClass>Tracked</MovementClass>
       <OccupationStyle>1x1</OccupationStyle>
-      <Max_Speed>1.4</Max_Speed>
+      <Max_Speed>1.8</Max_Speed>
       <Max_Rate_Of_Turn>3.0</Max_Rate_Of_Turn>
       <Space_Layer> LandDynamic </Space_Layer>
       <UnitCollisionClass> Vehicle </UnitCollisionClass>
@@ -65,7 +69,7 @@
 
       <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-      <Tactical_Health> 575 </Tactical_Health>
+      <Tactical_Health> 550 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -75,7 +79,10 @@
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER -->
       <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
       <!-- MBL TEMP DISABLE <Behavior> SELECTABLE, HARD_POINT_MANAGER </Behavior> -->
-      <Behavior> SELECTABLE </Behavior>
+      <Behavior>
+	  PERSISTENT_UNIT,
+	  SELECTABLE 
+	  </Behavior>
 
       <LandBehavior>
          GUI,
@@ -85,53 +92,62 @@
          STUNNABLE,
          FORMATION,
          IDLE,
-         TARGETING,
-         WEAPON,
-         TURRET,
+		 HARD_POINT_MANAGER,
+		 HARDPOINT_PRIMARY_ATTACK_MANAGER,
          REVEAL,
          HIDE_WHEN_FOGGED,
          SQUASH,
          SURFACE_FX,
+		 WEAPON,
+		 TURRET,
+		 TARGETING,
          UNIT_AI,
          DAMAGE_TRACKING,
          BALLISTIC,
          EFFECT_REGISTRY,
+		 EFFECT_GENERATOR,
 			ATTRIBUTE_DIRECTORY,
          AI_RECRUITABLE,
-         AI_TARGET
+         AI_TARGET,
+		 TACTICAL_SELL
       </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
          <Armor_Type> Armor_Military_Vehicle_Heavy </Armor_Type>
       </BehaviorType>
 
+      <Attributes SubObjectList="Yes">
+			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+		</Attributes>
+
       <BehaviorType Name="ProductionBehaviorType">
          <Size_Value> 10 </Size_Value>
-         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		<Build_Cost_Credits> 350 </Build_Cost_Credits>
+		<Build_Time_Seconds> 14 </Build_Time_Seconds>
+		<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
+			<Strategic_UI_Build_Menu_Order>6</Strategic_UI_Build_Menu_Order>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 900 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 900 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
      <BehaviorType name="AIBehaviorType">
        <AI_Combat_Power> 1 </AI_Combat_Power>
-       <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-       <Guard_Chase_Range> 165.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+       <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+       <Guard_Chase_Range> 175.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
        <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
        <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+	   <Attack_Score_Rating> 1.1 </Attack_Score_Rating>
+		<Scout_Score_Rating> 0.2 </Scout_Score_Rating>
+		<Guerilla_Score_Rating> 0.4 </Guerilla_Score_Rating>
      </BehaviorType>
 
      <BehaviorType Name="WeaponBehaviorType">
@@ -142,8 +158,8 @@
          <Targeting_Max_Attack_Distance> 190.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_AbramsM2_Tank</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+         <Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Delay_Seconds>1.4</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
@@ -190,7 +206,7 @@
 
       <BehaviorType Name="CrushBehaviorType">
          <Crush_Defense>40</Crush_Defense>
-         <Crush_Power>25</Crush_Power>
+         <Crush_Power>30</Crush_Power>
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -226,18 +242,82 @@
          <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
       </BehaviorType>
 
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size>1</GUI_Bracket_Size>
+         <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+         <GUI_Strategic_Mode_Scale> 0.025 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
+
       <BehaviorType Name="RadarMapBehaviorType">
          <Radar_Icon_Size>0.03  0.03</Radar_Icon_Size>
       </BehaviorType>
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 6 </Unit_Pop_Cap>
       </BehaviorType>
+	  
+	  <Attached_Hard_Points>
+			HP_Military_Tank_Gunner_Turret, HP_ATTACH_00
+		</Attached_Hard_Points>
+	  
+		<Effect_Generator_Data SubObjectList="Yes">
+			<Effect_Generator Name="MilitaryDamageIncreaseEffectGenerator">
+				<!-- 15% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryDamageIncreaseEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryVehicleBoostArmorGenerator">
+				<!-- 20% Damage Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryVehicleBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryFireRateBoostEffectGenerator">
+				<!-- 15% Fire Rate Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryFireRateBoostEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+		</Effect_Generator_Data>
 
    </X11_Military_Units>
-
-
+   
    <!-- **************************************************************************************** -->
    <!-- *** DEATH CLONE(S)********************************************************************** -->
    <!-- **************************************************************************************** -->
@@ -579,6 +659,114 @@
       </BehaviorType>
 
    </HardPoint>
+   
+   <HardPoint Name="HP_Military_Tank_Gunner_Turret">
+
+		<!-- ART -->
+		<Land_Model_Name> MV_TANK_GUNNER_TURRET.ALO </Land_Model_Name>
+		<Scale_Factor> 1.0 </Scale_Factor>
+		<AssetBank> BANK_MILITARY </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_UNIT_MILITARY_TANK</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Affiliation> Military </Affiliation>
+		<CategoryMask> HardPoint </CategoryMask>
+		<Victory_Relevant> No </Victory_Relevant>
+
+		<!-- CONFLICT -->
+		<Is_Attackable> False </Is_Attackable>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+		<Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
+		<Ranged_Target_Z_Adjust>0.5</Ranged_Target_Z_Adjust>
+		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
+		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
+
+		<Tactical_Health> 400 </Tactical_Health>
+
+		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
+
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior> HARD_POINT </Behavior>
+		<LandBehavior>
+			TURRET,
+			IDLE,
+			DAMAGE_TRACKING,
+			TARGETING,
+			WEAPON,
+			SELECTABLE,
+			EFFECT_REGISTRY,
+			ATTRIBUTE_DIRECTORY,
+			EFFECT_GENERATOR,
+			IDLE
+		</LandBehavior>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<!-- Whatever damage is inflicted to this hard point gets passed down to its parent as well. -->
+		</BehaviorType>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Masari_Vehicle_Light </Armor_Type>
+		</BehaviorType>
+		
+		<BehaviorType Name="WeaponBehaviorType">
+		 <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+         <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+         <Targeting_Priority_Set> Military_Hummer_Target_Priority </Targeting_Priority_Set>
+         <Targeting_Fire_Inaccuracy> 12.0 </Targeting_Fire_Inaccuracy>
+         <Targeting_Min_Attack_Distance> 2.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
+         <Projectile_Types>Proj_Military_Tank_Gunner</Projectile_Types>
+         <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+         <Projectile_Fire_Pulse_Count>14</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
+      </BehaviorType>
+
+		<BehaviorType Name="TurretBehaviorType">
+			<Turret_Bone_Name> B_Turret_00 </Turret_Bone_Name>
+			<Barrel_Bone_Name> B_Barrel_00 </Barrel_Bone_Name>
+			<Turret_Rotate_Speed> 4.0 </Turret_Rotate_Speed>
+			<Apply_Z_Turret_Rotate_To_Axis>1</Apply_Z_Turret_Rotate_To_Axis>
+			<Apply_Y_Turret_Rotate_To_Axis>2</Apply_Y_Turret_Rotate_To_Axis>
+			<Turret_Rotate_Extent_Degrees> 140.0 </Turret_Rotate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 20.0 </Turret_Elevate_Extent_Degrees>
+		</BehaviorType>
+
+		<BehaviorType Name="SFXBehaviorType">
+			<SFXEvent_Fire>SFX_Military_Hummer_Fire</SFXEvent_Fire>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
+
+         
+			<!-- Standard DMA generator - Oksana 05/14/2007 -->
+			<!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Hardpoint_Generators.xml" -->
+			
+			<Effect_Generator Name="Disable_Tank_Gunner_Effect_Generator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator> Yes </Is_Independent_Generator>
+				<Starts_Active> yes </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Disable_Tank_Gunner_Effect </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+       
+		</Effect_Generator_Data>
+
+	</HardPoint>
 
 
    <!-- **************************************************************************************** -->
@@ -616,9 +804,9 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>35.0</Projectile_Damage>
-         <Projectile_Blast_Area_Damage> 15 </Projectile_Blast_Area_Damage>
-         <Projectile_Blast_Area_Range> 60 </Projectile_Blast_Area_Range>
+         <Projectile_Damage>27.0</Projectile_Damage>
+         <Projectile_Blast_Area_Damage> 21 </Projectile_Blast_Area_Damage>
+         <Projectile_Blast_Area_Range> 40 </Projectile_Blast_Area_Range>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
@@ -628,21 +816,75 @@
          <Projectile_Lifetime_Detonation_Particle>Tank_Direct_Hit</Projectile_Lifetime_Detonation_Particle>
          <Projectile_Absorbed_By_Shields_Particle>Tank_Direct_Hit</Projectile_Absorbed_By_Shields_Particle>
          <Projectile_Causes_Knockback_To_Enemy_Units> True </Projectile_Causes_Knockback_To_Enemy_Units>
-         <Projectile_Ballistic_Knockback_Radius>25.0</Projectile_Ballistic_Knockback_Radius>
+         <Projectile_Ballistic_Knockback_Radius>2.0</Projectile_Ballistic_Knockback_Radius>
          <Ballistic_Knockback_Probability>1.0</Ballistic_Knockback_Probability>
-         <Ballistic_Knockback_Strength>35.0</Ballistic_Knockback_Strength>
+         <Ballistic_Knockback_Strength>1.0</Ballistic_Knockback_Strength>
          <Projectile_Causes_Blackening>true</Projectile_Causes_Blackening>
          <Terrain_Damage_Radius>15.0</Terrain_Damage_Radius>
+      </BehaviorType>
+
+   </Projectile>
+   
+   <Projectile Name="Proj_Military_Tank_Gunner">
+
+      <!-- ART -->
+
+      <Land_Model_Name>Laser_Military_Hummer_Machine_Gun</Land_Model_Name>
+	  <Scale_Factor>0.8</Scale_Factor>
+
+      <!-- <Land_Model_Name>p_concussion.alo</Land_Model_Name> -->
+      <!-- AI Removed the tank projectile on purpose - plese don't change back w/o talking to me -->
+      <!--Scale_Factor>5.0</Scale_Factor-->
+
+      <!-- INTERFACE -->
+      <Text_ID>TEXT_NONE</Text_ID>
+      <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+      <!-- MOVEMENT -->
+      <Max_Speed>20</Max_Speed>
+      <Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
+
+      <!-- CONFLICT -->
+      <AI_Combat_Power> 1 </AI_Combat_Power>
+
+      <!-- BEHAVIORS -->
+      <Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+         <Damage_Type> Damage_Military_Hummer </Damage_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="ProjectileBehaviorType">
+         <Projectile_Category>laser</Projectile_Category>
+         <!-- feaking-Lasers code -->
+         <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
+         <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
+         <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
+         <Projectile_Damage>20.0</Projectile_Damage>
+         <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
+         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+         <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
+         <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+         <Projectile_Object_Detonation_Particle>Bullets_hit</Projectile_Object_Detonation_Particle>
+         <Projectile_Ground_Detonation_Particle>Military_Rifle_Dirt_Collide</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle />
+         <Projectile_Absorbed_By_Shields_Particle>Bullets_hit</Projectile_Absorbed_By_Shields_Particle>
+         <Projectile_Causes_Knockback_To_Enemy_Units> false </Projectile_Causes_Knockback_To_Enemy_Units>
+         <Projectile_Ballistic_Knockback_Radius>0.0</Projectile_Ballistic_Knockback_Radius>
+         <Ballistic_Knockback_Probability>1.0</Ballistic_Knockback_Probability>
+         <Ballistic_Knockback_Strength>3.0</Ballistic_Knockback_Strength>
+         <Projectile_Causes_Blackening>false</Projectile_Causes_Blackening>
+         <Terrain_Damage_Radius>10.0</Terrain_Damage_Radius>
       </BehaviorType>
 
    </Projectile>
 
    <!-- jdg 2/21/07 cutting...commenting out for now in case it causes issues
    
-   JDG marine variant for use in Novus Tutorials 
-   <X11_Military_Units Name="Military_AbramsM2_Tank_Novus">
+   JDG marine variant for use in Novus Tutorials -->
+   <!--<X11_Military_Units Name="Military_AbramsM2_Tank_Novus">
       <Variant_Of_Existing_Type> Military_AbramsM2_Tank </Variant_Of_Existing_Type>
-      <Affiliation>Novus</Affiliation>
+      <Affiliation>Military</Affiliation>
    </X11_Military_Units>-->
 
 </Military_Veh_AbramsM2_Tank_XML>

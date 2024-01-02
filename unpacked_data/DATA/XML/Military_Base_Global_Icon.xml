@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<Military_Global_Icons>
+
+	<!-- These will be a sort of a dummy object that represents a real object -->
+	<!-- UNIT TRAY's BUILDING OBJECT DEFINITION -->
+
+	<!-- Maria 05.18.2006 TODO -->
+	<!-- CHANGE THE NAMES OF THE MODELS TO THAT OF THE PROPER UNIT -->
+
+
+	<!-- When adding a new entry REMEMBER to add it to the list of bones at the end of this file!!.
+		 For example, when adding "Novus_R_and_D_Center_Global_Icon" add the entry
+		 Novus_R_and_D_Center_Global_Icon,					earth_sign
+		 to the Region_Label object (see below!)
+		 -->
+
+	<Military_Building_Global_Icon Name="Military_Megacorp_Center_Global_Icon">
+		<Galactic_Model_Name>WO_BUNKER.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<Behavior> IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>0.9</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 45 </Select_Box_Scale>
+
+		<BehaviorType Name="AlternateDamageStateBehaviorType">
+			<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
+			<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+		</BehaviorType>		
+		
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWCommand </Global_FOW_Group>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> Gamepad_Global_Building_Progress_Bar </GUI_Scene_Name>
+			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+		</BehaviorType>
+
+  </Military_Building_Global_Icon>
+
+	<Military_Building_Global_Icon Name="Military_Material_Center_Global_Icon">
+		<Galactic_Model_Name>WO_NUCLEAR_REACTOR.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<Behavior> IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>0.35</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 200 </Select_Box_Scale>
+
+		<BehaviorType Name="AlternateDamageStateBehaviorType">
+			<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
+			<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+		</BehaviorType>		
+		
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWCommand </Global_FOW_Group>
+		</BehaviorType>
+    
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> Gamepad_Global_Building_Progress_Bar </GUI_Scene_Name>
+			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+		</BehaviorType>
+
+	</Military_Building_Global_Icon>
+	
+	<HardPoint Name="Nuclear_Reactor_Global_Icon">
+      <!-- ART -->
+      <Galactic_Model_Name>WO_NUCLEAR_REACTOR.alo</Galactic_Model_Name>
+      <Scale_Factor>0.5</Scale_Factor>
+      <Is_Decoration>Yes</Is_Decoration>
+      <Multisample_FOW_Check>Yes</Multisample_FOW_Check>
+      <Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
+	  <AssetBank> BANK_GLOBAL </AssetBank>
+
+      <!-- INTERFACE -->
+      <Text_ID>TEXT_STRUCTURE_MILITARY_MISSILE_LAUNCHER</Text_ID>
+      <Is_Placed_By_Editor>true</Is_Placed_By_Editor>
+
+      <!-- ATTRIBUTES -->
+      <CategoryMask> Large, Stationary, Insignificant, TacticalBuildableStructure </CategoryMask>
+
+      <Space_Layer> LandStatic </Space_Layer>
+      <MovementClass>LargeWalker</MovementClass>
+      <UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+      <Custom_Hard_XExtent> 80.0 </Custom_Hard_XExtent>
+      <Custom_Hard_YExtent> 40.0 </Custom_Hard_YExtent>
+	  <Custom_Hard_YExtent_Offset> -4.0 </Custom_Hard_YExtent_Offset>
+
+		<!-- CONFLICT -->
+      <Is_Attackable> true </Is_Attackable>
+      <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
+      <Ranged_Target_Z_Adjust> 10.0 </Ranged_Target_Z_Adjust>
+      <!--<Tactical_Health> 3000 </Tactical_Health>-->
+      <Dense_FOW_Reveal_Range_Multiplier> 0.0 </Dense_FOW_Reveal_Range_Multiplier>
+
+      <Land_Damage_Thresholds>1, 0.5, 0</Land_Damage_Thresholds>
+      <Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
+      <Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+
+      <!-- BEHAVIORS -->
+      <Behavior>
+		 HARD_POINT,
+         GROUND_STRUCTURE,
+         SELECTABLE
+      </Behavior>
+
+      <LandBehavior>
+         ATTRIBUTE_DIRECTORY,
+         GUI,
+         EFFECT_REGISTRY,
+         REVEAL,
+         HIDE_WHEN_FOGGED
+      </LandBehavior>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
+         <GUI_Receives_Input> no </GUI_Receives_Input>
+         <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
+         <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
+         <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+      </BehaviorType>
+	  
+	  <BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+			<HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<!-- Destroying this one hard point will trigger the parent object to be destroyed -->
+
+         <!--  MARIA: We need to know if this hard point is allowed to modify its parent's tooltip.
+               MAKE SURE YOU SET THIS FLAG FOR HARD POINT OBJECTS ONLY! (otherwise it will do nothing)
+               NOTE: this flag defaults to No -->
+         <Modifies_Parent_Tooltip> No </Modifies_Parent_Tooltip>
+         
+		</BehaviorType>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+         <Armor_Type> Armor_Civilian_Structure_Light </Armor_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="CrushBehaviorType">
+         <Crush_Defense>99</Crush_Defense>
+      </BehaviorType>
+
+      <BehaviorType Name="SelectableBehaviorType">
+         <Select_Box_Scale> 50 </Select_Box_Scale>
+      </BehaviorType>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
+      </BehaviorType>
+
+      <BehaviorType Name="RevealBehaviorType">
+         <Land_FOW_Reveal_Range> 30.0 </Land_FOW_Reveal_Range>
+      </BehaviorType>
+
+      <BehaviorType Name="DeathFXBehaviorType">
+         <Death_Explosions>Large_Explosion_Land</Death_Explosions>
+         <Death_Clone>Damage_Default, HM02_Military_Launch_Gantry_Death_Clone</Death_Clone>
+      </BehaviorType>
+
+      <BehaviorType Name="AlternateDamageStateBehaviorType">
+         <!--Oksana: this will update ALT state based on number of resource units -->
+         <Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
+
+         <Land_Damage_Thresholds>1.0, 0.5, 0 </Land_Damage_Thresholds>
+         <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
+         <!--<Land_Damage_SFX>null, null, null, TEST_3</Land_Damage_SFX>-->
+      </BehaviorType>
+
+    <BehaviorType Name="SFXBehaviorType">
+      <Death_SFXEvent_End_Die />
+      <Death_SFXEvent_Start_Die>SFX_Structure_Large_Building_Death</Death_SFXEvent_Start_Die>
+    </BehaviorType>
+	
+	<BehaviorType Name="GroundStructureBehaviorType">
+			<Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
+			<!-- Maria 01.31.2007 - This value is used to determine the facing of the ghost structure when in 
+				  building placement mode.  It must be a value between 0.0 - 359.0	-->
+			<Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
+	</BehaviorType>
+	
+	<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_MISSILE_LAUNCHER </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
+	</BehaviorType>
+	
+	<Effect_Generator_Data SubObjectList="Yes">
+		
+		<Effect_Generator Name="NovusResearchRapidRebuildEffectGenerator">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Starts_Active> true </Starts_Active>
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchRapidRebuildEffect </Effect_Name>
+					<Duration> 0.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+		</Effect_Generator>
+		
+		<Effect_Generator Name="MasariStationaryRevelationGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Is_Independent_Generator>Yes</Is_Independent_Generator>
+            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+            <Starts_Active> yes </Starts_Active>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Duration> 3.1 </Duration>
+               <Effect_Name> MasariStationaryRevelationEffect </Effect_Name>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+	</Effect_Generator_Data>
+	
+   </HardPoint>
+	
+	<Military_Building_Global_Icon Name="Military_Nanocenter_Global_Icon">
+		<Galactic_Model_Name>WB_HANGAR02_MODDED.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<Behavior> IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>0.35</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 200 </Select_Box_Scale>
+
+		<BehaviorType Name="AlternateDamageStateBehaviorType">
+			<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
+			<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+		</BehaviorType>		
+		
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWCommand </Global_FOW_Group>
+		</BehaviorType>
+    
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Scene_Name> Gamepad_Global_Building_Progress_Bar </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+    </BehaviorType>
+
+	</Military_Building_Global_Icon>
+	
+	<Military_Building_Global_Icon Name="Military_Research_Center_Global_Icon">
+		<Galactic_Model_Name>WB_HOSPITAL_MODDED.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<Behavior> IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>0.35</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 200 </Select_Box_Scale>
+
+		<BehaviorType Name="AlternateDamageStateBehaviorType">
+			<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
+			<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+		</BehaviorType>		
+		
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWCommand </Global_FOW_Group>
+		</BehaviorType>
+		
+		<BehaviorType Name="GameEventSourceBehaviorType">
+			<Game_Event_Source_Category> Structure </Game_Event_Source_Category>
+			<Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
+		</BehaviorType>
+    
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Scene_Name> Gamepad_Global_Building_Progress_Bar </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+    </BehaviorType>
+
+	</Military_Building_Global_Icon>
+	
+	<Military_Building_Global_Icon Name="Military_Megaweapon_Global_Icon">
+		<Galactic_Model_Name>GLOBE_LAUNCH_ROCKET.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+		
+		<Attached_Hard_Points>
+			HM02_Missile_Launch_Pad_Globe, Root
+		</Attached_Hard_Points>
+		
+		<Behavior> IDLE, SELECTABLE, GUI, HARD_POINT_MANAGER </Behavior>
+		<Scale_Factor>0.5</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 200 </Select_Box_Scale>
+				
+		<BehaviorType Name="AlternateDamageStateBehaviorType">
+			<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
+			<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+		</BehaviorType>
+		
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWCommand </Global_FOW_Group>
+		</BehaviorType>
+    
+		<BehaviorType Name="GUIBehaviorType">
+		<GUI_Scene_Name> Gamepad_Global_Building_Progress_Bar </GUI_Scene_Name>
+		<GUI_Receives_Input> false </GUI_Receives_Input>
+		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+		<GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+		</BehaviorType>
+		
+		<!--<Create_Children_Data SubObjectList="Yes">
+
+			<Create_Child_Data>
+				<Type> HM02_Missile_Launch_Pad_Globe </Type>
+				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
+				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
+			</Create_Child_Data>
+
+		</Create_Children_Data>-->
+
+	</Military_Building_Global_Icon>
+	
+	<HardPoint Name="HM02_Missile_Launch_Pad_Globe">
+      <!-- ART -->
+      <Galactic_Model_Name>WO_Launch_Pad.alo</Galactic_Model_Name>
+      <Scale_Factor>0.5</Scale_Factor>
+      <Is_Decoration>Yes</Is_Decoration>
+      <Multisample_FOW_Check>Yes</Multisample_FOW_Check>
+      <Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
+	  <AssetBank> BANK_GLOBAL </AssetBank>
+
+      <!-- INTERFACE -->
+      <Text_ID>TEXT_STRUCTURE_MILITARY_MISSILE_LAUNCHER</Text_ID>
+      <Is_Placed_By_Editor>true</Is_Placed_By_Editor>
+
+      <!-- ATTRIBUTES -->
+      <CategoryMask> Large, Stationary, Insignificant, TacticalBuildableStructure </CategoryMask>
+
+      <Space_Layer> LandStatic </Space_Layer>
+      <MovementClass>LargeWalker</MovementClass>
+      <UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+      <Custom_Hard_XExtent> 80.0 </Custom_Hard_XExtent>
+      <Custom_Hard_YExtent> 40.0 </Custom_Hard_YExtent>
+	  <Custom_Hard_YExtent_Offset> -4.0 </Custom_Hard_YExtent_Offset>
+
+		<!-- CONFLICT -->
+      <Is_Attackable> true </Is_Attackable>
+      <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
+      <Ranged_Target_Z_Adjust> 10.0 </Ranged_Target_Z_Adjust>
+      <!--<Tactical_Health> 3000 </Tactical_Health>-->
+      <Dense_FOW_Reveal_Range_Multiplier> 0.0 </Dense_FOW_Reveal_Range_Multiplier>
+
+      <Land_Damage_Thresholds>1, 0.5, 0</Land_Damage_Thresholds>
+      <Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
+      <Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
+
+      <!-- BEHAVIORS -->
+      <Behavior>
+		 HARD_POINT,
+         GROUND_STRUCTURE,
+         SELECTABLE
+      </Behavior>
+
+      <LandBehavior>
+         ATTRIBUTE_DIRECTORY,
+         GUI,
+         EFFECT_REGISTRY,
+         REVEAL,
+         HIDE_WHEN_FOGGED
+      </LandBehavior>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
+         <GUI_Receives_Input> no </GUI_Receives_Input>
+         <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
+         <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
+         <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+      </BehaviorType>
+	  
+	  <BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+			<HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<!-- Destroying this one hard point will trigger the parent object to be destroyed -->
+
+         <!--  MARIA: We need to know if this hard point is allowed to modify its parent's tooltip.
+               MAKE SURE YOU SET THIS FLAG FOR HARD POINT OBJECTS ONLY! (otherwise it will do nothing)
+               NOTE: this flag defaults to No -->
+         <Modifies_Parent_Tooltip> No </Modifies_Parent_Tooltip>
+         
+		</BehaviorType>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+         <Armor_Type> Armor_Civilian_Structure_Light </Armor_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="CrushBehaviorType">
+         <Crush_Defense>99</Crush_Defense>
+      </BehaviorType>
+
+      <BehaviorType Name="SelectableBehaviorType">
+         <Select_Box_Scale> 50 </Select_Box_Scale>
+      </BehaviorType>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
+      </BehaviorType>
+
+      <BehaviorType Name="RevealBehaviorType">
+         <Land_FOW_Reveal_Range> 30.0 </Land_FOW_Reveal_Range>
+      </BehaviorType>
+
+      <BehaviorType Name="DeathFXBehaviorType">
+         <Death_Explosions>Large_Explosion_Land</Death_Explosions>
+         <Death_Clone>Damage_Default, HM02_Military_Launch_Gantry_Death_Clone</Death_Clone>
+      </BehaviorType>
+
+      <BehaviorType Name="AlternateDamageStateBehaviorType">
+         <!--Oksana: this will update ALT state based on number of resource units -->
+         <Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
+
+         <Land_Damage_Thresholds>1.0, 0.5, 0 </Land_Damage_Thresholds>
+         <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
+         <!--<Land_Damage_SFX>null, null, null, TEST_3</Land_Damage_SFX>-->
+      </BehaviorType>
+
+    <BehaviorType Name="SFXBehaviorType">
+      <Death_SFXEvent_End_Die />
+      <Death_SFXEvent_Start_Die>SFX_Structure_Large_Building_Death</Death_SFXEvent_Start_Die>
+    </BehaviorType>
+	
+	<BehaviorType Name="GroundStructureBehaviorType">
+			<Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
+			<!-- Maria 01.31.2007 - This value is used to determine the facing of the ghost structure when in 
+				  building placement mode.  It must be a value between 0.0 - 359.0	-->
+			<Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
+	</BehaviorType>
+	
+	<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_MISSILE_LAUNCHER </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
+	</BehaviorType>
+	
+	<Effect_Generator_Data SubObjectList="Yes">
+		
+		<Effect_Generator Name="NovusResearchRapidRebuildEffectGenerator">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Starts_Active> true </Starts_Active>
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchRapidRebuildEffect </Effect_Name>
+					<Duration> 0.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+		</Effect_Generator>
+		
+		<Effect_Generator Name="MasariStationaryRevelationGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Is_Independent_Generator>Yes</Is_Independent_Generator>
+            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+            <Starts_Active> yes </Starts_Active>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Duration> 3.1 </Duration>
+               <Effect_Name> MasariStationaryRevelationEffect </Effect_Name>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+	</Effect_Generator_Data>
+	
+   </HardPoint>
+	
+	<!-- UNIT TRAY's HERO OBJECT 1 DEFINITION  -->
+	<Military_Hero3_Global_Icon Name="Military_Hero3_Icon">
+
+		<Galactic_Model_Name>MH_Moore.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<Behavior> IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>4.5</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 20 </Select_Box_Scale>
+
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWHero </Global_FOW_Group>
+			<Peak_Light_Scale> 1.01 </Peak_Light_Scale>
+		</BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Scene_Name> Gamepad_Global_Progress_Bar </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+    </BehaviorType>
+
+  </Military_Hero3_Global_Icon>
+
+
+	<!-- UNIT TRAY's HERO OBJECT 2 DEFINITION -->
+	<Military_Hero1_Global_Icon Name="Military_Hero1_Icon">
+
+		<Galactic_Model_Name>MV_Thumper.alo</Galactic_Model_Name>
+    <AssetBank> BANK_GLOBAL </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<Behavior>IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>1.2</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 30 </Select_Box_Scale>
+
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWHero </Global_FOW_Group>
+			<Peak_Light_Scale> 1.01 </Peak_Light_Scale>
+		</BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Scene_Name> Gamepad_Global_Progress_Bar </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+    </BehaviorType>
+
+  </Military_Hero1_Global_Icon>
+  
+	<!-- UNIT TRAY's HERO OBJECT 3 DEFINITION -->
+	<Military_Hero2_Global_Icon Name="Military_Hero2_Icon">
+
+		<Galactic_Model_Name>I_ICON_MAVERICK_JET.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<Behavior>IDLE, SELECTABLE, GUI </Behavior>
+		<Scale_Factor>1.2</Scale_Factor>
+		<Show_Name>No</Show_Name>
+		<Select_Box_Scale> 20 </Select_Box_Scale>
+
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<!-- Only the Icon objects are Dummy Global Icons! -->
+			<Is_Dummy_Global_Icon> Yes </Is_Dummy_Global_Icon>
+			<Global_FOW_Group> GlobalFOWHero </Global_FOW_Group>
+			<Peak_Light_Scale> 1.01 </Peak_Light_Scale>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> Gamepad_Global_Progress_Bar </GUI_Scene_Name>
+			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 2.0 </GUI_Default_Scale>
+		</BehaviorType>
+
+    </Military_Hero2_Global_Icon>
+	
+	<!-- UNIT TRAY DEFINITION -->
+	<Military_Base_Global_Icon Name="Military_Region_Label_Icon">
+
+		<Galactic_Model_Name>REGION_LABEL.alo</Galactic_Model_Name>
+		<AssetBank> BANK_GLOBAL </AssetBank>
+
+		<!--<Scale_Factor>0.3</Scale_Factor>-->
+		<!--<Scale_Factor>1.0</Scale_Factor>-->
+		<Show_Name>No</Show_Name>
+
+		<!-- BEHAVIORS -->
+		<Behavior> REGION_LABEL </Behavior>
+
+		<BehaviorType Name="RegionLabelBehaviorType">
+			<Attached_Objects>
+				<!--  TYPE				                                    MODEL SUBOBJECT -->
+				Military_Material_Center_Global_Icon,					   	earth_sign
+				Military_Nanocenter_Global_Icon,							earth_sign
+				Military_Research_Center_Global_Icon,						earth_sign
+				Military_Megaweapon_Global_Icon,							earth_sign
+				HM02_Missile_Launch_Pad_Globe,								earth_sign
+				Military_Megacorp_Center_Global_Icon,					   earth_sign
+				Military_Hero1_Icon,					                     hero_1
+				Military_Hero2_Icon,					                     hero_2
+				Military_Hero3_Icon,					                     hero_3
+			</Attached_Objects>
+		</BehaviorType>
+
+		<BehaviorType Name="GlobalIconBehaviorType">
+			<Global_FOW_Group> GlobalFOWLabel </Global_FOW_Group>
+		</BehaviorType>
+
+	</Military_Base_Global_Icon>
+
+
+</Military_Global_Icons>
+

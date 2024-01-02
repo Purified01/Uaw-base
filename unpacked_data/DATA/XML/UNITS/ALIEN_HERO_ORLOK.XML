@@ -409,7 +409,7 @@
 				<Activation_Min_Range> 0.0  </Activation_Min_Range>
 				<Activation_Max_Range> 90.0 </Activation_Max_Range>
 
-				<Applicable_Unit_Categories> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Applicable_Unit_Categories>
+				<Applicable_Unit_Categories> Resource_INST+~Organic | Resource_INST+Organic+Medium </Applicable_Unit_Categories>
 
 				<Activation_Style> Special_Attack </Activation_Style>
 

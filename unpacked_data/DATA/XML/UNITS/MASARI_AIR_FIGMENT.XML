@@ -68,7 +68,7 @@
       <Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
       <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
       <Ranged_Target_Z_Adjust>12.0</Ranged_Target_Z_Adjust>
-      <Attack_Category_Restrictions> Resource | Resource_INST | Flying | Bridge </Attack_Category_Restrictions>
+      <Attack_Category_Restrictions> Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
 
       <Tactical_Health> 220 </Tactical_Health>
 
@@ -399,6 +399,7 @@
             <Type>EFFECT_GENERATOR</Type>
             <Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
             <Recharge_Seconds>40.0</Recharge_Seconds>
+            <SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Masari_Figment</SFXEvent_GUI_Unit_Ability_Activated>
             <Is_Modal>No</Is_Modal>
 
             <Effect_Generator_Name>Masary_Figment_Deploy_Fire_Mine_Generator</Effect_Generator_Name>
@@ -482,6 +483,7 @@
             <Type>EFFECT_GENERATOR</Type>
             <Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
             <Recharge_Seconds>40.0</Recharge_Seconds>
+            <SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Masari_Figment</SFXEvent_GUI_Unit_Ability_Activated>
             <Is_Modal>No</Is_Modal>
 
             <Effect_Generator_Name>Masary_Figment_Deploy_Ice_Mine_Generator</Effect_Generator_Name>

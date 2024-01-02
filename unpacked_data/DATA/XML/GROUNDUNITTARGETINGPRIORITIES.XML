@@ -777,7 +777,7 @@
       Small, 8,
       Novus_Collector, 9,
 
-    </Attack_Priorities>
+		</Attack_Priorities>
 
 		<Category_Exclusions>
 			Insignificant
@@ -1435,8 +1435,9 @@
 
 			Small, 1,
 			Organic, 2,
-			Medium + Piloted, 3,
-			Stationary + CanAttack, 4,
+			Flying, 3,
+			Medium + Piloted, 4,
+			Stationary + CanAttack, 5,
 
 		</Attack_Priorities>
 
@@ -1446,7 +1447,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1458,13 +1459,16 @@
 			HardPoint, 3,
 			Medium + Piloted, 3,
 			Stationary, 4,
+			Hero, 5,
+			Small, 6,
+			Novus_Collector, 7,
 
 		</Attack_Priorities>
 
 		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector </Type_Exclusions>
 
 		<Category_Exclusions>
-			Insignificant
+			Insignificant, Bridge
 		</Category_Exclusions>
 
 		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
@@ -1489,14 +1493,23 @@
 	<Priority_Set Name="Military_Maverick_Target_Priority">
 		<Attack_Priorities>
 
-			Flying, 1,
+			Hero + Flying, 1,
+			Flying, 2,
+			Stationary + CanAttack, 3,
+			Medium + Piloted, 4,
+			Piloted, 5,
+			HardPoint, 6,
+			Hero, 7,
+			Small, 8,
+			Stationary, 9,
+			Novus_Collector, 10,
 
 		</Attack_Priorities>
 
 		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector </Type_Exclusions>
 
 		<Category_Exclusions>
-			Insignificant
+			Insignificant, Bridge
 		</Category_Exclusions>
 
 		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
@@ -1554,6 +1567,23 @@
 		</Category_Exclusions>
 
 		<Category_Restrictions> Resource_INST, Resource, Untargetable, Bridge </Category_Restrictions>
+	</Priority_Set>
+	
+	<!--Target Varients-->
+	<Priority_Set Name="Military_Turret_Target_Ground_Priority">
+		<Attack_Priorities>
+
+			Small, 1,
+			Piloted, 2,
+			HardPoint, 3,
+
+		</Attack_Priorities>
+
+		<Category_Exclusions>
+			Insignificant
+		</Category_Exclusions>
+
+		<Category_Restrictions> Flying, Resource_INST, Resource, Untargetable, Bridge </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Military_Defender_APC_Target_Priority">

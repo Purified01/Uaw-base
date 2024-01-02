@@ -1359,7 +1359,7 @@
 			<Target_Effect>  HealthDamage	</Target_Effect>
 			<Target_Damage>  Damage_No_Death_Clone	</Target_Damage>
 			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> 25.0 </Amount_Per_Second>
+			<Amount_Per_Second> 18.0 </Amount_Per_Second>
 			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
 			<Transfer_Multiplicative> 0.1 </Transfer_Multiplicative>
 			<Stop_When_Source_At> 1.0 </Stop_When_Source_At>

@@ -26,14 +26,14 @@
 		<Affiliation> Military </Affiliation>
 		<CategoryMask> TeamContainer, Small, Organic, CanAttack, RadiationHurts </CategoryMask>
 		<Max_Squad_Size> 5 </Max_Squad_Size>
-		<Company_Units> Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher </Company_Units><!-- jdg rocket teams reduced to 4 members per Adam -->
+		<Company_Units> Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher </Company_Units><!-- jdg rocket teams reduced to 4 members per Adam -->
 		<Build_Limit_Lifetime_Per_Player> -1 </Build_Limit_Lifetime_Per_Player>
 		<Importance> 0.2 </Importance>
 		<Shot_Type> Infantry </Shot_Type>
 
       <Attributes SubObjectList="Yes">
          <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -41,7 +41,7 @@
 		<OccupationStyle>1x1</OccupationStyle>
 		<UnitCollisionClass> Infantry </UnitCollisionClass>
 		<Space_Layer> LandDynamic </Space_Layer>
-		<Max_Speed> 1.2 </Max_Speed> 
+		<Max_Speed> 1.4 </Max_Speed> 
 		<Max_Rate_Of_Turn>180.0</Max_Rate_Of_Turn>
 		<MovementPredictionInterval> 2.5 </MovementPredictionInterval>	
 		<ContainerArrangement> Dartboard </ContainerArrangement>
@@ -55,7 +55,7 @@
 
 		<!-- CONFLICT -->
 		<Is_Attackable>true</Is_Attackable>
-		<Land_FOW_Reveal_Range>175.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
 		
 		<!-- BEHAVIORS -->
@@ -70,40 +70,40 @@
          TEAM_TARGETING,
          FORMATION,
          AI_RECRUITABLE,
-         AI_TARGET
+         AI_TARGET,
+		 EFFECT_GENERATOR,
       </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Infantry_Heavy </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
-			<Size_Value> 10 </Size_Value>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+         <Size_Value> 5 </Size_Value>
+		<Build_Cost_Credits> 125 </Build_Cost_Credits>
+		<Build_Time_Seconds> 10 </Build_Time_Seconds>
+		<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		<Is_Strategic_Buildable_Type>no</Is_Strategic_Buildable_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 600 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 12 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 750  </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 10 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 160.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
+	  <Attack_Score_Rating> 0.9 </Attack_Score_Rating>
+		 <Scout_Score_Rating> 0.4 </Scout_Score_Rating>
+		 <Guerilla_Score_Rating> 0.4 </Guerilla_Score_Rating>
     </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -145,13 +145,12 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>10</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
+			 <Crush_Defense>1</Crush_Defense>
 		</BehaviorType>
 		
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 5 </Unit_Pop_Cap>
 		</BehaviorType>
 		
 	</X11_Military_Units>
@@ -197,7 +196,7 @@
 
 		<Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
 		</Attributes>
@@ -233,15 +232,16 @@
 		<Is_Attackable>true</Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range>150.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>130.0</Land_FOW_Reveal_Range>
 
-		<Tactical_Health> 70 </Tactical_Health>
+		<Tactical_Health> 120 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS-->
 		<LandBehavior>
 			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
 			SELECTABLE,
 			SURFACE_FX,
 			RADAR_MAP_VISIBLE,
@@ -263,6 +263,7 @@
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Is_Strategic_Buildable_Type>no</Is_Strategic_Buildable_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -274,10 +275,10 @@
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<Idle_Chase_Range> 0.0 </Idle_Chase_Range>
-			<Guard_Chase_Range> 150.0 </Guard_Chase_Range>
-			<Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>
-			<Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>
+			<Idle_Chase_Range> 1.0 </Idle_Chase_Range>
+			<Guard_Chase_Range> 1.0 </Guard_Chase_Range>
+			<Attack_Move_Response_Range> 1.0 </Attack_Move_Response_Range>
+			<Autonomous_Move_Extension_Vs_Attacker> 1.0 </Autonomous_Move_Extension_Vs_Attacker>
 			<AI_Target_Level>Individual_Or_Group</AI_Target_Level>
 		</BehaviorType>
 
@@ -322,7 +323,6 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			 <Crush_Defense>10</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="BlobShadowBehaviorType">
@@ -372,6 +372,57 @@
 			<Death_Speed_Min>1.0</Death_Speed_Min>
 			<Death_Speed_Max>2.0</Death_Speed_Max>
 	  	</BehaviorType>
+		
+		<Effect_Generator_Data SubObjectList="Yes">
+		
+			<Effect_Generator Name="NoSlavoEffectGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator>Yes</Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Duration> -1.0 </Duration>
+					<Effect_Name> MasariSwitchCleanseEffect </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Duration> 0.5 </Duration>
+					<Base_Delay> 0.4 </Base_Delay>
+					<Effect_Name> MasariFullArmorEffect </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<!-- only in ice mode -->
+					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryInfrantryBoostArmorGenerator">
+				<!-- 20% Armor Boost -->
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+	
+					<Effect_Name> MilitaryInfrantryBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+	
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+		
+		</Effect_Generator_Data>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
 
 	</X11_Military_Units>
 		
@@ -459,7 +510,8 @@
 	<Projectile Name="Proj_Military_Rocketlauncher">
 
 		<!-- ART -->
-		<Land_Model_Name> mi_RocketLauncher_rocket.alo </Land_Model_Name>	
+		<Land_Model_Name> mi_RocketLauncher_rocket.alo </Land_Model_Name>
+		<Projectile_Custom_Render>0</Projectile_Custom_Render>		
 		<Scale_Factor>.5</Scale_Factor>
       <AssetBank> BANK_MILITARY </AssetBank>
 		<Shadow_Enabled>False</Shadow_Enabled>
@@ -480,13 +532,13 @@
 		
 		<BehaviorType Name="ProjectileBehaviorType">
 			<Projectile_Texture_Slot>1, 0</Projectile_Texture_Slot>
-			<Projectile_Width>0.8</Projectile_Width>
-			<Projectile_Length>4</Projectile_Length>
+			<Projectile_Width>4.8</Projectile_Width>
+			<Projectile_Length>10</Projectile_Length>
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>7000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>20.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>10</Projectile_Blast_Area_Damage>
+			<Projectile_Damage>8.0</Projectile_Damage>
+			<Projectile_Blast_Area_Damage>8</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
@@ -511,18 +563,12 @@
 		
 	</Projectile>
 
-
-	
-	
-	
-	
-
 <!-- **************************************************************************************** -->	
 <!-- *** EDITOR SPAWNER MARKER ************************************************************** -->	
 <!-- **************************************************************************************** -->
 
 	<X11_Military_Units Name="Military_Team_Rocketlauncher_Spawner">
-		<Text_ID> TEXT_STORY_TRIGGER_ZONE </Text_ID>
+		<Variant_Of_Existing_Type>Military_Team_Rocketlauncher</Variant_Of_Existing_Type>
 		<Land_Model_Name>MI_Rocketlauncher.ALO</Land_Model_Name>	
 		<Scale_Factor> 5.0 </Scale_Factor>	
 		<Is_Marker>Yes</Is_Marker>
@@ -530,6 +576,16 @@
 		<Affiliation>Military</Affiliation>
 		<Behavior>MARKER, HINT</Behavior>
       <AssetBank> BANK_MILITARY </AssetBank>
+	  
+	  <BehaviorType Name="ProductionBehaviorType">
+			<Size_Value> 10 </Size_Value>
+			<Build_Cost_Credits> 175 </Build_Cost_Credits>
+			<Build_Time_Seconds> 8 </Build_Time_Seconds>
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			 <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
+			<Strategic_UI_Build_Menu_Order>3</Strategic_UI_Build_Menu_Order>
+		</BehaviorType>
 		
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Land_Behaviors> MarkerSpawner </Lua_Land_Behaviors>

@@ -75,7 +75,7 @@
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 390 </Tactical_Health>
 
 		<!-- BEHAVIORS AND ABILITIES -->
 		<Behavior>
@@ -712,7 +712,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		
      <!-- MOVEMENT -->
-     <Max_Speed>2.0</Max_Speed>
+     <Max_Speed>2.2</Max_Speed>
 
      <!-- CONFLICT -->
      <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
@@ -1352,7 +1352,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>7</Projectile_Damage>
+			<Projectile_Damage>9</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Masari_Guardian_Dark_Det</Projectile_Object_Detonation_Particle>

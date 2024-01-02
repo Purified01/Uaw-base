@@ -71,7 +71,7 @@
 	<!-- ************************************************************** -->
 	<!-- WalkerHardPointArmorEffect effect -->
 	<!-- ************************************************************** -->
-	<Effect Name="WalkerHardPointArmorEffect">
+	<Effect Name="WalkerHardPointArmorEffectA3">
 		<Effect_Class> WalkerArmor </Effect_Class>
 		<Priority> 10.0 </Priority>
 		<Duration> 3.1 </Duration>
@@ -80,7 +80,35 @@
 		<!-- Takes less damage due to molecular armor -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.5 </Modifier_Value>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>
+	
+		<Effect Name="WalkerHardPointArmorEffectM3">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>
+	
+		<Effect Name="WalkerHardPointArmorEffectQ3">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
 		</Effect_Component>
 		
 	</Effect>
@@ -335,7 +363,7 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
 			<!-- max vision -->
-			<Modifier_Value> 1000.0 </Modifier_Value>
+			<Modifier_Value> 5.0 </Modifier_Value>
 		</Effect_Component>
 
 	</Effect>
@@ -1380,4 +1408,41 @@
    </Effect>
 	
 	
+
+
+    <!-- ************************************************************** -->
+    <!-- AdditionalWalkerSlotEffect effect -->
+    <!-- ************************************************************** -->
+    <Effect Name="AdditionalWalkerSlotEffect" require="Branch_THERMODYNAMICS_Suite_4">
+        <Effect_Class>Pop_Cap_Categories_Build_Count_Limits</Effect_Class>
+        <Duration>-1</Duration>
+        <Extends_Existing_Duration>true</Extends_Existing_Duration>
+        <Extends_Same_Source_Duration_Only>true</Extends_Same_Source_Duration_Only>
+        <Effect_Component Type="AttributeModifier"> 
+            <Attribute>Pop_Cap_Categories_Build_Count_Limits</Attribute>
+            <Modifier_Value>1.33</Modifier_Value> <!-- +1.33 Walker Pop -->
+        </Effect_Component>
+        <Effect_Component Type="AttributeModifier"> 
+            <Attribute>Walker, 3, -1</Attribute>
+            <Modifier_Value>1.33</Modifier_Value> <!-- +1.33 Walker Pop -->
+        </Effect_Component>
+    </Effect>
+
+    <!-- ************************************************************** -->
+    <!-- WalkerPopulationIncreaseEffect effect -->
+    <!-- ************************************************************** -->
+    <Effect Name="WalkerPopulationIncreaseEffect" require="assault__4">
+        <Effect_Class>Pop_Cap_Categories_Build_Count_Limits</Effect_Class>
+        <Duration>-1</Duration>
+        <Extends_Existing_Duration>true</Extends_Existing_Duration>
+        <Extends_Same_Source_Duration_Only>true</Extends_Same_Source_Duration_Only>
+        <Effect_Component Type="AttributeModifier"> 
+            <Attribute>Pop_Cap_Categories_Build_Count_Limits</Attribute>
+            <Modifier_Value>1.33</Modifier_Value> <!-- +1.33 Walker Pop -->
+        </Effect_Component>
+        <Effect_Component Type="AttributeModifier"> 
+            <Attribute>Walker, 3, -1</Attribute>
+            <Modifier_Value>1.33</Modifier_Value> <!-- +1.33 Walker Pop -->
+        </Effect_Component>
+    </Effect>
 </Effects>

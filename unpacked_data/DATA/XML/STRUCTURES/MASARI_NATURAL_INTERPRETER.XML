@@ -1478,7 +1478,7 @@
 					<Duration> 3.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 320 </Area_Effect_Radius>
+					<Area_Effect_Radius> 480 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

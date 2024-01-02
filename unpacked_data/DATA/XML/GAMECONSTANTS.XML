@@ -883,33 +883,33 @@
 
 
 	<MP_Color_Blue>78,150,255</MP_Color_Blue>	 
-	<MP_Color_Red>255,23,23</MP_Color_Red>		 
-	<MP_Color_Green>119,255,78</MP_Color_Green>	
-	<MP_Color_Orange>255,149,23</MP_Color_Orange>
+	<MP_Color_Red>255,0,0</MP_Color_Red>		 
+	<MP_Color_Green>57,255,20</MP_Color_Green>	
+	<MP_Color_Orange>255,255,255</MP_Color_Orange>
 	<MP_Color_Cyan>111,217,224</MP_Color_Cyan>	 
 	<MP_Color_Purple>255,111,209</MP_Color_Purple>
-	<MP_Color_Yellow>224,223,45</MP_Color_Yellow>
-	<MP_Color_Gray>150,150,150</MP_Color_Gray>	 
+	<MP_Color_Yellow>255,255,0</MP_Color_Yellow>
+	<MP_Color_Gray>128,0,255</MP_Color_Gray>	 
     
     <!-- Chat colors differ slightly from in-game colors for visibility in a chat window. -->
 	<MP_Chat_Color_Blue>78,150,255</MP_Chat_Color_Blue>	 
-	<MP_Chat_Color_Red>255,23,23</MP_Chat_Color_Red>		 
-	<MP_Chat_Color_Green>119,255,78</MP_Chat_Color_Green>	
-	<MP_Chat_Color_Orange>255,149,23</MP_Chat_Color_Orange>
+	<MP_Chat_Color_Red>255,0,0</MP_Chat_Color_Red>		 
+	<MP_Chat_Color_Green>57,255,20</MP_Chat_Color_Green>	
+	<MP_Chat_Color_Orange>255,255,255</MP_Chat_Color_Orange>
 	<MP_Chat_Color_Cyan>111,217,224</MP_Chat_Color_Cyan>	 
 	<MP_Chat_Color_Purple>255,111,209</MP_Chat_Color_Purple>
-	<MP_Chat_Color_Yellow>224,223,45</MP_Chat_Color_Yellow>
-	<MP_Chat_Color_Gray>175,175,175</MP_Chat_Color_Gray>	 
+	<MP_Chat_Color_Yellow>255,255,0</MP_Chat_Color_Yellow>
+	<MP_Chat_Color_Gray>128,0,255</MP_Chat_Color_Gray>	 
 
 
 	<!-- <MP_Color_Blue>78,150,237</MP_Color_Blue>	 -->
-	<!-- <MP_Color_Red>237,78,78</MP_Color_Red>		--> 
-	<!-- <MP_Color_Green>119,237,78</MP_Color_Green>	-->
-	<!-- <MP_Color_Orange>237,149,78</MP_Color_Orange>-->
+	<!-- <MP_Color_Red>255,0,0</MP_Color_Red>		--> 
+	<!-- <MP_Color_Green>57,255,20</MP_Color_Green>	-->
+	<!-- <MP_Color_Orange>255,255,255</MP_Color_Orange>-->
 	<!-- <MP_Color_Cyan>111,217,224</MP_Color_Cyan>	 -->
 	<!-- <MP_Color_Purple>224,111,209</MP_Color_Purple>-->
-	<!-- <MP_Color_Yellow>224,215,111</MP_Color_Yellow>-->
-	<!-- <MP_Color_Gray>109,75,5</MP_Color_Gray>	 -->
+	<!-- <MP_Color_Yellow>255,255,0</MP_Color_Yellow>-->
+	<!-- <MP_Color_Gray>128,0,255</MP_Color_Gray>	 -->
 
 	<!-- Localized splash screen asset names -->
 	<Localized_Splash_Screen> ENGLISH, 	Splash.TGA </Localized_Splash_Screen>

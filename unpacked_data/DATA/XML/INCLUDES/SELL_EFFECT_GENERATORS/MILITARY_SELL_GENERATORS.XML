@@ -1,0 +1,10 @@
+   <Effect_Generator Name="MilitarySellGenerator">
+      <Is_Independent_Generator> true </Is_Independent_Generator>
+     
+      <Effect_Generator_Entry Name="Entry1">
+         <Effect_Name> AlienSellEffect </Effect_Name>
+         <Duration_Attribute> Tactical_Sell_Time_Seconds </Duration_Attribute>
+         <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+      </Effect_Generator_Entry>
+
+   </Effect_Generator>  
