@@ -108,7 +108,9 @@
 			PERSISTENT_UNIT,
 			SELECTABLE,
 			RADAR_MAP_VISIBLE,
-			EFFECT_REGISTRY
+			ATTRIBUTE_DIRECTORY,
+			EFFECT_GENERATOR,
+			EFFECT_REGISTRY,
 		</Behavior>
 		
 		<LandBehavior> 
@@ -175,6 +177,14 @@
 			<AI_Target_Level>Group_Member</AI_Target_Level>
 		</BehaviorType>
 
+		<BehaviorType Name="WeaponBehaviorType">
+			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
+			<Targeting_Priority_Set> Reaper_Harvester_Targeting </Targeting_Priority_Set>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>		
+			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 100.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
+		</BehaviorType>
 	  <!-- =================================================================================================
 		== [11/16/2006] This behavior type defines data for Type_Switch behavior - Oksana Kubushyna
 		================================================================================================== -->
