@@ -7,19 +7,11 @@
 <!-- **************************************************************************************** -->
 
 
-
-
-<!-- THIS UNIT IS OBSOLETE -->
-
-
-
-
-
-	<X99_Test_Objects Name="Masari_Elemental">
+	<X13_Masari_Units Name="Masari_Elemental">
 
 		<!-- ART -->
-		<Land_Model_Name> ZI_Elementalist.ALO </Land_Model_Name> <!-- DEBUG: STUB SCALE AND MODEL -->
-		<Scale_Factor>1.15</Scale_Factor>
+		<Land_Model_Name> ZV_Stormchaser.ALO </Land_Model_Name> <!-- DEBUG: STUB SCALE AND MODEL -->
+		<Scale_Factor>1.5</Scale_Factor>
 		<Loop_Idle_Anim_00>No</Loop_Idle_Anim_00>
 		<!-- <SurfaceFX_Name>Generic_Footprint</SurfaceFX_Name> -->
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
@@ -54,42 +46,56 @@
 			<Tactical_Build_Cost_Credits/>
 		</Attributes>
 
-		<!-- MOVEMENT -->
-		<MovementClass> Infantry </MovementClass>
-		<Max_Speed>1.1</Max_Speed>
-		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
-		<Custom_Soft_Footprint_Radius> 3.5 </Custom_Soft_Footprint_Radius>
-		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
-		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
-		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<FormationSpacing> .5 </FormationSpacing> 
-		<FormationRaggedness> 1 </FormationRaggedness>
-		<MaxJiggleDistance> 2.0 </MaxJiggleDistance>
-		<MinimumPushReturnDistance> 10 </MinimumPushReturnDistance>
-		<OverrideAcceleration> .05 </OverrideAcceleration>
-		<OverrideDeceleration> .05 </OverrideDeceleration>
-		<FormationOrder> 2 </FormationOrder>
-		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
-		<Rotation_Animation_Speed> 20.0 </Rotation_Animation_Speed>
-		<OccupationStyle>1x1</OccupationStyle>
-		<Strafe_Max_Speed_Coefficient> 1.0 </Strafe_Max_Speed_Coefficient>
-		<Backpedal_Max_Speed_Coefficient> 1.0 </Backpedal_Max_Speed_Coefficient>
-		<Strafe_Animation_Speed> 1.0 </Strafe_Animation_Speed>
-		<Backpedal_Animation_Speed> 1.0 </Backpedal_Animation_Speed>	
-		<Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>		
-		<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-		<Targeting_Priority_Set>AntiDefault</Targeting_Priority_Set>
+
+    <!-- MOVEMENT -->
+    <MovementClass>Flying</MovementClass>
+    <UnitCollisionClass> Infantry </UnitCollisionClass>
+    <OccupationStyle>1x1</OccupationStyle>
+    <Space_Layer> LandDynamic </Space_Layer>
+    <Max_Speed> 2.5 </Max_Speed>
+    <!-- jdg was 0.8 -->
+    <Max_Rate_Of_Turn> 6.0 </Max_Rate_Of_Turn>
+    <Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
+    <OverrideAcceleration> .125 </OverrideAcceleration>
+    <OverrideDeceleration> .125 </OverrideDeceleration>
+    <Movement_Animation_Speed> 2.0 </Movement_Animation_Speed>
+    <Rotation_Animation_Speed> 20.0 </Rotation_Animation_Speed>
+    <Walk_Animation_Speed> .366 </Walk_Animation_Speed>
+    <Crouch_Animation_Speed> .537 </Crouch_Animation_Speed>
+    <Strafe_Animation_Speed> 1.5 </Strafe_Animation_Speed>
+    <Backpedal_Animation_Speed> 1.5 </Backpedal_Animation_Speed>
+    <Strafe_Max_Speed_Coefficient> 1 </Strafe_Max_Speed_Coefficient>
+    <Backpedal_Max_Speed_Coefficient> 1 </Backpedal_Max_Speed_Coefficient>
+    <Custom_Soft_Footprint_Radius> 5.0 </Custom_Soft_Footprint_Radius>
+    <Custom_Hard_XExtent> 6.0 </Custom_Hard_XExtent>
+    <Custom_Hard_YExtent> 6.0 </Custom_Hard_YExtent>
+    <Locomotor_Has_Animation_Priority> true </Locomotor_Has_Animation_Priority>
+    <Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
+    <FormationSpacing> 1.8 </FormationSpacing>
+    <!-- <Walk_Locomotor_Anim_Subindex> 0 </Walk_Locomotor_Anim_Subindex> -->
+    <MaxJiggleDistance> 3.5 </MaxJiggleDistance>
+    <Max_Thrust> 1.5 </Max_Thrust>
+    <Thrust_Acceleration> .1 </Thrust_Acceleration>
+    <Thrust_Deceleration> .1 </Thrust_Deceleration>
+    <Min_Flight_Elevation> 0 </Min_Flight_Elevation>
+    <!-- upped from 40/60 API -->
+    <Max_Flight_Elevation> 0 </Max_Flight_Elevation>
+    <Can_Fly_In_Alternative_Walk_State>Yes</Can_Fly_In_Alternative_Walk_State>
+	<Should_Move_At_Water_Level> true </Should_Move_At_Water_Level>
+
+     <!-- Oksana: set cruising altitude so that it does not snap to terrain when spawned-->
+     <Min_Flight_Elevation>70</Min_Flight_Elevation>
+     <Max_Flight_Elevation>80</Max_Flight_Elevation>
+	 
 		
 		<!-- CONFLICT -->
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range>100.0</Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>	
+		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
+		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge </Attack_Category_Restrictions>	
 
-		<Tactical_Health> 120 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 		
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -100,23 +106,31 @@
 		</Behavior>
 		
 		<LandBehavior> 
-			GUI, 
-			RADAR_MAP_VISIBLE, 
-			SURFACE_FX, 
-			WALK_LOCOMOTOR, 
-			FORMATION, 
-			IDLE, 
-			TARGETING, 
-			TURRET, 
-			WEAPON, 
-			REVEAL, 
-			HIDE_WHEN_FOGGED, 
-			BALLISTIC, 
-			EFFECT_REGISTRY,			 
+			EFFECT_GENERATOR,
+			EFFECT_REGISTRY,
 			ATTRIBUTE_DIRECTORY,
-			DAMAGE_TRACKING,
+			ABILITY_COUNTDOWN,
+			SWITCH_TYPE,
+			GUI,
+			RADAR_MAP_VISIBLE,
+			WALK_LOCOMOTOR,
+			FORMATION,
+			IDLE,
+			TARGETING,
+			WEAPON,
+			STUNNABLE,
+			TURRET,
+			REVEAL,
+			HIDE_WHEN_FOGGED,
+			UNIT_AI,
 			AI_RECRUITABLE,
-			AI_TARGET
+			AI_TARGET,
+			BALLISTIC,
+			DAMAGE_TRACKING,
+			TACTICAL_SELL,
+				TACTICAL_AI,
+			<!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+			ELEMENTAL_MODE
 		</LandBehavior>
 
 		<BehaviorType Name="SelectableBehaviorType">
@@ -127,9 +141,25 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Masari_Infantry_Heavy </Armor_Type>
+			<Armor_Type> Armor_Masari_Vehicle_Elite </Armor_Type>
 		</BehaviorType>
 
+		<BehaviorType Name="TacticalSellBehaviorType">
+			<Sell_Effect_Generator_Name>MasariSellGenerator</Sell_Effect_Generator_Name>
+		</BehaviorType>
+
+		<Attributes SubObjectList="Yes">
+			<!-- This MODIFIER determines what portion of the whole price we must reduce.  Hence, a modifier
+			of value 0 means that we refund 100%, a modifier of -0.2 means we refund 80%, etc. -->
+			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>
+			
+			<!-- Dark Matter Armor -->
+			<DMA_Max> 500.0 </DMA_Max>
+			<DMA_Regen_Rate> 10.0 </DMA_Regen_Rate>
+			<Importance> 0.6 </Importance>
+		</Attributes>
+		
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
 			<Idle_Chase_Range> 1.0 </Idle_Chase_Range>
@@ -137,6 +167,48 @@
 			<Attack_Move_Response_Range> 1.0 </Attack_Move_Response_Range>
 			<Autonomous_Move_Extension_Vs_Attacker> 1.0 </Autonomous_Move_Extension_Vs_Attacker>
 			<AI_Target_Level>Group_Member</AI_Target_Level>
+		</BehaviorType>
+
+	  <!-- =================================================================================================
+		== [11/16/2006] This behavior type defines data for Type_Switch behavior - Oksana Kubushyna
+		================================================================================================== -->
+    <BehaviorType Name="TypeSwitchBehaviorType">
+
+      <!-- Base To Fire -->
+      <Type_Switch_Pre_Activate_Anim>	Masari_Elemental,	Masari_Seeker_Fire, Special_Start_A  </Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Elemental,	Masari_Seeker_Fire, Special_Action_A	</Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Elemental,	Masari_Seeker_Fire, Special_End_A	   </Type_Switch_Post_Activate_Anim>
+
+      <!-- Fire to Ice -->
+      <Type_Switch_Pre_Activate_Anim>  Masari_Elemental_Fire,   Masari_Elemental_Ice,  Special_Start_A	</Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Elemental_Fire,	Masari_Elemental_Ice,   Special_Action_A  </Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Elemental_Fire,	Masari_Elemental_Ice,   Special_End_A	   </Type_Switch_Post_Activate_Anim>
+
+      <!-- Ice to Fire -->
+      <Type_Switch_Pre_Activate_Anim>	Masari_Elemental_Ice,	Masari_Elemental_Fire, Special_Start_A		</Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Elemental_Ice,	Masari_Elemental_Fire, Special_Action_A	</Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Elemental_Ice,	Masari_Elemental_Fire, Special_End_A		</Type_Switch_Post_Activate_Anim>
+
+      <!-- List of types this object can switch to - This is mainly needed to inforce build limits and must be
+						only added to the base type used for production dependencies purposes -->
+      <Type_Switch_Types> Masari_Elemental_Fire, Masari_Elemental_Ice  </Type_Switch_Types>
+
+      <Switch_Effect_Generator_Name> MasariSwitchGenerator </Switch_Effect_Generator_Name>
+
+    </BehaviorType>
+
+      <BehaviorType Name="ElementalModeBehaviorType">
+         <Elemental_Object_Types> Fire, Masari_Elemental_Fire </Elemental_Object_Types>
+         <Elemental_Object_Types> Ice, Masari_Elemental_Ice </Elemental_Object_Types>
+      </BehaviorType>
+
+		<BehaviorType Name="ProductionBehaviorType">
+			<Size_Value> 10 </Size_Value>
+			<Build_Cost_Credits> 10 </Build_Cost_Credits>
+			<Build_Time_Seconds> 5 </Build_Time_Seconds>
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
+      <Build_Limit_Current_Per_Player>7</Build_Limit_Current_Per_Player>
 		</BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -215,8 +287,17 @@
 			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 		</BehaviorType>
 
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
+			<Tactical_Build_Cost_Campaign> 85 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 85 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
+
 		<BehaviorType Name="CrushBehaviorType">
-			 <Crush_Defense>10</Crush_Defense>
+			<Crush_Defense>40</Crush_Defense>
+			<Crush_Power> 30 </Crush_Power>
 		</BehaviorType>
 		
 		<BehaviorType Name="FleetBehaviorType">
@@ -224,19 +305,75 @@
 			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
 		</BehaviorType>
 		
-	</X99_Test_Objects>
+	</X13_Masari_Units>
 	
 
 <!-- **************************************************************************************** -->	
 <!-- *** VARIANTS *************************************************************************** -->	
 <!-- **************************************************************************************** -->	
 
+	<X13_Masari_Units Name="Masari_Elemental_Fire">
+    	<Land_Model_Name>ZV_Stormchaser_Air.ALO</Land_Model_Name>
+		<Variant_Of_Existing_Type>Masari_Elemental</Variant_Of_Existing_Type>
+
+		<Attack_Category_Restrictions>  Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
+
+		<!-- ATTRIBUTES -->
+		<CategoryMask> Flying, Medium, Piloted, CanAttack </CategoryMask>
+		
+		<!--  MOVEMENT  -->
+		<MovementClass>flying</MovementClass>
+		<UnitCollisionClass>Vehicle</UnitCollisionClass>
+		<OccupationStyle>1x1</OccupationStyle>
+		<Space_Layer>Air</Space_Layer>
+		<Stationary_Space_Layer>LandDynamic</Stationary_Space_Layer>
+		<Max_Speed>3.0</Max_Speed>
+		<Max_Rate_Of_Turn>25.0</Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn>12.0</Stopped_Rate_Of_Turn>
+		<OverrideAcceleration>.125</OverrideAcceleration>
+		<OverrideDeceleration>.125</OverrideDeceleration>
+		<Movement_Animation_Speed>2.0</Movement_Animation_Speed>
+		<Rotation_Animation_Speed>20.0</Rotation_Animation_Speed>
+		<Walk_Animation_Speed>.833</Walk_Animation_Speed>
+		<Crouch_Animation_Speed>.537</Crouch_Animation_Speed>
+		<Strafe_Animation_Speed>2.0</Strafe_Animation_Speed>
+		<Backpedal_Animation_Speed>2.0</Backpedal_Animation_Speed>
+		<Strafe_Max_Speed_Coefficient>1</Strafe_Max_Speed_Coefficient>
+		<Backpedal_Max_Speed_Coefficient>1</Backpedal_Max_Speed_Coefficient>
+		<Locomotor_Has_Animation_Priority>true</Locomotor_Has_Animation_Priority>
+		<Should_Move_Anim_Lockout_Attack_Anim>false</Should_Move_Anim_Lockout_Attack_Anim>
+		<MaxJiggleDistance>3.5</MaxJiggleDistance>
+		<Min_Flight_Elevation>70</Min_Flight_Elevation>
+		<Max_Flight_Elevation>80</Max_Flight_Elevation>
+		<Max_Thrust>1.5</Max_Thrust>
+		<Thrust_Acceleration>.1</Thrust_Acceleration>
+		<Thrust_Deceleration>.1</Thrust_Deceleration>
+	</X13_Masari_Units>
+
+	<X13_Masari_Units Name="Masari_Elemental_Ice">
+		<Variant_Of_Existing_Type>Masari_Elemental</Variant_Of_Existing_Type>
+
+		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
+
+		<Attributes SubObjectList="Yes">
+			<DMA_Max> 275 </DMA_Max>
+			<DMA_Regen_Rate> 8 </DMA_Regen_Rate>
+		</Attributes>
+		
+		<!-- MOVEMENT -->
+		<Max_Speed> 1.5 </Max_Speed>
+		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
+		<Walk_Animation_Speed> .366 </Walk_Animation_Speed>
+      <MovementClass>Infantry</MovementClass>
+
+      <Min_Flight_Elevation>0</Min_Flight_Elevation>
+      <Max_Flight_Elevation>0</Max_Flight_Elevation>
+	</X13_Masari_Units>
+
 	<X99_Test_Objects Name="Masari_Elemental_Fire">
 		<Variant_Of_Existing_Type>Masari_Elemental</Variant_Of_Existing_Type>
-	</X99_Test_Objects>
 
-	<X99_Test_Objects Name="Masari_Elemental_Ice">
-		<Variant_Of_Existing_Type>Masari_Elemental</Variant_Of_Existing_Type>
+		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
 	</X99_Test_Objects>
 
 	<X99_Test_Objects Name="Masari_Elemental_Electricity">

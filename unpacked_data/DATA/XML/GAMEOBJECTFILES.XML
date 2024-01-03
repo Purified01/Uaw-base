@@ -103,6 +103,7 @@
 	<File> Units/MASARI_INF_Architect.xml </File>
 	<File> Units/MASARI_INF_Avenger.xml </File>
 	<File> Units/MASARI_INF_Seer.xml </File>
+	<File> Units/MASARI_INF_Elemental.xml </File>
 	<File> Units/MASARI_HERO_Alatea.xml </File>
 	<File> Units/MASARI_HERO_Zessus.xml </File>
 	<File> Units/MASARI_HERO_Charos.xml </File>

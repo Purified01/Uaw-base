@@ -1152,6 +1152,91 @@
     <Tactical_Builder> Masari_Foundation </Tactical_Builder>
   </Dependency>
 
+  <!-- UNIT: Masari_Elemental -->
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Masari_Atlatea </Strategic_Required_Objects>
+    <Strategic_Builder> Masari_Atlatea </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Masari_Key_Inspiration </Strategic_Required_Objects>
+    <Strategic_Builder> Masari_Key_Inspiration </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Null </Strategic_Required_Objects>
+    <Strategic_Builder> NUll </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Masari_Atlatea </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Masari_Will_Processor </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Null </Strategic_Required_Objects>
+    <Strategic_Builder> Null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Masari_Key_Inspiration </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Masari_Element_Magnet </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Masari_Elemental </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Masari_Foundation </Tactical_Builder>
+  </Dependency>
+
   <!-- UNIT: Masari_Disciple -->
   <Dependency>
     <Built_Object> Masari_Disciple </Built_Object>
