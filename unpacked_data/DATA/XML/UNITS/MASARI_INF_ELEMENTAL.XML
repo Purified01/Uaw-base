@@ -331,6 +331,20 @@
 
 		<Abilities SubObjectList="Yes">
 
+			<Effect_Generator_Ability Name="Elementalist_Attack">
+				<Disable_Special_Ability_Attribute> Is_Mind_Controlled </Disable_Special_Ability_Attribute>
+				<Activation_Chance>1.0</Activation_Chance>
+				<Activation_Min_Range>0.0</Activation_Min_Range>
+				<Activation_Max_Range>100.0</Activation_Max_Range>
+				<Activation_Recharge_Time> 4.0 </Activation_Recharge_Time>
+
+				<Applicable_Unit_Categories> Resource | Resource_INST </Applicable_Unit_Categories>
+
+				<Effect_Generator_Name> Masari_Elementalist_Unmake_Effect_Generator </Effect_Generator_Name>
+				
+			</Effect_Generator_Ability>
+
+
 			<Effect_Generator_Ability Name="Alien_Reaper_Attack_Small_Unit_Special_Ability">
 				<Activation_Min_Range> 0 </Activation_Min_Range>
 				<Activation_Max_Range> 100 </Activation_Max_Range>
@@ -454,6 +468,20 @@
 
 		<!-- EFFECT GENERATORS -->
 		<Effect_Generator_Data SubObjectList="Yes">
+
+         <Effect_Generator Name="Masari_Elementalist_Unmake_Effect_Generator">
+            <Starts_Active>Yes</Starts_Active>
+            <Modal_Refresh_Frequency>0.5</Modal_Refresh_Frequency>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Elemental_Resource_Effect </Effect_Name>
+               <Duration> 1 </Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 80 </Area_Effect_Radius>
+               <Target_Filter_Categories> Resource, Resource_INST </Target_Filter_Categories>
+               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+            </Effect_Generator_Entry>
+         </Effect_Generator>
 
 			<!-- Default attack on non-resource units -->
 			<Effect_Generator Name="ReaperAttackSmallUnitGenerator">
