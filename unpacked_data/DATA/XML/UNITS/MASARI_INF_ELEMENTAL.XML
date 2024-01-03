@@ -428,19 +428,39 @@
 		<!-- EFFECT GENERATORS -->
 		<Effect_Generator_Data SubObjectList="Yes">
 
-         <Effect_Generator Name="Masari_Elementalist_Unmake_Effect_Generator">
-            <Starts_Active>Yes</Starts_Active>
-            <Modal_Refresh_Frequency>0.5</Modal_Refresh_Frequency>
+			<!-- Default attack on resource units -->
+			<Effect_Generator Name="Masari_Elementalist_Unmake_Effect_Generator">
+				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
+				<Is_Independent_Generator> Yes </Is_Independent_Generator>
 
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Masari_Elemental_Resource_Effect </Effect_Name>
-               <Duration> -1 </Duration>
-               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
-               <Area_Effect_Radius> 80 </Area_Effect_Radius>
-               <Target_Filter_Categories> Resource, Resource_INST </Target_Filter_Categories>
-               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
-            </Effect_Generator_Entry>
-         </Effect_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> AlienHarvestResourcesEffect </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+					<Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
+					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
+					<Can_Target_Dead_Objects> Yes </Can_Target_Dead_Objects>
+
+               		<Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+
+					<Source_SFX_Event> SFX_Alien_Reaping_Loop </Source_SFX_Event>
+					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
+					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> AlienHarvestResourcesOwnerEffect </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> AlienHarvestResourcesVisualEffect </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
 
 			<!-- Default attack on non-resource units -->
 			<Effect_Generator Name="ReaperAttackSmallUnitGenerator">
