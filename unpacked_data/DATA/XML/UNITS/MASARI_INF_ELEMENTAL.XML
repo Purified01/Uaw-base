@@ -349,51 +349,10 @@
 				<Activation_Min_Range> 0 </Activation_Min_Range>
 				<Activation_Max_Range> 100 </Activation_Max_Range>
 				<Effect_Generator_Name> ReaperAttackSmallUnitGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Organic + Medium | Small  </Applicable_Unit_Categories>
+				<Applicable_Unit_Categories> Organic + Medium | Small | Piloted  </Applicable_Unit_Categories>
 				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Piloted, Stationary, Flying </Excluded_Unit_Categories>
 				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank </Excluded_Unit_Types>
 				<Max_Channel_Range> 150.0 </Max_Channel_Range>
-				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
-
-				<Point_Turret_At_Target>No </Point_Turret_At_Target>
-
-			</Effect_Generator_Ability>
-
-			<Effect_Generator_Ability Name="Alien_Reaper_Attack_Piloted_Unit_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Effect_Generator_Name> ReaperAttackPilotedUnitGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Piloted  </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Stationary, Flying, Small </Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank </Excluded_Unit_Types>
-				<Max_Channel_Range> 150.0 </Max_Channel_Range>
-				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
-
-				<Point_Turret_At_Target>No </Point_Turret_At_Target>
-
-         </Effect_Generator_Ability>
-
-			<Effect_Generator_Ability Name="Alien_Reaper_Attack_Big_Unit_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Effect_Generator_Name> ReaperAttackBigUnitGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Piloted | Huge | Stationary </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Small, Flying </Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank, Neutral_Refinery </Excluded_Unit_Types>
-				<Max_Channel_Range> 200.0 </Max_Channel_Range>
-				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
-
-            <Point_Turret_At_Target>No </Point_Turret_At_Target>
- 			</Effect_Generator_Ability>
-
-			<Effect_Generator_Ability Name="Alien_Reaper_Attack_Hard_Point_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Effect_Generator_Name> ReaperAttackHardPointGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> HardPoint </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST </Excluded_Unit_Categories>
-
-				<Max_Channel_Range> 125.0 </Max_Channel_Range>
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
 				<Point_Turret_At_Target>No </Point_Turret_At_Target>
@@ -475,8 +434,8 @@
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> Masari_Elemental_Resource_Effect </Effect_Name>
-               <Duration> 1 </Duration>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Duration> -1 </Duration>
+               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
                <Area_Effect_Radius> 80 </Area_Effect_Radius>
                <Target_Filter_Categories> Resource, Resource_INST </Target_Filter_Categories>
                <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
@@ -526,101 +485,7 @@
 				</Effect_Generator_Entry>
 
 
-				<Effect_Generator_Entry Name="Entry4">
-					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry5">
-					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-				</Effect_Generator_Entry>
 			</Effect_Generator>
-
-
-
-			<Effect_Generator Name="ReaperAttackPilotedUnitGenerator">
-				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
-				<Is_Independent_Generator> Yes </Is_Independent_Generator>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<!-- Re-use ReaperAttackHardPointsEffect effect -->
-					<Effect_Name> ReaperAttackHardPointsEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_C> Reaper_Default_Attack_Piloted_Unit </Target_Filter_C>
-
-					<Source_SFX_Event> SFX_Alien_Reaping_Loop </Source_SFX_Event>
-					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
-					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
-
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-
-
-
-			<Effect_Generator Name="ReaperAttackBigUnitGenerator">
-				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
-				<Is_Independent_Generator> Yes </Is_Independent_Generator>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> ReaperAttackBigUnitsEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-
-					<Source_SFX_Event> SFX_Alien_Reaping_Loop </Source_SFX_Event>
-					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
-					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
-
-					<Target_SFX_Event> SFX_Structure_Shaking_Loop </Target_SFX_Event>
-					<Target_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Target_SFX_Loop_Type>
-					<Stop_Target_SFX_On_Deactivate> true </Stop_Target_SFX_On_Deactivate>
-
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-
-
-
-			<Effect_Generator Name="ReaperAttackHardPointGenerator">
-				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
-				<Is_Independent_Generator> Yes </Is_Independent_Generator>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> ReaperAttackHardPointsEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_C> Reaper_Default_Attack_Hard_Point </Target_Filter_C>
-
-					<Source_SFX_Event> SFX_Alien_Reaping_Loop </Source_SFX_Event>
-					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
-					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
-
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-
 
 			<!-- Finalization of an attack  -->
 			<Effect_Generator Name="ReaperAbductTargetEffectGenerator">
@@ -737,47 +602,14 @@
 
 				</Effect_Generator_Entry>
 
+
 				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry3">
-					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry4">
 					<Effect_Name> AlienHarvestResourcesOwnerEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 
-				<Effect_Generator_Entry Name="Entry5">
+				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> AlienHarvestResourcesVisualEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
@@ -815,30 +647,12 @@
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry3">
-					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry4">
 					<Effect_Name> AlienHarvestResourcesOwnerEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 
-				<Effect_Generator_Entry Name="Entry5">
+				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> AlienHarvestResourcesVisualEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
@@ -858,34 +672,7 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
-
-         <Effect_Generator Name="PostConstructionEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> WalkerStage1PostConstructionEffect </Effect_Name>
-               <!-- effect will deactivate itself when needed. -->
-               <Duration> -1 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-               <Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
-            </Effect_Generator_Entry>
-
-            <Effect_Generator_Entry Name="Entry2">
-               <Effect_Name> WalkerStage2PostConstructionEffect </Effect_Name>
-               <Base_Delay>0.1</Base_Delay>
-               <Duration> -1 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>
-
-			<!-- Standard Sell generator  - 06/28/2007 -->
-			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\ALIEN_Sell_Generators.xml" -->
-						
 		</Effect_Generator_Data>
-
-
-
 
 
 		<Unit_Abilities_Data SubObjectList="Yes">
@@ -897,34 +684,20 @@
 				<Recharge_Seconds>0.3</Recharge_Seconds>
 			</Unit_Ability>
 
-			<Unit_Ability Name="Alien_Reaper_Attack_Piloted_Unit_Ability">
-				<Type>EFFECT_GENERATOR</Type>
-				<GUI_Activated_Ability_Name> Alien_Reaper_Attack_Piloted_Unit_Special_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> ReaperAttackPilotedUnitGenerator </Effect_Generator_Name>
-				<Recharge_Seconds>0.3</Recharge_Seconds>
-			</Unit_Ability>
-
-			<!-- this ability is activated by attack order on a big/stationary non-resource unit -->
-			<Unit_Ability Name="Alien_Reaper_Attack_Big_Unit_Ability">
-				<Type>EFFECT_GENERATOR</Type>
-				<GUI_Activated_Ability_Name> Alien_Reaper_Attack_Big_Unit_Special_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> ReaperAttackBigUnitGenerator </Effect_Generator_Name>
-				<Recharge_Seconds>0.3</Recharge_Seconds>
-			</Unit_Ability>
-
-			<!-- this ability is activated by attack order on a socketed/hardpoint unit -->
-			<Unit_Ability Name="Alien_Reaper_Attack_Hard_Point_Ability">
-				<Type>EFFECT_GENERATOR</Type>
-				<GUI_Activated_Ability_Name> Alien_Reaper_Attack_Hard_Point_Special_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> ReaperAttackHardPointGenerator </Effect_Generator_Name>
-				<Recharge_Seconds>0.3</Recharge_Seconds>
-			</Unit_Ability>
-
 			<!-- this ability is activated by attack order on a resource unit -->
 			<Unit_Ability Name="Reaper_Harvest_Resource_Ability">
 				<Type>EFFECT_GENERATOR</Type>
 				<Effect_Generator_Name> AlienHarvestResourceGenerator </Effect_Generator_Name>
 				<GUI_Activated_Ability_Name> Reaper_Harvest_Resource_Special_Ability </GUI_Activated_Ability_Name>
+				<Is_Modal>Yes</Is_Modal>
+				<Recharge_Seconds>0.3</Recharge_Seconds>
+			</Unit_Ability>
+			
+			<!-- this ability is activated by attack order on a resource unit -->
+			<Unit_Ability Name="Elementalist_Harvest_Resource_Ability">
+				<Type>EFFECT_GENERATOR</Type>
+				<Effect_Generator_Name> Masari_Elementalist_Unmake_Effect_Generator </Effect_Generator_Name>
+				<GUI_Activated_Ability_Name> Elementalist_Attack </GUI_Activated_Ability_Name>
 				<Is_Modal>Yes</Is_Modal>
 				<Recharge_Seconds>0.3</Recharge_Seconds>
 			</Unit_Ability>
