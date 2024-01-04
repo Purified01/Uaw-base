@@ -493,8 +493,8 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Masari_Infantry_Inspiration_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Masari_Infantry_Inspiration </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>

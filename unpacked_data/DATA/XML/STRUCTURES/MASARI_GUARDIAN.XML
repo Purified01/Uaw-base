@@ -401,8 +401,8 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Masari_Guardian_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Masari_Guardian </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 55 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 55 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 550 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 550 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 36 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
@@ -926,8 +926,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 450 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 450 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 

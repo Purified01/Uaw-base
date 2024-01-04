@@ -411,8 +411,8 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Beacon_Type> Masari_Inventors_Lab_Beacon </Tactical_Buildable_Beacon_Type>
          <Tactical_Buildable_Constructed> Masari_Inventors_Lab </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
@@ -1180,8 +1180,8 @@
 		
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Masari_Adepts_Lab_Upgrade_HP </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 175 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign>175</Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 1750 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign>1750</Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 60 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
@@ -1306,8 +1306,8 @@
 		
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Masari_Masters_Lab_Upgrade_HP </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 250 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 250 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 2500 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 2500 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 85 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 

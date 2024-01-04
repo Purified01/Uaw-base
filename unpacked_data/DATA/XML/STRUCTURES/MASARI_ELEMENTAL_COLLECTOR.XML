@@ -232,17 +232,6 @@
          <Elemental_Object_Types> Ice, Masari_Elemental_Collector_Ice </Elemental_Object_Types>
       </BehaviorType>
 
-      <BehaviorType Name="LuaScriptBehaviorType">
-         <Lua_Land_Behaviors> MasariMatterEngine </Lua_Land_Behaviors>
-         <!-- need to set all data as pooled scripts won't clear old data -->
-         <Lua_Script_Data>
-            MatterEngine = {}
-            MatterEngine.ResourcesPerTimeBlock = 4.0
-            MatterEngine.ResourcesTimeSeconds = 3.0
-            MatterEngine.ResourcesStorage = 80.0
-         </Lua_Script_Data>
-      </BehaviorType>
-
       <BehaviorType Name="TacticalBuildObjectsBehaviorType">
 
          <!-- Maria 06.23.2006 - Here one can define which types can be built on a given Hard-Point socket!.  
@@ -365,19 +354,6 @@
 
          </Effect_Generator>
 
-         <Effect_Generator Name="MasariIncomeGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Is_Independent_Generator>Yes</Is_Independent_Generator>
-            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-            <Starts_Active> yes </Starts_Active>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Duration> 3.1 </Duration>
-               <Effect_Name> MasariIncomeEffect </Effect_Name>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-
-         </Effect_Generator>
 
          <!-- Standard Sell generator  - 06/28/2007 -->
          <!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\MASARI_Sell_Generators.xml" -->
@@ -613,8 +589,8 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Beacon_Type> Masari_Elemental_Collector_Beacon </Tactical_Buildable_Beacon_Type>
          <Tactical_Buildable_Constructed> Masari_Elemental_Collector </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 85 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Cost_Campaign> 85 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 850 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>

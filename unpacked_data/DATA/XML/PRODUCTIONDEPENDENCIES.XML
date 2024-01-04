@@ -407,7 +407,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Atlatea, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Masari_Atlatea, Masari_Elemental, Masari_Architect </Tactical_Required_Objects>
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
@@ -419,7 +419,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Will_Processor, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Masari_Will_Processor, Masari_Elemental, Masari_Architect </Tactical_Required_Objects>
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
@@ -431,7 +431,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Elemental, Masari_Architect </Tactical_Required_Objects>
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
@@ -443,7 +443,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Element_Magnet, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Masari_Element_Magnet, Masari_Elemental, Masari_Architect </Tactical_Required_Objects>
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
@@ -455,7 +455,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Foundation, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Masari_Foundation, Masari_Elemental, Masari_Architect </Tactical_Required_Objects>
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
@@ -700,32 +700,6 @@
 
   <!--************************************************************************
 ******** MASARI STRUCTURAL HARDPOINTS ************************************-->
-
-  <!-- HARDPOINT: Masari_Matter_Engine_Matter_Sifter -->
-  <Dependency>
-    <Built_Object> Masari_Matter_Engine_Matter_Sifter </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Adepts_Lab_Upgrade_HP </Tactical_Required_Objects>
-    <Tactical_Builder> Masari_Elemental_Collector </Tactical_Builder>
-  </Dependency>
-
-  <Dependency>
-    <Built_Object> Masari_Matter_Engine_Matter_Sifter </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Masari_Adepts_Lab_Upgrade_HP </Tactical_Required_Objects>
-    <Tactical_Builder> Masari_Matter_Engine_HP </Tactical_Builder>
-  </Dependency>
-
 
 
 

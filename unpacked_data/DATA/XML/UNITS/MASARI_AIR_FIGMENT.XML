@@ -161,8 +161,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-         <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 500 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 500 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>

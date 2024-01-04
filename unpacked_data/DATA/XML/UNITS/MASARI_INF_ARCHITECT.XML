@@ -134,8 +134,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-         <Tactical_Build_Cost_Campaign> 30 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 30 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 23 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
@@ -254,7 +254,7 @@
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
       </BehaviorType>
 
       <BehaviorType Name="CrushBehaviorType">

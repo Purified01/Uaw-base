@@ -9,19 +9,19 @@
 			<Flow_Direction> TargetToSource </Flow_Direction>
 			<Target_Effect>  ResourceUnits	</Target_Effect>
 			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> -15.0 </Amount_Per_Second>
+			<Amount_Per_Second> -10.0 </Amount_Per_Second>
 			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
 			<Transfer_Multiplicative> 1 </Transfer_Multiplicative>
          
          <!-- Achievement increases gathered amount per second -->
-         <Source_Attribute_Per_Second_Coefficient>-15.0</Source_Attribute_Per_Second_Coefficient>
+         <Source_Attribute_Per_Second_Coefficient>-10.0</Source_Attribute_Per_Second_Coefficient>
          <Source_Attribute_Per_Second>Harvest_Material_Add</Source_Attribute_Per_Second>
          
          <Apply_Effect_Generator_On_Source_Out>ReaperDissolveTargetEffectGenerator</Apply_Effect_Generator_On_Source_Out>
 			<Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
 		</Effect_Component>
 	</Effect>
-   
+
    <!--*************************************************************************************************
 	************************************************************************************************** 
 	************************************************************************************************** 

@@ -716,8 +716,8 @@
 			1,10,
 			8,5,
 		</Land_Skirmish_Unit_Cap_By_Player_Count>
-		<Multiplayer_Starting_Credits> 1000 </Multiplayer_Starting_Credits>
-        <Multiplayer_Starting_Credit_Level_Values> 400,700,2000 </Multiplayer_Starting_Credit_Level_Values>
+		<Multiplayer_Starting_Credits> 10000 </Multiplayer_Starting_Credits>
+        <Multiplayer_Starting_Credit_Level_Values> 4000,7000,20000 </Multiplayer_Starting_Credit_Level_Values>
 		<Pop_Cap_For_Multiplayer_Games> 90 </Pop_Cap_For_Multiplayer_Games>
 		<!-- MULTIPLAYER DATA END	-->
 

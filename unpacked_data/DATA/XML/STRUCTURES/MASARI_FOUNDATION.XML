@@ -520,8 +520,8 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Masari_Foundation_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Masari_Foundation </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 120 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
