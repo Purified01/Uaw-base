@@ -13,8 +13,8 @@
 		<Land_Model_Name> ZV_Stormchaser.ALO </Land_Model_Name> <!-- DEBUG: STUB SCALE AND MODEL -->
 		<Scale_Factor>1.25</Scale_Factor>
 		<Loop_Idle_Anim_00>No</Loop_Idle_Anim_00>
-		<Text_ID>TEXT_UNIT_MASARI_STORMCHASER</Text_ID>
-		<GUI_Scene_Name> Masari_HealthBar_Scene_Medium </GUI_Scene_Name>
+    <Icon_Name> i_icon_mv_seeker.tga  </Icon_Name>
+    <Text_ID>TEXT_UNIT_MASARI_SEEKER</Text_ID>
 		<!-- <SurfaceFX_Name>Generic_Footprint</SurfaceFX_Name> -->
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
 		<Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
@@ -22,13 +22,6 @@
 		<Death_Persistence_Duration>5</Death_Persistence_Duration><!-- jdg originally 10 -->
 		
 		<!-- INTERFACE -->
-		<Text_ID>TEXT_UNIT_GRAY_INFANTRY</Text_ID>
-		<GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name> 
-		<GUI_Receives_Input> false </GUI_Receives_Input>
-		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
-		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
 		<Select_Box_Scale>20</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -48,13 +41,12 @@
 			<Tactical_Build_Cost_Credits/>
 		</Attributes>
 
-
     <!-- MOVEMENT -->
     <MovementClass>Flying</MovementClass>
     <UnitCollisionClass> Infantry </UnitCollisionClass>
     <OccupationStyle>1x1</OccupationStyle>
     <Space_Layer> LandDynamic </Space_Layer>
-    <Max_Speed> 2.5 </Max_Speed>
+    <Max_Speed> 2.0 </Max_Speed>
     <!-- jdg was 0.8 -->
     <Max_Rate_Of_Turn> 6.0 </Max_Rate_Of_Turn>
     <Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
@@ -162,10 +154,6 @@
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>
 			
-			<!-- Dark Matter Armor -->
-			<DMA_Max> 500.0 </DMA_Max>
-			<DMA_Regen_Rate> 10.0 </DMA_Regen_Rate>
-			<Importance> 0.6 </Importance>
 		</Attributes>
 		
 		<BehaviorType name="AIBehaviorType">
@@ -247,12 +235,6 @@
 			<Face_Movement_Direction_When_Idle> Yes </Face_Movement_Direction_When_Idle>
 		</BehaviorType>
 		
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Encyclopedia_Good_Against> </Encyclopedia_Good_Against>
-			<Encyclopedia_Vulnerable_To> </Encyclopedia_Vulnerable_To>
-			<Icon_Name> i_icon_zv_stormchaser.tga </Icon_Name>
-		</BehaviorType>
-		
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_REAPER_DRONE </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
@@ -261,6 +243,16 @@
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03  0.03</Radar_Icon_Size>
 		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name>
+			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 1.5 </GUI_Default_Scale>
+			<GUI_World_Offset> 0.0, 0.0, -5 </GUI_World_Offset>
+		</BehaviorType>
+
 
       <BehaviorType Name="BallisticBehaviorType">
          <Ballistic_Weight>1.0</Ballistic_Weight>
@@ -331,16 +323,20 @@
 
 		<Abilities SubObjectList="Yes">
 
-			<Effect_Generator_Ability Name="Elementalist_Attack">
-				<Disable_Special_Ability_Attribute> Is_Mind_Controlled </Disable_Special_Ability_Attribute>
-				<Activation_Chance>1.0</Activation_Chance>
-				<Activation_Min_Range>0.0</Activation_Min_Range>
-				<Activation_Max_Range>100.0</Activation_Max_Range>
-				<Activation_Recharge_Time> 4.0 </Activation_Recharge_Time>
+			<Effect_Generator_Ability Name="Elementalist_Harvest_Resource_Special_Ability">
+				<Activation_Min_Range> 0 </Activation_Min_Range>
+				<Activation_Max_Range> 100 </Activation_Max_Range>
+				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 
 				<Applicable_Unit_Categories> Resource | Resource_INST </Applicable_Unit_Categories>
 
-				<Effect_Generator_Name> Masari_Elementalist_Unmake_Effect_Generator </Effect_Generator_Name>
+				<Effect_Generator_Name> MasariHarvestResourceGenerator </Effect_Generator_Name>
+
+				<Can_Target_Allies>yes</Can_Target_Allies>
+				<Can_Target_Enemies>Yes</Can_Target_Enemies>
+				<Can_Target_Neutral>Yes</Can_Target_Neutral>
+
+				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 				
 			</Effect_Generator_Ability>
 
@@ -429,7 +425,7 @@
 		<Effect_Generator_Data SubObjectList="Yes">
 
 			<!-- Default attack on resource units -->
-			<Effect_Generator Name="Masari_Elementalist_Unmake_Effect_Generator">
+			<Effect_Generator Name="MasariHarvestResourceGenerator">
 				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
 				<Is_Independent_Generator> Yes </Is_Independent_Generator>
 
@@ -716,8 +712,8 @@
 			<!-- this ability is activated by attack order on a resource unit -->
 			<Unit_Ability Name="Elementalist_Harvest_Resource_Ability">
 				<Type>EFFECT_GENERATOR</Type>
-				<Effect_Generator_Name> Masari_Elementalist_Unmake_Effect_Generator </Effect_Generator_Name>
-				<GUI_Activated_Ability_Name> Elementalist_Attack </GUI_Activated_Ability_Name>
+				<Effect_Generator_Name> MasariHarvestResourceGenerator </Effect_Generator_Name>
+				<GUI_Activated_Ability_Name> Elementalist_Harvest_Resource_Special_Ability </GUI_Activated_Ability_Name>
 				<Is_Modal>Yes</Is_Modal>
 				<Recharge_Seconds>0.3</Recharge_Seconds>
 			</Unit_Ability>
@@ -763,9 +759,9 @@
 		<OccupationStyle>1x1</OccupationStyle>
 		<Space_Layer>Air</Space_Layer>
 		<Stationary_Space_Layer>LandDynamic</Stationary_Space_Layer>
-		<Max_Speed>3.0</Max_Speed>
-		<Max_Rate_Of_Turn>25.0</Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn>12.0</Stopped_Rate_Of_Turn>
+		<Max_Speed>1.5</Max_Speed>
+		<Max_Rate_Of_Turn>15.0</Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn>10.0</Stopped_Rate_Of_Turn>
 		<OverrideAcceleration>.125</OverrideAcceleration>
 		<OverrideDeceleration>.125</OverrideDeceleration>
 		<Movement_Animation_Speed>2.0</Movement_Animation_Speed>
@@ -781,7 +777,7 @@
 		<MaxJiggleDistance>3.5</MaxJiggleDistance>
 		<Min_Flight_Elevation>70</Min_Flight_Elevation>
 		<Max_Flight_Elevation>80</Max_Flight_Elevation>
-		<Max_Thrust>1.5</Max_Thrust>
+		<Max_Thrust>1.2</Max_Thrust>
 		<Thrust_Acceleration>.1</Thrust_Acceleration>
 		<Thrust_Deceleration>.1</Thrust_Deceleration>
 	</X13_Masari_Units>
@@ -790,15 +786,30 @@
 		<Variant_Of_Existing_Type>Masari_Elemental</Variant_Of_Existing_Type>
 
 		<Attributes SubObjectList="Yes">
-			<DMA_Max> 275 </DMA_Max>
-			<DMA_Regen_Rate> 12 </DMA_Regen_Rate>
+			<DMA_Max> 500.0 </DMA_Max>
+			<DMA_Regen_Rate> 10.0 </DMA_Regen_Rate>
 		</Attributes>
 		
 		<!-- MOVEMENT -->
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.0 </Max_Speed>
 		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
 		<Walk_Animation_Speed> .366 </Walk_Animation_Speed>
       <MovementClass>Infantry</MovementClass>
+
+    <Effect_Generator_Data SubObjectList="Yes" Replace="No">
+
+      <Effect_Generator Name="IceVisualGenerator">
+
+        <Starts_Active> true </Starts_Active>
+
+        <Effect_Generator_Entry Name="Entry1">
+          <Effect_Name> MasariSeekerIceVisualEffect </Effect_Name>
+          <Duration> -1.0 </Duration>
+          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+        </Effect_Generator_Entry>
+
+      </Effect_Generator>
+	  </Effect_Generator_Data>
 
       <Min_Flight_Elevation>0</Min_Flight_Elevation>
       <Max_Flight_Elevation>0</Max_Flight_Elevation>
