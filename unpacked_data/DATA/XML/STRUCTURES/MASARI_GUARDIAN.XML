@@ -1105,8 +1105,8 @@
       
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_Two_Faced_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 450 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 450 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
