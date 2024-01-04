@@ -5554,7 +5554,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply, Military_Motor_Pool </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot, Military_Motor_Pool </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
   
@@ -5566,7 +5566,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply, Military_Aircraft_Pad </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot, Military_Aircraft_Pad </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
   
@@ -5923,7 +5923,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply</Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot</Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
 
@@ -5936,7 +5936,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Supply </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Supply_Depot </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
   
@@ -5974,7 +5974,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
 
@@ -6112,7 +6112,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
 
@@ -6412,7 +6412,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
 
