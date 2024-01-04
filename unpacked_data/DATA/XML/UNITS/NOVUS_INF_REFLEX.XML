@@ -380,7 +380,7 @@
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
 				
-				<Excluded_Unit_Categories> Flying, Resource, Resource_INST, BodySocketHP </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Flying, Resource, Resource_INST,  </Excluded_Unit_Categories>
 
 			</Effect_Generator_Ability>
 
@@ -787,6 +787,7 @@
 				<Effect_Generator_Name> NovusReflexTrooperEnergyBladeGenerator </Effect_Generator_Name>
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
+				<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 
 				<Excluded_Unit_Categories> Flying, Resource, Resource_INST </Excluded_Unit_Categories>
 
@@ -804,11 +805,12 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -816,11 +818,12 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
@@ -833,6 +836,7 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry4">
@@ -845,6 +849,7 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

@@ -351,7 +351,7 @@
                <Effect_Name> MatterEngineResearchedLeechEffect </Effect_Name>
                <Duration> 3.1 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Target_Filter_Categories> ~DeathCloneResource + ~Flying + ~Untargetable </Target_Filter_Categories>
+               <Target_Filter_Categories> ~DeathCloneResource + ~Untargetable </Target_Filter_Categories>
                <Target_Filter_C> Is_Enemy </Target_Filter_C>
                <Area_Effect_Radius> 150.0 </Area_Effect_Radius>
             </Effect_Generator_Entry>

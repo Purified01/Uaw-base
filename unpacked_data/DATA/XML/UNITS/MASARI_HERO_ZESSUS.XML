@@ -92,7 +92,7 @@
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
       <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
-      <Tactical_Health> 850 </Tactical_Health>
+      <Tactical_Health> 950 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -273,7 +273,7 @@
 	
 			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
 			<SFXEvent_Build_Started>GUI_BUILD_Hero</SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete>Unit_Select_Masari_Zessus</SFXEvent_Build_Complete>
+			<SFXEvent_Build_Complete>Unit_TAUNT_Masari_Zessus</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 			<SFXEvent_Cant_Move_Unit_In_Production> MCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 

@@ -259,7 +259,9 @@
 			<!-- SFXEvent_Fire>SFX_Alien_Grunt_Fire</SFXEvent_Fire-->
 			<SFXEvent_Select>Unit_Select_Alien_Grunt</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_Alien_Grunt</SFXEvent_Move>
+			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Grunt</SFXEvent_Move_At_Top_Speed>
 			<SFXEvent_Attack>Unit_Attack_Alien_Grunt</SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Grunt</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Guard>Unit_Move_Alien_Grunt</SFXEvent_Guard>
 			<Death_SFXEvent_Start_Die>Unit_Death_Alien_Grunt</Death_SFXEvent_Start_Die>
 

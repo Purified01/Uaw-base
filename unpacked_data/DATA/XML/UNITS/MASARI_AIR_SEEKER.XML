@@ -340,6 +340,7 @@
         <Type>EFFECT_GENERATOR</Type>
         <Recharge_Seconds>30.0</Recharge_Seconds>
         <Expiration_Seconds>8.0</Expiration_Seconds>
+        <SFXEvent_Target_Ability>Unit_ABILITY_B_Masari_Inquisitor</SFXEvent_Target_Ability>
         <GUI_Activated_Ability_Name>Inquisitor_Destabilize_Ability</GUI_Activated_Ability_Name>
         <Targeting_Type>ANY_OBJECT</Targeting_Type>
         <Effect_Generator_Name>Masari_Inquisitor_Destabilize_Generator</Effect_Generator_Name>
@@ -417,6 +418,7 @@
       <Effect_Generator Name="MasariSpawnPhoenixOnDeathGenerator">
         <Starts_Active>Yes</Starts_Active>
         <Modal_Refresh_Frequency>1</Modal_Refresh_Frequency>
+        <SFXEvent_Target_Ability>Unit_ABILITY_A_Masari_Inquisitor</SFXEvent_Target_Ability>
         <Effect_Generator_Entry Name="Entry1">
           <Duration> 1.1 </Duration>
           <Effect_Name> MasariPhoenixEffect </Effect_Name>
@@ -581,8 +583,8 @@
       <SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
       <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-      <SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-      <SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+      <SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+      <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
       <Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
       <SFXEvent_Ambient_Moving> SFX_Masari_Inquisitor_Fly_By </SFXEvent_Ambient_Moving>
@@ -708,8 +710,8 @@
 			<SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-			<SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-			<SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+			<SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
 			<Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
 			<SFXEvent_Ambient_Moving>  </SFXEvent_Ambient_Moving>
@@ -739,31 +741,6 @@
         </Effect_Generator_Entry>
 
       </Effect_Generator>
-
-      <!-- Increases DMA regen rate of objects in a radius  -->
-      <Effect_Generator Name="MasariSeekerAE_DMARegenGenerator">
-        <Is_Independent_Generator> true </Is_Independent_Generator>
-        <Starts_Active> true </Starts_Active>
-        <Modal_Refresh_Frequency> 4.9 </Modal_Refresh_Frequency>
-        <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-        <Effect_Generator_Entry Name="Entry1">
-          <Effect_Name> MasariSeekerDMARegenEffect </Effect_Name>
-          <Duration> 5.0 </Duration>
-          <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-          <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
-          <Area_Effect_Radius> 100.0 </Area_Effect_Radius>
-        </Effect_Generator_Entry>
-
-         <Effect_Generator_Entry Name="Entry2">
-            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
-            <Duration> 5.0 </Duration>
-            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-         </Effect_Generator_Entry>
-
-      </Effect_Generator>
-
-
 
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
@@ -1083,7 +1060,7 @@
       <Projectile_Category>laser</Projectile_Category>
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>8.0</Projectile_Damage>
+      <Projectile_Damage>9.0</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
       <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
       <Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_1</Projectile_SFXEvent_Detonate>

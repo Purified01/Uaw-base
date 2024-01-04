@@ -243,6 +243,21 @@
 			
 		<Effect_Generator_Data SubObjectList="Yes">
 
+            <!-- This effect generator adds stealth detection to the Science Center. -->
+			<Effect_Generator Name="NovusScienceCloakingGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> RevealCloakingEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 500.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+
 			<!-- This effect generator adds the Rapid Rebuild healing effect to the structure if it is damaged and has power. -->
 			<Effect_Generator Name="NovusResearchRapidRebuildEffectGenerator">
 				<Is_Independent_Generator> true </Is_Independent_Generator>

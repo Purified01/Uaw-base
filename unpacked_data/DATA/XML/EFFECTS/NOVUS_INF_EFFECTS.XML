@@ -11,6 +11,17 @@
 	************************************************************************************************** 
 	************************************************************************************************** 
 	************************************************************************************************** -->
+
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 3.5 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
 	<Effect Name="Novus_Hacker_Control_Turret_Effect">
 		<Duration> -1.0 </Duration>
 		<Should_Remove_If_Inactive> true </Should_Remove_If_Inactive>
@@ -434,6 +445,16 @@
 	************************************************************************************************** 
 	************************************************************************************************** -->
 
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 2.0 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
    <Effect Name="NovusReflexTrooperSpawnClonesUpgrade">
       <Duration> -1 </Duration>
       <Effect_Class> Transparent </Effect_Class>
@@ -551,6 +572,16 @@
 	<!--=================================================================================================
 	== RoboticInfantryCaptureEffect: Capture object
 	================================================================================================== -->
+
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 4.0 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
 
 	<Effect Name="RoboticInfantryCaptureEffect">
 		<Duration> -1.0 </Duration>

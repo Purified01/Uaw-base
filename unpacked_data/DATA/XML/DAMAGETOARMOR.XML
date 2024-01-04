@@ -3056,7 +3056,7 @@
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Aircraft, 1.3 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Walker, 4.0 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Walker_Hardpoint, 4.0 </Damage_To_Armor_Mod>
-	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Walker_Hardpoint_Armor, 2.0 </Damage_To_Armor_Mod>
+	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Walker_Hardpoint_Armor, 1.5 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Structure_Turret, 1.3 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Structure_Light, 0.4 </Damage_To_Armor_Mod>
 	<Damage_To_Armor_Mod> Damage_Novus_Mirabel_Snipe, Armor_Alien_Structure_Heavy, 0.4 </Damage_To_Armor_Mod>
@@ -5609,4 +5609,3 @@
 	
 	
 </EnumDefinition>
-

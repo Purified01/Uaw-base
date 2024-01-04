@@ -492,7 +492,7 @@
 					<Effect_Name> Novus_Hacker_Control_Turret_Area_Effect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target | TargetAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 75 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 					<Target_Filter_Categories> Stationary + CanAttack </Target_Filter_Categories>
 					<Target_Filter_C> Is_Enemy_Not_Immune_To_MC	</Target_Filter_C>
 					<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
@@ -607,7 +607,7 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -615,7 +615,7 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
@@ -623,7 +623,7 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 				
 				<Effect_Generator_Entry Name="Entry4">

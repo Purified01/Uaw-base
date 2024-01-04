@@ -284,7 +284,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>35</Crush_Defense>
+			<Crush_Defense>38</Crush_Defense>
       <Crush_Power>21</Crush_Power>
 		</BehaviorType>
 
@@ -324,6 +324,7 @@
             <Recharge_Seconds>6</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> NovusAmplifierHarmonicPulseGeneratorAbility </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> NovusAmplifierHarmonicPulseGenerator </Effect_Generator_Name>
+				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Novus_Amplifier</SFXEvent_GUI_Unit_Ability_Activated>
 				<Is_Modal>Yes</Is_Modal>
             <Clear_Formation>Yes</Clear_Formation>
 				<SFXEvent_GUI_Unit_Ability_Activated> SFX_Novus_Amplifier_On</SFXEvent_GUI_Unit_Ability_Activated>
@@ -610,9 +611,12 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
+			
+
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
-			
+
+
 		</Effect_Generator_Data>
 
 	</X12_Novus_Units>

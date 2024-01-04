@@ -169,7 +169,7 @@
 			<Size_Value> 1 </Size_Value>
 			<Score_Cost_Credits> 10 </Score_Cost_Credits>
 			<Build_Cost_Credits> 3400 </Build_Cost_Credits>
-			<Build_Time_Seconds> 30 </Build_Time_Seconds>
+			<Build_Time_Seconds> 50 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Build_Limit_Current_Per_Player>1</Build_Limit_Current_Per_Player>
 			<!-- 
@@ -278,7 +278,9 @@
 			<SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
 			<SFXEvent_Select> Unit_Select_Alien_Habitat </SFXEvent_Select>
 			<SFXEvent_Move> Unit_Move_Alien_Habitat </SFXEvent_Move>
+			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Habitat</SFXEvent_Move_At_Top_Speed>
 			<SFXEvent_Attack> Unit_Attack_Alien_Habitat </SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Habitat</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Guard> Unit_Move_Alien_Habitat </SFXEvent_Guard>
 			<SFXEvent_Ambient_Moving> SFX_Alien_Walker_Random_Breath </SFXEvent_Ambient_Moving>
 			<SFXEvent_Engine_Idle_Loop> SFX_Alien_Habitat_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -378,7 +380,33 @@
 				<Is_Independent_Generator> true </Is_Independent_Generator>
 				<Effect_Generator_Entry Name="Entry1">
 
-					<Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
+
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
 					<Duration> 3.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
@@ -2438,7 +2466,7 @@
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 1200 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -2494,7 +2522,7 @@
 		<Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 1200 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
@@ -5190,7 +5218,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-		<Tactical_Health>1</Tactical_Health>
+		<Tactical_Health>50</Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>

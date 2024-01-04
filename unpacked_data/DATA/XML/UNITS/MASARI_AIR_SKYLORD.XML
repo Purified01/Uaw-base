@@ -457,7 +457,7 @@
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- MOVEMENT -->
-		<Max_Speed> 2.5 </Max_Speed>
+		<Max_Speed> 2.75 </Max_Speed>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
@@ -581,7 +581,7 @@
 		<Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
 		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
 		<Rotation_Animation_Speed> 3 </Rotation_Animation_Speed>
-		<Max_Speed> 1.8 </Max_Speed>
+		<Max_Speed> 2.0 </Max_Speed>
 		<Min_Speed> .1 </Min_Speed>
 		<Stopped_Rate_Of_Turn> 6 </Stopped_Rate_Of_Turn>
 		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
@@ -969,7 +969,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 
 			<!-- area blast -->
-			<Projectile_Blast_Area_Damage>10</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>12</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>30</Projectile_Blast_Area_Range>
 
 			<!-- ballistic -->
@@ -1070,7 +1070,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>400.0</Projectile_Max_Flight_Distance>
 
-			<Projectile_Blast_Area_Damage>30</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>40</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>40</Projectile_Blast_Area_Range>
 
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>

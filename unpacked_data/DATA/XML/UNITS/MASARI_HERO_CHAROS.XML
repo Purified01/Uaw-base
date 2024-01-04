@@ -513,7 +513,7 @@
 
 		<Land_FOW_Reveal_Range>225.0</Land_FOW_Reveal_Range>
 		<Movement_Animation_Speed> 1.5 </Movement_Animation_Speed>
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.8 </Max_Speed>
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_HERO_CHAROS </Tooltip_Description_Text_ID>
@@ -612,7 +612,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> ~Flying + ~Resource + ~Resource_INST</Target_Filter_Categories>
+					<Target_Filter_Categories> + ~Resource + ~Resource_INST</Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -632,7 +632,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Small + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Small + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -645,7 +645,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Medium + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Medium + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -658,7 +658,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Large | Huge + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Large | Huge + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -691,7 +691,7 @@
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Target_Filter_Categories> ~Flying </Target_Filter_Categories>
+					<Target_Filter_Categories>  ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C> Is_Not_Ally </Target_Filter_C>
 				</Effect_Generator_Entry>
 
@@ -727,7 +727,7 @@
 
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
-		<Max_Speed> 1.8 </Max_Speed>
+		<Max_Speed> 2.0 </Max_Speed>
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
 

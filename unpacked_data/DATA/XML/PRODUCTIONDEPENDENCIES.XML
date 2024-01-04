@@ -1921,7 +1921,7 @@
 
 	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -1933,7 +1933,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
@@ -1945,7 +1945,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> Alien_Creation_Core </Strategic_Required_Objects>
@@ -1957,7 +1957,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -1969,7 +1969,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>

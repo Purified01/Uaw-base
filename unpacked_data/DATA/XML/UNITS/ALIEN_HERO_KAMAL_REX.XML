@@ -81,7 +81,7 @@
       <Is_Attackable> true </Is_Attackable>
       <Ranged_Target_Z_Adjust>25.0</Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1100 </Tactical_Health>
       <Land_FOW_Reveal_Range>230</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | BodySocketHP </Attack_Category_Restrictions>
 
@@ -221,7 +221,7 @@
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Kamal</SFXEvent_Move_At_Top_Speed>
          <SFXEvent_Attack>Unit_Attack_A_Alien_Kamal</SFXEvent_Attack>
 			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Kamal</SFXEvent_Attack_At_Top_Speed>
-         <SFXEvent_Guard> </SFXEvent_Guard>
+         <SFXEvent_Guard> Unit_TAUNT_Alien_Kamal </SFXEvent_Guard>
         
 			<SFXEvent_Ambient_Moving> </SFXEvent_Ambient_Moving>
 			<SFXEvent_Health_Low_Warning> Unit_Health_Low_Alien_Kamal </SFXEvent_Health_Low_Warning>
@@ -360,6 +360,7 @@
          <Unit_Ability Name="Kamal_Rex_Force_Wall_Unit_Ability">
             <Type>BUILDING_PLACEMENT</Type>
             <Recharge_Seconds>28.0</Recharge_Seconds>
+			<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
             <GUI_Activated_Ability_Name> Kamal_Rex_Force_Wall_Special_Ability </GUI_Activated_Ability_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />

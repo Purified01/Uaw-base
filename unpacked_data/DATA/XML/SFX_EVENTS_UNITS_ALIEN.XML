@@ -6,7 +6,7 @@
 
 	<SFXEvent Name="Unit_Select_Alien_Kamal">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_KAM0101_ENG.wav U000_KAM0102_ENG.wav U000_KAM0103_ENG.wav U000_KAM0104_ENG.wav U000_KAM0105_ENG.wav</Samples>
+		<Samples> U000_KAM0101_ENG.wav U000_KAM0102_ENG.wav U000_KAM0103_ENG.wav U000_KAM0104_ENG.wav U000_KAM0105_ENG.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Localize> Yes </Localize>
 		<Text_ID>TEXT_SFX_KAM_SELECT_1, TEXT_SFX_KAM_SELECT_2, TEXT_SFX_KAM_SELECT_3, TEXT_SFX_KAM_SELECT_4, TEXT_SFX_KAM_SELECT_5</Text_ID>       
@@ -15,7 +15,7 @@
 
 	<SFXEvent Name="Unit_Attack_A_Alien_Kamal">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_KAM0201_ENG.wav U000_KAM0202_ENG.wav U000_KAM0203_ENG.wav U000_KAM0204_ENG.wav U000_KAM0205_ENG.wav</Samples>
+		<Samples>U000_KAM1205_ENG.wav U000_KAM0201_ENG.wav U000_KAM0202_ENG.wav U000_KAM0203_ENG.wav U000_KAM0204_ENG.wav U000_KAM0205_ENG.wav U000_KAM1102_ENG.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Localize> Yes </Localize>
 		<Text_ID>TEXT_SFX_KAM_ATTACK_A_1, TEXT_SFX_KAM_ATTACK_A_2, TEXT_SFX_KAM_ATTACK_A_3, TEXT_SFX_KAM_ATTACK_A_4, TEXT_SFX_KAM_ATTACK_A_5</Text_ID>			     
@@ -33,7 +33,7 @@
 
 	<SFXEvent Name="Unit_MOVE_A_Alien_Kamal">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_KAM0401_ENG.wav U000_KAM0402_ENG.wav U000_KAM0403_ENG.wav U000_KAM0404_ENG.wav U000_KAM0405_ENG.wav</Samples>
+		<Samples>U000_KAM0401_ENG.wav U000_KAM0402_ENG.wav U000_KAM0403_ENG.wav U000_KAM0404_ENG.wav U000_KAM0405_ENG.wav </Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Localize> Yes </Localize>
 		<Text_ID>TEXT_SFX_KAM_MOVE_A_1, TEXT_SFX_KAM_MOVE_A_2, TEXT_SFX_KAM_MOVE_A_3, TEXT_SFX_KAM_MOVE_A_4, TEXT_SFX_KAM_MOVE_A_5</Text_ID>			     
@@ -87,7 +87,7 @@
 
 	<SFXEvent Name="Unit_TAUNT_Alien_Kamal">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples> U000_KAM1101_ENG.wav U000_KAM1102_ENG.wav U000_KAM1103_ENG.wav U000_KAM1104_ENG.wav U000_KAM1105_ENG.wav </Samples>
+		<Samples> U000_KAM1101_ENG.wav U000_KAM1103_ENG.wav U000_KAM1104_ENG.wav U000_KAM1105_ENG.wav </Samples>
 		<Localize> Yes </Localize>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Text_ID>TEXT_SFX_KAM_TAUNT_1, TEXT_SFX_KAM_TAUNT_2, TEXT_SFX_KAM_TAUNT_3, TEXT_SFX_KAM_TAUNT_4, TEXT_SFX_KAM_TAUNT_5</Text_ID>
@@ -142,7 +142,7 @@
 
 	<SFXEvent Name="Unit_Attack_A_Alien_Nufai">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_NUF0201_ENG.wav U000_NUF0202_ENG.wav U000_NUF0203_ENG.wav U000_NUF0204_ENG.wav U000_NUF0205_ENG.wav</Samples>
+		<Samples>U000_NUF0201_ENG.wav U000_NUF0202_ENG.wav U000_NUF0203_ENG.wav U000_NUF0204_ENG.wav U000_NUF0205_ENG.wav U000_NUF1102_ENG.wav U000_NUF1204_ENG.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Localize> Yes </Localize>
 		<Text_ID>TEXT_SFX_NUF_ATTACK_A_1, TEXT_SFX_NUF_ATTACK_A_2, TEXT_SFX_NUF_ATTACK_A_3, TEXT_SFX_NUF_ATTACK_A_4, TEXT_SFX_NUF_ATTACK_A_5</Text_ID>			     
@@ -151,7 +151,7 @@
 
 	<SFXEvent Name="Unit_Attack_B_Alien_Nufai">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_NUF0301_ENG.wav U000_NUF0302_ENG.wav U000_NUF0303_ENG.wav U000_NUF0304_ENG.wav U000_NUF0305_ENG.wav</Samples>
+		<Samples>U000_NUF0301_ENG.wav U000_NUF0302_ENG.wav U000_NUF0303_ENG.wav U000_NUF0304_ENG.wav U000_NUF0305_ENG.wav U000_NUF1101_ENG.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Localize> Yes </Localize>
 		<Text_ID>TEXT_SFX_NUF_ATTACK_B_1, TEXT_SFX_NUF_ATTACK_B_2, TEXT_SFX_NUF_ATTACK_B_3, TEXT_SFX_NUF_ATTACK_B_4, TEXT_SFX_NUF_ATTACK_B_5</Text_ID>			    
@@ -559,17 +559,32 @@
 
 	<SFXEvent Name="Unit_Move_Alien_Grunt">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>Alien_Grunt_Move_01.wav Alien_Grunt_Move_02.wav Alien_Grunt_Move_03.wav Alien_Grunt_Move_04.wav Alien_Grunt_Move_05.wav</Samples>
+		<Samples>Alien_Grunt_Move_01.wav Alien_Grunt_Move_02.wav Alien_Grunt_Move_03.wav Alien_Grunt_Move_04.wav Alien_Grunt_Move_05.wav  </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Overlap_Test> Unit_Alien_Grunt </Overlap_Test>
+	</SFXEvent>
+
+	<SFXEvent Name="Unit_Move_B_Alien_Grunt">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> Alien_Grunt_Move_06.wav Alien_Grunt_Move_07.wav Alien_Grunt_Move_08.wav Alien_Grunt_Move_09.wav Alien_Grunt_Move_10.wav </Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Overlap_Test> Unit_Alien_Grunt </Overlap_Test>
 	</SFXEvent>
 
 	<SFXEvent Name="Unit_Attack_Alien_Grunt">
 		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>Alien_Grunt_Attack_01.wav Alien_Grunt_Attack_02.wav Alien_Grunt_Attack_03.wav Alien_Grunt_Attack_04.wav Alien_Grunt_Attack_05.wav</Samples>
+		<Samples>Alien_Grunt_Attack_01.wav Alien_Grunt_Attack_02.wav Alien_Grunt_Attack_03.wav Alien_Grunt_Attack_04.wav Alien_Grunt_Attack_05.wav  </Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Overlap_Test> Unit_Alien_Grunt </Overlap_Test>
 	</SFXEvent>
+
+	<SFXEvent Name="Unit_Attack_B_Alien_Grunt">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples> Alien_Grunt_Attack_06.wav Alien_Grunt_Attack_07.wav Alien_Grunt_Attack_08.wav Alien_Grunt_Attack_09.wav Alien_Grunt_Attack_10.wav </Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Overlap_Test> Unit_Alien_Grunt </Overlap_Test>
+	</SFXEvent>
+
 
 	<SFXEvent Name="Unit_Death_Alien_Grunt">
 		<Use_Preset>Preset_UR_3D</Use_Preset>
@@ -596,9 +611,23 @@
 		<Overlap_Test> Unit_Alien_Habitat </Overlap_Test>
 	</SFXEvent>
 
+	<SFXEvent Name="Unit_Move_B_Alien_Habitat">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>Alien_Habitat_Move_06.wav Alien_Habitat_Move_07.wav Alien_Habitat_Move_08.wav Alien_Habitat_Move_09.wav Alien_Habitat_Move_10.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Overlap_Test> Unit_Alien_Habitat </Overlap_Test>
+	</SFXEvent>
+
 	<SFXEvent Name="Unit_Attack_Alien_Habitat">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>Alien_Habitat_Attack_01.wav Alien_Habitat_Attack_02.wav Alien_Habitat_Attack_03.wav Alien_Habitat_Attack_04.wav Alien_Habitat_Attack_05.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Overlap_Test> Unit_Alien_Habitat </Overlap_Test>
+	</SFXEvent>
+
+	<SFXEvent Name="Unit_Attack_B_Alien_Habitat">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>Alien_Habitat_Attack_06.wav Alien_Habitat_Attack_07.wav Alien_Habitat_Attack_08.wav Alien_Habitat_Attack_09.wav Alien_Habitat_Attack_10.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
 		<Overlap_Test> Unit_Alien_Habitat </Overlap_Test>
 	</SFXEvent>

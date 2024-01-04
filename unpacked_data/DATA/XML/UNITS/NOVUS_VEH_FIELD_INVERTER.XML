@@ -45,7 +45,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass>Walker</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>1.4</Max_Speed>
+		<Max_Speed>1.3</Max_Speed>
 		<Max_Rate_Of_Turn>8.0</Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 3.0 </Stopped_Rate_Of_Turn>
 		<Space_Layer> LandDynamic </Space_Layer>
@@ -146,8 +146,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 900 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 900 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
@@ -410,7 +410,7 @@
       <!-- MOVEMENT -->
       <MovementClass>Walker</MovementClass>
       <OccupationStyle>1x1</OccupationStyle>
-      <Max_Speed>0.9</Max_Speed>
+      <Max_Speed>0.8</Max_Speed>
       <Max_Rate_Of_Turn>8.0</Max_Rate_Of_Turn>
       <Stopped_Rate_Of_Turn> 3.0 </Stopped_Rate_Of_Turn>
       <Space_Layer> LandDynamic </Space_Layer>
@@ -514,6 +514,22 @@
          <Shield_Points>600</Shield_Points>
          <Shield_Refresh_Rate>75</Shield_Refresh_Rate>
          <Shield_To_Object_Damage_Type>Damage_Novus_Shield_To_Inverter</Shield_To_Object_Damage_Type>
+
+		<Effect_Generator Name="NovusHackerFirewallGenerator">
+			<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+			<Modal_Refresh_Frequency>3.0</Modal_Refresh_Frequency>
+			<Starts_Active> true </Starts_Active>
+			<Is_Independent_Generator> true </Is_Independent_Generator>
+
+
+			<Effect_Generator_Entry Name="Entry2">
+				<Effect_Name> NovusHackerFirewallCleanseVirus </Effect_Name>
+				<Duration> 10.0 </Duration>
+				<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+				<Target_Filter_C> Is_Ally </Target_Filter_C>
+				<Area_Effect_Radius> 100 </Area_Effect_Radius>
+			</Effect_Generator_Entry>
+		</Effect_Generator>
 
          <!-- Non-upgraded shield wil stop only projectiles that do shield_damage -->
          <Is_Shield_Upgraded>Yes</Is_Shield_Upgraded>
@@ -727,6 +743,29 @@
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 				
+			</Effect_Generator>
+
+			<Effect_Generator Name="NovusHackerFirewallGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency>2.0</Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+	
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusHackerFirewallCleanseEnemy </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 100 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+	
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> NovusHackerFirewallCleanseVirus </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 100 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
 			</Effect_Generator>
 
 			<Effect_Generator Name="NovusFieldInverterScaleEffectGenerator">
@@ -1153,7 +1192,7 @@
 			<Explosion_Jitter_Factor>0.25</Explosion_Jitter_Factor>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-			<Projectile_Damage>40</Projectile_Damage>
+			<Projectile_Damage>35</Projectile_Damage>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

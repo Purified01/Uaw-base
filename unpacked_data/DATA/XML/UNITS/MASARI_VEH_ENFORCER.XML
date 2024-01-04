@@ -236,8 +236,8 @@
       <SFXEvent_Select>Unit_Select_Masari_Conqueror</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Conqueror</SFXEvent_Move>
       <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Conqueror</SFXEvent_Move_At_Top_Speed>
-      <SFXEvent_Attack>Unit_Move_A_Masari_Conqueror</SFXEvent_Attack>
-      <SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Conqueror</SFXEvent_Attack_At_Top_Speed>
+      <SFXEvent_Attack>Unit_Attack_A_Masari_Conqueror</SFXEvent_Attack>
+      <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Conqueror</SFXEvent_Attack_At_Top_Speed>
       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
       <Death_SFXEvent_Start_Die> SFX_Masari_Medium_Vehicle_Death </Death_SFXEvent_Start_Die>
       <SFXEvent_Engine_Idle_Loop> SFX_Masari_Conqueror_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -356,7 +356,7 @@
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
     <!-- MOVEMENT -->
-    <Max_Speed>1.5</Max_Speed>
+    <Max_Speed>1.6</Max_Speed>
 
     <!-- CONFLICT -->
     <Land_FOW_Reveal_Range>255.0</Land_FOW_Reveal_Range>
@@ -430,6 +430,16 @@
 			<!-- not blocked by dodging retreating etc -->
 			<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
 		</Unit_Ability>
+
+		<BehaviorType Name="RedirectProjectileBehaviorType">
+			<Starting_Mode> Redirection </Starting_Mode>
+			<Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
+			<Absorption_Terminal_Velocity> 10.0 </Absorption_Terminal_Velocity>
+			<Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
+			<Max_Redirected_Projectiles> 3 </Max_Redirected_Projectiles>
+			<Redirection_Velocity> 15.0 </Redirection_Velocity>
+			<Reflection_Chance> 0.5 </Reflection_Chance>
+		</BehaviorType>
 		
 	</Unit_Abilities_Data>
 
@@ -502,6 +512,16 @@
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Light_Mode_Generators.xml" -->
 
     </Effect_Generator_Data>
+
+    <BehaviorType Name="RedirectProjectileBehaviorType">
+			<Starting_Mode> Redirection </Starting_Mode>
+			<Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
+			<Absorption_Terminal_Velocity> 10.0 </Absorption_Terminal_Velocity>
+			<Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
+			<Max_Redirected_Projectiles> 3 </Max_Redirected_Projectiles>
+			<Redirection_Velocity> 15.0 </Redirection_Velocity>
+			<Reflection_Chance> 0.5 </Reflection_Chance>
+		</BehaviorType>
 
   </X13_Masari_Units>
 
@@ -778,7 +798,7 @@
       <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
       <Projectile_Category>DEFAULT</Projectile_Category>
       <Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-      <Projectile_Damage>50.0</Projectile_Damage>
+      <Projectile_Damage>57.5</Projectile_Damage>
       <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
       <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
       <Projectile_Object_Detonation_Particle> Masari_Enforcer_Dark_Proj_Det </Projectile_Object_Detonation_Particle>

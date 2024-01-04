@@ -14,6 +14,16 @@
 	== [7/19/2006]   Novus Amplifier effect - Oksana Kubushyna
 	================================================================================================== -->
 
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.5 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
 	
 	<Effect Name="ResonanceBeamWeaponEffect">
 		<Duration> 5.0 </Duration>

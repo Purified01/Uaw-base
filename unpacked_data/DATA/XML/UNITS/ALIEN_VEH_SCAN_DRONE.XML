@@ -283,7 +283,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -702,7 +702,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-		<Tactical_Health>1</Tactical_Health>
+		<Tactical_Health>50</Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -991,4 +991,3 @@
     </X10_Alien_Units>
 
 </Alien_Veh_Scan_Drone_XML>
-

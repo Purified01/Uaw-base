@@ -829,6 +829,15 @@
 		<Text_ID>TEXT_SFX_HCO_BUILD_8</Text_ID>
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
+
+	<SFXEvent Name="HCO_BUILD_STRUCTURE_COMPLETE">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>I000_HCO0106_ENG.wav</Samples>
+		<Localize> Yes </Localize>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Text_ID>TEXT_SFX_HCO_BUILD_6</Text_ID>
+		<Overlap_Test> COM </Overlap_Test>
+	</SFXEvent>
 <!--  
 	<SFXEvent Name="HCO_BUILD_INFANTRY_CANCELED">
 		<Use_Preset>Preset_UR</Use_Preset>
@@ -1740,7 +1749,7 @@
 
    <SFXEvent Name="NCO_FAIL_TACTICAL_STRUCTURE_BUILD">
       <Use_Preset>Preset_UR</Use_Preset>
-      <Samples>U000_CON0701_ENG.wav</Samples>
+      <Samples>U000_CON0701_ENG.wav U000_CON0702_ENG.wav U000_CON0703_ENG.wav U000_CON0704_ENG.wav</Samples>
       <Localize> Yes </Localize>
       <Play_Sequentially> Yes </Play_Sequentially>
       <Text_ID>TEXT_SFX_CON_ABILITY_B_1</Text_ID>
@@ -1750,7 +1759,7 @@
 
    <SFXEvent Name="NCO_START_TACTICAL_STRUCTURE_BUILD">
       <Use_Preset>Preset_UR</Use_Preset>
-      <Samples>U000_CON0601_ENG.wav</Samples>
+      <Samples>U000_CON0601_ENG.wav U000_CON0602_ENG.wav U000_CON0603_ENG.wav U000_CON0604_ENG.wav</Samples>
       <Localize> Yes </Localize>
       <Play_Sequentially> Yes </Play_Sequentially>
       <Text_ID>TEXT_SFX_CON_ABILITY_A_1</Text_ID>
@@ -2444,7 +2453,7 @@
 
    <SFXEvent Name="MCO_FAIL_TACTICAL_STRUCTURE_BUILD">
       <Use_Preset>Preset_UR</Use_Preset>
-      <Samples>U000_ARC0803_ENG.wav</Samples>
+      <Samples>U000_ARC0801_ENG.wav U000_ARC0802_ENG.wav U000_ARC0803_ENG.wav U000_ARC0804_ENG.wav</Samples>
       <Localize> Yes </Localize>
       <Play_Sequentially> Yes </Play_Sequentially>
       <Text_ID>TEXT_SFX_ARC_ABILITY_C_3</Text_ID>
@@ -2454,7 +2463,7 @@
 
    <SFXEvent Name="MCO_START_TACTICAL_STRUCTURE_BUILD">
       <Use_Preset>Preset_UR</Use_Preset>
-      <Samples>U000_ARC0703_ENG.wav</Samples>
+      <Samples>U000_ARC0701_ENG.wav U000_ARC0702_ENG.wav U000_ARC0703_ENG.wav U000_ARC0704_ENG.wav</Samples>
       <Localize> Yes </Localize>
       <Play_Sequentially> Yes </Play_Sequentially>
       <Text_ID>TEXT_SFX_ARC_ABILITY_B_3</Text_ID>

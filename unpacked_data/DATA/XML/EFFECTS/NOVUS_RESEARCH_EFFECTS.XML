@@ -23,6 +23,7 @@
 		</Effect_Component>
 	</Effect>
 
+
 	<!-- Add the FLOW behavior to the target. -->
 	<Effect Name="NovusResearchAdvancedFlowEffect">
 		<Effect_Class> ResearchAdvancedFlow </Effect_Class>
@@ -111,7 +112,12 @@
 			<Modifier_Value> -0.25 </Modifier_Value>
 			<!--25% Price Reduction-->
 		</Effect_Component>
-	</Effect>	
+	</Effect>
+	
+	<Effect_Component Type="HealOverTime">
+		<Amount_Per_Second> 1.0 </Amount_Per_Second>
+  <Percentage_Per_Second>.01</Percentage_Per_Second>
+	</Effect_Component>
 
 	<!-- Increase movement speed and rate of material collection. -->
 	<Effect Name="NovusResearchCollectionEfficiencyEffect">

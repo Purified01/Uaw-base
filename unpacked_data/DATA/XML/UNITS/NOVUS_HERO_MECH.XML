@@ -48,7 +48,9 @@
 
 		<Attributes SubObjectList="Yes">
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+			<Generator_Area_Effect_Radius_1> 250 </Generator_Area_Effect_Radius_1>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+		    <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
          <Animation_Subindex_Override>0</Animation_Subindex_Override>
 		</Attributes>
 

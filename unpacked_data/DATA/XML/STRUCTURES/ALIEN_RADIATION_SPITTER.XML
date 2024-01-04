@@ -202,7 +202,7 @@
 			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Alien_Radiation_Spitter_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
@@ -255,7 +255,7 @@
 			<Radiation_Weapon_Ability Name="Alien_Spitter_Radiation_Beam">
 				<Activation_Style> Special_Attack </Activation_Style>
 				<Activation_Chance> 1 </Activation_Chance>
-				<Activation_Min_Range> 50.0 </Activation_Min_Range>
+				<Activation_Min_Range> 1 </Activation_Min_Range>
 				<Activation_Max_Range> 240.0 </Activation_Max_Range>
 				<Excluded_Unit_Categories> Flying </Excluded_Unit_Categories>
 				<Ability_Source_Bone> MuzzleA_00 </Ability_Source_Bone>
@@ -549,7 +549,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<!-- Health is required so it can be properly removed -->
-		<Tactical_Health> 1 </Tactical_Health>
+		<Tactical_Health> 50 </Tactical_Health>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
 		<!-- BEHAVIORS -->
@@ -1048,4 +1048,3 @@
 
 
 </Alien_Radiation_Spitter_XML>
-

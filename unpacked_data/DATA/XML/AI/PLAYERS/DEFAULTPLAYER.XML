@@ -5,7 +5,7 @@
 
 	<Personality>
 		<Focus>1.0</Focus>
-		<Aggressiveness>1.0</Aggressiveness>
+		<Aggressiveness>5.0</Aggressiveness>
 	</Personality>
 	
 	<Difficulty_Adjustments>
@@ -16,4 +16,3 @@
 	</Difficulty_Adjustments>
 	
 </AIPlayerType>
-

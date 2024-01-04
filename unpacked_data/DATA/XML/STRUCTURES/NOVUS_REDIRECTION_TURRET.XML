@@ -126,7 +126,7 @@
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Priority_Set> Novus_Redirection_Turret_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
 			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 			<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
