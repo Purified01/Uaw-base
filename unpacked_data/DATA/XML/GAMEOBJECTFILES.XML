@@ -150,6 +150,7 @@
 	<File> Structures/Military_Supply_Depot.xml </File>
 	<File> Structures/Military_Supply.xml </File>
 	<File> Structures/Military_Bunker.xml </File>
+    <File> Structures/Military_Wall_Straight.xml</File>
 	<File> Structures/Military_Machine_Factory.xml </File>
 	<File> Structures/Military_Superweapon_Missile.xml </File>
 	<File> Structures/Military_Nuclear_Reactor.xml</File>
@@ -179,7 +180,7 @@
 	<File> Structures/Novus_Gravity_Bomb.xml </File>
 	<File> Structures/Novus_Redirection_Turret.xml </File>
 	<File> Structures/Novus_Megacorp_Center.xml </File>
-    <File> Structures/Military_Walll_Straight.xml</File>
+
 
 
 	<File> Structures/Alien_Material_Uplink.xml </File>

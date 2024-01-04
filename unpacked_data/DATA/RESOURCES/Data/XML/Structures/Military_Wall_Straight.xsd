@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Military_Wall_Straight_XML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="X11_Military_Structures" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element name="Land_Model_Name" type="xs:string" />
+                <xs:element name="Scale_Factor" type="xs:string" />
+                <xs:element name="Loop_Idle_Anim_00" minOccurs="0" type="xs:string" />
+                <xs:element name="Multisample_FOW_Check" minOccurs="0" type="xs:string" />
+                <xs:element name="Last_State_Visible_Under_FOW" minOccurs="0" type="xs:string" />
+                <xs:element name="Initial_State_Visible_Under_FOW" minOccurs="0" type="xs:string" />
+                <xs:element name="AssetBank" type="xs:string" />
+                <xs:element name="text_ID" minOccurs="0" type="xs:string" />
+                <xs:element name="Icon_Name" minOccurs="0" type="xs:string" />
+                <xs:element name="Selection_Blob_Material_Name" minOccurs="0" type="xs:string" />
+                <xs:element name="Select_Box_Scale" minOccurs="0" type="xs:string" />
+                <xs:element name="Select_Box_Z_Adjust" minOccurs="0" type="xs:string" />
+                <xs:element name="CategoryMask" minOccurs="0" type="xs:string" />
+                <xs:element name="Affiliation" minOccurs="0" type="xs:string" />
+                <xs:element name="Victory_Relevant" minOccurs="0" type="xs:string" />
+                <xs:element name="Importance" minOccurs="0" type="xs:string" />
+                <xs:element name="Space_Layer" minOccurs="0" type="xs:string" />
+                <xs:element name="MovementClass" minOccurs="0" type="xs:string" />
+                <xs:element name="UnitCollisionClass" minOccurs="0" type="xs:string" />
+                <xs:element name="Custom_Hard_XExtent" minOccurs="0" type="xs:string" />
+                <xs:element name="Custom_Hard_YExtent" minOccurs="0" type="xs:string" />
+                <xs:element name="Custom_Hard_XExtent_Offset" minOccurs="0" type="xs:string" />
+                <xs:element name="Custom_Hard_YExtent_Offset" minOccurs="0" type="xs:string" />
+                <xs:element name="Is_Immune_To_Tornado" type="xs:string" />
+                <xs:element name="Tornado_Movement_Factor" minOccurs="0" type="xs:string" />
+                <xs:element name="Is_Attackable" minOccurs="0" type="xs:string" />
+                <xs:element name="Collidable_By_Projectile_Living" minOccurs="0" type="xs:string" />
+                <xs:element name="Ranged_Target_Z_Adjust" type="xs:string" />
+                <xs:element name="AI_Combat_Power" minOccurs="0" type="xs:string" />
+                <xs:element name="Tactical_Health" minOccurs="0" type="xs:string" />
+                <xs:element name="Land_FOW_Reveal_Range" minOccurs="0" type="xs:string" />
+                <xs:element name="Land_Damage_Thresholds" minOccurs="0" type="xs:string" />
+                <xs:element name="Land_Damage_Alternates" minOccurs="0" type="xs:string" />
+                <xs:element name="Land_Damage_SFX" minOccurs="0" type="xs:string" />
+                <xs:element name="Behavior" minOccurs="0" type="xs:string" />
+                <xs:element name="LandBehavior" minOccurs="0" type="xs:string" />
+                <xs:element name="BehaviorType" maxOccurs="unbounded">
+                  <xs:complexType mixed="true">
+                    <xs:sequence minOccurs="0">
+                      <xs:element name="Visible_To_Enemies_When_Empty" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="AI_Target_Level" minOccurs="0" type="xs:string" />
+                      <xs:element name="Game_Event_Source_Category" minOccurs="0" type="xs:string" />
+                      <xs:element name="Armor_Type" minOccurs="0" type="xs:string" />
+                      <xs:element name="Is_Research_Tech_Tree_Lockable" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Build_Limit_Current_Per_Player" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Under_Construction_Object_Type" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Buildable_Beacon_Type" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Is_Buildable_By_Constructor" minOccurs="0" type="xs:string" />
+                      <xs:element name="Default_Building_Placement_Rotation" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Icon_Name" minOccurs="0" type="xs:string" />
+                      <xs:element name="Building_Queue_Type" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tooltip_Description_Text_ID" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tooltip_Category" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tactical_Enabler_Bones" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tactical_Enabler_Flyout_Distances" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Bib_X_Extent" minOccurs="0" type="xs:string" />
+                      <xs:element name="Bib_Y_Extent" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Clone" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Explosions" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Clone_Keep_Behaviors" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Fade_Time" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Persistence_Duration" minOccurs="0" type="xs:string" />
+                      <xs:element name="IsDeathCloneObstacle" minOccurs="0" type="xs:string" />
+                      <xs:element name="SFXEvent_Sold_Tactical" minOccurs="0" />
+                      <xs:element name="SFXEvent_Select" minOccurs="0" type="xs:string" />
+                      <xs:element name="SFXEvent_Unit_Lost" minOccurs="0" />
+                      <xs:element name="SFXEvent_Tactical_Build_Started" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="SFXEvent_Tactical_Build_Complete" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="SFXEvent_Tactical_Build_Cancelled" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Radar_Icon_Size" minOccurs="0" type="xs:string" />
+                      <xs:element name="Crush_Defense" minOccurs="0" type="xs:string" />
+                      <xs:element name="Crush_Power" minOccurs="0" type="xs:string" />
+                      <xs:element name="GUI_Scene_Name" minOccurs="0" type="xs:string" />
+                      <xs:element name="GUI_Receives_Input" minOccurs="0" type="xs:string" />
+                      <xs:element name="GUI_Min_Scale" minOccurs="0" type="xs:string" />
+                      <xs:element name="GUI_Max_Scale" minOccurs="0" type="xs:string" />
+                      <xs:element name="GUI_Default_Scale" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tactical_Buildable_Constructed" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Build_Cost_Multiplayer" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Build_Cost_Campaign" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tactical_Build_Time_Seconds" minOccurs="0" type="xs:string" />
+                      <xs:element name="Tactical_UI_Build_Queue_Order" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Build_Requires_Builder" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Remove_Upon_Death" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_Clone_Is_Obstacle" minOccurs="0" type="xs:string" />
+                      <xs:element name="No_Reflection_Below_Detail_Level" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="No_Refraction_Below_Detail_Level" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Death_SFXEvent_Start_Die" minOccurs="0" type="xs:string" />
+                      <xs:element name="Select_Box_Scale" minOccurs="0" type="xs:string" />
+                      <xs:element name="Select_Box_Z_Adjust" minOccurs="0" type="xs:string" />
+                      <xs:element name="Land_FOW_Reveal_Range" minOccurs="0" type="xs:string" />
+                      <xs:element name="SFXEvent_Fire" minOccurs="0" type="xs:string" />
+                      <xs:element name="Death_SFXEvent_End_Die" minOccurs="0" />
+                      <xs:element name="Specific_Death_Anim_Type" minOccurs="0" type="xs:string" />
+                    </xs:sequence>
+                    <xs:attribute name="Name" />
+                    <xs:attribute name="name" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Effect_Generator_Data" minOccurs="0">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Effect_Generator" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:choice>
+                              <xs:element name="Should_Deactivate_Manually" minOccurs="0"
+                                type="xs:string" />
+                              <xs:element name="Starts_Active" minOccurs="0" type="xs:string" />
+                              <xs:element name="Effect_Generator_Entry">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:choice>
+                                      <xs:element name="Effect_Name" type="xs:string" />
+                                      <xs:element name="Duration" type="xs:string" />
+                                      <xs:element name="Target_Gathering_Mask" type="xs:string" />
+                                      <xs:element name="Target_Filter_Categories" minOccurs="0"
+                                        type="xs:string" />
+                                      <xs:element name="Target_Filter_C" minOccurs="0"
+                                        type="xs:string" />
+                                      <xs:element name="Should_Add_Hardpoints_As_Targets"
+                                        minOccurs="0" type="xs:string" />
+                                    </xs:choice>
+                                  </xs:sequence>
+                                  <xs:attribute name="Name" use="required" fixed="Entry1" />
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Is_Independent_Generator" minOccurs="0"
+                                type="xs:string" />
+                              <xs:element name="Modal_Refresh_Frequency" minOccurs="0"
+                                type="xs:string" />
+                              <xs:element name="Application_Signals" minOccurs="0" type="xs:string" />
+                            </xs:choice>
+                          </xs:sequence>
+                          <xs:attribute name="Name" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="SubObjectList" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Is_Placed_By_Editor" minOccurs="0" type="xs:string" />
+                <xs:element name="Text_ID" minOccurs="0" type="xs:string" />
+                <xs:element name="Attributes" minOccurs="0">
+                  <xs:complexType>
+                    <xs:sequence minOccurs="0">
+                      <xs:element name="Tactical_Sell_Percent_Modifier" minOccurs="0"
+                        type="xs:string" />
+                      <xs:element name="Tactical_Sell_Time_Seconds" minOccurs="0" type="xs:string" />
+                      <xs:element name="Max_Structure_Build_Rate" minOccurs="0" type="xs:string" />
+                      <xs:element name="Is_Immune_To_Mind_Control" minOccurs="0" type="xs:string" />
+                      <xs:element name="Is_Immune_To_Virus" minOccurs="0" type="xs:string" />
+                    </xs:sequence>
+                    <xs:attribute name="SubObjectList" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Is_Decoration" minOccurs="0" type="xs:string" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="Name" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Military_Machine_Factory_XML" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

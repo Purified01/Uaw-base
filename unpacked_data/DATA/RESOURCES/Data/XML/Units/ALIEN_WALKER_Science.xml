@@ -44,7 +44,7 @@
 		
 		<Attributes SubObjectList="Yes">
 			<Is_Immune_To_Virus> false </Is_Immune_To_Virus>
-			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+			 true </Is_Immune_To_Mind_Contro<Is_Immune_To_Mind_Control>>
 			<Mind_Control_Duration> 1.3 </Mind_Control_Duration>
 
 			<!-- This MODIFIER determines what portion of the whole price we must reduce.  Hence, a modifier

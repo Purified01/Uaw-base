@@ -159,7 +159,7 @@
          <Projectile_Types>Proj_Military_AbramsM2_Tank</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds>1.4</Projectile_Fire_Pulse_Delay_Seconds>
+         <Projectile_Fire_Pulse_Delay_Seconds>0.5</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
@@ -727,7 +727,7 @@
          <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Tank_Gunner</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>14</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
@@ -860,7 +860,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>20.0</Projectile_Damage>
+         <Projectile_Damage>10.0</Projectile_Damage>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

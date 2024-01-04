@@ -24,7 +24,7 @@
 		<Create_Team_Type> Military_Team_Flamethrower </Create_Team_Type>
 		<Affiliation> Military, Novus </Affiliation>
 		<CategoryMask> TeamContainer, Small, Organic, CanAttack, RadiationHurts </CategoryMask>
-		<Max_Squad_Size> 4 </Max_Squad_Size>
+		<Max_Squad_Size> 5 </Max_Squad_Size>
 		<Company_Units>Military_Flamethrower,Military_Flamethrower, Military_Flamethrower, Military_Flamethrower</Company_Units><!-- jdg flamethrower teams reduced to 3 members per Adam -->
 		<Build_Limit_Lifetime_Per_Player> -1 </Build_Limit_Lifetime_Per_Player>
 		<Importance> 0.2 </Importance>
@@ -164,7 +164,7 @@
 		
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 4 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 5 </Unit_Pop_Cap>
 		</BehaviorType>
 
 	</X11_Military_Units>
@@ -250,7 +250,7 @@
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Surface_Type_Cover_Damage_Shield>.5</Surface_Type_Cover_Damage_Shield>
 
-		<Tactical_Health> 60 </Tactical_Health>
+		<Tactical_Health> 100 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -311,8 +311,8 @@
 			<Projectile_Types>Proj_Military_Flamethrower</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>0.05</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 0 </Projectile_Fire_Recharge_Max_Random_Frames>
-			<Projectile_Fire_Pulse_Count>20</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.1</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Count>15</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
 
 			<Looping_Attack_Particle_System>  </Looping_Attack_Particle_System>
 			<Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
@@ -577,7 +577,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>75.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>5.0</Projectile_Damage>
+			<Projectile_Damage>4.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle />

@@ -838,80 +838,9 @@
       <Space_Layer> LandStatic </Space_Layer>
       <UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent_Offset> 4.0 </Custom_Hard_XExtent_Offset>
-  </X45_Props_Specific>
+    </X45_Props_Specific>
 
 	
-	
-   <X45_Props_Specific Name="Military_Wall_Straight">
-		<Text_ID>TEXT_BUILDING_MILITARY_WALL</Text_ID>
-		<Land_Model_Name>MB_Wall.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>No</Is_Decoration>
-		<Ranged_Target_Z_Adjust> 10.0 </Ranged_Target_Z_Adjust>
-		
-		<Behavior>LAND_OBSTACLE, COMBINABLE</Behavior>
-		<Is_Attackable> False </Is_Attackable>
-		<CategoryMask>Medium, Stationary, Insignificant</CategoryMask>
-
-		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
-		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
-		<Land_Damage_SFX>SFX_Generic_Detonation_1,SFX_Generic_Detonation_1,SFX_Generic_Detonation_1,SFX_Generic_Detonation_1</Land_Damage_SFX>
-		
-		<Affiliation>Hostile</Affiliation>
-		<UnitCollisionClass> Wall </UnitCollisionClass>
-		<Tactical_Health>5000</Tactical_Health>
-		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
-
-		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>60</Crush_Defense>
-		</BehaviorType>
-
-		<BehaviorType Name="DeathFXBehaviorType">
-			<Death_Clone>Damage_Default, Military_Wall_Straight_Death_Clone</Death_Clone>
-			<Death_Explosions>Large_Explosion_Land</Death_Explosions>
-			<Death_Fade_Time> 0.25 </Death_Fade_Time>
-			<Death_Persistence_Duration> 300 </Death_Persistence_Duration>
-		</BehaviorType>
-		
-	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Military_Wall_Straight_Death_Clone">
-
-		<!-- ART -->
-		<Land_Model_Name>MB_Wall_DC.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-
-		<!-- INTERFACE -->
-		<Text_ID>TEXT_WALL_DESTROYED</Text_ID>
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<Is_Attackable> False </Is_Attackable>
-
-		<!-- ATTRIBUTES -->
-		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-
-		<!-- CONFLICT -->
-		<Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
-
-		<LandBehavior>
-			EFFECT_REGISTRY,
-			EFFECT_GENERATOR,
-			ATTRIBUTE_DIRECTORY,
-			PARTICLE
-		</LandBehavior>
-
-		<BehaviorType Name="SFXBehaviorType">
-			<Death_SFXEvent_End_Die />
-			<Death_SFXEvent_Start_Die> SFX_GENERIC_DETONATION </Death_SFXEvent_Start_Die>
-		</BehaviorType>
-
-		<BehaviorType Name="DeathFXBehaviorType">
-			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
-			<Death_Fade_Time> 0.25 </Death_Fade_Time>
-			<Death_Persistence_Duration> 2.0 </Death_Persistence_Duration>
-			<Rubble_Core>Military_Wall_Straight_Destroyed</Rubble_Core>
-		</BehaviorType>
-
-	</X45_Props_Specific>
 
 	<X45_Props_Specific Name="Military_Wall_Straight_Destroyed">
 
@@ -1710,7 +1639,6 @@
 	</X45_Props_Specific>
 	
 	<X45_Props_Specific Name="NM06_Relocator_Fake">
-		<Variant_Of_Existing_Type> 	MILITARY_WALL_STRAIGHT </Variant_Of_Existing_Type>
 	    <Land_Model_Name>AB_Relocator.alo</Land_Model_Name>
     	<Scale_Factor>1.5</Scale_Factor>
 	</X45_Props_Specific>
@@ -1901,7 +1829,6 @@
    </X45_Props_Specific>
 
    <X45_Props_Specific Name="NM06_Volatile_Structure">
-		<Variant_Of_Existing_Type> MILITARY_WALL_STRAIGHT </Variant_Of_Existing_Type>
     	<Scale_Factor>1.2</Scale_Factor>
       <Land_Model_Name> WO_AINT_Prop00.ALO </Land_Model_Name>
 		<Tactical_Health>250</Tactical_Health>
@@ -1932,7 +1859,7 @@
   </X45_Props_Specific>
 
   <X45_Props_Specific Name="NM06_Comm_Terminal">
-    <Variant_Of_Existing_Type> MILITARY_WALL_STRAIGHT </Variant_Of_Existing_Type>
+
     <Scale_Factor>2</Scale_Factor>
     <Land_Model_Name> WO_comm_terminal.ALO </Land_Model_Name>
     <Tactical_Health>250</Tactical_Health>
@@ -3154,7 +3081,6 @@
    </X45_Props_Specific>
 
    <X45_Props_Specific Name="NM02_Pen_Corner">
-		<Variant_Of_Existing_Type> MILITARY_WALL_STRAIGHT </Variant_Of_Existing_Type>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Land_Model_Name> WO_AINT_Prop00.ALO </Land_Model_Name>
 		<Tactical_Health>150</Tactical_Health>
@@ -6855,4 +6781,3 @@
 
 	
 </Props_Specific_XML>
-

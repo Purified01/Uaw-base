@@ -90,7 +90,7 @@
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 750  </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 10 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 14 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -538,7 +538,7 @@
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>7000.0</Projectile_Max_Flight_Distance>
 			<Projectile_Damage>8.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>8</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>2</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>

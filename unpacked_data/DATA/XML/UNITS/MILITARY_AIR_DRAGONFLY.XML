@@ -45,7 +45,11 @@
 	    <Attributes SubObjectList="Yes">
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+            <Is_Immune_To_Mind_Control>True</Is_Immune_To_Mind_Control>
+
+
 		</Attributes>
+
 
 
 		<!-- MOVEMENT -->
@@ -345,7 +349,7 @@
 					<Duration> 2.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 400.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
