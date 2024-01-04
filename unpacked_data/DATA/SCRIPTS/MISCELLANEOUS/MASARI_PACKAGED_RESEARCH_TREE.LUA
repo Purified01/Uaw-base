@@ -104,7 +104,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 40,
-				ResearchCost = 100,
+				ResearchCost = 1000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -183,7 +183,7 @@ function Init_Research_Tree(tactical_only_game)
 			
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 55,
-				ResearchCost = 150,
+				ResearchCost = 1500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -243,7 +243,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
-				ResearchCost = 200,
+				ResearchCost = 2000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -318,7 +318,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
-				ResearchCost = 250,
+				ResearchCost = 2500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -399,7 +399,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 40,
-				ResearchCost = 100,
+				ResearchCost = 1000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -490,7 +490,7 @@ function Init_Research_Tree(tactical_only_game)
 
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 55,
-				ResearchCost = 150,
+				ResearchCost = 1500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -558,7 +558,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
-				ResearchCost = 200,
+				ResearchCost = 2000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -644,7 +644,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
-				ResearchCost = 250,
+				ResearchCost = 2500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -725,7 +725,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 40,
-				ResearchCost = 100,
+				ResearchCost = 1000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -809,7 +809,7 @@ function Init_Research_Tree(tactical_only_game)
 								
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 55,
-				ResearchCost = 150,
+				ResearchCost = 1500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -885,7 +885,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
-				ResearchCost = 200,
+				ResearchCost = 2000,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
@@ -932,13 +932,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
 				UnlocksGenerators =
-				{
-					[1] = { 
-							EffectName="MasariIncomeGenerator", 
-							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_ENERGY_STREAM",														
-							DescriptionTextID="TEXT_MASARI_RESEARCH_ENERGY_STREAM", 
-							IconName="i_icon_research_energy_stream.tga" 
-						},		
+				{	
 				},
 				
 				LocksGenerators =
@@ -961,7 +955,7 @@ function Init_Research_Tree(tactical_only_game)
 
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
-				ResearchCost = 250,
+				ResearchCost = 2500,
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- TO BE DETERMINED BY DESIGN ---- END
 				
