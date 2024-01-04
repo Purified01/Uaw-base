@@ -314,7 +314,7 @@
 			<Lua_Land_Behaviors> AlienReaperTurret </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				ResourceFaction = "Masari"
-				resource_drone_search_radius = 300.0
+				resource_drone_search_radius = 3000.0
 				resource_drone_harvest_distance = 100.0
 			</Lua_Script_Data>
 		</BehaviorType>
