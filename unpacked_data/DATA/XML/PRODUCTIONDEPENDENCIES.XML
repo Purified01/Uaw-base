@@ -6404,6 +6404,18 @@
   </Dependency>
   <!-- UNIT: Military_Motor_Pool -->
   
+ <Dependency>
+    <Built_Object> Military_Wall_Straight </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
   <Dependency>
     <Built_Object> Military_Wall_Straight </Built_Object>
 
@@ -6415,5 +6427,4 @@
     <Tactical_Required_Objects> Military_Build_Bot, Military_Supply_Depot </Tactical_Required_Objects>
     <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
   </Dependency>
-
 </ProductionDependencies>

@@ -129,7 +129,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1,
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}
+				TextureMap = {"militaryi_sa_Missile Strike.tga", "militaryi_sa_Missile Strike.tga"}
 				-- --------------------------------
 			},
 
@@ -198,7 +198,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}
+				TextureMap = {"i_hero_military_moore.tga", "i_hero_military_moore.tga"}
 				-- --------------------------------
 			},
 
@@ -258,7 +258,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}
+				TextureMap = {"i_icon_military_turret_research.tga", "i_icon_military_turret_research.tga"}
 				-- --------------------------------
 			},
 			
@@ -353,7 +353,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}
+				TextureMap = {"i_icon_Damage_Research.tga", "i_icon_Damage_Research.tga"}
 				-- --------------------------------
 			},
 	}
@@ -423,7 +423,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}				
+				TextureMap = {"i_icon_research_Radar.tga", "i_icon_research_Radar.tga"}				
 				-- --------------------------------				
 			},
 
@@ -501,7 +501,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1,
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}				
+				TextureMap = {"i_button_mv_tank4.tga", "i_button_mv_tank4.tga"}				
 				-- --------------------------------				
 			},
 
@@ -580,7 +580,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}				
+				TextureMap = {"i_icon_armor_research.tga", "i_icon_armor_research.tga"}				
 				-- --------------------------------
 			},
 			
@@ -646,7 +646,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1,
-				TextureMap = {"i_logo_military.tga", "i_logo_military.tga"}				
+				TextureMap = {"i_icon_Jet_Research.tga", "i_icon_Jet_Research.tga"}				
 				-- --------------------------------
 			},
 	}

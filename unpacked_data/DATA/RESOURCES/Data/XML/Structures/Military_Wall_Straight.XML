@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <Military_Wall_Straight_XML>
 
 <!-- **************************************************************************************** -->	
@@ -17,7 +18,7 @@
 	 <AssetBank> BANK_MILITARY </AssetBank>
 		
 		<!-- INTERFACE -->
-        <text_ID>TEXT_BUILDING_MILITARY_WALL</Text_ID>
+        <text_ID>TEXT_BUILDING_MILITARY_WALL</text_ID>
 		<Icon_Name>I_ICON_MACHINE_FACTORY.TGA</Icon_Name>
 		<Selection_Blob_Material_Name> Selection_Military_Land </Selection_Blob_Material_Name>
 		<Select_Box_Scale>250</Select_Box_Scale>
@@ -99,8 +100,8 @@
 		</BehaviorType>
 
     <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Under_Construction_Object_Type> Military_Machine_Construction </Tactical_Under_Construction_Object_Type>
-      <Tactical_Buildable_Beacon_Type> Military_Machine_Beacon </Tactical_Buildable_Beacon_Type>
+      <Tactical_Under_Construction_Object_Type> Military_Wall_Straight </Tactical_Under_Construction_Object_Type>
+      <Tactical_Buildable_Beacon_Type> Military_Wall_Beacon </Tactical_Buildable_Beacon_Type>
     </BehaviorType>
     
     <BehaviorType Name="GroundStructureBehaviorType">
@@ -132,7 +133,7 @@
                  </BehaviorType>
  
 		<BehaviorType Name="DeathFXBehaviorType">
-			<Death_Clone>Damage_Default, Military_Machine_Death_Clone</Death_Clone>
+			<Death_Clone>Damage_Default, Militar_Wall_Straight_Death_Clone</Death_Clone>
 			<Death_Explosions>Novus_Large_Explosion_Tower</Death_Explosions>
 			<Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
 			<Death_Fade_Time> 0.25 </Death_Fade_Time>
@@ -245,7 +246,7 @@
   <!-- *** CONSTRUCTION VERSION *************************************************************** -->
   <!-- **************************************************************************************** -->
 
-  <X11_Military_Structures Name="Military_Machine_Construction">
+  <X11_Military_Structures Name="Military_Wall_Construction">
 
     <!-- ART -->
     <Land_Model_Name>MB_Wall.alo</Land_Model_Name>
@@ -325,8 +326,8 @@
     </BehaviorType>
 
     <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Buildable_Beacon_Type> Military_Machine_Beacon </Tactical_Buildable_Beacon_Type>
-      <Tactical_Buildable_Constructed> Military_Machine_Factory </Tactical_Buildable_Constructed>
+      <Tactical_Buildable_Beacon_Type> Military_Wall_Beacon </Tactical_Buildable_Beacon_Type>
+      <Tactical_Buildable_Constructed> Military_Wall_Straight </Tactical_Buildable_Constructed>
       <Tactical_Build_Cost_Multiplayer> 1500 </Tactical_Build_Cost_Multiplayer>
       <Tactical_Build_Cost_Campaign> 1500 </Tactical_Build_Cost_Campaign>
       <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
@@ -414,7 +415,7 @@
   <!-- **************************************************************************************** -->
 
   <!-- Oksana: beacon for building the glyph. You'll need a builder unit to build from beacon -->
-  <X11_Military_Structures Name="Military_Machine_Beacon">
+  <X11_Military_Structures Name="Military_Wall_Beacon">
 
     <!-- ART -->
     <!-- STUB FOR ELIE -->
@@ -526,4 +527,4 @@
 
 	</X11_Military_Structures>
 
-</Military_Machine_Factory_XML>
+</Military_Wall_Straight_XML>

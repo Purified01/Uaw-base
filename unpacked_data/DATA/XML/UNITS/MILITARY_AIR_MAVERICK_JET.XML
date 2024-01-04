@@ -51,15 +51,15 @@
 		<Min_Speed> 2.0 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .2 </OverrideDeceleration>
-		<Max_Rate_Of_Turn> 8.0 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
 		<ROT_Acceleration> .3 </ROT_Acceleration>
-		<ROT_Deceleration> .2 </ROT_Deceleration>
+		<ROT_Deceleration> .3 </ROT_Deceleration>
 		<Max_Thrust> 1.5 </Max_Thrust>
 		<Thrust_Acceleration> .02 </Thrust_Acceleration>
 		<Thrust_Deceleration> .075 </Thrust_Deceleration>
 		<Min_Inertia_Coefficient> .2 </Min_Inertia_Coefficient>
 		<Max_Inertia_Coefficient> .4 </Max_Inertia_Coefficient>
-		<Max_Tilt> 60 </Max_Tilt>
+		<Max_Tilt> 90 </Max_Tilt>
 		<Tilt_Torque_Delta_Coefficient> .02 </Tilt_Torque_Delta_Coefficient>
 		<Tilt_Torque_Angular_Velocity_Coefficient> -.2 </Tilt_Torque_Angular_Velocity_Coefficient>
 		<Max_Pitch> 5 </Max_Pitch>
@@ -184,7 +184,7 @@
 		<Is_Stationary_When_Attacking> No </Is_Stationary_When_Attacking>
 		<Targeting_Priority_Set> Military_Maverick_Target_Priority </Targeting_Priority_Set>
 		<Targeting_Fire_Inaccuracy> 0.5 </Targeting_Fire_Inaccuracy>
-		<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+		<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
 		<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
 		<Projectile_Types>Proj_Military_Rocketlauncher_Maverick </Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>

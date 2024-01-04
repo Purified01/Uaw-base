@@ -882,27 +882,27 @@
 	<Object_Visual_Status_Particle_Attach_Bone_Names> B_HEAD, Turret_00, B_Turret_00, B_Turret, B_Turret_Base, ROOT </Object_Visual_Status_Particle_Attach_Bone_Names>
 
 
-	<MP_Color_Blue>78,150,255</MP_Color_Blue>	 
+	<MP_Color_Blue>0,8,255</MP_Color_Blue>	 
 	<MP_Color_Red>255,0,0</MP_Color_Red>		 
 	<MP_Color_Green>57,255,20</MP_Color_Green>	
-	<MP_Color_Orange>255,255,255</MP_Color_Orange>
+	<MP_Color_Orange>255,128,0</MP_Color_Orange>
 	<MP_Color_Cyan>111,217,224</MP_Color_Cyan>	 
-	<MP_Color_Purple>255,111,209</MP_Color_Purple>
+	<MP_Color_Purple>255,0,255</MP_Color_Purple>
 	<MP_Color_Yellow>255,255,0</MP_Color_Yellow>
 	<MP_Color_Gray>128,0,255</MP_Color_Gray>	 
     
     <!-- Chat colors differ slightly from in-game colors for visibility in a chat window. -->
-	<MP_Chat_Color_Blue>78,150,255</MP_Chat_Color_Blue>	 
+	<MP_Chat_Color_Blue>0,8,255</MP_Chat_Color_Blue>	 
 	<MP_Chat_Color_Red>255,0,0</MP_Chat_Color_Red>		 
 	<MP_Chat_Color_Green>57,255,20</MP_Chat_Color_Green>	
-	<MP_Chat_Color_Orange>255,255,255</MP_Chat_Color_Orange>
+	<MP_Chat_Color_Orange>255,128,0</MP_Chat_Color_Orange>
 	<MP_Chat_Color_Cyan>111,217,224</MP_Chat_Color_Cyan>	 
-	<MP_Chat_Color_Purple>255,111,209</MP_Chat_Color_Purple>
+	<MP_Chat_Color_Purple>255,0,255</MP_Chat_Color_Purple>
 	<MP_Chat_Color_Yellow>255,255,0</MP_Chat_Color_Yellow>
 	<MP_Chat_Color_Gray>128,0,255</MP_Chat_Color_Gray>	 
 
 
-	<!-- <MP_Color_Blue>78,150,237</MP_Color_Blue>	 -->
+	<!-- <MP_Color_Blue>0,8,255</MP_Color_Blue>	 -->
 	<!-- <MP_Color_Red>255,0,0</MP_Color_Red>		--> 
 	<!-- <MP_Color_Green>57,255,20</MP_Color_Green>	-->
 	<!-- <MP_Color_Orange>255,255,255</MP_Color_Orange>-->
