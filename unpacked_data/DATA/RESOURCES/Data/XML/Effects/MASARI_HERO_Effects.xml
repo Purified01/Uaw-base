@@ -111,33 +111,6 @@
       </Effect_Component>
    </Effect>
    
-   <Effect Name="Masari_Elemental_Resource_Effect">
-      <Duration> -1.0 </Duration>
-      <Effect_Class> Unmake </Effect_Class>
-      <Extends_Existing_Duration> true </Extends_Existing_Duration>
-
-      <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Masari_Altea_Unmake_Target_Medium </Particle_System_Type>
-      </Effect_Component>
-
-      <Effect_Component Type="Sound">
-         <Apply_Effect> SFX_Masari_Ability_Unmake </Apply_Effect>
-      </Effect_Component>
-
-      <Effect_Component Type="Transfer">
-         <Flow_Direction> TargetToSource </Flow_Direction>
-         <Target_Effect> ResourceUnits </Target_Effect>
-         <Source_Effect> Credits </Source_Effect>
-
-			<Percent_Of_Max_Per_Second />
-         <Amount_Per_Second> -25.0 </Amount_Per_Second>
-
-         <Show_Transfer_Text_Visual>Yes</Show_Transfer_Text_Visual>
-
-         <!-- 8 credits per health unit tick -->
-         <Transfer_Multiplicative> 1.0 </Transfer_Multiplicative>
-      </Effect_Component>
-   </Effect>
 
    <Effect Name="Masari_Alatea_Unmake_Visual_Effect">
       <Duration> -1.0 </Duration>
