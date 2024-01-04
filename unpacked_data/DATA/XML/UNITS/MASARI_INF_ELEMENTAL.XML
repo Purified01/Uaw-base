@@ -355,53 +355,6 @@
 
 			</Effect_Generator_Ability>
 
-			<Effect_Generator_Ability Name="Reaper_Harvest_Resource_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
-
-				<Max_Channel_Range> 125.0 </Max_Channel_Range>
-				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
-
-				<Effect_Generator_Name> AlienHarvestResourceGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Resource </Applicable_Unit_Categories>
-
-				<Can_Target_Allies>yes</Can_Target_Allies>
-				<Can_Target_Enemies>Yes</Can_Target_Enemies>
-				<Can_Target_Neutral>Yes</Can_Target_Neutral>
-
-				<Point_Turret_At_Target>No </Point_Turret_At_Target>
-
-			</Effect_Generator_Ability>
-
-			<Effect_Generator_Ability Name="Reaper_Harvest_Instant_Resource_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
-
-				<!-- Oksana:this ability does not channel. Once activated, it cannot be cancelled. 
-					  It cannot drop target mid-way, or it will appear as a visual glitch. -->
-				<!-- <Max_Channel_Range> 125.0 </Max_Channel_Range> -->
-
-				<!-- We should let Targeting do the turret thing - Oksana -->
-				<!-- Turret_Points_At_Target> true </Turret_Points_At_Target -->
-
-				<Effect_Generator_Name> AlienHarvestInstantResourceGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Resource_INST </Applicable_Unit_Categories>
-
-				<Can_Target_Allies>yes</Can_Target_Allies>
-				<Can_Target_Enemies>Yes</Can_Target_Enemies>
-				<Can_Target_Neutral>Yes</Can_Target_Neutral>
-
-				<Point_Turret_At_Target>No </Point_Turret_At_Target>
-
-				<!-- For this one, we don't want to interrupt it once started. -->
-				<!-- If we do, we may end up with a unit dangling above ground. -->
-				<Deactivate_On_User_Attack_Order>No</Deactivate_On_User_Attack_Order>
-				<Deactivate_On_User_Move_Order>No</Deactivate_On_User_Move_Order>
-			</Effect_Generator_Ability>
-
-
 
 			<Effect_Generator_Ability Name="Reaper_Toggle_Auto_Harvest_Special_Ability">
 				<Activation_Min_Range> 0 </Activation_Min_Range>
@@ -591,55 +544,6 @@
 
 			</Effect_Generator>
 
-			<!-- Default attack on INSTANT resource units -->
-			<Effect_Generator Name="AlienHarvestInstantResourceGenerator">
-				<Should_Deactivate_Manually> No </Should_Deactivate_Manually>
-				<Is_Independent_Generator> Yes </Is_Independent_Generator>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> AlienHarvestInstantResourcesEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
-					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
-					<Can_Target_Dead_Objects> Yes </Can_Target_Dead_Objects>
-
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-
-					<!-- Target validation MUST be the same as in LUA!!! -->
-					<Target_Filter_C> Reaper_Harvest_Resource </Target_Filter_C>
-
-					 <Source_SFX_Event> SFX_Alien_Reaping_Instant </Source_SFX_Event>
-
-				</Effect_Generator_Entry>
-
-
-				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> AlienHarvestResourcesOwnerEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry3">
-					<Effect_Name> AlienHarvestResourcesVisualEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-
-					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Closest_Team_Member_As_Target> Yes </Should_Add_Closest_Team_Member_As_Target>
-					<Should_Add_Team_Container_As_Target> No </Should_Add_Team_Container_As_Target>
-					<Is_Applicable_To_Team_Members>Yes</Is_Applicable_To_Team_Members>
-					<Is_Applicable_To_Team_Containers>No</Is_Applicable_To_Team_Containers>
-					<Is_Applicable_To_Non_Team_Objects>Yes</Is_Applicable_To_Non_Team_Objects>
-
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
 
 			<!-- Default attack on resource units -->
 			<Effect_Generator Name="AlienHarvestResourceGenerator">
@@ -701,30 +605,12 @@
 			</Unit_Ability>
 
 			<!-- this ability is activated by attack order on a resource unit -->
-			<Unit_Ability Name="Reaper_Harvest_Resource_Ability">
-				<Type>EFFECT_GENERATOR</Type>
-				<Effect_Generator_Name> AlienHarvestResourceGenerator </Effect_Generator_Name>
-				<GUI_Activated_Ability_Name> Reaper_Harvest_Resource_Special_Ability </GUI_Activated_Ability_Name>
-				<Is_Modal>Yes</Is_Modal>
-				<Recharge_Seconds>0.3</Recharge_Seconds>
-			</Unit_Ability>
-			
-			<!-- this ability is activated by attack order on a resource unit -->
 			<Unit_Ability Name="Elementalist_Harvest_Resource_Ability">
 				<Type>EFFECT_GENERATOR</Type>
 				<Effect_Generator_Name> MasariHarvestResourceGenerator </Effect_Generator_Name>
 				<GUI_Activated_Ability_Name> Elementalist_Harvest_Resource_Special_Ability </GUI_Activated_Ability_Name>
 				<Is_Modal>Yes</Is_Modal>
 				<Recharge_Seconds>0.3</Recharge_Seconds>
-			</Unit_Ability>
-
-			<!-- this ability is activated by attack order on an INSTANT resource unit -->
-			<Unit_Ability Name="Reaper_Harvest_Instant_Resource_Ability ">
-				<Type>EFFECT_GENERATOR</Type>
-				<Effect_Generator_Name> AlienHarvestInstantResourceGenerator </Effect_Generator_Name>
-				<GUI_Activated_Ability_Name> Reaper_Harvest_Instant_Resource_Special_Ability  </GUI_Activated_Ability_Name>
-				<Is_Modal>Yes</Is_Modal>
-				<Recharge_Seconds>0.5</Recharge_Seconds>
 			</Unit_Ability>
 
 			<!-- this is a user-activated toggle ability for auto-collect -->
