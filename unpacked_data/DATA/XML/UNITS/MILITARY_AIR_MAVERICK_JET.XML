@@ -162,7 +162,7 @@
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 1200 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 1150 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 22 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -236,7 +236,7 @@
 
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.24.2006 - How much space does the unit take up -->
-         <Unit_Pop_Cap> 7 </Unit_Pop_Cap>
+         <Unit_Pop_Cap> 6 </Unit_Pop_Cap>
       </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">

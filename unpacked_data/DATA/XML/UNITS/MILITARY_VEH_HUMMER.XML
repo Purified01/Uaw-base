@@ -157,7 +157,7 @@
          <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Veh_hummer</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.4</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 

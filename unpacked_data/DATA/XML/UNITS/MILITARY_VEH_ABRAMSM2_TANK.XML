@@ -69,7 +69,7 @@
 
       <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-      <Tactical_Health> 550 </Tactical_Health>
+      <Tactical_Health> 750 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -727,7 +727,7 @@
          <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Tank_Gunner</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
@@ -804,7 +804,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>27.0</Projectile_Damage>
+         <Projectile_Damage>29.0</Projectile_Damage>
          <Projectile_Blast_Area_Damage> 21 </Projectile_Blast_Area_Damage>
          <Projectile_Blast_Area_Range> 40 </Projectile_Blast_Area_Range>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
@@ -819,7 +819,7 @@
          <Projectile_Ballistic_Knockback_Radius>2.0</Projectile_Ballistic_Knockback_Radius>
          <Ballistic_Knockback_Probability>1.0</Ballistic_Knockback_Probability>
          <Ballistic_Knockback_Strength>1.0</Ballistic_Knockback_Strength>
-         <Projectile_Causes_Blackening>true</Projectile_Causes_Blackening>
+         <Projectile_Causes_Blackening>False</Projectile_Causes_Blackening>
          <Terrain_Damage_Radius>15.0</Terrain_Damage_Radius>
       </BehaviorType>
 
@@ -860,7 +860,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>10.0</Projectile_Damage>
+         <Projectile_Damage>5.0</Projectile_Damage>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

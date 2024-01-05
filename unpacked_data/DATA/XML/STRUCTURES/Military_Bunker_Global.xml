@@ -453,7 +453,7 @@
 
     <!-- ART -->
     <!-- STUB FOR ELIE -->
-    <Land_Model_Name>W_flag_rally_military.alo</Land_Model_Name>
+    <Land_Model_Name>wo_military_flare.alo</Land_Model_Name>
     <Scale_Factor>1.0</Scale_Factor>
     <Is_Decoration>No</Is_Decoration>
     <AssetBank> BANK_MILITARY </AssetBank>
@@ -522,4 +522,3 @@
 
 
 </Military_Bunker_XML>
-

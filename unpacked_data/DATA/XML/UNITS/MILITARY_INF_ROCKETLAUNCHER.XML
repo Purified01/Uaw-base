@@ -25,7 +25,7 @@
 		<Create_Team_Type> Military_Team_Rocketlauncher </Create_Team_Type>
 		<Affiliation> Military </Affiliation>
 		<CategoryMask> TeamContainer, Small, Organic, CanAttack, RadiationHurts </CategoryMask>
-		<Max_Squad_Size> 5 </Max_Squad_Size>
+		<Max_Squad_Size> 4 </Max_Squad_Size>
 		<Company_Units> Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher, Military_Rocketlauncher </Company_Units><!-- jdg rocket teams reduced to 4 members per Adam -->
 		<Build_Limit_Lifetime_Per_Player> -1 </Build_Limit_Lifetime_Per_Player>
 		<Importance> 0.2 </Importance>
@@ -90,7 +90,7 @@
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 750  </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 14 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -291,7 +291,7 @@
 			<Projectile_Types>Proj_Military_Rocketlauncher </Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>2.15</Projectile_Fire_Pulse_Delay_Seconds>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 30 </Projectile_Fire_Recharge_Max_Random_Frames>
 		</BehaviorType>
 
@@ -533,12 +533,12 @@
 		<BehaviorType Name="ProjectileBehaviorType">
 			<Projectile_Texture_Slot>1, 0</Projectile_Texture_Slot>
 			<Projectile_Width>4.8</Projectile_Width>
-			<Projectile_Length>10</Projectile_Length>
+			<Projectile_Length>4.8</Projectile_Length>
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>7000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>8.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>2</Projectile_Blast_Area_Damage>
+			<Projectile_Damage>2.0</Projectile_Damage>
+			<Projectile_Blast_Area_Damage>1</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>

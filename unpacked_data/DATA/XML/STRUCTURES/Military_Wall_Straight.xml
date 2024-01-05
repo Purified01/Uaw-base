@@ -47,7 +47,7 @@
 		<Ranged_Target_Z_Adjust>6.0</Ranged_Target_Z_Adjust>
 
 		<AI_Combat_Power> 1 </AI_Combat_Power>
-		<Tactical_Health> 1900 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -287,7 +287,7 @@
     <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
     <Ranged_Target_Z_Adjust>10.0</Ranged_Target_Z_Adjust>
 
-    <Tactical_Health> 2000 </Tactical_Health>
+    <Tactical_Health> 1000 </Tactical_Health>
     <Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
     <Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
     <Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>

@@ -138,7 +138,7 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 875 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
@@ -170,7 +170,7 @@
          <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Military_Defender_APC</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>8</Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Count>7</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 	  
@@ -876,7 +876,7 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>9.0</Projectile_Damage>
+         <Projectile_Damage>6.0</Projectile_Damage>
          <Projectile_Blast_Area_Damage> 15 </Projectile_Blast_Area_Damage>
          <Projectile_Blast_Area_Range> 40 </Projectile_Blast_Area_Range>
          <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>

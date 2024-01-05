@@ -72,7 +72,7 @@
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 900 </Tactical_Health>
+		<Tactical_Health> 780 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -720,7 +720,7 @@
 			<Targeting_Priority_Set> Military_Dragoon_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>		
 			<Targeting_Min_Attack_Distance> 10.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 380.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types> Proj_Dynamic_Scanner_Fixed_Weapon </Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>4.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
@@ -1001,7 +1001,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>40.0</Projectile_Damage>
+			<Projectile_Damage>50.0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage>55</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>10</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
