@@ -29,7 +29,7 @@
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 			<Regenerate_Type>Masari_Avenger_Skylord</Regenerate_Type>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-			<Phoenix_Type>Masari_Skylord_Fire</Phoenix_Type>
+			<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
 			<DMA_Max> 300 </DMA_Max>
 			<DMA_Regen_Rate> 8 </DMA_Regen_Rate>
 		</Attributes>

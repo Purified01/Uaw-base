@@ -41,7 +41,7 @@
     <UnitCollisionClass> Infantry </UnitCollisionClass>
     <OccupationStyle>1x1</OccupationStyle>
     <Space_Layer> LandDynamic </Space_Layer>
-    <Max_Speed> 2.0 </Max_Speed>
+    <Max_Speed> 2.5 </Max_Speed>
     <!-- jdg was 0.8 -->
     <Max_Rate_Of_Turn> 6.0 </Max_Rate_Of_Turn>
     <Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
@@ -63,7 +63,7 @@
     <FormationSpacing> 1.8 </FormationSpacing>
     <!-- <Walk_Locomotor_Anim_Subindex> 0 </Walk_Locomotor_Anim_Subindex> -->
     <MaxJiggleDistance> 3.5 </MaxJiggleDistance>
-    <Max_Thrust> 1.2 </Max_Thrust>
+    <Max_Thrust> 1.5 </Max_Thrust>
     <Thrust_Acceleration> .1 </Thrust_Acceleration>
     <Thrust_Deceleration> .1 </Thrust_Deceleration>
     <Min_Flight_Elevation> 0 </Min_Flight_Elevation>
@@ -256,12 +256,6 @@
       <Icon_Name> i_icon_mv_seeker.tga  </Icon_Name>
     </BehaviorType>
 
-    <!-- BEHAVIORS -->
-    <BehaviorType Name="DeathFXBehaviorType">
-      <!-- this death clone is responsible for generating either Avenger or Phoenixed SkyLord -->
-      <Death_Clone> Damage_Default, Masari_Aspirant_Death_Clone </Death_Clone>
-    </BehaviorType>
-
 
     <BehaviorType Name="SFXBehaviorType">
 
@@ -323,6 +317,32 @@
         </Effect_Generator_Entry>
 
       </Effect_Generator>
+
+      <!-- If I am a Phoenix, I should play nice animation when created!-->
+      <Effect_Generator Name="MasariPhoenixVisualGenerator">
+        <Starts_Active>Yes</Starts_Active>
+        <Self_Start_Delay>0.1</Self_Start_Delay>
+
+        <Effect_Generator_Entry Name="Entry1">
+          <Duration>2</Duration>
+          <Effect_Name> MasariPhoenixVisualEffect </Effect_Name>
+          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+          <Target_Filter_C> Is_Phoenix </Target_Filter_C>
+          <Deactivate_Parent_When_Idle>Yes</Deactivate_Parent_When_Idle>
+        </Effect_Generator_Entry>
+      </Effect_Generator>
+
+			<Effect_Generator Name="MutantDyingGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> MutantDyingEffect </Effect_Name>
+					<Duration> 0.5 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
 
 		 <!-- Standard Sell generator  - 06/28/2007 -->
 		 <!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\MASARI_Sell_Generators.xml" -->
@@ -505,7 +525,7 @@
 		</Attributes>
 
 		<!-- MOVEMENT -->
-		<Max_Speed> 1.3 </Max_Speed>
+		<Max_Speed> 1.5 </Max_Speed>
 		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
 		<Walk_Animation_Speed> .366 </Walk_Animation_Speed>
       <MovementClass>Infantry</MovementClass>
@@ -602,7 +622,6 @@
 
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
-
 
     </Effect_Generator_Data>
 

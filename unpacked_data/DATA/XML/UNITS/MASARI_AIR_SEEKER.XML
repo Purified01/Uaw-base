@@ -33,7 +33,7 @@
 		 <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 		 <Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 		<Regenerate_Type>Masari_Avenger_Seeker</Regenerate_Type>
-		<Phoenix_Type>Masari_Seeker_Fire</Phoenix_Type>
+		<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
 		<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
     </Attributes>
 
