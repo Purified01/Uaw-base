@@ -340,12 +340,12 @@
     </Attack_Priorities>
 
 		<Category_Exclusions>
-			Insignificant, Bridge
+			Insignificant
 		</Category_Exclusions>
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Resource_INST, Resource, Untargetable </Category_Restrictions>
+		<Category_Restrictions> Resource_INST, Resource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1121,7 +1121,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Bridge, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, Resource, Resource_INST, Bridge </Category_Restrictions>
 	</Priority_Set>
 
 	
@@ -1275,6 +1275,7 @@
       Piloted, 4,
       Stationary + CanAttack, 5,
       Medium + Organic, 6,
+	  HardPoint, 1
       Small, 7,
       Stationary, 8,
       
@@ -1286,7 +1287,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
 	</Priority_Set>
 
 

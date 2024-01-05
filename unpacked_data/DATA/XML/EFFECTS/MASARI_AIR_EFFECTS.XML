@@ -488,7 +488,7 @@
 		<Effect_Class> MasariSeekerPhoenix </Effect_Class>
 
 		<Effect_Component Type="CreateObject">
-			<Create_Object_Type> Masari_Seeker </Create_Object_Type>
+			<Create_Object_Type> Masari_Aspirant </Create_Object_Type>
 			<Destroy_On_Remove> false </Destroy_On_Remove>
 			<Position_Type> AtSource </Position_Type>
 			<Use_Source_Player_ID> true </Use_Source_Player_ID>
@@ -645,7 +645,7 @@
 		<Effect_Class> MasariSeekerPhoenix </Effect_Class>
 
 		<Effect_Component Type="CreateObject">
-			<Create_Object_Type> Masari_Skylord </Create_Object_Type>
+			<Create_Object_Type> Masari_Aspirant </Create_Object_Type>
 			<Destroy_On_Remove> false </Destroy_On_Remove>
 			<Position_Type> AtSource </Position_Type>
 			<Facing_Type>Inherit_Z</Facing_Type>

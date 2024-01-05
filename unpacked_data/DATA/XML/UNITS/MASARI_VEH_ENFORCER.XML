@@ -236,8 +236,8 @@
       <SFXEvent_Select>Unit_Select_Masari_Conqueror</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Conqueror</SFXEvent_Move>
       <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Conqueror</SFXEvent_Move_At_Top_Speed>
-      <SFXEvent_Attack>Unit_Move_A_Masari_Conqueror</SFXEvent_Attack>
-      <SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Conqueror</SFXEvent_Attack_At_Top_Speed>
+      <SFXEvent_Attack>Unit_Attack_A_Masari_Conqueror</SFXEvent_Attack>
+      <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Conqueror</SFXEvent_Attack_At_Top_Speed>
       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
       <Death_SFXEvent_Start_Die> SFX_Masari_Medium_Vehicle_Death </Death_SFXEvent_Start_Die>
       <SFXEvent_Engine_Idle_Loop> SFX_Masari_Conqueror_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>

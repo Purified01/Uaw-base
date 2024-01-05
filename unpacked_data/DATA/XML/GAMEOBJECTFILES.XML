@@ -97,6 +97,7 @@
 	<File> Units/MASARI_INF_Disciple.xml </File>
 	<File> Units/MASARI_AIR_Seeker.xml </File>
 	<File> Units/MASARI_AIR_Skylord.xml </File>
+	<File> Units/MASARI_AIR_Aspirant.xml </File>
 	<File> Units/MASARI_AIR_Figment.xml </File>
 	<File> Units/MASARI_VEH_Enforcer.xml </File>
 	<File> Units/MASARI_VEH_Peacebringer.xml </File>

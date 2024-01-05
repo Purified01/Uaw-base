@@ -115,7 +115,7 @@
       <CategoryMask> Untargetable </CategoryMask>
       
       <LandBehavior> RADAR_MAP_VISIBLE , IDLE</LandBehavior>
-      <Land_Model_Name>wo_military_flare.alo</Land_Model_Name>
+      <Land_Model_Name>W_FLAG_Rally_military.ALO</Land_Model_Name>
       <AssetBank> BANK_MILITARY </AssetBank>
       <Is_Decoration>No</Is_Decoration>
       <Scale_Factor>1.0</Scale_Factor>

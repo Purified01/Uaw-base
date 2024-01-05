@@ -549,7 +549,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<!-- Health is required so it can be properly removed -->
-		<Tactical_Health> 1 </Tactical_Health>
+		<Tactical_Health> 50 </Tactical_Health>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
 		<!-- BEHAVIORS -->

@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
-<Masari_AIR_Seeker_XML>
+<Masari_AIR_Aspirant_XML>
 
   <!-- **************************************************************************************** -->
   <!-- *** UNIT(S) **************************************************************************** -->
   <!-- **************************************************************************************** -->
 
-  <X13_Masari_Units Name="Masari_Seeker">
+  <X13_Masari_Units Name="Masari_Aspirant">
 
     <!-- ART -->
     <Land_Model_Name>ZV_Seeker_Ground.ALO</Land_Model_Name>
-    <Scale_Factor>1.2</Scale_Factor>
+    <Scale_Factor>0.9</Scale_Factor>
     <Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
     <AssetBank> BANK_MASARI </AssetBank>
 
     <!-- INTERFACE -->
     <Icon_Name> i_icon_mv_seeker.tga  </Icon_Name>
-    <Text_ID>TEXT_UNIT_MASARI_SEEKER</Text_ID>
+    <Text_ID>TEXT_UNIT_MASARI_ASPIRANT</Text_ID>
     <Select_Box_Scale>40</Select_Box_Scale>
     <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -30,10 +30,8 @@
     <Shot_Type> Floating </Shot_Type>
 
     <Attributes SubObjectList="Yes">
-		 <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+		 <Tactical_Sell_Percent_Modifier> -1.0 </Tactical_Sell_Percent_Modifier>
 		 <Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-		<Regenerate_Type>Masari_Avenger_Seeker</Regenerate_Type>
-		<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
 		<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
     </Attributes>
 
@@ -86,7 +84,7 @@
     <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
     <Ranged_Target_Z_Adjust>12.0</Ranged_Target_Z_Adjust>
 
-    <Tactical_Health> 350 </Tactical_Health>
+    <Tactical_Health> 150 </Tactical_Health>
 
     <Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
     <Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
@@ -142,18 +140,10 @@
 	  </BehaviorType>
 
 	  <BehaviorType Name="TooltipBehaviorType">
-      <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SEEKER_LIGHT </Tooltip_Description_Text_ID>
+      <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ASPIRANT_LIGHT </Tooltip_Description_Text_ID>
       <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
     </BehaviorType>
 
-         <Researched_Upgrades>
-		TEXT_MASARI_RESEARCH_TITLE_PHOENIX
-		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
-		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
-		TEXT_MASARI_RESEARCH_TITLE_STASIS
-		TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
-         </Researched_Upgrades>
-	 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
       <Armor_Type> Armor_Masari_Aircraft </Armor_Type>
     </BehaviorType>
@@ -162,31 +152,8 @@
 		 <Sell_Effect_Generator_Name>MasariSellGenerator</Sell_Effect_Generator_Name>
     </BehaviorType>
 
-    <BehaviorType Name="ProductionBehaviorType">
-      <Size_Value> 10 </Size_Value>
-      <Build_Cost_Credits> 33 </Build_Cost_Credits>
-      <Build_Time_Seconds> 30 </Build_Time_Seconds>
-      <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-      <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-      <!-- 
-				Maria 11.07.2006 
-				This flag determines which types are used to populate the
-				build menu in global mode.
-			-->
-      <Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
-      <Strategic_UI_Build_Menu_Order>7</Strategic_UI_Build_Menu_Order>
-    </BehaviorType>
-
-    <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-      <Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
-      <Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
-      <Tactical_Build_Time_Seconds> 48 </Tactical_Build_Time_Seconds>
-      <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
-    </BehaviorType>
-
     <BehaviorType Name="FleetBehaviorType">
-      <Unit_Pop_Cap> 3 </Unit_Pop_Cap>
+      <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
     </BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
@@ -209,7 +176,7 @@
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
       <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
-      <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
+      <Projectile_Types>Proj_Aspirant_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
       <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
@@ -219,7 +186,7 @@
 	  <!--
 	  <BehaviorType NAme="LuaScriptBehaviorType">
 		  <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
-		  <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior,Masari_Seeker_Unit_Behavior</Lua_Land_Behaviors>
+		  <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior,Masari_Aspirant_Unit_Behavior</Lua_Land_Behaviors>
 		  <Lua_Script_Data>
 			  GenericVehicle = {}
 			  GenericVehicle.SearchRange = 100.0
@@ -238,23 +205,23 @@
     <BehaviorType Name="TypeSwitchBehaviorType">
 
       <!-- Base To Fire -->
-      <Type_Switch_Pre_Activate_Anim>	Masari_Seeker,	Masari_Seeker_Fire, Special_Start_A  </Type_Switch_Pre_Activate_Anim>
-      <Type_Switch_Active_Anim>		   Masari_Seeker,	Masari_Seeker_Fire, Special_Action_A	</Type_Switch_Active_Anim>
-      <Type_Switch_Post_Activate_Anim> Masari_Seeker,	Masari_Seeker_Fire, Special_End_A	   </Type_Switch_Post_Activate_Anim>
+      <Type_Switch_Pre_Activate_Anim>	Masari_Aspirant,	Masari_Aspirant_Fire, Special_Start_A  </Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Aspirant,	Masari_Aspirant_Fire, Special_Action_A	</Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Aspirant,	Masari_Aspirant_Fire, Special_End_A	   </Type_Switch_Post_Activate_Anim>
 
       <!-- Fire to Ice -->
-      <Type_Switch_Pre_Activate_Anim>  Masari_Seeker_Fire,   Masari_Seeker_Ice,  Special_Start_A	</Type_Switch_Pre_Activate_Anim>
-      <Type_Switch_Active_Anim>		   Masari_Seeker_Fire,	Masari_Seeker_Ice,   Special_Action_A  </Type_Switch_Active_Anim>
-      <Type_Switch_Post_Activate_Anim> Masari_Seeker_Fire,	Masari_Seeker_Ice,   Special_End_A	   </Type_Switch_Post_Activate_Anim>
+      <Type_Switch_Pre_Activate_Anim>  Masari_Aspirant_Fire,   Masari_Aspirant_Ice,  Special_Start_A	</Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Aspirant_Fire,	Masari_Aspirant_Ice,   Special_Action_A  </Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Aspirant_Fire,	Masari_Aspirant_Ice,   Special_End_A	   </Type_Switch_Post_Activate_Anim>
 
       <!-- Ice to Fire -->
-      <Type_Switch_Pre_Activate_Anim>	Masari_Seeker_Ice,	Masari_Seeker_Fire, Special_Start_A		</Type_Switch_Pre_Activate_Anim>
-      <Type_Switch_Active_Anim>		   Masari_Seeker_Ice,	Masari_Seeker_Fire, Special_Action_A	</Type_Switch_Active_Anim>
-      <Type_Switch_Post_Activate_Anim> Masari_Seeker_Ice,	Masari_Seeker_Fire, Special_End_A		</Type_Switch_Post_Activate_Anim>
+      <Type_Switch_Pre_Activate_Anim>	Masari_Aspirant_Ice,	Masari_Aspirant_Fire, Special_Start_A		</Type_Switch_Pre_Activate_Anim>
+      <Type_Switch_Active_Anim>		   Masari_Aspirant_Ice,	Masari_Aspirant_Fire, Special_Action_A	</Type_Switch_Active_Anim>
+      <Type_Switch_Post_Activate_Anim> Masari_Aspirant_Ice,	Masari_Aspirant_Fire, Special_End_A		</Type_Switch_Post_Activate_Anim>
 
       <!-- List of types this object can switch to - This is mainly needed to inforce build limits and must be
 						only added to the base type used for production dependencies purposes -->
-      <Type_Switch_Types> Masari_Seeker_Fire, Masari_Seeker_Ice  </Type_Switch_Types>
+      <Type_Switch_Types> Masari_Aspirant_Fire, Masari_Aspirant_Ice  </Type_Switch_Types>
 
       <Switch_Effect_Generator_Name> MasariSwitchGenerator </Switch_Effect_Generator_Name>
 
@@ -262,8 +229,8 @@
 
 
     <BehaviorType Name="ElementalModeType">
-      <Elemental_Object_Types> Fire, Masari_Seeker_Fire </Elemental_Object_Types>
-      <Elemental_Object_Types> Ice, Masari_Seeker_Ice </Elemental_Object_Types>
+      <Elemental_Object_Types> Fire, Masari_Aspirant_Fire </Elemental_Object_Types>
+      <Elemental_Object_Types> Ice, Masari_Aspirant_Ice </Elemental_Object_Types>
     </BehaviorType>
 
     <BehaviorType Name="RadarMapBehaviorType">
@@ -287,12 +254,6 @@
 
     <BehaviorType Name="EncyclopediaBehaviorType">
       <Icon_Name> i_icon_mv_seeker.tga  </Icon_Name>
-    </BehaviorType>
-
-    <!-- BEHAVIORS -->
-    <BehaviorType Name="DeathFXBehaviorType">
-      <!-- this death clone is responsible for generating either Avenger or Phoenixed SkyLord -->
-      <Death_Clone> Damage_Default, Masari_Seeker_Death_Clone </Death_Clone>
     </BehaviorType>
 
 
@@ -334,39 +295,6 @@
       <Crush_Power> 4 </Crush_Power>
     </BehaviorType>
 
-    <Unit_Abilities_Data SubObjectList="Yes">
-
-      <Unit_Ability Name="Inquisitor_Destabilize_Unit_Ability">
-        <Type>EFFECT_GENERATOR</Type>
-        <Recharge_Seconds>30.0</Recharge_Seconds>
-        <Expiration_Seconds>8.0</Expiration_Seconds>
-        <SFXEvent_Target_Ability>Unit_ABILITY_B_Masari_Inquisitor</SFXEvent_Target_Ability>
-        <GUI_Activated_Ability_Name>Inquisitor_Destabilize_Ability</GUI_Activated_Ability_Name>
-        <Targeting_Type>ANY_OBJECT</Targeting_Type>
-        <Effect_Generator_Name>Masari_Inquisitor_Destabilize_Generator</Effect_Generator_Name>
-      </Unit_Ability>
-
-    </Unit_Abilities_Data>
-
-    <Abilities SubObjectList="Yes">
-
-      <Effect_Generator_Ability Name="Inquisitor_Destabilize_Ability">
-        <Activation_Min_Range>0</Activation_Min_Range>
-        <Activation_Max_Range>200</Activation_Max_Range>
-        <Effect_Generator_Name>Masari_Inquisitor_Destabilize_Generator</Effect_Generator_Name>
-        <Activation_Style>User_Input</Activation_Style>
-        <Can_Target_Self>No</Can_Target_Self>
-        <Can_Target_Enemies>Yes</Can_Target_Enemies>
-        <Can_Target_Allies>Yes</Can_Target_Allies>
-        <Can_Target_Neutral>Yes</Can_Target_Neutral>
-        <Generating_Anim_Type> </Generating_Anim_Type>
-        <Post_Generate_Anim_Type>ANIM_IDLE</Post_Generate_Anim_Type>
-        <Face_Target> true </Face_Target>
-         <Excluded_Unit_Categories>Untargetable, Superweapon</Excluded_Unit_Categories>
-      </Effect_Generator_Ability>
-
-    </Abilities>
-
     <Effect_Generator_Data SubObjectList="Yes">
 
       <Effect_Generator Name="MasariSwitchGenerator">
@@ -390,45 +318,6 @@
 
       </Effect_Generator>
 
-      <Effect_Generator Name="Masari_Inquisitor_Destabilize_Generator">
-        <Should_Deactivate_Manually>Yes</Should_Deactivate_Manually>
-        <Is_Independent_Generator>No</Is_Independent_Generator>
-
-        <Effect_Generator_Entry Name="Entry1">
-          <Effect_Name>MasariInqusitorDestablizeEffect</Effect_Name>
-          <Duration> -1 </Duration>
-          <Target_Gathering_Mask>Target</Target_Gathering_Mask>
-          <Should_Add_Hardpoints_As_Targets>Yes</Should_Add_Hardpoints_As_Targets>
-        </Effect_Generator_Entry>
-
-
-         <Effect_Generator_Entry Name="Entry2">
-            <Effect_Name>MasariInqusitorDestablizeVisualEffect</Effect_Name>
-            <Duration> -1 </Duration>
-            <Target_Gathering_Mask>Self</Target_Gathering_Mask>
-            <Source_SFX_Event>SFX_Masari_Destabilize</Source_SFX_Event>
-         </Effect_Generator_Entry>
-         
-      </Effect_Generator>
-
-
-      <!-- Oksana [05/21/2007]: Spawn corresponding Phoenix on Death - must precede Avenger generator -->
-      <!-- Phoenix (Passive Researched, Offense mode): When destroyed in offense mode, the unit  
-                 has a chance of being reborn and returning to the sky at half maximum health. -->
-      <Effect_Generator Name="MasariSpawnPhoenixOnDeathGenerator">
-        <Starts_Active>Yes</Starts_Active>
-        <Modal_Refresh_Frequency>1</Modal_Refresh_Frequency>
-        <SFXEvent_Target_Ability>Unit_ABILITY_A_Masari_Inquisitor</SFXEvent_Target_Ability>
-        <Effect_Generator_Entry Name="Entry1">
-          <Duration> 1.1 </Duration>
-          <Effect_Name> MasariPhoenixEffect </Effect_Name>
-          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-          <Target_Application_Probability>1.0</Target_Application_Probability>
-          <Target_Filter_C> Can_Create_Phoenix </Target_Filter_C>
-          <Remove_On_Death>No</Remove_On_Death>
-        </Effect_Generator_Entry>
-      </Effect_Generator>
-
       <!-- If I am a Phoenix, I should play nice animation when created!-->
       <Effect_Generator Name="MasariPhoenixVisualGenerator">
         <Starts_Active>Yes</Starts_Active>
@@ -442,17 +331,18 @@
           <Deactivate_Parent_When_Idle>Yes</Deactivate_Parent_When_Idle>
         </Effect_Generator_Entry>
       </Effect_Generator>
-       
 
-      <!-- Oksana [05/21/2007]: Spawn corresponding Avenger on Death -->
-      <Effect_Generator Name="MasariSpawnAvengerOnDeathGenerator">
-        <Starts_Active>Yes</Starts_Active>
-        <Effect_Generator_Entry Name="Entry1">
-          <Duration> -1.0 </Duration>
-          <Effect_Name> MasariSpawnAvengerOnDeathEffect </Effect_Name>
-          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-        </Effect_Generator_Entry>
-      </Effect_Generator>
+			<Effect_Generator Name="MutantDyingGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> MutantDyingEffect </Effect_Name>
+					<Duration> 0.5 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
 
 		 <!-- Standard Sell generator  - 06/28/2007 -->
 		 <!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\MASARI_Sell_Generators.xml" -->
@@ -472,8 +362,8 @@
 
   <!-- ============ ELEMENTAL MODE VARIANT: LIGHT =================== -->
 
-  <X13_Masari_Units Name="Masari_Seeker_Fire">
-    <Variant_Of_Existing_Type> Masari_Seeker </Variant_Of_Existing_Type>
+  <X13_Masari_Units Name="Masari_Aspirant_Fire">
+    <Variant_Of_Existing_Type> Masari_Aspirant </Variant_Of_Existing_Type>
 
     <!-- ART -->
     <Land_Model_Name>ZV_Seeker_Air.ALO</Land_Model_Name>
@@ -514,12 +404,12 @@
     <Thrust_Deceleration>.1</Thrust_Deceleration>
 
     <!-- CONFLICT -->
-    <Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
+    <Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 
 
     <!-- BEHAVIORS -->
     <BehaviorType Name="DeathFXBehaviorType">
-      <Death_Clone> Damage_Default, Masari_Seeker_Death_Clone </Death_Clone>
+      <Death_Clone> Damage_Default, Masari_Aspirant_Death_Clone </Death_Clone>
     </BehaviorType>
 
     <BehaviorType Name="ProductionBehaviorType">
@@ -527,7 +417,7 @@
     </BehaviorType>
 
     <BehaviorType Name="TooltipBehaviorType">
-      <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SEEKER_LIGHT </Tooltip_Description_Text_ID>
+      <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ASPIRANT_LIGHT </Tooltip_Description_Text_ID>
       <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
       <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_STRUCTURES </Tooltip_Good_Against>
       <Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
@@ -539,8 +429,8 @@
       <Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
-      <Projectile_Types>Proj_Seeker_Pulse_Cannon_Light</Projectile_Types>
+      <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+      <Projectile_Types>Proj_Aspirant_Pulse_Cannon_Light</Projectile_Types>
       <Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
       <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
@@ -617,8 +507,8 @@
 
 	<!-- ============ ELEMENTAL MODE VARIANT: DARK =================== -->
 
-	<X13_Masari_Units Name="Masari_Seeker_Ice">
-		<Variant_Of_Existing_Type> Masari_Seeker </Variant_Of_Existing_Type>
+	<X13_Masari_Units Name="Masari_Aspirant_Ice">
+		<Variant_Of_Existing_Type> Masari_Aspirant </Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -630,8 +520,8 @@
 		<CategoryMask> Medium, Piloted, CanAttack </CategoryMask>
 
 		<Attributes SubObjectList="Yes">
-			<DMA_Max> 275 </DMA_Max>
-			<DMA_Regen_Rate> 8 </DMA_Regen_Rate>
+			<DMA_Max> 100 </DMA_Max>
+			<DMA_Regen_Rate> 4 </DMA_Regen_Rate>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -672,7 +562,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SEEKER_DARK </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ASPIRANT_DARK </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
 			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
 			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
@@ -684,8 +574,8 @@
 			<Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 170.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Seeker_Pulse_Cannon_Dark</Projectile_Types>
+			<Targeting_Max_Attack_Distance> 140.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Aspirant_Pulse_Cannon_Dark</Projectile_Types>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
@@ -733,7 +623,6 @@
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
 
-
     </Effect_Generator_Data>
 
   </X13_Masari_Units>
@@ -743,11 +632,11 @@
   <!-- *** DEATH CLONE(S)********************************************************************** -->
   <!-- **************************************************************************************** -->
 
-  <X13_Masari_Units Name="Masari_Seeker_Death_Clone">
+  <X13_Masari_Units Name="Masari_Aspirant_Death_Clone">
 
     <!-- ART -->
     <Land_Model_Name>ZV_Seeker_Air_Wing.ALO</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
+    <Scale_Factor>0.8</Scale_Factor>
 
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
@@ -769,14 +658,14 @@
 
 	<BehaviorType Name="SpawnDebrisBehaviorType">
 		<Creation_Debris_Types>
-			Masari_Seeker_Debris_01,
-			Masari_Seeker_Debris_02,
-			Masari_Seeker_Debris_03,
-			Masari_Seeker_Debris_01,
-			Masari_Seeker_Debris_02,
-			Masari_Seeker_Debris_03,
-			Masari_Seeker_Debris_01,
-			Masari_Seeker_Debris_02,
+			Masari_Aspirant_Debris_01,
+			Masari_Aspirant_Debris_02,
+			Masari_Aspirant_Debris_03,
+			Masari_Aspirant_Debris_01,
+			Masari_Aspirant_Debris_02,
+			Masari_Aspirant_Debris_03,
+			Masari_Aspirant_Debris_01,
+			Masari_Aspirant_Debris_02,
 		</Creation_Debris_Types>
 		<Debris_Speed_Min> 50.0 </Debris_Speed_Min>
 		<Debris_Speed_Max> 90.0 </Debris_Speed_Max>
@@ -836,11 +725,11 @@
 
   </X13_Masari_Units>
 
-	<X13_Masari_Units Name="Masari_Seeker_Debris_01">
+	<X13_Masari_Units Name="Masari_Aspirant_Debris_01">
 
 		<!-- ART -->
-		<Land_Model_Name>ZV_seeker_air_wing.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Land_Model_Name>ZV_Seeker_air_wing.ALO</Land_Model_Name>
+		<Scale_Factor>0.8</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -876,11 +765,11 @@
 	</X13_Masari_Units>
 
 
-	<X13_Masari_Units Name="Masari_Seeker_Debris_02">
+	<X13_Masari_Units Name="Masari_Aspirant_Debris_02">
 		<Variant_Of_Existing_Type>Masari_Figment_Debris_01</Variant_Of_Existing_Type>
 		<!-- ART -->
-		<Land_Model_Name>ZV_seeker_air_harness.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Land_Model_Name>ZV_Seeker_air_harness.ALO</Land_Model_Name>
+		<Scale_Factor>0.8</Scale_Factor>
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NONE</Text_ID>
@@ -914,11 +803,11 @@
 
 	</X13_Masari_Units>
 
-	<X13_Masari_Units Name="Masari_Seeker_Debris_03">
+	<X13_Masari_Units Name="Masari_Aspirant_Debris_03">
 		<Variant_Of_Existing_Type>Masari_Figment_Debris_01</Variant_Of_Existing_Type>
 		<!-- ART -->
-		<Land_Model_Name>ZV_seeker_air_shaft.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Land_Model_Name>ZV_Seeker_air_shaft.ALO</Land_Model_Name>
+		<Scale_Factor>0.8</Scale_Factor>
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NONE</Text_ID>
@@ -958,7 +847,7 @@
 	<!-- *** PROJECTILES ************************************************************************ -->
 	<!-- **************************************************************************************** -->
 
-	<Projectile Name="Proj_Seeker_Pulse_Cannon_Light">
+	<Projectile Name="Proj_Aspirant_Pulse_Cannon_Light">
 
 		<!-- ART -->
 		<Land_Model_Name>Laser_Masari_Seeker_Light_Bolt</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
@@ -992,7 +881,7 @@
 
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>8</Projectile_Damage>
+      <Projectile_Damage>3</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
       <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
       <Projectile_SFXEvent_Detonate>SFX_Masari_Detonation_1</Projectile_SFXEvent_Detonate>
@@ -1020,7 +909,7 @@
 
 
 	
-  <Projectile Name="Proj_Seeker_Pulse_Cannon_Dark">
+  <Projectile Name="Proj_Aspirant_Pulse_Cannon_Dark">
 
     <!-- ART -->
     <Land_Model_Name>Laser_Masari_Seeker_Dark_Bolt</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
@@ -1048,7 +937,7 @@
       <Projectile_Category>laser</Projectile_Category>
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>9.0</Projectile_Damage>
+      <Projectile_Damage>4.0</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
       <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
       <Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_1</Projectile_SFXEvent_Detonate>
@@ -1073,27 +962,4 @@
  </Projectile>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</Masari_AIR_Seeker_XML>
+</Masari_AIR_Aspirant_XML>
