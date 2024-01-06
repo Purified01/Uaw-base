@@ -42,7 +42,7 @@
     <Ranged_Target_Z_Adjust>10.0</Ranged_Target_Z_Adjust>
 
     <AI_Combat_Power> 1 </AI_Combat_Power>
-    <Tactical_Health> 1900 </Tactical_Health>
+    <Tactical_Health> 1400 </Tactical_Health> <!--1900-->
     <Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
     <Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
     <Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>

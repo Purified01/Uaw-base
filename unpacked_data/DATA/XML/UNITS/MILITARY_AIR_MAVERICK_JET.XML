@@ -47,15 +47,15 @@
 		<!-- MOVEMENT -->
 		<MovementClass> Flying </MovementClass>
 		<OccupationStyle> 1x1 </OccupationStyle>
-		<Max_Speed> 4.0 </Max_Speed>
-		<Min_Speed> 2.0 </Min_Speed>
+		<Max_Speed> 5.2 </Max_Speed>  <!--4-->
+		<Min_Speed> 1.0 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
-		<OverrideDeceleration> .2 </OverrideDeceleration>
+		<OverrideDeceleration> .5 </OverrideDeceleration>
 		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
 		<ROT_Acceleration> .3 </ROT_Acceleration>
 		<ROT_Deceleration> .3 </ROT_Deceleration>
 		<Max_Thrust> 1.5 </Max_Thrust>
-		<Thrust_Acceleration> .02 </Thrust_Acceleration>
+		<Thrust_Acceleration> .04 </Thrust_Acceleration>
 		<Thrust_Deceleration> .075 </Thrust_Deceleration>
 		<Min_Inertia_Coefficient> .2 </Min_Inertia_Coefficient>
 		<Max_Inertia_Coefficient> .4 </Max_Inertia_Coefficient>
@@ -81,8 +81,8 @@
 		<Hover_Torque_Coefficient> .75 </Hover_Torque_Coefficient>
 		<Space_Layer> Air </Space_Layer>
 		<Stationary_Space_Layer> LandDynamic </Stationary_Space_Layer>
-		<Min_Flight_Elevation> 70 </Min_Flight_Elevation>
-		<Max_Flight_Elevation> 80 </Max_Flight_Elevation>
+		<Min_Flight_Elevation> 130 </Min_Flight_Elevation>
+		<Max_Flight_Elevation> 140 </Max_Flight_Elevation>
 		<UnitCollisionClass> Vehicle </UnitCollisionClass>
 		<FormationSpacing> 1.5 </FormationSpacing>
 		<FormationOrder> 9 </FormationOrder>

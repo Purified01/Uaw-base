@@ -17,7 +17,7 @@
 	  <AssetBank> BANK_MILITARY </AssetBank>
 		
 		<!-- INTERFACE -->
-    <text_ID>TEXT_BUILDING_MILITARY_WALL</text_ID>
+    <text_ID>TEXT_STRUCTURE_MILITARY_WALL</text_ID>
 		<Icon_Name>i_icon_Wall_Straight.tga</Icon_Name>
 		<Selection_Blob_Material_Name> Selection_Military_Land </Selection_Blob_Material_Name>
 		<Select_Box_Scale>45</Select_Box_Scale>
@@ -118,7 +118,7 @@
 		</BehaviorType>
 				
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_MACHINE_FACTORY </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_WALL </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
 		</BehaviorType>
 		
@@ -373,7 +373,7 @@
     </BehaviorType>
 			
 	<BehaviorType Name="TooltipBehaviorType">
-		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_Wall_Straight </Tooltip_Description_Text_ID>
+		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_WALL </Tooltip_Description_Text_ID>
 		<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
 	</BehaviorType>
 

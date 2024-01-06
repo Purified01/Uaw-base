@@ -66,4 +66,18 @@
 		</Effect_Component>
 	</Effect>
 	
+	<Effect Name="Reveal_Stealth_Military">
+		<Duration> 2.0 </Duration>
+		<Effect_Class> RevealCloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Priority> 10.0 </Priority>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+    </Effect>
 </Effects>

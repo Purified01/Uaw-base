@@ -1,9 +1,3 @@
-if (LuaGlobalCommandLinks) == nil then
-	LuaGlobalCommandLinks = {}
-end
-LuaGlobalCommandLinks[128] = true
-LuaGlobalCommandLinks[19] = true
-LUA_PREP = true
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
@@ -28,7 +22,7 @@ LUA_PREP = true
 --                                      ****       *       *
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
--- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
+-- C O N F I D E N T I A L   S O U R C E   C O D E -- D O  D I S T R I B U T E   P L E A S E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 --              File: //depot/Projects/Invasion/Run/Data/Scripts/Gui/MilitaryResearchTree_Offensive.lua 
@@ -49,7 +43,7 @@ require("Research_Common")
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Init_Research_Tree(tactical_only_game)
 	
-	MessageBox("Military_Packaged_Research_Tree: Actived")
+
 	SyncMessage("Military_Packaged_Research_Tree::Init_Research_Tree -- tactical_only_game: %s, Player: %s\n", tostring(tactical_only_game), tostring(Player))
 	
 	Script.Set_Async_Data("AdditionalFacilityRequiredText", "TEXT_ADDITIONAL_RESEARCH_NOVUS")
@@ -57,7 +51,7 @@ function Init_Research_Tree(tactical_only_game)
 	Packages = {}
 	Branch_THERMODYNAMICS = {} -- Assault
 	Branch_RADIOACTIVITY = {}	-- Mutagen
-	Branch_QUANTUM = {}			
+	Branch_QUANTUM = {}		--this is needed	
 	
 	-- This branch is now called Assault
 	Branch_THERMODYNAMICS = 
@@ -591,12 +585,6 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes =
 				{
-					[1] = { 
-							ObjectType=Find_Object_Type("Military_Hero_Jet"), 
-							TitleTextID = "TEXT_UNIT_MILITARY_HERO_JET",
-							DescriptionTextID="TEXT_TOOLTIP_DESCRIPTION_MILITARY_HERO_JET", 
-							IconName="I_ICON_MILITARY_JET.tga" 
-							},
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
@@ -677,10 +665,18 @@ function Init_Research_Tree(tactical_only_game)
 				LocksSpecialAbilities = {},
 				
 				-- List of Generators that will be UNLOCKED when research of this suite is completed!				
-				UnlocksGenerators = {},
+				UnlocksGenerators = {					
+					[1] = { 
+					     EffectName="MilitaryManufactoringImprovementsEffectGenerator",
+					    TitleTextID = "TEXT_MILITARY_RESEARCH_TITLE_MANUFACTURING_IMPROVEMENTS",
+					     DescriptionTextID="TEXT_MILITARY_RESEARCH_MANUFACTURING_IMPROVEMENTS", 
+					     IconName="i_icon_sell.tga" 
+				},
+			         },
 				
 				UnlocksEffects = 
 				{
+
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -696,7 +692,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_icon_a_research_quantum_1_start.tga", "i_icon_a_research_quantum_1_complete.tga"}				
+				TextureMap = {"i_icon_sell.tga", "i_icon_sell.tga"}				
 				-- --------------------------------
 			},
 
@@ -707,7 +703,14 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes = 
-				{ 
+				{ 				
+					[1] = { 
+							ObjectType=Find_Object_Type("Military_Hero_Jet"), 
+							TitleTextID = "TEXT_UNIT_MILITARY_HERO_JET",
+							DescriptionTextID="TEXT_TOOLTIP_DESCRIPTION_MILITARY_HERO_JET", 
+							IconName="I_ICON_MILITARY_JET.tga" 
+							},
+				
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
@@ -740,7 +743,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_icon_a_research_quantum_2_start.tga", "i_icon_a_research_quantum_2_complete.tga"}				
+				TextureMap = {"i_icon_Jet_Research.tga", "i_icon_Jet_Research.tga"}				
 				-- --------------------------------
 			},
 
@@ -765,7 +768,13 @@ function Init_Research_Tree(tactical_only_game)
 				LocksSpecialAbilities = {},
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
-				UnlocksGenerators ={},
+				UnlocksGenerators ={					
+					[1] ={ 	EffectName="MilitaryVehicleBoostArmorGenerator",
+					TitleTextID = "TEXT_MILITARY_RESEARCH_TITLE_ARMOR_BOOST",
+					DescriptionTextID="TEXT_MILITARY_RESEARCH_ARMOR_BOOST", 
+					IconName="i_icon_tank.tga" 
+				},
+			    },
 --				
 				UnlocksEffects = 
 				{
@@ -785,7 +794,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_icon_a_research_quantum_3_start.tga", "i_icon_a_research_quantum_3_complete.tga"}				
+				TextureMap = {"i_icon_tank.tga", "i_icon_tank.tga"}				
 				-- --------------------------------
 			},
 			
@@ -795,7 +804,14 @@ function Init_Research_Tree(tactical_only_game)
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes = {
-					-- Walker socket option:  dark matter
+					[1] = { 
+							ObjectType=Find_Object_Type("Military_Team_Marines"), 
+							TitleTextID = "TEXT_UNIT_MILITARY_MARINE_TEAM",
+							DescriptionTextID="TEXT_TOOLTIP_DESCRIPTION_MILITARY_MARINE_SQUAD", 
+							IconName="i_button_uea_marine.tga" 
+							},
+				
+					
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
@@ -826,7 +842,7 @@ function Init_Research_Tree(tactical_only_game)
 				Enabled = false,
 				Completed = false,
 				StartResearchTime = -1, 
-				TextureMap = {"i_icon_a_research_quantum_4_start.tga", "i_icon_a_research_quantum_4_complete.tga"}				
+				TextureMap = {"i_icon_hazard.tga", "i_icon_hazard.tga"}				
 				-- --------------------------------
 			},
 	}
@@ -850,7 +866,7 @@ function Initialize_Branch_Data()
 	Branches["B"] = { Name = Get_Game_Text("TEXT_MILITARY_RESEARCH_BRANCH_B"), Icon = "i_logo_military.tga" }
 	Branches[Branch_RADIOACTIVITY] = Branches["B"]
 	
-	Branches["C"] = { Name = Get_Game_Text("TEXT_ALIEN_RESEARCH_BRANCH_C"), Icon = "i_icon_a_research_quantum_branch.tga" }
+	Branches["C"] = { Name = Get_Game_Text("TEXT_ALIEN_RESEARCH_BRANCH_C"), Icon = "i_logo_military.tga" }
 	Branches[Branch_QUANTUM] = Branches["C"]
 	
 	PathToBranchMap = {}
@@ -858,47 +874,3 @@ function Initialize_Branch_Data()
 	PathToBranchMap["B"] = Branch_RADIOACTIVITY
 	PathToBranchMap["C"] = Branch_QUANTUM 
 end
-function Kill_Unused_Global_Functions()
-	-- Automated kill list.
-	Abs = nil
-	BlockOnCommand = nil
-	Clamp = nil
-	DebugBreak = nil
-	DebugPrintTable = nil
-	DesignerMessage = nil
-	Dirty_Floor = nil
-	Find_All_Parent_Units = nil
-	Get_Achievement_Buff_Display_Model = nil
-	Get_Faction_Numeric_Form = nil
-	Get_Faction_Numeric_Form_From_Localized = nil
-	Get_Faction_String_Form = nil
-	Get_Localized_Faction_Name = nil
-	Get_Locally_Applied_Medals = nil
-	Get_Player_By_Faction = nil
-	Is_Player_Of_Faction = nil
-	Max = nil
-	Min = nil
-	OutputDebug = nil
-	PGAchievementAward_Init = nil
-	Persist_Online_Achievements = nil
-	Player_Earned_Offline_Achievements = nil
-	Process_Research_Complete = nil
-	Remove_Invalid_Objects = nil
-	Set_Local_User_Applied_Medals = nil
-	Set_Online_Player_Info_Models = nil
-	Show_Earned_Offline_Achievements = nil
-	Show_Earned_Online_Achievements = nil
-	Simple_Mod = nil
-	Simple_Round = nil
-	Sleep = nil
-	Sort_Array_Of_Maps = nil
-	String_Split = nil
-	SyncMessageNoStack = nil
-	TestCommand = nil
-	Update_Offline_Achievement = nil
-	Update_Research_Progress = nil
-	Validate_Achievement_Definition = nil
-	WaitForAnyBlock = nil
-	Kill_Unused_Global_Functions = nil
-end
-
