@@ -69,7 +69,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -145,7 +145,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -223,7 +223,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -292,7 +292,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -361,7 +361,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 20 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -441,7 +441,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -510,7 +510,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 375 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -589,7 +589,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -665,7 +665,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -742,7 +742,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -821,7 +821,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -891,7 +891,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -970,7 +970,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1046,7 +1046,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -1072,7 +1072,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1157,7 +1157,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1235,7 +1235,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 325 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1316,7 +1316,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1387,7 +1387,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -1468,7 +1468,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1539,7 +1539,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 350 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1620,7 +1620,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 125 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1690,7 +1690,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 375 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1771,7 +1771,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1841,7 +1841,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1922,7 +1922,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1994,7 +1994,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 275 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2026,7 +2026,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2046,7 +2046,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 125 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2066,7 +2066,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2086,7 +2086,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2105,7 +2105,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2125,7 +2125,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 100 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2145,7 +2145,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2169,7 +2169,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 125 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2194,7 +2194,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2219,7 +2219,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2305,7 +2305,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2378,7 +2378,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 75 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2455,7 +2455,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2537,7 +2537,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2620,7 +2620,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2896,7 +2896,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 8 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -3346,7 +3346,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3391,7 +3391,7 @@
 
     <BehaviorType Name="ResourceBehaviorType">
       <Resource_Units> 500 </Resource_Units>
-      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Military, Masari  </Resource_For_Faction>
       <Is_Single_Resource> false </Is_Single_Resource>
     </BehaviorType>
 		
