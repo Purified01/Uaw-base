@@ -595,7 +595,7 @@
 
 
     <!-- ART -->
-    <Land_Model_Name>MV_tank_debri_A.ALO</Land_Model_Name>
+    <Land_Model_Name>ZV_Sentry_Wheel.ALO</Land_Model_Name>
     <Scale_Factor>0.9</Scale_Factor>
     <AssetBank> BANK_MASARI </AssetBank>
 
@@ -606,17 +606,26 @@
 
     <!-- CONFLICT -->
     <Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+		<Is_Attackable>Yes</Is_Attackable>
 
     <!-- BEHAVIORS -->
     <LandBehavior>
        BALLISTIC,
        SPAWN_DEBRIS,
        RESOURCE,
+         DEBRIS,
        EFFECT_REGISTRY,
        EFFECT_GENERATOR,
        ATTRIBUTE_DIRECTORY,
        HIDE_WHEN_FOGGED
     </LandBehavior>
+
+      <BehaviorType Name="DebrisBehaviorType">
+         <Debris_Min_Lifetime_Seconds> 120.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 120.0 </Debris_Max_Lifetime_Seconds>
+      </BehaviorType>
 
     <BehaviorType Name="SpawnDebrisBehaviorType">
       <Creation_Debris_Types>
@@ -643,8 +652,6 @@
 
     <BehaviorType Name="DeathFXBehaviorType">
       <Death_Explosions>masari_large_explosion</Death_Explosions>
-      <Death_Fade_Time> .25 </Death_Fade_Time>
-      <Death_Persistence_Duration> .27 </Death_Persistence_Duration>
       <Death_Speed_Min> 100.0 </Death_Speed_Min>
       <Death_Speed_Max> 120.0 </Death_Speed_Max>
       <Death_Ang_Min> 1.0 </Death_Ang_Min>
