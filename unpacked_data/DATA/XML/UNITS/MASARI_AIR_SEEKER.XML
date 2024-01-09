@@ -752,10 +752,13 @@
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
     <!-- ATTRIBUTES -->
-    <CategoryMask> Large, Flying, Piloted, Resource </CategoryMask>
+    <CategoryMask> Resource </CategoryMask>
 
     <!-- CONFLICT -->
     <Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+		<Is_Attackable>Yes</Is_Attackable>
 
     <!-- BEHAVIORS -->
     <LandBehavior>
@@ -787,8 +790,8 @@
 	</BehaviorType>
 
     <BehaviorType Name="DebrisBehaviorType">
-      <Debris_Min_Lifetime_Seconds> 35.0 </Debris_Min_Lifetime_Seconds>
-      <Debris_Max_Lifetime_Seconds> 40.0 </Debris_Max_Lifetime_Seconds>
+         <Debris_Min_Lifetime_Seconds> 120.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 120.0 </Debris_Max_Lifetime_Seconds>
     </BehaviorType>
 
     <BehaviorType Name="BallisticBehaviorType">
@@ -815,7 +818,7 @@
 
     <BehaviorType Name="ResourceBehaviorType">
       <Resource_Units> 300 </Resource_Units>
-      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Masari </Resource_For_Faction>
       <Is_Single_Resource> false </Is_Single_Resource>
       <Use_Death_Behavior> true </Use_Death_Behavior>
     </BehaviorType>
