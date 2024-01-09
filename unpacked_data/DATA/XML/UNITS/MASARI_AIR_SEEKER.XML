@@ -747,12 +747,14 @@
 
     <!-- ART -->
     <Land_Model_Name>ZV_Seeker_Air_Wing.ALO</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
+    <Scale_Factor>1.7</Scale_Factor>
+      <AssetBank> BANK_MASARI </AssetBank>
 
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
     <!-- ATTRIBUTES -->
     <CategoryMask> Resource </CategoryMask>
+		<Text_ID>TEXT_NONE</Text_ID>
 
     <!-- CONFLICT -->
     <Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
@@ -765,6 +767,7 @@
       BALLISTIC,
       SPAWN_DEBRIS,
       RESOURCE,
+      DEBRIS,
       EFFECT_REGISTRY,
       EFFECT_GENERATOR,
       ATTRIBUTE_DIRECTORY
@@ -801,8 +804,6 @@
 
     <BehaviorType Name="DeathFXBehaviorType">
       <Death_Explosions>Masari_Large_Explosion</Death_Explosions>
-      <Death_Fade_Time> .25 </Death_Fade_Time>
-      <Death_Persistence_Duration> .27 </Death_Persistence_Duration>
       <Death_Speed_Min> 100.0 </Death_Speed_Min>
       <Death_Speed_Max> 120.0 </Death_Speed_Max>
       <Death_Ang_Min> 1.0 </Death_Ang_Min>

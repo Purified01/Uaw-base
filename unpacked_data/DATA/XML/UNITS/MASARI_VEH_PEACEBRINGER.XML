@@ -511,6 +511,7 @@
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Resource </CategoryMask>
+		<Text_ID>TEXT_NONE</Text_ID>
 
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
@@ -523,6 +524,7 @@
          BALLISTIC,
          SPAWN_DEBRIS,
          RESOURCE,
+         DEBRIS,
          EFFECT_REGISTRY,
          EFFECT_GENERATOR,
          ATTRIBUTE_DIRECTORY,
@@ -563,8 +565,6 @@
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Explosions>masari_large_explosion</Death_Explosions>
-			<Death_Fade_Time> .25 </Death_Fade_Time>
-			<Death_Persistence_Duration> .27 </Death_Persistence_Duration>
 			<Death_Speed_Min> 100.0 </Death_Speed_Min>
 			<Death_Speed_Max> 120.0 </Death_Speed_Max>
 			<Death_Ang_Min> 1.0 </Death_Ang_Min>
