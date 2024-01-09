@@ -234,7 +234,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire> SFX_Masari_Sentry_Fire </SFXEvent_Fire>
+			<SFXEvent_Fire> SFX_Masari_Vehicle_Fire </SFXEvent_Fire>
 			<SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
          <SFXEvent_Select>Unit_Select_Masari_Sentry</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Masari_Sentry</SFXEvent_Move>
@@ -1328,7 +1328,7 @@
 	<Projectile Name="Proj_Masari_Sentry_Missile">
 
 		<!-- ART -->
-		<Land_Model_Name>Laser_Masari_Sentry_Dark_Bolt</Land_Model_Name>
+		<Land_Model_Name>Laser_Masari_Peacebringer_Dark_Energy_Bolt</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
@@ -1352,7 +1352,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>9</Projectile_Damage>
+			<Projectile_Damage>15</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Masari_Guardian_Dark_Det</Projectile_Object_Detonation_Particle>
