@@ -251,7 +251,6 @@
       <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
       <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
       <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
-      <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
       <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
     </BehaviorType>
 

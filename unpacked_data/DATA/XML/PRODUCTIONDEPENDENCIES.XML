@@ -6031,7 +6031,7 @@
 
   <!-- UNIT: Military_Supply -->
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -6043,7 +6043,7 @@
   </Dependency>
   
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -6055,7 +6055,7 @@
   </Dependency>
   
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -6067,7 +6067,7 @@
   </Dependency>
   
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -6079,7 +6079,7 @@
   </Dependency>
   
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -6091,7 +6091,7 @@
   </Dependency>
   
   <Dependency>
-    <Built_Object> Military_Supply </Built_Object>
+    <Built_Object> Military_Supply_Depot </Built_Object>
 
     <!-- Strategic requirements -->
     <Strategic_Required_Objects> null </Strategic_Required_Objects>
