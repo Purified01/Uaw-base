@@ -5944,6 +5944,18 @@
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
+  <Dependency>
+    <Built_Object> Military_Mammoth </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
+  </Dependency>
+
   <!-- UNIT: Military_Hero_Tank -->
   <Dependency>
     <Built_Object> Military_Hero_Tank </Built_Object>
