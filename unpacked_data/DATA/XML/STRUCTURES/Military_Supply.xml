@@ -142,7 +142,7 @@
     </BehaviorType>
     
     <BehaviorType Name="GroundStructureBehaviorType">
-      <Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
+      <Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
       <Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
     </BehaviorType>
 

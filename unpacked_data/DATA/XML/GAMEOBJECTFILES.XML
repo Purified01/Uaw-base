@@ -149,7 +149,7 @@
 	<File> Structures/Military_Drop_Zone.xml </File>
 	<File> Structures/Military_Defense_Turret.xml </File>
 	<File> Structures/Military_Supply_Depot.xml </File>
-	<File> Structures/Military_Supply.xml </File>
+	<!-- <File> Structures/Military_Supply.xml </File> -->
 	<File> Structures/Military_Bunker.xml </File>
     <File> Structures/Military_Wall_Straight.xml</File>
 	<File> Structures/Military_Machine_Factory.xml </File>

@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>MB_LZ.alo</Land_Model_Name>
-		<Scale_Factor>0.7</Scale_Factor>
+		<Scale_Factor>0.6</Scale_Factor>
 		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 		<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
@@ -29,7 +29,7 @@
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Large, Stationary </CategoryMask>
+		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
 		<Affiliation>Military</Affiliation>
 		<Victory_Relevant> True </Victory_Relevant>
 
@@ -47,7 +47,7 @@
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 
 		<AI_Combat_Power> 1 </AI_Combat_Power>
-		<Tactical_Health> 2800 </Tactical_Health>
+		<Tactical_Health> 1200 </Tactical_Health>
 		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -87,7 +87,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Build_Limit_Current_Per_Player>5</Build_Limit_Current_Per_Player>
 		</BehaviorType>
 
@@ -119,6 +119,13 @@
 				MONITOR_DESTRUCTION_OF_HARDPOINTS.ALIEN_WALKER_HABITAT_COOLING_HP00
 			-->
 			</Lua_Script_Data>
+		</BehaviorType>
+		
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID>TEXT_TOOLTIP_DESCRIPTION_MILITARY_LZ</Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
+			<Tooltip_Good_Against> </Tooltip_Good_Against>
+			<Tooltip_Vulnerable_To> </Tooltip_Vulnerable_To>
 		</BehaviorType>
 		
 		<BehaviorType Name="EncyclopediaBehaviorType">
@@ -161,6 +168,11 @@
       <Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
     </Attributes>
 
+    <BehaviorType Name="SelectableBehaviorType">
+      <Select_Box_Scale>140</Select_Box_Scale>
+      <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+      <Selection_Blob_Material_Name> Selection_Military_Land </Selection_Blob_Material_Name>
+    </BehaviorType>
 	</X11_Military_Structures>
 	
   <!-- **************************************************************************************** -->
