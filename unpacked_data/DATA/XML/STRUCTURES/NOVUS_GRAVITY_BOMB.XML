@@ -18,6 +18,7 @@
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NOVUS_GRAVITY_BOMB_SUPERWEAPON</Text_ID>
+		<Icon_Name>i_icon_nb_gravity_bomb_launcher.tga </Icon_Name>
 		<Select_Box_Scale>130</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
@@ -85,18 +86,6 @@
 			TACTICAL_SELL
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_nb_gravity_bomb_launcher.tga </Icon_Name>
-      </BehaviorType>
-      
-      
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
 			<!-- KDB REQUIRED for all structures that can construct things otherwise not visible to other players -->
 			<Visible_To_Enemies_When_Empty>Yes</Visible_To_Enemies_When_Empty>
@@ -564,6 +553,7 @@
        <BehaviorType Name="SFXBehaviorType">
          <SFXEvent_On_Create_All_Players>SFX_Alien_Gravity_Bomb_Start</SFXEvent_On_Create_All_Players>
          <SFXEvent_Ambient_Loop>  SFX_Alien_Gravity_Bomb_Loop </SFXEvent_Ambient_Loop>
+         <SFX_Event />
       </BehaviorType>
       
       <BehaviorType Name="RevealBehaviorType">
@@ -694,6 +684,7 @@
                <Effect_Name> NovusGravityBombDotEffect </Effect_Name>
                <Duration> -1 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Target_Filter_Function_Name />
                <Area_Effect_Radius> 250.0 </Area_Effect_Radius>
             </Effect_Generator_Entry>
          </Effect_Generator>

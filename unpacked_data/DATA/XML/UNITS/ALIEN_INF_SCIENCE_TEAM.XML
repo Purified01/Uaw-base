@@ -24,11 +24,12 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Tactical_Build_Cost_Credits />
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -380,11 +381,12 @@
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Tactical_Build_Cost_Credits />
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -534,6 +536,17 @@
 			<SFXEvent_Enemy_Damaged_Health_Low_Warning> Ambient_Random_Chatter_Alien_Scientist </SFXEvent_Enemy_Damaged_Health_Low_Warning>
 			<SFXEvent_Enemy_Damaged_Health_Critical_Warning> Ambient_Random_Chatter_Alien_Scientist </SFXEvent_Enemy_Damaged_Health_Critical_Warning>
 			-->
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.22 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">

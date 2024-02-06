@@ -127,7 +127,7 @@
 			<Targeting_Priority_Set> Novus_Redirection_Turret_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 265.0 </Targeting_Max_Attack_Distance>
 			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 			<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 			<Projectile_Types>Proj_Novus_Antimatter_Cannon_Tower</Projectile_Types>
@@ -199,7 +199,7 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_nb_redirection_turret.tga</Icon_Name>
-      </BehaviorType>
+		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
 			<GUI_Scene_Name> NOVUS_Tactical_Upgrades_Menu </GUI_Scene_Name>
@@ -215,18 +215,11 @@
 		<BehaviorType Name="SelectableBehaviorType">
 			<Select_Box_Scale>55</Select_Box_Scale>
 			<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-			<Select_As_Non_Structure>True</Select_As_Non_Structure> <!-- Please see SCC before adjusting-->
-		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
+      <Select_As_Non_Structure>True</Select_As_Non_Structure> <!-- Please see SCC before adjusting-->
 		</BehaviorType>
 
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range>270.0</Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range>255.0</Land_FOW_Reveal_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -705,7 +698,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>14.0</Max_Speed>
+		<Max_Speed>13.0</Max_Speed>
 		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -736,7 +729,7 @@
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 20 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 22 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 25 </Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
@@ -745,7 +738,7 @@
 			<Projectile_Lifetime_Detonation_Particle>Tiny_Dud</Projectile_Lifetime_Detonation_Particle>
 			<Projectile_Absorbed_By_Shields_Particle>Tiny_Dud</Projectile_Absorbed_By_Shields_Particle>
 			<Projectile_Explosion_Causes_Chaining>true</Projectile_Explosion_Causes_Chaining>
-			<Projectile_Chaining_Damage_Increase_Percent>50.0</Projectile_Chaining_Damage_Increase_Percent>
+			<Projectile_Chaining_Damage_Increase_Percent>60.0</Projectile_Chaining_Damage_Increase_Percent>
 			<Projectile_Chaining_Distance_Increase>0.0</Projectile_Chaining_Distance_Increase>
 			<Projectile_Bomb_Timer_In_Secs>2.5</Projectile_Bomb_Timer_In_Secs>
 		</BehaviorType>

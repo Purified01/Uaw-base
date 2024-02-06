@@ -97,7 +97,7 @@
       
       <LandBehavior> RADAR_MAP_VISIBLE , IDLE</LandBehavior>
       <Land_Model_Name>W_FLAG_Rally_masari.ALO</Land_Model_Name>
-      <AssetBank> BANK_ALWAYS </AssetBank>
+      <AssetBank> BANK_MASARI </AssetBank>
       <Is_Decoration>No</Is_Decoration>
       <Scale_Factor>1.0</Scale_Factor>
 
@@ -116,7 +116,7 @@
       
       <LandBehavior> RADAR_MAP_VISIBLE , IDLE</LandBehavior>
       <Land_Model_Name>W_FLAG_Rally_military.ALO</Land_Model_Name>
-      <AssetBank> BANK_ALWAYS </AssetBank>
+      <AssetBank> BANK_MILITARY </AssetBank>
       <Is_Decoration>No</Is_Decoration>
       <Scale_Factor>1.0</Scale_Factor>
 
@@ -135,7 +135,7 @@
       
       <LandBehavior> RADAR_MAP_VISIBLE , IDLE</LandBehavior>
       <Land_Model_Name>W_FLAG_Rally_alien.ALO</Land_Model_Name>
-      <AssetBank> BANK_ALWAYS </AssetBank>
+      <AssetBank> BANK_ALIEN </AssetBank>
       <Is_Decoration>No</Is_Decoration>
       <Scale_Factor>1.0</Scale_Factor>
 
@@ -154,7 +154,7 @@
       
       <LandBehavior> RADAR_MAP_VISIBLE , IDLE</LandBehavior>
       <Land_Model_Name>W_FLAG_Rally_novus.ALO</Land_Model_Name>
-      <AssetBank> BANK_ALWAYS </AssetBank>
+      <AssetBank> BANK_NOVUS </AssetBank>
       <Is_Decoration>No</Is_Decoration>
       <Scale_Factor>1.0</Scale_Factor>
 
@@ -179,8 +179,6 @@
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>No</Is_Decoration>
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>		
-		<Custom_Hard_XExtent> 1.0 </Custom_Hard_XExtent>
-		<Custom_Hard_YExtent> 1.0 </Custom_Hard_YExtent>
 	</X90_Other_Objects>
 	
 	<!-- Tornado -->
@@ -453,6 +451,7 @@
 					 <Effect_Name> NovusGravityBombDotEffect </Effect_Name>
 					 <Duration> -1 </Duration>
 					 <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					 <Target_Filter_Function_Name />
 					 <Area_Effect_Radius> 250.0 </Area_Effect_Radius>
 				 </Effect_Generator_Entry>
 			 </Effect_Generator>

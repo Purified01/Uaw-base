@@ -40,7 +40,8 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Is_Phasable> true </Is_Phasable>
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
@@ -49,7 +50,7 @@
 
 		<!-- MOVEMENT -->
 		<MovementClass> Infantry </MovementClass>
-		<Max_Speed>1.4</Max_Speed>
+		<Max_Speed>1.6</Max_Speed>
 		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 3.5 </Custom_Soft_Footprint_Radius>
@@ -100,6 +101,7 @@
          IDLE,
          TARGETING,
          REVEAL,
+         SQUASH,
          HIDE_WHEN_FOGGED,
          BALLISTIC,
          EFFECT_REGISTRY,
@@ -109,7 +111,6 @@
          AI_RECRUITABLE,
          TACTICAL_SELL,
          AI_TARGET,
-			   TACTICAL_AI,
          ABILITY_COUNTDOWN
       </LandBehavior>
 
@@ -120,18 +121,11 @@
 		<BehaviorType Name="TacticalSellBehaviorType">
 			<Sell_Effect_Generator_Name>NovusSellGenerator</Sell_Effect_Generator_Name>
 		</BehaviorType>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 		
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
-			<Build_Cost_Credits> 300 </Build_Cost_Credits>
-			<Build_Time_Seconds> 8 </Build_Time_Seconds>
+			<Build_Cost_Credits> 250 </Build_Cost_Credits>
+			<Build_Time_Seconds> 7 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
@@ -145,24 +139,23 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 600 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 500 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 500 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 175.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 150.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
 		 <Attack_Score_Rating> 0.2 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 200.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
     
     
@@ -175,7 +168,6 @@
 			<Can_Attack_Without_Weapon_Behavior>true</Can_Attack_Without_Weapon_Behavior>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -188,7 +180,6 @@
 				DefensiveAI.KillTurret = false
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_ni_hacker.tga </Icon_Name>
@@ -252,6 +243,17 @@
 			<SFXEvent_Build_Cancelled> GUI_BUILD_Vehicle_Canceled </SFXEvent_Build_Cancelled>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 			<Death_Clone> Damage_Default, Novus_Hacker_Death_Clone_Resource </Death_Clone>
@@ -282,8 +284,6 @@
 				<GUI_Activated_Ability_Name> Novus_Hacker_Control_Turret_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Control_Turret_Effect_Generator </Effect_Generator_Name>
 				<Ignore_Lock_Unit_Ability_Attribute> Is_Mind_Controlled </Ignore_Lock_Unit_Ability_Attribute>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Range> 180.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 			<!-- Upgraded version -->
@@ -294,8 +294,6 @@
 				<GUI_Activated_Ability_Name> Novus_Hacker_Control_Turret_Area_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Control_Turret_Area_Effect_Generator </Effect_Generator_Name>
 				<Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Range> 200.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 			<!-- Non-upgraded version -->
@@ -306,10 +304,6 @@
 				<GUI_Activated_Ability_Name> Novus_Hacker_Lockdown_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Lockdown_Effect_Generator </Effect_Generator_Name>
 				<Ignore_Lock_Unit_Ability_Attribute> Is_Mind_Controlled </Ignore_Lock_Unit_Ability_Attribute>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Range> 170.0 </Unit_Ability_AI_Range>
-				<!-- not blocked by dodging retreating etc -->
-				<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
 			</Unit_Ability>
 
 			<!-- Upgraded version -->
@@ -320,10 +314,6 @@
 				<GUI_Activated_Ability_Name> Novus_Hacker_Lockdown_Area_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Lockdown_Area_Effect_Generator </Effect_Generator_Name>
 				<Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Range> 170.0 </Unit_Ability_AI_Range>
-				<!-- not blocked by dodging retreating etc -->
-				<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
 			</Unit_Ability>
 
 			<Unit_Ability Name="Novus_Hacker_Viral_Bomb_Unit_Ability">
@@ -357,7 +347,7 @@
 			<!-- Non-upgraded version -->
 			<Effect_Generator_Ability Name="Novus_Hacker_Control_Turret_Special_Ability">
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 175 </Activation_Max_Range>
+				<Activation_Max_Range> 180 </Activation_Max_Range>
 				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
 				<Post_Generate_Anim_Type> </Post_Generate_Anim_Type>
 				<Generating_Anim_Type>  </Generating_Anim_Type>
@@ -375,13 +365,13 @@
          <!-- Upgraded version -->
          <Effect_Generator_Ability Name="Novus_Hacker_Control_Turret_Area_Special_Ability">
             <Activation_Min_Range> 0 </Activation_Min_Range>
-            <Activation_Max_Range> 175 </Activation_Max_Range>
+            <Activation_Max_Range> 200 </Activation_Max_Range>
             <Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
             <Post_Generate_Anim_Type> </Post_Generate_Anim_Type>
             <Generating_Anim_Type>  </Generating_Anim_Type>
             <Effect_Generator_Name> Novus_Hacker_Control_Turret_Area_Effect_Generator </Effect_Generator_Name>
             <Activation_Style> SPECIAL_ATTACK </Activation_Style>
-            <Max_Channel_Range> 230.0 </Max_Channel_Range>
+            <Max_Channel_Range> 250.0 </Max_Channel_Range>
             <Disable_Special_Ability_Attribute> Is_Mind_Controlled </Disable_Special_Ability_Attribute>
             <!--Need this so we can switch targets during control when both are in range-->
             <Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
@@ -396,7 +386,7 @@
 				<!-- MLL: All walkers are excluded -->
 				<Excluded_Unit_Categories> Huge + Piloted </Excluded_Unit_Categories>
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 175 </Activation_Max_Range>
+				<Activation_Max_Range> 170 </Activation_Max_Range>
 				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
 				<Post_Generate_Anim_Type> ANIM_IDLE</Post_Generate_Anim_Type>
 				<Generating_Anim_Type> ANIM_ATTACK </Generating_Anim_Type>
@@ -416,7 +406,7 @@
 				<!-- MLL: All walkers are excluded -->
 				<Excluded_Unit_Categories> Huge + Piloted </Excluded_Unit_Categories>
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 175 </Activation_Max_Range>
+				<Activation_Max_Range> 170 </Activation_Max_Range>
 				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
 				<Post_Generate_Anim_Type> ANIM_IDLE</Post_Generate_Anim_Type>
 				<Generating_Anim_Type> ANIM_ATTACK </Generating_Anim_Type>
@@ -432,7 +422,7 @@
 
 			<Effect_Generator_Ability Name="Novus_Hacker_Viral_Bomb_Special_Ability">
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 175 </Activation_Max_Range>
+				<Activation_Max_Range> 180 </Activation_Max_Range>
 				<Effect_Generator_Name> Novus_Hacker_Viral_Bomb_Effect_Generator </Effect_Generator_Name>
 				<Activation_Style> User_Input </Activation_Style>
 				<Pre_Generate_Anim_Type> Attack_special_b </Pre_Generate_Anim_Type>
@@ -662,7 +652,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 225 </Resource_Units>
+			<Resource_Units> 200 </Resource_Units>
 			<Resource_For_Faction> Alien, Novus, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>

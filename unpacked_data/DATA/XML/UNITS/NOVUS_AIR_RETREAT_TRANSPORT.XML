@@ -117,13 +117,6 @@
 			GARRISONABLE
 		</LandBehavior>
 
-	  <BehaviorType Name="SelectableBehaviorType">
-		  <!-- DME 02/05/08 magnetism testing-->
-		  <Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-		  <Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-		  <Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-	  </BehaviorType>
-
 		<Attributes SubObjectList="Yes">
 		  <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 		</Attributes>	  
@@ -168,6 +161,14 @@
 			<Crush_Defense>30</Crush_Defense>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="AIBehaviorType">
 			<AI_Target_Level>Individual</AI_Target_Level>
 			<AI_Combat_Power>175</AI_Combat_Power>
@@ -192,7 +193,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_nv_xport.tga</Icon_Name>
+			<Icon_Name>i_icon_dragonfly.tga</Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -206,6 +207,7 @@
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
 		</BehaviorType>
 
 		<BehaviorType Name="RevealBehaviorType">
@@ -698,7 +700,7 @@
       </BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 950 </Resource_Units>
+			<Resource_Units> 30 </Resource_Units>
 			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>

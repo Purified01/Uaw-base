@@ -123,17 +123,9 @@
       BALLISTIC,
       DAMAGE_TRACKING,
       TACTICAL_SELL,
-		TACTICAL_AI,
       <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
       ELEMENTAL_MODE
     </LandBehavior>
-
-	  <BehaviorType Name="SelectableBehaviorType">
-		  <!-- DME 02/05/08 magnetism testing-->
-		  <Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-		  <Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-		  <Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-	  </BehaviorType>
 
 	  <BehaviorType Name="BallisticBehaviorType">
 		  <Ballistic_Weight>10.0</Ballistic_Weight>
@@ -191,7 +183,7 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 160.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -199,7 +191,6 @@
 		 <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 1.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 1.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 150.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
     <BehaviorType Name="WeaponBehaviorType">
@@ -216,7 +207,6 @@
       <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
-	  <!--
 	  <BehaviorType NAme="LuaScriptBehaviorType">
 		  <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 		  <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior,Masari_Seeker_Unit_Behavior</Lua_Land_Behaviors>
@@ -230,7 +220,6 @@
 			  DefensiveAI.KillTurretRange = 50.0
 		  </Lua_Script_Data>
 	  </BehaviorType>
-		 -->
 
 	  <!-- =================================================================================================
 		== [11/16/2006] This behavior type defines data for Type_Switch behavior - Oksana Kubushyna
@@ -315,7 +304,8 @@
     </BehaviorType>
 
     <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name>
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
       <GUI_Receives_Input> false </GUI_Receives_Input>
       <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
       <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -331,7 +321,6 @@
 
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense>30</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
     </BehaviorType>
 
     <Unit_Abilities_Data SubObjectList="Yes">
@@ -557,25 +546,8 @@
       <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
-	  <BehaviorType name="AIBehaviorType">
-		  <AI_Combat_Power> 1 </AI_Combat_Power>
-		  <Idle_Chase_Range> 0.1 </Idle_Chase_Range>
-		  <!-- Double click guard area Keep very small-->
-		  <Guard_Chase_Range> 160.0 </Guard_Chase_Range>
-		  <!-- Guard radius for unit-->
-		  <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>
-		  <!--Range outside of guard area unit will move-->
-		  <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>
-		  <!-- When given a attack move command unit will travel this distance from path to attack-->
-		  <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
-		  <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
-		  <Scout_Score_Rating> 1.0 </Scout_Score_Rating>
-		  <Guerilla_Score_Rating> 1.0 </Guerilla_Score_Rating>
-		  <Tactical_AI_Search_Range> 150.0 </Tactical_AI_Search_Range>
-		  <Retreat_At_Health> 0.6 </Retreat_At_Health>
-	  </BehaviorType>
 
-	  <BehaviorType Name="SFXBehaviorType">
+    <BehaviorType Name="SFXBehaviorType">
       <SFXEvent_Fire> SFX_Masari_Pulse_Cannon_Fire </SFXEvent_Fire>
       <SFXEvent_Weapon_Firing_Loop> </SFXEvent_Weapon_Firing_Loop>
       <SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
@@ -659,7 +631,7 @@
 
 		<!-- CONFLICT -->
 		<Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
-		<Attack_Category_Restrictions> UnderDestabilizeEffect| Flying | Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> UnderDestabilizeEffect| Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>

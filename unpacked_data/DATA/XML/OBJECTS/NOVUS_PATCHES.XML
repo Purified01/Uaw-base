@@ -9,6 +9,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -115,6 +116,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -219,6 +221,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -305,6 +308,7 @@
       <Is_Decoration>No</Is_Decoration>
       <CategoryMask> Untargetable </CategoryMask>
       <Is_Attackable> false </Is_Attackable>
+      <Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
       <Scale_Factor>0.001</Scale_Factor>
       <Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -410,6 +414,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -495,6 +500,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -616,6 +622,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -704,6 +711,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -791,6 +799,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -876,6 +885,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -976,6 +986,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -1131,6 +1142,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>

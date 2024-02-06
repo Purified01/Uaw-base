@@ -706,8 +706,8 @@
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 100.0 </Area_Effect_Radius>
-					<Target_Filter_C> Is_Enemy_Not_Immune_To_MC </Target_Filter_C>
-					</Effect_Generator_Entry>
+					<Target_Filter> target.Get_Owner() ~= source.Get_Owner() and target.Get_Attribute_Value("Is_Immune_To_Mind_Control") == 0.0 </Target_Filter>
+				</Effect_Generator_Entry>
 
 			</Effect_Generator>
 
@@ -819,8 +819,9 @@
 		</BehaviorType>
 		
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 		
 		<Unit_Abilities_Data SubObjectList="Yes">
@@ -1463,17 +1464,21 @@
 		
 	</X99_Test_Objects>
 
-	<!--<X99_Test_Objects Name="Grunt_Phasing">
+	<X99_Test_Objects Name="Grunt_Phasing">
 	
 		<Variant_Of_Existing_Type> Alien_Grunt </Variant_Of_Existing_Type>
 		
-		--><!-- Maria 08.09.2006  We don't want this object to be buildable --><!--
+		<!-- Maria 08.09.2006  We don't want this object to be buildable -->
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
 			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
 		</BehaviorType>
 
-		<LandBehavior> --><!--JOEXMLCLEAN GUI--><!-- RADAR_MAP_VISIBLE, SURFACE_FX, WALK_LOCOMOTOR, FORMATION, IDLE, TARGETING, TURRET, WEAPON, REVEAL, HIDE_WHEN_FOGGED, DAMAGE_TRACKING, BALLISTIC, EFFECT_REGISTRY, EFFECT_GENERATOR, ABILITY_COUNTDOWN </LandBehavior>
+		<LandBehavior> <!--JOEXMLCLEAN GUI--> RADAR_MAP_VISIBLE, SURFACE_FX, WALK_LOCOMOTOR, FORMATION, IDLE, TARGETING, TURRET, WEAPON, REVEAL, HIDE_WHEN_FOGGED, DAMAGE_TRACKING, BALLISTIC, EFFECT_REGISTRY, EFFECT_GENERATOR, ABILITY_COUNTDOWN </LandBehavior>
+		
+		<Attributes SubObjectList="Yes">
+			<Is_Phasable> false </Is_Phasable>
+		</Attributes>
 		
 		<Unit_Abilities_Data SubObjectList="Yes">
 			<Unit_Ability Name="Phasing_Test_Effect_Generator_Unit_Ability">
@@ -1513,7 +1518,7 @@
 			</Effect_Generator>
 		</Effect_Generator_Data>
 		
-	</X99_Test_Objects>-->
+	</X99_Test_Objects>
 		
 	<X99_Test_Objects Name="Grunt_Apply_Generator_Test">
 	
@@ -1859,6 +1864,7 @@
 		</BehaviorType>
 		
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> false </Is_Phasable>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Generator_Area_Effect_Radius_1> 100 </Generator_Area_Effect_Radius_1>
 			<Is_Ground_Adverse_Effect_Emitter> true </Is_Ground_Adverse_Effect_Emitter>
@@ -2032,6 +2038,7 @@
 		</BehaviorType>
 		
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Generator_Area_Effect_Radius_1> 300 </Generator_Area_Effect_Radius_1>
 		</Attributes>
@@ -2216,6 +2223,116 @@
    </X99_Test_Objects>
 
 
+   <X99_Test_Objects Name="Placeholder_Death_Clone_Small">
+
+      <!-- ART -->
+      <Land_Model_Name> wo_unitscrap.alo </Land_Model_Name>
+      <Scale_Factor> 2.5 </Scale_Factor>
+      <Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_NONE </Text_ID>
+      <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+
+      <!-- ATTRIBUTES -->
+      <CategoryMask> Resource_INST </CategoryMask>
+
+      <!-- CONFLICT -->
+      <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+      <Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+      <Is_Attackable>Yes</Is_Attackable>
+      <Ranged_Target_Z_Adjust>15.0</Ranged_Target_Z_Adjust>
+
+      <!-- BEHAVIORS -->
+      <LandBehavior>
+         BALLISTIC,
+         SPAWN_DEBRIS,
+         EFFECT_REGISTRY,
+         DEBRIS,
+         RESOURCE,
+         ATTRIBUTE_DIRECTORY,
+			EFFECT_GENERATOR
+      </LandBehavior>
+
+      <BehaviorType Name="DebrisBehaviorType">
+         <Debris_Min_Lifetime_Seconds> 20.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 20.0 </Debris_Max_Lifetime_Seconds>
+      </BehaviorType>
+
+      <BehaviorType Name="SpawnDebrisBehaviorType">
+         <Creation_Debris_Types>
+            Generic_Vehicle_Death_Clone_Chunk,
+            Generic_Vehicle_Death_Clone_Radiator,
+            Generic_Vehicle_Death_Clone_Pipe,
+            Generic_Vehicle_Death_Clone_Grill
+         </Creation_Debris_Types>
+
+         <Debris_Speed_Min> 50.0 </Debris_Speed_Min>
+         <Debris_Speed_Max> 100.0 </Debris_Speed_Max>
+         <Debris_Outward_Speed_Min> 50.0 </Debris_Outward_Speed_Min>
+         <Debris_Outward_Speed_Max> 100.0 </Debris_Outward_Speed_Max>
+         <Debris_Ang_Min> 1.0 </Debris_Ang_Min>
+         <Debris_Ang_Max> 30.0 </Debris_Ang_Max>
+      </BehaviorType>
+
+      <BehaviorType Name="BallisticBehaviorType">
+         <Ballistic_Weight> 2.0 </Ballistic_Weight>
+         <Ballistic_Bounce> 0.3 </Ballistic_Bounce>
+      </BehaviorType>
+
+      <BehaviorType Name="DeathFXBehaviorType">
+         <Death_Explosions> Large_Explosion_Land </Death_Explosions>
+         <Death_Speed_Min> 100.0 </Death_Speed_Min>
+         <Death_Speed_Max> 120.0 </Death_Speed_Max>
+         <Death_Ang_Min> 1.0 </Death_Ang_Min>
+         <Death_Ang_Max> 2.0 </Death_Ang_Max>
+         <Death_Horizontal_Speed> 10.0 </Death_Horizontal_Speed>
+      </BehaviorType>
+
+      <BehaviorType Name="SFXBehaviorType">
+         <Death_SFXEvent_Start_Die> SFX_Car_Death </Death_SFXEvent_Start_Die>
+      </BehaviorType>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+         <Damage_Type> Damage_Default </Damage_Type>
+      </BehaviorType>
+
+		<BehaviorType Name="ResourceBehaviorType">
+			<Resource_Units> 200 </Resource_Units>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Is_Single_Resource> true </Is_Single_Resource>
+		</BehaviorType>
+
+		
+		<Effect_Generator_Data SubObjectList="Yes" Replace="false">
+			<!-- Fall down on the ground -->
+			<Effect_Generator Name="ResourceFallDownEffectGenerator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> LaunchBallisticBehaviorEffect </Effect_Name>
+					<Duration>-1</Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+		</Effect_Generator_Data>
+		
+</X99_Test_Objects>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    <!-- **************************************************************************************** -->
 	
 	<X99_Test_Objects Name="Test_Dervish_Jet_Garrisonable">
@@ -2240,6 +2357,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size> 1 </GUI_Bracket_Size>
 		<Select_Box_Scale> 55 </Select_Box_Scale>
 		<Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -2251,6 +2369,11 @@
 		<Victory_Relevant> No </Victory_Relevant>
 		<Weather_Category> Flying </Weather_Category>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
+
+		<Attributes SubObjectList="Yes">
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
+		</Attributes>
+
 
 		<!-- MOVEMENT -->
 		<MovementClass> Flying </MovementClass>
@@ -2427,6 +2550,14 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 30 </Crush_Defense>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">

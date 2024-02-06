@@ -91,13 +91,6 @@
 			TERRAFORM
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 20 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TacticalEnablerBehaviorType">
 			<Tactical_Enabler_Bones>SPAWN_00</Tactical_Enabler_Bones>
 			<Tactical_Enabler_Flyout_Distances>80.0</Tactical_Enabler_Flyout_Distances>
@@ -235,14 +228,7 @@
 			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
 		</BehaviorType>
 
-    <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-    </BehaviorType>
-
-    <!--<BehaviorType Name="LightningBallEffectBehaviorType">
+		<!--<BehaviorType Name="LightningBallEffectBehaviorType">
 			<Lightning_Source_Bone_Names>Lightning_emitter_A</Lightning_Source_Bone_Names>
 			<Lightning_Target_Bone_Names>Lightning_target_a</Lightning_Target_Bone_Names>
 			<Lightning_Effect_Names>NB_Small_Straight_bolt</Lightning_Effect_Names>
@@ -256,6 +242,7 @@
 
 			<Source_Particle_Effect />
 			<Target_Particle_Effect />
+			<SFX_Event />
 			<Spawn_Object_On_Death />
 		</BehaviorType>-->
 
@@ -690,11 +677,10 @@
 			<Icon_Name>i_icon_nb_aircraft_assembly.tga</Icon_Name>
 		</BehaviorType>
 
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
-      </BehaviorType>
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Novus_Structure_Heavy </Armor_Type>
@@ -721,6 +707,17 @@
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>90</Crush_Defense>
 		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
+		</BehaviorType>
+
+
+
 	</HardPoint>
 
 	<!-- finished hardpoints -->

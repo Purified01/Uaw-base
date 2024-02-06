@@ -23,6 +23,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size> 1 </GUI_Bracket_Size>
 		<Select_Box_Scale> 55 </Select_Box_Scale>
 		<Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -41,6 +42,7 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
@@ -144,20 +146,12 @@
 			TARGETING,
 			ABILITY_COUNTDOWN,
 			TURRET,
-			TACTICAL_AI,
 			DAMAGE_TRACKING,
 			AI_RECRUITABLE,
 			BALLISTIC,
 			TACTICAL_SELL,
 			AI_TARGET
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="BallisticBehaviorType">
 			<Ballistic_Weight>6.0</Ballistic_Weight>
@@ -194,26 +188,23 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 500 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 500 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 600 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 600 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
-		<BehaviorType name="AIBehaviorType">
-			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<!-- the following needs to be > 0.0 or the unit will not attack when double clicked -->
-			<Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
-			<Guard_Chase_Range> 180.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-			<Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
-			<Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
-			<AI_Target_Level>Individual_Or_Group</AI_Target_Level>
-			<Attack_Score_Rating> 0.8 </Attack_Score_Rating>
-			<Scout_Score_Rating> 1.9 </Scout_Score_Rating>
-			<Guerilla_Score_Rating> 1.0 </Guerilla_Score_Rating>
-			<Tactical_AI_Search_Range> 50.0 </Tactical_AI_Search_Range>
-			<Retreat_At_Health> 0.8 </Retreat_At_Health>
-		</BehaviorType>
+    <BehaviorType name="AIBehaviorType">
+      <AI_Combat_Power> 1 </AI_Combat_Power>
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 160.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
+      <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
+      <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
+		 <Attack_Score_Rating> 0.8 </Attack_Score_Rating>
+		 <Scout_Score_Rating> 1.9 </Scout_Score_Rating>
+		 <Guerilla_Score_Rating> 1.0 </Guerilla_Score_Rating>
+	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
@@ -228,8 +219,8 @@
 			<Icon_Name>i_icon_nv_corruptor.tga</Icon_Name>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
+			<!-- Keep the collection range lower than the ability to maximize it's effect -->
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
 			<Lua_Script_Data>
@@ -239,7 +230,6 @@
 				DefensiveAI.RunHealth = 0.8
 			</Lua_Script_Data>
 		</BehaviorType>
-		-->
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_CORRUPTOR </Tooltip_Description_Text_ID>
@@ -313,6 +303,14 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 30 </Crush_Defense>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -558,13 +556,13 @@
 
 			<Effect_Generator Name="CorruptorRevealCloakingGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 1.2 </Modal_Refresh_Frequency>	
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>	
 				<Starts_Active> true </Starts_Active>
 				<Is_Independent_Generator> true </Is_Independent_Generator>
 									
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> RevealCloakingEffect </Effect_Name>
-					<Duration> 1.3 </Duration>
+					<Duration> 2.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 250 </Area_Effect_Radius>
@@ -843,10 +841,9 @@
 		<Radiation_Target_Categories> Small | Piloted | Huge | Stationary | Flying </Radiation_Target_Categories>
 
 		<Radiation_Decal_Name> NV_Corruptor_laser </Radiation_Decal_Name>
-      <Radiation_Node_Duration_In_Secs> 0.0 </Radiation_Node_Duration_In_Secs>
-      <Radiation_Node_Radius>20</Radiation_Node_Radius>
+		<Radiation_Decal_Duration_In_Secs> 0.0 </Radiation_Decal_Duration_In_Secs>
 
-      <BehaviorType Name="SFXBehaviorType">
+		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire> SFX_Novus_Corruptor_Beam_Detonation_1 </SFXEvent_Fire>
 		</BehaviorType>
 

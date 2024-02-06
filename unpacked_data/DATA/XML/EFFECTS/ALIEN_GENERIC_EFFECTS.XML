@@ -171,7 +171,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>    
 
 	</Effect>
@@ -191,7 +190,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
       <Effect_Component Type="Lightning">

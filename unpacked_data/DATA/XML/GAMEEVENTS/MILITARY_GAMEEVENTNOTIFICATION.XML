@@ -42,8 +42,6 @@
                <Min_Magnitude>10</Min_Magnitude>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>COM_MASSIVE_LOSS_OF_UNITS</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>            
          </Notifications>
 
@@ -62,8 +60,6 @@
                <Expiration_Time>3</Expiration_Time>
                <Radar_Map_Event>Game_Event_Combat_Medium_Importance</Radar_Map_Event>
                <SFX_Notification>COM_LOST_HERO</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
 
@@ -312,8 +308,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification>TEST_1</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>
@@ -359,8 +353,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> COM_REINFORCEMENTS_1 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>

@@ -41,29 +41,27 @@
 		<LandBehavior> COMBINABLE </LandBehavior>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-    <Shadow_Enabled> false </Shadow_Enabled>
-   </X40_Props_Industrial>
+	</X40_Props_Industrial>
 
    <X40_Props_Industrial Name="_PanamaCanal_Wall">
-     <Land_Model_Name> WO_CanalWall.ALO </Land_Model_Name>
-     <Scale_Factor> 1.0 </Scale_Factor>
-     <Is_Decoration> Yes </Is_Decoration>
-     <Text_ID> TEXT_NONE </Text_ID>
-     <LandBehavior> COMBINABLE </LandBehavior>
-     <Is_UI_Relevant> false </Is_UI_Relevant>
-     <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-     <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-   </X40_Props_Industrial>
+		<Land_Model_Name> WO_CanalWall.ALO </Land_Model_Name>
+		<Scale_Factor> 1.0 </Scale_Factor>
+		<Is_Decoration> Yes </Is_Decoration>
+		<Text_ID> TEXT_NONE </Text_ID>
+		<LandBehavior> COMBINABLE </LandBehavior>
+		<Is_UI_Relevant> false </Is_UI_Relevant>
+		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+	</X40_Props_Industrial>
 
    <X40_Props_Industrial Name="_Arecibo_Cables_Longer">
-     <Land_Model_Name> WO_Arecibo_Cable_02.ALO </Land_Model_Name>
-     <Scale_Factor> 1.0 </Scale_Factor>
-     <Is_Decoration> Yes </Is_Decoration>
-     <Text_ID> TEXT_NONE </Text_ID>
-     <LandBehavior> COMBINABLE </LandBehavior>
-     <Is_UI_Relevant> false </Is_UI_Relevant>
+		<Land_Model_Name> WO_Arecibo_Cable_02.ALO </Land_Model_Name>
+		<Scale_Factor> 1.0 </Scale_Factor>
+		<Is_Decoration> Yes </Is_Decoration>
+		<Text_ID> TEXT_NONE </Text_ID>
+		<LandBehavior> COMBINABLE </LandBehavior>
+		<Is_UI_Relevant> false </Is_UI_Relevant>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-    <Shadow_Enabled> false </Shadow_Enabled>
 	</X40_Props_Industrial>
 
 	<X40_Props_Industrial Name="_Barrels_Pallet">

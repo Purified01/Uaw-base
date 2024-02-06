@@ -82,8 +82,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_ALLIANCE_2 </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -196,7 +194,6 @@
          <Stacks>No</Stacks>
          <Expiration_Time>1.0</Expiration_Time>
          <Service_Delay_Time>0.0</Service_Delay_Time>
-		  
 
          <Notifications SubObjectList="Yes">
             <Notification_Description>
@@ -221,8 +218,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_DEFCON_START_1 </SFX_Notification>
-				<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-				<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -241,8 +236,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_DEFCON_LVL_4 </SFX_Notification>
-				<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-				<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -261,8 +254,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_DEFCON_LVL_3 </SFX_Notification>
-				<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-				<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -281,8 +272,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_DEFCON_LVL_2 </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -301,8 +290,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> NCO_DEFCON_LVL_1 </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -335,7 +322,7 @@
    <GameEvent Name="Pop_Cap_Reached" ReceivedFrom="Novus">
       <GameEventNotification Category="All">
          <Stacks>No</Stacks>
-         <Expiration_Time>3.0</Expiration_Time>
+         <Expiration_Time>15.0</Expiration_Time>
          <Service_Delay_Time>0.0</Service_Delay_Time>
 
          <Notifications SubObjectList="Yes">
@@ -398,8 +385,6 @@
                <Broadcast_To>Owner</Broadcast_To>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>NCO_HEAVY_LOSS_1</SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
 
@@ -418,8 +403,6 @@
                <Expiration_Time>3</Expiration_Time>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>NCO_LOST_HERO</SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
             
             <Notification_Description>
@@ -678,8 +661,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> SFX_Structure_Select_Novus_SuperWeapon_EMP </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -698,8 +679,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> SFX_Structure_Select_Novus_Gravity_Bomb </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -773,8 +752,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> GUI_Novus_EMP_Launched </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
             <!-- The enemy and ally notifications are the same throughout the factions and are defined in the file 
@@ -795,8 +772,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> GUI_Novus_Gravity_Bomb_Launched </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
             <!-- The enemy and ally notifications are the same throughout the factions and are defined in the file 
@@ -838,10 +813,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_MegaWeapon_Built</SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<!-- jdg 11/08/07 this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -881,10 +852,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_Novus_Mass_Cannon_Ready</SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<!-- jdg 11/08/07 this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -923,10 +890,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_Novus_Mass_Cannon_Launched</SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<!-- jdg 11/08/07 this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
             
          </Notifications>
@@ -950,10 +913,6 @@
 					<Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> GUI_Megaweapon_Blocked </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<!-- jdg 11/08/07 this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 
 				<Notification_Description>
@@ -1154,8 +1113,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> NCO_REINFORCEMENTS_1 </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>
@@ -1176,8 +1133,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event/>
 					<SFX_Notification> GUI_Alarm </SFX_Notification>
-					<!-- jdg 11/08/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>

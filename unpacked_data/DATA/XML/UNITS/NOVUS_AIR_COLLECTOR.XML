@@ -26,6 +26,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size>1</GUI_Bracket_Size>
 		<Select_Box_Scale>55</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -41,7 +42,8 @@
 		<Shot_Type> Flying </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
-         <Should_Always_Flow> true </Should_Always_Flow>
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
+			<Should_Aways_Flow> true </Should_Aways_Flow>
          <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 		</Attributes>
 
@@ -136,8 +138,9 @@
 			TARGETING, 
 			EFFECT_GENERATOR, 
 			ATTRIBUTE_DIRECTORY, 
+			AI_RECRUITABLE, 
+			AI_TARGET,
 			BALLISTIC,
-			COLLECTOR,
 			FLOW
 		</LandBehavior>
 
@@ -171,18 +174,6 @@
 		 <Attack_Score_Rating> 0.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Resource_Unit_Ability> Gather_Resources_Visual_Ability </Resource_Unit_Ability>
-		 <Single_Resource_Capacity> 500.0 </Single_Resource_Capacity>
-		 <Single_Resource_Grab_Seconds> 1.0 </Single_Resource_Grab_Seconds>
-		 <Drone_Capacity> 220.0 </Drone_Capacity>
-		 <Resources_Per_Grab> 110.0 </Resources_Per_Grab>
-		 <Resources_Seconds_Per_Grab> 1.0 </Resources_Seconds_Per_Grab>
-		 <Resource_Lock_Level> 110.0 </Resource_Lock_Level>
-		 <Resource_Depot_Required> true </Resource_Depot_Required>
-		 <Resource_Drone_Search_Radius> 400.0 </Resource_Drone_Search_Radius>
-		 <Resource_Delivery_Seconds> 0.0 </Resource_Delivery_Seconds>
-		 <Resource_Gather_Range> 80.0 </Resource_Gather_Range>
-		 <Resource_Depot_Type> Novus_Input_Station </Resource_Depot_Type>
 	 </BehaviorType>
     
    <BehaviorType Name="WeaponBehaviorType">
@@ -203,11 +194,30 @@
 		
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Land_Behaviors> NovusCollector </Lua_Land_Behaviors>
+			<!-- need to set all data as pooled scripts won't clear old data -->
 			<Lua_Script_Data>
+				
+				SingleResourceCapacity = 500.0
+				SingleResourceGrabSeconds = 1.0 <!--was 1.5-->
+
+				DroneCapacity = 220   <!-- Was 150 -->
+
+				ResourcesPerGrab = 110  <!-- Was 75 -->
+				ResourcesSecondsPerGrab = 1.0 <!-- was 2.2-->
+        ResourceLockLevel = 110 <!-- Was 75 -->
+				ResourceFaction = "Novus"
+
+				ResourceDepotRequired = true
+				resource_drone_search_radius = 400.0 <!-- Was 275-->
+				ResourceDeliverySeconds = 0.0
+				ResourceGatherRange = 70.0 <!-- was 85 -->
+				ResourceHarvestAbility = nil
+				
 			</Lua_Script_Data>
+
 		</BehaviorType>
 
-			<BehaviorType Name="SFXBehaviorType">
+		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire> </SFXEvent_Fire>
 			<SFXEvent_Weapon_Firing_Loop> SFX_Novus_Infantry_Fire </SFXEvent_Weapon_Firing_Loop>
 			<SFXEvent_Select>Unit_Select_Novus_Infantry</SFXEvent_Select>
@@ -250,6 +260,14 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			 <Crush_Defense>20</Crush_Defense>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">

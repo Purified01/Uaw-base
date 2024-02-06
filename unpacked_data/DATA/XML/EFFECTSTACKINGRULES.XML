@@ -380,11 +380,5 @@
 
 	<AlienHarvestFinalizeVisual> Earliest </AlienHarvestFinalizeVisual>
 	<MineInvulnerability> All </MineInvulnerability>
-	<WalkerHasControl> All </WalkerHasControl>
 
-	<InverterShieldUp> All </InverterShieldUp>
-	<InverterShieldDown> All </InverterShieldDown>
-
-	<GenericNoExtendDuration> All </GenericNoExtendDuration>
-	
 </EffectClassStackingRules>

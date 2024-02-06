@@ -19,56 +19,57 @@
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NOVUS_POWER_ROUTER</Text_ID>
-      <Select_Box_Scale>90</Select_Box_Scale>
-      <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-      <Importance> 0.1 </Importance>
-      <Shot_Type> Circle </Shot_Type>
+		<Icon_Name> i_icon_nb_power_nexus.tga </Icon_Name>
+		<Select_Box_Scale>90</Select_Box_Scale>
+		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+		<Importance> 0.1 </Importance>
+		<Shot_Type> Circle </Shot_Type>
 
-      <!-- ATTRIBUTES -->
-      <CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
-      <Affiliation>Novus</Affiliation>
-      <Victory_Relevant> True </Victory_Relevant>
+		<!-- ATTRIBUTES -->
+		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
+		<Affiliation>Novus</Affiliation>
+		<Victory_Relevant> True </Victory_Relevant>
 
-      <Attributes SubObjectList="Yes">
-         <Novus_Power_Transmission_Radius> 550 </Novus_Power_Transmission_Radius>
-         <Novus_Power_Powerup_Radius> 260 </Novus_Power_Powerup_Radius>
-         <Novus_Flow_Radius> 60.0 </Novus_Flow_Radius>
-         <Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
+		<Attributes SubObjectList="Yes">
+			<Novus_Power_Transmission_Radius> 550 </Novus_Power_Transmission_Radius>
+			<Novus_Power_Powerup_Radius> 260 </Novus_Power_Powerup_Radius>
+			<Novus_Flow_Radius> 60.0 </Novus_Flow_Radius>
+			<Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
 
          <!-- MARIA 07.06.2007: Removing this because NOVUS structures that get affected by the NovusResearchMatterConversionEffect get their
                tactical sell percent modifier from the effect!!!. -->
-         <!--<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>-->
-         <Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>
-      </Attributes>
+			<!--<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>-->
+			<Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>
+		</Attributes>
+		
+		<!-- MOVEMENT -->
+		<Space_Layer> LandDynamic </Space_Layer>
+		<MovementClass>Building</MovementClass>
+		<UnitCollisionClass> High Obstacle </UnitCollisionClass>
+		<Custom_Hard_XExtent> 27.0 </Custom_Hard_XExtent>
+		<Custom_Hard_YExtent> 27.0 </Custom_Hard_YExtent>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
 
-      <!-- MOVEMENT -->
-      <Space_Layer> LandDynamic </Space_Layer>
-      <MovementClass>Building</MovementClass>
-      <UnitCollisionClass> High Obstacle </UnitCollisionClass>
-      <Custom_Hard_XExtent> 27.0 </Custom_Hard_XExtent>
-      <Custom_Hard_YExtent> 27.0 </Custom_Hard_YExtent>
-      <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-      <Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
+		<!-- CONFLICT -->
+		<Is_Attackable> true </Is_Attackable>
+		<Ranged_Target_Z_Adjust> 50.0 </Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 
-      <!-- CONFLICT -->
-      <Is_Attackable> true </Is_Attackable>
-      <Ranged_Target_Z_Adjust> 50.0 </Ranged_Target_Z_Adjust>
-      <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<AI_Combat_Power> 1 </AI_Combat_Power>
 
-      <AI_Combat_Power> 1 </AI_Combat_Power>
-
-      <Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 
 		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
 		<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, null</Land_Damage_SFX>
 
-      <!-- BEHAVIORS -->
-      <Behavior>
-         GROUND_STRUCTURE,
-         SELECTABLE,
-      </Behavior>
+		<!-- BEHAVIORS -->
+		<Behavior>
+			GROUND_STRUCTURE,
+			SELECTABLE,
+		</Behavior>
 
 		<LandBehavior>
 			<!--TACTICAL_BUILD_OBJECTS,-->
@@ -89,17 +90,6 @@
 			TACTICAL_SELL
 		</LandBehavior>
 
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_nb_power_nexus.tga </Icon_Name>
-      </BehaviorType>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 20 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-      
 		<BehaviorType Name="GUIBehaviorType">
 			<GUI_Scene_Name> NOVUS_Tactical_Upgrades_Menu </GUI_Scene_Name>
          <!-- Maria: this structure needs this scene to properly display its health bar and nopower icon.
@@ -121,7 +111,9 @@
             TEXT_NOVUS_RESEARCH_TITLE_RAPID_REBUILD_EFFECT
          </Researched_Upgrades>
 		</BehaviorType>
-			
+		
+		
+	
 		<BehaviorType Name="PoweredBehaviorType">
 			<Role> Generator </Role>
 			<Flow_Visual_Name> Novus_Signal_tower_Flow </Flow_Visual_Name>

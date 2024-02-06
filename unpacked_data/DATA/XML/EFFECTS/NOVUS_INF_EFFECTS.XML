@@ -23,7 +23,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
 		<Effect_Component Type="Lightning">
@@ -50,7 +49,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
 		<Effect_Component Type="Lightning">
@@ -116,11 +114,11 @@
 		<Effect_Class> Burden </Effect_Class>
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
-		<!-- Stop unit completely --><!--
+		<!-- Stop unit completely -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
 			<Modifier_Value> -1.0 </Modifier_Value>
-		</Effect_Component>-->
+		</Effect_Component>
 
 		<Effect_Component Type="DisableBehavior">
 			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET </Behaviors>
@@ -198,10 +196,10 @@
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
 		<!-- Stop unit completely -->
-		<!--<Effect_Component Type="AttributeModifier">
+		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
 			<Modifier_Value> -1.0 </Modifier_Value>
-		</Effect_Component>-->
+		</Effect_Component>
 
 		<Effect_Component Type="DisableBehavior">
 			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET </Behaviors>

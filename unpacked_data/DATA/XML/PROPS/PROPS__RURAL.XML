@@ -13,8 +13,8 @@
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
-		<!--<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
@@ -428,9 +428,9 @@
 		<CategoryMask> Stationary, Insignificant </CategoryMask>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>

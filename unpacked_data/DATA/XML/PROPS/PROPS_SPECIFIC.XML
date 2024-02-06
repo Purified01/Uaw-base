@@ -20,284 +20,6 @@
       <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
    </X45_Props_Specific>
-
-   <X45_Props_Specific Name="Rail_Novus">
-
-      <!-- ART -->
-      <Land_Model_Name> WO_NH_Railing.alo </Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
-      <Is_Decoration>Yes</Is_Decoration>
-      <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-
-      <!-- INTERFACE -->
-      <Text_ID>TEXT_NONE</Text_ID>
-
-      <!-- ATTRIBUTES -->
-      <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-
-   </X45_Props_Specific>
-
-   <X45_Props_Specific Name="Rail_Novus2">
-
-      <!-- ART -->
-      <Land_Model_Name> WO_NH_Railing2.alo </Land_Model_Name>
-      <Scale_Factor>1.0</Scale_Factor>
-      <Is_Decoration>Yes</Is_Decoration>
-      <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-
-      <!-- INTERFACE -->
-      <Text_ID>TEXT_NONE</Text_ID>
-
-      <!-- ATTRIBUTES -->
-      <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-
-   </X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_A">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_UnitA.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_A_LARGE">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_UnitA.alo</Land_Model_Name>
-		<Scale_Factor>2.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_B">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_UnitB.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_B_Large">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_UnitB.alo</Land_Model_Name>
-		<Scale_Factor>2.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_C">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_NB_01.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_C_Large">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_NB_01.alo</Land_Model_Name>
-		<Scale_Factor>2.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_D">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_UnitC.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Building_E">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Unit_thin.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_SignalTower_A">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_SignalTower.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B0">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B0.alo</Land_Model_Name>
-		<Scale_Factor>0.35</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B1">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B1.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B2">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B2.alo</Land_Model_Name>
-		<Scale_Factor>0.35</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B3">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B3.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B4">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B4.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B5">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B5.alo</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B6">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B6.alo</Land_Model_Name>
-		<Scale_Factor>0.75</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B7">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B7.alo</Land_Model_Name>
-		<Scale_Factor>0.6</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B8">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B8.alo</Land_Model_Name>
-		<Scale_Factor>2.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Ground_B9">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>WO_NH_Ground_B9.alo</Land_Model_Name>
-		<Scale_Factor>2.0</Scale_Factor>
-		<LandBehavior>COMBINABLE, IDLE</LandBehavior>
-      		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_A">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_02.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_B">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_03.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_C">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_03.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_D">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_04.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_E">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_05.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_F">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_06.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_G">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_07.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_H">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_08.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_I">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_09.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_MidWalk_J">
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Land_Model_Name>W0_nb_10.alo</Land_Model_Name>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Is_Decoration>Yes</Is_Decoration>
-		<Is_UI_Relevant> false </Is_UI_Relevant>
- 	</X45_Props_Specific>
    
    <X45_Props_Specific Name="HM06_Arecibo_Antenna_Array">
 
@@ -1074,9 +796,9 @@
 		<CategoryMask> Stationary, Insignificant </CategoryMask>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
@@ -1368,7 +1090,7 @@
 		<!-- ATTRIBUTES -->
 		<LOD_Bias> 1.8 </LOD_Bias>
 		<Affiliation>Military</Affiliation>
-		<CategoryMask> Medium, Piloted, RadiationHurts </CategoryMask>
+		<CategoryMask> Medium, Piloted, CanAttack, RadiationHurts </CategoryMask>
 		<Victory_Relevant> No </Victory_Relevant>
 		<Weather_Category>Tracked</Weather_Category>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
@@ -1426,7 +1148,7 @@
 			BALLISTIC,
 			EFFECT_REGISTRY,
 			WHEEL,
-      AI_RECRUITABLE,
+			AI_RECRUITABLE,
 			AI_TARGET
 		</LandBehavior>
 
@@ -1440,7 +1162,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_button_uea_ambulances.tga</Icon_Name>
+			<Icon_Name>i_icon_hv_humvee.tga</Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -1471,7 +1193,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>20</Crush_Defense>
-			<Crush_Power>4</Crush_Power>
+			<Crush_Power>15</Crush_Power>
 		</BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -1505,6 +1227,16 @@
 		<BehaviorType Name="BlobShadowBehaviorType">
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+
+			<!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.025 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -1813,7 +1545,7 @@
 
 		<BehaviorType Name="SFXBehaviorType">
 			<Death_SFXEvent_End_Die />
-			<Death_SFXEvent_Start_Die> SFX_Alien_Large_Vehicle_Death-- </Death_SFXEvent_Start_Die>
+			<Death_SFXEvent_Start_Die> SFX_Alien_Large_Vehicle_Death </Death_SFXEvent_Start_Die>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -1848,48 +1580,13 @@
 		
 	</X45_Props_Specific>
 
-	
+
+
 	<X45_Props_Specific Name="NM06_Cage_Door_Hulk">
-		<!-- ART -->
-		<Land_Model_Name> WO_AINT_Arch01_DC.ALO </Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
-		<AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- INTERFACE -->
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-
-		<!-- CONFLICT -->
-		<Collidable_By_Projectile_Living>No</Collidable_By_Projectile_Living>
-		<Collidable_By_Projectile_Dead>No</Collidable_By_Projectile_Dead>
-		<Is_Attackable>No</Is_Attackable>
-
-		<!-- BEHAVIORS -->
-		<LandBehavior>
-			SELECTABLE,
-			EFFECT_REGISTRY,
-			ATTRIBUTE_DIRECTORY,
-			HIDE_WHEN_FOGGED
-		</LandBehavior>
-
-		<BehaviorType Name="DebrisBehaviorType">
-			<Debris_Min_Lifetime_Seconds> 2.0 </Debris_Min_Lifetime_Seconds>
-			<Debris_Max_Lifetime_Seconds> 15.0 </Debris_Max_Lifetime_Seconds>
-		</BehaviorType>
-
-		<BehaviorType Name="DeathFXBehaviorType">
-			<Death_Explosions>alien_large_explosion</Death_Explosions>
-			<Death_Speed_Min> 100.0 </Death_Speed_Min>
-			<Death_Speed_Max> 120.0 </Death_Speed_Max>
-			<Death_Ang_Min> 1.0 </Death_Ang_Min>
-			<Death_Ang_Max> 2.0 </Death_Ang_Max>
-			<Death_Horizontal_Speed>10.0</Death_Horizontal_Speed>
-			<Death_SFXEvent_Start_Die>SFX_Alien_Medium_Vehicle_Death</Death_SFXEvent_Start_Die>
-		</BehaviorType>
-
-	</X45_Props_Specific>
-
-	
+      <Variant_Of_Existing_Type> Scan_Drone_On_Death_Explosion </Variant_Of_Existing_Type>
+      <Land_Model_Name> WO_AINT_Arch01_DC.ALO </Land_Model_Name>
+      <Scale_Factor>1.0</Scale_Factor>
+   </X45_Props_Specific>
 
    <X45_Props_Specific Name="NM06_Arch_Destroyed">
       <Land_Model_Name> WO_AINT_Arch00_DC.ALO </Land_Model_Name>
@@ -1923,12 +1620,6 @@
   <X45_Props_Specific Name="NM06_Volatile_Structure_Hulk">
     <Variant_Of_Existing_Type> Scan_Drone_On_Death_Explosion </Variant_Of_Existing_Type>
     <Scale_Factor>1.3</Scale_Factor>
-	 
-	<BehaviorType Name="SFXBehaviorType">
-      <Death_SFXEvent_End_Die />
-		<!-- jdg 11/15/07 chaning the sfx event for rumble purposes -->
-      <Death_SFXEvent_Start_Die>SFX_NM06_Volatile_Structure_Death</Death_SFXEvent_Start_Die>
-    </BehaviorType>
   </X45_Props_Specific>
 
   <X45_Props_Specific Name="NM06_Comm_Terminal">
@@ -2095,6 +1786,17 @@
 			-->
       </BehaviorType>
 
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size>2</GUI_Bracket_Size>
+         <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+         <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> No </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 20.0 </GUI_Shift_Factor>
+         <GUI_Strategic_Mode_Scale> 0.05 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
+
       <BehaviorType Name="DeathFXBehaviorType">
          <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
          <Death_Clone_Keep_Behaviors> FADE_MESH </Death_Clone_Keep_Behaviors>
@@ -2226,7 +1928,11 @@
 		  <Radar_Icon_Size>0.05  0.05</Radar_Icon_Size>
 	  </BehaviorType>
 
-     <BehaviorType Name="TooltipBehaviorType">
+	  <BehaviorType Name="EncyclopediaBehaviorType">
+		  <Building_Queue_Type>Vehicle</Building_Queue_Type>
+	  </BehaviorType>
+
+	  <BehaviorType Name="TooltipBehaviorType">
 		  <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_STRUCTURE_WORMHOLE_PORTAL_TRANSPORT </Tooltip_Description_Text_ID>
 		  <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
 		  <HP_Attachment_Modifies_Tooltip> Yes </HP_Attachment_Modifies_Tooltip>
@@ -2423,6 +2129,7 @@
 
 			<Source_Particle_Effect />
 			<Target_Particle_Effect />
+			<SFX_Event />
 			<Spawn_Object_On_Death />
 		</BehaviorType>
 
@@ -2516,6 +2223,15 @@
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>90</Crush_Defense>
 		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
+		</BehaviorType>
+
 	</HardPoint>
 
 	<!-- Generic Under_Construction hardpoint -->
@@ -3077,6 +2793,10 @@
 		<Ranged_Target_Z_Adjust>10.0</Ranged_Target_Z_Adjust>
 		
 		<CategoryMask>Structure</CategoryMask>
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bounds_Scale>.35</GUI_Bounds_Scale>
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+		</BehaviorType>
 		<BehaviorType Name="SelectableBehaviorType">
 			<Select_Box_Scale>200</Select_Box_Scale>
 		</BehaviorType>
@@ -3204,7 +2924,7 @@
 		<Scale_Factor>1.0</Scale_Factor>
 		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
 		<Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
-		<Text_ID>TEXT_TOOLTIP_GATEWAY_INHIBITOR</Text_ID>
+		<Text_ID>TEXT_TOOLTIP_HARDPOINT</Text_ID>
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Stationary </CategoryMask>
@@ -3255,23 +2975,22 @@
 		   <Death_Clone_Is_Obstacle> true </Death_Clone_Is_Obstacle>
 		   <Death_Explosions>Large_Explosion_Land</Death_Explosions>
 		</BehaviorType>
-
-    <BehaviorType Name="RadarMapBehaviorType">
-      <Radar_Icon_Size>0.04  0.04</Radar_Icon_Size>
-    </BehaviorType>
-
-    <BehaviorType Name="BlobShadowBehaviorType">
+		
+		<BehaviorType Name="BlobShadowBehaviorType">
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
 		
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 		
 		<BehaviorType Name="SelectableBehaviorType">
@@ -4081,7 +3800,7 @@
    <X45_Props_Specific Name="Alien_Brute_Tut01">
 		<!-- jdg need a brute I can balance for the tutorial -->
 		<Variant_Of_Existing_Type> Alien_Brute </Variant_Of_Existing_Type>
-		<Tactical_Health> 1500 </Tactical_Health>
+		<Tactical_Health> 2000 </Tactical_Health>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Alien_Brute_Tut01 </Armor_Type>
@@ -4114,7 +3833,7 @@
 				<Activation_Min_Range>0</Activation_Min_Range>
 				<Activation_Max_Range>30.0</Activation_Max_Range>
 				<Attack_Animation>ATTACK_SPECIAL_A</Attack_Animation>
-				<Damage_Amount>75.0</Damage_Amount><!-- jdg tut01 brutes overpowered used to be 150 -->
+				<Damage_Amount>150.0</Damage_Amount>
 				<Damage_Percentage>0.0</Damage_Percentage>
 				<Damage_Type>Damage_Alien_Brute_Melee_Knockback</Damage_Type>
 				<Damage_Frame_Number>11</Damage_Frame_Number>
@@ -4192,7 +3911,7 @@
 			<Projectile_Does_Hitpoint_Damage> Yes </Projectile_Does_Hitpoint_Damage>
 
 			<!--          <Projectile_Damage>100.0</Projectile_Damage> -->
-			<Projectile_Blast_Area_Damage>100.0</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>200.0</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>60.0</Projectile_Blast_Area_Range>
 			<Projectile_Ballistic_Knockback_Radius> 50 </Projectile_Ballistic_Knockback_Radius>
 			<Projectile_Causes_Knockback_To_Enemy_Units> true </Projectile_Causes_Knockback_To_Enemy_Units>
@@ -4671,9 +4390,7 @@
 
 		<BehaviorType Name="SFXBehaviorType">
 			<Death_SFXEvent_End_Die />
-			<!-- jdg 11/14/07 new sfx event for portal for rumble purposes was: SFX_Novus_Large_Structure_Death
-			AMBIENT-->
-			<Death_SFXEvent_Start_Die> SFX_Novus_Portal_Death </Death_SFXEvent_Start_Die>
+			<Death_SFXEvent_Start_Die> SFX_Novus_Large_Structure_Death </Death_SFXEvent_Start_Die>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -4942,7 +4659,7 @@
 		
 		<Last_State_Visible_Under_FOW> No </Last_State_Visible_Under_FOW>
 		
-		<Tactical_Health> 2000 </Tactical_Health>
+		<Tactical_Health> 5000 </Tactical_Health>
 		<Max_Speed>1</Max_Speed>
 		
 		<BehaviorType Name="ProductionBehaviorType">
@@ -5488,7 +5205,6 @@
     <!-- INTERFACE -->
     <Is_Placed_By_Editor>true</Is_Placed_By_Editor>
   </X45_Props_Specific>
-	
   <X45_Props_Specific Name="NM07_Ohm_Scrap_B">
     <Variant_Of_Existing_Type>Resource_Ohm_Robot_Scrap</Variant_Of_Existing_Type>
     <!-- ART -->
@@ -5497,7 +5213,7 @@
     <!-- INTERFACE -->
     <Is_Placed_By_Editor>true</Is_Placed_By_Editor>
   </X45_Props_Specific>
-  
+
   <X45_Props_Specific Name="Generic_City_Rubble_Chunk_A">
 
     <!-- ART -->
@@ -5511,1348 +5227,8 @@
     <!-- ATTRIBUTES -->
     <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
-  </X45_Props_Specific>  <!-- jdg 7.25.07 This is your main guy in the X360 tutorial -->
-	<X45_Props_Specific Name="X360_Tutorial_29-11">
+  </X45_Props_Specific>
 
-		<!-- ART -->
-		<LOD_Bias>100</LOD_Bias><!-- jdg preventing 29-11 from LOD'ing out -->
-		<Land_Model_Name> NI_Reflex.ALO </Land_Model_Name>
-		<Scale_Factor> 1.1 </Scale_Factor>
-		<Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
-		<!--<SurfaceFX_Name> Generic_Footprint </SurfaceFX_Name>-->
-		<Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>
-		<Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
-		<Death_Fade_Time> .25 </Death_Fade_Time>
-		<Death_Persistence_Duration> 5 </Death_Persistence_Duration>
-      <AssetBank> BANK_NOVUS </AssetBank>
 
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_UNIT_NOVUS_REFLEX_TROOPER_2911 </Text_ID>
-		<GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
-		<GUI_Receives_Input> false </GUI_Receives_Input>
-		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
-		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
-		<Select_Box_Scale> 20 </Select_Box_Scale>
-		<Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
-
-		<!-- ATTRIBUTES -->
-		<Affiliation> novus </Affiliation>
-		<Victory_Relevant> No </Victory_Relevant>
-		<CategoryMask> Small, CanAttack </CategoryMask>
-		<Weather_Category> Infantry </Weather_Category>
-		<Create_Team> No </Create_Team>
-		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
-		<Importance> 0.3 </Importance>
-		<Shot_Type> Infantry </Shot_Type>
-
-		<Attributes SubObjectList="Yes">
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-			<Effect_Duration_1> 1.0 </Effect_Duration_1>
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Animation_Subindex_Override>0</Animation_Subindex_Override>
-      </Attributes>
-
-      <!-- MOVEMENT -->
-      <MovementClass> WaterWalker </MovementClass>
-      <Should_Move_At_Water_Level>True</Should_Move_At_Water_Level>
-      <Max_Speed> 1.8 </Max_Speed><!-- 1.3 -->
-      <Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
-      <Stopped_Rate_Of_Turn> 20.0 </Stopped_Rate_Of_Turn>
-      <Custom_Soft_Footprint_Radius> 8.5 </Custom_Soft_Footprint_Radius>
-      <Custom_Hard_XExtent> 7.0 </Custom_Hard_XExtent>
-      <Custom_Hard_YExtent> 7.0 </Custom_Hard_YExtent>
-      <Space_Layer> LandDynamic </Space_Layer>
-      <UnitCollisionClass> Infantry </UnitCollisionClass>
-      <FormationSpacing> .5 </FormationSpacing>
-      <FormationRaggedness> 1 </FormationRaggedness>
-      <FormationGrouping> Standard </FormationGrouping>
-      <!--Standard-->
-      <MaxJiggleDistance> 3.0 </MaxJiggleDistance>
-      <OverrideAcceleration> 0.15 </OverrideAcceleration>
-      <OverrideDeceleration> 0.15 </OverrideDeceleration>
-      <FormationOrder> 2 </FormationOrder>
-      <Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
-      <Rotation_Animation_Speed> 20.0 </Rotation_Animation_Speed>
-      <OccupationStyle> 1x1 </OccupationStyle>
-      <Strafe_Max_Speed_Coefficient> 1.0 </Strafe_Max_Speed_Coefficient>
-      <Backpedal_Max_Speed_Coefficient> 1.0 </Backpedal_Max_Speed_Coefficient>
-      <Strafe_Animation_Speed> 1.0 </Strafe_Animation_Speed>
-      <Backpedal_Animation_Speed> 1.0 </Backpedal_Animation_Speed>
-      <Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
-
-      <!-- CONFLICT -->
-		<Is_Attackable> true </Is_Attackable>
-		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
-		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range> 155.0 </Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
-
-		<Tactical_Health> 400 </Tactical_Health>
-
-		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
-		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
-		<Land_Damage_SFX>SFX_Generic_Detonation_1,SFX_Generic_Detonation_1,SFX_Generic_Detonation_1,SFX_Generic_Detonation_1</Land_Damage_SFX>
-
-
-		<!-- BEHAVIORS -->
-		<Behavior>
-			PERSISTENT_UNIT,
-			EFFECT_REGISTRY
-		</Behavior>
-
-		<LandBehavior>
-			SELECTABLE,
-			EFFECT_REGISTRY,
-			EFFECT_GENERATOR,
-			ATTRIBUTE_DIRECTORY,
-			RADAR_MAP_VISIBLE,
-			FLOW,
-			GUI,
-			SQUASH,
-			RADAR_MAP_VISIBLE,
-			<!--SURFACE_FX,-->
-			WALK_LOCOMOTOR,
-			FORMATION,
-			IDLE,
-			TARGETING,
-			TURRET,
-			REVEAL,
-			HIDE_WHEN_FOGGED,
-			BALLISTIC,
-			AI_RECRUITABLE,
-			DAMAGE_TRACKING,
-			AI_TARGET,
-			SPAWN_CLONES,
-			TACTICAL_SELL,
-			ABILITY_COUNTDOWN
-		</LandBehavior>
-
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Infantry_Heavy </Armor_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="TacticalSellBehaviorType">
-			<Sell_Effect_Generator_Name>NovusSellGenerator</Sell_Effect_Generator_Name>
-		</BehaviorType>
-		
-		<BehaviorType Name="LocomotorBehaviorType">
-		  <Passability_Generators> DeepWater, ReflexBoostGenerator </Passability_Generators>
-		  <Passability_Generators> ShallowWater, ReflexBoostGenerator </Passability_Generators>
-		  <Passability_Generators> Rough, ReflexBoostGenerator </Passability_Generators>
-		  <Path_Distance_Generator_Min_Distance> 140.0 </Path_Distance_Generator_Min_Distance>
-		  <Path_Distance_Effect_Generator> ReflexBoostGenerator </Path_Distance_Effect_Generator>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<!-- <Size_Value> 10 </Size_Value>
-			<Build_Cost_Credits> 325 </Build_Cost_Credits>
-			<Build_Time_Seconds> 9 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-			
-				Maria 11.07.2006 
-				This flag determines which types are used to populate the
-				build menu in global mode.
-				
-			<Strategic_UI_Build_Menu_Order>2</Strategic_UI_Build_Menu_Order>
-			-->
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-			
-		</BehaviorType>
-
-		<!--<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 650 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 650 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>-->
-
-		<BehaviorType name="AIBehaviorType">
-			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<Idle_Chase_Range> 1.0 </Idle_Chase_Range> <!-- 20 Double click guard area Keep very small-->
-			<Guard_Chase_Range> 1.0 </Guard_Chase_Range> <!-- 130 Guard radius for unit-->
-			<Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
-			<Attack_Move_Response_Range> 1.0 </Attack_Move_Response_Range> <!-- 50 When given a attack move command unit will travel this distance from path to attack-->
-			<AI_Target_Level>Group_Member</AI_Target_Level>
-			<Attack_Score_Rating> 0.9 </Attack_Score_Rating>
-			<Scout_Score_Rating> 0.0 </Scout_Score_Rating>
-			<Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		</BehaviorType>
-
-		<BehaviorType Name="SpawnClonesBehaviorType">
-			<Spawn_Clones_Type_To_Spawn> Novus_Reflex_Trooper_Clone </Spawn_Clones_Type_To_Spawn>
-			<Spawn_Clones_Number_Of_Clones> 3 </Spawn_Clones_Number_Of_Clones>
-         <Spawn_Clones_Delay_Seconds>1.5</Spawn_Clones_Delay_Seconds>
-         <Spawn_Clones_Clone_Lifetime_Seconds> 45 </Spawn_Clones_Clone_Lifetime_Seconds><!-- jdg -->
-			<Spawn_Clones_Clone_Lifetime_Seconds_Upgrade> 600 </Spawn_Clones_Clone_Lifetime_Seconds_Upgrade>
-		</BehaviorType>
-
-		<BehaviorType Name="WeaponBehaviorType">
-			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
-			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
-			<Targeting_Priority_Set> Novus_Reflex_Trooper_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Max_Attack_Distance> 15.0 </Targeting_Max_Attack_Distance>
-		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/08/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> false </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 20 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
-		<BehaviorType NAme="LuaScriptBehaviorType">
-			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
-			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Generic_Filtered_PBAOE,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
-			<Lua_Script_Data>
-				GenericVehicle = {}
-				GenericVehicle.SearchRange = 75.0
-				GenericVehicle.KiteRange = 10.0
-				GenericVehicle.CrushRange = 0.0
-				FILTERED_PBAOE = {}
-				FILTERED_PBAOE.COLLECT_RANGE = 180.0
-				FILTERED_PBAOE.MIN_TARGETS = 3
-				FILTERED_PBAOE.ABILITY_NAME = "Unit_Ability_Spawn_Clones"
-				FILTERED_PBAOE.CATEGORY_FILTER = "CanAttack"
-				DefensiveAI = {}
-				DefensiveAI.KillTurret = false
-			</Lua_Script_Data>
-		</BehaviorType>
-
-		<BehaviorType Name="TurretBehaviorType">
-			<Barrel_Bone_Name> Barrel </Barrel_Bone_Name>
-			<Turret_Bone_Name> Turret </Turret_Bone_Name>
-			<Turret_Rotate_Speed> 20.0 </Turret_Rotate_Speed>
-			<Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
-			<Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
-			<Turret_Rotate_Extent_Degrees> 10.0 </Turret_Rotate_Extent_Degrees>
-			<Turret_Elevate_Extent_Degrees> 45.0 </Turret_Elevate_Extent_Degrees>
-			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
-			<Ground_Infantry_Turret_Target> Yes </Ground_Infantry_Turret_Target>
-			<Turret_XY_Only> true </Turret_XY_Only>
-		</BehaviorType>
-
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_icon_ni_Reflex_Trooper.tga </Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_REFLEX_TROOPER </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_INFANTRY </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_STRUCTURES </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
-         <Researched_Upgrades>
-            TEXT_NOVUS_RESEARCH_TITLE_RAPID_FLOW
-            TEXT_NOVUS_RESEARCH_TITLE_STEALTH_UPGRADES
-            TEXT_NOVUS_RESEARCH_TITLE_SPAWN_CLONES_ABILITY
-            TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY
-            TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION
-         </Researched_Upgrades>
-		</BehaviorType>
-		
-		
-         		
-		<BehaviorType Name="RadarMapBehaviorType">
-			<Radar_Icon_Size> 0.02  0.02</Radar_Icon_Size>
-		</BehaviorType>
-
-		<BehaviorType Name="BallisticBehaviorType">
-			<Ballistic_Weight> 1.2 </Ballistic_Weight>
-			<Should_Face_Into_Knockback> true </Should_Face_Into_Knockback>
-		</BehaviorType>
-
-		<BehaviorType Name="BlobShadowBehaviorType">
-			<Blob_Shadow_Below_Detail_Level> 1 </Blob_Shadow_Below_Detail_Level>
-			<Blob_Shadow_Scale> 10.0, 10.0 </Blob_Shadow_Scale>
-			<Blob_Shadow_Material_Name> Generic_Shadow </Blob_Shadow_Material_Name>
-			<Blob_Shadow_Bone_Name> B_Chest </Blob_Shadow_Bone_Name>
-			<No_Reflection_Below_Detail_Level> 1 </No_Reflection_Below_Detail_Level>
-			<No_Refraction_Below_Detail_Level> 1 </No_Refraction_Below_Detail_Level>
-		</BehaviorType>
-
-		<BehaviorType Name="SFXBehaviorType">
-			<SFXEvent_Fire> SFX_Novus_Agent_Fire </SFXEvent_Fire>
-			<SFXEvent_Select></SFXEvent_Select>
-			<SFXEvent_Move>Unit_Move_A_Novus_Reflex_Trooper</SFXEvent_Move>
-			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Novus_Reflex_Trooper</SFXEvent_Move_At_Top_Speed>
-			<SFXEvent_Attack>Unit_Attack_A_Novus_Reflex_Trooper</SFXEvent_Attack>
-			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Novus_Reflex_Trooper</SFXEvent_Attack_At_Top_Speed>
-			<SFXEvent_Guard />
-			<SFXEvent_Ambient_Moving>  </SFXEvent_Ambient_Moving>
-			<Death_SFXEvent_Start_Die> SFX_Novus_Small_Vehicle_Death </Death_SFXEvent_Start_Die>
-			<SFXEvent_Health_Low_Warning> </SFXEvent_Health_Low_Warning>
-			<SFXEvent_Health_Critical_Warning> </SFXEvent_Health_Critical_Warning>
-			<SFXEvent_Enemy_Damaged_Health_Low_Warning> </SFXEvent_Enemy_Damaged_Health_Low_Warning>
-			<SFXEvent_Enemy_Damaged_Health_Critical_Warning> </SFXEvent_Enemy_Damaged_Health_Critical_Warning>
-
-			<SFXEvent_Tactical_Build_Started> GUI_BUILD_Vehicle </SFXEvent_Tactical_Build_Started>
-			<SFXEvent_Tactical_Build_Complete> Unit_Select_Novus_Reflex_Trooper </SFXEvent_Tactical_Build_Complete>
-			<SFXEvent_Tactical_Build_Cancelled> GUI_BUILD_Vehicle_Canceled </SFXEvent_Tactical_Build_Cancelled>
-
-			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
-			<SFXEvent_Build_Started> GUI_BUILD_Vehicle </SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete> Unit_Select_Novus_Reflex_Trooper </SFXEvent_Build_Complete>
-			<SFXEvent_Build_Cancelled> GUI_BUILD_Vehicle_Canceled </SFXEvent_Build_Cancelled>
-		</BehaviorType>
-
-      <BehaviorType Name="DeathFXBehaviorType">
-         <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
-         <Death_Clone> Damage_Default, Novus_Reflex_Trooper_Death_Clone_Resource </Death_Clone>
-         <Death_Fade_Time>.25</Death_Fade_Time>
-         <Death_Persistence_Duration>10</Death_Persistence_Duration>
-			<Death_Speed_Min>20.0</Death_Speed_Min>
-			<Death_Speed_Max>40.0</Death_Speed_Max>
-      </BehaviorType>
-
-		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 25 </Crush_Defense>
-			<Crush_Power> 6 </Crush_Power>
-		</BehaviorType>
-
-		<BehaviorType Name="FleetBehaviorType">
-			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
-		</BehaviorType>
-
-		<!-- ABILITIES -->
-		<Unit_Abilities_Data SubObjectList="Yes">
-
-			<!-- Activates Spawn Clones behavior -->
-			<Unit_Ability Name="Unit_Ability_Spawn_Clones">
-				<Type> SPAWN_CLONES </Type>
-            <Is_Modal> Yes </Is_Modal>
-				<Recharge_Seconds> 23.0 </Recharge_Seconds>
-				<Expiration_Seconds> 45.0 </Expiration_Seconds><!-- jdg -->
-            <Expiration_Seconds_Mult_Attribute> Effect_Duration_1 </Expiration_Seconds_Mult_Attribute>
-            <Should_Targeting_Ignore_Objects> YES </Should_Targeting_Ignore_Objects>
-				<Ability_Behavior_Type> SPAWN_CLONES </Ability_Behavior_Type>
-				<SFXEvent_GUI_Unit_Ability_Activated>SFX_Novus_Agent_Spawn_Clone</SFXEvent_GUI_Unit_Ability_Activated>
-				<Targeting_Type> NONE </Targeting_Type>
-				<Effect_Generator_Name> NovusReflexTrooperSpawnClonesVisualGenerator </Effect_Generator_Name>
-			</Unit_Ability>
-
-			<!-- Activates Blackout_Bomb special ability below -->
-			<Unit_Ability Name="Unit_Ability_Blackout_Bomb_Attack">
-				<Type> ATTACK_POSITION </Type>
-				<Recharge_Seconds> 45.0 </Recharge_Seconds>
-				<Should_Targeting_Ignore_Objects> YES </Should_Targeting_Ignore_Objects>
-				<GUI_Activated_Ability_Name> Blackout_Bomb_Attack_Ability </GUI_Activated_Ability_Name>
-				<SFXEvent_GUI_Unit_Ability_Activated />
-				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
-            <Area_Effect_Decal_Distance> 70.0 </Area_Effect_Decal_Distance>
-			</Unit_Ability>
-
-			<Unit_Ability Name="NovusReflexTrooperEnergyBlade">
-				<Type>EFFECT_GENERATOR</Type>
-				<Expiration_Seconds> 1.0 </Expiration_Seconds>
-				<Recharge_Seconds>0.0</Recharge_Seconds>
-				<GUI_Activated_Ability_Name> Novus_Reflex_Trooper_Energy_Blade_Ability </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> NovusReflexTrooperEnergyBladeGenerator </Effect_Generator_Name>
-			</Unit_Ability>
-
-		</Unit_Abilities_Data>
-
-		<Abilities SubObjectList="Yes">
-
-			<Effect_Generator_Ability Name="Novus_Reflex_Trooper_Energy_Blade_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 15.0 </Activation_Max_Range>
-				<Pre_Generate_Anim_Type />
-				<Post_Generate_Anim_Type />
-				<Generating_Anim_Type> ANIM_ATTACK </Generating_Anim_Type>
-				<Effect_Generator_Name> NovusReflexTrooperEnergyBladeGenerator </Effect_Generator_Name>
-				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
-				<Face_Target> true </Face_Target>
-				
-				<Excluded_Unit_Categories> Flying, Resource, Resource_INST, BodySocketHP </Excluded_Unit_Categories>
-
-			</Effect_Generator_Ability>
-
-			<Generic_Attack_Ability Name="Blackout_Bomb_Attack_Ability">
-				<Activation_Style>USER_INPUT</Activation_Style>
-				<Activation_Chance> 1.0 </Activation_Chance>
-				<Face_Target_Before_Firing> Yes </Face_Target_Before_Firing>
-				<Activation_Min_Range> 0.0 </Activation_Min_Range>
-				<Activation_Max_Range> 100.0 </Activation_Max_Range>
-				<Attack_Animation> ATTACK_SPECIAL_A </Attack_Animation>
-            <Damage_Frame_Number>15</Damage_Frame_Number>
-				<Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
-				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
-				<Projectile_Type> Proj_Novus_Relex_Blackout_Bomb </Projectile_Type>
-				<Is_Looping_Attack> No </Is_Looping_Attack>
-				<Projectile_Spawn_Bone_Name> Muzzle_B </Projectile_Spawn_Bone_Name>
-			</Generic_Attack_Ability>
-
-		</Abilities>
-
-		<!-- EFFECTS -->
-		<Effect_Generator_Data SubObjectList="Yes">
-
-			<Effect_Generator Name="NovusReflexTrooperEnergyBladeGenerator">
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> ReflexTrooperEnergyBladeDamage </Effect_Name>
-					<Duration> .10 </Duration>
-					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
-					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Base_Delay>.3 </Base_Delay>
-				</Effect_Generator_Entry>
-
-				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> ReflexTrooperEnergyBladeDamage </Effect_Name>
-					<Duration> .10 </Duration>
-					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
-					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Base_Delay>.6 </Base_Delay>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>
-
-			<!-- This is a researched upgrade -->
-			<Effect_Generator Name="NovusReflexTrooperCloakEffectGenerator">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 4.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> NovusReflexTrooperCloakingEffect </Effect_Name>
-					<Duration> -1.0 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-         <!-- This is a researched upgrade -->
-         <Effect_Generator Name="NovusReflexTrooperSpawnClonesUpgradeGenerator">
-            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-            <Starts_Active> true </Starts_Active>
-            <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> NovusReflexTrooperSpawnClonesUpgrade </Effect_Name>
-               <Duration> -1.0 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>
-
-         
-         <Effect_Generator Name="ReflexBoostGenerator">
-			 <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-			 <Is_Independent_Generator> true </Is_Independent_Generator>
-
-			 <Effect_Generator_Entry Name="Entry1">
-				<Effect_Name> ReflexBoostEffect </Effect_Name>
-				<Duration> -1 </Duration>
-				<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-			 </Effect_Generator_Entry>
-
-		  </Effect_Generator>
-
-			<!-- This generator will cleanse any harmful effects from this unit whenever it enters flow. Unlocked via research. -->
-			<Effect_Generator Name="NovusResearchNanitePurificationEffectGenerator">
-				<Application_Signals> OBJECT_ENTERED_FLOW </Application_Signals>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> NovusResearchNanitePurificationEffect </Effect_Name>
-					<Duration> 1.0 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-         <Effect_Generator Name="NovusReflexTrooperSpawnClonesVisualGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> NovusReflexTrooperSpawnClonesVisualEffect </Effect_Name>
-               <Duration> 2.0 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-
-         </Effect_Generator>
-
-			<!-- Standard Sell generator  - 06/28/2007 -->
-			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
-         
-      </Effect_Generator_Data>
-
-	</X45_Props_Specific>
-	
-	<X45_Props_Specific Name="X360_Tutorial_OhmBot">
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry</Variant_Of_Existing_Type>
-
-		<Attributes SubObjectList="Yes">
-         <Should_Always_Flow> true </Should_Always_Flow>
-      </Attributes>
-		
-      <BehaviorType Name="ProductionBehaviorType">
-         <Size_Value> 10 </Size_Value>
-         <Build_Cost_Credits> 50 </Build_Cost_Credits>
-         <Build_Time_Seconds> 3 </Build_Time_Seconds>
-         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-         <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-         <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-         <Strategic_UI_Build_Menu_Order>1</Strategic_UI_Build_Menu_Order>
-      </BehaviorType>
-      
-		<Scale_Factor>2.0</Scale_Factor>
-		<Space_Layer> None </Space_Layer>
-	</X45_Props_Specific>
-	
-	<X45_Props_Specific Name="X360_Tutorial_BladeTrooper">
-		<Variant_Of_Existing_Type>Novus_Reflex_Trooper</Variant_Of_Existing_Type>
-
-      <Space_Layer> None </Space_Layer>
-
-      <BehaviorType Name="ProductionBehaviorType">
-         <Size_Value> 10 </Size_Value>
-         <Build_Cost_Credits> 325 </Build_Cost_Credits>
-         <Build_Time_Seconds> 9 </Build_Time_Seconds>
-         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-         <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-         <!-- 
-				Maria 11.07.2006 
-				This flag determines which types are used to populate the
-				build menu in global mode.
-			-->
-         <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-         <Strategic_UI_Build_Menu_Order>2</Strategic_UI_Build_Menu_Order>
-      </BehaviorType>
-
-   </X45_Props_Specific>
-	
-	<X45_Props_Specific Name="X360_Tutorial_Portal">
-		<Variant_Of_Existing_Type>CIN_Novus_Portal</Variant_Of_Existing_Type>
-		<!-- ART -->
-		<Land_Model_Name> NB_Portal.alo </Land_Model_Name>
-		<Scale_Factor>2.5</Scale_Factor><!-- jdg was 2.0 -->
-		
-		<Is_Decoration>No</Is_Decoration><!-- jdg this object must NOT get culled -->
-		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-
-      <!-- INTERFACE -->
-      <Text_ID>TEXT_NONE</Text_ID>
-
-	</X45_Props_Specific>
-	
-	<X45_Props_Specific Name="X360_Signal_Tower_ShortRange">
-		<Variant_Of_Existing_Type>Novus_Signal_Tower</Variant_Of_Existing_Type>
-		<Scale_Factor>0.5</Scale_Factor>
-
-		<Attributes SubObjectList="Yes">
-			<Transmits_Novus_Signal> false </Transmits_Novus_Signal>
-			<Novus_Power_Transmission_Radius>75 </Novus_Power_Transmission_Radius>
-			<Novus_Power_Powerup_Radius> 500 </Novus_Power_Powerup_Radius>
-			<Flow_Speed_Multiplier> 0.0 </Flow_Speed_Multiplier>
-			<Novus_Flow_Radius> 1000 </Novus_Flow_Radius>
-			<Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
-			<Tactical_Sell_Time_Seconds>3.0</Tactical_Sell_Time_Seconds>
-		</Attributes>
-		
-		<BehaviorType Name="GroundStructureBehaviorType">
-			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-		</BehaviorType>
-	</X45_Props_Specific>
-	
-	<X45_Props_Specific Name="X360_Power_Router_ShortRange">
-		<Variant_Of_Existing_Type>Novus_Power_Router</Variant_Of_Existing_Type>
-
-		<Attributes SubObjectList="Yes">
-			<Novus_Power_Transmission_Radius> 200 </Novus_Power_Transmission_Radius>
-			<Novus_Power_Powerup_Radius> 260 </Novus_Power_Powerup_Radius>
-			<Novus_Flow_Radius> 60.0 </Novus_Flow_Radius>
-			<Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
-			<Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>
-		</Attributes>
-		
-		<BehaviorType Name="GroundStructureBehaviorType">
-			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-		</BehaviorType>
-	</X45_Props_Specific>
-	
-	
-	<!-- jdg 8/9/07 these guys are used for ambient "flow" on Novus home world tutorial -->
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Ambient_Flow_Test">
-
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry</Variant_Of_Existing_Type>
-
-		<LandBehavior>
-			DAMAGE_TRACKING,
-			SELECTABLE,
-			SURFACE_FX,
-			RADAR_MAP_VISIBLE,
-			WALK_LOCOMOTOR,
-			FORMATION,
-			IDLE,
-			WEAPON,
-			TURRET,
-			REVEAL,
-			HIDE_WHEN_FOGGED,
-			BALLISTIC,
-			UNIT_ABILITY,
-			LEAP,
-			ABILITY_COUNTDOWN,
-			EFFECT_GENERATOR,
-			FLOW,
-			ATTRIBUTE_DIRECTORY,
-			GUI,
-			TARGETING,
-			AI_RECRUITABLE,
-			AI_TARGET,
-			TACTICAL_SELL,
-			UNIT_AI,
-			AMBIENT_FLOW
-		</LandBehavior>
-		
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> AmbientFlowTest </Lua_Land_Behaviors>
-			<Lua_Script_Data> </Lua_Script_Data>
-		</BehaviorType>
-
-		<BehaviorType Name="FlowBehaviorType">
-			<Flow_Particle_Type> Flow_Object_Particle </Flow_Particle_Type>
-			<Should_Flow_Through_Same_Player_Only> true </Should_Flow_Through_Same_Player_Only>
-			<Should_Ignore_Speed_Considerations_For_Flow> true </Should_Ignore_Speed_Considerations_For_Flow>
-			<Should_Adjust_Flow_Target_Position> false </Should_Adjust_Flow_Target_Position>
-		</BehaviorType>
-
-		<Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Should_Always_Flow> true </Should_Always_Flow>
-		</Attributes>
-		
-		<!-- Maria 12.04.2006 we do not want this to show up in the build menu so we must override the 
-			Is_Buildable_By_Constructor flag. -->
-		<BehaviorType Name="GroundStructureBehaviorType">
-			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-		</BehaviorType>
-		
-		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
-		
-   </X45_Props_Specific>
-	
-	
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Ambient_Flow_1a">
-
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry_Ambient_Flow_Test</Variant_Of_Existing_Type>
-		
-		<Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Should_Always_Flow> true </Should_Always_Flow>
-		</Attributes>
-
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> AmbientFlow1a </Lua_Land_Behaviors>
-			<Lua_Script_Data> </Lua_Script_Data>
-		</BehaviorType>
-		
-   </X45_Props_Specific>
-	
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Ambient_Flow_1b">
-
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry_Ambient_Flow_Test</Variant_Of_Existing_Type>
-		
-		<Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Should_Always_Flow> true </Should_Always_Flow>
-		</Attributes>
-
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> AmbientFlow1b </Lua_Land_Behaviors>
-			<Lua_Script_Data> </Lua_Script_Data>
-		</BehaviorType>
-		
-   </X45_Props_Specific>
-	
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Ambient_Flow_1c">
-
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry_Ambient_Flow_Test</Variant_Of_Existing_Type>
-		
-		<Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Should_Always_Flow> true </Should_Always_Flow>
-		</Attributes>
-
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> AmbientFlow1c </Lua_Land_Behaviors>
-			<Lua_Script_Data> </Lua_Script_Data>
-		</BehaviorType>
-		
-   </X45_Props_Specific>
-	
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Ambient_Flow_1d">
-
-		<Variant_Of_Existing_Type>Novus_Robotic_Infantry_Ambient_Flow_Test</Variant_Of_Existing_Type>
-		
-		<Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Should_Always_Flow> true </Should_Always_Flow>
-		</Attributes>
-
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> AmbientFlow1d </Lua_Land_Behaviors>
-			<Lua_Script_Data> </Lua_Script_Data>
-		</BehaviorType>
-		
-   </X45_Props_Specific>
-
-   <X45_Props_Specific Name="Placeholder_Death_Clone_Small">
-
-      <!-- ART -->
-      <Land_Model_Name> wo_unitscrap.alo </Land_Model_Name>
-      <Scale_Factor> 2.5 </Scale_Factor>
-      <Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
-
-      <!-- INTERFACE -->
-      <Text_ID> TEXT_NONE </Text_ID>
-      <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
-
-      <!-- ATTRIBUTES -->
-      <CategoryMask> Resource_INST </CategoryMask>
-
-      <!-- CONFLICT -->
-      <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-      <Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
-      <Is_Attackable>Yes</Is_Attackable>
-      <Ranged_Target_Z_Adjust>15.0</Ranged_Target_Z_Adjust>
-
-      <!-- BEHAVIORS -->
-      <LandBehavior>
-         BALLISTIC,
-         SPAWN_DEBRIS,
-         EFFECT_REGISTRY,
-         DEBRIS,
-         RESOURCE,
-         ATTRIBUTE_DIRECTORY,
-			EFFECT_GENERATOR
-      </LandBehavior>
-
-      <BehaviorType Name="DebrisBehaviorType">
-         <Debris_Min_Lifetime_Seconds> 20.0 </Debris_Min_Lifetime_Seconds>
-         <Debris_Max_Lifetime_Seconds> 20.0 </Debris_Max_Lifetime_Seconds>
-      </BehaviorType>
-
-      <BehaviorType Name="SpawnDebrisBehaviorType">
-         <Creation_Debris_Types>
-            Generic_Vehicle_Death_Clone_Chunk,
-            Generic_Vehicle_Death_Clone_Radiator,
-            Generic_Vehicle_Death_Clone_Pipe,
-            Generic_Vehicle_Death_Clone_Grill
-         </Creation_Debris_Types>
-
-         <Debris_Speed_Min> 50.0 </Debris_Speed_Min>
-         <Debris_Speed_Max> 100.0 </Debris_Speed_Max>
-         <Debris_Outward_Speed_Min> 50.0 </Debris_Outward_Speed_Min>
-         <Debris_Outward_Speed_Max> 100.0 </Debris_Outward_Speed_Max>
-         <Debris_Ang_Min> 1.0 </Debris_Ang_Min>
-         <Debris_Ang_Max> 30.0 </Debris_Ang_Max>
-      </BehaviorType>
-
-      <BehaviorType Name="BallisticBehaviorType">
-         <Ballistic_Weight> 2.0 </Ballistic_Weight>
-         <Ballistic_Bounce> 0.3 </Ballistic_Bounce>
-      </BehaviorType>
-
-      <BehaviorType Name="DeathFXBehaviorType">
-         <Death_Explosions> Large_Explosion_Land </Death_Explosions>
-         <Death_Speed_Min> 100.0 </Death_Speed_Min>
-         <Death_Speed_Max> 120.0 </Death_Speed_Max>
-         <Death_Ang_Min> 1.0 </Death_Ang_Min>
-         <Death_Ang_Max> 2.0 </Death_Ang_Max>
-         <Death_Horizontal_Speed> 10.0 </Death_Horizontal_Speed>
-      </BehaviorType>
-
-      <BehaviorType Name="SFXBehaviorType">
-         <Death_SFXEvent_Start_Die> SFX_Car_Death </Death_SFXEvent_Start_Die>
-      </BehaviorType>
-
-      <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Damage_Type> Damage_Default </Damage_Type>
-      </BehaviorType>
-
-		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
-			<Is_Single_Resource> true </Is_Single_Resource>
-		</BehaviorType>
-
-		
-		<Effect_Generator_Data SubObjectList="Yes" Replace="false">
-			<!-- Fall down on the ground -->
-			<Effect_Generator Name="ResourceFallDownEffectGenerator">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Starts_Active> true </Starts_Active>
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> LaunchBallisticBehaviorEffect </Effect_Name>
-					<Duration>-1</Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-		</Effect_Generator_Data>
-		
-	</X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Team_Robotic_Infantry">
-
-		<!-- INTERFACE -->
-		<Text_ID>TEXT_UNIT_NOVUS_OHM_ROBOT</Text_ID>
-		<Select_Box_Scale>0</Select_Box_Scale>
-		<Show_Name>No</Show_Name>
-		<GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name> 
-		<GUI_Receives_Input> false </GUI_Receives_Input>
-		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
-		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		
-		<!-- ATTRIBUTES -->
-		<LOD_Bias>10</LOD_Bias>
-		<Create_Team_Type> Novus_Team_Robotic_Infantry </Create_Team_Type>
-		<Affiliation> Novus </Affiliation>
-		<CategoryMask> TeamContainer, Small, Organic, CanAttack, RadiationHurts </CategoryMask>
-		<Max_Squad_Size> 10 </Max_Squad_Size>
-		<Company_Units> 
-				 Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member,
-				 Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member,
-				 Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member, Novus_Robotic_Infantry_Team_Member,
-				 Novus_Robotic_Infantry_Team_Member
-		</Company_Units> 
-		<Build_Limit_Lifetime_Per_Player> -1 </Build_Limit_Lifetime_Per_Player>
-		<Importance> 0.4 </Importance>
-		<Shot_Type> Infantry </Shot_Type>
-
-		<!-- MOVEMENT -->
-		<MovementClass>Infantry</MovementClass>
-		<OccupationStyle>1x1</OccupationStyle>
-		<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<Space_Layer> LandDynamic </Space_Layer>
-		<Max_Speed> 1.4 </Max_Speed>
-		<Max_Rate_Of_Turn>180.0</Max_Rate_Of_Turn>
-		<MovementPredictionInterval> 2.5 </MovementPredictionInterval>
-		<ContainerArrangement> Novus </ContainerArrangement>
-		<FormationOrder> 2 </FormationOrder>
-		<FormationSpacing> .5 </FormationSpacing>
-		<OverrideAcceleration> .1 </OverrideAcceleration>
-		<OverrideDeceleration> .1 </OverrideDeceleration>
-		<Verlet_Coefficient> 0.01 </Verlet_Coefficient>
-		<Custom_Hard_XExtent> 20.0 </Custom_Hard_XExtent>
-		<Custom_Hard_YExtent> 15.0 </Custom_Hard_YExtent>
-
-		<!-- CONFLICT -->
-		<Is_Attackable>true</Is_Attackable>
-		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
-		<Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
-
-		<!-- BEHAVIORS -->
-
-		<LandBehavior>
-			TEAM,
-			SELECTABLE,
-			GUI,
-			UNIT_AI,
-			ATTRIBUTE_DIRECTORY,
-			REVEAL,
-			LAND_TEAM_CONTAINER_LOCOMOTOR,
-			TEAM_TARGETING,
-			FORMATION,
-			EFFECT_REGISTRY,
-			AI_RECRUITABLE,
-			AI_TARGET
-		</LandBehavior>
-
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Infantry_Light </Armor_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<Size_Value> 10 </Size_Value>
-			<Build_Cost_Credits> 10 </Build_Cost_Credits>
-			<Build_Time_Seconds> 5 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-			<!-- 
-				Maria 11.07.2006 
-				This flag determines which types are used to populate the
-				build menu in global mode.
-			-->
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 200 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 200 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 8 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>
-
-    <BehaviorType name="AIBehaviorType">
-      <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 140.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
-      <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
-      <AI_Target_Level>Group_Member</AI_Target_Level>
-    </BehaviorType>
-
-    <BehaviorType Name="WeaponBehaviorType">
-      <Targeting_Priority_Set> Novus_Ohm_Robot_Target_Priority </Targeting_Priority_Set>
-      <Targeting_Fire_Inaccuracy> 15.0 </Targeting_Fire_Inaccuracy>
-      <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 100.0 </Targeting_Max_Attack_Distance>
-    </BehaviorType>
-
-    <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ni_ohm_robot.tga </Icon_Name>
-		</BehaviorType>
-		
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_OHM_ROBOT </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_INFANTRY </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_INFANTRY </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>
-		</BehaviorType>
-
-      <BehaviorType Name="SFXBehaviorType">
-         <SFXEvent_Fire>SFX_Novus_Infantry_Fire</SFXEvent_Fire>
-         <SFXEvent_Select>Unit_Select_Novus_Infantry</SFXEvent_Select>
-         <SFXEvent_Move>Unit_Move_A_Novus_Infantry</SFXEvent_Move>
-         <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Novus_Infantry</SFXEvent_Move_At_Top_Speed>
-         <SFXEvent_Attack>Unit_Attack_A_Novus_Infantry</SFXEvent_Attack>
-         <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Novus_Infantry</SFXEvent_Attack_At_Top_Speed>
-         <SFXEvent_Guard />
-         <Death_SFXEvent_Start_Die>SFX_Novus_Small_Vehicle_Death</Death_SFXEvent_Start_Die>
-         <SFXEvent_Tactical_Build_Started>GUI_BUILD_INFANTRY</SFXEvent_Tactical_Build_Started>
-         <SFXEvent_Tactical_Build_Complete>Unit_Select_Novus_Infantry</SFXEvent_Tactical_Build_Complete>
-         <SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_INFANTRY_Canceled</SFXEvent_Tactical_Build_Cancelled>
-
-         <SFXEvent_Build_Started>GUI_BUILD_INFANTRY</SFXEvent_Build_Started>
-         <SFXEvent_Build_Complete>Unit_Select_Novus_Infantry</SFXEvent_Build_Complete>
-         <SFXEvent_Build_Cancelled>GUI_BUILD_INFANTRY_Canceled</SFXEvent_Build_Cancelled>
-      </BehaviorType>
-
-		<BehaviorType Name="CrushBehaviorType">
-			 <Crush_Defense>10</Crush_Defense>
-		</BehaviorType>
-		
-		<BehaviorType Name="FleetBehaviorType">
-			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
-		</BehaviorType>
-		
-   </X45_Props_Specific>
-
-	<X45_Props_Specific Name="Novus_Team_Robotic_Infantry_Spawner">
-		<Text_ID> TEXT_STORY_TRIGGER_ZONE </Text_ID>
-		<Land_Model_Name>NI_Infantry.ALO</Land_Model_Name>	
-		<Scale_Factor> 5.0 </Scale_Factor>	
-		<Is_Marker>Yes</Is_Marker>
-		<Is_Decoration>No</Is_Decoration>
-		<Affiliation>Novus</Affiliation>
-		<Behavior>MARKER, HINT</Behavior>
-      <AssetBank> BANK_NOVUS </AssetBank>
-		
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> MarkerSpawner </Lua_Land_Behaviors>
-			<Lua_Script_Data> 
-				MARKER_SPAWNER_TYPE = "Novus_Team_Robotic_Infantry"
-			</Lua_Script_Data>
-	
-		</BehaviorType>
-		
-	</X45_Props_Specific>
-		
-	<X45_Props_Specific Name="Novus_Robotic_Infantry_Team_Member">
-		
-		<!-- ART -->
-		<Land_Model_Name> NI_Infantry.ALO </Land_Model_Name>
-		<SurfaceFX_Name> Novus_Ohm_Robot_foot </SurfaceFX_Name>
-		<Scale_Factor> 1.5 </Scale_Factor>
-      <Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
-      <SurfaceFX_Name> Novus_Ohm_Robot_foot </SurfaceFX_Name>
-      <Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>
-      <Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
-      <AssetBank> BANK_NOVUS </AssetBank>
-
-      <!-- INTERFACE -->
-      <Text_ID>TEXT_UNIT_NOVUS_OHM_ROBOT</Text_ID>
-      <GUI_Scene_Name> HealthBar_Scene </GUI_Scene_Name>
-      <GUI_Receives_Input> false </GUI_Receives_Input>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 0.4 </GUI_Default_Scale>
-      <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
-      <Select_Box_Scale> 15 </Select_Box_Scale>
-      <Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
-      <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
-	
-      <!-- ATTRIBUTES -->
-      <Affiliation>Novus</Affiliation>
-      <Victory_Relevant> No </Victory_Relevant>
-      <CategoryMask> Small, CanAttack, RadiationHurts </CategoryMask>
-      <Weather_Category>Infantry</Weather_Category>
-      <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
-      <Importance> 0.3 </Importance>
-      <Shot_Type> Infantry </Shot_Type>
- 		<Create_Team>Yes</Create_Team>
-     
-		<!-- MOVEMENT -->		
-		<MovementClass>Infantry</MovementClass>
-		<UnitCollisionClass> None </UnitCollisionClass>
-		<Space_Layer> None </Space_Layer>
-		<Max_Speed> 1.4 </Max_Speed>
-		<Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
-		<Custom_Soft_Footprint_Radius> 5.0 </Custom_Soft_Footprint_Radius>
-		<Custom_Hard_XExtent> 3.0 </Custom_Hard_XExtent>
-		<Custom_Hard_YExtent> 3.0 </Custom_Hard_YExtent>
-		<FormationSpacing> .2 </FormationSpacing>
-		<FormationRaggedness> 0 </FormationRaggedness>
-		<FormationGrouping> Standard </FormationGrouping>
-		<!--Standard-->
-		<FormationOrder> 2 </FormationOrder>
-		<MaxJiggleDistance> 0 </MaxJiggleDistance>
-		<OverrideAcceleration> .1 </OverrideAcceleration>
-		<OverrideDeceleration> .1 </OverrideDeceleration>
-		<Movement_Animation_Speed> 1.4 </Movement_Animation_Speed>
-		<Rotation_Animation_Speed> 20.0 </Rotation_Animation_Speed>
-		<OccupationStyle>1x1</OccupationStyle>
-		<Walk_Animation_Speed> .5 </Walk_Animation_Speed>
-		<Crouch_Animation_Speed> .537 </Crouch_Animation_Speed>
-		<Strafe_Animation_Speed> 2.0 </Strafe_Animation_Speed>
-		<Backpedal_Animation_Speed> 2.0 </Backpedal_Animation_Speed>
-		<Strafe_Max_Speed_Coefficient> 1 </Strafe_Max_Speed_Coefficient>
-		<Backpedal_Max_Speed_Coefficient> 1 </Backpedal_Max_Speed_Coefficient>
-		<Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
-		<Should_Ignore_Lower_Verlet> true </Should_Ignore_Lower_Verlet>
-		<Verlet_Coefficient> 2.0 </Verlet_Coefficient>
-		<Moving_Verlet_Coefficient> 1.0 </Moving_Verlet_Coefficient>
-		<Should_Use_Turn_Delay> false </Should_Use_Turn_Delay>
-
-		<!-- CONFLICT -->
-		<Is_Attackable>true</Is_Attackable>
-		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Ranged_Target_Z_Adjust> 8.0 </Ranged_Target_Z_Adjust>
-		<Target_Bones> B_PELVIS </Target_Bones>
-
-		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
-		<Land_FOW_Reveal_Range>160.0</Land_FOW_Reveal_Range>
-		<Tactical_Health> 200 </Tactical_Health>
-		
-		<LandBehavior>
-			SELECTABLE,
-			SURFACE_FX,
-			RADAR_MAP_VISIBLE,
-			LAND_TEAM_INFANTRY_LOCOMOTOR,
-			FORMATION,
-			IDLE,
-			WEAPON,
-			TURRET,
-			REVEAL,
-			HIDE_WHEN_FOGGED,
-			DAMAGE_TRACKING,
-			BALLISTIC,
-			EFFECT_REGISTRY,
-			FLOW,
-			ATTRIBUTE_DIRECTORY,
-			AI_RECRUITABLE,
-			AI_TARGET,
-			UNIT_AI							
-		</LandBehavior>
-
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Infantry_Light </Armor_Type>
-		</BehaviorType>
-		
-      <BehaviorType Name="ProductionBehaviorType">
-         <Size_Value> 10 </Size_Value>
-         <Build_Cost_Credits> 50 </Build_Cost_Credits>
-         <Build_Time_Seconds> 3 </Build_Time_Seconds>
-         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-         <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-			<Strategic_UI_Build_Menu_Order>1</Strategic_UI_Build_Menu_Order>
-      </BehaviorType>
-
-      <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-         <Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 5 </Tactical_Build_Time_Seconds>
-         <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
-      </BehaviorType>
-
-      <BehaviorType name="AIBehaviorType">
-         <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-         <Guard_Chase_Range> 140.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-         <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
-         <Attack_Move_Response_Range> 35.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
-         <AI_Target_Level>Group_Member</AI_Target_Level>
-         <Idle_AI_Thread_Name>Defensive_AI_Thread</Idle_AI_Thread_Name>
-			<Attack_Score_Rating> 0.5 </Attack_Score_Rating>
-			<Scout_Score_Rating> 0.2 </Scout_Score_Rating>
-			<Guerilla_Score_Rating> 0.1 </Guerilla_Score_Rating>
-		</BehaviorType>
-      
-      <BehaviorType Name="WeaponBehaviorType">
-         <Targeting_Priority_Set> Novus_Ohm_Robot_Target_Priority </Targeting_Priority_Set>
-         <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 125.0 </Targeting_Max_Attack_Distance>
-         <Projectile_Types>Proj_Novus_Flechette_Rifle</Projectile_Types>
-         <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-         <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-         <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
-			<Should_Sync_Attack_Anim_Speed_To_Next_Shot> true </Should_Sync_Attack_Anim_Speed_To_Next_Shot>
-      </BehaviorType>
-
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ni_ohm_robot.tga </Icon_Name>
-      </BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_OHM_ROBOT </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_INFANTRY </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_INFANTRY </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>
-
-         <Researched_Upgrades>
-            TEXT_NOVUS_RESEARCH_TITLE_RAPID_FLOW
-            TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY
-            TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION
-         </Researched_Upgrades>
-		</BehaviorType>
-		
-         		
-      <BehaviorType Name="RadarMapBehaviorType">
-         <Radar_Icon_Size>0.02  0.02</Radar_Icon_Size>
-      </BehaviorType>
-
-      <BehaviorType Name="TurretBehaviorType">
-         <Muzzle_Bone_Name> muzzleA </Muzzle_Bone_Name>
-         <Barrel_Bone_Name> Barrel </Barrel_Bone_Name>
-         <Turret_Bone_Name> Turret </Turret_Bone_Name>
-         <Turret_Rotate_Speed> 20.0 </Turret_Rotate_Speed>
-         <Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
-         <Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
-         <Turret_Rotate_Extent_Degrees> 45.0 </Turret_Rotate_Extent_Degrees>
-         <Turret_Elevate_Extent_Degrees> 10.0 </Turret_Elevate_Extent_Degrees>
-         <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
-         <Ground_Infantry_Turret_Target> Yes </Ground_Infantry_Turret_Target>
-         <Turret_XY_Only> true </Turret_XY_Only>
-      </BehaviorType>
-
-      <BehaviorType Name="BallisticBehaviorType">
-         <Ballistic_Weight> 1.0 </Ballistic_Weight>
-         <Should_Face_Into_Knockback> true </Should_Face_Into_Knockback>
-      </BehaviorType>
-
-      <BehaviorType Name="CrushBehaviorType">
-         <Crush_Defense>10</Crush_Defense>
-      </BehaviorType>
-
-      <BehaviorType Name="BlobShadowBehaviorType">
-         <Blob_Shadow_Below_Detail_Level>1</Blob_Shadow_Below_Detail_Level>
-         <Blob_Shadow_Scale>10.0, 10.0</Blob_Shadow_Scale>
-         <Blob_Shadow_Bone_Name>B_Chest</Blob_Shadow_Bone_Name>
-         <Blob_Shadow_Material_Name>Generic_Shadow</Blob_Shadow_Material_Name>
-         <No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
-         <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
-      </BehaviorType>
-
-      <BehaviorType Name="SFXBehaviorType">
-         <SFXEvent_Fire>SFX_Novus_Infantry_Fire</SFXEvent_Fire>
-         <SFXEvent_Select>Unit_Select_Novus_Infantry</SFXEvent_Select>
-         <SFXEvent_Move>Unit_Move_A_Novus_Infantry</SFXEvent_Move>
-         <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Novus_Infantry</SFXEvent_Move_At_Top_Speed>
-         <SFXEvent_Attack>Unit_Attack_A_Novus_Infantry</SFXEvent_Attack>
-         <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Novus_Infantry</SFXEvent_Attack_At_Top_Speed>
-         <SFXEvent_Guard />
-         <Death_SFXEvent_Start_Die>SFX_Novus_Small_Vehicle_Death</Death_SFXEvent_Start_Die>
-         <SFXEvent_Tactical_Build_Started>GUI_BUILD_INFANTRY</SFXEvent_Tactical_Build_Started>
-         <SFXEvent_Tactical_Build_Complete>Unit_Select_Novus_Infantry</SFXEvent_Tactical_Build_Complete>
-         <SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_INFANTRY_Canceled</SFXEvent_Tactical_Build_Cancelled>
-
-         <SFXEvent_Build_Started>GUI_BUILD_INFANTRY</SFXEvent_Build_Started>
-         <SFXEvent_Build_Complete>Unit_Select_Novus_Infantry</SFXEvent_Build_Complete>
-         <SFXEvent_Build_Cancelled>GUI_BUILD_INFANTRY_Canceled</SFXEvent_Build_Cancelled>
-      </BehaviorType>
-
-      <BehaviorType Name="DeathFXBehaviorType">
-			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
-         <Death_Clone> Damage_Default, Novus_Robotic_Infantry_Death_Clone_Resource </Death_Clone>
-         <Death_Clone> Damage_Masari_Peacebringer_Disintegrate, Novus_Robotic_Infantry_Death_Clone_Skeleton </Death_Clone>
-         <Death_Clone> Damage_Melee_Knockback, Novus_Robotic_Infantry_Death_Clone_Melee_Knockback </Death_Clone>
-         <Death_Clone> Damage_Falling, Novus_Robotic_Infantry_Death_Clone_Falling </Death_Clone>
-         <Death_Clone> Damage_Novus_Robot_Infantry_Self_Destruct, Novus_Robotic_Infantry_Death_Clone_Self_Destruct </Death_Clone>
-         <Death_Fade_Time> 0.25 </Death_Fade_Time>
-         <Death_Persistence_Duration> 60 </Death_Persistence_Duration>
-			<Death_Speed_Min>1.0</Death_Speed_Min>
-			<Death_Speed_Max>2.0</Death_Speed_Max>
-      </BehaviorType>
-		
-	</X45_Props_Specific>
-	
-		<X45_Props_Specific Name="Novus_Robotic_Infantry_Solo">
-		<Variant_Of_Existing_Type> Novus_Robotic_Infantry_Team_Member </Variant_Of_Existing_Type>
-		<Is_Placed_By_Editor> true </Is_Placed_By_Editor>
-
-		<MovementClass>Infantry</MovementClass>
-		<OccupationStyle>1x1</OccupationStyle>
-		<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<Space_Layer> LandDynamic </Space_Layer>
-		<Custom_Hard_XExtent> 4.0 </Custom_Hard_XExtent>
-		<Custom_Hard_YExtent> 4.0 </Custom_Hard_YExtent>
-		
-		<LandBehavior>
-			SELECTABLE,
-			SURFACE_FX,
-			RADAR_MAP_VISIBLE,
-			WALK_LOCOMOTOR,
-			FORMATION,
-			IDLE,
-			WEAPON,
-			TARGETING,
-			TURRET,
-			REVEAL,
-			HIDE_WHEN_FOGGED,
-			DAMAGE_TRACKING,
-			BALLISTIC,
-			EFFECT_REGISTRY
-		</LandBehavior>
-		
-	</X45_Props_Specific>
-	
-	<!-- jdg a variant of Mirabel used in the 360 tutorial...i need to override some values-->
-	<X45_Props_Specific Name="Mirabel_360_Tutorial">
-
-		<Variant_Of_Existing_Type>Novus_Hero_Mech</Variant_Of_Existing_Type>
-		
-		
-		<!-- jdg this sets her max attack range to ZERO...need her to only use special attacks-->
-		<BehaviorType Name="WeaponBehaviorType">
-			<Muzzle_Bone_Name>MuzzleA</Muzzle_Bone_Name>
-			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-			<Targeting_Priority_Set> Novus_Mirabel_Ground_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 0.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Novus_Mech_Flechette_Rifle</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>18</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.12</Projectile_Fire_Pulse_Delay_Seconds>
-		</BehaviorType>
-		
-		<!-- ABILITIES -->
-		<Unit_Abilities_Data SubObjectList="Yes">
-
-			<Unit_Ability Name="Novus_Mech_Retreat_From_Tactical_Ability">
-				<Type> RETREAT_TAKE_OFF </Type>
-				<Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
-				<Recharge_Seconds>60.0</Recharge_Seconds>
-				<Should_Targeting_Ignore_Objects> Yes </Should_Targeting_Ignore_Objects>
-				<Targeting_Type> LAND_PASSIBLE_LOCATION </Targeting_Type>
-				<GUI_Activated_Ability_Name> Novus_Mech_Retreat_From_Tactical_Special_Ability </GUI_Activated_Ability_Name>
-				<Area_Effect_Decal_Distance> 150.0 </Area_Effect_Decal_Distance>
-				<SFXEvent_GUI_Unit_Ability_Activated>Unit_RETREAT_CALL_Novus_Mirabel </SFXEvent_GUI_Unit_Ability_Activated>
-				<SFXEvent_Target_Ability />
-			</Unit_Ability>
-
-			<Unit_Ability Name="Unit_Ability_Mech_Minirocket_Barrage">
-				<Type>ATTACK_POSITION</Type>
-				<Recharge_Seconds>10.0</Recharge_Seconds>
-				<GUI_Activated_Ability_Name> Special_Ability_Mech_Minirocket_Barrage </GUI_Activated_Ability_Name>
-				<SFXEvent_GUI_Unit_Ability_Activated> GUI_NOVUS_ABILITY_ROCKET </SFXEvent_GUI_Unit_Ability_Activated>
-				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
-				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
-				<Area_Effect_Decal_Distance> 60.0 </Area_Effect_Decal_Distance>
-				<SFXEvent_GUI_Unit_Ability_Activated> Unit_Ability_A_Novus_Mirabel </SFXEvent_GUI_Unit_Ability_Activated>
-				<SFXEvent_Target_Ability />
-			</Unit_Ability>
-
-			<Unit_Ability Name="Unit_Ability_Mech_Vehicle_Snipe_Attack">
-				<Type>ATTACK_SUBSTITUTE</Type>
-				<Recharge_Seconds>10.0</Recharge_Seconds>
-				<GUI_Activated_Ability_Name> Mech_Vehicle_Snipe_Attack </GUI_Activated_Ability_Name>
-				<SFXEvent_GUI_Unit_Ability_Activated>GUI_NOVUS_ABILITY_SNIPE</SFXEvent_GUI_Unit_Ability_Activated>
-				<Targeting_Type> ENEMY_OBJECT </Targeting_Type>
-				<SFXEvent_GUI_Unit_Ability_Activated>  </SFXEvent_GUI_Unit_Ability_Activated>
-				<SFXEvent_Target_Ability>Unit_Ability_B_Novus_Mirabel</SFXEvent_Target_Ability>
-			</Unit_Ability>
-
-		</Unit_Abilities_Data>
-		
-		<Abilities SubObjectList="Yes" Replace="false">
-
-			<Generic_Attack_Ability Name="Mech_Vehicle_Snipe_Attack">
-            <Activation_Style>USER_INPUT</Activation_Style>
-            <Activation_Chance>1.0</Activation_Chance>
-            <Activation_Min_Range>0.0</Activation_Min_Range>
-            <Activation_Max_Range>800.0</Activation_Max_Range>
-            <Activation_Recharge_Time> 2.0 </Activation_Recharge_Time>
-            <Pre_Attack_Animation> SPECIAL_START_C </Pre_Attack_Animation>
-            <Attack_Animation>ANIM_SPECIAL_C</Attack_Animation>
-            <Post_Attack_Animation>SPECIAL_END_C </Post_Attack_Animation>
-            <Damage_Frame_Number> 30 </Damage_Frame_Number>
-            <Anim_Sub_Index> 0 </Anim_Sub_Index>
-            <SFXEvent_Apply_Damage>SFX_Novus_Snipe_Fire</SFXEvent_Apply_Damage>
-            <Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
-            <Only_Appropriate_When_Ready> false </Only_Appropriate_When_Ready>
-            <Projectile_Type> Proj_Novus_Mech_Vehicle_Snipe </Projectile_Type>
-            <Is_Looping_Attack> false </Is_Looping_Attack>
-            <Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
-            <Activated_By_User>Yes</Activated_By_User>
-            <Clear_Out_Of_Range_Attack_Orders> true </Clear_Out_Of_Range_Attack_Orders>
-            <Applicable_Unit_Categories>  </Applicable_Unit_Categories>
-            <Excluded_Unit_Categories>  Huge </Excluded_Unit_Categories>
-            <Face_Target_Before_Firing>true</Face_Target_Before_Firing>
-			</Generic_Attack_Ability>
-
-      </Abilities>
-		
-	
-		
-   </X45_Props_Specific>
-
-	
 </Props_Specific_XML>
 

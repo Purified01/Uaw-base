@@ -26,6 +26,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size> 1 </GUI_Bracket_Size>
 		<Select_Box_Scale> 50 </Select_Box_Scale>
 		<Select_Box_Z_Adjust> 0.0f </Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -51,6 +52,7 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 		</Attributes>
@@ -138,11 +140,11 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead> Yes </Collidable_By_Projectile_Dead>
-		<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 270.0 </Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 
-		<Tactical_Health> 775 </Tactical_Health>
+		<Tactical_Health> 700 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -174,16 +176,8 @@
 			DAMAGE_TRACKING,
 			AI_RECRUITABLE,
 			AI_TARGET,
-			TACTICAL_AI,
 			RETREAT_FROM_TACTICAL
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<!-- MARIA 11.09.2006 we need this to have a representation of the hero as a global icon -->
 		<StrategicBehavior>
@@ -201,16 +195,14 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 200.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 175.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual</AI_Target_Level>
-		 <Attack_Score_Rating> 1.5 </Attack_Score_Rating>
+		 <Attack_Score_Rating> 0.1 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.9 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 2.2 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 375.0 </Tactical_AI_Search_Range>
-		 <Retreat_At_Health> 0.85 </Retreat_At_Health>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -274,6 +266,14 @@
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
 			<Crush_Power> 0 </Crush_Power>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<!-- This behavior type determines the type of 3D global icon that will represent this object!-->
@@ -358,7 +358,7 @@
 		<!-- Make hero icon button appear in the UI -->
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Global_Behaviors> HeroIcon </Lua_Global_Behaviors>
-			<Lua_Land_Behaviors> HeroIcon </Lua_Land_Behaviors>
+			<Lua_Land_Behaviors> HeroIcon,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				HERO_ICON = {}
 				HERO_ICON.PRIORITY = 3
@@ -367,6 +367,10 @@
 				NOT_TACTICALLY_PRESENT = false
 				IS_SCIENTIST = false
 				IS_COMM_OFFICER = false
+				DefensiveAI = {}
+				DefensiveAI.KillTurret = false
+				DefensiveAI.RunHealth = 0.85
+				DefensiveAI.AlwaysAttack = true
 			</Lua_Script_Data>
 		</BehaviorType>
 
@@ -418,7 +422,6 @@
 				<Targeting_Type> ALLY_OBJECT </Targeting_Type>
             <SFXEvent_GUI_Unit_Ability_Activated> </SFXEvent_GUI_Unit_Ability_Activated>
             <SFXEvent_Target_Ability>Unit_ABILITY_B_Novus_Vertigo</SFXEvent_Target_Ability>
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
 			</Unit_Ability>
 
 			<Unit_Ability Name="Download_Unit_Ability">
@@ -433,7 +436,6 @@
 				<Recharge_Abilities>Upload_Unit_Ability</Recharge_Abilities>
             <SFXEvent_GUI_Unit_Ability_Activated> </SFXEvent_GUI_Unit_Ability_Activated>
             <SFXEvent_Target_Ability>Unit_ABILITY_C_Novus_Vertigo</SFXEvent_Target_Ability>
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
 			</Unit_Ability>
 
 			<Unit_Ability Name="Viral_Control_Unit_Ability">
@@ -462,8 +464,7 @@
 				<Can_Target_Enemies>No</Can_Target_Enemies>
 				<Can_Target_Allies>Yes</Can_Target_Allies>
 				<Can_Target_Neutral>No</Can_Target_Neutral>
-				<Excluded_Unit_Categories> Stationary, Huge, Hardpoint, Superweapon, Resource</Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Novus_Hero_Vertigo </Excluded_Unit_Types>
+				<Excluded_Unit_Categories> Stationary, Huge, Hardpoint, Superweapon </Excluded_Unit_Categories>
 			</Effect_Generator_Ability>
 
 			<Effect_Generator_Ability Name="Download_Ability">
@@ -471,7 +472,6 @@
 				<Activation_Max_Range> 150 </Activation_Max_Range>
 				<Effect_Generator_Name> Download_Generator </Effect_Generator_Name>
 				<Activation_Style> User_Input </Activation_Style>
-            <Can_Target_Enemies>No</Can_Target_Enemies>
 			</Effect_Generator_Ability>
 
 			<Effect_Generator_Ability Name="Viral_Control_Ability">
@@ -1062,10 +1062,8 @@
 	<!-- **** OBSOLETE NAMES ******************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<!--
 	<X99_Test_Objects Name="Novus_Vertigo">
 		<Variant_Of_Existing_Type> Novus_Hero_Vertigo </Variant_Of_Existing_Type>
 	</X99_Test_Objects>
-	-->
 
 </Novus_Hero_Vertigo_XML>

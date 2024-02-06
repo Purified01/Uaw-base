@@ -84,13 +84,6 @@
          ELEMENTAL_MODE
       </LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SKY_GUARDIAN_LIGHT </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -103,26 +96,19 @@
       </BehaviorType>
 
          <Researched_Upgrades>
-		      TEXT_MASARI_RESEARCH_TITLE_BURNING_BRILLIANCE
-		      TEXT_MASARI_RESEARCH_TITLE_UNSEEN_BARRIER
-		      TEXT_MASARI_RESEARCH_TITLE_ADVANCED_DARK_MATTER_ARMOR
-		      TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
-		      TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
-		      TEXT_MASARI_RESEARCH_TITLE_STATIONARY_REVELATION
-		      TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
+		TEXT_MASARI_RESEARCH_TITLE_BURNING_BRILLIANCE
+		TEXT_MASARI_RESEARCH_TITLE_UNSEEN_BARRIER
+		TEXT_MASARI_RESEARCH_TITLE_ADVANCED_DARK_MATTER_ARMOR
+		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
+		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
+		TEXT_MASARI_RESEARCH_TITLE_STATIONARY_REVELATION
+		TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
          </Researched_Upgrades>
 	 
       <BehaviorType Name="TerraformBehaviorType">
          <Bib_X_Extent> 20 </Bib_X_Extent>
          <Bib_Y_Extent> 20 </Bib_Y_Extent>
       </BehaviorType>
-
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
          <Armor_Type> Armor_Masari_Structure_Turret </Armor_Type>
@@ -171,9 +157,7 @@
 
       <BehaviorType Name="SFXBehaviorType">
          <SFXEvent_Select>SFX_Structure_Select_Masari_Sky_Guardian</SFXEvent_Select>
-			<!-- jdg 11/13/07 changed SFX from  SFX_Masari_Large_Structure_Death...I need to seperate out 
-			this event for rumble purposes-->
-         <Death_SFXEvent_Start_Die> SFX_Masari_SkyGuardian_Turret_Death</Death_SFXEvent_Start_Die>
+         <Death_SFXEvent_Start_Die> SFX_Masari_Large_Structure_Death</Death_SFXEvent_Start_Die>
          <SFXEvent_Unit_Lost />
          <SFXEvent_Tactical_Build_Started>GUI_BUILD_Structure</SFXEvent_Tactical_Build_Started>
          <SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Masari_Sky_Guardian</SFXEvent_Tactical_Build_Complete>
@@ -245,7 +229,6 @@
 
       <BehaviorType Name="EncyclopediaBehaviorType">
          <Icon_Name>i_icon_mb_sky_guardian.tga</Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
       </BehaviorType>
 
       <BehaviorType Name="GUIBehaviorType">
@@ -459,9 +442,9 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Beacon_Type> Masari_Sky_Guardian_Beacon </Tactical_Buildable_Beacon_Type>
          <Tactical_Buildable_Constructed> Masari_Sky_Guardian </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 38 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 8 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
       </BehaviorType>
@@ -487,7 +470,7 @@
       </BehaviorType>
 
       <BehaviorType Name="GUIBehaviorType">
-         <GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+         <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
          <GUI_Receives_Input> no </GUI_Receives_Input>
          <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
          <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -670,10 +653,7 @@
 
       <BehaviorType Name="SFXBehaviorType">
          <Death_SFXEvent_End_Die />
-         <!--<Death_SFXEvent_Start_Die> SFX_Masari_Large_Structure_Death </Death_SFXEvent_Start_Die>
-			 jdg 11/13/07 changed SFX from  SFX_Masari_Large_Structure_Death...I need to seperate out 
-			this event for rumble purposes-->
-         <Death_SFXEvent_Start_Die> SFX_Masari_SkyGuardian_Turret_Death</Death_SFXEvent_Start_Die>
+         <Death_SFXEvent_Start_Die> SFX_Masari_Large_Structure_Death </Death_SFXEvent_Start_Die>
       </BehaviorType>
 
       <BehaviorType Name="DeathFXBehaviorType">
@@ -841,6 +821,7 @@
 			<HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
 			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<Modifies_Parent_Tooltip> Yes </Modifies_Parent_Tooltip>
 		</BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -891,7 +872,15 @@
          EFFECT_GENERATOR
       </LandBehavior>
 
-     <BehaviorType Name="TacticalBuildObjectsBehaviorType">
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
+         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+         <!-- Destroying this one hard point will trigger the parent object to be destroyed -->
+      </BehaviorType>
+
+      <BehaviorType Name="TacticalBuildObjectsBehaviorType">
 
          <HP_Socket_Type> Masari_Sky_Guardian_Socket </HP_Socket_Type>
 
@@ -1006,9 +995,9 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed>Masari_Sky_Guardian_Wind_Screen</Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 75 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 75 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <Attributes SubObjectList="Yes">
@@ -1018,13 +1007,6 @@
       <!-- Maria 08.09.2006  We want this object to be buildable -->
       <BehaviorType Name="ProductionBehaviorType">
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-      </BehaviorType>
-
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
       </BehaviorType>
 
    </HardPoint>
@@ -1051,15 +1033,15 @@
          <Effect_Damage_Amount>35.0</Effect_Damage_Amount>
       </Attributes>
 
-      <Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
+      <Land_FOW_Reveal_Range>325.0</Land_FOW_Reveal_Range>
 
       <BehaviorType Name="WeaponBehaviorType">
          <Can_Attack_Without_Weapon_Behavior> true </Can_Attack_Without_Weapon_Behavior>
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 25.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 325.0 </Targeting_Max_Attack_Distance>
       </BehaviorType>
 
       <BehaviorType Name="GroundStructureBehaviorType">
@@ -1099,13 +1081,13 @@
 
          <Effect_Generator_Ability Name="Sky_Guardian_Light_Beam_Ability">
             <Activation_Style>SPECIAL_ATTACK</Activation_Style>
-            <Activation_Min_Range> 40.0 </Activation_Min_Range>
-            <Activation_Max_Range> 255.0 </Activation_Max_Range>
+            <Activation_Min_Range> 25.0 </Activation_Min_Range>
+            <Activation_Max_Range> 325.0 </Activation_Max_Range>
             <Effect_Generator_Name> SkyGuardianLightBeamGenerator </Effect_Generator_Name>
             <Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
             <Generating_Anim_Type> Anim_Attack </Generating_Anim_Type>
 				<!-- Max Channel must be > Activation_Max_Range -->
-            <Max_Channel_Range> 275.0 </Max_Channel_Range>
+            <Max_Channel_Range> 326.0 </Max_Channel_Range>
 
             <Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
@@ -1218,16 +1200,16 @@
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 25.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
 
          <Projectile_Types>Proj_Sky_Guardian_Bolt</Projectile_Types>
-         <Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
+         <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds>0.02</Projectile_Fire_Pulse_Delay_Seconds>
 
          <Projectile_Fire_Spread_Amount> 10 </Projectile_Fire_Spread_Amount>
-         <Projectile_Fire_Spread_Angle> 15 </Projectile_Fire_Spread_Angle>
+         <Projectile_Fire_Spread_Angle> 20 </Projectile_Fire_Spread_Angle>
       </BehaviorType>
 
       <BehaviorType Name="TypeSwitchBehaviorType">

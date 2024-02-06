@@ -100,13 +100,6 @@
 			<SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Military_Aircraft_Pad</SFXEvent_Tactical_Build_Complete>
 			<SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/04/07 magnetism stuff -->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.05  0.05</Radar_Icon_Size>
@@ -144,12 +137,15 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 		
 		<BehaviorType Name="SelectableBehaviorType">

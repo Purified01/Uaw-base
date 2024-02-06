@@ -38,6 +38,7 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Generator_Area_Effect_Radius_1> 50 </Generator_Area_Effect_Radius_1>
 
 			<!-- This MODIFIER determines what portion of the whole price we must reduce.  Hence, a modifier
@@ -214,8 +215,8 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 150.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 165.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 30.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
@@ -292,13 +293,6 @@
 				resource_drone_search_radius = 200.0
 				resource_drone_harvest_distance = 100.0
 			</Lua_Script_Data>
-		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
 		</BehaviorType>
 
 		<!-- ABILITIES -->
@@ -1000,7 +994,7 @@
 		<!-- CONFLICT -->
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Ranged_Target_Z_Adjust> 1.5 </Ranged_Target_Z_Adjust>
+		<Ranged_Target_Z_Adjust> 3.0 </Ranged_Target_Z_Adjust>
 
 		<Tactical_Health> 300 </Tactical_Health>
 
@@ -1086,8 +1080,6 @@
 			<SFXEvent_Tactical_Build_Cancelled />
 			<Death_SFXEvent_Start_Die />
 		</BehaviorType>
-		
-		
 
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_REAPER_DRONE </Tooltip_Description_Text_ID>
@@ -1522,7 +1514,6 @@
 <!-- **** OBSOLETE NAMES ******************************************************************** -->
 <!-- **************************************************************************************** -->
 
-	<!--
 	<X99_Test_Objects Name="Alien_Reaper_Turret">
 		<Variant_Of_Existing_Type> Alien_Superweapon_Reaper_Turret </Variant_Of_Existing_Type>
 		
@@ -1530,14 +1521,14 @@
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 		
-		<! - - Maria 12.04.2006 we do not want this to show up in the build menu so we must override the 
-			Is_Buildable_By_Constructor flag. - - >
+		<!-- Maria 12.04.2006 we do not want this to show up in the build menu so we must override the 
+			Is_Buildable_By_Constructor flag. -->
 		<BehaviorType Name="GroundStructureBehaviorType">
 			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
 		</BehaviorType>
 		
 	</X99_Test_Objects>
--->
+
 	
 </Alien_Veh_Reaper_Turret_XML>
 

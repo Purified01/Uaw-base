@@ -497,7 +497,7 @@
 	<Decal Name="Alien_Walker_Radiation_Splat">
 		<Category>RADIATION</Category>	
 		<Render_Mode>DIFFUSE_ALPHA</Render_Mode>
-		<Intensity>1.0</Intensity>
+		<Intensity>0.0</Intensity>
 		<Scale>40, 40</Scale>
 		<Z_Angle>0</Z_Angle>
 		<UV_Slot>0,1</UV_Slot>

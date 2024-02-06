@@ -53,7 +53,6 @@
       <Custom_Hard_YExtent> 30.0 </Custom_Hard_YExtent>
       <Tactical_Health>50</Tactical_Health>
       <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
-		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
 		<LandBehavior>
 			EFFECT_REGISTRY,
@@ -129,7 +128,6 @@
 		<Custom_Hard_YExtent> 30.0 </Custom_Hard_YExtent>
 		<Tactical_Health>50</Tactical_Health>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
-		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
 		<!-- ATTRIBUTES -->
 		<Attributes SubObjectList="Yes">
@@ -216,8 +214,8 @@
 		<Prevents_Structure_Placement>No</Prevents_Structure_Placement>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 
-		<!--<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Infantry </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
 
@@ -231,8 +229,6 @@
 		<Is_Decoration>No</Is_Decoration>
 		<Prevents_Structure_Placement>No</Prevents_Structure_Placement>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
-    <!--<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
 	</X40_Props_Suburban>
 	
 	<X40_Props_Suburban Name="American_Mailbox_Street">
@@ -244,8 +240,8 @@
 		<Prevents_Structure_Placement>No</Prevents_Structure_Placement>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 
-		<!--<UnitCollisionClass> Infantry </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Infantry </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
 
@@ -260,8 +256,8 @@
       <Prevents_Structure_Placement>No</Prevents_Structure_Placement>
       <Is_UI_Relevant> false </Is_UI_Relevant>
 
-      <!--<UnitCollisionClass> Infantry </UnitCollisionClass>
-      <Space_Layer> LandStatic </Space_Layer>-->
+      <UnitCollisionClass> Infantry </UnitCollisionClass>
+      <Space_Layer> LandStatic </Space_Layer>
       <Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
       <Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
 
@@ -336,10 +332,9 @@
 		<Is_UI_Relevant> true </Is_UI_Relevant>
 		<Affiliation>Hostile</Affiliation>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
-		<Shadow_Enabled>False</Shadow_Enabled>
 
-		<!--<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 		<Custom_Hard_XExtent> 3.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 30.0 </Custom_Hard_YExtent>
 		<Tactical_Health>50</Tactical_Health>
@@ -370,7 +365,6 @@
 		<!-- ART -->
 		<Land_Model_Name>WO_IronFence_DC.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
-		<Shadow_Enabled>False</Shadow_Enabled>
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NONE</Text_ID>
@@ -414,10 +408,9 @@
 		<Is_UI_Relevant> true </Is_UI_Relevant>
 		<Affiliation>Hostile</Affiliation>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
-		<Shadow_Enabled>False</Shadow_Enabled>
 
-		<!--<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 		<Custom_Hard_XExtent> 3.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 30.0 </Custom_Hard_YExtent>
 		<Tactical_Health>50</Tactical_Health>
@@ -448,7 +441,6 @@
 		<!-- ART -->
 		<Land_Model_Name>WO_IronFence_long_DC.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
-		<Shadow_Enabled>False</Shadow_Enabled>
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NONE</Text_ID>

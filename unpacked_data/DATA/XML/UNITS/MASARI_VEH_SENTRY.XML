@@ -18,7 +18,7 @@
 		<Icon_Name> i_icon_mv_sentry.tga  </Icon_Name>
 		<Text_ID>TEXT_UNIT_MASARI_SENTRY</Text_ID>
 
-		<GUI_Scene_Name> Masari_HealthBar_Scene_Medium </GUI_Scene_Name>
+		<GUI_Scene_Name> HealthBar_Scene_Medium </GUI_Scene_Name>
 		<GUI_Receives_Input> false </GUI_Receives_Input>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -39,10 +39,11 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <DMA_Max> 150 </DMA_Max>
-         <DMA_Regen_Rate> 5 </DMA_Regen_Rate>
+         <DMA_Max> 300 </DMA_Max>
+         <DMA_Regen_Rate> 8 </DMA_Regen_Rate>
          <Regenerate_Type>Masari_Avenger_Sentry</Regenerate_Type>
 			<Generator_Area_Effect_Radius_2>200</Generator_Area_Effect_Radius_2>
       </Attributes>
@@ -75,7 +76,7 @@
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 330 </Tactical_Health>
 
 		<!-- BEHAVIORS AND ABILITIES -->
 		<Behavior>
@@ -109,7 +110,6 @@
 			TACTICAL_SELL,
 			HARD_POINT_MANAGER,
 			WHEEL,
-			TACTICAL_AI,
          WEAPON,
 			<!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
 			ELEMENTAL_MODE
@@ -166,7 +166,7 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 160.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -174,8 +174,6 @@
 		 <Attack_Score_Rating> 0.7 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.9 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 225.0 </Tactical_AI_Search_Range>
-		 <Max_Crush_Distance> 200.0 </Max_Crush_Distance>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -189,7 +187,6 @@
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -202,7 +199,6 @@
 				DefensiveAI.KillTurret = false
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_mv_sentry.tga  </Icon_Name>
@@ -260,6 +256,15 @@
 		<BehaviorType Name="BlobShadowBehaviorType">
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
@@ -657,7 +662,7 @@
 					<Duration> 5 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 100 </Area_Effect_Radius>
-					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
+					<Target_Filter_C> Alatea_Beneficial_Target_Filter </Target_Filter_C>
 				</Effect_Generator_Entry>
 				
 				<Effect_Generator_Entry Name="Entry4">
@@ -721,8 +726,7 @@
 		<!-- BEHAVIORS AND ABILITIES -->
 		<Behavior>
 			SELECTABLE,
-			EFFECT_REGISTRY,
-			PERSISTENT_UNIT
+			EFFECT_REGISTRY
 		</Behavior>
 
 		<LandBehavior>
@@ -748,7 +752,6 @@
 			AI_RECRUITABLE,
 			AI_TARGET,
 			TACTICAL_SELL,
-			TACTICAL_AI,
 			HARD_POINT_MANAGER,
 			WHEEL,
 			<!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
@@ -863,7 +866,7 @@
 		<Max_Speed>3.0</Max_Speed>
 
 		<!-- CONFLICT -->
-		<Land_FOW_Reveal_Range>175.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
@@ -878,7 +881,7 @@
 			<Targeting_Max_Attack_Distance> 160.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Masari_Sentry_Missile</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>

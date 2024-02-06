@@ -87,13 +87,6 @@
 			ELEMENTAL_MODE
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
 			<!-- KDB REQUIRED for all objects that can construct things otherwise not visilbe to other players -->
 			<Visible_To_Enemies_When_Empty>Yes</Visible_To_Enemies_When_Empty>
@@ -183,15 +176,8 @@
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
 
-    <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-    </BehaviorType>
-
-    <BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -558,7 +544,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>

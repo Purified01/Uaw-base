@@ -465,32 +465,5 @@
 		</BehaviorType>
 
 	</X00_Markers>
-	
-	
-	<!-- jdg script controller for a Sega demo skirmish map...-->
-	<X00_Markers Name="Marker_SEGA_Skirmish01">
-	  <Text_ID> TEXT_STORY_TRIGGER_ZONE </Text_ID>
-	  <Land_Model_Name>w_flag_marker_White.ALO</Land_Model_Name>		
-	  <Is_Marker>Yes</Is_Marker>
-	  <Is_Decoration>No</Is_Decoration>
-	  <Affiliation>Neutral</Affiliation>
-	  <Behavior>MARKER</Behavior>
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Script>Marker_SEGA_Skirmish01</Lua_Script>
-		</BehaviorType>
-	</X00_Markers>
-	
-	<!-- jdg script controller for a Sega demo skirmish map...-->
-	<X00_Markers Name="Marker_SEGA_Skirmish02">
-	  <Text_ID> TEXT_STORY_TRIGGER_ZONE </Text_ID>
-	  <Land_Model_Name>w_flag_marker_White.ALO</Land_Model_Name>		
-	  <Is_Marker>Yes</Is_Marker>
-	  <Is_Decoration>No</Is_Decoration>
-	  <Affiliation>Neutral</Affiliation>
-	  <Behavior>MARKER</Behavior>
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Script>Marker_SEGA_Skirmish02</Lua_Script>
-		</BehaviorType>
-	</X00_Markers>
 
 </Markers>

@@ -17,7 +17,7 @@
     <!-- INTERFACE -->
     <Icon_Name> i_icon_mv_enforcer.tga  </Icon_Name>
     <Text_ID>TEXT_UNIT_MASARI_ENFORCER</Text_ID>
-    <GUI_Scene_Name> Masari_HealthBar_Scene_Medium </GUI_Scene_Name>
+    <GUI_Scene_Name> HealthBar_Scene_Medium </GUI_Scene_Name>
     <GUI_Receives_Input> false </GUI_Receives_Input>
     <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -37,6 +37,7 @@
     <Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 			<DMA_Max> 400 </DMA_Max>
@@ -81,41 +82,33 @@
 	 </Behavior>
 
     <LandBehavior>
-		 EFFECT_GENERATOR
-		 EFFECT_REGISTRY
-		 ATTRIBUTE_DIRECTORY,
-		 SWITCH_TYPE,
-		 GUI,
-		 SURFACE_FX,
-		 RADAR_MAP_VISIBLE,
-		 WALK_LOCOMOTOR,
-		 FORMATION,
-		 IDLE,
-		 TARGETING,
-		 WEAPON,
-		 TURRET,
-		 REVEAL,
-		 HIDE_WHEN_FOGGED,
-		 SQUASH,
-		 UNIT_AI,
-		 BALLISTIC,
-		 SWITCH_TYPE,
-		 DAMAGE_TRACKING,
-		 AI_RECRUITABLE,
-		 TACTICAL_SELL,
-		 AI_TARGET,
-		 TACTICAL_AI,
-		 WHEEL,
-		 <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+      EFFECT_GENERATOR
+      EFFECT_REGISTRY
+      ATTRIBUTE_DIRECTORY,
+      SWITCH_TYPE,
+      GUI,
+      SURFACE_FX,
+      RADAR_MAP_VISIBLE,
+      WALK_LOCOMOTOR,
+      FORMATION,
+      IDLE,
+      TARGETING,
+      WEAPON,
+      TURRET,
+      REVEAL,
+      HIDE_WHEN_FOGGED,
+      SQUASH,
+      UNIT_AI,
+      BALLISTIC,
+      SWITCH_TYPE,
+      DAMAGE_TRACKING,
+      AI_RECRUITABLE,
+      TACTICAL_SELL,
+      AI_TARGET,
+      WHEEL,
+      <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
       ELEMENTAL_MODE
     </LandBehavior>
-
-	  <BehaviorType Name="SelectableBehaviorType">
-		  <!-- DME 02/05/08 magnetism testing-->
-		  <Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-		  <Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-		  <Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-	  </BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ENFORCER_LIGHT </Tooltip_Description_Text_ID>
@@ -164,11 +157,12 @@
       <Tactical_Build_Cost_Multiplayer> 75 </Tactical_Build_Cost_Multiplayer>
       <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
       <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
+      <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
     </BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range><!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range><!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 175.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -176,8 +170,6 @@
 		 <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.6 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 225.0 </Tactical_AI_Search_Range>
-		 <Max_Crush_Distance> 200.0 </Max_Crush_Distance>
 	 </BehaviorType>
 
     <BehaviorType Name="WeaponBehaviorType">
@@ -259,12 +251,20 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense> 40 </Crush_Defense>
       <Crush_Power> 25 </Crush_Power>
     </BehaviorType>
 
-	  <!--
 	  <BehaviorType NAme="LuaScriptBehaviorType">
 		  <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 		  <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -291,7 +291,6 @@
 			  DefensiveAI.Abilities[2].NoCollectors = true
 		  </Lua_Script_Data>
 	  </BehaviorType>
-		 -->
 
 	  <BehaviorType Name="RadarMapBehaviorType">
       <Radar_Icon_Size>0.04  0.04</Radar_Icon_Size>
@@ -359,36 +358,35 @@
     <Max_Speed>1.5</Max_Speed>
 
     <!-- CONFLICT -->
-    <Land_FOW_Reveal_Range>255.0</Land_FOW_Reveal_Range>
+    <Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
 
     <LandBehavior>
-		 EFFECT_GENERATOR,
-		 EFFECT_REGISTRY,
-		 ATTRIBUTE_DIRECTORY,
-		 ABILITY_COUNTDOWN,
-		 SWITCH_TYPE,
-		 GUI,
-		 SURFACE_FX,
-		 RADAR_MAP_VISIBLE,
-		 WALK_LOCOMOTOR,
-		 FORMATION,
-		 IDLE,
-		 TARGETING,
-		 TURRET,
-		 REVEAL,
-		 HIDE_WHEN_FOGGED,
-		 SQUASH,
-		 UNIT_AI,
-		 DAMAGE_TRACKING,
-		 BALLISTIC,
-		 SWITCH_TYPE,
-		 WEAPON,
-		 TACTICAL_SELL,
-		 AI_RECRUITABLE,
-		 AI_TARGET,
-		 TACTICAL_AI,
-		 WHEEL,
-		 <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+      EFFECT_GENERATOR,
+      EFFECT_REGISTRY,
+      ATTRIBUTE_DIRECTORY,
+      ABILITY_COUNTDOWN,
+      SWITCH_TYPE,
+      GUI,
+      SURFACE_FX,
+      RADAR_MAP_VISIBLE,
+      WALK_LOCOMOTOR,
+      FORMATION,
+      IDLE,
+      TARGETING,
+      TURRET,
+      REVEAL,
+      HIDE_WHEN_FOGGED,
+      SQUASH,
+      UNIT_AI,
+      DAMAGE_TRACKING,
+      BALLISTIC,
+      SWITCH_TYPE,
+      WEAPON,
+      TACTICAL_SELL,
+      AI_RECRUITABLE,
+      AI_TARGET,
+      WHEEL,
+      <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
       ELEMENTAL_MODE
     </LandBehavior>
 
@@ -397,9 +395,9 @@
       <Targeting_Priority_Set> Masari_Enforcer_Target_Priority </Targeting_Priority_Set>
       <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-      <Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Masari_Enforcer_Light</Projectile_Types>
-      <Projectile_Fire_Recharge_Seconds>2.3</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
       <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
@@ -423,12 +421,6 @@
 			<Effect_Generator_Name> MasariEnforcerFireVortexEffectGenerator </Effect_Generator_Name>
 			<Is_Modal>Yes</Is_Modal>
 			<SFXEvent_GUI_Unit_Ability_Activated>SFX_Masari_Ability_Vortex_Start</SFXEvent_GUI_Unit_Ability_Activated>
-			<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-			<Unit_Ability_AI_Required_Targets> 3 </Unit_Ability_AI_Required_Targets>
-			<Unit_Ability_AI_Range> 80.0 </Unit_Ability_AI_Range>
-			<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-			<!-- not blocked by dodging retreating etc -->
-			<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
 		</Unit_Ability>
 		
 	</Unit_Abilities_Data>
@@ -532,7 +524,7 @@
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
       <Targeting_Max_Attack_Distance> 170.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Masari_Enforcer_Dark</Projectile_Types>
-      <Projectile_Fire_Recharge_Seconds>2.3</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
       <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
       <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
@@ -757,7 +749,7 @@
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
     <!-- ATTRIBUTES -->
-    <Max_Speed>14.0</Max_Speed>
+    <Max_Speed>12.0</Max_Speed>
     <Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 
     <!-- CONFLICT -->
@@ -804,7 +796,7 @@
 
   <Projectile Name="Proj_Masari_Enforcer_Light">
     <!-- ART -->
-    <Land_Model_Name>ZV_Enforcer_Light_Shot.alo</Land_Model_Name>
+    <Land_Model_Name>ZV_Enforcer_Light_Shot</Land_Model_Name>
     <Scale_Factor> 1.0 </Scale_Factor>
     <AssetBank> BANK_MASARI </AssetBank>
 

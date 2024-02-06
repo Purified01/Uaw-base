@@ -11,9 +11,7 @@
 		<Land_Model_Name>MB_Turret.ALO</Land_Model_Name>
 		<Scale_Factor>1.7</Scale_Factor> 
 		<Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>		
-		<Looped_Attack_Anim_Timeout> 5 </Looped_Attack_Anim_Timeout>
-    <Last_State_Visible_Under_FOW> True </Last_State_Visible_Under_FOW>
-    <Initial_State_Visible_Under_FOW>True</Initial_State_Visible_Under_FOW>
+		<Looped_Attack_Anim_Timeout> 5 </Looped_Attack_Anim_Timeout>	
       <AssetBank> BANK_MILITARY </AssetBank>
 		
 		<!-- INTERFACE -->
@@ -45,24 +43,24 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>6.0</Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 800 </Tactical_Health>
+		<Tactical_Health> 2500 </Tactical_Health>
 		<Projectile_Types> Proj_Military_Turret_01 </Projectile_Types>
-		<Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>330.0</Land_FOW_Reveal_Range>
 
 		<!-- Just in case we hit situations where the target gets so close we can't turn to hit it we should have a minimum range.  That way
 		we can break off targeting and shoot something else.  Let's make it as small as possible though -->
-		<Targeting_Min_Attack_Distance>50.0</Targeting_Min_Attack_Distance>
-		<Targeting_Max_Attack_Distance>250</Targeting_Max_Attack_Distance>
+		<Targeting_Min_Attack_Distance>20.0</Targeting_Min_Attack_Distance>
+		<Targeting_Max_Attack_Distance>300</Targeting_Max_Attack_Distance>
 
 		<Targeting_Priority_Set>Military_Turret_Target_Priority</Targeting_Priority_Set>
 		<Targeting_Fire_Inaccuracy> 7.0 </Targeting_Fire_Inaccuracy>
 
 		<Targeting_Stickiness_Time_Threshold>10.0</Targeting_Stickiness_Time_Threshold>
 
-		<Projectile_Fire_Recharge_Seconds>1.85</Projectile_Fire_Recharge_Seconds>
+		<Projectile_Fire_Recharge_Seconds>1.75</Projectile_Fire_Recharge_Seconds>
 		<Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
-		<Projectile_Fire_Pulse_Count>25</Projectile_Fire_Pulse_Count>
-		<Projectile_Fire_Pulse_Delay_Seconds>0.18</Projectile_Fire_Pulse_Delay_Seconds>
+		<Projectile_Fire_Pulse_Count>75</Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds>0.0</Projectile_Fire_Pulse_Delay_Seconds>
 
         <Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
 
@@ -172,6 +170,10 @@
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
 		</BehaviorType>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
+		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>60</Crush_Defense>
@@ -184,7 +186,7 @@
 	<!-- jdg military turret for use in Tut01 -->
 	<X11_Military_Structures Name="Tut01_Military_Turret_Ground">
 		<Variant_Of_Existing_Type> Military_Turret_Ground </Variant_Of_Existing_Type>
-		<Targeting_Max_Attack_Distance>200</Targeting_Max_Attack_Distance>
+		<Targeting_Max_Attack_Distance>135</Targeting_Max_Attack_Distance>
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
@@ -208,7 +210,7 @@
 		<Text_ID>TEXT_NONE</Text_ID>
 				
 		<!-- MOVEMENT -->
-		<Max_Speed>17</Max_Speed>
+		<Max_Speed>15</Max_Speed>
 		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
 		
 		<!-- CONFLICT -->
@@ -229,7 +231,7 @@
 			<Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-			<Projectile_Damage>15.0</Projectile_Damage>
+			<Projectile_Damage>5.0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage> 2 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 10 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>

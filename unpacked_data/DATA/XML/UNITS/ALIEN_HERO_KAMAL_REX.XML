@@ -50,10 +50,11 @@
       <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
       <Attributes SubObjectList="Yes">
+         <Is_Phasable> true </Is_Phasable>
          <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -81,8 +82,8 @@
       <Is_Attackable> true </Is_Attackable>
       <Ranged_Target_Z_Adjust>25.0</Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1000 </Tactical_Health>
-      <Land_FOW_Reveal_Range>230</Land_FOW_Reveal_Range>
+      <Tactical_Health> 900 </Tactical_Health>
+      <Land_FOW_Reveal_Range>250</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | BodySocketHP </Attack_Category_Restrictions>
 
       <!-- BEHAVIORS -->
@@ -112,7 +113,6 @@
 			AI_TARGET,
 			RETREAT_FROM_TACTICAL,
 			TELEPORT_PAD,
-			TACTICAL_AI,
 			BALLISTIC
 		</LandBehavior>
 
@@ -135,7 +135,7 @@
          <Build_Cost_Credits> 800 </Build_Cost_Credits>
          <Build_Time_Seconds> 15 </Build_Time_Seconds>
          <Build_Limit_Current_Per_Player> 1 </Build_Limit_Current_Per_Player>
-         <Build_Limit_Lifetime_Per_Player> 2 </Build_Limit_Lifetime_Per_Player>
+         <Build_Limit_Lifetime_Per_Player> 1 </Build_Limit_Lifetime_Per_Player>
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
          <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
 			<Build_Only_In_Skirmish> true </Build_Only_In_Skirmish>
@@ -153,7 +153,7 @@
 
      <BehaviorType name="AIBehaviorType">
        <AI_Combat_Power> 1 </AI_Combat_Power>
-       <Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+       <Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
        <Guard_Chase_Range> 200.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
        <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -161,9 +161,6 @@
 			<Attack_Score_Rating> 1.5 </Attack_Score_Rating>
 			<Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 			<Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		  <Tactical_AI_Search_Range> 275.0 </Tactical_AI_Search_Range>
-		  <Max_Crush_Distance> 0.0 </Max_Crush_Distance>
-		  <Retreat_At_Health> 0.8 </Retreat_At_Health>
 	  </BehaviorType>
 
      <BehaviorType Name="WeaponBehaviorType">
@@ -197,6 +194,16 @@
 				NOT_TACTICALLY_PRESENT = false
 				IS_SCIENTIST = false
 				IS_COMM_OFFICER = false
+				DefensiveAI = {}
+				DefensiveAI.KillTurret = false
+				DefensiveAI.RunHealth = 0.9
+				RANGED_AE = {}
+				RANGED_AE.COLLECT_RANGE = 180.0
+				RANGED_AE.MIN_SCORE = 2.0
+				RANGED_AE.ABILITY_NAME = "Kamal_Rex_Abduction_Unit_Ability"
+				RANGED_AE.CATEGORY_FILTER = "CanAttack + ~Stationary + ~Flying"
+				RANGED_AE.AE_RANGE = 75.0
+				RANGED_AE.SLEEP_TIME = 10.0
 			</Lua_Script_Data>
       </BehaviorType>
 
@@ -241,13 +248,18 @@
 
 			<Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
       </BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size>2</GUI_Bracket_Size>
+         <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+         <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> No </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+         <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
+
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Clone> Damage_Default, Alien_Kamal_Death_Clone_Resource </Death_Clone>
@@ -348,14 +360,7 @@
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
-				<!-- pbaoe and direct means area at range attack and the range is the AOE size -->
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Unit_Categories> ~Flying + ~HardPoint + ~Huge + ~Hero </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 75.0 </Unit_Ability_AI_Range>
-				<Unit_Ability_AI_Required_Targets> 4 </Unit_Ability_AI_Required_Targets>
-			</Unit_Ability>
+         </Unit_Ability>
 
          <Unit_Ability Name="Kamal_Rex_Force_Wall_Unit_Ability">
             <Type>BUILDING_PLACEMENT</Type>
@@ -415,11 +420,9 @@
             <Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
 
             <!-- Psionic blast will take over and cancel this ability without this flag -Oksana-->
-				<Block_Other_Abilities_When_Active>Yes</Block_Other_Abilities_When_Active>
-				<Hold_Fire_For_Special_Ability> true </Hold_Fire_For_Special_Ability>
-				<Cancel_Ability_From_Anim_Change> false </Cancel_Ability_From_Anim_Change>
-
-			</Effect_Generator_Ability>
+            <Block_Other_Abilities_When_Active>Yes</Block_Other_Abilities_When_Active>
+            
+         </Effect_Generator_Ability>
 
          <Building_Placement_Ability Name="Kamal_Rex_Force_Wall_Special_Ability">
             <Activation_Style> User_Input </Activation_Style>
@@ -632,6 +635,7 @@
       <!-- ART -->
       <Land_Model_Name>AH_kamal_psionic_blast.alo</Land_Model_Name>
       <Scale_Factor>1.0</Scale_Factor>
+      <Projectile_Custom_Render>0</Projectile_Custom_Render>
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -881,16 +885,15 @@
 	<!-- *** OBSOLETE NAMES ********************************************************************* -->
 	<!-- **************************************************************************************** -->
 
-	<!--
 	<X99_Test_Objects Name="Kamal_Rex">
 		<Variant_Of_Existing_Type>Alien_Hero_Kamal_Rex</Variant_Of_Existing_Type>
 	</X99_Test_Objects>
-	-->
 	
 	<X10_Alien_Heroes Name="Fake_Alien_Hero">
 		<Variant_Of_Existing_Type>Alien_Hero_Kamal_Rex</Variant_Of_Existing_Type>
 		<Text_ID>TEXT_ALIEN_FAKE_HERO</Text_ID>
 
+		<!-- No icon -->
 		<BehaviorType Name="GlobalIconBehaviorType">
 			<Global_Icon_Object_Type_Name> ALIEN_Fake_Hero_Icon </Global_Icon_Object_Type_Name>
 		</BehaviorType>

@@ -46,6 +46,7 @@
 		<Shot_Type> Infantry </Shot_Type>
 		
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
@@ -89,7 +90,7 @@
 		<Attack_Category_Restrictions />
 		<Tactical_Health> 1200 </Tactical_Health>
 		
-		<Land_FOW_Reveal_Range>250</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>245</Land_FOW_Reveal_Range>
 		
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -122,7 +123,6 @@
 			UNIT_AI,
 			RETREAT_FROM_TACTICAL,
 			SQUASH,
-			TACTICAL_AI,
 			BALLISTIC
 		</LandBehavior>
 		
@@ -142,15 +142,14 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 220.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 180.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual</AI_Target_Level>
 		 <Attack_Score_Rating> 0.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 0.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -270,12 +269,16 @@
 
 			<Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -824,6 +827,7 @@
 		<Influences_Capture_Point>False</Influences_Capture_Point>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 		</Attributes>
@@ -862,7 +866,7 @@
 			<Targeting_Max_Attack_Distance>220.0</Targeting_Max_Attack_Distance>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Projectile_Types> Proj_Gatling_Plasma </Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Seconds>1.2</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
@@ -944,6 +948,7 @@
       <Ranged_Target_Z_Adjust>0</Ranged_Target_Z_Adjust>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
@@ -1277,6 +1282,7 @@
 		<!-- ART -->
 		<Land_Model_Name>pp_orlok_cannon.alo</Land_Model_Name>
 		<!--<Land_Model_Name>Laser_Gatling_Plasma</Land_Model_Name>--> <!-- Defined in LASERBEAMS.XML this is the old version -->
+		<Projectile_Custom_Render>0</Projectile_Custom_Render>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Shadow_Enabled>False</Shadow_Enabled>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -1308,7 +1314,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>35.0</Projectile_Damage>
+			<Projectile_Damage>30.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Target_Point_On_Terrain> True </Projectile_Target_Point_On_Terrain>

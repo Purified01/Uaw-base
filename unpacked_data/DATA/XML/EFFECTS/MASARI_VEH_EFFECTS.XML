@@ -49,15 +49,9 @@
 		<Duration> 5.1 </Duration>
 		<Effect_Class> Transparent </Effect_Class>
       <Extends_Existing_Duration> yes </Extends_Existing_Duration>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Weapon_Range_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.95 </Modifier_Value>
-		</Effect_Component>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Weapon_Recharge_Reset </Attribute>
-			<Modifier_Value> 1.0 </Modifier_Value>
+    
+      <Effect_Component Type="DisableBehavior">
+			<Behaviors> TARGETING, WEAPON, TURRET </Behaviors>
 		</Effect_Component>
 
 		<Effect_Component Type="ParticleSystem">
@@ -127,7 +121,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type>Damage_Masari_Peacebringer_Disintegrate</Damage_Type>
-			<Amount_Per_Second> 125.0 </Amount_Per_Second>
+			<Amount_Per_Second> 200.0 </Amount_Per_Second>
 		</Effect_Component>
 	</Effect>
 
@@ -199,7 +193,7 @@
 		<!-- Slow target down -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.30 </Modifier_Value>
+			<Modifier_Value> -0.90 </Modifier_Value>
 		</Effect_Component>
 
       <Effect_Component Type="ParticleSystem">

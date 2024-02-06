@@ -108,7 +108,7 @@
       </BehaviorType>
 
       <BehaviorType Name="DeathFXBehaviorType">
-         <Death_Clone> Damage_Default, Alien_Superweapon_Mass_Drop_Death_Clone </Death_Clone>
+         <Death_Clone> Damage_Alien_Mass_Drop, Alien_Superweapon_Mass_Drop_Death_Clone </Death_Clone>
          <Death_Explosions>Large_Explosion_Land</Death_Explosions>
          <Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
          <Death_Fade_Time> 0.25 </Death_Fade_Time>
@@ -128,13 +128,6 @@
          <SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Alien_Superweapon_Mass_Drop</SFXEvent_Tactical_Build_Complete>
          <SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
       </BehaviorType>
-	
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/04/07 magnetism stuff -->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>	
 
       <BehaviorType Name="LuaScriptBehaviorType">
          <Lua_Land_Behaviors> SuperWeaponEnablerBehavior </Lua_Land_Behaviors>
@@ -311,7 +304,7 @@
 		<!-- CONFLICT -->
       <Is_Attackable>Yes</Is_Attackable>
       <!-- needed for builder unit to be able to activate its ability -->
-      <Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
+      <Ranged_Target_Z_Adjust> 3.0 </Ranged_Target_Z_Adjust>
       <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 
       <Tactical_Health> 300 </Tactical_Health>
@@ -704,7 +697,9 @@
 		<!-- ART -->
 		<Land_Model_Name>WO_Dumpster_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
-		<AssetBank> BANK_NONE </AssetBank>
+		<AssetBank> BANK_ALIEN </AssetBank>
+
+		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NONE</Text_ID>
@@ -776,8 +771,8 @@
 
 			<Projectile_Causes_Blackening> true </Projectile_Causes_Blackening>
 			<Terrain_Damage_Radius> 50.0 </Terrain_Damage_Radius>
-			<!--  jdg 11/09/07 new sound event the mass drop explosions...need to seperate from SFX_Alien_Detonation_4-->
-			<Projectile_SFXEvent_Detonate>SFX_Alien_Mass_Drop_Detonation</Projectile_SFXEvent_Detonate>
+			
+			<Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_4</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<Impact_Effect_Generator_Name>MassDropDamageGenerator</Impact_Effect_Generator_Name>
 			<Can_Be_Redirected>False</Can_Be_Redirected>
@@ -794,7 +789,7 @@
 					<Duration> 2.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 80 </Area_Effect_Radius>
-					<Target_Filter_Categories> ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter> not target.Is_Category("Resource_INST | Resource") </Target_Filter>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -808,7 +803,7 @@
 					<Duration> 0.5 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 80 </Area_Effect_Radius>
-					<Target_Filter_Categories> ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter> not target.Is_Category("Resource_INST | Resource") </Target_Filter>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -825,6 +820,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>MV_Tank_Destroyed.ALO</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -844,12 +840,14 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>MV_Apache_crashed_mass.ALO</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_04">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WO_MASINT_Generic_C_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -869,6 +867,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AV_Defiler_hulk_mass.alo</Land_Model_Name>
 		<Scale_Factor>2.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -888,6 +887,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AV_Cylinder_DC_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.35</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -906,6 +906,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_Unit_transport_DC_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.8</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -925,6 +926,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_Variant_DC_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.25</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -944,6 +946,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_Firetruck_damage_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -963,6 +966,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_Schoolbus_Damage_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.5</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -982,6 +986,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_truck00_Damage_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1001,6 +1006,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_Elegant_Damage_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1020,6 +1026,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_Sport_Damage_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1039,6 +1046,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>WV_Car_explode_mass.ALO</Land_Model_Name>
 		<Scale_Factor>1.3</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1058,6 +1066,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_AntiTank_DC_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.65</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1076,13 +1085,14 @@
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_16">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
       <!-- Took ou the cow, upon Gary's request -->
-		<Land_Model_Name>ww_cow_mutilated.alo</Land_Model_Name>
+		<Land_Model_Name>WO_Dumpster_mass.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
-        _Cow_Mutilated,
-      </Destruction_Debris_Types>
+				_Cow_01
+			</Destruction_Debris_Types>
 			<Debris_Speed_Min> 1.0 </Debris_Speed_Min>
 			<Debris_Speed_Max> 3.0 </Debris_Speed_Max>
 			<Debris_Outward_Speed_Min> 1.0 </Debris_Outward_Speed_Min>
@@ -1097,6 +1107,7 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_Field_Inverter_DC_mass.ALO</Land_Model_Name>
 		<Scale_Factor>1.1</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 
 		<BehaviorType Name="SpawnDebrisBehaviorType">
 			<Destruction_Debris_Types>
@@ -1117,36 +1128,42 @@
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_Rubble2_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_19">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_Rubble3_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_20">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_L-pipe_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_21">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_L-Pipe_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_22">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_Rubble1_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 	<Projectile Name="Proj_Alien_Mass_Drop_Projectile_23">
 		<Variant_Of_Existing_Type>Proj_Alien_Mass_Drop_Projectile_01</Variant_Of_Existing_Type>
 		<Land_Model_Name>AB_Habitat_Crown_Rubble2_mass.ALO</Land_Model_Name>
 		<Scale_Factor>0.85</Scale_Factor>
+		<AssetBank>BANK_ALIEN</AssetBank>
 	</Projectile>
 
 

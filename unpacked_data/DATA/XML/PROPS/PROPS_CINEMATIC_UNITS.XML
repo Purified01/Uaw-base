@@ -46,7 +46,7 @@
 
     <Attributes SubObjectList="Yes">
       <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
     </Attributes>
 
@@ -212,6 +212,15 @@
       <IsDeathCloneObstacle> true </IsDeathCloneObstacle>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
   </X71_Cinematic_Units>
 
   <X71_Cinematic_Units Name="Cinematic_Marine">
@@ -251,7 +260,7 @@
 
     <Attributes SubObjectList="Yes">
       <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
     </Attributes>
 
@@ -425,6 +434,15 @@
       <Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_03 </Death_Spawn>
       <Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
       <IsDeathCloneObstacle> true </IsDeathCloneObstacle>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
   </X71_Cinematic_Units>
@@ -632,6 +650,15 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.025 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="RadarMapBehaviorType">
       <Radar_Icon_Size>0.04  0.04</Radar_Icon_Size>
     </BehaviorType>
@@ -687,7 +714,7 @@
 
     <Attributes SubObjectList="Yes">
       <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
     </Attributes>
 
@@ -899,6 +926,17 @@
       <Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_03 </Death_Spawn>
       <Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
       <IsDeathCloneObstacle> true </IsDeathCloneObstacle>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <Unit_Abilities_Data SubObjectList="Yes" Replace="False">
@@ -1238,6 +1276,16 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.025 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="RadarMapBehaviorType">
       <Radar_Icon_Size>0.04  0.04</Radar_Icon_Size>
     </BehaviorType>
@@ -1345,6 +1393,7 @@
     <Scale_Factor> 0.5 </Scale_Factor>
     <Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
+    <AssetBank> BANK_ALIEN </AssetBank>
 
     <Selection_Blob_Material_Name>Selection_Alien_Land</Selection_Blob_Material_Name>
     <Highlight_Blob_Material_Name>Highlight_Alien_Hero</Highlight_Blob_Material_Name>
@@ -1381,7 +1430,7 @@
       <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Tactical_Build_Cost_Credits />
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Generator_Area_Effect_Radius_1> 400 </Generator_Area_Effect_Radius_1>
     </Attributes>
 
@@ -1582,6 +1631,15 @@
       <SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 
       <Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="FleetBehaviorType">
@@ -2160,6 +2218,7 @@
     <SurfaceFX_Name>Generic_Footprint</SurfaceFX_Name>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -2186,6 +2245,7 @@
     <Shot_Type> Infantry </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Is_Mutant_Slave> true </Is_Mutant_Slave>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
     </Attributes>
@@ -2348,6 +2408,17 @@
 			-->
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="DeathFXBehaviorType">
       <!--			<Death_Clone>Damage_Default, Alien_Mutant_Slave_Death_Clone</Death_Clone>-->
       <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
@@ -2473,9 +2544,10 @@
     <Shot_Type> Infantry </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Tactical_Build_Cost_Credits />
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
     </Attributes>
 
     <!-- MOVEMENT -->
@@ -2653,6 +2725,17 @@
 			-->
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="DeathFXBehaviorType">
       <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
       <Death_Clone> Damage_Default, Cinematic_Alien_Grunt_Death_Clone_Resource </Death_Clone>
@@ -2809,6 +2892,7 @@
     <SurfaceFX_Name>Generic_Footprint</SurfaceFX_Name>
     <Scale_Factor>1.0</Scale_Factor>
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -2833,8 +2917,9 @@
     <Create_Team> No </Create_Team>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> True </Can_Garrison_Buildings>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
@@ -3007,6 +3092,23 @@
       <SFXEvent_Build_Started>GUI_BUILD_Infantry</SFXEvent_Build_Started>
       <SFXEvent_Build_Complete>Unit_Select_Alien_Lost_One</SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled>GUI_BUILD_Infantry_Canceled</SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 15.0 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.08 </GUI_Strategic_Mode_Scale>
+      <GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
+      <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
     </BehaviorType>
 
     <BehaviorType Name="DeathFXBehaviorType">
@@ -3212,6 +3314,7 @@
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
     <Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
     <Looped_Attack_Anim_Timeout> 2 </Looped_Attack_Anim_Timeout>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -3236,6 +3339,7 @@
     <Shot_Type> Vehicle </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
       <Generator_Area_Effect_Radius_1> 50 </Generator_Area_Effect_Radius_1>
     </Attributes>
@@ -3430,7 +3534,16 @@
       <SFXEvent_Build_Complete>Unit_Select_Alien_Defiler</SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>
     </BehaviorType>
-	  
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.08 </GUI_Strategic_Mode_Scale>
+      <GUI_Shift_Factor> 15.0 </GUI_Shift_Factor>
+    </BehaviorType>
+
     <BehaviorType Name="FleetBehaviorType">
       <!-- Maria 05.24.2006 - How much space does the unit take up -->
       <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
@@ -3633,6 +3746,7 @@
     <Land_Model_Name>AV_GlyphCarver.ALO</Land_Model_Name>
     <Scale_Factor>1.0</Scale_Factor>
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -3656,6 +3770,7 @@
     <Shot_Type> Infantry </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Can_Garrison_Buildings> false </Can_Garrison_Buildings>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
@@ -3839,6 +3954,16 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.1 </GUI_Strategic_Mode_Scale>
+      <GUI_Shift_Factor> 15.0 </GUI_Shift_Factor>
+    </BehaviorType>
+
     <!-- DEBUG: Are we still using this system for the Military tutorial, or somewhere else? -->
     <BehaviorType Name="LockableByDynamicScannerBehaviorType">
       <Dynamic_Scan_Target_Effect_Particle_Name>Dynamic_Scan_Target</Dynamic_Scan_Target_Effect_Particle_Name>
@@ -3919,6 +4044,7 @@
     <Land_Model_Name>AV_Tank_Ground.ALO</Land_Model_Name>
     <Scale_Factor>1.0</Scale_Factor>
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
 
@@ -3944,6 +4070,7 @@
     <Shot_Type> Vehicle </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -4133,6 +4260,15 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense>30</Crush_Defense>
     </BehaviorType>
@@ -4212,6 +4348,7 @@
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
     <Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
     <!-- jdg originally 10 -->
+    <AssetBank> Bank_Alien </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -4228,6 +4365,7 @@
     <Shot_Type> Infantry </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
@@ -4399,6 +4537,23 @@
       <SFXEvent_Build_Started>GUI_BUILD_Infantry</SFXEvent_Build_Started>
       <SFXEvent_Build_Complete>Unit_Select_Alien_Brute</SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled>GUI_BUILD_Infantry_Canceled</SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 15.0 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.08 </GUI_Strategic_Mode_Scale>
+      <GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
+      <GUI_Receives_Input> false </GUI_Receives_Input>
+      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+      <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
+      <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
     </BehaviorType>
 
     <BehaviorType Name="CrushBehaviorType">
@@ -4643,6 +4798,7 @@
     <No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
     <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -4654,6 +4810,7 @@
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
     <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
     <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+    <GUI_Bracket_Size>1</GUI_Bracket_Size>
     <Select_Box_Scale>55</Select_Box_Scale>
     <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -4668,6 +4825,7 @@
     <Shot_Type> Flying </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -4861,6 +5019,15 @@
 
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense>40</Crush_Defense>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.03 </GUI_Strategic_Mode_Scale>
+      <GUI_Shift_Factor> 40.0 </GUI_Shift_Factor>
     </BehaviorType>
 
     <BehaviorType Name="FleetBehaviorType">
@@ -5057,6 +5224,7 @@
     <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
     <Should_VTOL_Never_Set_Anim> false </Should_VTOL_Never_Set_Anim>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -5068,6 +5236,7 @@
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
     <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
     <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+    <GUI_Bracket_Size>1</GUI_Bracket_Size>
     <Select_Box_Scale>55</Select_Box_Scale>
     <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -5083,6 +5252,7 @@
     <Layer_Z_Adjust> 10.0 </Layer_Z_Adjust>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -5285,6 +5455,14 @@
       <Crush_Defense>30</Crush_Defense>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="FleetBehaviorType">
       <!-- Maria 05.24.2006 - How much space does the unit take up -->
       <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
@@ -5356,6 +5534,7 @@
     <Occlusion_Silhouette_Enabled>0</Occlusion_Silhouette_Enabled>
     <Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
     <Looped_Attack_Anim_Timeout> 2 </Looped_Attack_Anim_Timeout>
+    <AssetBank> BANK_ALIEN </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
 
     <!-- INTERFACE -->
@@ -5376,6 +5555,7 @@
     <Shot_Type> Vehicle </Shot_Type>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Generator_Area_Effect_Radius_1> 50 </Generator_Area_Effect_Radius_1>
 
       <!-- This MODIFIER determines what portion of the whole price we must reduce.  Hence, a modifier
@@ -6200,6 +6380,7 @@
     <Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
     <Death_Fade_Time>.25</Death_Fade_Time>
     <Death_Persistence_Duration>5</Death_Persistence_Duration>
+    <AssetBank> BANK_NOVUS </AssetBank>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
     <User_Bound_Min>-700,-700,0</User_Bound_Min>
     <User_Bound_Max>700,700,1500</User_Bound_Max>
@@ -6232,7 +6413,7 @@
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Generator_Area_Effect_Radius_1> 750 </Generator_Area_Effect_Radius_1>
       <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Tactical_Build_Cost_Credits />
     </Attributes>
 
@@ -6301,8 +6482,7 @@
       DAMAGE_TRACKING,
       AI_TARGET,
       SWITCH_TYPE,
-      RETREAT_FROM_TACTICAL,
-		FLOW
+      RETREAT_FROM_TACTICAL
     </LandBehavior>
 
     <!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
@@ -6412,6 +6592,17 @@
       <SFXEvent_Build_Started>GUI_BUILD_Vehicle</SFXEvent_Build_Started>
       <SFXEvent_Build_Complete>Unit_Select_Novus_Founder</SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="DeathFXBehaviorType">
@@ -6670,6 +6861,7 @@
     <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Tactical_Build_Cost_Credits />
       <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
     </Attributes>
@@ -6749,8 +6941,7 @@
       ATTRIBUTE_DIRECTORY,
       AI_RECRUITABLE,
       AI_TARGET,
-      RETREAT_FROM_TACTICAL,
-		FLOW
+      RETREAT_FROM_TACTICAL
     </LandBehavior>
 
     <!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
@@ -6913,6 +7104,15 @@
       <Death_Clone> Damage_Falling, Novus_Hero_Mech_Death_Clone_Falling </Death_Clone>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="FleetBehaviorType">
       <!-- Maria 05.10.2006 - Adding new field to support limiting the pop cap of a the hero's fleet -->
       <!-- Maria 09.05.2006 - changing the pop cap associated to a hero so that it is ALWAYS <= the regional pop cap -->
@@ -7018,7 +7218,7 @@
         <Activation_Min_Range>100.0</Activation_Min_Range>
         <Activation_Max_Range>500.0</Activation_Max_Range>
         <Activation_Recharge_Time> 2.0 </Activation_Recharge_Time>
-		  <Attack_Animation>ANIM_SPECIAL_C</Attack_Animation>
+        <Attack_Animation>ANIM_ATTACK</Attack_Animation>
         <SFXEvent_Apply_Damage>SFX_Novus_Snipe_Fire</SFXEvent_Apply_Damage>
         <Damage_Frame_Number>0</Damage_Frame_Number>
         <Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
@@ -7113,6 +7313,7 @@
     <Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
     <Looped_Attack_Anim_Timeout> 2 </Looped_Attack_Anim_Timeout>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID> TEXT_UNIT_NOVUS_HERO_VERTIGO </Text_ID>
@@ -7122,6 +7323,7 @@
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
     <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
     <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+    <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
     <Select_Box_Scale> 50 </Select_Box_Scale>
     <Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> false </Use_Space_Mode_Selection_Circle>
@@ -7142,6 +7344,7 @@
     <Layer_Z_Adjust> 10.0 </Layer_Z_Adjust>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
       <Tactical_Build_Cost_Credits />
     </Attributes>
@@ -7352,7 +7555,15 @@
       <Crush_Defense> 99 </Crush_Defense>
       <Crush_Power> 0 </Crush_Power>
     </BehaviorType>
-	  
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <!-- This behavior type determines the type of 3D global icon that will represent this object!-->
     <BehaviorType Name="GlobalIconBehaviorType">
       <Global_Icon_Object_Type_Name> Novus_Hero2_Icon </Global_Icon_Object_Type_Name>
@@ -7674,6 +7885,7 @@
     <Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_CONSTRUCTOR</Text_ID>
@@ -7697,10 +7909,11 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-       <Should_Always_Flow> true </Should_Always_Flow>
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
+      <Should_Aways_Flow> true </Should_Aways_Flow>
     </Attributes>
 
     <!-- MOVEMENT -->
@@ -7874,6 +8087,15 @@
       <Death_Clone> Damage_Default, Novus_Constructor_Death_Clone_Resource </Death_Clone>
       <Death_Fade_Time> 0.25 </Death_Fade_Time>
       <Death_Persistence_Duration> 10 </Death_Persistence_Duration>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.09 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -8127,6 +8349,7 @@
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Mouse_Collide_Override_Sphere_Radius> 10.0 </Mouse_Collide_Override_Sphere_Radius>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_OHM_ROBOT</Text_ID>
@@ -8150,7 +8373,8 @@
     <Shot_Type> Infantry </Shot_Type>
 
     <Attributes SubObjectList="Yes">
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -8373,6 +8597,14 @@
 		 <Death_Speed_Max>2.0</Death_Speed_Max>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <Unit_Abilities_Data SubObjectList="Yes">
       <Unit_Ability Name="Robotic_Infantry_Swarm">
         <Type>LEAP</Type>
@@ -8516,8 +8748,9 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Build_Cost_Credits />
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
     </Attributes>
 
     <!-- MOVEMENT -->
@@ -8666,6 +8899,17 @@
       <SFXEvent_Build_Started> GUI_BUILD_Infantry </SFXEvent_Build_Started>
       <SFXEvent_Build_Complete> Unit_Select_Novus_Hacker </SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled> GUI_BUILD_Infantry_Canceled </SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>2</GUI_Bracket_Size>
+      <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="DeathFXBehaviorType">
@@ -9022,6 +9266,7 @@
     <Death_Fade_Time> .25 </Death_Fade_Time>
     <Death_Persistence_Duration> 5 </Death_Persistence_Duration>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID> TEXT_UNIT_NOVUS_REFLEX_TROOPER </Text_ID>
@@ -9045,8 +9290,9 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Is_Phasable> true </Is_Phasable>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-      <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+      <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       <Effect_Duration_1> 1.0 </Effect_Duration_1>
     </Attributes>
 
@@ -9235,6 +9481,17 @@
       <SFXEvent_Build_Started> GUI_BUILD_Infantry </SFXEvent_Build_Started>
       <SFXEvent_Build_Complete> Unit_Select_Novus_Reflex_Trooper </SFXEvent_Build_Complete>
       <SFXEvent_Build_Cancelled> GUI_BUILD_Infantry_Canceled </SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size> 2 </GUI_Bracket_Size>
+      <GUI_Bounds_Scale> 0.5 </GUI_Bounds_Scale>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="DeathFXBehaviorType">
@@ -9442,6 +9699,7 @@
     <Scale_Factor>1.1</Scale_Factor>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_ANTIMATTER_TANK</Text_ID>
@@ -9463,6 +9721,7 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -9531,8 +9790,7 @@
       <!--LIGHTNING_BALL_EFFECT,-->
       AI_RECRUITABLE,
       TACTICAL_SELL,
-      AI_TARGET,
-		FLOW
+      AI_TARGET
     </LandBehavior>
 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -9634,6 +9892,16 @@
     <BehaviorType Name="BlobShadowBehaviorType">
       <No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="LockableByDynamicScannerBehaviorType">
@@ -9779,11 +10047,11 @@
   <X71_Cinematic_Units Name="Cinematic_Novus_Amplifier">
 
     <!-- ART -->
-	 <LOD_Bias>100</LOD_Bias>
     <Land_Model_Name>NV_Amplifier.ALO</Land_Model_Name>
     <Scale_Factor>0.9</Scale_Factor>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_AMPLIFIER</Text_ID>
@@ -9873,8 +10141,7 @@
       AI_RECRUITABLE,
       AI_TARGET,
       TACTICAL_SELL,
-      ABILITY_COUNTDOWN,
-		FLOW
+      ABILITY_COUNTDOWN
     </LandBehavior>
 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -9982,6 +10249,16 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees />
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 10.0 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="LockableByDynamicScannerBehaviorType">
       <Dynamic_Scan_Target_Effect_Particle_Name>Dynamic_Scan_Target</Dynamic_Scan_Target_Effect_Particle_Name>
       <Dynamic_Scan_Target_Lock_Max_Delay_Seconds>2.0</Dynamic_Scan_Target_Lock_Max_Delay_Seconds>
@@ -10015,6 +10292,7 @@
 
       <Source_Particle_Effect />
       <Target_Particle_Effect>Small_Lightning_Bolt_Strike</Target_Particle_Effect>
+      <SFX_Event />
       <Spawn_Object_On_Death />
     </BehaviorType>-->
 
@@ -10251,7 +10529,7 @@
 
 
 
-      <!-- Researched ability for this unit to Flow. It just dynamically adds the FLOW behavior to this unit. 
+      <!-- Researched ability for this unit to Flow. It just dynamically adds the FLOW behavior to this unit. -->
       <Effect_Generator Name="NovusResearchAdvancedFlowEffectGenerator">
         <Starts_Active> true </Starts_Active>
         <Effect_Generator_Entry Name="Entry1">
@@ -10259,7 +10537,7 @@
           <Duration> -1.0 </Duration>
           <Target_Gathering_Mask> Self </Target_Gathering_Mask>
         </Effect_Generator_Entry>
-      </Effect_Generator>-->
+      </Effect_Generator>
 
 
 
@@ -10288,6 +10566,7 @@
     <Death_Fade_Time> 0.25 </Death_Fade_Time>
     <Death_Persistence_Duration> 10 </Death_Persistence_Duration>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_VARIANT</Text_ID>
@@ -10309,6 +10588,7 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -10501,6 +10781,16 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees />
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.05 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense>30</Crush_Defense>
     </BehaviorType>
@@ -10628,6 +10918,7 @@
     <Scale_Factor>1.2</Scale_Factor>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_FIELD_INVERTER</Text_ID>
@@ -10649,6 +10940,7 @@
     <Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
       <!-- Make sure that this is the same as Novus_Field_Inverter_Shield_Mode -->
       <Generator_Area_Effect_Radius_1> 100.0 </Generator_Area_Effect_Radius_1>
@@ -10830,6 +11122,16 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> No </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees />
+      <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+      <GUI_Shift_Factor> 10.0 </GUI_Shift_Factor>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="LockableByDynamicScannerBehaviorType">
       <Dynamic_Scan_Target_Effect_Particle_Name>Dynamic_Scan_Target</Dynamic_Scan_Target_Effect_Particle_Name>
       <Dynamic_Scan_Target_Lock_Max_Delay_Seconds>2.0</Dynamic_Scan_Target_Lock_Max_Delay_Seconds>
@@ -10919,6 +11221,7 @@
     <Scale_Factor>1.2</Scale_Factor>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Text_ID>TEXT_UNIT_NOVUS_FIELD_INVERTER_SHIELD</Text_ID>
@@ -10939,6 +11242,7 @@
     <Weather_Category>Hover</Weather_Category>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <!-- Make sure that this is the same as Novus_Field_Inverter-->
       <Generator_Area_Effect_Radius_1> 100.0 </Generator_Area_Effect_Radius_1>
     </Attributes>
@@ -11067,6 +11371,7 @@
 
       <Source_Particle_Effect />
       <Target_Particle_Effect />
+      <SFX_Event />
       <Spawn_Object_On_Death />
     </BehaviorType>-->
 
@@ -11132,6 +11437,10 @@
     <BehaviorType Name="BlobShadowBehaviorType">
       <No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
     </BehaviorType>
 
     <BehaviorType Name="LockableByDynamicScannerBehaviorType">
@@ -11299,6 +11608,7 @@
     <No_Reflection_Below_Detail_Level> 1 </No_Reflection_Below_Detail_Level>
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Icon_Name> i_icon_nv_corruptor.tga </Icon_Name>
@@ -11309,6 +11619,7 @@
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
     <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
     <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+    <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
     <Select_Box_Scale> 55 </Select_Box_Scale>
     <Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -11324,6 +11635,7 @@
     <Layer_Z_Adjust> 10.0 </Layer_Z_Adjust>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
@@ -11533,7 +11845,15 @@
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense> 30 </Crush_Defense>
     </BehaviorType>
-	  
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="FleetBehaviorType">
       <!-- Maria 05.24.2006 - How much space does the unit take up -->
       <Unit_Pop_Cap> 1 </Unit_Pop_Cap>
@@ -11759,6 +12079,7 @@
     <Is_Attack_Anim_Looped> true </Is_Attack_Anim_Looped>
     <Looped_Attack_Anim_Timeout> 2 </Looped_Attack_Anim_Timeout>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
+    <AssetBank> BANK_NOVUS </AssetBank>
 
     <!-- INTERFACE -->
     <Icon_Name> i_icon_nv_dervish_jet.tga  </Icon_Name>
@@ -11769,6 +12090,7 @@
     <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
     <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
     <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+    <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
     <Select_Box_Scale> 55 </Select_Box_Scale>
     <Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
     <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -11784,6 +12106,7 @@
     <Layer_Z_Adjust> 10.0 </Layer_Z_Adjust>
 
     <Attributes SubObjectList="Yes">
+      <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
       <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
     </Attributes>
 
@@ -11985,6 +12308,14 @@
 
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense> 30 </Crush_Defense>
+    </BehaviorType>
+
+    <BehaviorType Name="GUIBehaviorType">
+      <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
     </BehaviorType>
 
     <BehaviorType Name="FleetBehaviorType">
@@ -12202,6 +12533,7 @@
     <Occlusion_Silhouette_Enabled> 0 </Occlusion_Silhouette_Enabled>
     <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
     <Is_Placed_By_Editor>true</Is_Placed_By_Editor>
+    <AssetBank> BANK_MASARI </AssetBank>
 
     <!-- MOVEMENT -->
     <MovementClass>Infantry</MovementClass>

@@ -435,6 +435,10 @@
 			<Crush_Defense>60</Crush_Defense>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size> 1 </GUI_Bracket_Size>
+		</BehaviorType>
+
 		<BehaviorType Name="RevealBehaviorType">
 			<Land_FOW_Reveal_Range> 30.0 </Land_FOW_Reveal_Range>
 		</BehaviorType>
@@ -3978,6 +3982,7 @@
 		<Land_Model_Name>WB_NA_HOUSE02.alo</Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>No</Is_Decoration>
+		<CategoryMask> Large, Stationary, Insignificant </CategoryMask>
 
 		<!-- INTERFACE -->
 		<Is_Placed_By_Editor>true</Is_Placed_By_Editor>

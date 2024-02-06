@@ -97,8 +97,7 @@
 		  <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 		  <Generator_Area_Effect_Radius_1> 250 </Generator_Area_Effect_Radius_1>
 		  <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
-		  <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
-        <Animation_Subindex_Override>0</Animation_Subindex_Override>
+		  <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 	  </Attributes>
 
 
@@ -128,10 +127,10 @@
 	  <Is_Attackable> true </Is_Attackable>
 	  <Ranged_Target_Z_Adjust>20.0</Ranged_Target_Z_Adjust>
 	  <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-	  <Land_FOW_Reveal_Range>235.0</Land_FOW_Reveal_Range>
+	  <Land_FOW_Reveal_Range>225.0</Land_FOW_Reveal_Range>
 	  <Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
-	  <Tactical_Health> 1100 </Tactical_Health>
+	  <Tactical_Health> 900 </Tactical_Health>
 
 	  <!-- BEHAVIORS -->
 	  <Behavior>
@@ -160,17 +159,9 @@
 			AI_RECRUITABLE,
 			DAMAGE_TRACKING,
 			AI_TARGET,
-			TACTICAL_AI,
 			SWITCH_TYPE,
 			RETREAT_FROM_TACTICAL
 		</LandBehavior>
-
-	  <BehaviorType Name="SelectableBehaviorType">
-		  <!-- DME 02/05/08 magnetism testing-->
-		  <Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-		  <Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-		  <Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-	  </BehaviorType>
 
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
 		<StrategicBehavior>
@@ -192,7 +183,6 @@
 			<Type_Switch_Types> Novus_Hero_Founder, Novus_Hero_Founder_Performance </Type_Switch_Types>
 
 			<Primary_Type> Novus_Hero_Founder </Primary_Type>
-			<Component_Uses_Signal> true </Component_Uses_Signal>
 
 		</BehaviorType>
 
@@ -226,15 +216,14 @@
 
 	  <BehaviorType name="AIBehaviorType">
 		  <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 200.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 60.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
 		  <AI_Target_Level>Individual</AI_Target_Level>
 		  <Attack_Score_Rating> 2.0 </Attack_Score_Rating>
 		  <Scout_Score_Rating> 0.2 </Scout_Score_Rating>
 		  <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		  <Tactical_AI_Search_Range> 0.0 </Tactical_AI_Search_Range>
 	  </BehaviorType>
 
 	  <BehaviorType Name="WeaponBehaviorType">
@@ -324,6 +313,17 @@
 		  <Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
 	  </BehaviorType>
 
+	  <BehaviorType Name="GUIBehaviorType">
+		  <GUI_Bracket_Size>2</GUI_Bracket_Size>
+		  <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+		  <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+		  <GUI_Is_Top_View> No </GUI_Is_Top_View>
+		  <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+		  <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+		  <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+		  <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+	  </BehaviorType>
+
 	  <BehaviorType Name="DeathFXBehaviorType">
 		  <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 		  <Death_Clone> Damage_Default, Novus_Founder_Prowess_Death_Clone_Resource </Death_Clone>
@@ -406,7 +406,6 @@
            <SFXEvent_Target_Ability>Unit_ABILITY_C_Novus_Founder</SFXEvent_Target_Ability>
 
            <Necessary_Pop_Cap>1</Necessary_Pop_Cap>
-           <Necessary_Health_Percentage>.3</Necessary_Health_Percentage>
 		  </Unit_Ability>
 
 		  <Unit_Ability Name="Founder_Prowess_Power_Fists_Attack">
@@ -571,12 +570,11 @@
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Generator_Area_Effect_Radius_1> 250 </Generator_Area_Effect_Radius_1>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Novus_Power_Transmission_Radius> 20000 </Novus_Power_Transmission_Radius>
 			<Novus_Power_Powerup_Radius> 175 </Novus_Power_Powerup_Radius>
 			<Novus_Flow_Radius> 100.0 </Novus_Flow_Radius>
 			<Tactical_Build_Cost_Credits />
-         <Animation_Subindex_Override>0</Animation_Subindex_Override>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -604,10 +602,10 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Ranged_Target_Z_Adjust>20.0</Ranged_Target_Z_Adjust>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
-		<Tactical_Health> 650 </Tactical_Health>
+		<Tactical_Health> 500 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -616,26 +614,25 @@
       </Behavior>
 
       <LandBehavior>
-        GUI,
-        RADAR_MAP_VISIBLE,
-        WALK_LOCOMOTOR,
-        FORMATION,
-        IDLE,
-        FLOW,
-        SQUASH,
-        TARGETING,
-        REVEAL,
-        HIDE_WHEN_FOGGED,
-        BALLISTIC,
-        EFFECT_GENERATOR,
-        EFFECT_REGISTRY,
-        ATTRIBUTE_DIRECTORY,
-        ABILITY_COUNTDOWN,
-        AI_RECRUITABLE,
-        DAMAGE_TRACKING,
-        AI_TARGET,
-        SWITCH_TYPE,
-        RETREAT_FROM_TACTICAL
+         GUI,
+         RADAR_MAP_VISIBLE,
+         WALK_LOCOMOTOR,
+         FORMATION,
+         IDLE,
+			FLOW,
+         TARGETING,
+         REVEAL,
+         HIDE_WHEN_FOGGED,
+         BALLISTIC,
+         EFFECT_GENERATOR,
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         ABILITY_COUNTDOWN,
+         AI_RECRUITABLE,
+         DAMAGE_TRACKING,
+         AI_TARGET,
+         SWITCH_TYPE,
+         RETREAT_FROM_TACTICAL
       </LandBehavior>
 
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
@@ -658,8 +655,6 @@
 			<Type_Switch_Types> Novus_Hero_Founder, Novus_Hero_Founder_Performance </Type_Switch_Types>
 
 			<Primary_Type> Novus_Hero_Founder </Primary_Type>
-
-			<Component_Uses_Signal> true </Component_Uses_Signal>
 
 		</BehaviorType>
 
@@ -690,9 +685,9 @@
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+			<Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
 			<Guard_Chase_Range> 175.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
+      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 40.0 </Attack_Move_Response_Range>   <!-- When given a attack move command unit will travel this distance from path to attack-->
 			<AI_Target_Level>Individual</AI_Target_Level>
 			<Attack_Score_Rating> 2.0 </Attack_Score_Rating>
@@ -779,6 +774,17 @@
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 			<Death_Clone> Damage_Default, Novus_Founder_Performance_Death_Clone_Resource </Death_Clone>
@@ -788,7 +794,6 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
 		</BehaviorType>
 
 		<!-- MARIA 05.10.2006 -->
@@ -1015,7 +1020,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 1400 </Resource_Units>
+			<Resource_Units> 1600 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
@@ -1050,7 +1055,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 800 </Resource_Units>
+			<Resource_Units> 1000 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>

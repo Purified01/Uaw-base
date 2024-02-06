@@ -380,11 +380,5 @@
 
 	<AlienHarvestFinalizeVisual/>
 	<MineInvulnerability/>
-	<WalkerHasControl/>
-
-	<InverterShieldUp/>
-	<InverterShieldDown/>
-
-	<GenericNoExtendDuration/>
 	
 </EnumDefinition>

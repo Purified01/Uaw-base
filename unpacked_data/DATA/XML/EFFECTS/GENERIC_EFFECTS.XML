@@ -42,7 +42,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
       <Effect_Component Type="Lightning">
@@ -186,7 +185,7 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Weapon_Rate_Multiplier </Attribute>
-			<Modifier_Value> 5.0 </Modifier_Value>
+			<Modifier_Value> 2.0 </Modifier_Value>
 		</Effect_Component>
 
 	</Effect>

@@ -294,19 +294,18 @@
 		<Duration> 5 </Duration>
 		<Effect_Class> FireMineDetonation </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
 
 		<!-- one time damage on explosion -->
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Masari_Figment_Mine</Damage_Type>
-			<Damage_Amount>25.0</Damage_Amount>
+			<Damage_Amount>50.0</Damage_Amount>
 			<Damage_Percentage>0.0</Damage_Percentage>
 		</Effect_Component>
 
 		<!-- damage over time from flowing magma -->
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Fire </Damage_Type>
-			<Amount_Per_Second> 5 </Amount_Per_Second>
+			<Amount_Per_Second> 20 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
       
@@ -323,19 +322,18 @@
 		<Duration> 5 </Duration>
 		<Effect_Class> FireMineDetonation </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
 
 		<!-- one time damage on explosion -->
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Masari_Figment_Mine</Damage_Type>
-			<Damage_Amount>50.0</Damage_Amount>
+			<Damage_Amount>80.0</Damage_Amount>
 			<Damage_Percentage>0.0</Damage_Percentage>
 		</Effect_Component>
 
 		<!-- damage over time from flowing magma -->
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Fire </Damage_Type>
-			<Amount_Per_Second> 10 </Amount_Per_Second>
+			<Amount_Per_Second> 40 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 

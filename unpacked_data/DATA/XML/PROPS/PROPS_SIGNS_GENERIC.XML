@@ -21,9 +21,9 @@
 		<CategoryMask> Medium, Insignificant, Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
-		<!-- MOVEMENT 
+		<!-- MOVEMENT -->
 		<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent_Offset> 4.0 </Custom_Hard_XExtent_Offset>
 
 		<!-- CONFLICT -->
@@ -42,7 +42,7 @@
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 25 </Resource_Units>
+			<Resource_Units> 80 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
@@ -179,13 +179,6 @@
 		<Is_Placed_By_Editor> true </Is_Placed_By_Editor>
 		<Land_Model_Name>WO_Billboard_05.alo</Land_Model_Name>
 		<Custom_Hard_YExtent> 20.0 </Custom_Hard_YExtent>
-
-    <CategoryMask> Medium, Insignificant, Resource </CategoryMask>
-
-    <BehaviorType Name="ResourceBehaviorType">
-      <Resource_Units> 300 </Resource_Units>
-    </BehaviorType>
-    
 	</X30_Props_Signs_Generic>
 	  			
 	<X30_Props_Signs_Generic Name="American_Road_Sign_00">
@@ -301,20 +294,13 @@
 	</X30_Props_Signs_Generic>
 
 	<X30_Props_Signs_Generic Name="American_Road_Sign_20">
-		<Variant_Of_Existing_Type> Abstract_Sign </Variant_Of_Existing_Type>   
+		<Variant_Of_Existing_Type> Abstract_Sign </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor> true </Is_Placed_By_Editor>
 		<Land_Model_Name>WO_NA_Roadsign20.alo</Land_Model_Name>
 		<Custom_Hard_XExtent> 4.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 4.0 </Custom_Hard_YExtent>
 		<Custom_Hard_YExtent_Offset> 21.0 </Custom_Hard_YExtent_Offset>
 		<Custom_Hard_XExtent_Offset> 0.0 </Custom_Hard_XExtent_Offset>
-
-    <CategoryMask> Medium, Insignificant, Resource </CategoryMask>
-
-    <BehaviorType Name="ResourceBehaviorType">
-      <Resource_Units> 300 </Resource_Units>
-    </BehaviorType>
-      
 	</X30_Props_Signs_Generic>
 
 	<X30_Props_Signs_Generic Name="American_Road_Sign_21">
@@ -328,7 +314,7 @@
 	</X30_Props_Signs_Generic>
 
 	<X30_Props_Signs_Generic Name="American_Road_Sign_22">
-		<Variant_Of_Existing_Type> American_Road_Sign_20 </Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type> Abstract_Sign </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor> true </Is_Placed_By_Editor>
 		<Land_Model_Name>WO_NA_Roadsign22.alo</Land_Model_Name>
 		<Custom_Hard_XExtent> 4.0 </Custom_Hard_XExtent>

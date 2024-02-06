@@ -82,13 +82,6 @@
 			ELEMENTAL_MODE
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 20 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_NATURAL_INTERPRETER_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -112,13 +105,6 @@
 			<Bib_X_Extent> 45 </Bib_X_Extent>
 			<Bib_Y_Extent> 45 </Bib_Y_Extent>
 		</BehaviorType>
-
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Masari_Structure_Light </Armor_Type>
@@ -228,7 +214,6 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name>i_icon_mb_Natural_Interpreter.tga</Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
@@ -308,7 +293,7 @@
 					<Target_Gathering_Mask> RadarFilters </Target_Gathering_Mask>
 
 					<!-- KDB 07-18-2007 design has changed this to player only, see Chris R -->
-					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
+					<Target_Filter> source.Get_Owner() == target.Get_Owner() </Target_Filter>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -423,9 +408,9 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Masari_Natural_Interpreter_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Masari_Natural_Interpreter </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 80 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 80 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 6 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
@@ -451,7 +436,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -643,10 +628,10 @@
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Priority_Set> Alien_Radiation_Spitter_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 75.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 5.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 330.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
@@ -666,13 +651,13 @@
 
 			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Light_Beam_Ability">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
-				<Activation_Max_Range> 275 </Activation_Max_Range>
+				<Activation_Min_Range> 60 </Activation_Min_Range>
+				<Activation_Max_Range> 330 </Activation_Max_Range>
 				<Effect_Generator_Name> OraclePiercingGazeLightBeamGenerator </Effect_Generator_Name>
 				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
 				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
 				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 295 </Max_Channel_Range>
+				<Max_Channel_Range> 335 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
@@ -738,7 +723,7 @@
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
 					<Target_Filter_Categories>~Flying</Target_Filter_Categories>
-					<Target_Filter_C> Masari_Oracle_Piercing_Gaze_Beam_Target </Target_Filter_C>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Frames_Between_Remove_Invalid_Targets> 5 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
@@ -777,7 +762,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range>240.0</Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="TypeSwitchBehaviorType">
@@ -786,10 +771,10 @@
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
-			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
+			<Targeting_Priority_Set> Alien_Radiation_Spitter_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 75.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 5.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 300.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -822,13 +807,13 @@
 
 			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Dark_Beam_Ability">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
-				<Activation_Max_Range> 230 </Activation_Max_Range>
+				<Activation_Min_Range> 60 </Activation_Min_Range>
+				<Activation_Max_Range> 300 </Activation_Max_Range>
 				<Effect_Generator_Name> OraclePiercingGazeDarkBeamGenerator </Effect_Generator_Name>
 				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
 				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
 				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 240 </Max_Channel_Range>
+				<Max_Channel_Range> 320 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
@@ -870,7 +855,7 @@
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
 					<Target_Filter_Categories>~Flying</Target_Filter_Categories>
-					<Target_Filter_C> Masari_Oracle_Piercing_Gaze_Beam_Target </Target_Filter_C>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Frames_Between_Remove_Invalid_Targets> 5 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
@@ -1100,13 +1085,9 @@
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
-         <!-- Destroying this one hard point will trigger the parent object to be destroyed -->
-      </BehaviorType>
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire>  </SFXEvent_Fire>
@@ -1130,6 +1111,15 @@
 			<Crush_Defense> 99 </Crush_Defense>
 			<Crush_Power> 65 </Crush_Power>
 		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
+		</BehaviorType>
+
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
 
@@ -1166,15 +1156,7 @@
 			EFFECT_GENERATOR,
 			TACTICAL_BUILD_OBJECTS,
 			HARD_POINT_MANAGER,
-			GUI,
 		</LandBehavior>
-
-		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
@@ -1399,9 +1381,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Masari_Natural_Interpreter_of_Hostility </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign>50</Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign>55</Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 55 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<Attributes SubObjectList="Yes">
@@ -1530,9 +1512,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Masari_Natural_Interpreter_Of_Deception </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 65 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign>65</Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 80 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign>80</Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<Attributes SubObjectList="Yes">

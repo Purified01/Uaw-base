@@ -243,14 +243,11 @@
 	<SFXEvent Name="SFX_Alien_Radiation_Cascade_Fire">
 		<Use_Preset>Preset_EXP_Large</Use_Preset>
 		<Samples>GUN_Alien_Radiation_Cascade_1.wav</Samples>
-		
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Radiation_Cascade_Loop">
 		<Use_Preset>Preset_EGL_Large</Use_Preset>
 		<Samples>EGL_Alien_Radiation_Cascade_1.wav</Samples>
-		<!-- jdg 11/12/07 used for the Alien's Radiation Cascade superweapon -->
-		<Vibration_Event> Vibration_Alien_Superweapon_Radiation_Cascade </Vibration_Event>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Radiation_Wake_Fire">
@@ -333,8 +330,6 @@
    <SFXEvent Name="SFX_Alien_Abduct_Fire">
 		<Use_Preset>Preset_GUNV</Use_Preset>
 		<Samples>EGB_Alien_Ability_Abduct_1.wav</Samples>
-		<!-- jdg 11/09/07 used for Kamal's abduct ability...doesn't look like this gets used anywhere else -->
-		<Vibration_Event> Vibration_Alien_Kamal_Abduct_Ability </Vibration_Event>
 	</SFXEvent>
 
    <SFXEvent Name="SFX_Alien_Push_Fire">
@@ -532,8 +527,6 @@
 	<SFXEvent Name="SFX_Alien_Gravity_Bomb_Stop">
 		<Use_Preset>Preset_EXP_INSANE</Use_Preset>
 		<Samples>EXP_Gravity_Stop_2.wav</Samples>
-			<!-- jdg 11/13/07 used for the Novus' Grav Bomb  superweapon AMBIENT-->
-		<Vibration_Event> Vibration_Novus_Superweapon_Gravity_Bomb_Stop </Vibration_Event>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Gravity_Bomb_Lightning">
@@ -546,14 +539,11 @@
 	<SFXEvent Name="SFX_Alien_Gravity_Bomb_Loop">
 		 <Use_Preset>Preset_EGL_INSANE</Use_Preset>
 	   <Samples>EGL_Gravity_Loop_2.wav</Samples>
-
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Gravity_Bomb_Suck_Loop">
 		 <Use_Preset>Preset_EGL_INSANE</Use_Preset>
 	   <Samples>EGL_Gravity_Suck_Loop_1.wav</Samples>
-		<!-- jdg 11/13/07 used for the Novus' Grav Bomb  superweapon AMBIENT-->
-		<Vibration_Event> Vibration_Novus_Superweapon_Gravity_Bomb_Suck_Loop </Vibration_Event>
 	</SFXEvent>
 
 
@@ -624,14 +614,11 @@
 	<SFXEvent Name="SFX_Novus_Amplifier_Pulse">
 		<Use_Preset>Preset_GUNV</Use_Preset>
 		<Samples>GUN_Amplifier_Pulse_1.wav</Samples>
-		<!-- jdg 11/13/07 used for the amplifiers deploy ability AMBIENT-->
-		<Vibration_Event> Vibration_Novus_Amplifier_Pulse </Vibration_Event>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Amplifier_On">
 		<Use_Preset>Preset_GUNV</Use_Preset>
 		<Samples>GUN_Novus_Amp_On_1.wav</Samples>
-		
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Amplifier_Off">
@@ -712,11 +699,6 @@
 	<SFXEvent Name="SFX_Novus_EMP_Superweapon_Fire_Loop">
 		<Use_Preset>Preset_EGL_Large</Use_Preset>
 		<Samples>EGL_Novus_EMP_Loop_1.wav</Samples>
-	</SFXEvent>
-
-	<SFXEvent Name="SFX_Novus_EMP_Superweapon_Fire">
-		<Use_Preset>Preset_EXP_Large</Use_Preset>
-		<Samples>GUN_Novus_EMP_1.wav</Samples>
 	</SFXEvent>
 
     <SFXEvent Name="SFX_Novus_Shield_Power_Up">
@@ -953,8 +935,6 @@
 	  <SFXEvent Name="SFX_Masari_Superweapon_Dark_Loop">
 		  <Use_Preset>Preset_EGL_Large</Use_Preset>
 		  <Samples>EGL_Masari_Superweapon_Dark_1.wav</Samples>
-		  <!-- jdg 11/12/07 used for the Masari Superweapon: Dark Mode AMBIENT -->
-		<Vibration_Event> Vibration_Masari_Superweapon_Dark_Loop </Vibration_Event>
 	  </SFXEvent>
 
 	  <SFXEvent Name="SFX_Masari_Load">
@@ -1033,14 +1013,11 @@
 	  <SFXEvent Name="SFX_Masari_Ability_Vortex_Start">
 		 <Use_Preset>Preset_GUN_HERO</Use_Preset>
 		 <Samples>EGB_Masari_Ability_5.wav</Samples>
-		 <Vibration_Event> Vibration_Masari_Superweapon_Vortex_Loop </Vibration_Event>
 	  </SFXEvent>
 
 	  <SFXEvent Name="SFX_Masari_Ability_Vortex_Loop">
 		 <Use_Preset>Preset_EGL_Large</Use_Preset>
 		 <Samples>EGL_Masari_Ability_Vortex_1.wav</Samples>
-		 <!-- jdg 11/12/07 used for the Masari Superweapon: Light Mode AMBIENT 
-		<Vibration_Event> Vibration_Masari_Superweapon_Vortex_Loop </Vibration_Event>-->
 	  </SFXEvent>
 
 	  <SFXEvent Name="SFX_Masari_Ability_Frenzy">

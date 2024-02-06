@@ -600,7 +600,11 @@
       <BehaviorType Name="SelectableBehaviorType">
          <Select_Box_Scale> 50 </Select_Box_Scale>
       </BehaviorType>
-		
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
+      </BehaviorType>
+
       <BehaviorType Name="RevealBehaviorType">
          <Land_FOW_Reveal_Range> 30.0 </Land_FOW_Reveal_Range>
       </BehaviorType>
@@ -670,6 +674,11 @@
 			<Death_Fade_Time> 0.25 </Death_Fade_Time>
 			<Death_Persistence_Duration> 3.0 </Death_Persistence_Duration>
 		</BehaviorType>
+
+    <BehaviorType Name="SFXBehaviorType">
+      <Death_SFXEvent_End_Die />
+      <Death_SFXEvent_Start_Die>SFX_Structure_Large_Building_Death</Death_SFXEvent_Start_Die>
+    </BehaviorType>
 
 	</X20_Structures_Specific>
 	
@@ -794,17 +803,10 @@
          <Damage_Type> Damage_Default </Damage_Type>
       </BehaviorType>
 
-    <!--<BehaviorType Name="SFXBehaviorType">
+    <BehaviorType Name="SFXBehaviorType">
       <Death_SFXEvent_End_Die />
       <Death_SFXEvent_Start_Die>SFX_Structure_Large_Building_Death</Death_SFXEvent_Start_Die>
-    </BehaviorType>-->
-	 
-	 <BehaviorType Name="SFXBehaviorType">
-			<Death_SFXEvent_End_Die>SFX_Military_Missile_Death</Death_SFXEvent_End_Die>
-			<!-- jdg 11/13/07 new sound event...need to seperate from  SFX_Masari_Medium_Structure_Death for 
-			rumble purposes-->
-			<Death_SFXEvent_Start_Die> SFX_Military_Missile_Death </Death_SFXEvent_Start_Die>
-		</BehaviorType>
+    </BehaviorType>
 
    </X20_Structures_Specific>
 
@@ -851,13 +853,6 @@
          <Crush_Defense> 99 </Crush_Defense>
          <Crush_Power> 65 </Crush_Power>
       </BehaviorType>
-		
-		<BehaviorType Name="SFXBehaviorType">
-			<Death_SFXEvent_End_Die />
-			<!-- jdg 11/13/07 new sound event...need to seperate from  SFX_Masari_Medium_Structure_Death for 
-			rumble purposes-->
-			<Death_SFXEvent_Start_Die> SFX_Military_Missile_Death </Death_SFXEvent_Start_Die>
-		</BehaviorType>
 
       <Effect_Generator_Data SubObjectList="Yes">
 
@@ -937,6 +932,7 @@
          <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
          <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
          <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+         <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
       </BehaviorType>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -1035,8 +1031,7 @@
 
     <BehaviorType Name="SFXBehaviorType">
       <Death_SFXEvent_End_Die />
-		<!-- jdg 11/14/07 changing sfx event for rumble purposes... was:  SFX_Masari_Large_Structure_Death-->
-      <Death_SFXEvent_Start_Die>SFX_Masari_Temple_Death</Death_SFXEvent_Start_Die>
+      <Death_SFXEvent_Start_Die>SFX_Masari_Large_Structure_Death</Death_SFXEvent_Start_Die>
     </BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">

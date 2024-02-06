@@ -79,11 +79,7 @@
 		<Starting_Active_Player> Novus </Starting_Active_Player>
 		<AI_Player_Control> Alien, DefaultAIPlayer </AI_Player_Control>
 
-		<Starting_Active_Player> Novus </Starting_Active_Player>
-     
-     <Starting_Forces> Novus, Region24, Novus_Research_Center </Starting_Forces>
-     
-		<!-- Player Forces  / Structures -->			
+	  <!-- Player Forces  / Structures -->			
 		<Starting_Forces> Military, Region27, Military_Hero_Randal_Moore </Starting_Forces>
 			
    </Campaign>

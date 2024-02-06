@@ -716,8 +716,7 @@
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpEnableEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpEnableEffect">
+	<Effect Name="AlienWalkerJumpEnableEffect">
 		<Effect_Class> WalkerJumpEnable </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -728,13 +727,12 @@
 			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpDisableEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpDisableEffect">
+	<Effect Name="AlienWalkerJumpDisableEffect">
 		<Effect_Class> WalkerJumpEnable </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -749,13 +747,12 @@
 			<Abilities> Alien_Walker_Activate_Jump_Module_Ability </Abilities>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpSpeedUpEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpSpeedUpEffect">
+	<Effect Name="AlienWalkerJumpSpeedUpEffect">
 		<Effect_Class> WalkerJumpSpeedUp </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -763,13 +760,11 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Ability_Countdown_Rate_Multiplier </Attribute>
-			-->
-   <!-- 2x recharge rate -->
-   <!--
+			<!-- 2x recharge rate -->
 			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 
 	<!--*************************************************************************************************
@@ -1115,20 +1110,6 @@
 
 	</Effect>
 
-	<!-- The follow effect is needed to keep the targets abilities from being used when mind control stops, note that this -->
-	<!-- duration must be longer than that of the actual mind control (i.e. switchfaction) -->
-
-	<Effect Name="WalkerTargetMindControlledEffect">
-		<Effect_Class> WalkerHasControl </Effect_Class>
-		<Duration> 2.0 </Duration>
-		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Is_Mind_Controlled </Attribute>
-			<Modifier_Value> 1.0 </Modifier_Value>
-		</Effect_Component>
-
-	</Effect>
 
 	<Effect Name="AlienWalkerMindMagnetEffect">
 		<Effect_Class> MindControl </Effect_Class>
@@ -1179,7 +1160,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
 		<Effect_Component Type="Sound">
@@ -1210,17 +1190,17 @@
          <Source_Bone_Name> MuzzleB_00 </Source_Bone_Name>
       </Effect_Component>
 
-      <!-- Taken out per request for patch 1/11/08 JeffP -->
-      <!-- Effect_Component Type="ParticleSystem">
+
+      <Effect_Component Type="ParticleSystem">
          <Particle_System_Type>ZI_Architect_Connect_Structure</Particle_System_Type>
 
-         <Position_Type>AtTarget</Position_Type>
-        <Attachment_Bone_Name/>
+         <Position_Type>AtSource</Position_Type>
+         <Attachment_Bone_Name>MuzzleB_00</Attachment_Bone_Name>
 
          <Attractor_Type>AtTarget</Attractor_Type>
          <Attractor_Bone_Name/>
          <Remove_On_Unapply> true </Remove_On_Unapply>
-      </Effect_Component -->
+      </Effect_Component>
       
    </Effect>
    

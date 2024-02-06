@@ -86,13 +86,6 @@
 			ELEMENTAL_MODE
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_GUARDIAN_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -117,13 +110,6 @@
 			<Bib_X_Extent> 18 </Bib_X_Extent>
 			<Bib_Y_Extent> 18 </Bib_Y_Extent>
 		</BehaviorType>
-
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
 		<BehaviorType Name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
@@ -231,7 +217,6 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name>i_icon_mb_guardian.tga</Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
@@ -403,8 +388,8 @@
 			<Tactical_Buildable_Constructed> Masari_Guardian </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Multiplayer> 55 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 55 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 36 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
 
@@ -429,7 +414,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -594,7 +579,7 @@
 		<Variant_Of_Existing_Type> Masari_Guardian </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
 			<Is_Buildable_By_Constructor> false </Is_Buildable_By_Constructor>
@@ -611,7 +596,7 @@
 			<Projectile_Types>Proj_Guardian_Light_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -678,7 +663,7 @@
 		<Variant_Of_Existing_Type> Masari_Guardian </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Land_FOW_Reveal_Range> 230.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 190.0 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Muzzle_Bone_Name> MuzzleB </Muzzle_Bone_Name>
@@ -686,12 +671,12 @@
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 205.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Dark_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -815,7 +800,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
 		<Tactical_Health> 100 </Tactical_Health>
-		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 280.0 </Land_FOW_Reveal_Range>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -883,6 +868,14 @@
 			<Crush_Defense>90</Crush_Defense>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
+		</BehaviorType>
+
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
 
 			<!-- Standard DMA generator - Oksana 05/14/2007 -->
@@ -926,9 +919,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="GameEventSourceBehaviorType">
@@ -944,12 +937,9 @@
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
-         <!-- Destroying this one hard point will trigger the parent object to be destroyed -->
-      </BehaviorType>
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire>  </SFXEvent_Fire>
@@ -1095,19 +1085,11 @@
 			<Icon_Name> i_icon_mb_guardian_twofaced.tga </Icon_Name>
 		</BehaviorType>
 
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
-         <!-- Destroying this one hard point will trigger the parent object to be destroyed -->
-      </BehaviorType>
-      
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_Two_Faced_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 65 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 65 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 45 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<Attributes SubObjectList="Yes">
@@ -1128,7 +1110,7 @@
 	<HardPoint Name="Masari_Guardian_Two_Faced_HP_Fire">
 		<Variant_Of_Existing_Type>Masari_Guardian_Two_Faced_HP</Variant_Of_Existing_Type>
 
-		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 280.0 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
 			<Is_Buildable_By_Constructor> false </Is_Buildable_By_Constructor>
@@ -1152,7 +1134,7 @@
 			<Projectile_Types>Proj_Guardian_Light_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="TypeSwitchBehaviorType">
@@ -1207,7 +1189,7 @@
 	<HardPoint Name="Masari_Guardian_Two_Faced_HP_Ice">
 		<Variant_Of_Existing_Type>Masari_Guardian_Two_Faced_HP</Variant_Of_Existing_Type>
 
-		<Land_FOW_Reveal_Range> 220.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 200.0 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -1235,12 +1217,12 @@
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Dark_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<Effect_Generator_Data SubObjectList="Yes">
@@ -1283,7 +1265,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Max_Speed>15.0</Max_Speed>
+		<Max_Speed>12.0</Max_Speed>
 		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1305,7 +1287,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>13.0</Projectile_Damage>
+			<Projectile_Damage>10.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle> Masari_Guardian_Light_Det </Projectile_Object_Detonation_Particle>
@@ -1339,7 +1321,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>17.0</Max_Speed>
+		<Max_Speed>16.0</Max_Speed>
 		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1369,7 +1351,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>13.0</Projectile_Damage>
+			<Projectile_Damage>10.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Masari_Guardian_Dark_Det</Projectile_Object_Detonation_Particle>

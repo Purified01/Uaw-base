@@ -69,13 +69,6 @@
 			CREATE_CHILDREN
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TacticalEnablerBehaviorType">
 			<Tactical_Enabler_Bones>SPAWN_00</Tactical_Enabler_Bones>
 			<Tactical_Enabler_Flyout_Distances>80.0</Tactical_Enabler_Flyout_Distances>
@@ -193,6 +186,7 @@
 			<SFXEvent_Tactical_Build_Started>GUI_BUILD_Structure</SFXEvent_Tactical_Build_Started>
 			<SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Novus_Megacorp_Center</SFXEvent_Tactical_Build_Complete>
 			<SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
+			<SFX_Event />
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -251,21 +245,17 @@
 			<Building_Queue_Type> Command </Building_Queue_Type>
 			<Icon_Name>i_icon_nb_megacorp.tga</Icon_Name>
 		</BehaviorType>
-
-    <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-    </BehaviorType>
-
-    <BehaviorType Name="GUIBehaviorType">
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 		
 		<BehaviorType Name="SelectableBehaviorType">
@@ -306,7 +296,7 @@
 					<Target_Gathering_Mask> RadarFilters </Target_Gathering_Mask>
 
 					<!-- KDB 07-18-2007 design has changed this to player only, see Chris R -->
-					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
+					<Target_Filter> source.Get_Owner() == target.Get_Owner() </Target_Filter>
 				</Effect_Generator_Entry>
 			</Effect_Generator>			
 			
@@ -773,21 +763,12 @@
 
 	<HardPoint Name="Novus_Command_Center_In_Production_Socket">
 		<Variant_Of_Existing_Type> Novus_Megacorp_Center_HP </Variant_Of_Existing_Type>
-
-		<Behavior>
-			HARD_POINT,
-			SELECTABLE,
-			EFFECT_REGISTRY,
-			EFFECT_GENERATOR,
-			ATTRIBUTE_DIRECTORY,
-			PERSISTENT_UNIT
-		</Behavior>
-		<StrategicBehavior>
-			GLOBAL_UNDER_CONSTRUCTION
-		</StrategicBehavior>
-		
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Command_Center_Upgrade> Yes </Is_Command_Center_Upgrade>
+		</BehaviorType>
+
+		<BehaviorType Name="LuaScriptBehaviorType">
+			<Lua_Global_Behaviors> UnitInProduction </Lua_Global_Behaviors>
 		</BehaviorType>
 	</HardPoint>
 	

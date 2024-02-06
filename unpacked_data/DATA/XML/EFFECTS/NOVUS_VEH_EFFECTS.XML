@@ -441,7 +441,7 @@
             <Target_Effect> HealthHeal </Target_Effect>
             <Source_Effect> ResourceUnits </Source_Effect>
             <Amount_Per_Second> -5.0 </Amount_Per_Second>
-            <Transfer_Multiplicative> 2.3 </Transfer_Multiplicative>
+            <Transfer_Multiplicative> 2.0 </Transfer_Multiplicative>
             <Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
             <Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
             <Transfer_Fail_On_Target_Full> true </Transfer_Fail_On_Target_Full>
@@ -615,7 +615,7 @@
     <Effect Name="NovusFieldInverterScaleEffect">
         <Effect_Class> Scale </Effect_Class>
 
-		 <Effect_Component Type="ScaleOverTime">
+        <Effect_Component Type="ScaleOverTime">
             <Start_Scale>.01</Start_Scale>
             <End_Scale>200</End_Scale>
             <Use_World_Scale>true</Use_World_Scale>
@@ -629,36 +629,10 @@
 
     </Effect>
 
+    <Effect Name="NovusFieldInverterReverseScaleEffect">
+        <Effect_Class> Scale </Effect_Class>
 
-	<Effect Name="InverterShieldRaised">
-		<Effect_Class> InverterShieldUp </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Duration> -1.0 </Duration>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Inverter_Shield_Up </Attribute>
-			<Modifier_Value> 1.0 </Modifier_Value>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="InverterShieldLowered">
-		<Effect_Class> InverterShieldDown </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> InverterShieldUp </Remove_Effect_Class>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="NovusFieldInverterReverseScaleEffect">
-		<Effect_Class> Scale </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-
-		<Effect_Component Type="ScaleOverTime">
+        <Effect_Component Type="ScaleOverTime">
             <Start_Scale>200</Start_Scale>
             <End_Scale>.01</End_Scale>
             <Use_World_Scale>true</Use_World_Scale>

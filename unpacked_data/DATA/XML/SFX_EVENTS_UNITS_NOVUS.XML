@@ -1018,15 +1018,6 @@
 		<Use_Preset>Preset_UR_3D</Use_Preset>
 		<Samples>Novus_Retreat_Transport_Move_1.wav </Samples>
 	</SFXEvent>
-	
-	
-	<SFXEvent Name="360Tut_Intro_Novus_Constructor">
-		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>U000_CON0101_ENG.wav </Samples>
-		<Localize> Yes </Localize>
-		<Text_ID>TEXT_SFX_CON_SELECT_1</Text_ID>       
-		<Overlap_Test> Unit_Novus_Constructor </Overlap_Test>
-	</SFXEvent>
  
 
 

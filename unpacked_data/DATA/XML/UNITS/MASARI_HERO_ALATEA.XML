@@ -23,7 +23,7 @@
       
       <!-- INTERFACE -->
       <Text_ID>TEXT_MASARI_HERO_ALATEA</Text_ID>
-      <GUI_Scene_Name> Masari_HealthBar_Scene </GUI_Scene_Name>
+      <GUI_Scene_Name> HealthBar_Scene </GUI_Scene_Name>
       <GUI_Receives_Input> false </GUI_Receives_Input>
       <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
       <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -50,7 +50,7 @@
          <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
          <DMA_Max> 450 </DMA_Max>
          <DMA_Regen_Rate> 12 </DMA_Regen_Rate>
       </Attributes>
@@ -93,7 +93,7 @@
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
       <Land_FOW_Reveal_Range>275.0</Land_FOW_Reveal_Range>
-      <Tactical_Health> 725 </Tactical_Health>
+      <Tactical_Health> 600 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -105,39 +105,32 @@
 		</Behavior>
 		
       <LandBehavior>
-        STUNNABLE,
-        DAMAGE_TRACKING,
-        SWITCH_TYPE,
-        GUI,
-        ABILITY_COUNTDOWN,
-        SURFACE_FX,
-        RADAR_MAP_VISIBLE,
-        FORMATION,
-        IDLE,
-        WALK_LOCOMOTOR,
-        TARGETING,
-        REVEAL,
-        HIDE_WHEN_FOGGED,
-        TURRET,
-        AI_RECRUITABLE,
-        AI_TARGET,
-        RETREAT_FROM_TACTICAL,
-        ABILITY_COUNTDOWN,
-        EFFECT_GENERATOR,
-        TELEPORT_PAD,
-        ATTRIBUTE_DIRECTORY,
-        BALLISTIC,
-        <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+         STUNNABLE,
+         DAMAGE_TRACKING,
+         SWITCH_TYPE,
+         GUI,
+         ABILITY_COUNTDOWN,
+         SURFACE_FX,
+         RADAR_MAP_VISIBLE,
+         FORMATION,
+         IDLE,
+         WALK_LOCOMOTOR,
+         TARGETING,
+         REVEAL,
+         HIDE_WHEN_FOGGED,
+         TURRET,
+         AI_RECRUITABLE,
+         AI_TARGET,
+         RETREAT_FROM_TACTICAL,
+         ABILITY_COUNTDOWN,
+         EFFECT_GENERATOR,
+         TELEPORT_PAD,
+         ATTRIBUTE_DIRECTORY,
+			BALLISTIC,
+         <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
          ELEMENTAL_MODE
 
       </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
       <!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
       <StrategicBehavior>
@@ -179,9 +172,9 @@
 
      <BehaviorType name="AIBehaviorType">
        <AI_Combat_Power> 1 </AI_Combat_Power>
-       <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+       <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
        <Guard_Chase_Range> 175.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
+       <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
        <AI_Target_Level>Individual</AI_Target_Level>
 		  <Attack_Score_Rating> 0.0 </Attack_Score_Rating>
@@ -247,7 +240,7 @@
 
       <BehaviorType Name="CrushBehaviorType">
          <Crush_Defense> 99 </Crush_Defense>
-         <Crush_Power> 4 </Crush_Power>
+         <Crush_Power> 0 </Crush_Power>
       </BehaviorType>
 
       <BehaviorType Name="BlobShadowBehaviorType">
@@ -291,6 +284,15 @@
          <Death_Clone>Damage_Default, Masari_Hero_Alatea_Death_Clone</Death_Clone>
       </BehaviorType>
 
+      <BehaviorType Name="GUIBehaviorType">
+         <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> No </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+         <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
+
       <BehaviorType Name="FleetBehaviorType">
          <!-- Maria 05.10.2006 - Adding new field to support limiting the pop cap of a the hero's fleet -->
          <!-- Maria 09.05.2006 - changing the pop cap associated to a hero so that it is ALWAYS <= the regional pop cap -->
@@ -304,7 +306,7 @@
 			<Travel_Range> 2.0 </Travel_Range>
 			<Global_Travel_Speed> 1.5 </Global_Travel_Speed>
 			<Reinforcement_Travel_Speed> 0.03 </Reinforcement_Travel_Speed>
-			<Reinforcement_Cost_Per_Second> 0.6 </Reinforcement_Cost_Per_Second>
+			<Reinforcement_Cost_Per_Second> 1.2 </Reinforcement_Cost_Per_Second>
 			<Use_Production_Queue_Type> Hero_1 </Use_Production_Queue_Type>
 		</BehaviorType>
 
@@ -493,20 +495,11 @@
                <Effect_Name> MasariAlateaBeneficialFieldEffect </Effect_Name>
                <Duration> 3.1f </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
+               <Target_Filter_C> Alatea_Beneficial_Target_Filter </Target_Filter_C>
                <Area_Effect_Radius> 135 </Area_Effect_Radius>
 					<Linked_Effect_Names> MasariAlateaBeneficialFieldVisualEffect,MasariAlateaBeneficialFieldHealEffect </Linked_Effect_Names>
             </Effect_Generator_Entry>
 
-            <Effect_Generator_Entry Name="Entry1a">
-               <Effect_Name> MasariAlateaBeneficialFieldEnemyEffect </Effect_Name>
-               <Duration> 3.1f </Duration>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Target_Filter_C> Alatea_Beneficial_Target_Enemy_Filter </Target_Filter_C>
-               <Area_Effect_Radius> 135 </Area_Effect_Radius>
-               <Linked_Effect_Names> MasariAlateaBeneficialFieldVisualEffect </Linked_Effect_Names>
-            </Effect_Generator_Entry>
-            
             <Effect_Generator_Entry Name="Entry2">
                <Effect_Name> MasariAlateaBeneficialFieldVisualEffect </Effect_Name>
                <Duration> 3.0 </Duration>
@@ -543,17 +536,45 @@
          <Effect_Generator Name="Masari_Alatea_Unmake_Effect_Generator">
             <Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
             <Is_Independent_Generator>No</Is_Independent_Generator>
-            
-            <Effect_Generator_Entry Name="CreateUnmakeEffectObject">
-               <Effect_Name> Masari_Alatea_Begin_Unmake_Effect </Effect_Name>
-               <Duration> -1 </Duration>
+            <Modal_Refresh_Frequency>0.5</Modal_Refresh_Frequency>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Alatea_Unmake_Effect </Effect_Name>
+               <Duration> 10 </Duration>
+               <Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 80 </Area_Effect_Radius>
+               <Target_Filter_Categories> ~Untargetable + ~Resource + ~Resource_INST</Target_Filter_Categories>
+               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> Masari_Alatea_Unmake_Resource_Effect </Effect_Name>
+               <Duration> 10 </Duration>
+               <Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 80 </Area_Effect_Radius>
+               <Target_Filter_Categories> Resource, Resource_INST </Target_Filter_Categories>
+               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry3">
+               <Effect_Name> Masari_Alatea_Unmake_Effect </Effect_Name>
+               <Duration> 10 </Duration>
+               <Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 80 </Area_Effect_Radius>
+               <Target_Filter_Categories> ~Untargetable </Target_Filter_Categories>
+               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry4">
+               <Effect_Name> Masari_Alatea_Unmake_Visual_Effect </Effect_Name>
+               <Duration> 10 </Duration>
                <Target_Gathering_Mask> Target </Target_Gathering_Mask>
             </Effect_Generator_Entry>
-    
-            <Effect_Generator_Entry Name="VisualOnDummyTarget">
-               <Effect_Name> Masari_Alatea_Unmake_Visual_Effect </Effect_Name>
-               <Duration> -1 </Duration>
-               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+
+            <Effect_Generator_Entry Name="Entry5">
+               <Effect_Name> Masari_Alatea_Unmake_Self_Visual_Effect </Effect_Name>
+               <Duration> 10 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
             </Effect_Generator_Entry>
 
          </Effect_Generator>
@@ -622,9 +643,9 @@
       <Variant_Of_Existing_Type> Masari_Hero_Alatea </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Max_Speed> 1.4 </Max_Speed>
-		<Movement_Animation_Speed> 1.4 </Movement_Animation_Speed>
+		<Movement_Animation_Speed> 1.5 </Movement_Animation_Speed>
 
-		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>250.0</Land_FOW_Reveal_Range>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
 			<!-- Standard DMA generator - Oksana 05/14/2007 -->
@@ -657,8 +678,8 @@
 	<X13_Masari_Heroes Name="Masari_Hero_Alatea_Ice">
 		<Variant_Of_Existing_Type> Masari_Hero_Alatea </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<Max_Speed> 1.6 </Max_Speed>
-		<Movement_Animation_Speed> 1.6 </Movement_Animation_Speed>
+		<Max_Speed> 1.7 </Max_Speed>
+		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
 
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		
@@ -760,7 +781,7 @@
 
 
 
-   <X13_Masari_Heroes Name="Masari_Hero_Alatea_Peace_Constant_Shield">
+   <Particle Name="Masari_Hero_Alatea_Peace_Constant_Shield">
       <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
       <Land_Model_Name>ZH_Altea_Peace_Shield.alo</Land_Model_Name>
 
@@ -772,18 +793,18 @@
 
       <CategoryMask> Untargetable </CategoryMask>
 
-      <LandBehavior>
-         HIDE_WHEN_FOGGED,
-      </LandBehavior>
+		<LandBehavior>
+			HIDE_WHEN_FOGGED,
+		</LandBehavior>
 
-      <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
       <Should_Ignore_For_Line_Of_Sight> true </Should_Ignore_For_Line_Of_Sight>
 
 
       <BehaviorType Name="ShieldBehaviorType">
          <Shield_Points>600</Shield_Points>
-
+    
          <!-- Non-upgraded shield wil stop only projectiles that do shield_damage -->
          <Is_Shield_Upgraded>Yes</Is_Shield_Upgraded>
 
@@ -796,11 +817,11 @@
 
          <Dissipate_Projectile_Particles>Masari_Peace_Projectile_Kill_00, Masari_Peace_Projectile_Kill_01, Masari_Peace_Projectile_Kill_02, Masari_Peace_Projectile_Kill_03</Dissipate_Projectile_Particles>
       </BehaviorType>
-   </X13_Masari_Heroes>
+   </Particle>
 
-
-
-   <X13_Masari_Heroes Name="Masari_Hero_Alatea_Peace_Shield">
+   
+   
+   <Particle Name="Masari_Hero_Alatea_Peace_Shield">
       <Variant_Of_Existing_Type> Masari_Hero_Alatea_Peace_Constant_Shield </Variant_Of_Existing_Type>
 
       <Scale_Factor>0.3</Scale_Factor>
@@ -830,65 +851,6 @@
          </Effect_Generator>
 
       </Effect_Generator_Data>
-   </X13_Masari_Heroes>
-
-
-
-   <X13_Masari_Heroes Name="Masari_Hero_Alatea_Unmake_Effect_Object">
-    
-      <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-      <!--<Land_Model_Name> pp_ZH_Altea_Unmake_Target.alo </Land_Model_Name>-->
-      <Scale_Factor>1.0</Scale_Factor>
-      <Is_Decoration>No</Is_Decoration>
-      <AssetBank> BANK_MASARI </AssetBank>
-
-      <CategoryMask> Untargetable </CategoryMask>
-
-      <Collidable_By_Projectile_Living>No</Collidable_By_Projectile_Living>
-      <Collidable_By_Projectile_Dead>No</Collidable_By_Projectile_Dead>
-      <Should_Ignore_For_Line_Of_Sight> true </Should_Ignore_For_Line_Of_Sight>
-
-      <LandBehavior> HIDE_WHEN_FOGGED, EFFECT_GENERATOR, EFFECT_REGISTRY</LandBehavior>
-
-      <!-- EFFECT GENERATORS -->
-      <Effect_Generator_Data SubObjectList="Yes">
-         <Effect_Generator Name="Masari_Alatea_Unmake_Effect_Generator">
-            <Starts_Active>Yes</Starts_Active>
-            <Modal_Refresh_Frequency>0.5</Modal_Refresh_Frequency>
-
-            <!-- Duration for the effects below must be just slightly larger than 
-                 Refresh frequency, so that effect is promptly removed when object moves away from the radius -Oksana-->
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Masari_Alatea_Unmake_Effect </Effect_Name>
-               <Duration> 0.6 </Duration>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Area_Effect_Radius> 80 </Area_Effect_Radius>
-               <Target_Filter_Categories> ~Untargetable + ~Resource + ~Resource_INST</Target_Filter_Categories>
-               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
-            </Effect_Generator_Entry>
-
-            <Effect_Generator_Entry Name="Entry2">
-               <Effect_Name> Masari_Alatea_Unmake_Resource_Effect </Effect_Name>
-               <Duration> 1 </Duration>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Area_Effect_Radius> 80 </Area_Effect_Radius>
-               <Target_Filter_Categories> Resource, Resource_INST </Target_Filter_Categories>
-               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
-            </Effect_Generator_Entry>
-
-            <Effect_Generator_Entry Name="Entry3">
-               <Effect_Name> Masari_Alatea_Unmake_Effect </Effect_Name>
-               <Duration> 1 </Duration>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Area_Effect_Radius> 80 </Area_Effect_Radius>
-               <Target_Filter_Categories> ~Untargetable </Target_Filter_Categories>
-               <Target_Filter_C> Is_Not_Ally </Target_Filter_C>
-            </Effect_Generator_Entry>
-
-         </Effect_Generator>
-      </Effect_Generator_Data>
-
-   </X13_Masari_Heroes>
-   
+   </Particle>
    
 </Masari_Hero_Alatea_XML>

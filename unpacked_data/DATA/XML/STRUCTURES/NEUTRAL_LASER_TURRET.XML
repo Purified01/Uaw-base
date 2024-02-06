@@ -149,13 +149,6 @@
 			<SFXEvent_Turret_Rotating_Loop> SFX_Military_Medium_Turret_Loop </SFXEvent_Turret_Rotating_Loop>
 			<Death_SFXEvent_Start_Die>SFX_Military_Turret_Death</Death_SFXEvent_Start_Die>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/04/07 magnetism stuff -->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Clone>Damage_Default, Neutral_Laser_Turret_Death_Clone</Death_Clone>
@@ -167,6 +160,10 @@
 
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.04 0.04</Radar_Icon_Size>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">

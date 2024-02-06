@@ -19,12 +19,15 @@
 		<!-- INTERFACE -->
 		<Text_ID />
 		<Icon_Name>i_button_research_tech.tga</Icon_Name>
+		<GUI_Row> 0 </GUI_Row>
 		<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name> 
 		<GUI_Receives_Input> false </GUI_Receives_Input>
+		<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+		<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		<Select_Box_Scale>175</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
@@ -47,7 +50,7 @@
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 
 		<AI_Combat_Power> 1 </AI_Combat_Power>
-		<Tactical_Health> 2800 </Tactical_Health>
+		<Tactical_Health> 3200 </Tactical_Health>
 		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>

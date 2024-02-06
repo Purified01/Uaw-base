@@ -226,8 +226,8 @@
 	<Type_Is_Degarrison/>
 	<Is_Degarrison/>
 
-	<Type_Should_Always_Flow/>
-	<Should_Always_Flow/>
+	<Type_Should_Aways_Flow/>
+	<Should_Aways_Flow/>
 
 	<Type_Flow_Speed_Multiplier/>
 	<Flow_Speed_Multiplier/>
@@ -374,11 +374,5 @@
 	<Type_Super_Weapon_Can_Be_Teleported/>
 	<Super_Weapon_Can_Be_Teleported/>
 
-	<Inverter_Shield_Up/>
-	<Weapon_Recharge_Reset/>
-
-	<Type_Can_Be_Teleported/>
-	<Can_Be_Teleported/>
-
+   
 </EnumDefinition>
-

@@ -89,13 +89,6 @@
 			TACTICAL_PRODUCTION_NANITE_VISUAL
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 20 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TacticalEnablerBehaviorType">
 			<Tactical_Enabler_Bones>SPAWN_00</Tactical_Enabler_Bones>
 			<Tactical_Enabler_Flyout_Distances>40.0</Tactical_Enabler_Flyout_Distances>
@@ -228,13 +221,6 @@
 			<Crush_Power>55</Crush_Power>
 		</BehaviorType>
 
-    <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-    </BehaviorType>
-
 		<BehaviorType Name="GUIBehaviorType">
 			<GUI_Scene_Name> NOVUS_Tactical_Upgrades_Menu </GUI_Scene_Name>
 			<GUI_Receives_Input> yes </GUI_Receives_Input>
@@ -243,7 +229,7 @@
 			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
 		</BehaviorType>
 
-    <Effect_Generator_Data SubObjectList="Yes">
+		<Effect_Generator_Data SubObjectList="Yes">
 
 			<!-- This effect generator adds the Rapid Rebuild healing effect to the structure if it is damaged and has power. -->
 			<Effect_Generator Name="NovusResearchRapidRebuildEffectGenerator">
@@ -651,11 +637,6 @@
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
 			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
 		</BehaviorType>
-
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
-      </BehaviorType>
 
 
 		<BehaviorType Name="SFXBehaviorType">

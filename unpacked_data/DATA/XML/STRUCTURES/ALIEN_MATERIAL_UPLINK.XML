@@ -83,7 +83,7 @@
 
     <BehaviorType Name="BuildableObjectBehaviorType">
       <Tactical_Under_Construction_Object_Type> Alien_Material_Uplink_Construction </Tactical_Under_Construction_Object_Type>
-      <Tactical_Buildable_Beacon_Type> Alien_Material_Conduit_Beacon </Tactical_Buildable_Beacon_Type>
+      <Tactical_Buildable_Beacon_Type> Alien_Material_Uplink_Beacon </Tactical_Buildable_Beacon_Type>
     </BehaviorType>
 
    <!-- <BehaviorType Name="GarrisonableBehaviorType">
@@ -150,12 +150,15 @@
 			<Icon_Name> i_icon_ab_material_conduit.tga </Icon_Name>
 		</BehaviorType>
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 		<BehaviorType Name="SelectableBehaviorType">
 			<Select_Box_Scale>200</Select_Box_Scale>
@@ -272,12 +275,16 @@
     </BehaviorType>
 
     <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size> 0 </GUI_Bracket_Size>
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 1.0 </GUI_Min_Scale>
 			<GUI_Max_Scale> 6.0 </GUI_Max_Scale>
 			<GUI_Default_Scale> 3.0 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
     </BehaviorType>
 
       <BehaviorType Name="SFXBehaviorType">
@@ -288,13 +295,6 @@
          <SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Alien_Material_Uplink</SFXEvent_Tactical_Build_Complete>
 			<SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
       </BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/04/07 magnetism stuff -->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>	
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name>i_icon_ab_material_conduit.tga</Icon_Name>
@@ -390,10 +390,8 @@
   <!-- *** OBSOLETE *************************************************************************** -->
   <!-- **************************************************************************************** -->
 
-	<!--
   <X99_Test_Objects Name="Alien_Material_Uplink_Beacon">
     <Variant_Of_Existing_Type>Alien_Material_Conduit_Beacon</Variant_Of_Existing_Type>
   </X99_Test_Objects>
-  -->
 
 </Alien_Material_Uplink_XML>

@@ -1345,7 +1345,7 @@
 		<Strategic_Builder> Null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Adepts_Lab_Upgrade_HP </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Ground_Inspiration </Tactical_Builder>
 	</Dependency>
 	

@@ -24,6 +24,7 @@
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+		<GUI_Bracket_Size>1</GUI_Bracket_Size>
 		<Select_Box_Scale>55</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -158,13 +159,6 @@
 			AI_TARGET
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Aircraft </Armor_Type>
 		</BehaviorType>
@@ -224,6 +218,14 @@
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 20 </Crush_Defense>
 			<Crush_Power> 0 </Crush_Power>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">

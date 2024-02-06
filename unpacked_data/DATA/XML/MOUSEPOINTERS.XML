@@ -16,7 +16,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_WAIT">
-		<Base_Texture> WAITPOINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> waitpointer_00.TGA </Base_Texture>	 
 		<Hot_X> 0 </Hot_X>												
 		<Hot_Y> 0 </Hot_Y>												
 		<Anim_Frame_Delay> 15 </Anim_Frame_Delay>
@@ -84,7 +84,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_SELECT">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>		
+		<Base_Texture> cantpointer.tga </Base_Texture>		
 		<Hot_X> 0 </Hot_X>													
 		<Hot_Y> 0 </Hot_Y>													
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>						
@@ -92,17 +92,15 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_MOVE">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>
+		<Base_Texture> cantpointer.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_CANT_MOVE_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_DROP">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>
+		<Base_Texture> cantpointer.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -110,7 +108,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_GRAB">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>		
+		<Base_Texture> cantpointer.tga </Base_Texture>		
 		<Hot_X> 0 </Hot_X>													
 		<Hot_Y> 0 </Hot_Y>													
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>						
@@ -118,7 +116,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_COMBINE">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>		
+		<Base_Texture> cantpointer.tga </Base_Texture>		
 		<Hot_X> 0 </Hot_X>													
 		<Hot_Y> 0 </Hot_Y>													
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>						
@@ -126,7 +124,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_CANT_ATTACK">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>
+		<Base_Texture> cantpointer.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -255,8 +253,7 @@
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-      <Controller_Targeting_Alias> POINTER_TACTICAL_SELL_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<MousePointer Name="POINTER_TACTICAL_SELL_INVALID">
@@ -264,8 +261,6 @@
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-      <Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-      <Controller_Targeting_Alias> POINTER_TACTICAL_SELL_INVALID_CONTROLLER_ALIAS </Controller_Targeting_Alias>
 	</MousePointer>
 
 	<MousePointer Name="POINTER_GUARD">
@@ -273,8 +268,7 @@
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-      <Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-      <Controller_Targeting_Alias> POINTER_GUARD_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<MousePointer Name="POINTER_BARRAGE">
@@ -286,7 +280,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_PLACE_BEACON">
-		<Base_Texture> BEACON_POINTER_00.TGA </Base_Texture>	
+		<Base_Texture> beacon_pointer_00.tga </Base_Texture>	
 		<Hot_X> 16 </Hot_X>
 		<Hot_Y> 16 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -339,7 +333,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_MOVE_ONLY_MODE_NO_PASSABLE_TARGETED">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>
+		<Base_Texture> cantpointer.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -348,62 +342,52 @@
 
 	<!-- Targeting with special ability, and over valid target enemy object -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X> 	                            
 		<Hot_Y> 16 </Hot_Y>	                            
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<!-- Targeting with special ability, and over valid target enemy object, but out of range -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_OUT_OF_RANGE">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>
 		<Hot_X> 16 </Hot_X>
 		<Hot_Y> 16 </Hot_Y>
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_OUT_OF_RANGE_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 	
 	<!-- Targeting with special ability, and NOT over valid target enemy object -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_INVALID">
-		<Base_Texture> ATTACK_ILLEGAL_POINTER_00.TGA </Base_Texture>		
+		<Base_Texture> attack_illegal_pointer_00.tga </Base_Texture>		
 		<Hot_X> 16 </Hot_X>																
 		<Hot_Y> 16 </Hot_Y>                                               
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_INVALID_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<!-- Targeting with special ability, and over valid target friendly object -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT">
-		<Base_Texture> SPECIAL_ABILITIES_FRIENDLY_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_friendly_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                              
 		<Hot_Y> 16 </Hot_Y>                              
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<!-- Targeting with special ability, and over valid target friendly object, but out of range -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_OUT_OF_RANGE">
-		<Base_Texture> SPECIAL_ABILITIES_FRIENDLY_POINTER_00.TGA </Base_Texture>
+		<Base_Texture> special_abilities_friendly_pointer_00.tga </Base_Texture>
 		<Hot_X> 16 </Hot_X>
 		<Hot_Y> 16 </Hot_Y>
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_OUT_OF_RANGE_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>	
 
 	<!-- Targeting with special ability, and NOT over valid target friendly object -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_INVALID">
-		<Base_Texture> SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_INVALID.TGA </Base_Texture>	
+		<Base_Texture> SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_INVALID.tga </Base_Texture>	
 		<Hot_X> 16 </Hot_X>                                            
 		<Hot_Y> 16 </Hot_Y>                                             
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -412,40 +396,34 @@
 
 	<!-- Targeting with special ability, and over valid target passable location -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                              
 		<Hot_Y> 16 </Hot_Y>                              
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<!-- Targeting with special ability, and over valid target passable location, but out of range -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_OUT_OF_RANGE">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>
 		<Hot_X> 16 </Hot_X>
 		<Hot_Y> 16 </Hot_Y>
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_OUT_OF_RANGE_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>	
 
 	<!-- Targeting with special ability, and NOT over valid target passable location -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_INVALID">
-		<Base_Texture> ATTACK_ILLEGAL_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> attack_illegal_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                                             
 		<Hot_Y> 16 </Hot_Y>                                             
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
-
-		<Used_For_Controller_Targeting> No </Used_For_Controller_Targeting>
-		<Controller_Targeting_Alias> POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_INVALID_CONTROLLER_ALIAS </Controller_Targeting_Alias>
+		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>
 	</MousePointer>
 
 	<!-- Targeting with special ability, and over valid target space location -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_SPACE_POSITION">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                              
 		<Hot_Y> 16 </Hot_Y>                              
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
@@ -454,7 +432,7 @@
 
 	<!-- Targeting with special ability, and NOT over valid target space location -->
 	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_SPACE_POSITION_INVALID">
-		<Base_Texture> ATTACK_ILLEGAL_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> attack_illegal_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                                             
 		<Hot_Y> 16 </Hot_Y>                                            
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -463,7 +441,7 @@
 
 	<!-- In Tactical Base Placement Mode and can place the building at mouse location -->
 	<MousePointer Name="POINTER_TACTICAL_BASE_BUILDING_PLACEMENT_POINT">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                                             
 		<Hot_Y> 16 </Hot_Y>                                            
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
@@ -473,7 +451,7 @@
 
 	<!-- In Tactical, a builder unit is selected and mouse is over a valid buildable object -->
 	<MousePointer Name="POINTER_TACTICAL_BASE_BUILDER_TARGET">
-		<Base_Texture> SPECIAL_ABILITIES_POINTER_00.TGA </Base_Texture>	 
+		<Base_Texture> special_abilities_pointer_00.tga </Base_Texture>	 
 		<Hot_X> 16 </Hot_X>                                             
 		<Hot_Y> 16 </Hot_Y>                                            
 		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>
@@ -494,7 +472,7 @@
 
 	<!-- Tactical mode with structure selected and over a position or object that CANNOT be used as a rally point-->
 	<MousePointer Name="POINTER_SET_RALLY_INVALID">
-		<Base_Texture> CANTPOINTER.TGA </Base_Texture>
+		<Base_Texture> cantpointer.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -504,7 +482,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_ENTER_GARRISON">
-		<Base_Texture> CURSOR_EXIT_TRANSPORT_00.TGA </Base_Texture>
+		<Base_Texture> cursor_exit_transport_00.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 3 </Anim_Frame_Delay>
@@ -512,7 +490,7 @@
 	</MousePointer>
 
 	<MousePointer Name="POINTER_EXIT_GARRISON">
-		<Base_Texture> GARRISON_POINTER_00.TGA </Base_Texture>
+		<Base_Texture> garrison_pointer_00.tga </Base_Texture>
 		<Hot_X> 0 </Hot_X>
 		<Hot_Y> 0 </Hot_Y>
 		<Anim_Frame_Delay> 5 </Anim_Frame_Delay>
@@ -666,7 +644,7 @@
 		<Base_Texture> GAMEPAD_DEFAULT_00.TGA </Base_Texture>
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS> 
+		<Anim_Frame_Delay> 4 </Anim_Frame_Delay> 										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -675,7 +653,7 @@
 		<Base_Texture> GAMEPAD_SELECTA_00.TGA </Base_Texture>		  			
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 10 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -684,7 +662,7 @@
 		<Base_Texture> GAMEPAD_MOVEA_00.TGA </Base_Texture>		 		
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 8 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -693,7 +671,7 @@
 		<Base_Texture> GAMEPAD_ATTACKA_00.TGA </Base_Texture>		  
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 4 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -702,7 +680,7 @@
 		<Base_Texture> GAMEPAD_INVALID_00.TGA </Base_Texture>		 		
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 4 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -711,7 +689,7 @@
 		<Base_Texture> GAMEPAD_BRACKETS_00.TGA </Base_Texture>		 		
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 8 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -720,7 +698,7 @@
 		<Base_Texture> GAMEPAD_RALLYPOINT_00.TGA </Base_Texture>		 				
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 8 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
@@ -729,133 +707,12 @@
 		<Base_Texture> GAMEPAD_INVALID_00.TGA </Base_Texture>		 		
 		<Hot_X> 32 </Hot_X>																	
 		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
+		<Anim_Frame_Delay> 4 </Anim_Frame_Delay>										<!-- Only tune at 30 FPS -->
 		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
 		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
 	</MousePointer>
 
-	<MousePointer Name="POINTER_CANT_MOVE_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_INVALID_00.TGA </Base_Texture>		 		
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-   <!-- Not actually an alias from the mouse pointers, but used by the controller -->
-   <MousePointer Name="POINTER_PAINT_SELECT_MODE_CONTROLLER">
-      <Base_Texture> GAMEPAD_SPECIAL_00.TGA </Base_Texture>      <!-- PLACEHOLDER - Needs real art -->
-      <Hot_X> 32 </Hot_X>
-      <Hot_Y> 32 </Hot_Y>
-      <Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-      <Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-      <Controller_Targeting_Alias> </Controller_Targeting_Alias>           <!-- Must be blank -->
-   </MousePointer>
-   
-	<MousePointer Name="POINTER_TACTICAL_SELL_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_TACTICAL_SELL_POINTER_00.TGA </Base_Texture>		 				<!-- PLACEHOLDER - Needs real art -->
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-   <MousePointer Name="POINTER_TACTICAL_SELL_INVALID_CONTROLLER_ALIAS">
-      <Base_Texture> GAMEPAD_SELL_INVALID_POINTER_00.TGA </Base_Texture>     <!-- PLACEHOLDER - Needs real art -->
-      <Hot_X> 32 </Hot_X>
-      <Hot_Y> 32 </Hot_Y>
-      <Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-      <Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting>       <!-- Must be Yes -->
-      <Controller_Targeting_Alias> </Controller_Targeting_Alias>                 <!-- Must be blank -->
-   </MousePointer>  
-
-
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_FRIENDLY_A_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_FRIENDLY_OBJECT_OUT_OF_RANGE_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_OUT_OF_RANGE_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_A_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_OUT_OF_RANGE_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_A_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_A_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_OUT_OF_RANGE_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_SA_A_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_ENEMY_OBJECT_INVALID_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_ATTACK_ILLEGAL_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-	<MousePointer Name="POINTER_TARGET_SPECIAL_ABILITY_TO_PASSABLE_TERRAIN_INVALID_CONTROLLER_ALIAS">
-		<Base_Texture> GAMEPAD_ATTACK_ILLEGAL_POINTER_00.TGA </Base_Texture>	
-		<Hot_X> 32 </Hot_X>																	
-		<Hot_Y> 32 </Hot_Y>																	
-		<Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-		<Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-		<Controller_Targeting_Alias> </Controller_Targeting_Alias>  			<!-- Must be blank -->
-	</MousePointer>
-
-   <MousePointer Name="POINTER_GUARD_CONTROLLER_ALIAS">
-      <Base_Texture> GAMEPAD_SA_GAURD_POINTER_00.TGA </Base_Texture>
-      <!-- PLACEHOLDER - Needs real art -->
-      <Hot_X> 32 </Hot_X>
-      <Hot_Y> 32 </Hot_Y>
-      <Controller_Anim_Frame_Delay_MS> 60 </Controller_Anim_Frame_Delay_MS>
-      <Used_For_Controller_Targeting> Yes </Used_For_Controller_Targeting> <!-- Must be Yes -->
-      <Controller_Targeting_Alias> </Controller_Targeting_Alias>           <!-- Must be blank -->
-   </MousePointer>
-
-   <!-- End Game Controller cursor aliases, to replace mouse-pointer style cursors when playing with a controller -->
+	<!-- End Game Controller cursor aliases, to replace mouse-pointer style cursors when playing with a controller -->
 	<!-- Do not add new definitions past this group! -->
 
 </MousePointers>

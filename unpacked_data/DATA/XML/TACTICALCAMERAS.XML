@@ -27,11 +27,11 @@
 
 	<TacticalCamera Name="Land_Mode">
 
-		<Pitch_Default>45</Pitch_Default>
-		<Pitch_Min>45</Pitch_Min> 			
-		<Pitch_Max>45</Pitch_Max> 				
-		<Pitch_Per_Mouse_Unit>-1.5</Pitch_Per_Mouse_Unit>
-		<Pitch_Per_Zoom_Unit>-30.0</Pitch_Per_Zoom_Unit>
+		<Pitch_Default>45</Pitch_Default>  	<!-- 45 -->
+		<Pitch_Min>45</Pitch_Min> 				<!-- 45 -->
+		<Pitch_Max>45</Pitch_Max> 				<!-- 85 -->
+		<Pitch_Per_Mouse_Unit>0.0</Pitch_Per_Mouse_Unit>
+		<Pitch_Per_Zoom_Unit>-30.0</Pitch_Per_Zoom_Unit>   <!-- -17 -->
 		<Pitch_When_Zoomed_In>50.0</Pitch_When_Zoomed_In>
 		<Pitch_Zoom_Begin_Fraction>0.1</Pitch_Zoom_Begin_Fraction>
 		
@@ -44,24 +44,30 @@
 		<Fov_Max>35.0</Fov_Max>
 		<Fov_Min>35.0</Fov_Min>
 		<Fov_Smooth_Time>0.05</Fov_Smooth_Time>
-		<Fov_Per_Mouse_Unit>0</Fov_Per_Mouse_Unit>
-
-        <!-- Using splines overrides these values -->
-
-		<Distance_Default>550.0</Distance_Default> 
-		<Distance_Max>700.0</Distance_Max>   
-		<Distance_Min>250.0</Distance_Min>
+		<Fov_Per_Mouse_Unit>0</Fov_Per_Mouse_Unit>   <!-- 12.5 -->
+		
+		<Distance_Default>550.0</Distance_Default> <!-- jdg was 460 -->
+		<Distance_Max>550.0</Distance_Max>   
+		<Distance_Min>170.0</Distance_Min> <!-- jdg was 170 -->
 		<Distance_Smooth_Time>0.21</Distance_Smooth_Time>
 		<Distance_Per_Mouse_Unit>100.0</Distance_Per_Mouse_Unit>  <!-- 70 -->
 		
 		<!-- Land mode uses a spline for the distance and pitch -->
-
-        <!-- AI modified the cam zoom / pitch per user requests -->
-
 		<Use_Splines>yes</Use_Splines>
-		<Pitch_Spline> 0,20, 0.5,40, 1.0,45 </Pitch_Spline>
-		<Distance_Spline> 0.0, 300.0, 0.5, 525.0, 1.0, 700.0 </Distance_Spline> 
-   		<Spline_Steps>20</Spline_Steps>
+		<!--<Pitch_Spline>   0.0,17.0, 0.35,25.0, 1.0, 35.0, 1.1,50 </Pitch_Spline> 0.0,17.0, 0.35,45.0, 1.0, 55.0, 1.1,55  -->
+		<Pitch_Spline>   0,20, 0.33,35, 0.66,40, 1.0,45 </Pitch_Spline>
+		<Distance_Spline> 0.0, 300.0, 0.5, 425.0, 1.0, 550.0 </Distance_Spline> <!-- GC Still playing with camera...-->  <!-- compensating for zoom-in creep bug  -->
+		<Spline_Steps>15</Spline_Steps>
+		
+		<Tactical_Overview_Distance>700.0</Tactical_Overview_Distance>
+		<Tactical_Overview_Pitch>50.0</Tactical_Overview_Pitch>
+		<Tactical_Overview_FOV>50.0</Tactical_Overview_FOV>
+		<Tactical_Overview_Clicks>800</Tactical_Overview_Clicks>              	<!-- this was 8.  Gary disabled the zoomed out --> 
+		<Tactical_Overview_Click_Time>2.0</Tactical_Overview_Click_Time>    		<!-- within this amount of time -->
+		
+		<Tactical_Overview_Distance2>800.0</Tactical_Overview_Distance2>
+		<Tactical_Overview_Pitch2>50.0</Tactical_Overview_Pitch2>
+		<Tactical_Overview_FOV2>50.0</Tactical_Overview_FOV2>
 		
 		<!-- Smoothness of terrain height following -->
 		<Location_Follows_Terrain> 1 </Location_Follows_Terrain>  
@@ -69,11 +75,11 @@
 		<Location_Height_Down_Smooth_Time> 0.07 </Location_Height_Down_Smooth_Time>	<!-- Note: Also being used by Game Controller unit sub-selection (switching between flyers and ground) -->
 		<Min_Height_Above_Terrain>20.0</Min_Height_Above_Terrain>
 
-		<Near_Clip> 10.0 </Near_Clip>
-		<Far_Clip> 8000.0 </Far_Clip>	
+		<Near_Clip>10.0</Near_Clip>
+		<Far_Clip>8000.0</Far_Clip>	
 		
-		<Object_Fade_Begin>1800.0f</Object_Fade_Begin>
-		<Object_Fade_End>2250.0f</Object_Fade_End>
+		<Object_Fade_Begin>1000.0f</Object_Fade_Begin>
+		<Object_Fade_End>1200.0f</Object_Fade_End>
 		
 		<Side_Bounds_Buffer>0.0f</Side_Bounds_Buffer>
 		<Top_Bounds_Buffer>-100.0f</Top_Bounds_Buffer>
@@ -118,14 +124,13 @@
 		
 		<!-- Land mode uses a spline for the distance and pitch --> 
 		<Use_Splines> yes </Use_Splines> 
-
-		<!-- TESTING: Horizotnal camera angles really screw up autograb with controller (Discussed with Greg and no immediate solution). Trying 45 fixed for time being. -->
-		<Pitch_Spline>   0.0,45.0, 0.33,45.0, 0.66,45.0, 1.0,45.0 </Pitch_Spline>
-    <Distance_Spline> 0.0, 300.0, 0.5, 525.0, 1.0, 700.0 </Distance_Spline>
-
-    <!-- Mouse and keyboard values for time being and recording cinematics -->
-		<!-- <Pitch_Spline>   0.0,20.0, 0.33,35.0, 0.66,40.0, 1.0,45.0 </Pitch_Spline> -->
-		<!-- <Distance_Spline> 0.0,300.0, 0.5,425.0, 1.0,550.0 </Distance_Spline> -->
+		<!-- TESTING
+			<Pitch_Spline>    0.0,20.0,  0.33,28.0,  0.66,37.0,  1.0,45.0  </Pitch_Spline> 
+			<Distance_Spline>  0.0,300.0,   0.5,500.0,   1.0,700.0  </Distance_Spline> 
+		-->
+		<!-- Mouse and keyboard values for time being and recording cinematics -->
+		<Pitch_Spline>   0.0,20.0, 0.33,35.0, 0.66,40.0, 1.0,45.0 </Pitch_Spline>
+		<Distance_Spline> 0.0,300.0, 0.5,425.0, 1.0,550.0 </Distance_Spline>
 		<Spline_Steps> 15 </Spline_Steps> 
 		
 		<Tactical_Overview_Distance> 700.0 </Tactical_Overview_Distance> 
@@ -143,12 +148,12 @@
 		<Location_Height_Up_Smooth_Time>  0.07  </Location_Height_Up_Smooth_Time> 
 		<Location_Height_Down_Smooth_Time>  0.07  </Location_Height_Down_Smooth_Time> 
 		<Min_Height_Above_Terrain> 20.0 </Min_Height_Above_Terrain> 
-
-		<Near_Clip> 10.0 </Near_Clip>
-		<Far_Clip> 8000.0 </Far_Clip>	
-
-		<Object_Fade_Begin> 1700.0f </Object_Fade_Begin>
-		<Object_Fade_End> 1900.0f </Object_Fade_End>
+		
+		<Near_Clip> 10.0 </Near_Clip> 
+		<Far_Clip> 8000.0 </Far_Clip> 	
+		
+		<Object_Fade_Begin> 770.0f </Object_Fade_Begin> 
+		<Object_Fade_End> 1000.0f </Object_Fade_End> 
 		
 		<Side_Bounds_Buffer> 0.0f </Side_Bounds_Buffer> 
 		<Top_Bounds_Buffer> 0.0f </Top_Bounds_Buffer> 
@@ -217,22 +222,12 @@
 		<Near_Clip>2.0</Near_Clip>
 		<Far_Clip>8000.0</Far_Clip>	
 		
-		<Object_Fade_Begin>1000.0f</Object_Fade_Begin>
-		<Object_Fade_End>1400.0f</Object_Fade_End>
+		<Object_Fade_Begin>700.0f</Object_Fade_Begin>
+		<Object_Fade_End>1100.0f</Object_Fade_End>
         
 	</TacticalCamera>  <!-- "Land_Cinematic" -->
 
-   <!-- SKY 1/8/08 - new battlecam settings -->
-   <TacticalCamera Name="Land_BattleCam">
 
-      <!-- The battlecam camera only uses the clip plane and object rejection distances -->
-      <Near_Clip>2.0</Near_Clip>
-      <Far_Clip>8000.0</Far_Clip>
-
-      <Object_Fade_Begin>2250.0f</Object_Fade_Begin>
-      <Object_Fade_End>3000.0f</Object_Fade_End>
-
-   </TacticalCamera>  <!-- "Land_BattleCam" -->
 
 	<TacticalCamera Name="Unlocked">
 

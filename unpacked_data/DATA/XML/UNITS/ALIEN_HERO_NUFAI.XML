@@ -47,7 +47,7 @@
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
          <Generator_Area_Effect_Radius_1> 225 </Generator_Area_Effect_Radius_1>
       </Attributes>
 
@@ -89,7 +89,7 @@
 		<!-- CONFLICT -->
 		<Is_Attackable>true</Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 700 </Tactical_Health>
 		<Land_FOW_Reveal_Range>220</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>	
 				
@@ -121,7 +121,6 @@
 			AI_TARGET,
 			RETREAT_FROM_TACTICAL,
 			TELEPORT_PAD,
-			TACTICAL_AI,
 			BALLISTIC		
 		</LandBehavior>
 
@@ -161,18 +160,14 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 200.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 170.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual</AI_Target_Level>
 		 <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 1.1 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 1.2 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 375.0 </Tactical_AI_Search_Range>
-		 <Retreat_At_Health> 0.8 </Retreat_At_Health>
-		 <Always_Move_At_Full_Speed> true </Always_Move_At_Full_Speed>
-		 <Lock_on_Target_Categories> Piloted + ~Huge + ~Hero </Lock_on_Target_Categories>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -204,7 +199,7 @@
 
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Global_Behaviors> HeroIcon </Lua_Global_Behaviors>
-			<Lua_Land_Behaviors> HeroIcon </Lua_Land_Behaviors>
+			<Lua_Land_Behaviors> HeroIcon,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				<!-- hero icon data -->
 				HERO_ICON = {}
@@ -214,6 +209,34 @@
 				NOT_TACTICALLY_PRESENT = false
 				IS_SCIENTIST = false
 				IS_COMM_OFFICER = false
+				DefensiveAI = {}
+				DefensiveAI.KillTurret = false
+				DefensiveAI.RunHealth = 0.9
+				DefensiveAI.AttackCat = "Piloted"
+				DefensiveAI.AttackCatExclude = "Organic | Small | Flying | Stationary | Bridge | Huge | Hero"
+				DefensiveAI.AttackCatMinRange = 0.0
+				DefensiveAI.AttackCatRetreatHealth = 0.7
+				DefensiveAI.AttackStationary = true
+				DefensiveAI.Abilities = {}
+				DefensiveAI.Abilities[1] = {}
+				DefensiveAI.Abilities[1].Name = "Alien_Nufai_Tendrils_Ability"
+				DefensiveAI.Abilities[1].Category = "Flying + ~Hero"
+				DefensiveAI.Abilities[1].Range = 170.0
+				DefensiveAI.Abilities[1].Count = 3.0
+				DefensiveAI.Abilities[1].NoCollectors = true
+				DefensiveAI.Abilities[2] = {}
+				DefensiveAI.Abilities[2].Name = "Alien_Nufai_Paranoia_Field_Ability"
+				DefensiveAI.Abilities[2].Category = "CanAttack + ~Stationary + ~Flying + ~Resource + ~Resource_INST + ~Hero"
+				DefensiveAI.Abilities[2].Range = 220.0
+				DefensiveAI.Abilities[2].Count = 7.0
+				DefensiveAI.Abilities[2].NoCollectors = true
+				DefensiveAI.Abilities[3] = {}
+				DefensiveAI.Abilities[3].Name = "Alien_Nufai_Tendrils_Ability"
+				DefensiveAI.Abilities[3].Category = "Flying + Hero"
+				DefensiveAI.Abilities[3].Range = 170.0
+				DefensiveAI.Abilities[3].Count = 1.0
+				DefensiveAI.Abilities[3].NoCollectors = true
+
 			</Lua_Script_Data>
 		</BehaviorType>
 
@@ -263,12 +286,14 @@
 
 			<Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -336,10 +361,6 @@
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Alien_Nufai</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On>SFX_Alien_Paranoia_Start</SFXEvent_GUI_Toggle_Non_Hero_Ability_On>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<Unit_Ability_AI_Required_Targets> -3 </Unit_Ability_AI_Required_Targets>
-				<Unit_Ability_AI_Unit_Categories> CanAttack + ~Hero </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 180.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 			
 
@@ -352,10 +373,6 @@
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Alien_Nufai</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On>SFX_Alien_Tendrils_Start</SFXEvent_GUI_Toggle_Non_Hero_Ability_On>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<Unit_Ability_AI_Required_Targets> 2 </Unit_Ability_AI_Required_Targets>
-				<Unit_Ability_AI_Unit_Categories> Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 180.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 

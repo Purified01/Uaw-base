@@ -18,6 +18,7 @@
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_ALIEN_RADIATION_SPITTER_TURRET</Text_ID>
+		<Icon_Name>i_icon_ab_radiation_turret.tga </Icon_Name>
 		<Select_Box_Scale>45</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Select_As_Non_Structure>True</Select_As_Non_Structure>
@@ -89,19 +90,6 @@
 			TACTICAL_SELL
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_ab_radiation_turret.tga </Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
-      </BehaviorType>
-      
-      
 		<BehaviorType Name="GUIBehaviorType">
 			<GUI_Scene_Name> ALIEN_Tactical_Upgrades_Menu </GUI_Scene_Name>
 			<GUI_Receives_Input> yes </GUI_Receives_Input>
@@ -109,13 +97,6 @@
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.8 </GUI_Default_Scale>
 		</BehaviorType>
-
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Target_Level>Individual</AI_Target_Level>
@@ -217,7 +198,7 @@
 			<Radiation_Arc_Noise_Amp> 0.2 </Radiation_Arc_Noise_Amp>
 			<Radiation_Cooldown_In_Secs> 1.5 </Radiation_Cooldown_In_Secs>
 			<Radiation_SFXEvent_Fire> SFX_Alien_Radiation_Fire </Radiation_SFXEvent_Fire>
-			<Radiation_Direct_Damage> 6.0 </Radiation_Direct_Damage>
+			<Radiation_Direct_Damage> 7.0 </Radiation_Direct_Damage>
 			<!-- direct damage type use to balance -->
 			<Radiation_Damage_Type> Damage_Alien_Spitter_Particle_Beam </Radiation_Damage_Type>
 			<!-- Particles that stay in place after a hit, these must decay over time -->
@@ -387,7 +368,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<!-- needed for builder unit to be able to activate its ability -->
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
+		<Ranged_Target_Z_Adjust> 3.0 </Ranged_Target_Z_Adjust>
 
 		<Tactical_Health> 300 </Tactical_Health>
 
@@ -433,9 +414,9 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Beacon_Type> Alien_Radiation_Spitter_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Alien_Radiation_Spitter </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 475 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 475 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 450 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 450 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 6 </Tactical_UI_Build_Queue_Order>
 			<Required_Pre_Build_Time_In_Secs> 10 </Required_Pre_Build_Time_In_Secs>
 		</BehaviorType>
@@ -624,12 +605,10 @@
 		<Radiation_Target_Categories> ~Flying </Radiation_Target_Categories>
 
 		<Radiation_Decal_Particle_Effect> Radiation_Decal_Particle_Effect </Radiation_Decal_Particle_Effect>
-		<!--<Radiation_Decal_Name> Alien_Walker_Radiation_Splat </Radiation_Decal_Name>-->
-      <Radiation_Node_Duration_In_Secs> 8.0 </Radiation_Node_Duration_In_Secs>
-      <Radiation_Node_Radius>20</Radiation_Node_Radius>
+		<Radiation_Decal_Name> Alien_Walker_Radiation_Splat </Radiation_Decal_Name>
+		<Radiation_Decal_Duration_In_Secs> 8.0 </Radiation_Decal_Duration_In_Secs>
 
-
-      <BehaviorType Name="SFXBehaviorType">
+		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire> SFX_Alien_Radiation_Detonation_1 </SFXEvent_Fire>
 		</BehaviorType>
 
@@ -795,12 +774,9 @@
 			<Icon_Name>i_icon_nb_robotic_assembly.tga</Icon_Name>
 		</BehaviorType>
 
-      <BehaviorType Name="HardPointBehaviorType">
-         <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed>  </HP_Replacement_Object_Type_When_Destroyed>
-         <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
-         <!-- Destroying this one hard point will trigger the parent object to be destroyed -->
-      </BehaviorType>
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
+		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>

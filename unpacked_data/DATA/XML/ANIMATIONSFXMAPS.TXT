@@ -95,6 +95,10 @@ SURFACE	ah_orlok_special_start_a_00	2677	ALIEN_HERO_ORLOCK_NORMAL	B_Foot_decal_L
 SURFACE	ah_orlok_special_end_a_00	2677	ALIEN_HERO_ORLOCK_NORMAL	B_Foot_decal_L
 SOUND	ah_orlok_special_end_a_00	49	SFX_Anim_Alien_Orlok_Deploy_Claw	INVALID
 
+SOUND	wo_glyph01_flylanddrop_00	11	SFX_Alien_Meteor_Start	INVALID
+SOUND	wo_glyph01_flylanddrop_00	39	SFX_Alien_Meteor_By	INVALID
+SOUND	wo_glyph01_flylanddrop_00	5010	SFX_Alien_Walker_Impact	INVALID
+SOUND	wo_glyph01_flylanddrop_00	2996	SFX_Alien_Walker_Impact	INVALID
 
 SURFACE	ab_info_conduit_turnl_00	1875	ALIEN_SCAN_DRONE	Crusher_00
 SURFACE	ab_info_conduit_turnl_00	3882	ALIEN_SCAN_DRONE	Crusher_02
