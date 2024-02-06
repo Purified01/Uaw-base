@@ -1,30 +1,46 @@
 <?xml version="1.0" ?>
 
-<!-- All Filenames are now section references and will be referenced as section://handle,filename -->
 <AllFonts>
 
 	<Font Name="Arial">
-		<Filename> FArial </Filename>
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
 	</Font>
 
-	<Font Name="Arial Italic">
-		<Filename> FArial </Filename>
+	<Font Name="Arial Black">
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
 	</Font>
 
 	<Font Name="Arial Bold">
-		<Filename> FArial </Filename>
+		<Filename> file://game:/data/resources/fonts/arialbd.ttf </Filename>
+	</Font>
+
+	<Font Name="Arial Unicode MS">
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
+	</Font>
+
+	<Font Name="EmpireAtWar-Medium">
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
+	</Font>
+
+	<Font Name="EmpireAtWar-Bold">
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
+	</Font>
+
+	<Font Name="System">
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
+	</Font>
+
+	<Font Name="Verdana">
+		<Filename> file://game:/data/resources/fonts/verdana.ttf </Filename>
 	</Font>
 
 	<Font Name="Fixedsys">
-		<Filename> FArial </Filename>
+		<Filename> file://game:/data/resources/fonts/xarialuni.ttf </Filename>
 	</Font>
 
-	<Font Name="Impact">
-		<Filename> FImpact </Filename>
+	<Font Name="Tahoma Bold">
+		<Filename> file://game:/data/resources/fonts/tahomabd.ttf </Filename>
 	</Font>
 
-	<Font Name="Unicode">
-		<Filename> FArial </Filename>
-	</Font>
 
 </AllFonts>

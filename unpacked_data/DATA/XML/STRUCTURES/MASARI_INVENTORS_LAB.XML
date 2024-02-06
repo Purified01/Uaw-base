@@ -82,13 +82,6 @@
 			ELEMENTAL_MODE
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 25 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_NEOPHYTES_LAB_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -116,12 +109,6 @@
 			<Game_Event_Source_Category> Structure </Game_Event_Source_Category>
 		</BehaviorType>
 
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
@@ -217,7 +204,6 @@
 		
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_mb_inventors_lab.tga </Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
@@ -439,7 +425,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -946,7 +932,15 @@
 			<Crush_Defense>90</Crush_Defense>
 		</BehaviorType>
 
-	  <Effect_Generator_Data SubObjectList="Yes" Replace="No">
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
+		</BehaviorType>
+
+      <Effect_Generator_Data SubObjectList="Yes" Replace="No">
 
          <!-- Standard DMA generator - Oksana 05/14/2007 -->
          <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Hardpoint_Generators.xml" -->
@@ -980,8 +974,7 @@
 			ATTRIBUTE_DIRECTORY,
          EFFECT_GENERATOR,
 			TACTICAL_BUILD_OBJECTS,
-			HARD_POINT_MANAGER,
-			GUI
+			HARD_POINT_MANAGER
 		</LandBehavior>
 
       <BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -998,13 +991,6 @@
 			For the list of buildable types assigned to this specific Socket type refer to HPSocketTypeBuildDependencies.xml
 			If you have any question please ask MARIA!.  Thanks -->
 
-
-		    <BehaviorType Name="GUIBehaviorType">
-		      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-		      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-		      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-		      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-		    </BehaviorType>
 
 			<HP_Socket_Type> Masari_Inventors_Lab_Socket </HP_Socket_Type>
 

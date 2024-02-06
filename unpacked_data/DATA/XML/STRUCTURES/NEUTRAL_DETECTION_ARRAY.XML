@@ -16,6 +16,7 @@
 
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_ID_NEUTRAL_STRUCTURE_DETECTION_ARRAY</Text_ID>
+		<Icon_Name>i_icon_mb_turret.tga</Icon_Name>
 		<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 		<GUI_Receives_Input> false </GUI_Receives_Input>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
@@ -101,7 +102,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_icon_alien_detection.tga </Icon_Name>
+			<Icon_Name />
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -121,13 +122,6 @@
 			<Death_SFXEvent_Start_Die>SFX_Military_Turret_Death</Death_SFXEvent_Start_Die>
       <SFXEvent_Select>Unit_Select_Alien_Scan</SFXEvent_Select>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/04/07 magnetism stuff -->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Clone>Damage_Default, Neutral_Detection_Array_Death_Clone</Death_Clone>
@@ -140,6 +134,10 @@
 
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.05 0.05</Radar_Icon_Size>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
@@ -250,7 +248,7 @@
 					<Duration> 7.5 </Duration>
 					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 175.0 </Area_Effect_Radius>
-					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
+					<Target_Filter> target.Get_Owner() == source.Get_Owner() </Target_Filter>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

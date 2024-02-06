@@ -85,7 +85,7 @@
 			Bridge, 5
 		</Attack_Priorities>
 
-		<Category_Exclusions> Insignificant, Bridge </Category_Exclusions>
+		<Category_Exclusions> Insignificant </Category_Exclusions>
 		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
 
 	</Priority_Set>
@@ -695,32 +695,14 @@
 	</Priority_Set>
 
 
-  <Priority_Set Name="Novus_Hacker_Target_Priority">
-
-    <Attack_Priorities>
-
-      Flying, 1,
-      Large + Piloted, 2,
-      Medium + Piloted, 3,
-      Alien_Radiation_Spitter, 4,
-      Novus_Redirection_Turret, 5,
-      Masari_Guardian, 6,
-      Alien_Gravitic_Manipulator, 7,
-      Masari_Sky_Guardian, 8,
-
-    </Attack_Priorities>
-
-    <Category_Exclusions>
-      Insignificant
-    </Category_Exclusions>
-
-    <Type_Exclusions> Novus_Collector </Type_Exclusions>
-    
-  </Priority_Set>
+	<Priority_Set Name="Novus_Hacker_Target_Priority">
+		<Category_Exclusions>
+			All
+		</Category_Exclusions>
+	</Priority_Set>
 
 
-
-  <Priority_Set Name="Novus_Reflex_Trooper_Target_Priority">
+	<Priority_Set Name="Novus_Reflex_Trooper_Target_Priority">
 		<Attack_Priorities>
 
       Hero, 1,
@@ -1011,18 +993,18 @@
 	<Priority_Set Name="Masari_Disciple_Target_Priority">
 		<Attack_Priorities>
 
-      Flying + Hero, 1,
-      Flying, 2,
-      Hardpoint, 3,
-      Medium + Piloted, 4,
-      Piloted, 5,
-      Stationary + CanAttack, 6,
-      Small, 7,
-      Medium, 8,
-      Stationary, 9,
-      Novus_Collector, 10,
+			Medium + Piloted, 1,
+			Hardpoint, 2,
+			Flying, 3,
+			Piloted, 4,
+			Stationary + CanAttack, 5,
+			Flying + Hero, 6,
+			Small, 7,
+			Medium, 8,
+			Stationary, 9,
+			Novus_Collector, 10,
 
-    </Attack_Priorities>
+		</Attack_Priorities>
 
 		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector </Type_Exclusions>
 
@@ -1037,21 +1019,20 @@
 	<Priority_Set Name="Masari_Seer_Target_Priority">
 		<Attack_Priorities>
 
-      Flying + Hero, 1,
-      Flying, 2,
-      Hero, 3,
-      Piloted, 4,
-      Small, 5,
-      Hardpoint, 6,
-      Stationary + CanAttack, 7,
-      Stationary, 8,
-      Novus_Collector, 9,
+			Flying + Hero, 1,
+			Hero, 2,
+			Flying, 3,
+			Small, 4,
+			Piloted, 5,
+			Stationary + CanAttack, 6,
+			Stationary, 7,
+			Novus_Collector, 8,
 
-    </Attack_Priorities>
+		</Attack_Priorities>
 
 		<Category_Exclusions>
-      Insignificant 
-    </Category_Exclusions>
+			Insignificant
+		</Category_Exclusions>
 
 		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
 	</Priority_Set>
@@ -1060,14 +1041,13 @@
 	<Priority_Set Name="Masari_Sentry_Target_Priority">
 		<Attack_Priorities>
 
-      Stationary + CanAttack, 1,
-      Small, 2,
-      Medium + Piloted, 3,
-      Stationary, 4,
-      Hero, 5,
-      Hardpoint, 6,
+			Stationary + CanAttack, 1,
+			Small, 2,
+			Medium + Piloted, 3,
+			Stationary, 4,
+			Hero, 5,
 
-    </Attack_Priorities>
+		</Attack_Priorities>
 
 		<Category_Exclusions>
 			Insignificant
@@ -1983,7 +1963,7 @@
 		</Attack_Priorities>
 
 		<Category_Exclusions>
-			Insignificant, RESOURCE
+			Insignificant
 		</Category_Exclusions>
 		<Type_Exclusions> NM04_MILITARY_TURRET_GROUND, _WALL_CONCRETE_01 </Type_Exclusions>
 		<Category_Restrictions> Bridge, Flying, Untargetable</Category_Restrictions>

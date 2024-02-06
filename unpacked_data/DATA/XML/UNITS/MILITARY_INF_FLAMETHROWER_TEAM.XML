@@ -32,7 +32,7 @@
 
       <Attributes SubObjectList="Yes">
          <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -74,13 +74,6 @@
 			AI_TARGET
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Infantry_Heavy </Armor_Type>
 		</BehaviorType>
@@ -100,9 +93,9 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 130.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
+      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>   <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
     </BehaviorType>
@@ -161,8 +154,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>10</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
+			 <Crush_Defense>10</Crush_Defense>
 		</BehaviorType>
 		
 		<BehaviorType Name="FleetBehaviorType">
@@ -215,10 +207,10 @@
 
 		<Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -253,7 +245,7 @@
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Surface_Type_Cover_Damage_Shield>.5</Surface_Type_Cover_Damage_Shield>
 
-		<Tactical_Health> 70 </Tactical_Health>
+		<Tactical_Health> 80 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -357,8 +349,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>10</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
+			 <Crush_Defense>10</Crush_Defense>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -397,6 +388,15 @@
 			<IsDeathCloneObstacle> true </IsDeathCloneObstacle>
 			<Death_Speed_Min>1.0</Death_Speed_Min>
 			<Death_Speed_Max>2.0</Death_Speed_Max>
+		</BehaviorType>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 	</X11_Military_Units>

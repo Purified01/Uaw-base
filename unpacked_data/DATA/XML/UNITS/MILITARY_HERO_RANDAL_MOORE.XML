@@ -50,7 +50,7 @@
 
       <Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
@@ -119,13 +119,6 @@
 			BALLISTIC
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
 		<StrategicBehavior>GLOBAL_ICON</StrategicBehavior>
 
@@ -144,9 +137,9 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 150.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 190.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
     </BehaviorType>
@@ -170,7 +163,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_hero_military_moore.tga</Icon_Name>
+			<Icon_Name> i_icon_hi_more.tga </Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -215,7 +208,7 @@
 				
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 4 </Crush_Power>
+			<Crush_Power> 0 </Crush_Power>
 		</BehaviorType>
 
       <BehaviorType Name="FleetBehaviorType">
@@ -266,6 +259,17 @@
 			<Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_03 </Death_Spawn>
 			<Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
 			<IsDeathCloneObstacle> false </IsDeathCloneObstacle>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="False">
@@ -579,10 +583,8 @@
          <Projectile_Ground_Detonation_Particle>Col_Moore_grenade_ground_blast</Projectile_Ground_Detonation_Particle>
          <Projectile_Lifetime_Detonation_Particle>Col_Moore_grenade_blast</Projectile_Lifetime_Detonation_Particle>
          <Projectile_Absorbed_By_Shields_Particle>Col_Moore_grenade_blast</Projectile_Absorbed_By_Shields_Particle>
-         <!--  jdg 11/14/07 need to seperate out Col Moores grenade sound from the generic 	SFX_Military_Detonation_1 	
-			for rumble purposes			-->
-			<Projectile_SFXEvent_Detonate>SFX_Military_Detonation_ColMoore_Grenade</Projectile_SFXEvent_Detonate>
-         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_ColMoore_Grenade </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+         <Projectile_SFXEvent_Detonate>SFX_Military_Detonation_1</Projectile_SFXEvent_Detonate>
+         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Military_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Causes_Blackening>true</Projectile_Causes_Blackening>
          <Terrain_Damage_Radius>40.0</Terrain_Damage_Radius>
       </BehaviorType>

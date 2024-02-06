@@ -62,7 +62,7 @@
 		<MovementClass>Hover</MovementClass>
 		<Should_Move_At_Water_Level> true </Should_Move_At_Water_Level>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed>1.9</Max_Speed>
+		<Max_Speed>1.8</Max_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .15 </OverrideDeceleration>
 		<Max_Rate_Of_Turn>10.0</Max_Rate_Of_Turn>
@@ -117,19 +117,11 @@
       AI_TARGET,
       SQUASH,
       TACTICAL_SELL,
-		TACTICAL_AI,
       ABILITY_COUNTDOWN
     </LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Vehicle_Heavy </Armor_Type>
+			<Armor_Type> Armor_Novus_Vehicle_Light </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -138,7 +130,7 @@
 		
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
-			<Build_Cost_Credits> 400 </Build_Cost_Credits>
+			<Build_Cost_Credits> 450 </Build_Cost_Credits>
 			<Build_Time_Seconds> 14 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
@@ -153,23 +145,22 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 26 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 900 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 900 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<Idle_Chase_Range> 0.1 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
-			<Guard_Chase_Range> 235.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+			<Idle_Chase_Range> 40.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+			<Guard_Chase_Range> 200.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
 			<Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
 			<Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
 			<AI_Target_Level>Individual_Or_Group</AI_Target_Level>
 			<Attack_Score_Rating> 0.9 </Attack_Score_Rating>
 			<Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 			<Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-			<Tactical_AI_Search_Range> 175.0 </Tactical_AI_Search_Range>
 		</BehaviorType>
     
 		<BehaviorType Name="WeaponBehaviorType">
@@ -180,7 +171,6 @@
 			<Targeting_Max_Attack_Distance> 280.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -193,7 +183,6 @@
 				DefensiveAI.KillTurret = false
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="SignalTransmitterBehaviorType">
 			<Transmitter_Attribute_Name>Transmits_Novus_Signal</Transmitter_Attribute_Name>
@@ -276,7 +265,17 @@
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
-		
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees />
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 10.0 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="LockableByDynamicScannerBehaviorType">
 			<Dynamic_Scan_Target_Effect_Particle_Name>Dynamic_Scan_Target</Dynamic_Scan_Target_Effect_Particle_Name>
 			<Dynamic_Scan_Target_Lock_Max_Delay_Seconds>2.0</Dynamic_Scan_Target_Lock_Max_Delay_Seconds>
@@ -285,7 +284,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>35</Crush_Defense>
-      <Crush_Power>21</Crush_Power>
+      <Crush_Power>6</Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -423,13 +422,12 @@
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> ResonanceBeamWeaponEffect </Effect_Name>
                <Duration>-1</Duration>
-				<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-               	<Target_Filter_Categories>Small | Medium | Piloted | Stationary | Hero | HardPoint</Target_Filter_Categories>
-               	<Target_Filter_C>  Novus_Amplifier_Resonance_Beam_Target  </Target_Filter_C>
-				<Linked_Effect_Names> ResonanceBeamWeaponVisualEffect </Linked_Effect_Names>
-				<Max_Targets> 1 </Max_Targets>
-				<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
-				<Any_Target_Is_Valid> true </Any_Target_Is_Valid>
+					<Target_Gathering_Mask> Target | TargetHardpoints </Target_Gathering_Mask>
+					<Target_Filter_C> Novus_Amplifier_Resonance_Beam_Target </Target_Filter_C>
+					<Linked_Effect_Names> ResonanceBeamWeaponVisualEffect </Linked_Effect_Names>
+					<Max_Targets> 1 </Max_Targets>
+					<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
+					<Any_Target_Is_Valid> true </Any_Target_Is_Valid>
             </Effect_Generator_Entry>
 
             <Effect_Generator_Entry Name="Entry2">
@@ -488,10 +486,9 @@
                <Duration>-1</Duration>
                <Target_Gathering_Mask> Target | TargetAE </Target_Gathering_Mask>
                <Area_Effect_Radius> 150 </Area_Effect_Radius>
-               <Target_Filter_Categories>Small | Medium | Piloted | Stationary | Hero | HardPoint</Target_Filter_Categories>
 					<Target_Filter_C> Novus_Amplifier_Resonance_Beam_Target </Target_Filter_C>
 
-				<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
+					<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
 					<Use_Target_Base_Type_For_AE> true </Use_Target_Base_Type_For_AE>
 
                <Max_Targets>5</Max_Targets>
@@ -708,7 +705,7 @@
       </BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 450 </Resource_Units>
+			<Resource_Units> 425 </Resource_Units>
 			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>

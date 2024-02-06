@@ -441,7 +441,7 @@
             <Target_Effect> HealthHeal </Target_Effect>
             <Source_Effect> ResourceUnits </Source_Effect>
             <Amount_Per_Second> -5.0 </Amount_Per_Second>
-            <Transfer_Multiplicative> 2.3 </Transfer_Multiplicative>
+            <Transfer_Multiplicative> 2.0 </Transfer_Multiplicative>
             <Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
             <Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
             <Transfer_Fail_On_Target_Full> true </Transfer_Fail_On_Target_Full>

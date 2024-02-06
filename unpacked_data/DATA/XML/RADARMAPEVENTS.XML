@@ -91,55 +91,49 @@
 
 	<Radar_Map_Event Name="Game_Event_Combat_Low_Importance">
 		<Event_Model_Name>p_minimap_combat_low.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-      <Event_Duration>3.0</Event_Duration>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
 		<Event_Single_Instance>No</Event_Single_Instance>
 	</Radar_Map_Event>
 
 	<Radar_Map_Event Name="Game_Event_Combat_Medium_Importance">
 		<Event_Model_Name>p_minimap_combat_med.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-      <Event_Duration>3.0</Event_Duration>
-      <Event_Single_Instance>No</Event_Single_Instance>
-   </Radar_Map_Event>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
+		<Event_Single_Instance>No</Event_Single_Instance>
+	</Radar_Map_Event>
 
-   <Radar_Map_Event Name="Game_Event_Combat_High_Importance">
-      <Event_Model_Name>p_minimap_combat_high.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-		<Event_Duration>3.0</Event_Duration>
+	<Radar_Map_Event Name="Game_Event_Combat_High_Importance">
+		<Event_Model_Name>p_minimap_combat_high.alo</Event_Model_Name>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
 		<Event_Single_Instance>No</Event_Single_Instance>
 	</Radar_Map_Event>
 
 	<Radar_Map_Event Name="Game_Event_Info_Low_Importance">
 		<Event_Model_Name>p_minimap_info_low.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-      <Event_Duration>3.0</Event_Duration>
-      <Event_Single_Instance>No</Event_Single_Instance>
-   </Radar_Map_Event>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
+		<Event_Single_Instance>No</Event_Single_Instance>
+	</Radar_Map_Event>
 
-   <Radar_Map_Event Name="Game_Event_Info_Medium_Importance">
-      <Event_Model_Name>p_minimap_info_med.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-		<Event_Duration>3.0</Event_Duration>
+	<Radar_Map_Event Name="Game_Event_Info_Medium_Importance">
+		<Event_Model_Name>p_minimap_info_med.alo</Event_Model_Name>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
 		<Event_Single_Instance>No</Event_Single_Instance>
 	</Radar_Map_Event>
 
 	<Radar_Map_Event Name="Game_Event_Info_High_Importance">
 		<Event_Model_Name>p_minimap_info_high.alo</Event_Model_Name>
-      <Gamepad_Event_Model_Name>gamepad_I_minimap_obj.alo</Gamepad_Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
-      <Event_Duration>3.0</Event_Duration>
-      <Event_Single_Instance>No</Event_Single_Instance>
-   </Radar_Map_Event>
-
-   <Radar_Map_Event Name="Game_Event_Info_High_Importance_Persistent">
-      <Event_Model_Name>p_minimap_info_high_persistent.alo</Event_Model_Name>
-      <Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
+		<Event_Duration>1.0</Event_Duration>
+		<Event_Single_Instance>No</Event_Single_Instance>
+	</Radar_Map_Event>
+	
+	<Radar_Map_Event Name="Game_Event_Info_High_Importance_Persistent">
+		<Event_Model_Name>p_minimap_info_high_persistent.alo</Event_Model_Name>
+		<Event_Model_Scale>0.002</Event_Model_Scale>
 		<Event_Persistent>Yes</Event_Persistent>
 		<Event_Single_Instance>No</Event_Single_Instance>
 	</Radar_Map_Event>

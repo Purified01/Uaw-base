@@ -3,11 +3,9 @@
    <!-- **************************************************************************************** -->
    <!-- *** UNIT(S) **************************************************************************** -->
    <!-- **************************************************************************************** -->
-	
-	<!--
    <X99_Test_Objects Name="Neutral_Purifier_Damage_Object">
       
-      <! - - ART - - >
+      <!-- ART -->
       <Land_Model_Name> AI_Grunt.ALO </Land_Model_Name>
       <Scale_Factor>1.0</Scale_Factor>
       <Loop_Idle_Anim_00>No</Loop_Idle_Anim_00>
@@ -17,7 +15,7 @@
       <Death_Fade_Time>.25</Death_Fade_Time>
       <Death_Persistence_Duration>5</Death_Persistence_Duration>
 
-      <!- - INTERFACE - - >
+      <!-- INTERFACE -->
       <Text_ID>TEXT_ALIEN_GRUNT</Text_ID>
       <GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
       <GUI_Receives_Input> false </GUI_Receives_Input>
@@ -28,7 +26,7 @@
       <Select_Box_Scale>20</Select_Box_Scale>
       <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
-      <!- - ATTRIBUTES - ->
+      <!-- ATTRIBUTES -->
       <Affiliation> Alien </Affiliation>
       <Victory_Relevant> No </Victory_Relevant>
       <CategoryMask> Small, Organic, CanAttack, RadiationHelps </CategoryMask>
@@ -39,12 +37,13 @@
       <Shot_Type> Infantry </Shot_Type>
 
       <Attributes SubObjectList="Yes">
+         <Is_Phasable> true </Is_Phasable>
          <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
          <Tactical_Build_Cost_Credits />
-         <!- - <Can_Garrison_Buildings> true </Can_Garrison_Buildings> - -> <!- - Oksana: not currently used - ->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
       </Attributes>
 
-      <!- - MOVEMENT - ->
+      <!-- MOVEMENT -->
       <MovementClass> Infantry </MovementClass>
       <Max_Speed>1.0</Max_Speed>
       <Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
@@ -69,7 +68,7 @@
       <Backpedal_Animation_Speed> 1.0 </Backpedal_Animation_Speed>
       <Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
 
-      <!- - CONFLICT - ->
+      <!-- CONFLICT -->
       <Is_Attackable> true </Is_Attackable>
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
@@ -82,7 +81,7 @@
       <Projectile_Fire_Pulse_Delay_Seconds>0.02</Projectile_Fire_Pulse_Delay_Seconds>
       <Projectile_Fire_Recharge_Seconds>8.0</Projectile_Fire_Recharge_Seconds>
 
-      <!- - BEHAVIORS - ->
+      <!-- BEHAVIORS -->
       <Behavior>
          SELECTABLE,
          EFFECT_GENERATOR,
@@ -121,11 +120,11 @@
          <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
          <Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 
-         <!- - 
+         <!-- 
 				Maria 11.07.2006 
 				This flag determines which types are used to populate the
 				build menu in global mode.
-			- ->
+			-->
          <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
 
       </BehaviorType>
@@ -222,6 +221,17 @@
          <SFXEvent_Enemy_Damaged_Health_Critical_Warning />
       </BehaviorType>
 
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Bracket_Size>2</GUI_Bracket_Size>
+         <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+         <!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+         <GUI_Is_Top_View> No </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+         <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
+
       <BehaviorType Name="DeathFXBehaviorType">
          <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
          <Death_Clone>Damage_Masari_Peacebringer_Disintegrate, Disintegrate_Death_Clone</Death_Clone>
@@ -232,13 +242,13 @@
       </BehaviorType>
 
       <BehaviorType Name="FleetBehaviorType">
-         <!- - Maria 05.24.2006 - How much space does the unit take up - - >
+         <!-- Maria 05.24.2006 - How much space does the unit take up -->
          <Unit_Pop_Cap> 2 </Unit_Pop_Cap>
       </BehaviorType>
 
    </X99_Test_Objects>
 
--->
+
 
 
 
@@ -252,6 +262,7 @@
       <!-- ART -->
       <Land_Model_Name>AI_Kamalrex_PsionicBlast.alo</Land_Model_Name>
       <Scale_Factor>1.0</Scale_Factor>
+      <Projectile_Custom_Render>0</Projectile_Custom_Render>
 
       <!-- INTERFACE -->
       <Text_ID>TEXT_NONE</Text_ID>
@@ -352,7 +363,7 @@
 
 
 
-<!-- jdg 11/14/07 Jeff S references this object in NM06...needs to stay valid please. -->
+
    <X99_Test_Objects Name="Neutral_Purifier_Target_Object">
 
      <!-- ART -->
@@ -453,12 +464,15 @@
       </BehaviorType>
       
       <BehaviorType Name="GUIBehaviorType">
+         <GUI_Row> 0 </GUI_Row>
          <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
          <GUI_Receives_Input> false </GUI_Receives_Input>
+         <GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
          <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
          <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
          <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
          <GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+         <GUI_Bracket_Size>2</GUI_Bracket_Size>
       </BehaviorType>
       
       <BehaviorType Name="SelectableBehaviorType">
@@ -468,7 +482,39 @@
       </BehaviorType>
 
       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
    </X99_Test_Objects>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

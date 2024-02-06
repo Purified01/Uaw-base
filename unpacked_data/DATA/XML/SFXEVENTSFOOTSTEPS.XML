@@ -9,13 +9,11 @@
 	   <SFXEvent Name="SFX_Anim_Alien_Walker_Foot_Plant">
 			<Use_Preset>Preset_FSV_HUGE</Use_Preset>
 			<Samples>FS_AW_01.wav FS_AW_02.wav FS_AW_03.wav FS_AW_04.wav</Samples>
-			<Vibration_Event> Vibration_Alien_Walker_Foot_Plant_Large </Vibration_Event>
 	   </SFXEvent>
 
 	   <SFXEvent Name="SFX_Anim_Alien_Walker_Water_Foot_Plant">
 			<Use_Preset>Preset_FSV_HUGE</Use_Preset>
 			<Samples>FS_AW_Water_01.wav FS_AW_Water_02.wav FS_AW_Water_03.wav FS_AW_Water_04.wav</Samples>
-			<Vibration_Event> Vibration_Alien_Walker_Foot_Plant_Large </Vibration_Event>
 	   </SFXEvent>
 
 	   <SFXEvent Name="SFX_Anim_Alien_Walker_Hydraulics">
@@ -68,13 +66,11 @@
 	   <SFXEvent Name="SFX_Anim_Small_AW_Foot_Plant">
 			<Use_Preset>Preset_FSV</Use_Preset>
 			<Samples>FS_Small_AW_1.wav FS_Small_AW_2.wav FS_Small_AW_3.wav FS_Small_AW_4.wav FS_Small_AW_5.wav FS_Small_AW_7.wav FS_Small_AW_8.wav</Samples>
-			<Vibration_Event> Vibration_Alien_Walker_Foot_Plant_Small </Vibration_Event>
 	   </SFXEvent>
 
 	   <SFXEvent Name="SFX_Anim_Small_AW_Water_Foot_Plant">
 			<Use_Preset>Preset_FSV</Use_Preset>
 			<Samples>FS_Small_AW_Water_1.wav FS_Small_AW_Water_2.wav FS_Small_AW_Water_3.wav FS_Small_AW_Water_4.wav</Samples>
-			<Vibration_Event> Vibration_Alien_Walker_Foot_Plant_Small </Vibration_Event>
 	   </SFXEvent>
 
 	   <SFXEvent Name="SFX_Anim_Small_AW_Hydraulics">
@@ -94,20 +90,11 @@
 			<Max_Pitch>200</Max_Pitch>
 			<Min_Volume>25</Min_Volume>
 			<Max_Volume>25</Max_Volume>
-			<Vibration_Event> Vibration_Alien_Walker_Foot_Plant_Smallest </Vibration_Event>
 	   </SFXEvent>
 
 
 
-	<!-- jdg 11/12/07 giving the defiler his own entry for rumble purposes-->
-	<SFXEvent Name="SFX_Anim_Alien_Defiler_Foot_Plant">
-			<Use_Preset>Preset_FSI</Use_Preset>
-			<Samples>FS_Brute_1.wav FS_Brute_2.wav FS_Brute_3.wav FS_Brute_4.wav FS_Brute_5.wav FS_Brute_6.wav FS_Brute_7.wav</Samples>
-			<Min_Volume>30</Min_Volume>
-			<Max_Volume>30</Max_Volume>
-			<!-- jdg 11/09/07 this turn out to be also linked to the defiler...-->
-			<Vibration_Event> Vibration_Alien_Defiler_Foot_Plant </Vibration_Event>
-		</SFXEvent>
+
 
  
 
@@ -116,8 +103,6 @@
 			<Samples>FS_Brute_1.wav FS_Brute_2.wav FS_Brute_3.wav FS_Brute_4.wav FS_Brute_5.wav FS_Brute_6.wav FS_Brute_7.wav</Samples>
 			<Min_Volume>30</Min_Volume>
 			<Max_Volume>30</Max_Volume>
-			<!-- jdg 11/09/07 this turn out to be also linked to the defiler...-->
-			<Vibration_Event> Vibration_Alien_Brute_Foot_Plant </Vibration_Event>
 		</SFXEvent>
 
 		<SFXEvent Name="SFX_Anim_Alien_Brute_Beat_Chest">
@@ -246,7 +231,6 @@
 		<SFXEvent Name="SFX_Anim_Mech_Foot_Plant">
 			<Use_Preset>Preset_FSV</Use_Preset>
 			<Samples>FS_Mech_1.wav FS_Mech_2.wav FS_Mech_3.wav FS_Mech_4.wav</Samples>
-			<Vibration_Event> Vibration_Novus_Mech_Foot_Plant </Vibration_Event>
 		</SFXEvent>
 
 		<SFXEvent Name="SFX_Anim_Mech_Motor_Move">
@@ -325,13 +309,11 @@
       <SFXEvent Name="SFX_Anim_Novus_Walker_Foot_Plant">
 			<Use_Preset>Preset_FSV</Use_Preset>
 			<Samples>FS_Field_Inverter_1.wav FS_Field_Inverter_2.wav FS_Field_Inverter_3.wav FS_Field_Inverter_4.wav</Samples>
-			<Vibration_Event> Vibration_Novus_Walker_Foot_Plant </Vibration_Event>
       </SFXEvent>
 
       <SFXEvent Name="SFX_Anim_Novus_Walker_Water_Foot_Plant">
 			<Use_Preset>Preset_FSV</Use_Preset>
 			<Samples>FS_Field_Inverter_1.wav FS_Field_Inverter_2.wav FS_Field_Inverter_3.wav FS_Field_Inverter_4.wav</Samples>
-			<Vibration_Event> Vibration_Novus_Walker_Foot_Plant </Vibration_Event>
       </SFXEvent>
 
       <SFXEvent Name="SFX_Anim_Novus_Walker_Deploy">
@@ -377,7 +359,6 @@
 			<Samples>FS_Founder_1.wav FS_Founder_2.wav FS_Founder_3.wav FS_Founder_4.wav</Samples>
 			<Min_Volume>60</Min_Volume>
 			<Max_Volume>60</Max_Volume>
-			<Vibration_Event> Vibration_Novus_Founder_Foot_Plant </Vibration_Event>
 		</SFXEvent>
 
       <SFXEvent Name="SFX_Anim_Novus_Founder_Body_Fall">

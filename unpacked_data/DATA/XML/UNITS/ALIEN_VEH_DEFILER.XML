@@ -41,6 +41,7 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 			<Generator_Area_Effect_Radius_1> 50 </Generator_Area_Effect_Radius_1>
@@ -83,11 +84,11 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust>40.0</Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range> 200.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 220.0</Land_FOW_Reveal_Range>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
 
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 500 </Tactical_Health>
 		<Land_Damage_Thresholds>1, 0.66, 0.33</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
 		<Land_Damage_SFX />
@@ -102,31 +103,29 @@
 		</Behavior>
 
 		<LandBehavior>
-      TURRET,
-      RADIATION_WEAPON,
-      ATTRIBUTE_DIRECTORY,
-      EFFECT_GENERATOR,
-      ABILITY_COUNTDOWN,
-      STUNNABLE,
-      GUI,
-      RADAR_MAP_VISIBLE,
-      WALK_LOCOMOTOR,
-      FORMATION,
-      IDLE,
+			TURRET,
+			RADIATION_WEAPON,
+			ATTRIBUTE_DIRECTORY,
+			EFFECT_GENERATOR,
+			ABILITY_COUNTDOWN,
+			STUNNABLE,
+			GUI,
+			RADAR_MAP_VISIBLE,
+			WALK_LOCOMOTOR,
+			FORMATION,
+			IDLE,
       SQUASH,
-      REVEAL,
-      HIDE_WHEN_FOGGED,
-      UNIT_AI,
-      TARGETING,
-      CREATE_CHILDREN,
-      DAMAGE_TRACKING,
-      AI_RECRUITABLE,
-      AI_TARGET,
-      TACTICAL_SELL,
-      TACTICAL_AI,
-      TELEPORT_PAD,
-      BALLISTIC
-    </LandBehavior>
+			REVEAL,
+			HIDE_WHEN_FOGGED,
+			UNIT_AI,
+			TARGETING,
+			CREATE_CHILDREN,
+			DAMAGE_TRACKING,
+			AI_RECRUITABLE,
+			AI_TARGET,
+			TACTICAL_SELL,
+			TELEPORT_PAD
+		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Alien_Vehicle_Heavy </Armor_Type>
@@ -154,32 +153,31 @@
 			-->
 			<Is_Strategic_Buildable_Type> Yes </Is_Strategic_Buildable_Type>
 			<Strategic_UI_Build_Menu_Order>4</Strategic_UI_Build_Menu_Order>
-     </BehaviorType>
+         <Build_Limit_Current_Per_Player>20</Build_Limit_Current_Per_Player>
+		</BehaviorType>
 
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 850 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 30 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 26 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 180.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 160.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>   <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
 		 <Attack_Score_Rating> 0.8 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 200.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -192,14 +190,13 @@
 				DefensiveAI.KillTurret = false
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
 			<Targeting_Priority_Set> Alien_Defiler_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 			<Targeting_Stickiness_Time_Threshold> 2.0 </Targeting_Stickiness_Time_Threshold>
 			<Stop_Targeting_Cooldown_Seconds> 4.0 </Stop_Targeting_Cooldown_Seconds>
 		</BehaviorType>
@@ -227,7 +224,7 @@
 			<Apply_Z_Turret_Rotate_To_Axis>2</Apply_Z_Turret_Rotate_To_Axis>
 			<Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
 			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
-			<Turret_Elevate_Extent_Degrees> 75.0 </Turret_Elevate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 40.0 </Turret_Elevate_Extent_Degrees>
 			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 			<Turret_Rotate_To_Rest_Delay_Sec> 1.0 </Turret_Rotate_To_Rest_Delay_Sec>
 		</BehaviorType>
@@ -278,17 +275,19 @@
 			<SFXEvent_Build_Complete>Unit_Select_Alien_Defiler</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Vehicle_Canceled</SFXEvent_Build_Cancelled>
 		</BehaviorType>
-		
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- jdg 2/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 12 </Cursor_Magnetism_Extent_Adder>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.08 </GUI_Strategic_Mode_Scale>
+			<GUI_Shift_Factor> 15.0 </GUI_Shift_Factor>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 5 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
 		</BehaviorType>
 
         <BehaviorType Name="RadiationManagerBehaviorType">
@@ -308,7 +307,7 @@
             <Radiation_Direct_Hit_Particle_Effect> Radiation_Decal_Particle_Effect </Radiation_Direct_Hit_Particle_Effect>
             <Radiation_Direct_Hit_SFXEvent> SFX_Alien_Radiation_Detonation_1 </Radiation_Direct_Hit_SFXEvent>
             <Radiation_Beam_Step_Amount> 1.8 </Radiation_Beam_Step_Amount>
-            <Radiation_Beam_Max_Length> 250.0 </Radiation_Beam_Max_Length>
+            <Radiation_Beam_Max_Length> 325.0 </Radiation_Beam_Max_Length>
         </BehaviorType>
 
 
@@ -365,7 +364,7 @@
 
          <Unit_Ability Name="Defiler_Radiation_Charge">
             <Type>EFFECT_GENERATOR</Type>
-            <Expiration_Seconds>10.0</Expiration_Seconds>
+            <Expiration_Seconds>12.0</Expiration_Seconds>
             <Recharge_Seconds>28.0</Recharge_Seconds>
             <GUI_Activated_Ability_Name>Alien_Defiler_Radiation_Charge_Ability</GUI_Activated_Ability_Name>
             <Effect_Generator_Name>RadiationChargeGenerator</Effect_Generator_Name>
@@ -1129,10 +1128,9 @@
        <Radiation_Damage_Interval_In_Secs> 2.5 </Radiation_Damage_Interval_In_Secs>
        <Radiation_Target_Categories> ~Flying </Radiation_Target_Categories>
        <Radiation_Decal_Particle_Effect> Radiation_Decal_Particle_Effect </Radiation_Decal_Particle_Effect>
-       <!--<Radiation_Decal_Name> Alien_Walker_Radiation_Splat </Radiation_Decal_Name>-->
-       <Radiation_Node_Duration_In_Secs> 8.0 </Radiation_Node_Duration_In_Secs>
-       <Radiation_Node_Radius>20</Radiation_Node_Radius>
-
+       <Radiation_Decal_Name> Alien_Walker_Radiation_Splat </Radiation_Decal_Name>
+       <Radiation_Decal_Duration_In_Secs> 8.0 </Radiation_Decal_Duration_In_Secs>
+       
        <BehaviorType Name="SFXBehaviorType">
            <SFXEvent_Fire> SFX_Alien_Radiation_Detonation_1 </SFXEvent_Fire>
        </BehaviorType>

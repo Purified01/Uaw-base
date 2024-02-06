@@ -663,14 +663,14 @@
     <Texture_Repeat>10</Texture_Repeat>
     <Texture_Scroll>0</Texture_Scroll>
 
-    <Width_Max>3.5</Width_Max>
-    <Width_Min>2.5</Width_Min>
+    <Width_Max>.6</Width_Max>
+    <Width_Min>.3</Width_Min>
     <Displace>0.4, 0.3, 0.2</Displace>
     <Detail>5.0</Detail>
     <Color_Start>255,155,60,255</Color_Start>
     <Color_End>0,0,0,255</Color_End>
-    <Fadeout_Time_Max>.06</Fadeout_Time_Max>
-    <Fadeout_Time_Min>.03</Fadeout_Time_Min>
+    <Fadeout_Time_Max>.02</Fadeout_Time_Max>
+    <Fadeout_Time_Min>.01</Fadeout_Time_Min>
 
     <Update_All>true</Update_All>
     <Number_Bolts>2</Number_Bolts>
@@ -2089,29 +2089,7 @@
 
 		<Light_Source_Name>L_Radiation_Beam</Light_Source_Name>
 	</LightningEffect>
-
-
-	<LightningEffect name="Paint_Selection_Mode_Flyer_Reference_Line">
-
-		<Texture_Name>lightning_default.tga</Texture_Name>
-		<Texture_Repeat>0.0</Texture_Repeat>
-		<Texture_Scroll>0.0</Texture_Scroll>
-
-		<Width_Max>1</Width_Max>
-		<Width_Min>1</Width_Min>
-		<Displace>0.1, 0.1, 0.1</Displace>
-		<Detail>1000</Detail>
-		<Color_Start>0,255,0,200</Color_Start>
-		<Color_End>0,0,0,0</Color_End>
-		<Fadeout_Time_Max>0.0</Fadeout_Time_Max>
-		<Fadeout_Time_Min>0.0</Fadeout_Time_Min>
-
-		<Update_All>true</Update_All>
-		<Number_Bolts>0</Number_Bolts>
-		<Bolt_Creation_Interval_Min>1000.0</Bolt_Creation_Interval_Min> 
-		<Bolt_Creation_Interval_Max>1000.0</Bolt_Creation_Interval_Max> 
-
-  </LightningEffect>
+	
 	
 	
 	

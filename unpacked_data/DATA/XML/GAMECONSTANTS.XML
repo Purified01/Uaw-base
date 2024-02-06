@@ -215,31 +215,26 @@
 	<GMC_Game_Controller_InitialPitchAngleDegrees> 80.0 </GMC_Game_Controller_InitialPitchAngleDegrees>
 	<GMC_Game_Controller_InitialYawAngleDegrees> 175.0 </GMC_Game_Controller_InitialYawAngleDegrees>
 	<GMC_Game_Controller_InitialZoomPercent> 1.0 </GMC_Game_Controller_InitialZoomPercent>
-	<GMC_Game_Controller_CTWInitialZoomPercent> 0.5 </GMC_Game_Controller_CTWInitialZoomPercent>
 	<GMC_Game_Controller_StartFaceNorthZoomPercent> 0.0 </GMC_Game_Controller_StartFaceNorthZoomPercent>
-	<GMC_Game_Controller_MinPitchAngleDegrees> 58.0 </GMC_Game_Controller_MinPitchAngleDegrees> 	<!-- Allow higher access to the globe than mouse/keyboard controls -->
-	<GMC_Game_Controller_MaxPitchAngleDegrees> 145.0 </GMC_Game_Controller_MaxPitchAngleDegrees>
+	<GMC_Game_Controller_MinPitchAngleDegrees> 60.0 </GMC_Game_Controller_MinPitchAngleDegrees> 	<!-- Allow higher access to the globe than mouse/keyboard controls -->
+	<GMC_Game_Controller_MaxPitchAngleDegrees> 140.0 </GMC_Game_Controller_MaxPitchAngleDegrees>
 	<GMC_Game_Controller_Drag_Planet> True </GMC_Game_Controller_Drag_Planet>
 	<GMC_Game_Controller_ZoomedOutFieldOfView> 30.0 </GMC_Game_Controller_ZoomedOutFieldOfView> 
 	<GMC_Game_Controller_ZoomedOutDistance> 5000.0 </GMC_Game_Controller_ZoomedOutDistance> 
-	<GMC_Game_Controller_ZoomedOutZOffset> 230 </GMC_Game_Controller_ZoomedOutZOffset> 
-	<GMC_Game_Controller_ZoomedOutRotateNorth> 2.0 </GMC_Game_Controller_ZoomedOutRotateNorth> 
+	<GMC_Game_Controller_ZoomedOutZOffset> 200 </GMC_Game_Controller_ZoomedOutZOffset> 
+	<GMC_Game_Controller_ZoomedOutRotateNorth> 0.0 </GMC_Game_Controller_ZoomedOutRotateNorth> 
 	<GMC_Game_Controller_ZoomedOutScrollSpeed> 1.0 </GMC_Game_Controller_ZoomedOutScrollSpeed>
+	<GMC_Game_Controller_ZoomedOutLookAtPitchOffset> 10.0 </GMC_Game_Controller_ZoomedOutLookAtPitchOffset>
 	<GMC_Game_Controller_ZoomedInFieldOfView> 20.0 </GMC_Game_Controller_ZoomedInFieldOfView> 
 	<GMC_Game_Controller_ZoomedInDistance> 3000.0 </GMC_Game_Controller_ZoomedInDistance> <!-- Zoom in closer than mouse/keyboard controls -->
 	<GMC_Game_Controller_ZoomedInRotateNorth> 0.0 </GMC_Game_Controller_ZoomedInRotateNorth> 
 	<GMC_Game_Controller_ZoomedInZOffset> 450 </GMC_Game_Controller_ZoomedInZOffset> 
 	<GMC_Game_Controller_ZoomedInScrollSpeed> 0.3 </GMC_Game_Controller_ZoomedInScrollSpeed>
+	<GMC_Game_Controller_ZoomedInLookAtPitchOffset> 37.0 </GMC_Game_Controller_ZoomedInLookAtPitchOffset>
 	<GMC_Game_Controller_MinPitchScrollSpeed> 1.0 </GMC_Game_Controller_MinPitchScrollSpeed> 
 	<GMC_Game_Controller_MaxPitchScrollSpeed> 0.5 </GMC_Game_Controller_MaxPitchScrollSpeed> 
-	<GMC_Game_Controller_Sun_Angle_Start> 0.0, 120.0, 30.0 </GMC_Game_Controller_Sun_Angle_Start>
+	<GMC_Game_Controller_Sun_Angle_Start> 0.0, 120.0, 30.0 </GMC_Game_Controller_Sun_Angle_Start> 
 
-   <!-- Maria 12.18.2007: Please beware that changing this values will change the way the global camera
-      focuses on regions in global mode.  Moreover, it may break the sub-select/snap-to functionality so 
-      please let me know if you have any questions or need to change these values.  Thanks. -->
-   <GMC_Game_Controller_ZoomedInLookAtPitchOffset> 27.0 </GMC_Game_Controller_ZoomedInLookAtPitchOffset>
-   <GMC_Game_Controller_ZoomedOutLookAtPitchOffset> 15.0 </GMC_Game_Controller_ZoomedOutLookAtPitchOffset>
-   
 	<GMC_Game_Controller_Pitch_Smooth_Time> 0.1 </GMC_Game_Controller_Pitch_Smooth_Time> 
 	<GMC_Game_Controller_Yaw_Smooth_Time> 0.1 </GMC_Game_Controller_Yaw_Smooth_Time> 
 	<GMC_Game_Controller_Zoom_Smooth_Time> 0.15 </GMC_Game_Controller_Zoom_Smooth_Time>  <!-- 0.15: Does not affect zoom in and out rate -->
@@ -587,7 +582,6 @@
 	<FramesPerPositionApproximationRebuild>8</FramesPerPositionApproximationRebuild>
 	<FramesPerCollisionCheck> 4 </FramesPerCollisionCheck>  <!-- each object only checks for pathfind collisions every 'n' frames -->	
 	<MovementReevaluationFrameCount> 10 </MovementReevaluationFrameCount>
-	<MaxFormationPathingWidth> 60 </MaxFormationPathingWidth>
 	
 	<DynamicLandComplexityQuota> 100 </DynamicLandComplexityQuota>
 	<DynamicLandQuotaResetInterval> 5 </DynamicLandQuotaResetInterval>
@@ -969,11 +963,11 @@
 	<Credits_Header_Bottom_Color> 0.8, 0.8, 0.8  </Credits_Header_Bottom_Color>
  	<Credits_Top_Color> 1.0, 1.0, 1.0  </Credits_Top_Color>
  	<Credits_Bottom_Color> 0.8, 0.8, 0.8 </Credits_Bottom_Color>
-	<Credits_Font_Size> 12 </Credits_Font_Size>
+	<Credits_Font_Size> 16 </Credits_Font_Size>
 	<Credits_Margin> 0.04 </Credits_Margin>
 	<Credits_Logo_1_Name> Logo_Bink.DDS </Credits_Logo_1_Name>
-	<Credits_Logo_1_Width> 0.3 </Credits_Logo_1_Width>
-	<Credits_Logo_1_Height> 0.3 </Credits_Logo_1_Height>
+	<Credits_Logo_1_Width> 0.15 </Credits_Logo_1_Width>
+	<Credits_Logo_1_Height> 0.15 </Credits_Logo_1_Height>
 	<Credits_Logo_1_Y_Offset> 0.1 </Credits_Logo_1_Y_Offset>
 	<!-- <Credits_Logo_2_Name> Logo_Special.DDS </Credits_Logo_2_Name> -->
 	<Credits_Logo_2_Name>  </Credits_Logo_2_Name>
@@ -981,9 +975,9 @@
 	<Credits_Logo_2_Height> 0.10 </Credits_Logo_2_Height>
 	<Credits_Logo_2_Y_Offset> 0.135 </Credits_Logo_2_Y_Offset>
 	<Credits_Logo_3_Name> Logo_Miles.DDS </Credits_Logo_3_Name>
-	<Credits_Logo_3_Width> 0.30 </Credits_Logo_3_Width>
-	<Credits_Logo_3_Height> 0.30 </Credits_Logo_3_Height>
-	<Credits_Logo_3_Y_Offset> 0.1 </Credits_Logo_3_Y_Offset>
+	<Credits_Logo_3_Width> 0.20 </Credits_Logo_3_Width>
+	<Credits_Logo_3_Height> 0.20 </Credits_Logo_3_Height>
+	<Credits_Logo_3_Y_Offset> 0.06 </Credits_Logo_3_Y_Offset>
 
 
    <ShipNameTextFiles> 
@@ -1161,76 +1155,32 @@
 	<!-- IMPORTANT: We are attempting to tune these for 30 FPS or 60 FPS, so make sure to only tweak on fixed frame rates -->
 	<!-- The values are used both for the Xbox 360 version and the Windows version (with the game controller -->
 
-	<Game_Controller_Analog_Camera_Move_Rate> 2.0 </Game_Controller_Analog_Camera_Move_Rate>									<!-- Multiplier for moving camera with the left analog stick -->
-	<Game_Controller_Analog_Camera_Deceleration> 1.5 </Game_Controller_Analog_Camera_Deceleration> 							<!-- Factor for slowing camera to stop after moving with the left analog stick -->
-	<Game_Controller_Analog_Camera_Rotate_Rate> 3.0 </Game_Controller_Analog_Camera_Rotate_Rate>								<!-- Multiplier for rotating the camera with the analog stick -->
-	<Game_Controller_Analog_Camera_Zoom_Rate> 1.0 </Game_Controller_Analog_Camera_Zoom_Rate>									<!-- Multiplier for zooming the camera in and out with the analog stick -->
-	<Game_Controller_Radar_Reticle_Move_Rate> 120.0 </Game_Controller_Radar_Reticle_Move_Rate>     							<!-- Multiplier for moving tactical pin on radar map with analog stick --> 
-	<Game_Controller_World_Rotate_Horizontal_Rate> 15.0 </Game_Controller_World_Rotate_Horizontal_Rate>  					<!-- In Global mode, this rate controls the max speed for rotating the world -->
-	<Game_Controller_World_Rotate_Vertical_Rate> -15.0 </Game_Controller_World_Rotate_Vertical_Rate>  						<!-- In Global mode, this rate controls the max speed for rotating the world -->
-	<Game_Controller_World_Zoom_Rate> 0.050 </Game_Controller_World_Zoom_Rate>														<!-- In Global mode, this rate controls the max speed for zooming the world -->
-	<Game_Controller_Unit_View_Cam_Rotate_Rate> 10.0 </Game_Controller_Unit_View_Cam_Rotate_Rate>							<!-- Rotate "around" speed factor for cinematically viewing a unit -->
-	<Game_Controller_Unit_View_Cam_Zoom_Rate> 60.0 </Game_Controller_Unit_View_Cam_Zoom_Rate>									<!-- Zoom in and out speed factor for cinematically viewing a unit -->
-	<Game_Controller_Building_Placement_Rotate_Rate> 3.6 </Game_Controller_Building_Placement_Rotate_Rate> 				<!-- was 12  Analog stick rotate rate when placing a building with the controller -->
+	<Game_Controller_Analog_Camera_Move_Rate> 2.0 </Game_Controller_Analog_Camera_Move_Rate>							<!-- Multiplier for moving camera with the left analog stick -->
+	<Game_Controller_Analog_Camera_Rotate_Rate> 2.5 </Game_Controller_Analog_Camera_Rotate_Rate>						<!-- Multiplier for rotating the camera with the analog stick -->
+	<Game_Controller_Analog_Camera_Zoom_Rate> 1.2 </Game_Controller_Analog_Camera_Zoom_Rate>							<!-- Multiplier for zooming the camera in and out with the analog stick -->
+	<Game_Controller_Radar_Reticle_Move_Rate> 180.0 </Game_Controller_Radar_Reticle_Move_Rate>     					<!-- Multiplier for moving tactical pin on radar map with analog stick --> 
+	<Game_Controller_World_Rotate_Horizontal_Rate> 15.0 </Game_Controller_World_Rotate_Horizontal_Rate>  			<!-- In Global mode, this rate controls the max speed for rotating the world -->
+	<Game_Controller_World_Rotate_Vertical_Rate> -15.0 </Game_Controller_World_Rotate_Vertical_Rate>  				<!-- In Global mode, this rate controls the max speed for rotating the world -->
+	<Game_Controller_World_Zoom_Rate> 0.050 </Game_Controller_World_Zoom_Rate>												<!-- In Global mode, this rate controls the max speed for zooming the world -->
+	<Game_Controller_Unit_View_Cam_Rotate_Rate> 10.0 </Game_Controller_Unit_View_Cam_Rotate_Rate>					<!-- Rotate "around" speed factor for cinematically viewing a unit -->
+	<Game_Controller_Unit_View_Cam_Zoom_Rate> 60.0 </Game_Controller_Unit_View_Cam_Zoom_Rate>							<!-- Zoom in and out speed factor for cinematically viewing a unit -->
+	<Game_Controller_Building_Placement_Rotate_Rate> 12.0 </Game_Controller_Building_Placement_Rotate_Rate> 		<!-- Analog stick rotate rate when placing a building with the controller -->
+	<Game_Controller_Sub_Select_Object_Type> Controller_Sub_Selection_Pointer </Game_Controller_Sub_Select_Object_Type> 	<!-- Pointer object for indicating sub-selected object in tactical -->
 	<Game_Controller_Double_Click_Button_MS> 700 </Game_Controller_Double_Click_Button_MS> 			  						<!-- Milliseconds between button clicks to allow a "double click" (1000MS = 1 second) -->
-	<Game_Controller_Stick_Held_GUI_Travese_Delay_MS> 180 </Game_Controller_Stick_Held_GUI_Travese_Delay_MS>				<!-- Milliseconds between repeated GUI selection hops when the stick is held -->
+	<Game_Controller_Sub_Selection_Cam_Move_Rate> 25.0 </Game_Controller_Sub_Selection_Cam_Move_Rate>						<!-- When subselecting between units, how far the camera moves per frame -->
 	<Game_Controller_Sub_Selection_Object_Extent_Adder> 180.0 </Game_Controller_Sub_Selection_Object_Extent_Adder>		<!-- Additional XY extent to add to model space bounds to lock on to objects that are near, but off-screen -->
-   
-   <!-- **************************************************************************************************  -->
-   <!--                   GAME CONTROLLER SUB-SELECTION PARAMETERS   - BEGIN                                -->
-   <!-- **************************************************************************************************  -->
-   <!-- Maria 12.07.2007: 
-      The shape of the area sweeped in search of a proper object to sub-select looks like:
-      
-                     |
-                     |          /...................  height pass 3 (triple that of the first pass)
-                     |        /  
-                     |      /...................  height pass 2 (double that of the first pass)
-                     |    /
-                     |  /................... height pass 1
-     _________________/_________________        
-                     |\
-                     |  \...................  height pass 1
-                     |    \
-                     |      \...................  height pass 2 (double that of the first pass)
-                     |        \
-                     |          \...................  height pass 3 (triple that of the first pass)
-                     
-    where the angle of the 'Cone' is determined by Game_Controller_Sub_Selection_Search_Arc_Degrees.
-    There are a total of Game_Controller_Sub_Selection_Search_Region_Widening_Passes.  The process is 
-	 halted as soon as a valid candidate has been found during a pass. The height of the basic search STRIP 
-    is given by Game_Controller_Sub_Selection_Search_Strip_Height
-   -->
-   
-   <!-- Maria 01.22.2008 Per task request, tweaking the sub-selection a bit, changed search arc degrees from 45 to 60 -->
-	<Game_Controller_Sub_Selection_Search_Arc_Degrees> 60.0 </Game_Controller_Sub_Selection_Search_Arc_Degrees>			  <!-- When sub-selecting in a specified stick direction, this is the cone angle to search within for objects -->
-   <Game_Controller_Sub_Selection_Search_Strip_Height> 60.0 </Game_Controller_Sub_Selection_Search_Strip_Height>       <!-- When sub-selecting in a specified stick direction, this is the height of the strip considered to determine the search region -->
-   <Game_Controller_Sub_Selection_Search_Widening_Passes> 4 </Game_Controller_Sub_Selection_Search_Widening_Passes>    <!-- When sub-selecting in a specified stick direction, this is the number of sweeping passes made to find a valid sub-selectable object (if any) -->
-   <!-- **************************************************************************************************  -->
-   <!--                   GAME CONTROLLER SUB-SELECTION PARAMETERS   - END                                -->
-   <!-- **************************************************************************************************  -->
-
-   <Game_Controller_Structure_Rotate_Degrees> 45.0 </Game_Controller_Structure_Rotate_Degrees>				  			 	<!-- Oksana: back to 45 (Can't tell symmetrical units s.a. Walker rotate at 90) - please talk to me before changing to 90.   In building placement mode, how many degrees to incrementally rotate structure with bumper buttons -->
-	<Game_Controller_Sub_Selection_Cam_Move_Rate> 100.0 </Game_Controller_Sub_Selection_Cam_Move_Rate>						<!-- When subselecting between units, how far the camera moves per frame - Warning: making this too fast could mess things up -->
-	<Game_Controller_Cursor_Autograb_Move_Rate> 100.0 </Game_Controller_Cursor_Autograb_Move_Rate>	  						<!-- When autograbbing targeting cursor to nearby object, this is how fast to move camera to it -->
-	<Game_Controller_Control_Group_Icons_X> 0.050 </Game_Controller_Control_Group_Icons_X>										<!-- Placeholder control group icon prototyping -->
-	<Game_Controller_Control_Group_Icons_Y> 0.050 </Game_Controller_Control_Group_Icons_Y>										<!-- Placeholder control group icon prototyping -->
-	<Game_Controller_Control_Group_Icons_Width> 0.06 </Game_Controller_Control_Group_Icons_Width>							<!-- Placeholder control group icon prototyping --> 
-	<Game_Controller_Control_Group_Icons_Height> 0.075 </Game_Controller_Control_Group_Icons_Height>        				<!-- Placeholder control group icon prototyping --> 
-	<Game_Controller_Control_Group_Icons_Spacing> 0.0030 </Game_Controller_Control_Group_Icons_Spacing>     				<!-- Placeholder control group icon prototyping --> 
-	<Game_Controller_Control_Group_Icons_Per_Row> 10.0 </Game_Controller_Control_Group_Icons_Per_Row>        			<!-- Placeholder control group icon prototyping --> 
-
-  <!-- gth Game_Controller_Camera_Boundaries_X_Adder, Y_Adder are now obsolete -->
-  <!-- Instead, you can use the Side_Bounds_Buffer, etc inside the game controller settings in TacticalCameras.XML. -->
-  <!-- <Game_Controller_Camera_Boundaries_X_Adder> 200.0 </Game_Controller_Camera_Boundaries_X_Adder>	 -->						<!-- Extend the camera map edge boundaries a bit so that we can cursor over objects near playable map boundary edge -->
-	<!-- <Game_Controller_Camera_Boundaries_Y_Adder> 200.0 </Game_Controller_Camera_Boundaries_Y_Adder>	 -->						<!-- Extend the camera map edge boundaries a bit so that we can cursor over objects near playable map boundary edge -->
+	<Game_Controller_Sub_Selection_Search_Arc_Degrees> 75.0 </Game_Controller_Sub_Selection_Search_Arc_Degrees>			<!-- When sub-selecting in 8 stick directions, this is the cone angle to search within for objects -->
+	<Game_Controller_Structure_Rotate_Degrees> 45.0 </Game_Controller_Structure_Rotate_Degrees>				  			 	<!-- In building placement mode, how many degrees to incrementally rotate structure with bumper buttons -->
+	<Game_Controller_Cursor_Autograb_Move_Rate> 8.0 </Game_Controller_Cursor_Autograb_Move_Rate>								<!-- When autograbbing targeting cursor to nearby object, this is how fast to move camera to it -->
+	<Game_Controller_Cursor_Autograb_Object_Extent_Adder> 25.0 </Game_Controller_Cursor_Autograb_Object_Extent_Adder> <!-- When autograbbing targeting cursor to nearby object, this is extra world space bounds extent to expand grab region -->
+	<Game_Controller_Control_Group_Icons_X> 0.050 </Game_Controller_Control_Group_Icons_X>								<!-- Placeholder control group icon prototyping -->
+	<Game_Controller_Control_Group_Icons_Y> 0.050 </Game_Controller_Control_Group_Icons_Y>								<!-- Placeholder control group icon prototyping -->
+	<Game_Controller_Control_Group_Icons_Width> 0.06 </Game_Controller_Control_Group_Icons_Width>					<!-- Placeholder control group icon prototyping --> 
+	<Game_Controller_Control_Group_Icons_Height> 0.075 </Game_Controller_Control_Group_Icons_Height>        		<!-- Placeholder control group icon prototyping --> 
+	<Game_Controller_Control_Group_Icons_Spacing> 0.0030 </Game_Controller_Control_Group_Icons_Spacing>     		<!-- Placeholder control group icon prototyping --> 
+	<Game_Controller_Control_Group_Icons_Per_Row> 10.0 </Game_Controller_Control_Group_Icons_Per_Row>        	<!-- Placeholder control group icon prototyping --> 
 	
-  <Game_Controller_Paint_Mode_Particle_Type> Game_Controller_Paint_Selection_Trail_Particle </Game_Controller_Paint_Mode_Particle_Type>	<!-- A particle to draw on the ground as we selection paint with the controller -->
-	<Game_Controller_Paint_Mode_Blob_Material> GUI_Idle_Command_Ground_Blob </Game_Controller_Paint_Mode_Blob_Material>
-	<Game_Controller_Paint_Mode_Blob_Radius> 44.0 </Game_Controller_Paint_Mode_Blob_Radius>
-	<Game_Controller_Paint_Mode_Blob_Tint> 0, 255, 0, 200 </Game_Controller_Paint_Mode_Blob_Tint>
-	<Game_Controller_Paint_Mode_Blob_Intensity> 1.0 </Game_Controller_Paint_Mode_Blob_Intensity>
-	
+
 	<!-- Minimun and Maximum times to wait before a transition into a non-base random idle animation.  -->
 	<Idle_Animation_Min_Time_To_Transition> 5.0 </Idle_Animation_Min_Time_To_Transition>
 	<Idle_Animation_Max_Time_To_Transition> 10.0 </Idle_Animation_Max_Time_To_Transition>
@@ -1247,7 +1197,7 @@
 	<Health_Threshold_For_Targeting_Priority> 0.25 </Health_Threshold_For_Targeting_Priority>
 	
 	<!-- Global saturation tweak -->
-   <Saturation>0.0</Saturation>
+   <Saturation>-0.25</Saturation>
 
    <Clip_Radar_Display_To_Playable_Bounds>Yes</Clip_Radar_Display_To_Playable_Bounds>
 	
@@ -1256,28 +1206,5 @@
    <Allow_Build_Into_FOW>Yes</Allow_Build_Into_FOW>
 
 	<Night_Mission_Angle> 140 </Night_Mission_Angle>
-
-	<Gamepad_Font_Scale>1.0f</Gamepad_Font_Scale>
-
-	<!-- Carousel; Constants -->
-	<GUI_Carousel_Max_Speed_Multiplier>1.8</GUI_Carousel_Max_Speed_Multiplier>
-   
-   
-   
-   <!-- Gamepad: Radar Waypoints-->
-   <Radar_Waypoint_Mode_User_Controlled>Yes</Radar_Waypoint_Mode_User_Controlled>
-   <Radar_Waypoint_Mode_Delay_Ms>450</Radar_Waypoint_Mode_Delay_Ms>
-   <Radar_Waypoint_Mode_Waypoint_Distance>500</Radar_Waypoint_Mode_Waypoint_Distance>
-
-
-   <!-- Platform Constants -->
-   <Platform_PC>0</Platform_PC>
-   <Platform_PC_Gamepad>1</Platform_PC_Gamepad>
-   <Platform_360>2</Platform_360>
-
-	<Tactical_AI_Hunt_Range> 1000.0 </Tactical_AI_Hunt_Range>
-	<Tactical_AI_Hunt_Group_Range> 200.0 </Tactical_AI_Hunt_Group_Range>
-
-	<Grass_Density>0.25</Grass_Density>
 
 </GameConstants>

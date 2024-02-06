@@ -11,14 +11,6 @@
 			<Use_Preset>Preset_GUNV</Use_Preset>
 			<Samples>EXP_Detonate_2.wav</Samples>      
 		</SFXEvent>
-		
-		<!--  jdg 11/14/07 need to seperate out Col Moores grenade sound from the generic 	SFX_Military_Detonation_1 	 -->
-		<SFXEvent Name="SFX_Military_Detonation_ColMoore_Grenade">
-			<Use_Preset>Preset_GUNV</Use_Preset>
-			<Samples>EXP_Detonate_2.wav</Samples>      
-			<!-- jdg 11/14/07 vibration event for Col Moore's grenade AMBIENT-->
-			<Vibration_Event> Vibration_Military_Detonation_ColMoore_Grenade </Vibration_Event>
-		</SFXEvent>
 
 		<SFXEvent Name="SFX_Military_Small_Damage_Detonation">
 			<Use_Preset>Preset_GUNV</Use_Preset>
@@ -42,19 +34,15 @@
 
 
 
+
 	<SFXEvent Name="SFX_Military_Small_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Big_Vehicle_1.wav</Samples>      
-			<!-- jdg 11/14/07 vibration event for hummer death  AMBIENT-->
-			<Vibration_Event> Vibration_Military_Small_Vehicle_Death </Vibration_Event>
     </SFXEvent>
-
 
 	<SFXEvent Name="SFX_Military_Medium_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Big_Vehicle_1.wav</Samples>    
-		<!-- jdg 11/14/07 vibration event for most military vehicles death  AMBIENT-->
-			<Vibration_Event> Vibration_Military_Medium_Vehicle_Death </Vibration_Event>			
+			<Samples>EXP_Big_Vehicle_1.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Military_Large_Vehicle_Death">
@@ -120,7 +108,7 @@
 			<Samples>EXP_Alien_Detonate_1.wav EXP_Alien_Detonate_2.wav</Samples>      
     </SFXEvent>
 
-	<SFXEvent Name="SFX_Alien_Detonation_2">    	<!--  Grunts (shotgun)-->
+	<SFXEvent Name="SFX_Alien_Detonation_2">    	<!--  Grunts -->
 			<Use_Preset>Preset_GUNV</Use_Preset>
 			<Samples>EXP_Alien_Detonate_3.wav EXP_Alien_Detonate_4.wav</Samples>      
     </SFXEvent>
@@ -134,33 +122,8 @@
 			<Use_Preset>Preset_GUNV</Use_Preset>
 			<Samples>EXP_Alien_Detonate_8.wav EXP_Alien_Detonate_9.wav</Samples>      
     </SFXEvent>
-	 
-	 <!--  jdg 11/09/07 new sound event the mass drop explosions...need to seperate from SFX_Alien_Detonation_4-->
-	 <SFXEvent Name="SFX_Alien_Mass_Drop_Detonation">     
-			<Use_Preset>Preset_GUNV</Use_Preset>
-			<Samples>EXP_Alien_Detonate_8.wav EXP_Alien_Detonate_9.wav</Samples>      
-	<!-- jdg 11/12/07 this vibration event originally used for Orloks siege ability ... recycling here-->
-		<Vibration_Event> Vibration_Alien_Orlock_Siege_Ability </Vibration_Event>
-    </SFXEvent>
 
-	<!--  jdg 11/09/07 new sound event for grunt grenades...i need to seperate
-			this event from the shotgun for rumble purposes-->
-	<SFXEvent Name="SFX_Alien_Plasma_Grenade_Detonation">    	<!--  Grunts (Plasma Grenades)-->
-		<Use_Preset>Preset_GUNV</Use_Preset>
-		<Samples>EXP_Alien_Detonate_3.wav EXP_Alien_Detonate_4.wav</Samples>      
-		<!--  jdg 11/09/07 this is the sound played when grunts' grenades go off -->
-		<Vibration_Event> Vibration_Alien_Plasma_Detonation </Vibration_Event>
-    </SFXEvent>
-	 
-	 <!--  jdg 11/09/07 new sound event for Lost One Plasma Bombs (based off of the original sound reference which was
-			SFX_Alien_Large_Vehicle_Death...i need to seperate
-			this event from vehicle deaths for plasma rumbling consistency-->
-	 <SFXEvent Name="SFX_Alien_Plasma_Bomb_Detonation"><!--  Lost Ones (Plasma Bombs)-->
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Plasma_Detonation </Vibration_Event>
-    </SFXEvent>
+
 
 
 
@@ -192,8 +155,6 @@
 	<SFXEvent Name="SFX_Alien_Seige_Detonation_1">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Alien_Seige_Detonation_1.wav</Samples>      
-			<!-- jdg 11/09/07 used for Orloks siege abilit...doesn't look like this gets used anywhere else -->
-			<Vibration_Event> Vibration_Alien_Orlock_Siege_Ability </Vibration_Event>
     </SFXEvent>
 
 
@@ -243,80 +204,34 @@
 	<SFXEvent Name="SFX_Alien_Small_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Alien_Vehicle_Small_1.wav</Samples>      
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Small_Vehicle_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Medium_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Alien_Vehicle_Medium_1.wav</Samples>      
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Medium_Vehicle_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Large_Vehicle_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Large_Vehicle_Death </Vibration_Event>
     </SFXEvent>
-	 
-	 
-	<!-- jdg 11/15/07 new vibration event for a mission specific object "NM06_Power_Core"... AMBIENT -->
-	<SFXEvent Name="SFX_NM06_Power_Core_Death_2D_Rumble">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<Vibration_Event> Vibration_NM06_Power_Core_Death_2D_Rumble </Vibration_Event>
-    </SFXEvent>
-	 
-	 <!-- jdg 11/15/07 new vibration event for a mission specific event...when the console
-	 Mirabel is standing by gets blown up... AMBIENT -->
-	<SFXEvent Name="SFX_NM06_Mirabels_Console_Death_2D_Rumble">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<Vibration_Event> Vibration_NM06_Mirabels_Console_Death_2D_Rumble </Vibration_Event>
-    </SFXEvent>
-	 
-	 <!-- jdg 11/15/07 new vibration event for a mission specific object "NM06_Volatile_Structure"... AMBIENT -->
-	<SFXEvent Name="SFX_NM06_Volatile_Structure_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<Vibration_Event> Vibration_NM06_Volatile_Structure_Death </Vibration_Event>
-    </SFXEvent>
-	 
-	 
-	  <!-- jdg 11/15/07 new vibration event for a mission specific event...when Jeff shakes the camera
-	  player will get a minor rumble... AMBIENT -->
-	<SFXEvent Name="SFX_NM06_Camera_Shake_2D_Rumble">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Large_1.wav</Samples>      
-			<Vibration_Event> Vibration_NM06_Camera_Shake_2D_Rumble </Vibration_Event>
-    </SFXEvent>
-	 
-	 
-	 
-	 
+
+
 
 
 	<SFXEvent Name="SFX_Alien_Small_Structure_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Alien_Structure_Small_1.wav</Samples>    
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Alien_Small_Structure_Death </Vibration_Event>
+			<Samples>EXP_Alien_Structure_Small_1.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Medium_Structure_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Alien_Structure_Medium_1.wav</Samples>  
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Alien_Medium_Structure_Death </Vibration_Event>			
+			<Samples>EXP_Alien_Structure_Medium_1.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Large_Structure_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Alien_Structure_Large_1.wav</Samples>   
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Alien_Large_Structure_Death </Vibration_Event>			
+			<Samples>EXP_Alien_Structure_Large_1.wav</Samples>      
     </SFXEvent>
 
 
@@ -325,15 +240,11 @@
 	<SFXEvent Name="SFX_Alien_Small_Aircraft_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Alien_Vehicle_Small_2.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT ... used on foos-->		
-			<Vibration_Event> Vibration_Alien_Small_Aircraft_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Medium_Aircraft_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Alien_Vehicle_Medium_2.wav</Samples>    
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT ... used on cylinders		-->	
-			<Vibration_Event> Vibration_Alien_Medium_Aircraft_Death </Vibration_Event>			
+			<Samples>EXP_Alien_Vehicle_Medium_2.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Large_Aircraft_Death">
@@ -348,52 +259,36 @@
 	<SFXEvent Name="SFX_Alien_HP_Generic_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Upgrade_1.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
-			
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Engine_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Engine_1.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
-			
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Weapon_1_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Weapon_1.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Weapon_2_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Weapon_2.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Weapon_3_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Weapon_3.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Weapon_4_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Weapon_4.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_HP_Shield_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_HP_Armor_1.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Hardpoint_Death </Vibration_Event>
     </SFXEvent>
 
 
@@ -408,28 +303,16 @@
 	<SFXEvent Name="SFX_Alien_Walker_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Alien_Walker_Death_1.wav</Samples>
-			<!-- jdg 11/09/07 new vibration event ... AMBIENT 
-			This event hits way too late...do not use here
-			<Vibration_Event> Vibration_Alien_Walker_Death_Large </Vibration_Event>-->
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Alien_Walker_Impact">
 			<Use_Preset>Preset_EXP_INSANE</Use_Preset>
 			<Samples>EXP_Alien_Walker_Impact_2.wav</Samples>
-			<Kills_Previous_Object_SFX>Yes</Kills_Previous_Object_SFX>
-			<!-- jdg 11/08/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Impact_Large </Vibration_Event>
+         <Kills_Previous_Object_SFX>Yes</Kills_Previous_Object_SFX>
     </SFXEvent>
 
 
-	<!-- jdg 11/12/07 new impact event for rumble purposes on smaller walkers -->
-	<SFXEvent Name="SFX_Alien_Walker_Impact_Small">
-			<Use_Preset>Preset_EXP_INSANE</Use_Preset>
-			<Samples>EXP_Alien_Walker_Impact_2.wav</Samples>
-			<Kills_Previous_Object_SFX>Yes</Kills_Previous_Object_SFX>
-			<!-- jdg 11/12/07 new vibration event ... AMBIENT -->
-			<Vibration_Event> Vibration_Alien_Walker_Impact_Small </Vibration_Event>
-    </SFXEvent>
+
 
 
 
@@ -473,7 +356,7 @@
 
 	<SFXEvent Name="SFX_Novus_Detonation_1">
 			<Use_Preset>Preset_GUNV</Use_Preset>
-			<Samples>EXP_Novus_Detonate_1.wav EXP_Novus_Detonate_2.wav</Samples>  
+			<Samples>EXP_Novus_Detonate_1.wav EXP_Novus_Detonate_2.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Small_Damage_Detonation">
@@ -516,23 +399,17 @@
 	<SFXEvent Name="SFX_Novus_Small_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Novus_Vehicle_Small_01.wav EXP_Novus_Vehicle_Small_02.wav EXP_Novus_Vehicle_Small_03.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Small_Vehicle_Death </Vibration_Event>
-	</SFXEvent>
+    </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Medium_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Novus_Vehicle_Medium_01.wav EXP_Novus_Vehicle_Medium_02.wav EXP_Novus_Vehicle_Medium_03.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Medium_Vehicle_Death </Vibration_Event>
-	 </SFXEvent>
+    </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Large_Vehicle_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Novus_Vehicle_Large_01.wav EXP_Novus_Vehicle_Large_02.wav EXP_Novus_Vehicle_Large_03.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Large_Vehicle_Death </Vibration_Event>
-	 </SFXEvent>
+    </SFXEvent>
 
 
 
@@ -548,9 +425,7 @@
 	<SFXEvent Name="SFX_Novus_Medium_Aircraft_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Novus_Vehicle_Medium_01.wav EXP_Novus_Vehicle_Medium_02.wav EXP_Novus_Vehicle_Medium_03.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT ... used on Dervish Jets		-->	
-			<Vibration_Event> Vibration_Novus_Medium_Aircraft_Death </Vibration_Event>
-	 </SFXEvent>
+    </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Large_Aircraft_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
@@ -568,12 +443,12 @@
 
 	<SFXEvent Name="SFX_Novus_HP_Weapon_1_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Novus_Vehicle_Large_02.wav</Samples>
+			<Samples>EXP_Novus_HP_Weapon_1.wav</Samples>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_HP_Weapon_2_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Novus_Vehicle_Large_02.wav</Samples>
+			<Samples>EXP_Novus_HP_Weapon_2.wav</Samples>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_HP_Shield_Death">
@@ -587,46 +462,26 @@
 
 	<SFXEvent Name="SFX_Novus_Small_Structure_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Novus_Structure_Small_01.wav EXP_Novus_Structure_Small_02.wav</Samples>   
-		<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Small_Structure_Death </Vibration_Event>			
+			<Samples>EXP_Novus_Structure_Small_01.wav EXP_Novus_Structure_Small_02.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Medium_Structure_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Novus_Structure_Medium_01.wav EXP_Novus_Structure_Medium_02.wav</Samples>   
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Medium_Structure_Death </Vibration_Event>
+			<Samples>EXP_Novus_Structure_Medium_01.wav EXP_Novus_Structure_Medium_02.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Novus_Large_Structure_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Novus_Structure_Large_03.wav EXP_Novus_Structure_Large_04.wav</Samples>     
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Large_Structure_Death </Vibration_Event>
+			<Samples>EXP_Novus_Structure_Large_03.wav EXP_Novus_Structure_Large_04.wav</Samples>      
     </SFXEvent>
 
 
-<!-- jdg 11/13/07 new SFX event for the Novus portal destruction for rumble stuff ... AMBIENT-->	
-	<SFXEvent Name="SFX_Novus_Portal_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Novus_Structure_Large_03.wav EXP_Novus_Structure_Large_04.wav</Samples>     
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT-->		
-			<Vibration_Event> Vibration_Novus_Portal_Death </Vibration_Event>
-    </SFXEvent>
+
 
 
 	<SFXEvent Name="SFX_Novus_Sonic_Boom_1">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples>EXP_Sonic_Boom_1.wav</Samples>      
-    </SFXEvent>
-	 
-	<!-- jdg 11/12/07 new sfx/vibration event ... need to seperate out from SFX_Novus_Sonic_Boom_1-->
-	<SFXEvent Name="SFX_Novus_BlackOut_Bomb_Detonation">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Sonic_Boom_1.wav</Samples>      
-			<!-- jdg 11/12/07 new vibration event ... AMBIENT (blackout bomb?)-->
-			<Vibration_Event> Vibration_Novus_BladeTrooper_BlackoutBomb </Vibration_Event>
     </SFXEvent>
 
 
@@ -718,22 +573,16 @@
 	<SFXEvent Name="SFX_Masari_Small_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Masari_Small_Vehicle_1.wav</Samples>      
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Small_Vehicle_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Masari_Medium_Vehicle_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Masari_Medium_Vehicle_1.wav</Samples>    
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Medium_Vehicle_Death </Vibration_Event>			
+			<Samples>EXP_Masari_Medium_Vehicle_1.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Masari_Large_Vehicle_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Vehicle_1.wav</Samples>    
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Large_Vehicle_Death </Vibration_Event>
+			<Samples>EXP_Masari_Large_Vehicle_1.wav</Samples>      
     </SFXEvent>
 
 
@@ -745,100 +594,28 @@
 
 	<SFXEvent Name="SFX_Masari_Small_Structure_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Masari_Small_Structure_1.wav EXP_Masari_Small_Structure_2.wav</Samples>     
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Small_Structure_Death </Vibration_Event>			
+			<Samples>EXP_Masari_Small_Structure_1.wav EXP_Masari_Small_Structure_2.wav</Samples>      
     </SFXEvent>
 
-
-
-<!-- jdg 11/13/07 currently being used on 
-	1. Masari_Infantry_Inspiration
-	2. Masari_Natural_Interpreter-->
 	<SFXEvent Name="SFX_Masari_Medium_Structure_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Medium_Structure_1.wav EXP_Masari_Medium_Structure_2.wav</Samples>  
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Medium_Structure_Death </Vibration_Event>			
+			<Samples>EXP_Masari_Medium_Structure_1.wav EXP_Masari_Medium_Structure_2.wav</Samples>      
     </SFXEvent>
 
-<!-- jdg 11/13/07 currently being used on 
-	1. Masari_Air_Inspiration
-	2. Masari_Atlatea
-	3. Masari_Elemental_Collector
-	4. Masari_Element_Magnet
-	5. Masari_Fire_Wall
-	6. Masari_Foundation
-	7. Masari_Ground_Inspiration
-	8. Masari_Inventors_Lab
-	9. Masari_Key_Inspiration
-	10. Masari_Megaweapon
-	11. Masari_Will_Processor
-	-->
 	<SFXEvent Name="SFX_Masari_Large_Structure_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Structure_1.wav EXP_Masari_Large_Structure_2.wav</Samples>  
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Large_Structure_Death </Vibration_Event>			
-    </SFXEvent>
-	 
-	 <!-- jdg 11/14/07 new rumble and SFX event for the Temple objects in HM03 ... AMBIENT .-->
-	 <SFXEvent Name="SFX_Masari_Temple_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Structure_1.wav EXP_Masari_Large_Structure_2.wav</Samples>  
-			<Vibration_Event> Vibration_Masari_Temple_Death </Vibration_Event>			
-    </SFXEvent>
-	 
-	 <!-- jdg 11/13/07 new sound event for Matter Collectors...same as  SFX_Masari_Large_Structure_Death...I need to seperate out 
-			this event for rumble purposes-->
-	<SFXEvent Name="SFX_Masari_Matter_Collector_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Structure_1.wav EXP_Masari_Large_Structure_2.wav</Samples>  
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Matter_Collector_Death </Vibration_Event>			
+			<Samples>EXP_Masari_Large_Structure_1.wav EXP_Masari_Large_Structure_2.wav</Samples>      
     </SFXEvent>
 
-<!-- jdg 11/13/07 new sound event for Sky Guardian turrets...same as  SFX_Masari_Large_Structure_Death...I need to seperate out 
-			this event for rumble purposes-->
-	<SFXEvent Name="SFX_Masari_SkyGuardian_Turret_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Structure_1.wav EXP_Masari_Large_Structure_2.wav</Samples>  
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Small_Structure_Death </Vibration_Event>			
-    </SFXEvent>
-	 
-<!-- jdg 11/13/07 new sound event for a mission specific structure.. Found in Structures_Specific.xml-->	 
-	<SFXEvent Name="SFX_Military_Missile_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Medium_Structure_1.wav EXP_Masari_Medium_Structure_2.wav</Samples>  
-			<!-- jdg 11/14/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Military_Missile_Death </Vibration_Event>
-    </SFXEvent>
-	 
-	 
-	 <!-- jdg 11/13/07 new "non"-sound event for a mission specific structure...the rocket "launching" in zm02
-	 this guy tries to take off then fails and crashes back down-->	 
-	<SFXEvent Name="SFX_ZM02_Military_Missile02_Launch_and_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Medium_Structure_1.wav EXP_Masari_Medium_Structure_2.wav</Samples>  
-			<!-- jdg 11/14/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_ZM02_Military_Missile02_Launch_and_Death </Vibration_Event>
-    </SFXEvent>
 
-	 <!-- jdg 11/13/07 new "non"-sound event for a mission specific structure...the rocket "launching" in zm02
-	 this guy just tips over-->	 
-	<SFXEvent Name="SFX_ZM02_Military_Missile03_Launch_and_Death">
-			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Medium_Structure_1.wav EXP_Masari_Medium_Structure_2.wav</Samples>  
-			<!-- jdg 11/14/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_ZM02_Military_Missile03_Launch_and_Death </Vibration_Event>
-    </SFXEvent>
+
+
+
+
 
 	<SFXEvent Name="SFX_Masari_Small_Aircraft_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
-			<Samples>EXP_Masari_Small_Aircraft_1.wav EXP_Masari_Small_Aircraft_2.wav</Samples>     
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Small_Aircraft_Death </Vibration_Event>
+			<Samples>EXP_Masari_Small_Aircraft_1.wav EXP_Masari_Small_Aircraft_2.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Masari_Medium_Aircraft_Death">
@@ -848,9 +625,7 @@
 
 	<SFXEvent Name="SFX_Masari_Large_Aircraft_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
-			<Samples>EXP_Masari_Large_Aircraft_1.wav EXP_Masari_Large_Aircraft_2.wav</Samples>    
-			<!-- jdg 11/13/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Masari_Large_Aircraft_Death </Vibration_Event>
+			<Samples>EXP_Masari_Large_Aircraft_1.wav EXP_Masari_Large_Aircraft_2.wav</Samples>      
     </SFXEvent>
 
 
@@ -984,6 +759,8 @@
 
 
 
+
+
 	<SFXEvent Name="SFX_Structure_Building_Chunk_Death">
 			<Use_Preset>Preset_EXP</Use_Preset>
 			<Samples>EXP_Building_Chunk_1.wav EXP_Building_Chunk_2.wav</Samples>      
@@ -1012,7 +789,7 @@
 	<SFXEvent Name="SFX_Tree_Topple_Hit_1">
 			<Use_Preset>Preset_GUNV</Use_Preset>
 			<Play_Sequentially> Yes </Play_Sequentially>
-			<Samples>TPL_Tree_Hit_1.wav</Samples>      
+			<Samples>TPL_Tree_Hit_1.wav TPL_Tree_Hit_2.wav</Samples>      
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Wood_Fence_Topple_Start_1">
@@ -1073,8 +850,6 @@
 	<SFXEvent Name="SFX_Oil_Tanker_Death">
 			<Use_Preset>Preset_EXP_Large</Use_Preset>
 			<Samples> EXP_Oil_Tanker_1.wav</Samples>
-			<!-- jdg 11/14/07 new rumble stuff ... AMBIENT .-->	
-			<Vibration_Event> Vibration_Oil_Tanker_Death </Vibration_Event>
     </SFXEvent>
 
 	<SFXEvent Name="SFX_Big_Truck_Death">

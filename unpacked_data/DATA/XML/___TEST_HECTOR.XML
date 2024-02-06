@@ -45,6 +45,9 @@
 		<BehaviorType Name="RevealBehaviorType">
 			<Land_FOW_Reveal_Range> 30.0 </Land_FOW_Reveal_Range>
 		</BehaviorType>
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size> 1 </GUI_Bracket_Size>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Multi_Destruction_Destroys_Parent>true</HP_Multi_Destruction_Destroys_Parent>
 			<HP_Multi_Destruction_Destroys_Parent_Frame_Delay>10</HP_Multi_Destruction_Destroys_Parent_Frame_Delay>

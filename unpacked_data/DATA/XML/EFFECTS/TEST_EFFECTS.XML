@@ -84,7 +84,7 @@
 		<Effect_Class> Transparent </Effect_Class>
 
 		<Effect_Component Type="CreateObject">
-			<Create_Object_Type> Alien_Grunt </Create_Object_Type>
+			<Create_Object_Type> Grunt_BNA_Test </Create_Object_Type>
 			<Use_Source_Player_ID> true </Use_Source_Player_ID>
 			<Position_Type>AtTarget</Position_Type>
 		</Effect_Component>

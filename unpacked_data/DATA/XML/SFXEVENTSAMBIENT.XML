@@ -425,7 +425,7 @@
 	
 	<SFXEvent Name="SFX_Tut01_Misc_Explosions">
 		<Use_Preset>Preset_AMB_3D</Use_Preset>
-		<Samples>EXP_Gravity_Lightning_1.wav EXP_Alien_HP_Engine_1.wav EXP_Alien_HP_Armor_1.wav XP_Alien_HP_Weapon_2.wav EXP_Alien_HP_Weapon_3.wav GUN_Alien_Lightning_3.wav GUN_Alien_Lightning_4.wav EXP_Alien_Structure_Medium_1.wav</Samples>
+		<Samples>EXP_Gravity_Lightning_1.wav EXP_Alien_HP_Engine_1.wav EXP_Alien_HP_Armor_1.wav XP_Alien_HP_Weapon_2.wav EXP_Alien_HP_Weapon_3.wav GUN_Alien_Lightning_3.wav GUN_Alien_Lightning_4.wav EXP_Alien_Structure_Medium_1.wav  EGB_Meteor_By_3.wav</Samples>
 		<Probability>100</Probability>
 		<Volume_Saturation_Distance> 20000.0 </Volume_Saturation_Distance>
 		

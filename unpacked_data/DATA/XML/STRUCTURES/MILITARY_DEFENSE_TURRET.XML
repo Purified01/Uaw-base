@@ -172,6 +172,10 @@
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
 		</BehaviorType>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
+		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>60</Crush_Defense>
@@ -184,7 +188,7 @@
 	<!-- jdg military turret for use in Tut01 -->
 	<X11_Military_Structures Name="Tut01_Military_Turret_Ground">
 		<Variant_Of_Existing_Type> Military_Turret_Ground </Variant_Of_Existing_Type>
-		<Targeting_Max_Attack_Distance>200</Targeting_Max_Attack_Distance>
+		<Targeting_Max_Attack_Distance>140</Targeting_Max_Attack_Distance>
 
 		<BehaviorType Name="ProductionBehaviorType">
 			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>

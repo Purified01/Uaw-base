@@ -37,14 +37,15 @@
       <Shot_Type> Infantry </Shot_Type>
       
       <Attributes SubObjectList="Yes">
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 		</Attributes>
 
 		<!-- MOVEMENT -->
 		<MovementClass>Infantry</MovementClass>
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.4 </Max_Speed>
 		<Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 5.0 </Custom_Soft_Footprint_Radius>
@@ -82,7 +83,7 @@
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
-		<Tactical_Health> 230 </Tactical_Health>
+		<Tactical_Health> 200 </Tactical_Health>
 
 		<!-- BEHAVIORS-->
 		<Behavior>
@@ -110,20 +111,13 @@
 			FLOW,
 			ATTRIBUTE_DIRECTORY,
 			GUI,
-	      TARGETING,
-			TACTICAL_AI,
+      SQUASH,
+			TARGETING,
 			AI_RECRUITABLE,
 			AI_TARGET,
 			TACTICAL_SELL,
 			UNIT_AI
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Novus_Infantry_Light </Armor_Type>
@@ -153,15 +147,14 @@
 
       <BehaviorType name="AIBehaviorType">
          <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-         <Guard_Chase_Range> 150.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
-         <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
+         <Guard_Chase_Range> 140.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+         <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker>  <!--Range outside of guard area unit will move-->
          <Attack_Move_Response_Range> 35.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
          <AI_Target_Level>Group_Member</AI_Target_Level>
-         <Idle_AI_Thread_Name></Idle_AI_Thread_Name>
+         <Idle_AI_Thread_Name>Defensive_AI_Thread</Idle_AI_Thread_Name>
 			<Attack_Score_Rating> 0.5 </Attack_Score_Rating>
 			<Scout_Score_Rating> 0.2 </Scout_Score_Rating>
 			<Guerilla_Score_Rating> 0.1 </Guerilla_Score_Rating>
-			<Tactical_AI_Search_Range> 150.0 </Tactical_AI_Search_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -169,7 +162,6 @@
 			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
 		</BehaviorType>
 		
-		<!--
       <BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
          <Lua_Land_Behaviors>Novus_Robotic_Infantry,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -180,14 +172,13 @@
 				DefensiveAI.CaptureAbility = "Robotic_Infantry_Capture"
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
       
       <BehaviorType Name="WeaponBehaviorType">
          <Targeting_Priority_Set> Novus_Ohm_Robot_Target_Priority </Targeting_Priority_Set>
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-         <Targeting_Max_Attack_Distance> 150.0 </Targeting_Max_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 125.0 </Targeting_Max_Attack_Distance>
          <Projectile_Types>Proj_Novus_Flechette_Rifle</Projectile_Types>
          <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
          <Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
@@ -291,18 +282,26 @@
          <SFXEvent_Build_Cancelled>GUI_BUILD_INFANTRY_Canceled</SFXEvent_Build_Cancelled>
       </BehaviorType>
 
-		<BehaviorType Name="DeathFXBehaviorType">
+      <BehaviorType Name="DeathFXBehaviorType">
 			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
-			<Death_Clone> Damage_Default, Novus_Robotic_Infantry_Death_Clone_Resource </Death_Clone>
-			<Death_Clone> Damage_Masari_Peacebringer_Disintegrate, Novus_Robotic_Infantry_Death_Clone_Skeleton </Death_Clone>
-			<Death_Clone> Damage_Melee_Knockback, Novus_Robotic_Infantry_Death_Clone_Melee_Knockback </Death_Clone>
-			<Death_Clone> Damage_Falling, Novus_Robotic_Infantry_Death_Clone_Falling </Death_Clone>
-			<Death_Clone> Damage_Novus_Robot_Infantry_Self_Destruct, Novus_Robotic_Infantry_Death_Clone_Self_Destruct </Death_Clone>
-			<Death_Fade_Time> 0.25 </Death_Fade_Time>
-			<Death_Persistence_Duration> 60 </Death_Persistence_Duration>
+         <Death_Clone> Damage_Default, Novus_Robotic_Infantry_Death_Clone_Resource </Death_Clone>
+         <Death_Clone> Damage_Masari_Peacebringer_Disintegrate, Novus_Robotic_Infantry_Death_Clone_Skeleton </Death_Clone>
+         <Death_Clone> Damage_Melee_Knockback, Novus_Robotic_Infantry_Death_Clone_Melee_Knockback </Death_Clone>
+         <Death_Clone> Damage_Falling, Novus_Robotic_Infantry_Death_Clone_Falling </Death_Clone>
+         <Death_Clone> Damage_Novus_Robot_Infantry_Self_Destruct, Novus_Robotic_Infantry_Death_Clone_Self_Destruct </Death_Clone>
+         <Death_Fade_Time> 0.25 </Death_Fade_Time>
+         <Death_Persistence_Duration> 60 </Death_Persistence_Duration>
 			<Death_Speed_Min>1.0</Death_Speed_Min>
 			<Death_Speed_Max>2.0</Death_Speed_Max>
-		</BehaviorType>
+      </BehaviorType>
+
+      <BehaviorType Name="GUIBehaviorType">
+         <GUI_Is_Top_View> No </GUI_Is_Top_View>
+         <GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+         <GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+         <GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+         <GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+      </BehaviorType>
 
       <Unit_Abilities_Data SubObjectList="Yes">
          <Unit_Ability Name="Robotic_Infantry_Swarm">
@@ -315,13 +314,6 @@
             <Mod_Flag>CAN_BE_SQUASHED, false</Mod_Flag>
             <Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
             <Targeting_Type> ENEMY_OBJECT </Targeting_Type>
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Only_At_Health_Lower> 0.5 </Unit_Ability_AI_Only_At_Health_Lower>
-				<Unit_Ability_AI_Range> 150.0 </Unit_Ability_AI_Range>
-				<Unit_Ability_AI_Unit_Categories> Piloted | Stationary | HardPoint </Unit_Ability_AI_Unit_Categories>
-				<!-- not blocked by dodging retreating etc -->
-				<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
          </Unit_Ability>
 
          <Unit_Ability Name="Robotic_Infantry_Self_Destruct">
@@ -336,13 +328,13 @@
 
          <Unit_Ability Name="Robotic_Infantry_Capture">
             <Type>EFFECT_GENERATOR</Type>
+				<Expiration_Seconds> 100000.0 </Expiration_Seconds>
             <Recharge_Seconds>20.0</Recharge_Seconds>
             <Is_Modal>Yes</Is_Modal>
             <GUI_Activated_Ability_Name> Robotic_Infantry_Capture_Ability </GUI_Activated_Ability_Name>
             <Effect_Generator_Name> RoboticInfantryCaptureGenerator </Effect_Generator_Name>
             <Targeting_Type> ENEMY_OBJECT </Targeting_Type>
 				<Allows_Targeting_Under_Fog> false </Allows_Targeting_Under_Fog>
-				<Unit_Ability_AI_Capture> true </Unit_Ability_AI_Capture>
 			</Unit_Ability>
 
       </Unit_Abilities_Data>
@@ -352,7 +344,7 @@
             <Activation_Style>USER_INPUT</Activation_Style>
 
             <Applicable_Unit_Categories> Piloted | HardPoint | Stationary </Applicable_Unit_Categories>
-            <Excluded_Unit_Categories> Huge | Flying | Hero | Resource | Resource_INST </Excluded_Unit_Categories>
+            <Excluded_Unit_Categories> Huge | Flying | Hero </Excluded_Unit_Categories>
 
             <Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
             <Only_Appropriate_When_Ready> false </Only_Appropriate_When_Ready>
@@ -437,8 +429,7 @@
 
    
    
- 	
-	
+   
 
    <!-- **************************************************************************************** -->
    <!-- *** DEATH CLONE(S)********************************************************************** -->
@@ -468,7 +459,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 50 </Resource_Units>
+			<Resource_Units> 45 </Resource_Units>
 			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
@@ -591,7 +582,7 @@
 
 		<!-- Harvestable Resource Object Support -->
 		<BehaviorType Name="Resource">
-			<Resource_Units> 50 </Resource_Units>
+			<Resource_Units> 45 </Resource_Units>
 			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 		</BehaviorType>
 

@@ -378,10 +378,6 @@
          <Particle_System_Type> ZI_Architect_Heal_Target </Particle_System_Type>
       </Effect_Component>
 
-      <Effect_Component Type="Animate">
-         <Animation_Type> Anim_Idle </Animation_Type>
-      </Effect_Component>
-
    </Effect>
 
 

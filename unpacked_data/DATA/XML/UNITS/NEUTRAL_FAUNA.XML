@@ -47,11 +47,6 @@
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
-    <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-      <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-    </BehaviorType>
-
 		<BehaviorType Name="BallisticBehaviorType">
 			<Ballistic_Weight>6.0</Ballistic_Weight>
 			<Ballistic_Bounce>0.3</Ballistic_Bounce>
@@ -120,11 +115,6 @@
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
-    <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-      <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-    </BehaviorType>
-
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 20 </Crush_Defense>
 			<Crush_Power> 15 </Crush_Power>
@@ -182,11 +172,6 @@
 			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
-
-    <BehaviorType Name="BuildableObjectBehaviorType">
-      <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-      <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-    </BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 20 </Crush_Defense>

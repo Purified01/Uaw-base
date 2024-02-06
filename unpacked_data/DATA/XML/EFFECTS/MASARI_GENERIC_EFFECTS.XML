@@ -134,10 +134,6 @@
          <Create_Object_On_Unapply>Yes</Create_Object_On_Unapply>
          <Apply_Effect>MasariSetupPhoenixEffect</Apply_Effect>
 			<Use_Original_Player> true </Use_Original_Player>
-         
-         <!-- Bug fix: Avenger should contribute to pop-cap! - Oksana-->
-         <Check_Pop_Cap>Yes</Check_Pop_Cap>
-         
       </Effect_Component>
 
    </Effect>

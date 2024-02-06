@@ -44,7 +44,7 @@
 		<Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
 		
 		<!-- MOVEMENT -->
-		<Space_Layer> LandDynamic </Space_Layer>
+		<Space_Layer> LandDynamic | Air </Space_Layer>
 		<MovementClass>Building</MovementClass>
 		<UnitCollisionClass> High Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent> 5.0 </Custom_Hard_XExtent>
@@ -148,6 +148,7 @@
 			<SFXEvent_Tactical_Build_Started>GUI_BUILD_Structure</SFXEvent_Tactical_Build_Started>
 			<SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Novus_Signal_Tower</SFXEvent_Tactical_Build_Complete>
 			<SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
+			<SFX_Event />
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -171,7 +172,7 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_nb_signal_tower.tga</Icon_Name>
-      </BehaviorType>
+		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_SIGNAL_TOWER </Tooltip_Description_Text_ID>
@@ -403,6 +404,7 @@
 			<SFXEvent_Tactical_Build_Complete />
 			<SFXEvent_Tactical_Build_Cancelled />
 			<Death_SFXEvent_Start_Die />
+			<SFX_Event />
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">

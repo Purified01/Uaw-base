@@ -24,7 +24,7 @@
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
-		<GUI_World_Offset> 0.0, 0.0, -3 </GUI_World_Offset>
+		<GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
 		<Select_Box_Scale> 20 </Select_Box_Scale>
 		<Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
 
@@ -42,12 +42,12 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Is_Phasable> true </Is_Phasable>
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
 			<Effect_Duration_1> 1.0 </Effect_Duration_1>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <Animation_Subindex_Override>0</Animation_Subindex_Override>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -77,7 +77,8 @@
 		<Strafe_Animation_Speed> 1.0 </Strafe_Animation_Speed>
 		<Backpedal_Animation_Speed> 1.0 </Backpedal_Animation_Speed>
 		<Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
-	
+		<Walk_Locomotor_Anim_Subindex> 0 </Walk_Locomotor_Anim_Subindex>
+
 		<!-- CONFLICT -->
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
@@ -106,6 +107,7 @@
 			RADAR_MAP_VISIBLE,
 			FLOW,
 			GUI,
+			SQUASH,
 			RADAR_MAP_VISIBLE,
 			SURFACE_FX,
 			WALK_LOCOMOTOR,
@@ -119,18 +121,10 @@
 			AI_RECRUITABLE,
 			DAMAGE_TRACKING,
 			AI_TARGET,
-			TACTICAL_AI,
 			SPAWN_CLONES,
 			TACTICAL_SELL,
 			ABILITY_COUNTDOWN
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="AnimationBehaviorType">
 			<Animation_Set_Indices> Anim_Idle, 0, 0, 1, 2, 3 </Animation_Set_Indices>
@@ -183,7 +177,7 @@
 
 		<BehaviorType name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
-			<Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+			<Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
 			<Guard_Chase_Range> 170.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
 			<Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
 			<Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -191,7 +185,6 @@
 			<Attack_Score_Rating> 0.9 </Attack_Score_Rating>
 			<Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 			<Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-			<Tactical_AI_Search_Range> 100.0 </Tactical_AI_Search_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="SpawnClonesBehaviorType">
@@ -210,7 +203,6 @@
 			<Targeting_Max_Attack_Distance> 15.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Generic_Filtered_PBAOE,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -229,7 +221,6 @@
 				DefensiveAI.AttackStationary = true
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="TurretBehaviorType">
 			<Barrel_Bone_Name> Barrel </Barrel_Bone_Name>
@@ -307,6 +298,17 @@
 			<SFXEvent_Build_Cancelled> GUI_BUILD_Vehicle_Canceled </SFXEvent_Build_Cancelled>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size> 2 </GUI_Bracket_Size>
+			<GUI_Bounds_Scale> 0.5 </GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
       <BehaviorType Name="DeathFXBehaviorType">
          <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
          <Death_Clone> Damage_Default, Novus_Reflex_Trooper_Death_Clone_Resource </Death_Clone>
@@ -318,7 +320,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 30 </Crush_Defense>
-			<Crush_Power> 5 </Crush_Power>
+			<Crush_Power> 6 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -341,10 +343,6 @@
 				<SFXEvent_GUI_Unit_Ability_Activated>SFX_Novus_Agent_Spawn_Clone</SFXEvent_GUI_Unit_Ability_Activated>
 				<Targeting_Type> NONE </Targeting_Type>
 				<Effect_Generator_Name> NovusReflexTrooperSpawnClonesVisualGenerator </Effect_Generator_Name>
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<Unit_Ability_AI_Required_Targets> 3 </Unit_Ability_AI_Required_Targets>
-				<Unit_Ability_AI_Unit_Categories> CanAttack + ~Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 100.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 			<!-- Activates Blackout_Bomb special ability below -->
@@ -548,8 +546,8 @@
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Build_Cost_Credits />
-         <Animation_Subindex_Override>0</Animation_Subindex_Override>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -577,6 +575,7 @@
 		<Strafe_Animation_Speed> 1.0 </Strafe_Animation_Speed>
 		<Backpedal_Animation_Speed> 1.0 </Backpedal_Animation_Speed>
 		<Should_Move_Anim_Lockout_Attack_Anim> true </Should_Move_Anim_Lockout_Attack_Anim>
+		<Walk_Locomotor_Anim_Subindex> 0 </Walk_Locomotor_Anim_Subindex>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> true </Is_Attackable>
@@ -608,7 +607,6 @@
 			EFFECT_REGISTRY,
 			EFFECT_GENERATOR,
 			ATTRIBUTE_DIRECTORY,
-			TACTICAL_AI,
 			ABILITY_COUNTDOWN
 		</LandBehavior>
 
@@ -652,18 +650,16 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 170.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 130.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
 		 <Attack_Score_Rating> 0.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.0 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 50.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -675,7 +671,6 @@
 				DefensiveAI.UsableByAI = true
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
@@ -747,6 +742,16 @@
 			<SFXEvent_Build_Cancelled> GUI_BUILD_Vehicle_Canceled </SFXEvent_Build_Cancelled>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size> 2 </GUI_Bracket_Size>
+			<GUI_Bounds_Scale> 0.5 </GUI_Bounds_Scale>
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Clone> Damage_Default, Novus_Clone_Reflex_Trooper_Death_Clone </Death_Clone>
 			<Death_Speed_Min> 20 </Death_Speed_Min>
@@ -755,7 +760,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 30 </Crush_Defense>
-			<Crush_Power> 5 </Crush_Power>
+			<Crush_Power> 6 </Crush_Power>
 		</BehaviorType>
 		
 		<BehaviorType Name="FleetBehaviorType">
@@ -1029,9 +1034,7 @@
 			<Projectile_Grenade_Gravity>1</Projectile_Grenade_Gravity>
 			<Projectile_Grenade_Gravity_Lob_Mod>6.0</Projectile_Grenade_Gravity_Lob_Mod>
 			<Projectile_Grenade_Can_Lob_Slower>Yes</Projectile_Grenade_Can_Lob_Slower>
-			<!--<Projectile_SFXEvent_Detonate> SFX_Novus_Sonic_Boom_1 </Projectile_SFXEvent_Detonate>-->
-			<!-- jdg 11/12/07 new vibration event ... need to seperate out from SFX_Novus_Sonic_Boom_1-->
-			<Projectile_SFXEvent_Detonate> SFX_Novus_BlackOut_Bomb_Detonation </Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate> SFX_Novus_Sonic_Boom_1 </Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor />
 			<Projectile_Explosion_Causes_Chaining> false </Projectile_Explosion_Causes_Chaining>
 			<Projectile_Effect_Bomb_Effect_Name> BlackOutEffectGenerator </Projectile_Effect_Bomb_Effect_Name>
@@ -1056,8 +1059,8 @@
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 130 </Area_Effect_Radius>
-					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
 
+					<Target_SFX_Event> SFX_Novus_Sonic_Boom_1 </Target_SFX_Event>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -1073,7 +1076,8 @@
 					<Duration> 8.0 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Area_Effect_Radius> 130 </Area_Effect_Radius>
-					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
+
+					<Target_SFX_Event> SFX_Novus_Sonic_Boom_1 </Target_SFX_Event>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

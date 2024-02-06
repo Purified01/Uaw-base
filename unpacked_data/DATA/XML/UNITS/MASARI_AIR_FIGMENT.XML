@@ -107,16 +107,8 @@
          TACTICAL_SELL,
          ABILITY_COUNTDOWN,
          <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
-			TACTICAL_AI,
-			ELEMENTAL_MODE
-		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
+         ELEMENTAL_MODE
+      </LandBehavior>
 
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_FIGMENT_LIGHT </Tooltip_Description_Text_ID>
@@ -169,18 +161,19 @@
 
       <BehaviorType name="AIBehaviorType">
          <AI_Combat_Power> 1 </AI_Combat_Power>
-         <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-         <Guard_Chase_Range> 135.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-         <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
-         <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
+         <Idle_Chase_Range> 20.0 </Idle_Chase_Range>
+         <!-- Double click guard area Keep very small-->
+         <Guard_Chase_Range> 135.0 </Guard_Chase_Range>
+         <!-- Guard radius for unit-->
+         <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker>
+         <!--Range outside of guard area unit will move-->
+         <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>
+         <!-- When given a attack move command unit will travel this distance from path to attack-->
          <AI_Target_Level>Individual_Or_Group</AI_Target_Level>
          <Attack_Score_Rating> 0.8 </Attack_Score_Rating>
          <Scout_Score_Rating> 0.3 </Scout_Score_Rating>
          <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-			<Retreat_At_Health> 0.25 </Retreat_At_Health>
-			<Tactical_AI_Search_Range> 200.0 </Tactical_AI_Search_Range>
-			<Max_Crush_Distance> 150.0 </Max_Crush_Distance>
-		</BehaviorType>
+      </BehaviorType>
 
       <BehaviorType Name="WeaponBehaviorType">
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
@@ -194,7 +187,6 @@
          <Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
       </BehaviorType>
 
-		<!--
       <BehaviorType NAme="LuaScriptBehaviorType">
          <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
          <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -208,7 +200,6 @@
 				DefensiveAI.KillTurretRange = 50.0
 			</Lua_Script_Data>
       </BehaviorType>
-		-->
 
       <BehaviorType Name="TurretBehaviorType">
          <Is_Turret_Entire_Body> true </Is_Turret_Entire_Body>
@@ -279,7 +270,9 @@
       </BehaviorType>
 
       <BehaviorType Name="GUIBehaviorType">
-         <GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name>
+         <GUI_Bracket_Size>1</GUI_Bracket_Size>
+         <GUI_Bracket_Size>1</GUI_Bracket_Size>
+         <GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
          <GUI_Receives_Input> false </GUI_Receives_Input>
          <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
          <GUI_Max_Scale> 2.5 </GUI_Max_Scale>

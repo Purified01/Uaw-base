@@ -46,7 +46,7 @@
 
 		<Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 		</Attributes>
 
@@ -106,13 +106,6 @@
 			AI_TARGET
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Infantry_Light </Armor_Type>
 		</BehaviorType>
@@ -132,9 +125,9 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 130.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
-      <Autonomous_Move_Extension_Vs_Attacker> 0.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
+      <Autonomous_Move_Extension_Vs_Attacker> 20.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Group_Member</AI_Target_Level>
     </BehaviorType>
@@ -178,8 +171,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>10</Crush_Defense>
-      <Crush_Power> 4 </Crush_Power>
+			 <Crush_Defense>10</Crush_Defense>
 		</BehaviorType>
 
 		<BehaviorType Name="BlobShadowBehaviorType">

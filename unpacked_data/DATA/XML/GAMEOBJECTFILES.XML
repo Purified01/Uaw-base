@@ -2,66 +2,8 @@
 
 <Game_Object_Files>
 
-	<!-- ***** BEGIN TEST FILE SECTION ***** -->
-	
-	<!--
-	  This Section contains Test/Debug files.  These files should be removed from the project before shipping!
-	-->
-
-	<!--
-	<File> Units/Effect_Test_Units.xml </File>
-	<File> ___TEST_Hector.xml </File>
-	<File> ___TEST_MBL.xml </File>
-	<File> ___TEST_Oksana.xml </File>
-
-	<File> Structures/Test_01_Alien_Abduction_Core.xml </File>
-	<File> Structures/Test_02_Alien_Abduction_Core.xml </File>
-	<File> Structures/Test_01_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_02_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_03_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_01_Alien_Foundation.xml </File>
-	<File> Structures/Test_02_Alien_Foundation.xml </File>
-	<File> Structures/Test_01_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_02_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_03_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_01_Novus_Material_Center.xml </File>
-	<File> Structures/Test_02_Novus_Material_Center.xml </File>
-	<File> Structures/Test_01_Novus_Megacorp_Center.xml </File>
-	<File> Structures/Test_02_Novus_Megacorp_Center.xml </File>
-	<File> Structures/Test_01_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_02_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_03_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_01_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_02_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_03_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_01_Masari_Atlatea.xml </File>
-	<File> Structures/Test_02_Masari_Atlatea.xml </File>
-	<File> Structures/Test_01_Masari_Element_Magnet.xml </File>
-	<File> Structures/Test_02_Masari_Element_Magnet.xml </File>
-	<File> Structures/Test_01_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_02_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_03_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_01_Masari_Will_Processor.xml </File>
-	<File> Structures/Test_02_Masari_Will_Processor.xml </File>
-	<File> Structures/Test_03_Masari_Will_Processor.xml </File>
-	  
-	-->
-	
-	<!-- ***** END TEST FILE SECTION ***** -->
-
-
-	<!-- ***** OBSOLETE! ***** -->
-	<!--
-	<File> SpecialStructures_Military.xml </File>
-	<File> Structures/Novus_Research_Center.xml </File>
-	<File> Structures/Novus_Consumption_Superturret.xml </File>
-  	<File> Structures/Masari_Fire_Wall.xml </File>
-	-->
-
-
-
 	<File> GlobeRegions.xml </File>
-	<!-- <File> HardPoints_Testing.xml </File> -->
+	<File> HardPoints_Testing.xml </File>
 	<File> CIV_Buildings.xml </File>
 	<File> Props_Generic.xml </File>
 	<File> Particles.xml </File>
@@ -69,9 +11,10 @@
 	<File> LandPrimarySkydomes.xml </File>
 	<File> LandSecondarySkydomes.xml </File>
 	<File> Bridges.xml </File>
+	<File> SpecialStructures_Military.xml </File>
 	<File> GlobalTransportBlips.xml </File>
 
-
+	
 	<File> Units/ALIEN_AIR_Retreat_Transport.xml </File>
 
 	<File> Units/ALIEN_VEH_Tank.xml </File>
@@ -209,10 +152,12 @@
 	<File> Structures/Novus_Power_Router.xml </File>
 	<File> Structures/Novus_Science.xml </File>
 	<File> Structures/Novus_Remote_Terminal.xml </File>
+	<File> Structures/Novus_Research_Center.xml </File>
 	<File> Structures/Novus_R_and_D_Center.xml </File>
 	<File> Structures/Novus_Material_Center.xml </File>
 	<File> Structures/Novus_Nanocenter.xml </File>
 	<File> Structures/Novus_Superweapon_EMP.xml </File>
+	<File> Structures/Novus_Consumption_Superturret.xml </File>
 	<File> Structures/Novus_Megaweapon.xml </File>
 	<File> Structures/Novus_Gravity_Bomb.xml </File>
 	<File> Structures/Novus_Redirection_Turret.xml </File>
@@ -232,6 +177,7 @@
 	<File> Structures/Alien_Gravitic_Manipulator.xml </File>
 	<File> Structures/Alien_Megaweapon_Purifier.xml </File>
 	<File> Structures/Alien_Superweapon_Mass_Drop.xml </File>
+	<File> Structures/Alien_Phase_Generator.xml </File>
 
 
 	<File> Structures/Masari_Atlatea.xml </File>
@@ -247,6 +193,7 @@
 	<File> Structures/Masari_Air_Inspiration.xml </File>
 	<File> Structures/Masari_Foundation.xml </File>
 	<File> Structures/Masari_Sky_Guardian.xml </File>
+	<File> Structures/Masari_Fire_Wall.xml </File>
 	<File> Structures/Masari_Elemental_Controller.xml </File>
 	<File> Structures/Masari_Megaweapon.xml </File>
 

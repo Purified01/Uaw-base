@@ -1028,16 +1028,6 @@
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
-  <Particle Name="Founder_Rebuild_Target_Particle_Death">
-    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-    <Land_Model_Name>pp_founder_rebuild_target_Death.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Is_Decoration>Yes</Is_Decoration>
-    <!-- <Behavior>PARTICLE</Behavior>
-        <Particle_Lifetime_Frames>60</Particle_Lifetime_Frames> -->
-    <AssetBank> BANK_ALWAYS </AssetBank>
-  </Particle>
-
 
 	<Particle Name="Novus_Glow_aura">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -1625,7 +1615,6 @@
 	<Particle Name="Novus_Repair_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_novus_repair.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -1636,7 +1625,6 @@
 	<Particle Name="Novus_Spy_Region_Countered_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>i_novus_spy_block.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -1647,7 +1635,6 @@
 	<Particle Name="Novus_Explosion_Global">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_novus_explosion_large_global.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -2125,10 +2112,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 		<Explosion_Scorch_Mark>ALIEN_MUTANT_SLAVE_DEATH</Explosion_Scorch_Mark>
-    <!-- Thanh 02/06/2008 fix for effect (and its game object) not being deleted -->
-    <Behavior>PARTICLE </Behavior>
-    <Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
-  </Particle>
+	</Particle>
 
 
 
@@ -3222,55 +3206,53 @@
 	</Particle>
 
 
-  <Particle Name="Scarn_Beam_Laser_Explosion_Effect">
-    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-    <Land_Model_Name>pp_ABHP_Scarn_damage.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Is_Decoration>Yes</Is_Decoration>
-    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-    <Behavior>PARTICLE</Behavior>
-    <Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
-
-    <Explosion_Jitter_Factor>1.5</Explosion_Jitter_Factor>
-    <Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
-    <AssetBank> BANK_ALWAYS </AssetBank>
-  </Particle>
+	<Particle Name="Scarn_Beam_Laser_Explosion_Effect">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ABHP_Scarn_damage.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Behavior>PARTICLE</Behavior>
+		<Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
+		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 
-  <Particle Name="Scarn_Beam_Laser_Particle_Effect">
-    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-    <Land_Model_Name>pp_ABHP_Scarn_hit.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Is_Decoration>No</Is_Decoration>
-    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-    <Behavior>PARTICLE,HIDE_WHEN_FOGGED</Behavior>
-    <Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
-    <AssetBank> BANK_ALWAYS </AssetBank>
-  </Particle>
+	<Particle Name="Scarn_Beam_Laser_Particle_Effect">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ABHP_Scarn_hit.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Behavior>PARTICLE,HIDE_WHEN_FOGGED</Behavior>
+		<Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 
-  <Particle Name="Scarn_Beam_Laser_Miss_Effect">
-    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-    <Land_Model_Name>pp_ABHP_Scarn_miss.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Is_Decoration>Yes</Is_Decoration>
-    <Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
-    <Explosion_Light_Source_Name>L_Alien_Barracks_Electric_Hit</Explosion_Light_Source_Name>
-    <AssetBank> BANK_ALWAYS </AssetBank>
-  </Particle>
+	<Particle Name="Scarn_Beam_Laser_Miss_Effect">
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ABHP_Scarn_miss.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Particle_Lifetime_Frames>15</Particle_Lifetime_Frames>
+		<Explosion_Light_Source_Name>L_Alien_Barracks_Electric_Hit</Explosion_Light_Source_Name>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 
-  <Particle Name="Scarn_Beam_Laser_source_effect">
-    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-    <Land_Model_Name>pp_ABHP_Scarn_Source.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Is_Decoration>Yes</Is_Decoration>
-    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
-    <Behavior>PARTICLE</Behavior>
-    <Particle_Lifetime_Frames>600</Particle_Lifetime_Frames>
-    <AssetBank> BANK_ALWAYS </AssetBank>
-  </Particle>
+	<Particle Name="Scarn_Beam_Laser_source_effect">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ABHP_Scarn_hit.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Behavior>PARTICLE</Behavior>
+		<Particle_Lifetime_Frames>60</Particle_Lifetime_Frames>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 
 	<Particle Name="Alien_Walker_Barracks_Landing_Effect">
@@ -3419,7 +3401,6 @@
 	<Particle Name="Alien_Spy_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_alien_spy.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 	</Particle>
@@ -3428,7 +3409,6 @@
 	<Particle Name="Alien_Repair_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_alien_repair.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -3439,7 +3419,6 @@
 	<Particle Name="Alien_Spy_Region_Countered_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>i_alien_spy_block.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -3450,7 +3429,6 @@
 	<Particle Name="Alien_Explosion_Global">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_alien_explosion_global.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -3590,7 +3568,7 @@
       <Land_Model_Name>pp_ZB_Air_Inspiration_X_Spawn.alo</Land_Model_Name>
       <Scale_Factor>1.0</Scale_Factor>
       <Is_Decoration>Yes</Is_Decoration>
-      <Behavior> PARTICLE, HIDE_WHEN_FOGGED </Behavior>
+      <Behavior> PARTICLE </Behavior>
       <Particle_Lifetime_Frames>90</Particle_Lifetime_Frames>
       <AssetBank> BANK_ALWAYS </AssetBank>
    </Particle>
@@ -5841,9 +5819,6 @@
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
-    <!-- Thanh 02/06/2008 fix for effect (and its game object) not being deleted -->
-    <Behavior>PARTICLE </Behavior>
-    <Particle_Lifetime_Frames>10</Particle_Lifetime_Frames>
 	</Particle>
 
 	
@@ -5853,9 +5828,6 @@
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
-    <!-- Thanh 02/06/2008 fix for effect (and its game object) not being deleted -->
-    <Behavior>PARTICLE </Behavior>
-    <Particle_Lifetime_Frames>10</Particle_Lifetime_Frames>
 	</Particle>
 
 	
@@ -5972,6 +5944,7 @@
 		<Behavior>PARTICLE, GUI</Behavior>
 		<Particle_Lifetime_Frames>60</Particle_Lifetime_Frames>
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Only_Service_When_Rendered> false </GUI_Only_Service_When_Rendered>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
 			<GUI_Scene_Name> FloatyText </GUI_Scene_Name>
 		</BehaviorType>
@@ -5984,7 +5957,7 @@
 		<Galactic_Model_Name> pp_Generic_Smoke_Black_large_Fast.alo </Galactic_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
-		<AssetBank> BANK_GLOBAL </AssetBank>
+		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
 	
@@ -5995,7 +5968,7 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
 		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
-		<AssetBank> BANK_GLOBAL </AssetBank>
+		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
 	
@@ -6013,7 +5986,6 @@
 	<Particle Name="Novus_Spy_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_novus_spy.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 	</Particle>
@@ -6022,7 +5994,6 @@
 	<Particle Name="Masari_Spy_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_masari_spy.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 	</Particle>
@@ -6031,7 +6002,6 @@
 	<Particle Name="Masari_Repair_Region_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_i_masari_repair.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -6042,7 +6012,6 @@
 	<Particle Name="Masari_Spy_Region_Countered_Particle">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>i_masari_spy_block.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -6053,7 +6022,6 @@
 	<Particle Name="Masari_Explosion_Global">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Galactic_Model_Name>pp_masari_explosion_large_global.alo</Galactic_Model_Name>
-		<AssetBank> BANK_GLOBAL </AssetBank>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Is_Decoration>Yes</Is_Decoration>
 		<Behavior>PARTICLE</Behavior>
@@ -6139,15 +6107,6 @@
       <AssetBank> BANK_ALWAYS </AssetBank>
    </Particle>
 
-	<!-- ========================================= Game Controller play effects  ====================================  -->
-	 
-	<Particle Name="Game_Controller_Paint_Selection_Trail_Particle">
-		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
-		<Land_Model_Name> p_mouse_paint.alo </Land_Model_Name> 
-		<Scale_Factor> 1.0 </Scale_Factor>
-		<Is_Decoration> Yes </Is_Decoration>
-		<AssetBank> BANK_ALWAYS </AssetBank>
-	</Particle>	
-
+	
 </Particles>
 

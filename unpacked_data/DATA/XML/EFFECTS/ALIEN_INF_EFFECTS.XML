@@ -654,7 +654,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
-			<Amount_Per_Second> 30.0 </Amount_Per_Second>
+			<Amount_Per_Second> 25.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -679,7 +679,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
-			<Amount_Per_Second> 7.0 </Amount_Per_Second>
+			<Amount_Per_Second> 5.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -705,7 +705,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
-			<Amount_Per_Second> 15.0 </Amount_Per_Second>
+			<Amount_Per_Second> 12.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -725,7 +725,7 @@
 			<Damage_Type>Damage_Default</Damage_Type>
 			<Damage_Amount>0.0</Damage_Amount>
 			<!-- jdg was 10 -->
-			<Damage_Percentage>0.01f</Damage_Percentage>
+			<Damage_Percentage>0.02f</Damage_Percentage>
 		</Effect_Component>
 
 	</Effect>

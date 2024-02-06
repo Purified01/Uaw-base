@@ -1043,38 +1043,37 @@
       </Surface_Settings>
    </SurfaceFX>
 
-<!-- jdg 11/12/07 giving the defiler his own entry for rumble purposes-->
    <SurfaceFX name="Alien_Defiler_Foot">
       <Surface_Settings name="default">
          <Decal_Name>Alien_Defiler_Reg</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
       <Surface_Settings name="concrete">
          <Decal_Name>Alien_Defiler_Reg</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
       <Surface_Settings name="water">
          <Particle_Name>Small_Water_Spray</Particle_Name>
          <Decal_Name>NONE</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
       <Surface_Settings name="dirt">
          <Particle_Name>Small_Dirt_puff</Particle_Name>
          <Decal_Name>Alien_Defiler_Reg</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
       <Surface_Settings name="mud">
          <Decal_Name>Alien_Defiler_Reg</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
       <Surface_Settings name="grass">
          <Decal_Name>Alien_Defiler_Reg</Decal_Name>
-         <SoundFX_Name>SFX_Anim_Alien_Defiler_Foot_Plant</SoundFX_Name>
+         <SoundFX_Name>SFX_Anim_Alien_Brute_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
    </SurfaceFX>
 
@@ -1544,11 +1543,9 @@
 
 	<SurfaceFX name="Novus_Inverter_Footprint">
 		<Surface_Settings name="default">
-      <Particle_Name>NONE</Particle_Name>
-      <Decal_Name>NONE</Decal_Name>
-		<!-- jdg 12/03/07 removing the sfx from DEFAULT so I can remove the rumble in the 360 tutorial...it
-				has "default" surface type...please let me know if you change this.-->
-		  <SoundFX_Name>NONE</SoundFX_Name>
+	  	<Particle_Name>Medium_Concrete_puff</Particle_Name>	
+		<Decal_Name>Novus_Inverter_Normal_Dirt</Decal_Name>
+		<SoundFX_Name>SFX_Anim_Novus_Walker_Foot_Plant</SoundFX_Name>
 		</Surface_Settings>
 		
 		<Surface_Settings name="dirt">
@@ -1578,12 +1575,6 @@
 		<Surface_Settings name="water">
 	   	<Particle_Name>Medium_Splash</Particle_Name>
 		<SoundFX_Name>SFX_Anim_Novus_Walker_Water_Foot_Plant</SoundFX_Name>
-		</Surface_Settings>
-
-		<Surface_Settings name="sand">
-	   	<Particle_Name>NONE</Particle_Name>
-		<Decal_Name>NONE</Decal_Name>
-		<SoundFX_Name>SFX_Anim_Novus_Walker_Foot_Plant</SoundFX_Name>
 		</Surface_Settings>
 
 		<Surface_Settings name="Mud">
@@ -1728,13 +1719,6 @@
 			<SoundFX_Name>SFX_Anim_Novus_Founder_Foot_Plant</SoundFX_Name>
 		</Surface_Settings>
 
-		<Surface_Settings name="sand">
-			<Particle_Name>NONE</Particle_Name>
-			<Decal_Name>NONE</Decal_Name>
-			<SoundFX_Name>SFX_Anim_Novus_Founder_Foot_Plant</SoundFX_Name>
-		</Surface_Settings>
-
-
 		<Surface_Settings name="grass">
 			<Particle_Name>Medium_Grass_puff</Particle_Name>
 			<Decal_Name>Novus_Founder_Normal_Dirt</Decal_Name>
@@ -1797,7 +1781,7 @@
    <SurfaceFX name="Novus_Reflex_Trooper">
       <Surface_Settings name="default">
          <Particle_Name>NONE</Particle_Name>
-         <Decal_Name>NONE</Decal_Name>
+         <Decal_Name>Novus_Blade_Trooper_Track</Decal_Name>
          <SoundFX_Name>SFX_Anim_Dirt_Infantry_Foot_Plant</SoundFX_Name>
       </Surface_Settings>
 
@@ -2232,23 +2216,19 @@
       </Surface_Settings>
    </SurfaceFX>
 
-<!-- jdg 11/12/07 changing SFX event for rumble purposes 
-	WAS: SFX_Alien_Walker_Impact-->
    <SurfaceFX name="WALKER_REAPER_LANDING">
       <Surface_Settings name="default">
          <Particle_Name>Reaper_Walker_Landing_Particle</Particle_Name>
          <Decal_Name>Alien_Reaper_Walker_Landing_Alpha</Decal_Name>
-         <SoundFX_Name>SFX_Alien_Walker_Impact_Small</SoundFX_Name>
+         <SoundFX_Name>SFX_Alien_Walker_Impact</SoundFX_Name>
       </Surface_Settings>
    </SurfaceFX>
 
-<!-- jdg 11/12/07 changing SFX event for rumble purposes 
-	WAS: SFX_Alien_Walker_Impact-->
    <SurfaceFX name="WALKER_SCAN_DRONE_LANDING">
       <Surface_Settings name="default">
          <Particle_Name>Scan_Drone_Walker_Landing_Particle</Particle_Name>
          <Decal_Name>Alien_Scan_Drone_Landing_Alpha</Decal_Name>
-         <SoundFX_Name>SFX_Alien_Walker_Impact_Small</SoundFX_Name>
+         <SoundFX_Name>SFX_Alien_Walker_Impact</SoundFX_Name>
       </Surface_Settings>
    </SurfaceFX>
 

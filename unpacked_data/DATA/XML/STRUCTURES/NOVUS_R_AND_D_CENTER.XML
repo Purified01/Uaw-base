@@ -16,12 +16,15 @@
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_NOVUS_R_AND_D_CENTER</Text_ID>
 		<Icon_Name>i_icon_nb_R_and_D.tga</Icon_Name>
+		<GUI_Row> 0 </GUI_Row>
 		<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 		<GUI_Receives_Input> false </GUI_Receives_Input>
+		<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 		<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 		<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+		<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		<Select_Box_Scale>150</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
       <Selection_Blob_Material_Name>Selection_Novus_Land_Large</Selection_Blob_Material_Name>
@@ -82,13 +85,6 @@
 			CREATE_CHILDREN
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_R_AND_D_CENTER </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -103,14 +99,7 @@
 
 
 
-    <BehaviorType Name="GUIBehaviorType">
-      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-    </BehaviorType>
-
-    <BehaviorType Name="TacticalEnablerBehaviorType">
+		<BehaviorType Name="TacticalEnablerBehaviorType">
 			<Tactical_Enabler_Bones>SPAWN_00</Tactical_Enabler_Bones>
 			<Tactical_Enabler_Flyout_Distances>80.0</Tactical_Enabler_Flyout_Distances>
 			<Enables_Reinforcements> true </Enables_Reinforcements>
@@ -285,7 +274,7 @@
 					<Target_Gathering_Mask> RadarFilters </Target_Gathering_Mask>
 
 					<!-- KDB 07-18-2007 design has changed this to player only, see Chris R -->
-					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
+					<Target_Filter> source.Get_Owner() == target.Get_Owner() </Target_Filter>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 

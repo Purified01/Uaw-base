@@ -716,8 +716,7 @@
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpEnableEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpEnableEffect">
+	<Effect Name="AlienWalkerJumpEnableEffect">
 		<Effect_Class> WalkerJumpEnable </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -728,13 +727,12 @@
 			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpDisableEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpDisableEffect">
+	<Effect Name="AlienWalkerJumpDisableEffect">
 		<Effect_Class> WalkerJumpEnable </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -749,13 +747,12 @@
 			<Abilities> Alien_Walker_Activate_Jump_Module_Ability </Abilities>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 	<!--=================================================================================================
 	== [11/21/2006] AlienWalkerJumpSpeedUpEffect
 	================================================================================================== -->
-   <!--Oksana [09-18-2007]: Contact me if you want it restored. -->
-   <!--<Effect Name="AlienWalkerJumpSpeedUpEffect">
+	<Effect Name="AlienWalkerJumpSpeedUpEffect">
 		<Effect_Class> WalkerJumpSpeedUp </Effect_Class>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -763,13 +760,11 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Ability_Countdown_Rate_Multiplier </Attribute>
-			-->
-   <!-- 2x recharge rate -->
-   <!--
+			<!-- 2x recharge rate -->
 			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 
-	</Effect>-->
+	</Effect>
 
 
 	<!--*************************************************************************************************
@@ -1174,12 +1169,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Walker_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-		</Effect_Component>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Is_Mind_Controlled </Attribute>
-			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
 
 		<Effect_Component Type="Sound">

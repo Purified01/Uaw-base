@@ -146,12 +146,15 @@
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
 			<GUI_Default_Scale> 0.5 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 		<BehaviorType Name="SelectableBehaviorType">
 			<Select_Box_Scale>175</Select_Box_Scale>
@@ -247,12 +250,16 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size> 0 </GUI_Bracket_Size>
+			<GUI_Row> 0 </GUI_Row>
 			<GUI_Scene_Name> HealthBar_Scene </GUI_Scene_Name>
 			<GUI_Receives_Input> false </GUI_Receives_Input>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
 			<GUI_Min_Scale> 1.0 </GUI_Min_Scale>
 			<GUI_Max_Scale> 6.0 </GUI_Max_Scale>
 			<GUI_Default_Scale> 3.0 </GUI_Default_Scale>
 			<GUI_World_Offset> 0.0, 0.0, -20 </GUI_World_Offset>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalUnderConstructionBehaviorType">

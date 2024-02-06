@@ -86,13 +86,6 @@
 			ELEMENTAL_MODE
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_GUARDIAN_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -117,13 +110,6 @@
 			<Bib_X_Extent> 18 </Bib_X_Extent>
 			<Bib_Y_Extent> 18 </Bib_Y_Extent>
 		</BehaviorType>
-
-	    <BehaviorType Name="GUIBehaviorType">
-	      <GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
-	      <GUI_Min_Scale> 0.3 </GUI_Min_Scale>
-	      <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
-	      <GUI_Default_Scale> 1.0 </GUI_Default_Scale>
-	    </BehaviorType>
 
 		<BehaviorType Name="AIBehaviorType">
 			<AI_Combat_Power> 1 </AI_Combat_Power>
@@ -231,7 +217,6 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name>i_icon_mb_guardian.tga</Icon_Name>
-         <Building_Queue_Type> NonProduction </Building_Queue_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
@@ -429,7 +414,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
-			<GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
 			<GUI_Receives_Input> no </GUI_Receives_Input>
 			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
 			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -881,6 +866,14 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense>90</Crush_Defense>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> hard_point_reticle_weapon </GUI_Scene_Name>
+			<GUI_Receives_Input> yes </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 0.4 </GUI_Default_Scale>
 		</BehaviorType>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">

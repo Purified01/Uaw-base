@@ -12,7 +12,6 @@
 
 		<Campaign_Set> Starting_Small_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario1novus.tga </Scenario_Setup_Texture_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL_DESCRIPTION </Description_Text>
@@ -114,109 +113,107 @@
 
 		<Campaign_Set> Starting_Small_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario1alien.tga </Scenario_Setup_Texture_Name>
 
-      <Text_ID> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL </Text_ID>
-      <Description_Text> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL_DESCRIPTION </Description_Text>
-      <Sort_Order> 0 </Sort_Order>
+		<Text_ID> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL </Text_ID>
+		<Description_Text> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL_DESCRIPTION </Description_Text>
+		<Sort_Order> 0 </Sort_Order>
 
-      <Camera_Shift_X> 0.0 </Camera_Shift_X>
-      <Camera_Shift_Y> 0.0 </Camera_Shift_Y>
-      <Camera_Distance> 500.0  </Camera_Distance>
+		<Camera_Shift_X> 0.0 </Camera_Shift_X>
+		<Camera_Shift_Y> 0.0 </Camera_Shift_Y>
+		<Camera_Distance> 500.0  </Camera_Distance>
 
-      <Locations> Global_Core_Art_Model </Locations>
-      <Locations> Global_Core_Art_Model_Stars </Locations>
+		<Locations> Global_Core_Art_Model </Locations>
+		<Locations> Global_Core_Art_Model_Stars </Locations>
 
-      <Trade_Routes>
-         Region26_Region27,
-         Region26_Region24,
-         Region26_Region11,
-         Region27_Region24,
-         Region27_Region23,
-         Region27_Region34,
-         Region27_Region11,
-         Region24_Region23,
-         Region24_Region22,
-         Region23_Region22,
-         Region23_Region34,
-         Region22_Region01,
-         Region34_Region35,
-         Region35_Region33,
-         Region33_Region31,
-         Region33_Region30,
-         Region31_Region29,
-         Region31_Region30,
-         Region30_Region29,
-         Region29_Region18,
-         Region01_Region03,
-         Region01_Region18,
-         Region03_Region04,
-         Region04_Region07,
-         Region18_Region16,
-         Region18_Region20,
-         Region16_Region15,
-         Region16_Region17,
-         Region16_Region20,
-         Region15_Region07,
-         Region15_Region17,
-         Region17_Region20,
-         Region17_Region21,
-         Region20_Region21,
-         Region07_Region09,
-         Region07_Region08,
-         Region09_Region08,
-         Region09_Region13,
-         Region08_Region13,
-         Region08_Region11,
-         Region13_Region11
-      </Trade_Routes>
+		<Trade_Routes>
+			Region26_Region27,
+			Region26_Region24,
+			Region26_Region11,
+			Region27_Region24,
+			Region27_Region23,
+			Region27_Region34,
+			Region27_Region11,
+			Region24_Region23,
+			Region24_Region22,
+			Region23_Region22,
+			Region23_Region34,
+			Region22_Region01,
+			Region34_Region35,
+			Region35_Region33,
+			Region33_Region31,
+			Region33_Region30,
+			Region31_Region29,
+			Region31_Region30,
+			Region30_Region29,
+			Region29_Region18,
+			Region01_Region03,
+			Region01_Region18,
+			Region03_Region04,
+			Region04_Region07,
+			Region18_Region16,
+			Region18_Region20,
+			Region16_Region15,
+			Region16_Region17,
+			Region16_Region20,
+			Region15_Region07,
+			Region15_Region17,
+			Region17_Region20,
+			Region17_Region21,
+			Region20_Region21,
+			Region07_Region09,
+			Region07_Region08,
+			Region09_Region08,
+			Region09_Region13,
+			Region08_Region13,
+			Region08_Region11,
+			Region13_Region11
+		</Trade_Routes>
 
-      <Starting_Active_Player> Alien </Starting_Active_Player>
+		<Starting_Active_Player> Alien </Starting_Active_Player>
 
-      <Starting_Credits> Novus,4000 </Starting_Credits>
-      <Starting_Credits> Alien,4000 </Starting_Credits>
-      <Starting_Credits> Masari,250 </Starting_Credits>
+		<Starting_Credits> Novus,4000 </Starting_Credits>
+		<Starting_Credits> Alien,4000 </Starting_Credits>
+		<Starting_Credits> Masari,250 </Starting_Credits>
 
-      <AI_Player_Control> Novus, DefaultAIPlayer</AI_Player_Control>
-      <AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Novus, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
 
-      <!-- Novus Forces / Structures -->
+		<!-- Novus Forces / Structures -->
 
-      <Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Megacorp_Center_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Hero_Vertigo </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Hero_Mech </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Megacorp_Center_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Hero_Vertigo </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Hero_Mech </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
 
-      <!-- Alien Forces / Structures -->
+		<!-- Alien Forces / Structures -->
 
-      <Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Nufai </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Orlok </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Nufai </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Orlok </Starting_Forces>
 
-      <!-- Massari Forces / Structures -->
+		<!-- Massari Forces / Structures -->
 
-      <Starting_Forces> Masari, Region9, Masari_Atlatea </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Hero_Alatea </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Hero_Zessus </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Hero_Charos </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Atlatea </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Hero_Alatea </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Hero_Zessus </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Hero_Charos </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
 
-   </Campaign>
+	</Campaign>
 
 
-   <Campaign Name="Starting_Small_Global_Campaign_Masari">
+	<Campaign Name="Starting_Small_Global_Campaign_Masari">
 
-      <Campaign_Set> Starting_Small_Global_Campaign </Campaign_Set>
-      <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario1masari.tga </Scenario_Setup_Texture_Name>
+		<Campaign_Set> Starting_Small_Global_Campaign </Campaign_Set>
+		<Script_Name> </Script_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_STARTING_SMALL_DESCRIPTION </Description_Text>
@@ -323,137 +320,134 @@
 
         <Campaign_Set> Even_Split_Global_Campaign </Campaign_Set>
         <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario4novus.tga </Scenario_Setup_Texture_Name>
+        
+        <Text_ID> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT </Text_ID>
+        <Description_Text> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT_DESCRIPTION </Description_Text>
 
-      <Text_ID> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT </Text_ID>
-      <Description_Text> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT_DESCRIPTION </Description_Text>
-
-      <Camera_Shift_X> 0.0 </Camera_Shift_X>
-      <Camera_Shift_Y> 0.0 </Camera_Shift_Y>
-      <Camera_Distance> 500.0  </Camera_Distance>
-
-      <Locations> Global_Core_Art_Model </Locations>
-      <Locations> Global_Core_Art_Model_Stars </Locations>
-
-      <Trade_Routes>
-         Region26_Region27,
-         Region26_Region24,
-         Region26_Region11,
-         Region27_Region24,
-         Region27_Region23,
-         Region27_Region34,
-         Region27_Region11,
-         Region24_Region23,
-         Region24_Region22,
-         Region23_Region22,
-         Region23_Region34,
-         Region22_Region01,
-         Region34_Region35,
-         Region35_Region33,
-         Region33_Region31,
-         Region33_Region30,
-         Region31_Region29,
-         Region31_Region30,
-         Region30_Region29,
-         Region29_Region18,
-         Region01_Region03,
-         Region01_Region18,
-         Region03_Region04,
-         Region04_Region07,
-         Region18_Region16,
-         Region18_Region20,
-         Region16_Region15,
-         Region16_Region17,
-         Region16_Region20,
-         Region15_Region07,
-         Region15_Region17,
-         Region17_Region20,
-         Region17_Region21,
-         Region20_Region21,
-         Region07_Region09,
-         Region07_Region08,
-         Region09_Region08,
-         Region09_Region13,
-         Region08_Region13,
-         Region08_Region11,
-         Region13_Region11
-      </Trade_Routes>
+        <Camera_Shift_X> 0.0 </Camera_Shift_X>
+        <Camera_Shift_Y> 0.0 </Camera_Shift_Y>
+        <Camera_Distance> 500.0  </Camera_Distance>
+        
+        <Locations> Global_Core_Art_Model </Locations>
+        <Locations> Global_Core_Art_Model_Stars </Locations>
+        
+		<Trade_Routes>
+			Region26_Region27,
+			Region26_Region24,
+			Region26_Region11,
+			Region27_Region24,
+			Region27_Region23,
+			Region27_Region34,
+			Region27_Region11,
+			Region24_Region23,
+			Region24_Region22,
+			Region23_Region22,
+			Region23_Region34,
+			Region22_Region01,
+			Region34_Region35,
+			Region35_Region33,
+			Region33_Region31,
+			Region33_Region30,
+			Region31_Region29,
+			Region31_Region30,
+			Region30_Region29,
+			Region29_Region18,
+			Region01_Region03,
+			Region01_Region18,
+			Region03_Region04,
+			Region04_Region07,
+			Region18_Region16,
+			Region18_Region20,
+			Region16_Region15,
+			Region16_Region17,
+			Region16_Region20,
+			Region15_Region07,
+			Region15_Region17,
+			Region17_Region20,
+			Region17_Region21,
+			Region20_Region21,
+			Region07_Region09,
+			Region07_Region08,
+			Region09_Region08,
+			Region09_Region13,
+			Region08_Region13,
+			Region08_Region11,
+			Region13_Region11
+		</Trade_Routes>
 
       <Starting_Active_Player> Novus </Starting_Active_Player>
 
-      <Starting_Credits> Novus,4000 </Starting_Credits>
-      <Starting_Credits> Alien,4000 </Starting_Credits>
-      <Starting_Credits> Masari,250 </Starting_Credits>
+		<Starting_Credits> Novus,4000 </Starting_Credits>
+		<Starting_Credits> Alien,4000 </Starting_Credits>
+		<Starting_Credits> Masari,250 </Starting_Credits>
 
-      <AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
-      <AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
 
-      <!-- Novus Forces / Structures -->
+		<!-- Novus Forces / Structures -->	
 
-      <Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
+		
+		<Starting_Forces> Novus, Region21, Novus_Material_Center </Starting_Forces>
 
-      <Starting_Forces> Novus, Region21, Novus_Material_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Nanocenter </Starting_Forces>		
+		<Starting_Forces> Novus, Region18, Novus_Hero_Vertigo </Starting_Forces>	
 
-      <Starting_Forces> Novus, Region18, Novus_Nanocenter </Starting_Forces>
-      <Starting_Forces> Novus, Region18, Novus_Hero_Vertigo </Starting_Forces>
-
-      <Starting_Forces> Novus, Region17, Novus_Research_Center </Starting_Forces>
-      <Starting_Forces> Novus, Region17, Novus_Hero_Mech </Starting_Forces>
-
-
-
-      <!-- Alien Forces / Structures -->
-
-      <Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-
-      <Starting_Forces> Alien, Region26, Alien_Theory_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Hero_Nufai </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
-
-      <Starting_Forces> Alien, Region23, Alien_Abduction_Core </Starting_Forces>
-
-      <Starting_Forces> Alien, Region27, Alien_Creation_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Hero_Orlok </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Research_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Hero_Mech </Starting_Forces>
 
 
 
-      <!-- Massari Forces / Structures -->
+		<!-- Alien Forces / Structures -->
 
-      <Starting_Forces> Masari, Region7, Masari_Will_Processor </Starting_Forces>
-      <Starting_Forces> Masari, Region7, Masari_Hero_Zessus </Starting_Forces>
-      <Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		
+		<Starting_Forces> Alien, Region26, Alien_Theory_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Hero_Nufai </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Masari, Region8, Masari_Element_Magnet </Starting_Forces>
+		<Starting_Forces> Alien, Region23, Alien_Abduction_Core </Starting_Forces>
 
-      <Starting_Forces> Masari, Region9, Masari_Atlatea </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Hero_Alatea </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
-
-      <Starting_Forces> Masari, Region13, Masari_Key_Inspiration </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Hero_Charos </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-
-   </Campaign>
+		<Starting_Forces> Alien, Region27, Alien_Creation_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Hero_Orlok </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
 
 
+
+		<!-- Massari Forces / Structures -->			
+
+		<Starting_Forces> Masari, Region7, Masari_Will_Processor </Starting_Forces>
+		<Starting_Forces> Masari, Region7, Masari_Hero_Zessus </Starting_Forces>
+		<Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region7, Masari_Seeker </Starting_Forces>
+
+		<Starting_Forces> Masari, Region8, Masari_Element_Magnet </Starting_Forces>
+
+		<Starting_Forces> Masari, Region9, Masari_Atlatea </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Hero_Alatea </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region9, Masari_Seeker </Starting_Forces>
+
+		<Starting_Forces> Masari, Region13, Masari_Key_Inspiration </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Hero_Charos </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+
+	</Campaign>
 
 
 
@@ -462,11 +456,12 @@
 
 
 
-   <Campaign Name="Even_Split_Global_Campaign_Hierarchy">
 
-      <Campaign_Set> Even_Split_Global_Campaign </Campaign_Set>
-      <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario4alien.tga </Scenario_Setup_Texture_Name>
+
+	<Campaign Name="Even_Split_Global_Campaign_Hierarchy">
+
+		<Campaign_Set> Even_Split_Global_Campaign </Campaign_Set>
+		<Script_Name> </Script_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT_DESCRIPTION </Description_Text>
@@ -602,117 +597,116 @@
 
 		<Campaign_Set> Even_Split_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario4masari.tga </Scenario_Setup_Texture_Name>
 
-      <Text_ID> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT </Text_ID>
-      <Description_Text> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT_DESCRIPTION </Description_Text>
+		<Text_ID> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT </Text_ID>
+		<Description_Text> TEXT_CAMPAIGN_GLOBAL_EVEN_SLIT_DESCRIPTION </Description_Text>
 
-      <Camera_Shift_X> 0.0 </Camera_Shift_X>
-      <Camera_Shift_Y> 0.0 </Camera_Shift_Y>
-      <Camera_Distance> 500.0  </Camera_Distance>
+		<Camera_Shift_X> 0.0 </Camera_Shift_X>
+		<Camera_Shift_Y> 0.0 </Camera_Shift_Y>
+		<Camera_Distance> 500.0  </Camera_Distance>
 
-      <Locations> Global_Core_Art_Model </Locations>
-      <Locations> Global_Core_Art_Model_Stars </Locations>
+		<Locations> Global_Core_Art_Model </Locations>
+		<Locations> Global_Core_Art_Model_Stars </Locations>
 
-      <Trade_Routes>
-         Region26_Region27,
-         Region26_Region24,
-         Region26_Region11,
-         Region27_Region24,
-         Region27_Region23,
-         Region27_Region34,
-         Region27_Region11,
-         Region24_Region23,
-         Region24_Region22,
-         Region23_Region22,
-         Region23_Region34,
-         Region22_Region01,
-         Region34_Region35,
-         Region35_Region33,
-         Region33_Region31,
-         Region33_Region30,
-         Region31_Region29,
-         Region31_Region30,
-         Region30_Region29,
-         Region29_Region18,
-         Region01_Region03,
-         Region01_Region18,
-         Region03_Region04,
-         Region04_Region07,
-         Region18_Region16,
-         Region18_Region20,
-         Region16_Region15,
-         Region16_Region17,
-         Region16_Region20,
-         Region15_Region07,
-         Region15_Region17,
-         Region17_Region20,
-         Region17_Region21,
-         Region20_Region21,
-         Region07_Region09,
-         Region07_Region08,
-         Region09_Region08,
-         Region09_Region13,
-         Region08_Region13,
-         Region08_Region11,
-         Region13_Region11
-      </Trade_Routes>
+		<Trade_Routes>
+			Region26_Region27,
+			Region26_Region24,
+			Region26_Region11,
+			Region27_Region24,
+			Region27_Region23,
+			Region27_Region34,
+			Region27_Region11,
+			Region24_Region23,
+			Region24_Region22,
+			Region23_Region22,
+			Region23_Region34,
+			Region22_Region01,
+			Region34_Region35,
+			Region35_Region33,
+			Region33_Region31,
+			Region33_Region30,
+			Region31_Region29,
+			Region31_Region30,
+			Region30_Region29,
+			Region29_Region18,
+			Region01_Region03,
+			Region01_Region18,
+			Region03_Region04,
+			Region04_Region07,
+			Region18_Region16,
+			Region18_Region20,
+			Region16_Region15,
+			Region16_Region17,
+			Region16_Region20,
+			Region15_Region07,
+			Region15_Region17,
+			Region17_Region20,
+			Region17_Region21,
+			Region20_Region21,
+			Region07_Region09,
+			Region07_Region08,
+			Region09_Region08,
+			Region09_Region13,
+			Region08_Region13,
+			Region08_Region11,
+			Region13_Region11
+		</Trade_Routes>
 
-      <Starting_Active_Player> Masari </Starting_Active_Player>
+		<Starting_Active_Player> Masari </Starting_Active_Player>
 
-      <Starting_Credits> Novus,4000 </Starting_Credits>
-      <Starting_Credits> Alien,4000 </Starting_Credits>
-      <Starting_Credits> Masari,250 </Starting_Credits>
+		<Starting_Credits> Novus,4000 </Starting_Credits>
+		<Starting_Credits> Alien,4000 </Starting_Credits>
+		<Starting_Credits> Masari,250 </Starting_Credits>
 
-      <AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
-      <AI_Player_Control> Novus, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Novus, DefaultAIPlayer</AI_Player_Control>
 
-      <!-- Novus Forces / Structures -->
+		<!-- Novus Forces / Structures -->
 
-      <Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Megacorp_Center_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Central_Processor </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Megacorp_Center_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Hero_Founder </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region20, Novus_Dervish_Jet </Starting_Forces>
 
-      <Starting_Forces> Novus, Region21, Novus_Material_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region21, Novus_Material_Center </Starting_Forces>
 
-      <Starting_Forces> Novus, Region18, Novus_Nanocenter </Starting_Forces>
-      <Starting_Forces> Novus, Region18, Novus_Hero_Vertigo </Starting_Forces>
-      <Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Nanocenter </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Hero_Vertigo </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region18, Novus_Dervish_Jet </Starting_Forces>
 
-      <Starting_Forces> Novus, Region17, Novus_Research_Center </Starting_Forces>
-      <Starting_Forces> Novus, Region17, Novus_Hero_Mech </Starting_Forces>
-      <Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
-      <Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Research_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Hero_Mech </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
+		<Starting_Forces> Novus, Region17, Novus_Dervish_Jet </Starting_Forces>
 
 
       <!-- Alien Forces / Structures -->
 
-      <Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region26, Alien_Theory_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Hero_Nufai </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Theory_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Hero_Nufai </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region26, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region23, Alien_Abduction_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region23, Alien_Abduction_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region27, Alien_Creation_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Hero_Orlok </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Creation_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Hero_Orlok </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region27, Alien_Foo_Core </Starting_Forces>
 
       <!-- Massari Forces / Structures -->
 
@@ -738,12 +732,11 @@
    <!-- *****     AMERICA SURROUNDED		      ***** -->
    <!-- ********************************************* -->
 
+	
+	<Campaign Name="America_Surrounded_Global_Campaign_Novus">
 
-   <Campaign Name="America_Surrounded_Global_Campaign_Novus">
-
-      <Campaign_Set> America_Surrounded_Global_Campaign </Campaign_Set>
-      <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario2novus.tga </Scenario_Setup_Texture_Name>
+		<Campaign_Set> America_Surrounded_Global_Campaign </Campaign_Set>
+		<Script_Name> </Script_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED_DESCRIPTION </Description_Text>
@@ -903,8 +896,7 @@
 	<Campaign Name="America_Surrounded_Global_Campaign_Hierarchy">
 
 		<Campaign_Set> America_Surrounded_Global_Campaign </Campaign_Set>
-      <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario2alien.tga </Scenario_Setup_Texture_Name>
+		<Script_Name> </Script_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED_DESCRIPTION </Description_Text>
@@ -1064,7 +1056,6 @@
 
 		<Campaign_Set> America_Surrounded_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario2masari.tga </Scenario_Setup_Texture_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_AMERICA_SURROUNDED_DESCRIPTION </Description_Text>
@@ -1241,146 +1232,144 @@
 
 		<Campaign_Set> Outskirts_Of_Oblivion_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario5novus.tga </Scenario_Setup_Texture_Name>
 
-      <Text_ID> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION </Text_ID>
-      <Description_Text> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION_DESCRIPTION </Description_Text>
+		<Text_ID> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION </Text_ID>
+		<Description_Text> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION_DESCRIPTION </Description_Text>
 
-      <Camera_Shift_X> 0.0 </Camera_Shift_X>
-      <Camera_Shift_Y> 0.0 </Camera_Shift_Y>
-      <Camera_Distance> 500.0  </Camera_Distance>
+		<Camera_Shift_X> 0.0 </Camera_Shift_X>
+		<Camera_Shift_Y> 0.0 </Camera_Shift_Y>
+		<Camera_Distance> 500.0  </Camera_Distance>
 
-      <Locations> Global_Core_Art_Model </Locations>
-      <Locations> Global_Core_Art_Model_Stars </Locations>
+		<Locations> Global_Core_Art_Model </Locations>
+		<Locations> Global_Core_Art_Model_Stars </Locations>
 
-      <Trade_Routes>
-         Region26_Region27,
-         Region26_Region24,
-         Region26_Region11,
-         Region27_Region24,
-         Region27_Region23,
-         Region27_Region34,
-         Region27_Region11,
-         Region24_Region23,
-         Region24_Region22,
-         Region23_Region22,
-         Region23_Region34,
-         Region22_Region01,
-         Region34_Region35,
-         Region35_Region33,
-         Region33_Region31,
-         Region33_Region30,
-         Region31_Region29,
-         Region31_Region30,
-         Region30_Region29,
-         Region29_Region18,
-         Region01_Region03,
-         Region01_Region18,
-         Region03_Region04,
-         Region04_Region07,
-         Region18_Region16,
-         Region18_Region20,
-         Region16_Region15,
-         Region16_Region17,
-         Region16_Region20,
-         Region15_Region07,
-         Region15_Region17,
-         Region17_Region20,
-         Region17_Region21,
-         Region20_Region21,
-         Region07_Region09,
-         Region07_Region08,
-         Region09_Region08,
-         Region09_Region13,
-         Region08_Region13,
-         Region08_Region11,
-         Region13_Region11
-      </Trade_Routes>
+		<Trade_Routes>
+			Region26_Region27,
+			Region26_Region24,
+			Region26_Region11,
+			Region27_Region24,
+			Region27_Region23,
+			Region27_Region34,
+			Region27_Region11,
+			Region24_Region23,
+			Region24_Region22,
+			Region23_Region22,
+			Region23_Region34,
+			Region22_Region01,
+			Region34_Region35,
+			Region35_Region33,
+			Region33_Region31,
+			Region33_Region30,
+			Region31_Region29,
+			Region31_Region30,
+			Region30_Region29,
+			Region29_Region18,
+			Region01_Region03,
+			Region01_Region18,
+			Region03_Region04,
+			Region04_Region07,
+			Region18_Region16,
+			Region18_Region20,
+			Region16_Region15,
+			Region16_Region17,
+			Region16_Region20,
+			Region15_Region07,
+			Region15_Region17,
+			Region17_Region20,
+			Region17_Region21,
+			Region20_Region21,
+			Region07_Region09,
+			Region07_Region08,
+			Region09_Region08,
+			Region09_Region13,
+			Region08_Region13,
+			Region08_Region11,
+			Region13_Region11
+		</Trade_Routes>
 
-      <Starting_Active_Player> Novus </Starting_Active_Player>
+		<Starting_Active_Player> Novus </Starting_Active_Player>
 
-      <Starting_Credits> Novus,4000 </Starting_Credits>
-      <Starting_Credits> Alien,4000 </Starting_Credits>
-      <Starting_Credits> Masari,250 </Starting_Credits>
+		<Starting_Credits> Novus,4000 </Starting_Credits>
+		<Starting_Credits> Alien,4000 </Starting_Credits>
+		<Starting_Credits> Masari,250 </Starting_Credits>
 
-      <AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
-      <AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Alien, DefaultAIPlayer</AI_Player_Control>
+		<AI_Player_Control> Masari, DefaultAIPlayer</AI_Player_Control>
 
-      <!-- Novus Forces / Structures -->
+		<!-- Novus Forces / Structures -->
 
-      <Starting_Forces> Novus, Region30, Novus_Central_Processor </Starting_Forces>
-      <Starting_Forces> Novus, Region30, Novus_Hero_Founder </Starting_Forces>
+		<Starting_Forces> Novus, Region30, Novus_Central_Processor </Starting_Forces>
+		<Starting_Forces> Novus, Region30, Novus_Hero_Founder </Starting_Forces>
 
-      <Starting_Forces> Novus, Region34, Novus_Material_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region34, Novus_Material_Center </Starting_Forces>
 
-      <Starting_Forces> Novus, Region21, Novus_Nanocenter </Starting_Forces>
-      <Starting_Forces> Novus, Region21, Novus_Hero_Vertigo </Starting_Forces>
+		<Starting_Forces> Novus, Region21, Novus_Nanocenter </Starting_Forces>
+		<Starting_Forces> Novus, Region21, Novus_Hero_Vertigo </Starting_Forces>
 
-      <Starting_Forces> Novus, Region11, Novus_Research_Center </Starting_Forces>
-      <Starting_Forces> Novus, Region11, Novus_Hero_Mech </Starting_Forces>
+		<Starting_Forces> Novus, Region11, Novus_Research_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region11, Novus_Hero_Mech </Starting_Forces>
 
-      <Starting_Forces> Novus, Region1, Novus_Material_Center </Starting_Forces>
+		<Starting_Forces> Novus, Region1, Novus_Material_Center </Starting_Forces>
+		
 
+		<!-- Alien Forces / Structures -->
 
-      <!-- Alien Forces / Structures -->
+		<Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region24, Alien_Hierarchy_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foundation_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Hero_Kamal_Rex </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region24, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region31, Alien_Theory_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region31, Alien_Hero_Nufai </Starting_Forces>
+		<Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region31, Alien_Theory_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region31, Alien_Hero_Nufai </Starting_Forces>
-      <Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region31, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region20, Alien_Abduction_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region20, Alien_Abduction_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region4, Alien_Creation_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region4, Alien_Hero_Orlok </Starting_Forces>
+		<Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
+		<Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
 
-      <Starting_Forces> Alien, Region4, Alien_Creation_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region4, Alien_Hero_Orlok </Starting_Forces>
-      <Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
-      <Starting_Forces> Alien, Region4, Alien_Foo_Core </Starting_Forces>
-
-      <Starting_Forces> Alien, Region8, Alien_Abduction_Core </Starting_Forces>
-
-
-      <!-- Massari Forces / Structures -->
-
-      <Starting_Forces> Masari, Region22, Masari_Element_Magnet </Starting_Forces>
-
-      <Starting_Forces> Masari, Region33, Masari_Will_Processor </Starting_Forces>
-      <Starting_Forces> Masari, Region33, Masari_Hero_Zessus </Starting_Forces>
-      <Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
-
-      <Starting_Forces> Masari, Region17, Masari_Element_Magnet </Starting_Forces>
-
-      <Starting_Forces> Masari, Region13, Masari_Atlatea </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Hero_Alatea </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
-
-      <Starting_Forces> Masari, Region3, Masari_Key_Inspiration </Starting_Forces>
-      <Starting_Forces> Masari, Region3, Masari_Hero_Charos </Starting_Forces>
-      <Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
-      <Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
-
-   </Campaign>
+		<Starting_Forces> Alien, Region8, Alien_Abduction_Core </Starting_Forces>
 
 
-   <Campaign Name="Outskirts_Of_Oblivion_Global_Campaign_Hierarchy">
+		<!-- Massari Forces / Structures -->
 
-      <Campaign_Set> Outskirts_Of_Oblivion_Global_Campaign </Campaign_Set>
-      <Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario5alien.tga </Scenario_Setup_Texture_Name>
+		<Starting_Forces> Masari, Region22, Masari_Element_Magnet </Starting_Forces>
+
+		<Starting_Forces> Masari, Region33, Masari_Will_Processor </Starting_Forces>
+		<Starting_Forces> Masari, Region33, Masari_Hero_Zessus </Starting_Forces>
+		<Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region33, Masari_Seeker </Starting_Forces>
+
+		<Starting_Forces> Masari, Region17, Masari_Element_Magnet </Starting_Forces>
+
+		<Starting_Forces> Masari, Region13, Masari_Atlatea </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Atlatea_Basic_Defense_Upgrade </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Hero_Alatea </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region13, Masari_Seeker </Starting_Forces>
+
+		<Starting_Forces> Masari, Region3, Masari_Key_Inspiration </Starting_Forces>
+		<Starting_Forces> Masari, Region3, Masari_Hero_Charos </Starting_Forces>
+		<Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
+		<Starting_Forces> Masari, Region3, Masari_Seeker </Starting_Forces>
+
+	</Campaign>
+
+
+	<Campaign Name="Outskirts_Of_Oblivion_Global_Campaign_Hierarchy">
+
+		<Campaign_Set> Outskirts_Of_Oblivion_Global_Campaign </Campaign_Set>
+		<Script_Name> </Script_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION_DESCRIPTION </Description_Text>
@@ -1520,7 +1509,6 @@
 
 		<Campaign_Set> Outskirts_Of_Oblivion_Global_Campaign </Campaign_Set>
 		<Script_Name> </Script_Name>
-      <Scenario_Setup_Texture_Name> Scenario5masari.tga </Scenario_Setup_Texture_Name>
 
 		<Text_ID> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION </Text_ID>
 		<Description_Text> TEXT_CAMPAIGN_GLOBAL_OUTSKIRTS_OF_OBLIVION_DESCRIPTION </Description_Text>

@@ -384,7 +384,5 @@
 
 	<InverterShieldUp> All </InverterShieldUp>
 	<InverterShieldDown> All </InverterShieldDown>
-
-	<GenericNoExtendDuration> All </GenericNoExtendDuration>
 	
 </EffectClassStackingRules>

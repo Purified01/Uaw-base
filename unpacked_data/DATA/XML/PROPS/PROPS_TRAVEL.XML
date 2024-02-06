@@ -108,9 +108,9 @@
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 		<Prevents_Structure_Placement>No</Prevents_Structure_Placement>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> Low Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Low Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent> 1.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 1.0 </Custom_Hard_YExtent>
 
@@ -322,8 +322,8 @@
 		<Is_Decoration>No</Is_Decoration>
 		<LandBehavior>COMBINABLE</LandBehavior>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
-		<!--<UnitCollisionClass> Low Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Low Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 
 	</X50_Props_Travel_Generic>
 
@@ -339,9 +339,9 @@
 		<CategoryMask> Stationary, Insignificant </CategoryMask>
 		<Is_Attackable>False</Is_Attackable>
 
-		<!-- MOVEMENT 
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
@@ -437,8 +437,8 @@
 		<Is_Decoration>No</Is_Decoration>
 		<LandBehavior>COMBINABLE</LandBehavior>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
-		<!--<UnitCollisionClass> Low Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Low Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 		<Custom_Hard_XExtent> .6 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> .6 </Custom_Hard_YExtent>
 	</X50_Props_Travel_Generic>
@@ -468,9 +468,9 @@
 		<CategoryMask> Medium, Insignificant, Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
-		<!-- MOVEMENT 
+		<!-- MOVEMENT -->
 		<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 		
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>10.0</Ranged_Target_Z_Adjust>

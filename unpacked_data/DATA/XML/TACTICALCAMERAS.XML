@@ -118,14 +118,13 @@
 		
 		<!-- Land mode uses a spline for the distance and pitch --> 
 		<Use_Splines> yes </Use_Splines> 
-
-		<!-- TESTING: Horizotnal camera angles really screw up autograb with controller (Discussed with Greg and no immediate solution). Trying 45 fixed for time being. -->
-		<Pitch_Spline>   0.0,45.0, 0.33,45.0, 0.66,45.0, 1.0,45.0 </Pitch_Spline>
-    <Distance_Spline> 0.0, 300.0, 0.5, 525.0, 1.0, 700.0 </Distance_Spline>
-
-    <!-- Mouse and keyboard values for time being and recording cinematics -->
-		<!-- <Pitch_Spline>   0.0,20.0, 0.33,35.0, 0.66,40.0, 1.0,45.0 </Pitch_Spline> -->
-		<!-- <Distance_Spline> 0.0,300.0, 0.5,425.0, 1.0,550.0 </Distance_Spline> -->
+		<!-- TESTING
+			<Pitch_Spline>    0.0,20.0,  0.33,28.0,  0.66,37.0,  1.0,45.0  </Pitch_Spline> 
+			<Distance_Spline>  0.0,300.0,   0.5,500.0,   1.0,700.0  </Distance_Spline> 
+		-->
+		<!-- Mouse and keyboard values for time being and recording cinematics -->
+		<Pitch_Spline>   0.0,20.0, 0.33,35.0, 0.66,40.0, 1.0,45.0 </Pitch_Spline>
+		<Distance_Spline> 0.0,300.0, 0.5,425.0, 1.0,550.0 </Distance_Spline>
 		<Spline_Steps> 15 </Spline_Steps> 
 		
 		<Tactical_Overview_Distance> 700.0 </Tactical_Overview_Distance> 
@@ -143,12 +142,12 @@
 		<Location_Height_Up_Smooth_Time>  0.07  </Location_Height_Up_Smooth_Time> 
 		<Location_Height_Down_Smooth_Time>  0.07  </Location_Height_Down_Smooth_Time> 
 		<Min_Height_Above_Terrain> 20.0 </Min_Height_Above_Terrain> 
-
-		<Near_Clip> 10.0 </Near_Clip>
-		<Far_Clip> 8000.0 </Far_Clip>	
-
-		<Object_Fade_Begin> 1700.0f </Object_Fade_Begin>
-		<Object_Fade_End> 1900.0f </Object_Fade_End>
+		
+		<Near_Clip> 10.0 </Near_Clip> 
+		<Far_Clip> 8000.0 </Far_Clip> 	
+		
+		<Object_Fade_Begin> 770.0f </Object_Fade_Begin> 
+		<Object_Fade_End> 1000.0f </Object_Fade_End> 
 		
 		<Side_Bounds_Buffer> 0.0f </Side_Bounds_Buffer> 
 		<Top_Bounds_Buffer> 0.0f </Top_Bounds_Buffer> 
@@ -222,17 +221,7 @@
         
 	</TacticalCamera>  <!-- "Land_Cinematic" -->
 
-   <!-- SKY 1/8/08 - new battlecam settings -->
-   <TacticalCamera Name="Land_BattleCam">
 
-      <!-- The battlecam camera only uses the clip plane and object rejection distances -->
-      <Near_Clip>2.0</Near_Clip>
-      <Far_Clip>8000.0</Far_Clip>
-
-      <Object_Fade_Begin>2250.0f</Object_Fade_Begin>
-      <Object_Fade_End>3000.0f</Object_Fade_End>
-
-   </TacticalCamera>  <!-- "Land_BattleCam" -->
 
 	<TacticalCamera Name="Unlocked">
 

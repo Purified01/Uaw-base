@@ -120,9 +120,6 @@
          <Create_Object_Type> Masari_Altea_Unmake_Target_Area </Create_Object_Type>
          <Position_Type> AtTarget </Position_Type>
          <Use_Source_Player_ID> true </Use_Source_Player_ID>
-         <!-- Thanh - 02/122/2008 Oksana's fix for unmake effect 
-              lasts infinitely bug -->
-         <Destroy_On_Remove>Yes</Destroy_On_Remove>
       </Effect_Component>
 
     <Effect_Component Type="Sound">
@@ -131,20 +128,18 @@
 
    </Effect>
 
-   <Effect Name="Masari_Alatea_Begin_Unmake_Effect">
+
+   <Effect Name="Masari_Alatea_Unmake_Self_Visual_Effect">
       <Duration> -1.0 </Duration>
       <Effect_Class> Transparent </Effect_Class>
-     
-      <Effect_Component Type="CreateObject">
-         <Create_Object_Type> Masari_Hero_Alatea_Unmake_Effect_Object </Create_Object_Type>
-         <Position_Type> AtTarget </Position_Type>
-         <Use_Source_Player_ID> true </Use_Source_Player_ID>
-         <Destroy_On_Remove>Yes</Destroy_On_Remove>
+      <Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Masari_Altea_Unmake_Target_Self </Particle_System_Type>
+         <Attachment_Bone_Name>B_Thumb_R00</Attachment_Bone_Name>
       </Effect_Component>
 
    </Effect>
-
-   
 
    <!--=================================================================================================
 	== [11/28/2006] Special Ability: Heal (Passive). All friendly units, structures, &amp; vehicles 
@@ -211,27 +206,10 @@
       <Effect_Component Type="BlockEffect">
          <Block_Effect_Class> Phased </Block_Effect_Class>
       </Effect_Component>
+
    </Effect>
 
-
-   <Effect Name="MasariAlateaBeneficialFieldEnemyEffect">
-      <Effect_Class> AlateaBeneficialField </Effect_Class>
-      <Duration> 2.1 </Duration>
-      <Extends_Existing_Duration> true </Extends_Existing_Duration>
-
-      <Effect_Component Type="RemoveEffect">
-         <Remove_Effect_Class> Phased </Remove_Effect_Class>
-      </Effect_Component>
-
-      <Effect_Component Type="BlockEffect">
-         <Block_Effect_Class> Phased </Block_Effect_Class>
-      </Effect_Component>
-   </Effect>
-
-   
-
-
-   <!--=================================================================================================
+	<!--=================================================================================================
 	== KDB 07-28-2007 Had to move this out as Alateas main ability was effect class healing which 
 	==	which when stacked with other healers could block her effect
 	================================================================================================== -->
@@ -322,7 +300,6 @@
       <Effect_Component Type="BlockEffect">
          <Block_Effect_Class> Phased </Block_Effect_Class>
       </Effect_Component>
-    
       
 		<Effect_Component Type="Sound">
 			<Apply_Effect> SFX_Masari_Ability_Peace </Apply_Effect>
@@ -937,14 +914,20 @@
       <Effect_Component Type="Teleport">
          <Space_Objects> true </Space_Objects>
       </Effect_Component>
+
+		<!-- Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Effect_Test_Lightning </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+			<Source_Z_Offset>200</Source_Z_Offset>
+		</Effect_Component -->
       
       <Effect_Component Type="ParticleSystem">
          <Particle_System_Type>  Masari_Zessus_Teleport_In </Particle_System_Type>
       </Effect_Component>
 
-		<Effect_Component Type="Sound">
-			<Apply_Effect> SFX_Masari_Ability_Teleport_End </Apply_Effect>
-		</Effect_Component>
+    <Effect_Component Type="Sound">
+      <Apply_Effect> SFX_Masari_Ability_Teleport_End </Apply_Effect>
+    </Effect_Component>
 
    </Effect>
 

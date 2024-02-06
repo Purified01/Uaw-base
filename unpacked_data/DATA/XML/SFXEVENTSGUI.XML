@@ -419,7 +419,7 @@
 
 
 
-<!--
+
 	<SFXEvent Name="GUI_BUILD_INFANTRY">
 		<Use_Preset>Preset_GUI</Use_Preset>
 		<Samples>GUI_BUILD_INFANTRY_1.wav</Samples>     
@@ -429,8 +429,8 @@
 		<Use_Preset>Preset_GUI</Use_Preset>
 		<Samples>GUI_BUILD_HERO_1.wav</Samples>     
 	</SFXEvent> 
-  -->
-<!-- <SFXEvent Name="GUI_BUILD_VEHICLE">   
+
+	<SFXEvent Name="GUI_BUILD_VEHICLE">
 		<Use_Preset>Preset_GUI</Use_Preset>
 		<Samples>GUI_BUILD_VEHICLE_1.wav</Samples>     
 	</SFXEvent>  
@@ -445,11 +445,11 @@
 		<Samples>GUI_BUILD_UPGRADE_1.wav</Samples>     
 	</SFXEvent>  
 
--->
 
 
 
-<!--  
+
+
 	<SFXEvent Name="GUI_BUILD_INFANTRY_CANCELED">
 		<Use_Preset>Preset_GUI</Use_Preset>
 		<Samples>GUI_BUILD_CANCELED_1.wav</Samples>     
@@ -503,7 +503,7 @@
 		<Samples>GUI_BUILD_RESEARCH_COMPLETE_1.wav</Samples>     
 	</SFXEvent>  
 
--->
+
 
 
 	<SFXEvent Name="GUI_Text_Scroll">
@@ -525,14 +525,14 @@
 		<Samples>GUI_Credits_1.wav</Samples>     
 	</SFXEvent>
 
-<!--  
+
 
    <SFXEvent Name="GUI_BEACON_PLACED">
       <Use_Preset>Preset_GUI</Use_Preset>
       <Samples>GUI_BUILD_UPGRADE_COMPLETE_1.wav</Samples>
    </SFXEvent>
 
--->
+
    <SFXEvent Name="GUI_PATCH_ACTIVATED">
       <Use_Preset>Preset_GUI</Use_Preset>
       <Samples>GUI_Novus_Patch_1.wav</Samples>

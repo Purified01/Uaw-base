@@ -64,27 +64,15 @@
          <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
 			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
 			<Destroy_Source_Object> true </Destroy_Source_Object>
-			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
+			<Add_To_Spawn_Effect_Name> RadiationChargeRaiseDeadVisualEffect </Add_To_Spawn_Effect_Name>
 			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
 		</Effect_Component>
 
-    <Effect_Component Type="CreateObject">
-      <Create_Object_Type> Founder_Rebuild_Target_Particle_Death</Create_Object_Type>
-      <Position_Type> AtTarget </Position_Type>
-    </Effect_Component>
-
-  </Effect>
-
-  <Effect Name="FounderRebuildVisualEffect">
-
-    <Duration> 3.0 </Duration>
-    <Effect_Class> Transparent </Effect_Class>
-
-    <Effect_Component Type="ParticleSystem">
-      <Particle_System_Type> Founder_Rebuild_Target_Particle </Particle_System_Type>
-    </Effect_Component>
-
-  </Effect>
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Founder_Rebuild_Target_Particle </Particle_System_Type>
+		</Effect_Component>
+		
+	</Effect>
 	
 	
 	<Effect Name="Novus_Founder_Rebuild_Source_Effect">
@@ -382,7 +370,6 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Mind_Controlled </Attribute>
 			<Modifier_Value> 1.0 </Modifier_Value>
-			<Update_Ability_Buttons_If_Selected> true </Update_Ability_Buttons_If_Selected>
 		</Effect_Component>
       
      	<Effect_Component Type="VoiceBehavior">

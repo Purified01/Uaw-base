@@ -170,6 +170,25 @@
 	== [10/18/2006] Novus EMP Superweapon effects - ChrisB
 	================================================================================================== -->
 
+
+	
+	<!-- Visual effect applied to EMP superweapon itself -->
+	<Effect Name="Novus_EMP_Superweapon_Owner_Effect">
+		<Duration> 0.5 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+
+		<!-- Frank, use this to hook in: EMP Superweapon - No SFX for weapon effects (visual FX needed, too).
+			  All you need is change Apply_Effect value. Visuals will go here as well.-->
+		<Effect_Component Type="Sound">
+			<Apply_Effect>SFX_Novus_EMP_Superweapon_Fire_Loop</Apply_Effect>
+			<SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>
+
+	
 	<Effect Name="Novus_EMP_Superweapon_Walker_Stun_Effect">
 		<Duration> 20.0 </Duration>
 		<Effect_Class> Stun </Effect_Class>
@@ -331,11 +350,9 @@
 		<Effect_Class> StunVisual </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
-		<Effect_Component Type="CreateObject">
-         <Create_Object_Type> Novus_EMP_Shutdown_Aura </Create_Object_Type>
-         <Destroy_On_Remove> Yes </Destroy_On_Remove>
-         <Position_Type> AtTarget </Position_Type>
-      </Effect_Component>
+		<Effect_Component Type="ParticleSystem">
+		<Particle_System_Type> Novus_EMP_Shutdown_Aura </Particle_System_Type>
+		</Effect_Component>
 		
 	</Effect>
 
@@ -362,13 +379,9 @@
 		<Effect_Class> EMField </Effect_Class>
 		<Extends_Existing_Duration> false </Extends_Existing_Duration>
 
-		<Effect_Component Type="CreateObject">
+		<Effect_Component Type="ParticleSystem">
 			<Application_Probability> 1 </Application_Probability>
-         <Create_Object_Type> Novus_EMP_Detonation_Blast </Create_Object_Type>
-         <Destroy_On_Remove> Yes </Destroy_On_Remove>
-         <Position_Type> AtTarget </Position_Type>
-        
-         <!--<Do_Not_Attach_To_Parent>Yes</Do_Not_Attach_To_Parent>-->
+			<Particle_System_Type> Novus_EMP_Detonation_Blast </Particle_System_Type>
 		</Effect_Component>
 		
 	</Effect>

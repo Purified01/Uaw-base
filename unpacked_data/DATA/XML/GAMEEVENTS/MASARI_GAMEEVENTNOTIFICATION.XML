@@ -80,8 +80,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_ALLIANCE_2 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -216,8 +214,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_DEFCON_START_1 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -236,8 +232,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_DEFCON_LVL_4 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -256,8 +250,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_DEFCON_LVL_3 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -276,8 +268,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_DEFCON_LVL_2 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -296,8 +286,6 @@
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <SFX_Notification> MCO_DEFCON_LVL_1 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -331,12 +319,13 @@
    <GameEvent Name="Pop_Cap_Reached" ReceivedFrom="Masari">
       <GameEventNotification Category="All">
          <Stacks>No</Stacks>
-         <Expiration_Time>3.0</Expiration_Time>
+         <Expiration_Time>15.0</Expiration_Time>
          <Service_Delay_Time>0.0</Service_Delay_Time>
 
          <Notifications SubObjectList="Yes">
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
+               <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> MCO_POPCAP_1 </SFX_Notification>
             </Notification_Description>
          </Notifications>
@@ -396,8 +385,6 @@
                <Broadcast_To>Owner</Broadcast_To>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>MCO_HEAVY_LOSS_1</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>            
          </Notifications>
 
@@ -416,8 +403,6 @@
                <Expiration_Time>3</Expiration_Time>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>MCO_LOST_HERO</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
             <Notification_Description>
@@ -678,8 +663,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> SFX_Structure_Select_Masari_Elemental_Controller </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -698,8 +681,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> SFX_Structure_Select_Masari_Elemental_Controller </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -771,8 +752,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> GUI_Masari_Matter_Storm_Launched </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -789,8 +768,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification> GUI_Masari_Burning_Wrath_Launched</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
 
          </Notifications>
@@ -829,10 +806,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_MegaWeapon_Built</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<!--this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -871,10 +844,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_Masari_Magma_Weapon_Ready</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<!--this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
             
          </Notifications>
@@ -913,10 +882,6 @@
                <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
                <SFX_Notification>GUI_Masari_Magma_Weapon_Launched</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<!--this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>            
          </Notifications>
          
@@ -939,10 +904,6 @@
 					<Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> GUI_Megaweapon_Blocked </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<!--this notification is for the player only...megaweapons are only available 
-							in global campaigns...no multiplayer event needed-->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 
 				<Notification_Description>
@@ -1142,8 +1103,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> MCO_REINFORCEMENTS_1 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>
@@ -1164,8 +1123,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event/>
 					<SFX_Notification> GUI_Alarm </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>

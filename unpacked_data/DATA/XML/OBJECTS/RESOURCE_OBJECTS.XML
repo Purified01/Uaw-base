@@ -117,9 +117,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.90, 0.80, 0.60, 0.40, 0.20, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null</Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -154,9 +154,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.90, 0.80, 0.60, 0.40, 0.20, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null</Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -193,9 +193,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.80, 0.60, 0.40, 0.20, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -233,9 +233,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, .15, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6, 7, 8 </Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 
@@ -263,9 +263,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6, 7 </Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 	</X15_Resource_Objects>
@@ -288,15 +288,6 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 		<BehaviorType Name="GameEventSourceBehaviorType">
 			<Game_Event_Source_Category> SignificantResource </Game_Event_Source_Category>
 		</BehaviorType>
@@ -327,15 +318,6 @@
 			<Game_Event_Source_Category> SignificantResource </Game_Event_Source_Category>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 	</X15_Resource_Objects>
 
 	<X15_Resource_Objects Name="Resource_Pile_Crashed_Hierarchy_Ship">
@@ -382,15 +364,6 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 	</X15_Resource_Objects>
 
 
@@ -417,15 +390,6 @@
 			<Game_Event_Source_Category> SignificantResource </Game_Event_Source_Category>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 	</X15_Resource_Objects>
 
 
@@ -444,9 +408,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.86, 0.74, 0.62, 0.50, 0.38, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6 </Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -478,9 +442,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.88, 0.76, 0.64, 0.52, 0.40, 0.28, 0.16, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6, 7, 8</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -521,15 +485,6 @@
 			<Game_Event_Source_Category> SignificantResource </Game_Event_Source_Category>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 	</X15_Resource_Objects>
 
 
@@ -548,9 +503,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.86, 0.74, 0.62, 0.50, 0.38, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6 </Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -582,9 +537,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.88, 0.76, 0.64, 0.52, 0.40, 0.28, 0.16, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6, 7, 8</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -624,15 +579,6 @@
 			<Game_Event_Source_Category> SignificantResource </Game_Event_Source_Category>
 		</BehaviorType>
 
-		<BehaviorType Name="AlternateDamageStateBehaviorType">
-			<!--Oksana: this will update ALT state based on number of resource units -->
-			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
-
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
-		</BehaviorType>
-		
 	</X15_Resource_Objects>
 
 
@@ -651,9 +597,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.86, 0.74, 0.62, 0.50, 0.38, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6 </Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -685,9 +631,9 @@
 			<!--Oksana: this will update ALT state based on number of resource units -->
 			<Is_ALT_Damage_State_Resource_Based>Yes</Is_ALT_Damage_State_Resource_Based>
 
-			<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
-			<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
-			<Land_Damage_SFX>null, null, null </Land_Damage_SFX>
+			<Land_Damage_Thresholds>1.0, 0.88, 0.76, 0.64, 0.52, 0.40, 0.28, 0.16, 0</Land_Damage_Thresholds>
+			<Land_Damage_Alternates>0, 1, 2, 3, 4, 5, 6, 7, 8</Land_Damage_Alternates>
+			<Land_Damage_SFX>null, null, null, null, null, null, null, null, null </Land_Damage_SFX>
 		</BehaviorType>
 
 		<!-- Harvestable Resource Object Support: BEGIN -->
@@ -741,7 +687,7 @@
 
 		<!-- BEHAVIORS -->
 		<!--JOEXMLCLEAN LandBehavior> IDLE, GUI, RESOURCE, ATTRIBUTE_DIRECTORY, EFFECT_REGISTRY, RADAR_MAP_VISIBLE, AI_TARGET </LandBehavior-->
-		<LandBehavior> IDLE, RESOURCE, ATTRIBUTE_DIRECTORY, EFFECT_REGISTRY, AI_TARGET </LandBehavior>
+		<LandBehavior> IDLE, RESOURCE, ATTRIBUTE_DIRECTORY, EFFECT_REGISTRY, RADAR_MAP_VISIBLE, AI_TARGET </LandBehavior>
 
 		<Last_State_Visible_Under_FOW> False </Last_State_Visible_Under_FOW>
 		<Initial_State_Visible_Under_FOW>True</Initial_State_Visible_Under_FOW>
@@ -1341,9 +1287,9 @@
 		<CategoryMask> Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 		<Allow_Non_Locomotor_Verlet_Push> true </Allow_Non_Locomotor_Verlet_Push>
 
 		<!-- CONFLICT -->
@@ -1388,9 +1334,9 @@
 		<Affiliation>CIVILIAN</Affiliation>
 		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> Vehicle </UnitCollisionClass>-->
+		<UnitCollisionClass> Vehicle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
@@ -1806,9 +1752,9 @@
 		<CategoryMask> Medium, Insignificant, Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
-		<!-- MOVEMENT 
+		<!-- MOVEMENT -->
 		<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>30.0</Ranged_Target_Z_Adjust>
@@ -1856,7 +1802,7 @@
 		<Text_ID>TEXT_NONE</Text_ID>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Insignificant, Resource </CategoryMask>
+		<CategoryMask> Medium, Insignificant, Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
 		<!-- MOVEMENT -->
@@ -2766,7 +2712,7 @@
 		<Text_ID>TEXT_NONE</Text_ID>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Insignificant, Resource </CategoryMask>
+		<CategoryMask> Medium, Insignificant, Resource_INST </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
 		<!-- MOVEMENT -->
@@ -2993,7 +2939,6 @@
 		<Variant_Of_Existing_Type> Abstract_Masari_GenericBuilding_Resource </Variant_Of_Existing_Type>
 		<Land_Model_Name> WO_MASINT_Generic_C.alo </Land_Model_Name>
 		<Scale_Factor>1.0</Scale_Factor>
-		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
 		<Is_Placed_By_Editor>True</Is_Placed_By_Editor>

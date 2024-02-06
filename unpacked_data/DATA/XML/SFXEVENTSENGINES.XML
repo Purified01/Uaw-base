@@ -962,7 +962,7 @@
 
 	<SFXEvent Name="SFX_Car_Moving_Loop">
 		<Use_Preset>Preset_EGL</Use_Preset>
-		<Samples> EGL_Car_Moving_Loop_1.wav</Samples>
+		<Samples> EGL_Car_Moving_Loop.wav</Samples>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Truck_Idle_Loop">
@@ -974,19 +974,19 @@
 
 	<SFXEvent Name="SFX_Truck_Moving_Loop">
 		<Use_Preset>Preset_EGL</Use_Preset>
-		<Samples> EGL_Car_Moving_Loop_1.wav</Samples>
+		<Samples> EGL_Car_Moving_Loop.wav</Samples>
 		<Min_Pitch>60</Min_Pitch> 
 		<Max_Pitch>60</Max_Pitch> 
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Police_Car_Moving_Loop">
 		<Use_Preset>Preset_EGL</Use_Preset>
-		<Samples> EGL_Police_Car_Moving_Loop_1.wav</Samples>
+		<Samples> EGL_Police_Car_Moving_Loop.wav</Samples>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Ambulance_Moving_Loop">
 		<Use_Preset>Preset_EGL</Use_Preset>
-		<Samples> EGL_Ambulance_Moving_Loop_1.wav</Samples>
+		<Samples> EGL_Ambulance_Moving_Loop.wav</Samples>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Tractor_Idle_Engine_Loop">

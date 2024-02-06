@@ -526,16 +526,6 @@
     
   </X70_Cinematics>
 
-	<X70_Cinematics Name="CIN_Novus_Portal_Ramp">
-
-		<Land_Model_Name>WO_NovusPortal_Ramp.ALO</Land_Model_Name>
-		<Is_Decoration>No</Is_Decoration>
-		<Scale_Factor>2.5</Scale_Factor>
-		<Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
-		<Behavior>IDLE</Behavior>
-
-	</X70_Cinematics>
-
   <!-- NOVUS portal object for NM04 -->
   <X70_Cinematics Name="CIN_Novus_Portal_Full">
   
@@ -886,98 +876,6 @@
     <Cinematic_Anim_Index>00</Cinematic_Anim_Index>
     <Behavior>IDLE</Behavior>
 
-  </X70_Cinematics>
-  
-   <!-- jdg : 9/12/07 Dervish flyover, generic -->
-  <X70_Cinematics Name="MOV_Flyover_Dervish">
-    <!-- <Variant_Of_Existing_Type>UEA_Science_Officer</Variant_Of_Existing_Type>-->
-    <LandBehavior>REVEAL</LandBehavior>
-    <Affiliation>Neutral</Affiliation>
-    <Land_Model_Name>NV_Dervish_on_path.alo</Land_Model_Name>
-
-    <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
-    <Cinematic_Object_Only> YES </Cinematic_Object_Only>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Pause_During_Cinematic_Anim>no</Pause_During_Cinematic_Anim>
-    <Cinematic_Anim_Speed>1.0</Cinematic_Anim_Speed>
-    <Cinematic_Anim_Blend_Seconds>1.0</Cinematic_Anim_Blend_Seconds>
-    <Cinematic_Anim_Index>00</Cinematic_Anim_Index>
-    <Behavior>IDLE</Behavior>
-    <BehaviorType Name="SFXBehaviorType">
-      <SFXEvent_Ambient_Moving> SFX_Novus_Dervish_FlyBy </SFXEvent_Ambient_Moving>
-      <SFXEvent_Ambient_Moving_Min_Delay_Seconds> 3 </SFXEvent_Ambient_Moving_Min_Delay_Seconds>
-      <SFXEvent_Ambient_Moving_Max_Delay_Seconds> 5 </SFXEvent_Ambient_Moving_Max_Delay_Seconds>
-      <SFXEvent_Engine_Cinematic_Focus_Loop> SFX_Novus_Dervish_Moving_Engine_Loop </SFXEvent_Engine_Cinematic_Focus_Loop>
-    </BehaviorType>
-  </X70_Cinematics>
-  
-  <!-- jdg : 9/12/07 Corruptor flyover, generic -->
-  <X70_Cinematics Name="MOV_Flyover_Corruptor">
-    <!-- <Variant_Of_Existing_Type>UEA_Science_Officer</Variant_Of_Existing_Type>-->
-    <LandBehavior>REVEAL</LandBehavior>
-    <Affiliation>Neutral</Affiliation>
-    <Land_Model_Name>NV_Corruptor_on_path.alo</Land_Model_Name>
-
-    <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
-    <Cinematic_Object_Only> YES </Cinematic_Object_Only>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Pause_During_Cinematic_Anim>no</Pause_During_Cinematic_Anim>
-    <Cinematic_Anim_Speed>1.0</Cinematic_Anim_Speed>
-    <Cinematic_Anim_Blend_Seconds>1.0</Cinematic_Anim_Blend_Seconds>
-    <Cinematic_Anim_Index>00</Cinematic_Anim_Index>
-    <Behavior>IDLE</Behavior>
-    <BehaviorType Name="SFXBehaviorType">
-      <SFXEvent_Ambient_Moving> SFX_Novus_Corruptor_Take_Off </SFXEvent_Ambient_Moving>
-      <SFXEvent_Ambient_Moving_Min_Delay_Seconds> 3 </SFXEvent_Ambient_Moving_Min_Delay_Seconds>
-      <SFXEvent_Ambient_Moving_Max_Delay_Seconds> 5 </SFXEvent_Ambient_Moving_Max_Delay_Seconds>
-      <SFXEvent_Engine_Cinematic_Focus_Loop> SFX_Novus_Corruptor_Moving_Engine_Loop </SFXEvent_Engine_Cinematic_Focus_Loop>
-    </BehaviorType>
-  </X70_Cinematics>
-  
-  <!-- jdg : 9/12/07 Corruptor flyover, 2x fast version -->
-  <X70_Cinematics Name="MOV_Flyover_Corruptor_Fast">
-    <!-- <Variant_Of_Existing_Type>UEA_Science_Officer</Variant_Of_Existing_Type>-->
-    <LandBehavior>REVEAL</LandBehavior>
-    <Affiliation>Neutral</Affiliation>
-    <Land_Model_Name>NV_Corruptor_on_path_fast.alo</Land_Model_Name>
-
-    <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
-    <Cinematic_Object_Only> YES </Cinematic_Object_Only>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Pause_During_Cinematic_Anim>no</Pause_During_Cinematic_Anim>
-    <Cinematic_Anim_Speed>1.0</Cinematic_Anim_Speed>
-    <Cinematic_Anim_Blend_Seconds>1.0</Cinematic_Anim_Blend_Seconds>
-    <Cinematic_Anim_Index>00</Cinematic_Anim_Index>
-    <Behavior>IDLE</Behavior>
-    <BehaviorType Name="SFXBehaviorType">
-      <SFXEvent_Ambient_Moving> SFX_Novus_Corruptor_Take_Off </SFXEvent_Ambient_Moving>
-      <SFXEvent_Ambient_Moving_Min_Delay_Seconds> 3 </SFXEvent_Ambient_Moving_Min_Delay_Seconds>
-      <SFXEvent_Ambient_Moving_Max_Delay_Seconds> 5 </SFXEvent_Ambient_Moving_Max_Delay_Seconds>
-      <SFXEvent_Engine_Cinematic_Focus_Loop> SFX_Novus_Corruptor_Moving_Engine_Loop </SFXEvent_Engine_Cinematic_Focus_Loop>
-    </BehaviorType>
-  </X70_Cinematics>
-  
-  <!-- jdg : 10/16/07 This is the object used to teach Mirabel's snipe ability in the 360 tutorial -->
-  <X70_Cinematics Name="CIN_Novus_Homeworld_SnipeTarget">
-    
-    <Land_Model_Name>NB_target.ALO</Land_Model_Name>
-    <!--<Cinematic_Object_Only> YES </Cinematic_Object_Only>-->
-	 <Cinematic_Object_Only> NO </Cinematic_Object_Only>
-    <Scale_Factor>1.0</Scale_Factor>
-    <Exclude_From_Distance_Fade>true</Exclude_From_Distance_Fade>
-    <!--<Pause_During_Cinematic_Anim>yes</Pause_During_Cinematic_Anim>-->
-    <Cinematic_Anim_Speed>1.0</Cinematic_Anim_Speed>
-    <Cinematic_Anim_Blend_Seconds>1.0</Cinematic_Anim_Blend_Seconds>
-    <Cinematic_Anim_Index>00</Cinematic_Anim_Index>
-    <Behavior>IDLE</Behavior>
-	 
-	 <!-- CONFLICT -->
-    <Is_Attackable> true </Is_Attackable>
-    <Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
-    <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
-    <Tactical_Health> 25 </Tactical_Health>
-	 <Target_Bones> target_00 </Target_Bones>
-    
   </X70_Cinematics>
 
 

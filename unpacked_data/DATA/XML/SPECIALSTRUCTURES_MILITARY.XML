@@ -41,17 +41,17 @@
 
 
 
-	<!--<X99_Test_Objects Name="Test_Tactical_Production_Facility">
+	<X99_Test_Objects Name="Test_Tactical_Production_Facility">
 		<Text_ID />
 		<Land_Model_Name>Test_Building_Spawn_unit.alo</Land_Model_Name>
-		--><!-- <Is_Dummy>Yes</Is_Dummy> --><!--
+		<!-- <Is_Dummy>Yes</Is_Dummy> -->
 		
-		<Scale_Factor>.75</Scale_Factor> --><!-- Temp scale change for scale test - change back once models resized --><!--
+		<Scale_Factor>.75</Scale_Factor> <!-- Temp scale change for scale test - change back once models resized -->
 
 		<Affiliation>Military</Affiliation>
 		
-		--><!-- Maria 03/13/2006 --><!--	
- 		--><!-- Recall: GROUND_STRUCTURE is the behavior that allows us to persist the structure --><!--
+		<!-- Maria 03/13/2006 -->	
+ 		<!-- Recall: GROUND_STRUCTURE is the behavior that allows us to persist the structure -->
 		<Behavior>GROUND_STRUCTURE</Behavior>
 		<LandBehavior>TACTICAL_ENABLER, LAND_OBSTACLE, SELECTABLE, REVEAL, HIDE_WHEN_FOGGED,DAMAGE_TRACKING,UNIT_AI,SPAWN_SQUADRON</LandBehavior>
 	
@@ -70,8 +70,8 @@
 		<BehaviorType Name="SpawnUnitsBehaviorType">
 			<Is_Auto_Spawner>No</Is_Auto_Spawner>
 			
-			--><!-- Delay does not have a meaning for non-auto-spawner --><!--
-			--><!-- <Spawned_Squadron_Delay_Seconds>15</Spawned_Squadron_Delay_Seconds> --><!--
+			<!-- Delay does not have a meaning for non-auto-spawner -->
+			<!-- <Spawned_Squadron_Delay_Seconds>15</Spawned_Squadron_Delay_Seconds> -->
 			
 			<Spawned_Squadron_Starting_Units>Military_AbramsM2_Tank, 1</Spawned_Squadron_Starting_Units>
 			<Spawned_Squadron_Reserve_Units>Military_AbramsM2_Tank, -1</Spawned_Squadron_Reserve_Units>
@@ -113,6 +113,11 @@
 	
 		<Space_Layer> LandDynamic </Space_Layer>
 		
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<GUI_Row> 0 </GUI_Row>
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+		</BehaviorType>
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name />
 		</BehaviorType>
@@ -133,7 +138,7 @@
 		<BehaviorType Name="AIBehaviorType">
 			<AI_Combat_Power>150</AI_Combat_Power>
 		</BehaviorType>
-	</X99_Test_Objects>-->
+	</X99_Test_Objects>
 	
 	
 </UEA_Special_Structures>

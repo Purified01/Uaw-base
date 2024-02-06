@@ -96,6 +96,7 @@ SURFACE	ah_orlok_special_end_a_00	2677	ALIEN_HERO_ORLOCK_NORMAL	B_Foot_decal_L
 SOUND	ah_orlok_special_end_a_00	49	SFX_Anim_Alien_Orlok_Deploy_Claw	INVALID
 
 
+
 SURFACE	ab_info_conduit_turnl_00	1875	ALIEN_SCAN_DRONE	Crusher_00
 SURFACE	ab_info_conduit_turnl_00	3882	ALIEN_SCAN_DRONE	Crusher_02
 SURFACE	ab_info_conduit_turnl_00	5958	ALIEN_SCAN_DRONE	Crusher_01

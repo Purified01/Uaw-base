@@ -31,8 +31,7 @@ subtracted before any damage hits armor / health.  DMA increases in power over t
          <Attribute> Current_DMA_Level </Attribute>
          <Modifier_Attribute> DMA_Regen_Rate </Modifier_Attribute>
          <Notify_Tooltip_Dirty> true </Notify_Tooltip_Dirty>
-			<Update_Ability_Buttons_If_Selected> false </Update_Ability_Buttons_If_Selected>
-		</Effect_Component>
+      </Effect_Component>
    </Effect>
 
 
@@ -48,7 +47,6 @@ subtracted before any damage hits armor / health.  DMA increases in power over t
       <Effect_Component Type="AttributeModifier">
          <Attribute> Current_DMA_Level </Attribute>
          <Reset_Memoryless_Attribute> true </Reset_Memoryless_Attribute>
-			<Update_Ability_Buttons_If_Selected> false </Update_Ability_Buttons_If_Selected>
       </Effect_Component>
      
    </Effect>

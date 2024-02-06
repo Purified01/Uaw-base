@@ -47,9 +47,9 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
-         <Animation_Subindex_Override>0</Animation_Subindex_Override>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -82,12 +82,13 @@
 		<Max_Thrust> 1.5 </Max_Thrust>
 		<Thrust_Acceleration> .1 </Thrust_Acceleration>
 		<Thrust_Deceleration> .1 </Thrust_Deceleration>
+		<Walk_Locomotor_Anim_Subindex> 0 </Walk_Locomotor_Anim_Subindex>
 		<Formation_Custom_Position> Middle </Formation_Custom_Position>		
 		
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 30.0 </Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range>235.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>250.0</Land_FOW_Reveal_Range>
 		<Tactical_Health> 1000 </Tactical_Health>
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -124,16 +125,8 @@
 			AI_RECRUITABLE,
 			AI_TARGET,
 			RETREAT_FROM_TACTICAL,
-			TACTICAL_AI,
 			BALLISTIC
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
 		<StrategicBehavior>
@@ -178,7 +171,7 @@
 
      <BehaviorType name="AIBehaviorType">
        <AI_Combat_Power> 1 </AI_Combat_Power>
-       <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+       <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
        <Guard_Chase_Range> 200.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
        <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
        <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -186,10 +179,6 @@
 		  <Attack_Score_Rating> 0.1 </Attack_Score_Rating>
 		  <Scout_Score_Rating> 0.1 </Scout_Score_Rating>
 		  <Guerilla_Score_Rating> 2.1 </Guerilla_Score_Rating>
-		  <Tactical_AI_Search_Range> 275.0 </Tactical_AI_Search_Range>
-		  <Max_Crush_Distance> 275.0 </Max_Crush_Distance>
-		  <Retreat_At_Health> 0.8 </Retreat_At_Health>
-		  <Crush_Overrun_Distance> 80.0 </Crush_Overrun_Distance>
 	  </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -200,8 +189,8 @@
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Novus_Mech_Flechette_Rifle</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>16</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>18</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.12</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -228,20 +217,6 @@
 		<!-- Make hero icon button appear in the UI -->
 		<BehaviorType Name="LuaScriptBehaviorType">
 			<Lua_Global_Behaviors> HeroIcon </Lua_Global_Behaviors>
-			<Lua_Land_Behaviors> HeroIcon </Lua_Land_Behaviors>
-			<Lua_Script_Data>
-				HERO_ICON = {}
-				HERO_ICON.PRIORITY = 1
-				HERO_ICON.TEXTURE = "i_hero_novus_mirabel_viktor.tga"
-				HERO_ICON.HEADMODEL = "NH_Mirabel_Pip_Head"
-				NOT_TACTICALLY_PRESENT = false
-				IS_SCIENTIST = false
-				IS_COMM_OFFICER = false
-			</Lua_Script_Data>
-		</BehaviorType>
-		<!--
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Global_Behaviors> HeroIcon </Lua_Global_Behaviors>
 			<Lua_Land_Behaviors> HeroIcon,Defensive_AI_Unit_Behavior, Generic_Vehicle_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				HERO_ICON = {}
@@ -261,7 +236,6 @@
 				DefensiveAI.RunHealth = 0.75
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="RadarMapBehaviorType">
 			<Radar_Icon_Size>0.03  0.03</Radar_Icon_Size>
@@ -285,7 +259,7 @@
 	
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 21 </Crush_Power>
+			<Crush_Power> 10 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="BlobShadowBehaviorType">
@@ -332,6 +306,15 @@
 			<Death_Clone> Damage_Plasma_Rifle, Novus_Hero_Mech_Death_Clone </Death_Clone>
 			<Death_Clone> Damage_Melee_Knockback, Novus_Hero_Mech_Death_Clone_Melee_Knockback </Death_Clone>
 			<Death_Clone> Damage_Falling, Novus_Hero_Mech_Death_Clone_Falling </Death_Clone>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -409,24 +392,16 @@
 				<Area_Effect_Decal_Distance> 60.0 </Area_Effect_Decal_Distance>
 				<SFXEvent_GUI_Unit_Ability_Activated> Unit_Ability_A_Novus_Mirabel </SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_Target_Ability />
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Unit_Categories> ~Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 400.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 			<Unit_Ability Name="Unit_Ability_Mech_Vehicle_Snipe_Attack">
 				<Type>ATTACK_SUBSTITUTE</Type>
-				<Recharge_Seconds>52.0</Recharge_Seconds>
+				<Recharge_Seconds>55.0</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Mech_Vehicle_Snipe_Attack </GUI_Activated_Ability_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated>GUI_NOVUS_ABILITY_SNIPE</SFXEvent_GUI_Unit_Ability_Activated>
 				<Targeting_Type> ENEMY_OBJECT </Targeting_Type>
 				<SFXEvent_GUI_Unit_Ability_Activated>  </SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_Target_Ability>Unit_Ability_B_Novus_Mirabel</SFXEvent_Target_Ability>
-				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
-				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
-				<Unit_Ability_AI_Range> 300.0 </Unit_Ability_AI_Range>
-				<Unit_Ability_AI_Unit_Categories> ~Huge </Unit_Ability_AI_Unit_Categories>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -437,7 +412,7 @@
 				<Activation_Style>USER_INPUT</Activation_Style>
 				<Activation_Chance>1.0</Activation_Chance>
 				<Activation_Min_Range>0.0</Activation_Min_Range>
-				<Activation_Max_Range>225.0</Activation_Max_Range>
+				<Activation_Max_Range>300.0</Activation_Max_Range>
 				<Activation_Recharge_Time> 0.5 </Activation_Recharge_Time>
 				<Pre_Attack_Animation> ANIM_DEPLOY </Pre_Attack_Animation>
 				<Attack_Animation>ATTACK_SPECIAL_B</Attack_Animation>
@@ -991,7 +966,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>8.0</Projectile_Damage>
+			<Projectile_Damage>5.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Novus_Viktor_Flechette_Det</Projectile_Object_Detonation_Particle>
@@ -1053,6 +1028,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>NH_Rocket_pod.alo</Land_Model_Name>
+		<Projectile_Custom_Render>0</Projectile_Custom_Render>
 		<Scale_Factor>1.0</Scale_Factor>
 		<Shadow_Enabled>False</Shadow_Enabled>
 		
@@ -1063,7 +1039,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>7.0</Max_Speed>
+		<Max_Speed>6.5</Max_Speed>
 		<Max_Rate_Of_Turn>20.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1087,7 +1063,7 @@
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000000.0</Projectile_Max_Flight_Distance>
 			<Projectile_Damage>0.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>27</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>25</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>30</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>

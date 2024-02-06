@@ -29,7 +29,7 @@
 		
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_UNIT_GRAY_INFANTRY</Text_ID>
-		<GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name> 
+		<GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name> 
 		<GUI_Receives_Input> false </GUI_Receives_Input>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -51,6 +51,7 @@
 		<Shot_Type> Infantry </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Build_Cost_Credits/>
 		</Attributes>
 
@@ -118,13 +119,6 @@
 			AI_RECRUITABLE,
 			AI_TARGET
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 5 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Masari_Infantry_Heavy </Armor_Type>
@@ -209,6 +203,17 @@
 
 		<BehaviorType Name="TurretBehaviorType">
 			<Ground_Infantry_Turret_Target> Yes </Ground_Infantry_Turret_Target>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 		
 		<BehaviorType Name="DeathFXBehaviorType">

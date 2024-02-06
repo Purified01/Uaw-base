@@ -664,10 +664,6 @@
 		<Use_Preset>Preset_UR_3D</Use_Preset>
 		<Samples>Alien_Brute_Attack_04.wav Alien_Brute_Attack_05.wav</Samples>
 		<Play_Sequentially> Yes </Play_Sequentially>
-		
-		<!-- jdg 11/09/07 this is the event that gets played when a brute does his leap attack..-->
-		<Vibration_Event> Vibration_Alien_Brute_Leap_Landing </Vibration_Event>
-		
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Anim_Alien_Brute_Growl">

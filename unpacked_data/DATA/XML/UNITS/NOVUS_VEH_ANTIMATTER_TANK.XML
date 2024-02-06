@@ -37,6 +37,7 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Affected_By_Novus_Signal> true </Affected_By_Novus_Signal>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 		</Attributes>
@@ -107,17 +108,9 @@
       ATTRIBUTE_DIRECTORY,
       AI_RECRUITABLE,
       TACTICAL_SELL,
-		TACTICAL_AI,
       SQUASH,
       AI_TARGET
     </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Novus_Vehicle_Heavy </Armor_Type>
@@ -152,7 +145,7 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range>  <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 160.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -160,7 +153,6 @@
 		 <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.4 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.4 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 175.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -247,6 +239,16 @@
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<BehaviorType Name="LockableByDynamicScannerBehaviorType">
 			<Dynamic_Scan_Target_Effect_Particle_Name>Dynamic_Scan_Target</Dynamic_Scan_Target_Effect_Particle_Name>
 			<Dynamic_Scan_Target_Lock_Max_Delay_Seconds>2.0</Dynamic_Scan_Target_Lock_Max_Delay_Seconds>
@@ -267,8 +269,8 @@
 			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
+			<!-- Keep the target range under the actual ability for maximum effect -->
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Filtered_PBAOE, Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
 			<Lua_Script_Data>
@@ -286,7 +288,6 @@
 				DefensiveAI.KillTurretRange = 50.0
 			</Lua_Script_Data>
 		</BehaviorType>
-		-->
 
 		<Unit_Abilities_Data SubObjectList="Yes">
 
@@ -297,10 +298,6 @@
 				<Recharge_Seconds>28.0</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Antimatter_Spray_Projectiles_Attack </GUI_Activated_Ability_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated>  </SFXEvent_GUI_Unit_Ability_Activated>
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<Unit_Ability_AI_Required_Targets> -3 </Unit_Ability_AI_Required_Targets>
-				<Unit_Ability_AI_Unit_Categories> CanAttack + ~Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 175.0 </Unit_Ability_AI_Range>
 
 			</Unit_Ability>
 		</Unit_Abilities_Data>

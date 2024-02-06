@@ -78,13 +78,6 @@
          ELEMENTAL_MODE
       </LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ELEMENTAL_CONTROLLER </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
@@ -186,7 +179,7 @@
       </BehaviorType>
 
       <BehaviorType Name="GUIBehaviorType">
-         <GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+         <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
          <GUI_Receives_Input> no </GUI_Receives_Input>
          <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
          <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -374,7 +367,7 @@
       </BehaviorType>
 
       <BehaviorType Name="GUIBehaviorType">
-         <GUI_Scene_Name> Masari_HealthBar_Scene_Large </GUI_Scene_Name>
+         <GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
          <GUI_Receives_Input> no </GUI_Receives_Input>
          <GUI_Min_Scale> 0.8 </GUI_Min_Scale>
          <GUI_Max_Scale> 3.0 </GUI_Max_Scale>
@@ -830,7 +823,7 @@
       <BehaviorType Name="SelectableBehaviorType">
          <Highlight_Blob_Material_Name>Masari_Land_Ability_Targeting_Range_Overlay</Highlight_Blob_Material_Name>
          <!-- Maria 06.28.2007: we want the blob to show the radius this weapon affects, therefore we must supply 2.0*TSW_Area_Effect_Radius -->
-         <Select_Box_Scale>70.0</Select_Box_Scale>
+         <Select_Box_Scale>50.0</Select_Box_Scale>
       </BehaviorType>
 
       <!--<BehaviorType Name="SelectableBehaviorType">
@@ -912,6 +905,7 @@
          <GUI_Max_Scale> 2.5 </GUI_Max_Scale>
          <GUI_Default_Scale> 0.5 </GUI_Default_Scale>
          <GUI_World_Offset> 0.0, 0.0, -10 </GUI_World_Offset>
+         <GUI_Bracket_Size> 1 </GUI_Bracket_Size>
       </BehaviorType>
 
       <BehaviorType Name="DeathFXBehaviorType">

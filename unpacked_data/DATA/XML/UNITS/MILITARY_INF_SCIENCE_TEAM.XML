@@ -31,7 +31,7 @@
 
       <Attributes SubObjectList="Yes">
          <Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-         <!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+         <Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -68,13 +68,6 @@
          AI_RECRUITABLE,
          AI_TARGET
       </LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Infantry_Light </Armor_Type>
@@ -200,7 +193,7 @@
 
 		<Attributes SubObjectList="Yes">
 			<Can_Ride_In_Vehicles> true </Can_Ride_In_Vehicles>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
 		</Attributes>
 
@@ -368,6 +361,15 @@
 			<Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_03 </Death_Spawn>
 			<Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
 			<IsDeathCloneObstacle> true </IsDeathCloneObstacle>
+		</BehaviorType>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 	</X11_Military_Units>

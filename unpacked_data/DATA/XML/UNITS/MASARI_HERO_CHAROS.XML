@@ -24,7 +24,7 @@
 		<!-- INTERFACE -->
 		<Text_ID>TEXT_MASARI_HERO_CHAROS</Text_ID>
 		<Is_Placed_By_Editor>true</Is_Placed_By_Editor>
-		<GUI_Scene_Name> Masari_HealthBar_Scene_Small </GUI_Scene_Name>
+		<GUI_Scene_Name> HealthBar_Scene_Small </GUI_Scene_Name>
 		<GUI_Receives_Input> false </GUI_Receives_Input>
 		<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
 		<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
@@ -52,7 +52,7 @@
 			<Generator_Area_Effect_Radius_1> 750 </Generator_Area_Effect_Radius_1>
 			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
+			<Can_Garrison_Buildings> true </Can_Garrison_Buildings>
 			<DMA_Max> 450 </DMA_Max>
 			<DMA_Regen_Rate> 12 </DMA_Regen_Rate>
 		</Attributes>
@@ -127,20 +127,13 @@
       AI_RECRUITABLE,
       DAMAGE_TRACKING,
       AI_TARGET,
+      SQUASH,
       SWITCH_TYPE,
       RETREAT_FROM_TACTICAL,
-		TACTICAL_AI,
       BALLISTIC,
       <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
 			ELEMENTAL_MODE
 		</LandBehavior>
-
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
 
 		<!-- MARIA 08.08.2006 we need this to have a representation of the hero as a global icon -->
 		<StrategicBehavior>
@@ -238,15 +231,14 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
-      <Guard_Chase_Range> 180.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Guard_Chase_Range> 175.0 </Guard_Chase_Range>  <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
       <AI_Target_Level>Individual</AI_Target_Level>
 		 <Attack_Score_Rating> 2.5 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.1 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 0.0 </Tactical_AI_Search_Range>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
@@ -327,6 +319,17 @@
 			<SFXEvent_Cant_Move_Unit_In_Production> MCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 
 			<Play_SFXEvent_On_Sighting>True</Play_SFXEvent_On_Sighting>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>2</GUI_Bracket_Size>
+			<GUI_Bounds_Scale>0.5</GUI_Bounds_Scale>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> No </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> 0.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> Yes </GUI_Is_Model_Shifted_Down>
+			<GUI_Shift_Factor> 4.7 </GUI_Shift_Factor>
+			<GUI_Strategic_Mode_Scale> 0.15 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -725,7 +728,7 @@
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HERO </Tooltip_Category>
 		</BehaviorType>
 
-		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>150.0</Land_FOW_Reveal_Range>
 		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
 		<Max_Speed> 1.8 </Max_Speed>
 

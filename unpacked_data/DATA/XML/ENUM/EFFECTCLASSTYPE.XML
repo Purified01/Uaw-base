@@ -384,7 +384,5 @@
 
 	<InverterShieldUp/>
 	<InverterShieldDown/>
-
-	<GenericNoExtendDuration/>
 	
 </EnumDefinition>

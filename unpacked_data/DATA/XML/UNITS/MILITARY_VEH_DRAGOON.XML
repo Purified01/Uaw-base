@@ -102,13 +102,6 @@
 			AI_TARGET
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 02/05/08 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
 			<Armor_Type> Armor_Military_Vehicle_Heavy </Armor_Type>
 		</BehaviorType>
@@ -128,7 +121,7 @@
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 250.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -217,6 +210,15 @@
 			<Unit_Pop_Cap> 1 </Unit_Pop_Cap>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006 - Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.03 </GUI_Strategic_Mode_Scale>
+		</BehaviorType>
+
 		<!-- HARDPOINTS - will be able to shoot on objects that have been revealed by dynamic scanner -->
 		<Attached_Hard_Points> 
 			HP_Military_Dragoon_Left_Flap, HP_FLAP_00
@@ -240,6 +242,7 @@
 				<Type>DRAGOON_SCAN</Type>
 				<Expiration_Seconds> 30.0 </Expiration_Seconds>
 				<Recharge_Seconds>3</Recharge_Seconds>
+				<Effective_Max_Radius> 0.0 </Effective_Max_Radius> <!-- 0.0 means no distance factor, unlimited to entire map -->
 				<Area_Effect_Decal_Distance> 250.0 </Area_Effect_Decal_Distance> 
 				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
 				<Is_Modal> Yes </Is_Modal>
@@ -694,6 +697,10 @@
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
+		</BehaviorType>
+
 		<BehaviorType Name="BallisticBehaviorType">
 			 <Ballistic_Weight>5.0</Ballistic_Weight>
 			 <Ballistic_Bounce>0.5</Ballistic_Bounce>
@@ -831,6 +838,10 @@
 			<Radar_Icon_Size>0.03 0.03</Radar_Icon_Size>
 		</BehaviorType>
 
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>0</GUI_Bracket_Size>
+		</BehaviorType>
+
 		<BehaviorType Name="SFXBehaviorType">
 			<SFXEvent_Fire>SFX_Military_Tank_Fire</SFXEvent_Fire>
 			<Death_SFXEvent_Start_Die>SFX_Military_Turret_Death</Death_SFXEvent_Start_Die>
@@ -895,7 +906,8 @@
 		<Text_ID>TEXT_NONE</Text_ID>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Land_Model_Name>wf_dsa_missile.alo</Land_Model_Name>	
+		<Land_Model_Name>wf_dsa_missile.alo</Land_Model_Name>
+		<Projectile_Custom_Render>0</Projectile_Custom_Render>		
 		<Scale_Factor>1.0</Scale_Factor>
 		<Max_Speed>7.0</Max_Speed>
       <AssetBank> BANK_MILITARY </AssetBank>

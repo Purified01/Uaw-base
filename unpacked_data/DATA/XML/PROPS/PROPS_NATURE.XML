@@ -1649,8 +1649,8 @@
 		<Variant_Of_Existing_Type>Base_Combustive_Toppling_Tree</Variant_Of_Existing_Type>
 		<LandBehavior>TOPPLE</LandBehavior>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
-		<!--<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> High Obstacle </UnitCollisionClass>-->
+		<Space_Layer> LandStatic </Space_Layer>
+		<UnitCollisionClass> High Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -1666,8 +1666,8 @@
 		<Can_Be_Miraged>Yes</Can_Be_Miraged>
 		<Prevents_Structure_Placement>No</Prevents_Structure_Placement>
 		<Is_UI_Relevant> false </Is_UI_Relevant>
-		<!--<Space_Layer> LandStatic </Space_Layer>
-		<UnitCollisionClass> High Obstacle </UnitCollisionClass>-->
+		<Space_Layer> LandStatic </Space_Layer>
+		<UnitCollisionClass> High Obstacle </UnitCollisionClass>
 		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
 			

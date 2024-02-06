@@ -78,13 +78,6 @@
 			TACTICAL_SELL
 		</LandBehavior>
 
-		<BehaviorType Name="SelectableBehaviorType">
-			<!-- DME 12/12/07 magnetism testing-->
-			<Allow_Friendly_Cursor_Magnetism> false </Allow_Friendly_Cursor_Magnetism>
-			<Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-			<Cursor_Magnetism_Extent_Adder> 30 </Cursor_Magnetism_Extent_Adder>
-		</BehaviorType>
-
 		<BehaviorType Name="PoweredBehaviorType">
 			<Role> Receiver </Role>
 			<Flow_Visual_Name> Novus_Signal_tower_Flow </Flow_Visual_Name>
@@ -177,7 +170,7 @@
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_nb_EMP_cannon.tga  </Icon_Name>
-      </BehaviorType>
+		</BehaviorType>
 
 		<BehaviorType Name="GUIBehaviorType">
 			<GUI_Scene_Name> NOVUS_Tactical_Upgrades_Menu </GUI_Scene_Name>
@@ -193,6 +186,7 @@
 		<BehaviorType Name="SelectableBehaviorType">
 			<Select_Box_Scale>230</Select_Box_Scale>
 			<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+
 		</BehaviorType>
 
 		<BehaviorType Name="AIBehaviorType">
@@ -416,6 +410,7 @@
 			<SFXEvent_Tactical_Build_Complete />
 			<SFXEvent_Tactical_Build_Cancelled />
 			<Death_SFXEvent_Start_Die />
+			<SFX_Event />
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -589,8 +584,8 @@
 		<LandBehavior>
          EFFECT_REGISTRY,
          EFFECT_GENERATOR,
-         ATTRIBUTE_DIRECTORY,
-         REVEAL
+         SELECTABLE,
+			REVEAL
       </LandBehavior>
 
 		<BehaviorType Name="RevealBehaviorType">
@@ -630,7 +625,6 @@
 					<Duration_Attribute> Effect_Duration_1 </Duration_Attribute>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 130.0 </Area_Effect_Radius>
-               <Remove_On_Death>No</Remove_On_Death>
 					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
@@ -650,40 +644,40 @@
 					<Duration_Attribute> Effect_Duration_1 </Duration_Attribute>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 130.0 </Area_Effect_Radius>
-               <Remove_On_Death>No</Remove_On_Death>
-               <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-               <Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-               <Target_Filter_Categories> Huge </Target_Filter_Categories>
-            </Effect_Generator_Entry>
+					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+					<Target_Filter_Categories> Huge </Target_Filter_Categories>
+				</Effect_Generator_Entry>
 
-            <Effect_Generator_Entry Name="Entry3">
-               <Effect_Name> Novus_EMP_Superweapon_Foo_Fighter_Effect </Effect_Name>
-               <Duration_Attribute> Effect_Duration_1 </Duration_Attribute>
-               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Area_Effect_Radius> 130.0 </Area_Effect_Radius>
-               <Remove_On_Death>No</Remove_On_Death>
+				<Effect_Generator_Entry Name="Entry3"> 
+					<Effect_Name> Novus_EMP_Superweapon_Foo_Fighter_Effect </Effect_Name>
+					<Duration_Attribute> Effect_Duration_1 </Duration_Attribute>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 130.0 </Area_Effect_Radius>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Target_Filter_C> Has_Behavior_Foo_Fighter </Target_Filter_C>
 				</Effect_Generator_Entry>
 
+				<Effect_Generator_Entry Name="Entry4">
+					<Effect_Name> Novus_EMP_Superweapon_Owner_Effect </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Source_SFX_Event> SFX_Novus_Lightning_Fire </Source_SFX_Event>
+					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
+					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
+				</Effect_Generator_Entry>
+
 				<Effect_Generator_Entry Name="Entry5">
 					<Effect_Name> Novus_EMP_Pulse_Area_Visual_Effect </Effect_Name>
-					<Duration> 4 </Duration>
+					<Duration> 15.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Source_SFX_Event> SFX_Novus_EMP_Superweapon_Fire </Source_SFX_Event>
-					<Source_SFX_Fadeout_Time>0.5</Source_SFX_Fadeout_Time>
-           <!--    <Source_SFX_Event> SFX_Novus_EMP_Superweapon_Fire_Loop </Source_SFX_Event>
-               <Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
-               <Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
-               <Source_SFX_Loop_Fadeout_Time>1.5</Source_SFX_Loop_Fadeout_Time>-->
 				</Effect_Generator_Entry>
 
 				<!-- Added this so it will self-destruct -->
 				<Effect_Generator_Entry Name="Entry6">
 					<Effect_Name> MagmaChannelSelfDestructEffect </Effect_Name>
-               <Base_Delay> 5.5 </Base_Delay>
-               <!--<Base_Delay_Attribute> Effect_Duration_1 </Base_Delay_Attribute>-->
+					<Base_Delay_Attribute> Effect_Duration_1 </Base_Delay_Attribute>
 					<Duration> 1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
