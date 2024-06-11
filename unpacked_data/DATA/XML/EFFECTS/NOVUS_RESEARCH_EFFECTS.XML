@@ -49,10 +49,6 @@
 		<Effect_Class>PowerTransmissionRadius</Effect_Class>
 		<Duration> -1.0 </Duration>
 		<Effect_Component Type="AttributeModifier">
-			<Attribute> Novus_Power_Powerup_Radius_Mult_Coeff </Attribute>
-			<Modifier_Value> 0.75 </Modifier_Value>	<!-- 75% -->
-		</Effect_Component>
-		<Effect_Component Type="AttributeModifier">
 			<Attribute> Novus_Power_Transmission_Radius_Mult_Coeff </Attribute>
 			<Modifier_Value> 0.75 </Modifier_Value> <!-- 75% -->
 		</Effect_Component>

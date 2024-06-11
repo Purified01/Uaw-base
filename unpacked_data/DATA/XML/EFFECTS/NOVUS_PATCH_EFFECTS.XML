@@ -497,10 +497,10 @@
 		
 	</Effect>
 
-	<!-- Viral Reboot: All currently virused enemy units are shut down for 5 seconds. -->
+	<!-- Viral Reboot: All currently virused enemy units are shut down for 15 seconds. -->
 	<Effect Name="NovusPatchViralRebootEffect">
 		<Effect_Class> PatchViralReboot </Effect_Class>
-		<Duration> 5.0 </Duration>
+		<Duration> 15.0 </Duration>
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
 		<Effect_Component Type="RemoveEffect">
