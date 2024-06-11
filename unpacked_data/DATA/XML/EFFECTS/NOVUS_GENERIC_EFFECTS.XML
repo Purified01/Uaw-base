@@ -241,7 +241,18 @@
 
 	</Effect>
 
+	<Effect Name="DisruptionEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> TractorBeam </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
+		<!-- Slow target down -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.99 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
 
 	<!--=================================================================================================
 	== [10/16/2006] The novus nano center strat mode heal - KDB Does a complete heal

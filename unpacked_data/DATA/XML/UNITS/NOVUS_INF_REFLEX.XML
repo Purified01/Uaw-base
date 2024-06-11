@@ -1039,7 +1039,7 @@
 			<Projectile_SFXEvent_Detonate> SFX_Novus_BlackOut_Bomb_Detonation </Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor />
 			<Projectile_Explosion_Causes_Chaining> false </Projectile_Explosion_Causes_Chaining>
-			<Projectile_Effect_Bomb_Effect_Name> BlackOutEffectGenerator </Projectile_Effect_Bomb_Effect_Name>
+			<Projectile_Effect_Bomb_Effect_Name> DisruptionEffectGenerator </Projectile_Effect_Bomb_Effect_Name>
 			<Projectile_Bomb_Timer_In_Secs> 1.0 </Projectile_Bomb_Timer_In_Secs>
 			<Projectile_Effect_Bomb_Duration_Seconds> 8.0 </Projectile_Effect_Bomb_Duration_Seconds>
          <Can_Be_Redirected>False</Can_Be_Redirected>
@@ -1048,39 +1048,27 @@
 		<!-- EFFECTS -->
 		<Effect_Generator_Data SubObjectList="Yes">
 
-			<Effect_Generator Name="BlackOutTargetEffectGenerator">
-
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 0.9 </Modal_Refresh_Frequency>
-				<Starts_Active> Yes </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> BlackOutTargetEffect </Effect_Name>
-					<Base_Delay> 1.5 </Base_Delay>
-					<Duration> 8 </Duration>
-					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 130 </Area_Effect_Radius>
-					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
-
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>
-
-			<Effect_Generator Name="BlackOutEffectGenerator">
+			<Effect_Generator Name="DisruptionEffectGenerator">
 
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
 				<Starts_Active> true </Starts_Active>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> BlackOutEffect </Effect_Name>
+					<Effect_Name> DisruptionEffect </Effect_Name>
 					<Base_Delay> 1.5 </Base_Delay>
 					<Duration> 8.0 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 130 </Area_Effect_Radius>
 					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
+					<Frames_Between_Remove_Invalid_Targets> 1 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> NovusDisruptVisualEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
 			</Effect_Generator>
 
 		</Effect_Generator_Data>

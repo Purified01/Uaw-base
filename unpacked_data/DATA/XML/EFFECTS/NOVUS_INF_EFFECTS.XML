@@ -467,6 +467,18 @@
       </Effect_Component>
    </Effect>
 
+
+   <Effect Name="NovusDisruptVisualEffect">
+      <Duration> 5.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Self </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>
+	
+
    <!--=================================================================================================
 	== NovusReflexTrooperCloakingEffect: cloak for the novus reflex trooper
 	================================================================================================== -->
