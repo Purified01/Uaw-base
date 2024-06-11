@@ -169,7 +169,7 @@ local function Behavior_First_Service()
 	MONITOR_DESTRUCTION_OF_HARDPOINTS = {}
 	MONITOR_DESTRUCTION_OF_HARDPOINTS.ALIEN_WALKER_HABITAT_COOLING_HP00 = { 
 		current_killed_count = 0, 
-		destroy_parent_on_killed_count = 3,
+		destroy_parent_on_killed_count = 2,
 		play_cinematic_anim_hp = true
 	}
 	MONITOR_DESTRUCTION_OF_HARDPOINTS.ALIEN_WALKER_HABITAT_COOLING_HP01 = 

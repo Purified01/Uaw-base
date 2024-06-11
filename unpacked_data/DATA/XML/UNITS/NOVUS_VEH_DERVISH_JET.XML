@@ -213,7 +213,7 @@
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 750 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 750 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -344,6 +344,7 @@
 			<!-- Activates Dervish_Spin_Attack special ability below -->
 			<Unit_Ability Name="Unit_Ability_Dervish_Spin_Attack">
 				<Type> DERVISH_SPIN_ATTACK </Type>
+                <Active_By_Default> false </Active_By_Default>
 				<Is_Modal>yes</Is_Modal>
 				<Expiration_Seconds> 10.0 </Expiration_Seconds>
 				<Recharge_Seconds> 35.0 </Recharge_Seconds>
@@ -356,7 +357,7 @@
 				<!-- the -4 is not an error, when required targets is < 0 then it needs abs(req_targets) regardless of any high value targets -->
 				<Unit_Ability_AI_Required_Targets> -4 </Unit_Ability_AI_Required_Targets>
 				<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 135.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Range> 202.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -788,7 +789,7 @@
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 6 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 8 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 15 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>

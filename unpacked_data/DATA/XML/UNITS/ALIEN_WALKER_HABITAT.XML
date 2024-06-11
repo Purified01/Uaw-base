@@ -1456,7 +1456,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1547,7 +1547,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1638,7 +1638,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1730,7 +1730,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2466,7 +2466,7 @@
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1200 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -2522,7 +2522,7 @@
 		<Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1200 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->

@@ -63,7 +63,23 @@
 		<Effect_Component Type="SpawnFrom">
          <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
 			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
-			<Destroy_Source_Object> true </Destroy_Source_Object>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
+			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
+			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
+		</Effect_Component>
+
+		<Effect_Component Type="SpawnFrom">
+         <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
+			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
+			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
+			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
+		</Effect_Component>
+
+		<Effect_Component Type="SpawnFrom">
+         <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
+			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
 			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
 			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
 		</Effect_Component>
