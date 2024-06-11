@@ -630,7 +630,7 @@
 		<BehaviorType Name="LocomotorBehaviorType">
 		  <Passability_Generators> DeepWater, ReflexBoostGenerator </Passability_Generators>
 		  <Passability_Generators> ShallowWater, ReflexBoostGenerator </Passability_Generators>
-		  <Path_Distance_Generator_Min_Distance> 140.0 </Path_Distance_Generator_Min_Distance>
+		  <Path_Distance_Generator_Min_Distance> 40.0 </Path_Distance_Generator_Min_Distance>
 		  <Path_Distance_Effect_Generator> ReflexBoostGenerator </Path_Distance_Effect_Generator>
 		</BehaviorType>
 
