@@ -701,21 +701,13 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {
-					[1] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Lockdown_Area_Unit_Ability", DescriptionTextID=nil, IconName=nil },
-				},
+				UnlocksUnitAbilities = {},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
-				LocksUnitAbilities = {
-					[1] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Control_Turret_Unit_Ability", DescriptionTextID=nil, IconName=nil },
-					[2] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Lockdown_Unit_Ability", DescriptionTextID=nil, IconName=nil },
-				},
+				LocksUnitAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!
-				UnlocksSpecialAbilities = {
-					[1] = { ObjectType=Find_Object_Type("Novus_Hacker"), AbilityName="Novus_Hacker_Control_Turret_Area_Special_Ability", DescriptionTextID=nil, IconName=nil },
-					[2] = { ObjectType=Find_Object_Type("Novus_Hacker"), AbilityName="Novus_Hacker_Lockdown_Area_Special_Ability", DescriptionTextID=nil, IconName=nil },
-				},
+				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {},
@@ -824,28 +816,30 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
 				UnlocksUnitAbilities = {
-
-					[1] = { 
+					[1] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Lockdown_Area_Unit_Ability", DescriptionTextID=nil, IconName=nil },
+					[2] = { 
 						TypeName = "Novus_Hacker", 
 						AbilityName="Novus_Hacker_Control_Turret_Area_Unit_Ability", 
 						TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_IMPROVED_MANIPULATION",
 						DescriptionTextID="TEXT_NOVUS_RESEARCH_IMPROVED_MANIPULATION", 
 						IconName="i_icon_n_research_upgrade_improved_manipulation.tga" 
 					},
-
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
 				LocksUnitAbilities = {
+					[1] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Control_Turret_Unit_Ability", DescriptionTextID=nil, IconName=nil },
+					[2] = { TypeName = "Novus_Hacker", AbilityName="Novus_Hacker_Lockdown_Unit_Ability", DescriptionTextID=nil, IconName=nil },
 				},
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!
 				UnlocksSpecialAbilities = {
-
-					[1] = { ObjectType=Find_Object_Type("Novus_Field_Inverter_Shield_Mode"), AbilityName="Inverter_Shield_Redirect_Projectile", DescriptionTextID=nil, IconName=nil }
-
+					[1] = { ObjectType=Find_Object_Type("Novus_Hacker"), AbilityName="Novus_Hacker_Control_Turret_Area_Special_Ability", DescriptionTextID=nil, IconName=nil },
+					[2] = { ObjectType=Find_Object_Type("Novus_Hacker"), AbilityName="Novus_Hacker_Lockdown_Area_Special_Ability", DescriptionTextID=nil, IconName=nil },
+					[3] = { ObjectType=Find_Object_Type("Novus_Field_Inverter_Shield_Mode"), AbilityName="Inverter_Shield_Redirect_Projectile", DescriptionTextID=nil, IconName=nil }
+					
 				},
-				
+
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {
 				},
