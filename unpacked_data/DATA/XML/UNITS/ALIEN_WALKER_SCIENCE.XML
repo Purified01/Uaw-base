@@ -351,6 +351,7 @@
       <!-- HARD POINTS -->
       <Attached_Hard_Points>
          Alien_Walker_Science_Crown, HP_Attach
+         Alien_Walker_Science_Crown, Root
          Alien_Walker_Science_Leg_HP00, HP_Leg_00
          Alien_Walker_Science_Leg_HP01, HP_Leg_01
          Alien_Walker_Science_Leg_HP02, HP_Leg_02
