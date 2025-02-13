@@ -7,6 +7,7 @@
 		<Novus_Aircraft_Assembly>0.0 100.0</Novus_Aircraft_Assembly>
 		<Novus_Vehicle_Assembly>0.0 -100.0</Novus_Vehicle_Assembly>
 		<Novus_Input_Station>100.0 100.0</Novus_Input_Station>
+		<Novus_Detection_Conduit>200.0 200.0</Novus_Detection_Conduit>
 	</Base_Layout>
 
 	<Base_Layout Name="Novus_Layout_2" Absolute="false" Faction="Novus">
@@ -16,6 +17,7 @@
 		<Novus_Aircraft_Assembly>0.0 200.0</Novus_Aircraft_Assembly>
 		<Novus_Vehicle_Assembly>200.0 -100.0</Novus_Vehicle_Assembly>
 		<Novus_Input_Station>100.0 100.0</Novus_Input_Station>
+		<Novus_Detection_Conduit>200.0 200.0</Novus_Detection_Conduit>		
 	</Base_Layout>
 
 	<Base_Layout Name="Alien_Layout_1" Absolute="false" Faction="Alien">

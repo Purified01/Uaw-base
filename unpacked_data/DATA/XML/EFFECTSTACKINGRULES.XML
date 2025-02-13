@@ -37,6 +37,7 @@
 	<DervishSpin>All</DervishSpin>
 	<Scale>Earliest</Scale>
 	<Cloaking> Earliest </Cloaking>
+	<CloakingConduit> Earliest </CloakingConduit>
 	<Mirage> Earliest </Mirage>
 	<BlockMirage> Earliest </BlockMirage>
    <RemoveMirage>Earliest</RemoveMirage>
@@ -44,6 +45,7 @@
 	<BlackOutTarget> Earliest </BlackOutTarget>
 	<NegateRevealCloaking> HighestPriority </NegateRevealCloaking>
 	<RevealCloaking> HighestPriority </RevealCloaking>
+	<RevealCloakingConduit> HighestPriority </RevealCloakingConduit>
 	<DefilerRadiation> All, 1 </DefilerRadiation>
 	<GruntShotgunRadiation> All </GruntShotgunRadiation>
 	<NovusVirus> HighestPriority </NovusVirus>
@@ -53,6 +55,8 @@
    <TacticalUpgradedBuild>All</TacticalUpgradedBuild>
    <TacticalBuildSingleBuilder>Earliest</TacticalBuildSingleBuilder>
    <Healing> All </Healing>
+   <HealingSentry> All, 1 </HealingSentry>
+	<HealingSeeker> All, 1 </HealingSeeker>
 	<EffectCleanse> All </EffectCleanse>
 	<MutantDeath> All </MutantDeath>
 	<MutantNoHeal> All </MutantNoHeal>	
@@ -124,6 +128,7 @@
 	<PatchBackupSystems> HighestPriority </PatchBackupSystems>
 	<PatchEmergencyPower>All</PatchEmergencyPower>
 	<PatchExtrapolation> HighestPriority </PatchExtrapolation>
+	<PatchExtrapolationUpgrade> HighestPriority </PatchExtrapolationUpgrade>	
 	<PatchOptimizedAssembly> HighestPriority </PatchOptimizedAssembly>
 	<PatchOverclock> HighestPriority </PatchOverclock>
 	<PatchRadiationCasing> HighestPriority </PatchRadiationCasing>
@@ -191,8 +196,25 @@
 	<ParanoiaUpgrade> All </ParanoiaUpgrade>
 	<MasariVortex>Earliest</MasariVortex>
 	<ResearchFieryFury>All</ResearchFieryFury>
+	<!--Templar Immolate Effects-->
+	<PurifyingLightPhosphor> ALL, 1 </PurifyingLightPhosphor>
+	<PhosphorAftershock> ALL, 1 </PhosphorAftershock>	
+	<PurifyingLightPhosphorStackable> ALL, 5 </PurifyingLightPhosphorStackable>	
+	<PurifyingLightPhosphorStackableUpgraded> ALL, 5 </PurifyingLightPhosphorStackableUpgraded>		
+	<PurifyingLightPhosphorStackableTwenty> ALL, 5 </PurifyingLightPhosphorStackableTwenty>	
+	<PurifyingLightPhosphorStackableUpgradedThirty> ALL, 5 </PurifyingLightPhosphorStackableUpgradedThirty>			
+	<PurifyingLightPhosphorStackableLight> ALL, 1 </PurifyingLightPhosphorStackableLight>		
+   <PurifyingLightVisualPhosphor> All </PurifyingLightVisualPhosphor>	
+    <PurifyingLightVisualPhosphorTwenty> All </PurifyingLightVisualPhosphorTwenty>	  
+   <PurifyingLightVisualPhosphorThirty> All </PurifyingLightVisualPhosphorThirty>		
+   <PurifyingLightVisualPhosphorLong> All </PurifyingLightVisualPhosphorLong>	   
+   <PurifyingLightVisualPhosphorLonger> All </PurifyingLightVisualPhosphorLonger>	      
+	<!-- ^^^ Templar Immolate Effects ^^^ -->   
+	<PurifyingLightSkyLord>  Earliest  </PurifyingLightSkyLord>   
+	<PurifyingLightTemplar> ALL, 4 </PurifyingLightTemplar>	
 	<PurifyingLight> ALL, 1 </PurifyingLight>
    <PurifyingLightVisual> All </PurifyingLightVisual>
+   <CripplingShotsTemplar> All, 1 </CripplingShotsTemplar>   
    <CripplingShots> All, 6 </CripplingShots>
 	<CripplingShotsVisual> All </CripplingShotsVisual>
    <UpgradingStructure> All </UpgradingStructure>
@@ -314,7 +336,10 @@
 	<AbilityRecharge> All </AbilityRecharge>
    <PlayerProduction> All </PlayerProduction>
 
-	<WalkerArmor> HighestPriority </WalkerArmor>
+	<WalkerArmor> All <!--HighestPriority--> </WalkerArmor>
+	<WalkerArmorA3> All <!--HighestPriority--> </WalkerArmorA3>
+	<WalkerArmorM3> All <!--HighestPriority--> </WalkerArmorM3>
+	<WalkerArmorQ3> All <!--HighestPriority--> </WalkerArmorQ3>	
 	<WalkerSpeed> All </WalkerSpeed>
 	<WalkerNoCrush> All </WalkerNoCrush>
 	<PlasmaDamage> All </PlasmaDamage>
@@ -354,7 +379,7 @@
    <Incignificance>Earliest</Incignificance>
 
    <MatterEngineLeech>All</MatterEngineLeech>
-
+   <MatterEngineLeechTemplar>All, 6</MatterEngineLeechTemplar>
    <FireVortex>All</FireVortex>
    <FireVortexVisual>Earliest</FireVortexVisual>
 

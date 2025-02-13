@@ -703,6 +703,30 @@
 		<Light_Source_Name>L_AB_Science_walk_beam</Light_Source_Name>
 	
 	</LightningEffect>
+	
+	<LightningEffect name="Templar_Super_Beam">
+	
+		<Texture_Name>lightning_Novus_Signal_tower_01.tga</Texture_Name>
+		<Texture_Repeat>10</Texture_Repeat>
+		<Texture_Scroll>0</Texture_Scroll>
+		
+		<Width_Max>1.2</Width_Max>
+		<Width_Min>.8</Width_Min>
+		<Displace>0.01, 0.01, 0.01</Displace>
+		<Detail>300</Detail>	
+		<Color_Start>50,255,50,0</Color_Start>
+		<Color_End>255,255,0,0</Color_End>
+		<Fadeout_Time_Max>0.8</Fadeout_Time_Max>
+		<Fadeout_Time_Min>0.7</Fadeout_Time_Min>
+		
+		<Update_All>true</Update_All>
+		<Number_Bolts>5</Number_Bolts>
+		<Bolt_Creation_Interval_Min>.02</Bolt_Creation_Interval_Min> 
+		<Bolt_Creation_Interval_Max>.02</Bolt_Creation_Interval_Max> 
+		
+		<Light_Source_Name>L_Novus_Amplifier_Resonation_Beam</Light_Source_Name>
+	
+	</LightningEffect>	
 
   <LightningEffect name="Alien_Grunt_Capture_Beam">
 

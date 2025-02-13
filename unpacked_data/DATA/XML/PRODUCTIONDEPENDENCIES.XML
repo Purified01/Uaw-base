@@ -398,15 +398,13 @@
       <Tactical_Builder> null </Tactical_Builder>
    </Dependency>
 
-   <!-- TACTICAL STRUCTURE: Masari Neophyte's Lab -->
+
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Atlatea, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -414,11 +412,10 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Will_Processor, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -426,11 +423,11 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+
 		<Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -438,11 +435,11 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+
 		<Tactical_Required_Objects> Masari_Element_Magnet, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -577,20 +574,29 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Foundation, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Required_Objects><!-- Masari_Foundation, -->Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 	
-	
-	<!-- TACTICAL STRUCTURE: Masari Ground Inspiration -->
-	<Dependency>
-		<Built_Object> Masari_Ground_Inspiration </Built_Object>
+<!--	<Dependency>
+		<Built_Object> Rosie_Light_Bomb_Guardian </Built_Object>
 
-		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Foundation, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>-->
+	
+	<!-- TACTICAL STRUCTURE: Masari Ground Inspiration -->
+<!--	<Dependency>
+		<Built_Object> Masari_Ground_Inspiration </Built_Object>
+
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+
 		<Tactical_Required_Objects> Masari_Atlatea, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -598,11 +604,11 @@
 	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+
 		<Tactical_Required_Objects> Masari_Will_Processor, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -610,11 +616,11 @@
 	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+
 		<Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -622,14 +628,14 @@
 	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
 
-		<!-- Strategic requirements -->
+
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
+
 		<Tactical_Required_Objects> Masari_Element_Magnet, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
+	</Dependency>-->
 
 	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
@@ -639,7 +645,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Foundation, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1151,6 +1157,166 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
 	</Dependency>
+
+	<!-- UNIT: Masari_Stomper -->
+	<!--	<Dependency>
+		<Built_Object> rOSIE_stomper </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
+	</Dependency>-->
+	
+	<!-- UNIT: Masari_Greatsword -->
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
+	</Dependency>
+	
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
+	</Dependency>	
+	
+<!--	<Dependency>
+		<Built_Object> Rosie_Strix </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects>  </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
+	</Dependency>	-->
+	
+	<!-- UNIT: Masari_Templar -->
+	<Dependency>
+		<Built_Object> Rosie_Landlord </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Guardian </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Infantry_Inspiration</Tactical_Builder>
+	</Dependency>	
+	
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Will_Processor </Tactical_Builder>
+	</Dependency>			
+	
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Atlatea </Tactical_Builder>
+	</Dependency>				
+	
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Key_Inspiration </Tactical_Builder>
+	</Dependency>				
+	
+	<Dependency>
+		<Built_Object> Masari_Stormchaser </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Element_Magnet </Tactical_Builder>
+	</Dependency>		
+	
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Central_Processor </Tactical_Builder>
+	</Dependency>					
+	
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Material_Center </Tactical_Builder>
+	</Dependency>					
+	
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Nanocenter </Tactical_Builder>
+	</Dependency>					
+		
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Research_Center </Tactical_Builder>
+	</Dependency>					
+			
+	
+<!--	<Dependency>
+		<Built_Object> Rosie_Landlord </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Masari_Natural_Interpreter_of_Hostility, Masari_Sky_Guardian_Wind_Screen </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
+	</Dependency>		-->
+	
+	<Dependency>
+		<Built_Object> Rosie_Landlord </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Hero_Charos </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
+	</Dependency>	
 	
 	<!-- UNIT: Masari_Disciple -->
 	<Dependency>
@@ -1225,6 +1391,19 @@
 		<Tactical_Required_Objects> Masari_Inventors_Lab </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
 	</Dependency>
+	
+	<!-- UNIT: Masari_Seer -->
+	<Dependency>
+		<Built_Object> Masari_Seer </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Natural_Interpreter </Tactical_Required_Objects>
+		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
+	</Dependency>	
 
 	<Dependency>
 		<Built_Object> Masari_Seer </Built_Object>
@@ -1773,6 +1952,28 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
+	<!-- TACTICAL STRUCTURE: Teleporter -->
+	<Dependency>
+		<Built_Object> Alien_Relocator </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+<!--	<Dependency>
+		<Built_Object> Rosie_Signal_Walker </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>-->
 	
 	<!-- TACTICAL STRUCTURE: Alien scan drone -->
 	<Dependency>
@@ -1850,21 +2051,6 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
-
-	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
-	<Dependency>
-		<Built_Object> Alien_Radiation_Spitter </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-
 	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
 	<Dependency>
 		<Built_Object> Alien_Radiation_Spitter </Built_Object>
@@ -1877,12 +2063,10 @@
 		<Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
-	
-	
-	
-	<!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
+
+	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
 	<Dependency>
-		<Built_Object> Alien_Gravitic_Manipulator </Built_Object>
+		<Built_Object> Alien_Radiation_Spitter </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -1891,20 +2075,7 @@
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-  <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
-  <Dependency>
-    <Built_Object> Alien_Gravitic_Manipulator </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
-    <Tactical_Builder> null </Tactical_Builder>
-  </Dependency>
+	</Dependency>	
 
   <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
   <Dependency>
@@ -1919,9 +2090,35 @@
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
+  <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
+  <Dependency>
+    <Built_Object> Alien_Gravitic_Manipulator </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+	<!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
+	<Dependency>
+		<Built_Object> Alien_Gravitic_Manipulator </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>  
+
 	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -1933,7 +2130,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
@@ -1945,7 +2142,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> Alien_Creation_Core </Strategic_Required_Objects>
@@ -1957,7 +2154,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -1969,7 +2166,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -2309,6 +2506,18 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Assembly_Body_Socket </Tactical_Builder>
 	</Dependency>
+	
+	<Dependency>
+		<Built_Object> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly_Body_Socket </Tactical_Builder>
+	</Dependency>	
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
@@ -2760,7 +2969,7 @@
     <Strategic_Builder> null </Strategic_Builder>
 
     <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Alien_Walker_Assembly </Tactical_Required_Objects>
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
     <Tactical_Builder> Cinematic_Alien_Walker_Habitat_Leg </Tactical_Builder>
   </Dependency>
 
@@ -2816,6 +3025,18 @@
 
 
 	<!-- HARDPOINTS: Science Walker -->
+
+	<Dependency>
+		<Built_Object> Alien_Walker_Habitat_HP_Shield_Node </Built_Object>
+		
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+		<!-- Tactical requirements -->
+
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Science_Leg </Tactical_Builder>
+	  </Dependency>
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Science_HP_Mind_Magnet </Built_Object>
@@ -2899,7 +3120,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Walker_Assembly </Tactical_Required_Objects>
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Science_Leg </Tactical_Builder>
 	</Dependency>
 
@@ -3120,6 +3341,30 @@
 <!--************************************************************************
 ******** HIERARCHY UNITS *************************************************-->
 
+	<!-- UNIT: Alien Revenant -->
+	<Dependency>
+		<Built_Object> Rosie_Shade </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Arrival_Site </Tactical_Builder>
+	</Dependency>
+
+	<!-- UNIT: Alien Glyph Carver -->
+<!--	<Dependency>
+		<Built_Object> Rosie_Cipher </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Arrival_Site </Tactical_Builder>
+	</Dependency>-->
+
 	<!-- UNIT: Alien Glyph Carver -->
 	<Dependency>
 		<Built_Object> Alien_Glyph_Carver </Built_Object>
@@ -3180,6 +3425,42 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Abduction_Core </Tactical_Builder>
 	</Dependency>
+	
+		<!-- UNIT: Alien Invasion Transport -->
+<!--	<Dependency>
+		<Built_Object> ALIEN_Air_Invasion_Transport_Rosie_2 </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
+  	</Dependency>	-->
+
+		<!-- UNIT: Alien Gunship Saucer -->
+	<Dependency>
+		<Built_Object> ALIEN_Heavy_Gunship </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
+  	</Dependency>
+
+  	<Dependency>
+		<Built_Object> ALIEN_Heavy_Gunship </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Walker_Assembly </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
+  	</Dependency>
 
 
 	<!-- UNIT: Alien Grunt -->
@@ -3888,6 +4169,30 @@
 		<Tactical_Required_Objects> Novus_Remote_Terminal, Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
+	
+	<!-- TACTICAL STRUCTURE: Novus Robotic Assembly -->
+<!--	<Dependency>
+		<Built_Object> NOVUS_repair_pad </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>	-->
+
+	<!-- TACTICAL STRUCTURE: Novus Robotic Assembly -->
+	<Dependency>
+		<Built_Object> NOVUS_Detection_Conduit </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Novus_Signal_Tower, Novus_Input_Station, Novus_Constructor </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
 
 	<!-- TACTICAL STRUCTURE: Novus Robotic Assembly -->
 	<!-- MUST HOOK UP OTHER CCS FOR THIS LATER!!! -->
@@ -3925,7 +4230,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Constructor </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Power_Router, Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3938,7 +4243,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Power_Router, Novus_Constructor </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -4256,6 +4561,52 @@
 <!--************************************************************************
 ******** NOVUS UNITS *****************************************************-->
 
+	<!-- UNIT: Novus_Dervish_Incinerator -->
+<!--	<Dependency>
+		<Built_Object> Rosie_Dervish_Gunship </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Remote_Terminal </Tactical_Builder>
+	</Dependency>-->
+	
+	<!-- UNIT: Novus_Evictor -->
+<!--	<Dependency>
+		<Built_Object> Rosie_Evictor </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Signal_Tower, NOVUS_Detection_Conduit </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
+	</Dependency>-->
+	
+	<!-- UNIT: Novus_Incinerator -->
+<!--	<Dependency>
+		<Built_Object> Rosie_Incinerator </Built_Object>
+
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Robotic_Assembly_Instance_Generator </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
+	</Dependency>	-->
+	
+	<!-- UNIT: Novus_Constructor -->
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Remote_Terminal </Tactical_Builder>
+	</Dependency>	
+
 	<!-- UNIT: Novus_Constructor -->
 	<Dependency>
 		<Built_Object> Novus_Constructor </Built_Object>
@@ -4414,6 +4765,17 @@
 		<Tactical_Required_Objects> Novus_Robotic_Assembly_Instance_Generator </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
 	</Dependency>
+	
+	<!-- UNIT: Novus_Reflex_Trooper -->
+<!--	<Dependency>
+		<Built_Object> Novus_Reflex_Trooper </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Hero_Founder </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
+	</Dependency>	-->
 
 	<Dependency>
 		<Built_Object> Novus_Reflex_Trooper </Built_Object>
@@ -4439,6 +4801,16 @@
 		<Tactical_Required_Objects> Novus_Science_Lab </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
 	</Dependency>
+	
+<!--	<Dependency>
+		<Built_Object> Novus_Hacker </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Hero_Founder </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
+	</Dependency>	-->
 
 	<Dependency>
 		<Built_Object> Novus_Hacker </Built_Object>

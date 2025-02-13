@@ -43,12 +43,17 @@
 
    <Armor_Alien_Infantry_Light/>
    <Armor_Alien_Infantry_Heavy/>
+      <Armor_Alien_Infantry_Grunt/>
    <Armor_Alien_Vehicle_Light/>
    <Armor_Alien_Vehicle_Heavy/>
    <Armor_Alien_Aircraft/>
+      <Armor_Alien_Aircraft_Heavy/>
    <Armor_Alien_Walker/>
+   <Armor_Alien_Walker_Leg/>   
+   <Armor_Alien_Walker_Hardpoint_Leg/>      
    <Armor_Alien_Walker_Hardpoint/>
    <Armor_Alien_Walker_Hardpoint_Armor/>
+   <Armor_Alien_Walker_Hardpoint_Armor_Leg/>   
    <Armor_Alien_Structure_Turret/>
    <Armor_Alien_Structure_Light/>
    <Armor_Alien_Structure_Heavy/>
@@ -56,6 +61,7 @@
    <Armor_Alien_Hero_Endure/>
    <Armor_Alien_Reaper/>
    <Armor_Alien_Brute_Tut01/>
+   <Armor_Alien_Infantry_Glyph/>   
    <!-- jdg so I can balance outside of game standard -->
 
    <!-- Military Armor Types -->
@@ -73,19 +79,26 @@
    <!-- jdg woolard needs his own armor type -->
 
    <!-- Novus Armor Types -->
-
+   <Armor_Novus_Infantry_Hack/>
+   <Armor_Novus_Infantry_Ohm/>
    <Armor_Novus_Infantry_Light/>
    <Armor_Novus_Infantry_Heavy/>
    <Armor_Novus_Vehicle_Light/>
+   <Armor_Novus_Vehicle_AM/>   
    <Armor_Novus_Vehicle_Heavy/>
+   <Armor_Novus_Collector/>   
    <Armor_Novus_Aircraft/>
    <Armor_Novus_Structure_Turret/>
+   <Armor_Novus_Structure_Gen/>   
+   <Armor_Novus_Structure_Recycle/>      
    <Armor_Novus_Structure_Light/>
    <Armor_Novus_Structure_Heavy/>
    <Armor_Novus_Hero/>
 
    <!-- Masari Armor Types -->
 
+   <Armor_Masari_Infantry_Templar_Dark/>
+   <Armor_Masari_Infantry_Templar/>
    <Armor_Masari_Infantry_Light/>
    <Armor_Masari_Infantry_Heavy/>
    <Armor_Masari_Vehicle_Light/>

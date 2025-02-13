@@ -1354,6 +1354,30 @@
 
 
 
+<!--	<SFXEvent Name="Light_Templar_Selected">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>LT_SUMMON_1.wav, LT_SELECT_1.wav, LT_SELECT_2.wav, LT_SELECT_3.wav, LT_SELECT_4.wav, LT_SELECT_5.wav, LT_SELECT_6.wav, LT_SELECT_7.wav, LT_SELECT_8.wav, LT_SELECT_9.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
+	</SFXEvent>
+
+	<SFXEvent Name="Light_Templar_Move">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>LT_MOVE_1.wav, LT_MOVE_2.wav, LT_MOVE_3.wav, LT_MOVE_5.wav, LT_MOVE_6.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
+	</SFXEvent>
+
+	<SFXEvent Name="Light_Templar_Priority_Move">
+		<Use_Preset>Preset_UR</Use_Preset>
+		<Samples>LT_PRIORITY_MOVE_3.wav, LT_PRIORITY_MOVE_2.wav, LT_PRIORITY_MOVE_4.wav, LT_PRIORITY_MOVE_5.wav, LT_PRIORITY_MOVE_6.wav, LT_PRIORITY_MOVE_7.wav</Samples>
+		<Play_Sequentially> Yes </Play_Sequentially>
+		<Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
+	</SFXEvent>-->
+
 
 
 

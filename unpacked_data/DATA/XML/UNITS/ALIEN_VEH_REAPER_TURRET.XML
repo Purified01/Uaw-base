@@ -260,7 +260,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>30</Crush_Defense>
+			<Crush_Defense>40</Crush_Defense>
 			<Crush_Power> 30 </Crush_Power>
 		</BehaviorType>
 
@@ -274,7 +274,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -979,7 +979,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> TacticalBuildableStructure, Large, Stationary </CategoryMask>
+		<CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
 		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
@@ -1046,7 +1046,7 @@
 			<Tactical_Buildable_Constructed> Alien_Superweapon_Reaper_Turret </Tactical_Buildable_Constructed>
 			<Tactical_Buildable_Beacon_Type> Alien_Reaper_Turret_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Build_Cost_Multiplayer> 1200 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 1200 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Required_Pre_Build_Time_In_Secs> 20 </Required_Pre_Build_Time_In_Secs>
@@ -1153,7 +1153,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-		<Tactical_Health>1</Tactical_Health>
+		<Tactical_Health>50</Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -1540,4 +1540,3 @@
 -->
 	
 </Alien_Veh_Reaper_Turret_XML>
-

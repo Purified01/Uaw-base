@@ -169,7 +169,7 @@
 			<Size_Value> 1 </Size_Value>
 			<Score_Cost_Credits> 10 </Score_Cost_Credits>
 			<Build_Cost_Credits> 3400 </Build_Cost_Credits>
-			<Build_Time_Seconds> 30 </Build_Time_Seconds>
+			<Build_Time_Seconds> 50 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Build_Limit_Current_Per_Player>1</Build_Limit_Current_Per_Player>
 			<!-- 
@@ -278,7 +278,9 @@
 			<SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
 			<SFXEvent_Select> Unit_Select_Alien_Habitat </SFXEvent_Select>
 			<SFXEvent_Move> Unit_Move_Alien_Habitat </SFXEvent_Move>
+			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Habitat</SFXEvent_Move_At_Top_Speed>
 			<SFXEvent_Attack> Unit_Attack_Alien_Habitat </SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Habitat</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Guard> Unit_Move_Alien_Habitat </SFXEvent_Guard>
 			<SFXEvent_Ambient_Moving> SFX_Alien_Walker_Random_Breath </SFXEvent_Ambient_Moving>
 			<SFXEvent_Engine_Idle_Loop> SFX_Alien_Habitat_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -378,7 +380,33 @@
 				<Is_Independent_Generator> true </Is_Independent_Generator>
 				<Effect_Generator_Entry Name="Entry1">
 
-					<Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
+
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
 					<Duration> 3.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
@@ -1428,7 +1456,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1519,7 +1547,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1610,7 +1638,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1702,7 +1730,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 600 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1827,7 +1855,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Leg </Armor_Type>
 			<Damage_Type> Damage_Default </Damage_Type>
 		</BehaviorType>
 
@@ -1935,7 +1963,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Leg </Armor_Type>
 			<Damage_Type> Damage_Default </Damage_Type>
 		</BehaviorType>
 
@@ -2568,7 +2596,9 @@
          ATTRIBUTE_DIRECTORY,
          TACTICAL_SELL
 		</LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -2980,7 +3010,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
@@ -3029,14 +3059,14 @@
       </BehaviorType>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Armor_Leg </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 17 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
@@ -3085,7 +3115,9 @@
          TACTICAL_SELL,
          FOO_CORE
       </LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3177,7 +3209,7 @@
 		<Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 250 </Tactical_Health>
+		<Tactical_Health> 375 </Tactical_Health>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
 		<!-- ART -->
@@ -3199,7 +3231,9 @@
          ATTRIBUTE_DIRECTORY,
          TACTICAL_SELL
 		</LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3249,7 +3283,7 @@
       <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 250 </Tactical_Health>
+      <Tactical_Health> 375 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
       <!-- ART -->
@@ -3269,8 +3303,8 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 13 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -3357,7 +3391,9 @@
          <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
          <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
       </BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3472,7 +3508,9 @@
 			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
 			<Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -4580,7 +4618,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Vehicle_Light </Armor_Type>
+			<Armor_Type> Armor_Alien_Structure_Light </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -5015,7 +5053,7 @@
 
 		<!-- ATTRIBUTES -->
 		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
-		<CategoryMask> TacticalBuildableStructure, Large, Stationary </CategoryMask>
+		<CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
 		<Space_Layer> LandDynamic </Space_Layer>
 		<Victory_Relevant> No </Victory_Relevant>
 
@@ -5190,7 +5228,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-		<Tactical_Health>1</Tactical_Health>
+		<Tactical_Health>50</Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>

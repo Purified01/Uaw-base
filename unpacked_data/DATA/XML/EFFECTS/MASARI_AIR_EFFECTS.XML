@@ -109,6 +109,188 @@
 			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
+	
+	<Effect Name="MasariShadowshiftSwitch">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariShadowshiftTemplarUndamaged">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="HotShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Damage </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+
+	<Effect Name="VariantShadowshiftUpgraded">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+
+	<Effect Name="VariantShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> NonIdle | Movement | Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+
+	<Effect Name="BestCloakInTheGame">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>			
+
+	<Effect Name="BestCloakInTheGameUpgraded">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>			
+	
+	<Effect Name="EvictorShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariSentryShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+
+	<Effect Name="MasariTemplarShadowshiftDeception">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariTemplarShadowshiftDarkDeception">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>			
+	
+	<Effect Name="MasariTemplarShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariTemplarShadowshiftDark">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage | Ability </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>		
 
 
 
@@ -328,7 +510,7 @@
 		<!-- one time damage on explosion -->
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Masari_Figment_Mine</Damage_Type>
-			<Damage_Amount>50.0</Damage_Amount>
+			<Damage_Amount>60.0</Damage_Amount>
 			<Damage_Percentage>0.0</Damage_Percentage>
 		</Effect_Component>
 
@@ -407,20 +589,73 @@
     == MasariSeekerDMARegenEffect [05/10/2007] Increase DMA regen in a radius around Seeker PMP
     ================================================================================================== -->
 	<Effect Name="MasariSeekerDMARegenEffect">
-		<Duration> 5.0 </Duration>
+		<Duration> -1.0 </Duration>
 		<Effect_Class> DMARegen </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> DMA_Regen_Rate_Add_Coeff </Attribute>
-			<Modifier_Value> 3 </Modifier_Value>
+			<Modifier_Value> 200 </Modifier_Value>
 		</Effect_Component>
+		
+      <Effect_Component Type="HealOverTime">
+        <Amount_Per_Second> 6.0 </Amount_Per_Second>
+        <Percentage_Per_Second>0.00</Percentage_Per_Second>
+      </Effect_Component>		
 
       <Effect_Component Type="ParticleSystem">
          <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Target </Particle_System_Type>
       </Effect_Component>
 
    </Effect>
+   
+	<Effect Name="RadialHealEffectTemplar">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+      <Effect_Component Type="HealOverTime">
+        <Amount_Per_Second> 1.0 </Amount_Per_Second>
+        <Percentage_Per_Second>0.01</Percentage_Per_Second>
+      </Effect_Component>		
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Masari_Templar_Healing_Aura </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
+   
+	<Effect Name="RadialHealEffectTemplarDark">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+      <Effect_Component Type="HealOverTime">
+        <Amount_Per_Second> 1.0 </Amount_Per_Second>
+        <Percentage_Per_Second>0.00</Percentage_Per_Second>
+      </Effect_Component>		
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> TEMPLAR_Bomb_blast </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+	<Effect Name="MasariSeerDMARegenEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> DMARegen </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> DMA_Regen_Rate_Add_Coeff </Attribute>
+			<Modifier_Value> 100 </Modifier_Value>
+		</Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Target_Seer </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
 
    <Effect Name="MasariSeekerDMARegenVisualEffect">
       <Duration> 5.0 </Duration>
@@ -488,7 +723,7 @@
 		<Effect_Class> MasariSeekerPhoenix </Effect_Class>
 
 		<Effect_Component Type="CreateObject">
-			<Create_Object_Type> Masari_Seeker </Create_Object_Type>
+			<Create_Object_Type> Masari_Aspirant </Create_Object_Type>
 			<Destroy_On_Remove> false </Destroy_On_Remove>
 			<Position_Type> AtSource </Position_Type>
 			<Use_Source_Player_ID> true </Use_Source_Player_ID>
@@ -645,7 +880,7 @@
 		<Effect_Class> MasariSeekerPhoenix </Effect_Class>
 
 		<Effect_Component Type="CreateObject">
-			<Create_Object_Type> Masari_Skylord </Create_Object_Type>
+			<Create_Object_Type> Masari_Aspirant </Create_Object_Type>
 			<Destroy_On_Remove> false </Destroy_On_Remove>
 			<Position_Type> AtSource </Position_Type>
 			<Facing_Type>Inherit_Z</Facing_Type>

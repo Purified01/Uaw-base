@@ -87,7 +87,7 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Ranged_Target_Z_Adjust>25.0</Ranged_Target_Z_Adjust>
 		<Attack_Category_Restrictions />
-		<Tactical_Health> 1200 </Tactical_Health>
+		<Tactical_Health> 1250 </Tactical_Health>
 		
 		<Land_FOW_Reveal_Range>250</Land_FOW_Reveal_Range>
 		
@@ -193,7 +193,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_hero_alien_orlok_square.tga  </Icon_Name>
+			<Icon_Name> I_ICON_AV_ORLOK.TGA </Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -633,7 +633,7 @@
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
       <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
@@ -680,6 +680,7 @@
 
 				<Type>SWITCH_TYPE</Type>
             <Active_Type_Class>Alien_Hero_Orlok_Siege_Mode</Active_Type_Class>
+			<Recharge_Seconds>52.0</Recharge_Seconds>
             <Inactive_Type_Class>Alien_Hero_Orlok</Inactive_Type_Class>
 
             <Effect_Generator_Name> AlienOrlokSiegeModeGenerator </Effect_Generator_Name>
@@ -726,6 +727,7 @@
 	<X10_Alien_Heroes Name="Alien_Hero_Orlok_Siege_Mode">
 		<Variant_Of_Existing_Type>Alien_Hero_Orlok</Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>No</Is_Placed_By_Editor>
+		<Recharge_Seconds>52.0</Recharge_Seconds>
 	
       <Attached_Hard_Points>
          Alien_Hero_Orlok_Siege_Horns_HP, HP_attach_00,

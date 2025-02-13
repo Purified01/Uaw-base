@@ -120,7 +120,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Vehicle_Heavy </Armor_Type>
+			<Armor_Type> Armor_Novus_Vehicle_AM </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -165,11 +165,11 @@
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Priority_Set> Novus_Antimatter_Tank_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 0.9 </Targeting_Fire_Inaccuracy>
+			<Targeting_Fire_Inaccuracy> 2.9 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Fire_Recharge_Seconds>1.2</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Recharge_Seconds>1.3</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>1.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -180,7 +180,7 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_NOVUS_ANTIMATTER_TANK </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_DARKMATTER </Tooltip_Good_Against>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_STRUCTURES TEXT_TYPE_VERSUS_DARKMATTER </Tooltip_Good_Against>
 			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
          <Researched_Upgrades>
             TEXT_NOVUS_RESEARCH_TITLE_RAPID_FLOW
@@ -254,7 +254,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>35</Crush_Defense>
+			<Crush_Defense>38</Crush_Defense>
       <Crush_Power>6</Crush_Power>
 		</BehaviorType>
 
@@ -303,6 +303,20 @@
 				<Unit_Ability_AI_Range> 175.0 </Unit_Ability_AI_Range>
 
 			</Unit_Ability>
+			
+			<Unit_Ability Name="Unit_Ability_Antimatter_Spray_Projectiles_Attack_AI">
+				<Type>POINT_BLANK_AE</Type>
+				<!-- Fires 10 projectile every 0.2 seconds => 10*0.2 = 2 total time -->
+				<Expiration_Seconds>5.2</Expiration_Seconds>
+				<Recharge_Seconds>8.0</Recharge_Seconds>
+				<GUI_Activated_Ability_Name> Antimatter_Spray_Projectiles_Attack_AI </GUI_Activated_Ability_Name>
+				<SFXEvent_GUI_Unit_Ability_Activated>  </SFXEvent_GUI_Unit_Ability_Activated>
+				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
+				<Unit_Ability_AI_Required_Targets> -3 </Unit_Ability_AI_Required_Targets>
+				<Unit_Ability_AI_Unit_Categories> CanAttack + ~Flying </Unit_Ability_AI_Unit_Categories>
+				<Unit_Ability_AI_Range> 175.0 </Unit_Ability_AI_Range>
+
+			</Unit_Ability>			
 		</Unit_Abilities_Data>
 
 		<!-- ABILITIES -->
@@ -322,7 +336,7 @@
 				<Projectile_Type> Proj_Novus_Antimatter_Cannon_vent </Projectile_Type>
 				<Is_Looping_Attack> false </Is_Looping_Attack>
 				<Projectile_Spawn_Bone_Name> MUZZLEB_00 </Projectile_Spawn_Bone_Name>
-				<Projectile_Count>10</Projectile_Count>
+				<Projectile_Count>6</Projectile_Count>
 				<Projectile_Radius>180.0</Projectile_Radius>
 				<Projectile_Fire_Interval>0.15</Projectile_Fire_Interval>
 				<Warmup_Animation>ANIM_SPECIAL_A</Warmup_Animation>
@@ -331,9 +345,60 @@
 
 			</Spray_Projectiles_Ability>
 
+			<Spray_Projectiles_Ability Name="Antimatter_Spray_Projectiles_Attack_AI">
+				<Activation_Style>USER_INPUT</Activation_Style>
+				<Activation_Chance>1.0</Activation_Chance>
+				<Activation_Min_Range>0.0</Activation_Min_Range>
+				<Activation_Max_Range>180.0</Activation_Max_Range>
+				<Activation_Recharge_Time> 0.0 </Activation_Recharge_Time>
+				<Damage_Frame_Number>10</Damage_Frame_Number>
+
+
+				<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
+				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
+				<Projectile_Type> Proj_Novus_Antimatter_Cannon_vent </Projectile_Type>
+				<Is_Looping_Attack> false </Is_Looping_Attack>
+				<Projectile_Spawn_Bone_Name> MUZZLEB_00 </Projectile_Spawn_Bone_Name>
+				<Projectile_Count>12</Projectile_Count>
+				<Projectile_Radius>180.0</Projectile_Radius>
+				<Projectile_Fire_Interval>0.15</Projectile_Fire_Interval>
+				<Warmup_Animation>ANIM_SPECIAL_A</Warmup_Animation>
+				<Firing_Animation>ANIM_SPECIAL_B</Firing_Animation>
+				<Cooldown_Animation>ANIM_SPECIAL_C</Cooldown_Animation>
+
+			</Spray_Projectiles_Ability>
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
+		
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		
 
 			<!-- Researched ability for this unit to Flow. It just dynamically adds the FLOW behavior to this unit. -->
 			<Effect_Generator Name="NovusResearchAdvancedFlowEffectGenerator">
@@ -738,7 +803,7 @@
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 10 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 20 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 20 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
@@ -802,7 +867,7 @@
 			<!-- DEBUG: Projectile_Damage seems to have no effect, all damage is being derived from blast area damage -->
 			<Projectile_Damage>0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage> 35 </Projectile_Blast_Area_Damage>
-			<Projectile_Blast_Area_Range> 30 </Projectile_Blast_Area_Range>
+			<Projectile_Blast_Area_Range> 35 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
@@ -812,7 +877,7 @@
          <Projectile_Lifetime_Detonation_Particle>Tiny_Dud</Projectile_Lifetime_Detonation_Particle>
          <Projectile_Absorbed_By_Shields_Particle>Tiny_Dud</Projectile_Absorbed_By_Shields_Particle>
          <Projectile_Explosion_Causes_Chaining>true</Projectile_Explosion_Causes_Chaining>
-			<Projectile_Chaining_Damage_Increase_Percent>55.0</Projectile_Chaining_Damage_Increase_Percent>
+			<Projectile_Chaining_Damage_Increase_Percent>45.0</Projectile_Chaining_Damage_Increase_Percent>
 			<Projectile_Chaining_Distance_Increase>0</Projectile_Chaining_Distance_Increase>
 			<Projectile_Bomb_Timer_In_Secs>2.5</Projectile_Bomb_Timer_In_Secs>
 		</BehaviorType>

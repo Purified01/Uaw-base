@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<TextureConfig>
+   <PreprocessConfig platform="xbox360">
+      <Dir>
+         <!--Assume running from "Invasion\Run" folder-->
+         <DirPath path="..\Art\Textures\NoCompression"/>
+         <Default resize="50" compress="none" mipmaps="0"/>
+         <!--This texture should not be downsampled EVER. And no mimpmap either please.-->
+         <Texture name="w_building_placement_blob.tga" resize="100" compress="none" mipmaps="-1"/>
+      </Dir>
+   </PreprocessConfig>
+   <RuntimeConfig platform="PC">
+      <Dir>
+         <DirPath path="..\Art\Textures\NoCompression"/>
+         <Texture name="w_star_bkgnd.tga" no_dynamic_reduction="true"/>
+         <Texture name="W_Stars_Sun00.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth_glow.tga" no_dynamic_reduction="true"/>
+      </Dir>
+   </RuntimeConfig>
+</TextureConfig>

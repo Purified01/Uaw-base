@@ -146,7 +146,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Structure_Light </Armor_Type>
+			<Armor_Type> Armor_Novus_Structure_Gen </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">

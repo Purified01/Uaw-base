@@ -211,9 +211,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 850 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 850 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 750 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 750 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -239,8 +239,8 @@
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Novus_Dervish_Antimatter_Bomb</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -344,6 +344,7 @@
 			<!-- Activates Dervish_Spin_Attack special ability below -->
 			<Unit_Ability Name="Unit_Ability_Dervish_Spin_Attack">
 				<Type> DERVISH_SPIN_ATTACK </Type>
+                <Active_By_Default> false </Active_By_Default>
 				<Is_Modal>yes</Is_Modal>
 				<Expiration_Seconds> 10.0 </Expiration_Seconds>
 				<Recharge_Seconds> 35.0 </Recharge_Seconds>
@@ -356,7 +357,7 @@
 				<!-- the -4 is not an error, when required targets is < 0 then it needs abs(req_targets) regardless of any high value targets -->
 				<Unit_Ability_AI_Required_Targets> -4 </Unit_Ability_AI_Required_Targets>
 				<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 135.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Range> 202.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -380,6 +381,20 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
 
 			<!-- Researched ability for this unit to Flow. It just dynamically adds the FLOW behavior to this unit. -->
 			<Effect_Generator Name="NovusResearchAdvancedFlowEffectGenerator">
@@ -398,6 +413,21 @@
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
+			
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>			
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -788,7 +818,7 @@
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 6 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 8 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 15 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>

@@ -53,3 +53,316 @@
 
 </Effect_Generator>
 
+<Effect_Generator Name="PurifyingLightImpactGeneratorTemplar">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariPurifyingLightEffectTemplar </Effect_Name>
+		<Duration> 7.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariPurifyingLightVisualEffectSmallTemplar </Effect_Name>
+		<Duration> 7.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariPurifyingLightVisualEffectMediumTemplar </Effect_Name>
+		<Duration> 7.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariPurifyingLightVisualEffectLargeTemplar </Effect_Name>
+		<Duration> 7.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+	
+<!--	<Effect_Generator_Entry Name="Entry5">
+		<Effect_Name> MasariPurifyingLightEffectTemplarLightThree </Effect_Name>
+		<Duration> 15.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry6">
+		<Effect_Name> MasariPurifyingLightVisualEffectSmallLightThree </Effect_Name>
+		<Duration> 15.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry7">
+		<Effect_Name> MasariPurifyingLightVisualEffectMediumLightThree </Effect_Name>
+		<Duration> 15.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry8">
+		<Effect_Name> MasariPurifyingLightVisualEffectLargeLightThree </Effect_Name>
+		<Duration> 15.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>-->
+
+
+</Effect_Generator>
+
+<Effect_Generator Name="PurifyingLightImpactGeneratorSuperTemplar">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariPurifyingLightEffectTemplarBlastFirst </Effect_Name>
+		<Duration> 20.1 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariPurifyingLightVisualEffectPhosphor </Effect_Name>
+		<Duration> 20.3 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small | Medium | Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariPurifyingLightEffectSuperTemplar </Effect_Name>
+		<Duration> 40.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+   
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariPurifyingLightVisualEffectPhosphorLong </Effect_Name>
+		<Duration> 40.2 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small | Medium | Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>   
+	
+	<Effect_Generator_Entry Name="Entry5">
+		<Effect_Name> MasariPurifyingLightEffectSuperTemplarInitial </Effect_Name>
+		<Duration> 3.1 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+   </Effect_Generator_Entry>		
+   
+	<Effect_Generator_Entry Name="Entry6">
+		<Effect_Name> MasariPurifyingLightEffectSuperTemplarLight </Effect_Name>
+		<Duration> 45.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>    
+   </Effect_Generator_Entry>
+   
+   
+	<Effect_Generator_Entry Name="Entry7">
+		<Effect_Name> MasariPurifyingLightVisualEffectPhosphorLonger </Effect_Name>
+		<Duration> 45.2 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small | Medium | Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>      
+	
+<!--	<Effect_Generator_Entry Name="Entry7">
+		<Effect_Name> MasariPurifyingLightEffectSuperTemplarCancelOut </Effect_Name>
+		<Duration> 20.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>-->
+</Effect_Generator>
+
+<Effect_Generator Name="PurifyingLightImpactGeneratorSuperTemplarAI">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariPurifyingLightEffectTemplarBlastFirstAI </Effect_Name>
+		<Duration> 10.1 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariPurifyingLightVisualEffectPhosphor </Effect_Name>
+		<Duration> 10.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small | Medium | Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariPurifyingLightEffectSuperTemplarAI </Effect_Name>
+		<Duration> 20.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+   
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariPurifyingLightVisualEffectPhosphorLong </Effect_Name>
+		<Duration> 20.9 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small | Medium | Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>   
+	
+
+</Effect_Generator>
+
+<Effect_Generator Name="PurifyingLightImpactGeneratorSkyLord">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariPurifyingLightEffectSkyLord </Effect_Name>
+		<Duration> 13.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+     
+   </Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariPurifyingLightVisualEffectSmallSkylord </Effect_Name>
+		<Duration> 13.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariPurifyingLightVisualEffectMediumSkylord </Effect_Name>
+		<Duration> 13.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariPurifyingLightVisualEffectLargeSkylord </Effect_Name>
+		<Duration> 14.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge</Target_Filter_Categories>
+    <Target_Filter_C>Is_Enemy</Target_Filter_C>
+    <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+</Effect_Generator>

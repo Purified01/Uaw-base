@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<TextureConfig>
+   <PreprocessConfig platform="xbox360">
+      <Dir>
+         <!--Assume running from "Invasion\Run" folder-->
+         <DirPath path="..\Art\Textures\MapPreview"/>
+         <Default resize="100" compress="default" mipmaps="0"/>
+      </Dir>
+   </PreprocessConfig>
+   <RuntimeConfig platform="PC">
+      <Dir>
+         <DirPath path="..\Art\Textures\MapPreview"/>
+
+         <Texture name="!!Nothing.tga" no_dynamic_reduction="true"/>
+         <Texture name="!Allunit_test.tga" no_dynamic_reduction="true"/>
+         <Texture name="!FPSTEST_Brazillian_Highlands.tga" no_dynamic_reduction="true"/>
+         <Texture name="!Hierarchy_eval_map.tga" no_dynamic_reduction="true"/>
+         <Texture name="!Masari_eval_map.tga" no_dynamic_reduction="true"/>
+         <Texture name="!Military_eval_map.tga" no_dynamic_reduction="true"/>
+         <Texture name="!Novus_eval_map.tga" no_dynamic_reduction="true"/>
+         <Texture name="___!FRANK_Alien_Testbed.tga" no_dynamic_reduction="true"/>
+         <Texture name="___!FRANK_Masari_Testbed.tga" no_dynamic_reduction="true"/>
+         <Texture name="___________Screenshot_Canyon.tga" no_dynamic_reduction="true"/>
+         <Texture name="_______Screenshot_destroyed_city.tga" no_dynamic_reduction="true"/>
+         <Texture name="_______Screenshot_Ocean.tga" no_dynamic_reduction="true"/>
+         <Texture name="____Demo_Map_Turkestan.tga" no_dynamic_reduction="true"/>
+         <Texture name="___masari_test.tga" no_dynamic_reduction="true"/>
+         <Texture name="__EricMakiTest.tga" no_dynamic_reduction="true"/>
+         <Texture name="__FX_Masari_Units.tga" no_dynamic_reduction="true"/>
+         <Texture name="__FX_Surface_FX.tga" no_dynamic_reduction="true"/>
+         <Texture name="__SEGA_All_Units.tga" no_dynamic_reduction="true"/>
+         <Texture name="_Benchmark_Battle0.tga" no_dynamic_reduction="true"/>
+         <Texture name="_MP_Kamchatka.tga" no_dynamic_reduction="true"/>
+         <Texture name="_MP_Turkestan.tga" no_dynamic_reduction="true"/>
+         <Texture name="_MP_Urban6x6.tga" no_dynamic_reduction="true"/>
+         <Texture name="_MP_WashingtonDC.tga" no_dynamic_reduction="true"/>
+         <Texture name="_Phill_Test_Map.tga" no_dynamic_reduction="true"/>
+         <Texture name="_skyler_test.tga" no_dynamic_reduction="true"/>
+         <Texture name="_test_decals.tga" no_dynamic_reduction="true"/>
+         <Texture name="_test_element.tga" no_dynamic_reduction="true"/>
+         <Texture name="AutoSaveMap.tga" no_dynamic_reduction="true"/>
+         <Texture name="blah.tga" no_dynamic_reduction="true"/>
+         <Texture name="Brazillian_Highlands_E3.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M1_S3.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M2_S4.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M4_S3.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M6_S1.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M6_S3.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_HIER_M6_S3_b.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_M08_NOV_M3_S1.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_M15_NOV_M7_S1.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_M15_ZRH_M1_S1.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_M24_NOV_M2_S3.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_M30_HIE_M4_S1.tga" no_dynamic_reduction="true"/>
+         <Texture name="CIN_MAS_M1_S4.tga" no_dynamic_reduction="true"/>
+         <Texture name="DEMO_Canyon.tga" no_dynamic_reduction="true"/>
+         <Texture name="DEMO_Canyon_Enhanced.tga" no_dynamic_reduction="true"/>
+         <Texture name="DEMO_Nightcity.tga" no_dynamic_reduction="true"/>
+         <Texture name="DEMO_Washington_DC.tga" no_dynamic_reduction="true"/>
+         <Texture name="files.txt" no_dynamic_reduction="true"/>
+         <Texture name="M01_British_Isles.tga" no_dynamic_reduction="true"/>
+         <Texture name="M03_Western_Europe.tga" no_dynamic_reduction="true"/>
+         <Texture name="M04_Eastern_Europe.tga" no_dynamic_reduction="true"/>
+         <Texture name="M07_Turkestan.tga" no_dynamic_reduction="true"/>
+         <Texture name="M08_Eastern_Siberia.tga" no_dynamic_reduction="true"/>
+         <Texture name="M09_Tibetan_Plateau.tga" no_dynamic_reduction="true"/>
+         <Texture name="M11_Kamchatka.tga" no_dynamic_reduction="true"/>
+         <Texture name="M13_Indochina.tga" no_dynamic_reduction="true"/>
+         <Texture name="M15_Middle_East.tga" no_dynamic_reduction="true"/>
+         <Texture name="M16_Sahara.tga" no_dynamic_reduction="true"/>
+         <Texture name="M17_East_Africa.tga" no_dynamic_reduction="true"/>
+         <Texture name="M18_North_Africa.tga" no_dynamic_reduction="true"/>
+         <Texture name="M20_Congo.tga" no_dynamic_reduction="true"/>
+         <Texture name="M21_South_Africa.tga" no_dynamic_reduction="true"/>
+         <Texture name="M22_Appalachia.tga" no_dynamic_reduction="true"/>
+         <Texture name="M23_Gulf_Coast.tga" no_dynamic_reduction="true"/>
+         <Texture name="M24_Midwest.tga" no_dynamic_reduction="true"/>
+         <Texture name="M26_Pacific_Northwest.tga" no_dynamic_reduction="true"/>
+         <Texture name="M27_Sierra_Nevada.tga" no_dynamic_reduction="true"/>
+         <Texture name="M29_Brazillian_Highlands.tga" no_dynamic_reduction="true"/>
+         <Texture name="M30_Altiplano.tga" no_dynamic_reduction="true"/>
+         <Texture name="M30_Altiplano_StoryCampaign.tga" no_dynamic_reduction="true"/>
+         <Texture name="M31_Amazon_Basin.tga" no_dynamic_reduction="true"/>
+         <Texture name="M33_Guiana.tga" no_dynamic_reduction="true"/>
+         <Texture name="M34_Anahuac.tga" no_dynamic_reduction="true"/>
+         <Texture name="M35_Central_America.tga" no_dynamic_reduction="true"/>
+         <Texture name="Maltese_Combat_3.tga" no_dynamic_reduction="true"/>
+         <Texture name="Maltese_Hierarchy.tga" no_dynamic_reduction="true"/>
+         <Texture name="MAS_M01_Quetzalcoatl.tga" no_dynamic_reduction="true"/>
+         <Texture name="MAS_M04_Vesuvius.tga" no_dynamic_reduction="true"/>
+         <Texture name="MP_Canyons.tga" no_dynamic_reduction="true"/>
+         <Texture name="MP_Test.tga" no_dynamic_reduction="true"/>
+         <Texture name="No_Map_Preview.tga" no_dynamic_reduction="true"/>
+         <Texture name="NOV_M01_MiddleEast.tga" no_dynamic_reduction="true"/>
+         <Texture name="NOV_M03_Siberia.tga" no_dynamic_reduction="true"/>
+         <Texture name="NOV_M04_Altiplano.tga" no_dynamic_reduction="true"/>
+         <Texture name="NOV_M06_ZRHShip.tga" no_dynamic_reduction="true"/>
+         <Texture name="NOV_M07_MiddleEast.tga" no_dynamic_reduction="true"/>
+         <Texture name="sky testing.tga" no_dynamic_reduction="true"/>
+         <Texture name="TUT_01_Washington_DC.tga" no_dynamic_reduction="true"/>
+         <Texture name="TUT_01_Washington_DC_Finale.tga" no_dynamic_reduction="true"/>
+         <Texture name="TUT_02_FortMcNair.tga" no_dynamic_reduction="true"/>
+         <Texture name="ZRH_M03_Atlatea.tga" no_dynamic_reduction="true"/>
+         <Texture name="ZRH_M05_Indochina.tga" no_dynamic_reduction="true"/>
+         <Texture name="ZRH_M06_Arecibo.tga" no_dynamic_reduction="true"/>
+      </Dir>
+   </RuntimeConfig>
+</TextureConfig>

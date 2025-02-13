@@ -57,3 +57,373 @@
 
 </Effect_Generator>
 
+<Effect_Generator Name="CripplingShotsImpactGeneratorDarkTemplar">
+
+
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariCripplingShotsEffectDarkTemplar </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>~Stationary</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariCripplingShotsVisualEffectSmall </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariCripplingShotsVisualEffectMedium </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariCripplingShotsVisualEffectLarge </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge + ~Stationary</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+	
+	<Effect_Generator_Entry Name="Entry5">
+		<Effect_Name> MasariCripplingShotsEffectDarkTemplarJammingEffect </Effect_Name>
+		<Duration> 4.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>~Huge + ~Hero + ~Flying</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+
+</Effect_Generator>
+
+<Effect_Generator Name="CripplingShotsImpactGeneratorTemplar">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariCripplingShotsVisualEffectSmallStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariCripplingShotsVisualEffectMediumStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariCripplingShotsVisualEffectLargeStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge + ~Stationary</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+	
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariCripplingShotsEffectTemplarInfantry </Effect_Name>
+		<Duration> 13.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small + ~Stationary + ~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+	
+	<Effect_Generator_Entry Name="Entry5">
+		<Effect_Name> MasariCripplingShotsEffectTemplarNotInfantry </Effect_Name>
+		<Duration> 13.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>~Small + ~Stationary + ~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+	
+	<Effect_Generator_Entry Name="Entry6">
+		<Effect_Name> MasariCripplingShotsEffectTemplarDamage </Effect_Name>
+		<Duration> 5.4 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+<!--    <Target_Filter_Categories>~Stationary</Target_Filter_Categories>-->
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>			
+	
+	<Effect_Generator_Entry Name="Entry7">
+		<Effect_Name> MasariCripplingShotsEffectTemplarHero </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>		
+	
+	<Effect_Generator_Entry Name="Entry8">
+		<Effect_Name> MasariCripplingShotsEffectTemplarBrute </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium + Organic + ~Small + ~Stationary + ~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>		
+	
+	<Effect_Generator_Entry Name="Entry9">
+		<Effect_Name> MasariCripplingShotsEffectTemplarFlow </Effect_Name>
+		<Duration> 9.5 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Stationary</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>				
+	
+	<Effect_Generator_Entry Name="Entry10">
+		<Effect_Name> MasariCripplingShotsEffectTemplarInfantryUpgraded </Effect_Name>
+		<Duration> 12.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small + ~Stationary + ~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+	<Effect_Generator_Entry Name="Entry11">
+		<Effect_Name> MasariCripplingShotsEffectTemplarBruteUpgraded </Effect_Name>
+		<Duration> 5.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium + Organic + ~Small + ~Stationary + ~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+	
+</Effect_Generator>	
+<Effect_Generator Name="CripplingShotsImpactGeneratorTemplarAI">
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> MasariCripplingShotsVisualEffectSmallStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> MasariCripplingShotsVisualEffectMediumStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> MasariCripplingShotsVisualEffectLargeStun </Effect_Name>
+		<Duration> 6.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge + ~Stationary</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+	
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> MasariCripplingShotsEffectTemplarAI </Effect_Name>
+		<Duration> 4.5 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>~Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>	
+	
+	<Effect_Generator_Entry Name="Entry5">
+		<Effect_Name> MasariCripplingShotsEffectTemplarHeroAI </Effect_Name>
+		<Duration> 3.5 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Hero</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>		
+	
+	<Effect_Generator_Entry Name="Entry6">
+		<Effect_Name> MasariCripplingShotsEffectTemplarDamageAI </Effect_Name>
+		<Duration> 5.4 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+<!--    <Target_Filter_Categories>~Stationary</Target_Filter_Categories>-->
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>			
+	
+</Effect_Generator>
+<Effect_Generator Name="ArcShotsImpactGenerator">
+
+
+
+	<Effect_Generator_Entry Name="Entry1">
+		<Effect_Name> NovusArcShotsEffect </Effect_Name>
+		<Duration> 5.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>~Stationary</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+		<Remove_On_Death> false </Remove_On_Death>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Disable_Parent_If_Idle> yes </Disable_Parent_If_Idle>
+
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry2">
+		<Effect_Name> NovusArcVisualEffectSmall </Effect_Name>
+		<Duration> 5.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Small</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry3">
+		<Effect_Name> NovusArcVisualEffectMedium </Effect_Name>
+		<Duration> 5.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Medium</Target_Filter_Categories>
+		<Target_Filter_C> Is_Enemy </Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+	<Effect_Generator_Entry Name="Entry4">
+		<Effect_Name> NovusArcVisualEffectLarge </Effect_Name>
+		<Duration> 5.0 </Duration>
+		<Target_Gathering_Mask> Target </Target_Gathering_Mask>
+    <Target_Filter_Categories>Large | Huge + ~Stationary</Target_Filter_Categories>
+		<Target_Filter_C>Is_Enemy</Target_Filter_C>
+		<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+		<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+		<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
+		<Remove_On_Death> false </Remove_On_Death>
+	</Effect_Generator_Entry>
+
+</Effect_Generator>

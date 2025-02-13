@@ -385,13 +385,38 @@
 
 		<!-- Enable relevant generator -->
       <!-- THis upgrades weapon, thus preventing it from firing (light beam has "not upgraded" target filter)-->
-		<!--<Effect_Component Type="ActivateGenerator">
+		<Effect_Component Type="ActivateGenerator">
 			<Effect_Generator_Name> Masari_Sentry_With_Avenger_Effect_Generator </Effect_Generator_Name>
-		</Effect_Component>-->
+		</Effect_Component>
 		
 	</Effect>
 
+	<Effect Name="Masari_Sentry_Load_Landlord_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Upload </Effect_Class>
 
+		<!-- Prevent other passengers from loading -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Passenger_Onboard </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+
+		<!-- Attach relevant hardpoint -->
+		<Effect_Component Type="AttachHardpoint">
+			<Hardpoint_Type> Masari_Sentry_Landlord_Hardpoint </Hardpoint_Type>
+			<Attachment_Bone_Name> HP_Attach </Attachment_Bone_Name>
+			<Attach_To_Empty_Bone_Only>No</Attach_To_Empty_Bone_Only>
+			<Destroy_On_Remove>Yes</Destroy_On_Remove>
+		</Effect_Component>
+
+		<!-- Enable relevant generator -->
+      <!-- THis upgrades weapon, thus preventing it from firing (light beam has "not upgraded" target filter)-->
+		<Effect_Component Type="ActivateGenerator">
+			<Effect_Generator_Name> Masari_Sentry_With_Avenger_Effect_Generator </Effect_Generator_Name>
+		</Effect_Component>
+		
+	</Effect>
+	
 	<Effect Name="Masari_Sentry_Load_Seer_Effect">
 		<Duration> -1.0 </Duration>
 		<Effect_Class> Upload </Effect_Class>
@@ -465,6 +490,16 @@
       </Effect_Component>
    </Effect>
 
+   <Effect Name="Landlord_Enter_Sentry_Effect">
+      <Effect_Class> UploadSelf </Effect_Class>
+      <Duration> .1 </Duration>
+
+      <Effect_Component Type="ActivateGenerator">
+         <Effect_Generator_Name> Masari_Sentry_Load_Landlord_Effect_Generator </Effect_Generator_Name>
+         <Should_Unapply>No</Should_Unapply>
+         <Should_Unapply_If_Generator_Inactive>Yes</Should_Unapply_If_Generator_Inactive>
+      </Effect_Component>
+   </Effect>
 
    <Effect Name="Seer_Enter_Sentry_Effect">
       <Effect_Class> UploadSelf </Effect_Class>
@@ -518,11 +553,11 @@
 	<!-- Architect onboard bonus: Sentry gains a repair aura, slowly repairing all injured units / structures
         over time.  Slower than Architect direct-repair, but doesn’t lock-down object being repaired. -->
 	<Effect Name="Masari_Sentry_With_Architect_Effect">
-		<Effect_Class> Healing </Effect_Class>
+		<Effect_Class> HealingSentry </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
 		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+			<Amount_Per_Second> 3.0 </Amount_Per_Second>
       <Percentage_Per_Second>0.02</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -530,6 +565,52 @@
          <Application_Probability> 1 </Application_Probability>
 			<Particle_System_Type> Masari_Sentry_Repair_Target </Particle_System_Type>
 		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="Masari_Sentry_With_Architect_Effect_Avenger">
+		<Effect_Class> Healing </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1.1 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>
+
+<!--		<Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+			<Particle_System_Type> Masari_Sentry_Repair_Target </Particle_System_Type>
+		</Effect_Component>-->
+	</Effect>
+	
+
+
+	<Effect Name="Masari_Sentry_With_Architect_Effect_Seeker">
+		<Effect_Class> HealingSeeker </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 9.9 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+
+<!--		<Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+			<Particle_System_Type> Masari_Sentry_Repair_Target </Particle_System_Type>
+		</Effect_Component>-->
+		
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>	  
+         <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Target_Seer </Particle_System_Type>
+      </Effect_Component>		
+	</Effect>
+
+	<Effect Name="MasariAlateaBeneficialFieldSelfEffect">
+   	<Effect_Class> HealTerrain </Effect_Class>
+   	<Duration> 2.0 </Duration>
+
+   	<Effect_Component Type="HealTerrain">
+	  <Radius> 70 </Radius>
+   	</Effect_Component>
 	</Effect>
 
 
@@ -586,6 +667,14 @@
 		<Effect_Class> RevealCloaking </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 		<Priority> 10.0 </Priority>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -739,7 +828,52 @@
    </Effect>
 
 
+   <Effect Name="TemplarLightBeamEffect">
+      <Duration> 10.0 </Duration>
+      <Effect_Class> LightBeam </Effect_Class>
+      <Extends_Existing_Duration> true </Extends_Existing_Duration>
+      <Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
 
+      <Effect_Component Type="DamageOverTime">
+         <Damage_Type> Damage_Masari_Templar_Peforating_Light </Damage_Type>
+         <Amount_Per_Second> 30.0 </Amount_Per_Second>
+         <Percentage_Per_Second>0</Percentage_Per_Second>
+      </Effect_Component>
+
+      <Effect_Component Type="Lightning">
+         <Lightning_Effect_Name> Masari_Sentry_Light_Weapon_Avenger_Beam </Lightning_Effect_Name>
+         <Source_Target_Type> SourceToTarget </Source_Target_Type>
+         <Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+      </Effect_Component>
+
+      <Effect_Component Type="Lightning">
+         <Lightning_Effect_Name> Masari_Sentry_Light_Weapon_Avenger_Beam_Core </Lightning_Effect_Name>
+         <Source_Target_Type> SourceToTarget </Source_Target_Type>
+         <Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+      </Effect_Component>
+      
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>Masari_Sentry_Avenger_Beam_Flash</Particle_System_Type>
+
+         <Position_Type>AtSource</Position_Type>
+         <Attachment_Bone_Name>MuzzleA_00</Attachment_Bone_Name>
+
+         <Attractor_Type>AtTarget</Attractor_Type>
+         <Attractor_Bone_Name/>
+
+      </Effect_Component>
+
+      <Effect_Component Type="CreateObject">
+         <Create_Object_Type> Masari_Sentry_Beam_Avenger_Target </Create_Object_Type>
+         <Destroy_On_Remove> Yes </Destroy_On_Remove>
+         <Position_Type> AtTarget </Position_Type>
+         <Maintain_Position> Yes </Maintain_Position>
+         <Use_Source_Player_ID> true </Use_Source_Player_ID>
+      </Effect_Component>
+      
+
+   </Effect>
 
 
 	<!--**********************************************************************************************

@@ -26,12 +26,12 @@
 
 		<Attributes SubObjectList="Yes">
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
+			<Tactical_Sell_Time_Seconds> 1.9 </Tactical_Sell_Time_Seconds>
 			<Regenerate_Type>Masari_Avenger_Skylord</Regenerate_Type>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
-			<Phoenix_Type>Masari_Skylord_Fire</Phoenix_Type>
-			<DMA_Max> 300 </DMA_Max>
-			<DMA_Regen_Rate> 8 </DMA_Regen_Rate>
+			<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
+			<DMA_Max> 525 </DMA_Max>
+			<DMA_Regen_Rate> 9 </DMA_Regen_Rate>
 		</Attributes>
 
 		<!-- MOVEMENT -->
@@ -46,7 +46,7 @@
 		<Min_Speed> 1.0 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .2 </OverrideDeceleration>
-		<Max_Rate_Of_Turn> 4.0 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 6.0 </Max_Rate_Of_Turn>
 		<ROT_Acceleration> 0.2 </ROT_Acceleration>
 		<ROT_Deceleration> 0.1 </ROT_Deceleration>
 		<Max_Thrust> 1.3 </Max_Thrust>
@@ -387,25 +387,13 @@
 					<Duration> 1.1 </Duration>
 					<Effect_Name> MasariPhoenixEffect </Effect_Name>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Application_Probability>0.5</Target_Application_Probability>
+					<Target_Application_Probability>0.001</Target_Application_Probability>
 					<Target_Filter_C> Can_Create_Phoenix </Target_Filter_C>
 					<Remove_On_Death>No</Remove_On_Death>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
-			<!-- If I am a Phoenix, I should take 50% damage when created!-->
-			<Effect_Generator Name="MasariPhoenixDamageGenerator">
-				<Starts_Active>Yes</Starts_Active>
-				<Self_Start_Delay>0.5</Self_Start_Delay>
 
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> MasariPhoenixDamageEffect </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Phoenix </Target_Filter_C>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-			<!-- If I am a Phoenix, I should play nice animation when created!-->
 			<Effect_Generator Name="MasariPhoenixVisualGenerator">
 				<Starts_Active>Yes</Starts_Active>
 				<Self_Start_Delay>0.1</Self_Start_Delay>
@@ -457,7 +445,7 @@
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- MOVEMENT -->
-		<Max_Speed> 2.5 </Max_Speed>
+		<Max_Speed> 2.75 </Max_Speed>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
@@ -558,6 +546,54 @@
 			<!-- Standard DMA generator - Oksana 05/14/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Light_Mode_Generators.xml" -->
 
+			<Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Skylord">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Skylord </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+				
+
+			</Effect_Generator>					
+				
+         <Effect_Generator Name="MasariResearchBurningAuraEffectGeneratorSkyLord">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>			
+
+            <Effect_Generator_Entry Name="Entry1">
+					<Land_Behavior>HIDE_WHEN_FOGGED</Land_Behavior>
+					<Effect_Name> MasariResearchBurningAuraEffectSkyLord </Effect_Name>
+					<Duration> 1.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+          <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 230.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> MasariResearchBurningAuraSelfEffectSkylord </Effect_Name>
+					<Duration> 1.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 1.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 230 </Area_Effect_Radius>
+				</Effect_Generator_Entry>							
+
+			</Effect_Generator>			
+
 		</Effect_Generator_Data>
 
 	</X13_Masari_Units>
@@ -581,10 +617,10 @@
 		<Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
 		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
 		<Rotation_Animation_Speed> 3 </Rotation_Animation_Speed>
-		<Max_Speed> 1.8 </Max_Speed>
+		<Max_Speed> 2.0 </Max_Speed>
 		<Min_Speed> .1 </Min_Speed>
 		<Stopped_Rate_Of_Turn> 6 </Stopped_Rate_Of_Turn>
-		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 20.0 </Max_Rate_Of_Turn>
 		<Custom_Hard_XExtent> 8.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 10.0 </Custom_Hard_YExtent>
 		<Custom_Hard_XExtent_Offset> -4.0 </Custom_Hard_XExtent_Offset>
@@ -628,7 +664,7 @@
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
 			<Can_Attack_Without_Weapon_Behavior> no </Can_Attack_Without_Weapon_Behavior>
 			<Is_Attack_Anim_Looped> no </Is_Attack_Anim_Looped>
 			<Is_Stationary_When_Attacking> Yes </Is_Stationary_When_Attacking>
@@ -638,7 +674,7 @@
 
 			<Projectile_Types>Proj_Masary_Skylord_Dark_Fissure</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.0</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -757,21 +793,27 @@
 	<X13_Masari_Units Name="Masari_SkyLord_Death_Clone">
 
 		<!-- ART -->
-		<Land_Model_Name />
-		<Scale_Factor>0.9</Scale_Factor>
+		<Land_Model_Name>ZV_Skylord_air_leg.ALO</Land_Model_Name>
+		<Scale_Factor>1.5</Scale_Factor>
+      <AssetBank> BANK_MASARI </AssetBank>
 
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Large, Flying, Piloted, Resource </CategoryMask>
+		<CategoryMask> Resource </CategoryMask>
+		<Text_ID>TEXT_NONE</Text_ID>
 
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+		<Is_Attackable>Yes</Is_Attackable>
 
 		<!-- BEHAVIORS -->
 		<LandBehavior>
 			BALLISTIC,
 			SPAWN_DEBRIS,
 			RESOURCE,
+         	DEBRIS,
 			EFFECT_REGISTRY,
 			EFFECT_GENERATOR,
 			ATTRIBUTE_DIRECTORY
@@ -796,8 +838,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="DebrisBehaviorType">
-			<Debris_Min_Lifetime_Seconds> 3.0 </Debris_Min_Lifetime_Seconds>
-			<Debris_Max_Lifetime_Seconds> 7.0 </Debris_Max_Lifetime_Seconds>
+         <Debris_Min_Lifetime_Seconds> 120.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 120.0 </Debris_Max_Lifetime_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="BallisticBehaviorType">
@@ -807,8 +849,6 @@
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Explosions> Masari_Large_Explosion </Death_Explosions>
-			<Death_Fade_Time> .25 </Death_Fade_Time>
-			<Death_Persistence_Duration> .27 </Death_Persistence_Duration>
 			<Death_Speed_Min> 100.0 </Death_Speed_Min>
 			<Death_Speed_Max> 120.0 </Death_Speed_Max>
 			<Death_Ang_Min> 1.0 </Death_Ang_Min>
@@ -823,7 +863,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 600 </Resource_Units>
+			<Resource_Units> 850 </Resource_Units>
 			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
@@ -969,7 +1009,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 
 			<!-- area blast -->
-			<Projectile_Blast_Area_Damage>10</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>12</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>30</Projectile_Blast_Area_Range>
 
 			<!-- ballistic -->
@@ -1070,7 +1110,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>400.0</Projectile_Max_Flight_Distance>
 
-			<Projectile_Blast_Area_Damage>30</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>40</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>40</Projectile_Blast_Area_Range>
 
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
@@ -1087,7 +1127,7 @@
 
 			<Projectile_SFXEvent_Detonate>SFX_Masari_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
-			<SFXEvent_Projectile_Flying_Loop>  SFX_Masari_Missile_Loop </SFXEvent_Projectile_Flying_Loop>
+			<SFXEvent_Projectile_Flying_Loop>  Fire_Flight_Loop </SFXEvent_Projectile_Flying_Loop>
 			<SFXEvent_Projectile_Start_Flight>  SFX_Masari_Missile_Fire </SFXEvent_Projectile_Start_Flight>
 
 			<Impact_Effect_Generator_Name>PurifyingLightImpactGenerator</Impact_Effect_Generator_Name>

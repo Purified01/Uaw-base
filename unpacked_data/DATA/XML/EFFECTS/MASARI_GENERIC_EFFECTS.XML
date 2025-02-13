@@ -79,6 +79,10 @@
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
 		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ResonanceLockdown </Remove_Effect_Class>
+		</Effect_Component>		
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
@@ -98,7 +102,35 @@
 
 	</Effect>
 
-	
+	<Effect Name="MasariSwitchCleanseEffectDarkShield">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> MasariCleanse </Effect_Class>
+
+<!--		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Combustive_Fire </Particle_System_Type>
+		</Effect_Component>-->
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> MindControl </Remove_Effect_Class>
+		</Effect_Component>
+      
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
+      </Effect_Component>
+
+  		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Radiation </Remove_Effect_Class>
+		</Effect_Component>
+
+	</Effect>	
 	
 	<!-- ************************************************************** -->
 	<!-- MasariFullArmorEffect KDB give full armor -->
@@ -114,7 +146,27 @@
 		</Effect_Component>
 	</Effect>
 
+	<Effect Name="MasariFullArmorEffectInfantry">
+		<Duration> 0.1 </Duration>
+		<Effect_Class> DMARegen </Effect_Class>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
 
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Current_DMA_Level </Attribute>
+			<Modifier_Value> 9999.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="MasariFullArmorEffectTransfusion">
+		<Duration> 0.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Allow_Same_Source_Stacking> false </Allow_Same_Source_Stacking>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Current_DMA_Level </Attribute>
+			<Modifier_Value> 0.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
 
 
    <!-- ************************************************************** -->
@@ -236,7 +288,205 @@
 
 	</Effect>
 	
+	<Effect Name="MasariPurifyingLightEffectTemplar">
 
+		<Duration> 10.0 </Duration>
+		<Effect_Class> PurifyingLightTemplar </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Templar </Damage_Type>
+			<Amount_Per_Second> 2.15 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="MasariPurifyingLightEffectTemplarLightThree">
+
+		<Duration> 15.0 </Duration>
+		<Effect_Class> PurifyingLightTemplar </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Templar </Damage_Type>
+			<Amount_Per_Second> 2.15 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariPurifyingLightEffectTemplarBlastFirst">
+
+		<Duration> 20.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackable </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Phosphor </Damage_Type>
+			<Amount_Per_Second> 4.2 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>Templar_Napalm_Loop</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
+	
+		<Effect Name="MasariPurifyingLightEffectTemplarBlastFirstAI">
+
+		<Duration> 20.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackable </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Phosphor </Damage_Type>
+			<Amount_Per_Second> 11.6 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>Templar_Napalm_Loop</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariPurifyingLightEffectSuperTemplarInitial">
+
+		<Duration> 3 </Duration>
+		<Effect_Class> PhosphorAftershock </Effect_Class>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type>Damage_Masari_Templar_Bombing_Light_Aftershock</Damage_Type>
+			<Amount_Per_Second> 3.0 </Amount_Per_Second>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariPurifyingLightEffectSuperTemplar">
+
+		<Duration> 40.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackableUpgraded </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Phosphor_Upgraded </Damage_Type>
+			<Amount_Per_Second> 2.1 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>Templar_Napalm_Loop</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
+	
+<!--	<Effect Name="MasariPurifyingLightEffectSuperTemplarCancelOut">
+
+		<Duration> 20.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackableCancelOut </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="Healing">
+			<Amount_Per_Second> 4.2 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>		
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>Templar_Napalm_Loop</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>		-->
+	
+	<Effect Name="MasariPurifyingLightEffectSuperTemplarAI">
+
+		<Duration> 40.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackable </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Phosphor </Damage_Type>
+			<Amount_Per_Second> 10.6 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariPurifyingLightEffectSuperTemplarLight">
+
+		<Duration> 44.1 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackableLight </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Phosphor </Damage_Type>
+			<Amount_Per_Second> 1.0 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>Templar_Napalm_Loop</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariPurifyingLightEffectSkyLord">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLight </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Storm_Chaser </Damage_Type>
+			<Amount_Per_Second> 7.0 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
 
 	<!-- ************************************************************** -->
 	<!-- *****  Purifying Light Visual Effect    			        ***** -->
@@ -277,6 +527,186 @@
 		</Effect_Component>
 
 	</Effect>
+	
+	<Effect Name="MasariPurifyingLightVisualEffectSmallSkylord">
+
+		<Duration> 8.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Small </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectMediumSkylord">
+
+		<Duration> 8.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Medium </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectLargeSkylord">
+
+		<Duration> 8.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Large </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariPurifyingLightVisualEffectPhosphor">
+
+		<Duration> 20.0 </Duration>
+		<Effect_Class> PurifyingLightVisualPhosphor </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Phosphor </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariPurifyingLightVisualEffectPhosphorLong">
+
+		<Duration> 40.0 </Duration>
+		<Effect_Class> PurifyingLightVisualPhosphorLong </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Phosphor_Reduced </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariPurifyingLightVisualEffectPhosphorLonger">
+
+		<Duration> 42.0 </Duration>
+		<Effect_Class> PurifyingLightVisualPhosphorLonger </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Phosphor_Reduced_More </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>			
+	
+	<Effect Name="MasariPurifyingLightVisualEffectSmallTemplar">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Small </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectMediumTemplar">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Medium </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectLargeTemplar">
+
+		<Duration> 8.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Large </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariPurifyingLightVisualEffectSmallLightThree">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Small </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectMediumLightThree">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Medium </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectLargeLightThree">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Large </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariPurifyingLightVisualEffectSmallSuper">
+
+		<Duration> 15.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Small </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectMediumSuper">
+
+		<Duration> 15.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Medium </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariPurifyingLightVisualEffectLargeSuper">
+
+		<Duration> 15.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Large </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
 
 
 
@@ -306,9 +736,527 @@
 
 	</Effect>
 	
+	<Effect Name="MasariCripplingShotsEffectDarkTemplar">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> CripplingShots </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.08 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>	
 	
+	<Effect Name="MasariCripplingShotsEffectDarkTemplarJammingEffect">
 
+		<Duration> 4 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>
+
+	</Effect>		
+
+	<Effect Name="MasariCripplingShotsEffectTemplarBruteUpgraded">
+
+		<Duration> 7 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR, TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>
+
+		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>
+
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarAI">
+
+		<Duration> 33 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR, TEAM_TARGETING, TARGETING, WEAPON, TURRET, POWERED </Behaviors>
+		</Effect_Component>
+
+		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>
+
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarHeroAI">
+
+		<Duration> 33 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR, TEAM_TARGETING, TARGETING, WEAPON, TURRET, POWERED </Behaviors>
+		</Effect_Component>
+
+		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>
+
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>			
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarInfantryUpgraded">
+
+		<Duration> 12 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR, TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>
+
+		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>
+
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarInfantry">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> CripplingShots </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR</Behaviors>
+		</Effect_Component>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.99 </Modifier_Value>
+		</Effect_Component>
+		
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <Modifier_Value> -0.99 </Modifier_Value>
+      </Effect_Component>
+	  
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>		
+
+	<Effect Name="MasariCripplingShotsEffectTemplarFlow">
+
+		<Duration> 9.5 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET, <!--POWERED--></Behaviors>
+		</Effect_Component>
+
+		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <Modifier_Value> -0.99 </Modifier_Value>
+      </Effect_Component>
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarBrute">
+
+		<Duration> 3 </Duration>
+		<Effect_Class> IceMineDetonation </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WALK_LOCOMOTOR</Behaviors>
+		</Effect_Component>
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <Modifier_Value> -0.99 </Modifier_Value>
+      </Effect_Component>
+		<Effect_Component Type="Animate">
+			<Animation_Type>Anim_Idle </Animation_Type>
+			<Unapply_When_Finished>No</Unapply_When_Finished>
+			<Is_Looping>Yes</Is_Looping>
+			<Blend_Time>0.03</Blend_Time>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="MasariCripplingShotsEffectTemplarNotInfantry">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> CripplingShotsTemplar </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.75 </Modifier_Value>
+		</Effect_Component>
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <Modifier_Value> -0.99 </Modifier_Value>
+      </Effect_Component>
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>	
+
+	</Effect>
+
+	<Effect Name="MasariCripplingShotsEffectTemplarHero">
+
+		<Duration> 3.0 </Duration>
+		<Effect_Class> CripplingShotsTemplar </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Masari_Fire_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Green </Attribute>
+			<Modifier_Value> -0.6 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> -0.4 </Modifier_Value>
+		</Effect_Component>	
+
+	</Effect>
+	
+  <Effect Name="ZessusNobleSacrificeInfantry">
+    <Duration> 13 </Duration>
+    <Effect_Class> Healing </Effect_Class>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.99</Percentage_Per_Second>
+		</Effect_Component>		
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> 0.3 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> 0.5 </Modifier_Value>
+		</Effect_Component>			
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Blast </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>				
+	
+  <Effect Name="ZessusNobleSacrificeMediumVehicle">
+    <Duration> 13 </Duration>
+    <Effect_Class> Healing </Effect_Class>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.15 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 57.69 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>		
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> 0.2 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> 0.4 </Modifier_Value>
+		</Effect_Component>			
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Blast </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>					
+	
+  <Effect Name="ZessusNobleSacrificeLargeVehicle">
+    <Duration> 13 </Duration>
+    <Effect_Class> Healing </Effect_Class>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 76.92 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>		
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> 0.1 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> 0.3 </Modifier_Value>
+		</Effect_Component>			
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Blast </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>						
+	
+	
+  <Effect Name="ZessusNobleSacrificeHero">
+    <Duration> 3 </Duration>
+    <Effect_Class> Healing </Effect_Class>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 100 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>		
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> 0.1 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> 0.3 </Modifier_Value>
+		</Effect_Component>			
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Blast </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>							
+	
+  <Effect Name="ZessusNobleSacrificeStructure">
+    <Duration> 13 </Duration>
+    <Effect_Class> Healing </Effect_Class>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 55 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0</Percentage_Per_Second>
+		</Effect_Component>		
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Red </Attribute>
+			<Modifier_Value> 0.1 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Render_Tint_Blue </Attribute>
+			<Modifier_Value> 0.3 </Modifier_Value>
+		</Effect_Component>			
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Blast </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>							
 
 	
 	<!-- ************************************************************** -->
@@ -351,12 +1299,72 @@
 
 	</Effect>
 	
+	<Effect Name="MasariCripplingShotsVisualEffectSmallStun">
+
+		<Duration> 14.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Crippling_Shots_Large_Templar_Arrest </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariCripplingShotsVisualEffectMediumStun">
+
+		<Duration> 14.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Crippling_Shots_Large_Templar_Arrest </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="MasariCripplingShotsVisualEffectLargeStun">
+
+		<Duration> 14.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Crippling_Shots_Large_Templar_Arrest </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
 	
 	
+	<Effect Name="MasariCripplingShotsEffectTemplarDamage">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackable </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Gale_Force_Phosphor </Damage_Type>
+			<Amount_Per_Second> 1.1 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+	</Effect>		
 	
-	
-	
-	
+	<Effect Name="MasariCripplingShotsEffectTemplarDamageAI">
+
+		<Duration> 13.0 </Duration>
+		<Effect_Class> PurifyingLightPhosphorStackable </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Fire_Gale_Force_Phosphor </Damage_Type>
+			<Amount_Per_Second> 3.1 </Amount_Per_Second>
+			<Percentage_Per_Second />
+		</Effect_Component>
+
+	</Effect>			
 	
 	
 	

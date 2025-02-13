@@ -51,7 +51,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass>Flying</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed> 0.8</Max_Speed>
+		<Max_Speed> 1.2</Max_Speed>
 		<Min_Speed> 0.5 </Min_Speed>
 		<OverrideAcceleration> .05 </OverrideAcceleration>
 		<OverrideDeceleration> .025 </OverrideDeceleration>
@@ -117,10 +117,10 @@
 
 		<Tactical_Health> 300 </Tactical_Health>
 
-		<Land_FOW_Reveal_Range> 50.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 100.0 </Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 
-		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Female | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -222,9 +222,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 750 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 750 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 23 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 675 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 650 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 24 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -257,8 +257,8 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_MONOLITH </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
-      <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_INFANTRY </Tooltip_Good_Against>
-      <Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_TURRETS TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
+      <Tooltip_Good_Against> <!--TEXT_TYPE_VERSUS_VEHICLES--> TEXT_TYPE_VERSUS_AIR_UNITS TEXT_TYPE_VERSUS_STEALTH_UNITS </Tooltip_Good_Against>
+      <Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>
          <Researched_Upgrades>
             TEXT_ALIEN_RESEARCH_TITLE_VOLATILE_REACTORS
             TEXT_ALIEN_RESEARCH_TITLE_PHASE_MODULE
@@ -391,6 +391,19 @@
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
+
+<!--      <Effect_Generator Name="QuantumSpecialist">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> QuantumSpecialist </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>	  -->
 			
 			<Effect_Generator Name="CylinderRadiationBeamGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -406,7 +419,15 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-				<Effect_Generator_Entry Name="Entry2">
+<!--				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> ResonanceBeamDisableTargetEffect </Effect_Name>
+					<Duration>-1</Duration>
+					<Target_Gathering_Mask> Target | TargetHardpoints </Target_Gathering_Mask>
+					<Target_Filter_C> Novus_Amplifier_Resonance_Beam_Disable_Target  </Target_Filter_C>
+						<Max_Targets> 1 </Max_Targets>
+				</Effect_Generator_Entry>-->
+
+				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> CylinderRadiationBeamEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
@@ -417,7 +438,7 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-				<Effect_Generator_Entry Name="Entry3">
+				<Effect_Generator_Entry Name="Entry4">
 					<Effect_Name> CylinderRadiationBeamStructureEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
@@ -438,6 +459,13 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 300 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 1.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 300 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
 			</Effect_Generator>			
 
 			<Effect_Generator Name="IncreaseSightRangeGenerator">

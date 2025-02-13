@@ -126,7 +126,7 @@
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Priority_Set> Novus_Redirection_Turret_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
 			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 			<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
@@ -270,6 +270,20 @@
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
 
 			<Effect_Generator Name="Reveal_Enemy_Cloaking_Generator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
@@ -282,8 +296,16 @@
 					<Duration> 3.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius_Attribute> 270 </Area_Effect_Radius_Attribute>
+					<Area_Effect_Radius_Attribute> 140 </Area_Effect_Radius_Attribute>
 				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 3.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius_Attribute> 140 </Area_Effect_Radius_Attribute>
+				</Effect_Generator_Entry>				
 			</Effect_Generator>
 
 			<Effect_Generator Name="Gravity_Overload_Generator">
@@ -490,7 +512,7 @@
 			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 8 </Tactical_UI_Build_Queue_Order>
+			<Tactical_UI_Build_Queue_Order> 9 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
 

@@ -11,6 +11,17 @@
 	************************************************************************************************** 
 	************************************************************************************************** 
 	************************************************************************************************** -->
+
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 3.5 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
 	<Effect Name="Novus_Hacker_Control_Turret_Effect">
 		<Duration> -1.0 </Duration>
 		<Should_Remove_If_Inactive> true </Should_Remove_If_Inactive>
@@ -300,7 +311,60 @@
         
 	</Effect>
 
+	<Effect Name="Novus_Corruptor_Viral_Bomb_Level_1_Effect">
+		<Duration> 0.5 </Duration>
+		<Effect_Class> NovusVirusBomb </Effect_Class>
 
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Hacker_Viral_Bomb_Activate_Lightning </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToOriginalTarget </Source_Target_Type>
+			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type>Damage_Hacker_Viral_Bomb</Damage_Type>
+			<Damage_Amount>150.0</Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Novus_Hacker_Activate </Apply_Effect> 
+		</Effect_Component>
+
+		<Effect_Component Type="ApplyGenerator">
+			<Effect_Generator_Name> Novus_Corruptor_Viral_Bomb_Splash_Effect_Generator </Effect_Generator_Name>
+		</Effect_Component>
+
+		<Effect_Component Type="ApplyEffectOnRemove">
+			<Effect_Name> Novus_Corruptor_Viral_Bomb_Splash_Effect </Effect_Name>
+			<Apply_On_Expiration_Only> false </Apply_On_Expiration_Only>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="Novus_Corruptor_Viral_Bomb_Splash_Effect">
+		<Duration> 0.5 </Duration>
+		<Effect_Class> NovusVirusBombSplash </Effect_Class>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type>Damage_Hacker_Viral_Bomb</Damage_Type>
+			<Damage_Amount>100.0</Damage_Amount>
+			<Damage_Percentage>0.0f</Damage_Percentage>
+		</Effect_Component>
+
+        <Effect_Component Type="ParticleSystem">
+            <Particle_System_Type> Novus_Large_Explosion_Land_No_Scorch </Particle_System_Type>
+        </Effect_Component>
+        
+	</Effect>
 
 
 	<Effect Name="NovusHackerFirewallCleanseEnemy">
@@ -406,6 +470,133 @@
 
 	</Effect>
 	
+	<Effect Name="NovusHackerFirewallCleanseEnemyUpgraded">
+		<Duration> 8.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Phased </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Phased </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Mirage </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Mirage </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Novus_Hacker_Purge_Enemy_Particle </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="NovusHackerFirewallCleanseVirusUpgraded">
+		<Duration> 8.0 </Duration>
+		<Effect_Class> EffectCleanse </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Novus_Hacker_Purge_Target_Particle </Particle_System_Type>
+		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> ViralControl </Block_Effect_Class>
+		</Effect_Component>
+
+	</Effect>
+
+
+	<Effect Name="NovusHackerFirewallCleanseMindControlUpgraded">
+		<Duration> 8.0 </Duration>
+		<Effect_Class> ClearMindControl </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> MindControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="NovusAmplifierCleanseMindControl">
+		<Duration> 4.0 </Duration>
+		<Effect_Class> ClearMindControl </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> MindControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+
+	</Effect>	
+	
 	
 	
 	<Effect Name="NovusHackerFirewallSelfVisualEffect">
@@ -434,6 +625,16 @@
 	************************************************************************************************** 
 	************************************************************************************************** -->
 
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 2.0 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
    <Effect Name="NovusReflexTrooperSpawnClonesUpgrade">
       <Duration> -1 </Duration>
       <Effect_Class> Transparent </Effect_Class>
@@ -445,6 +646,28 @@
          <Modifier_Value> 0.6 </Modifier_Value>
       </Effect_Component>
    </Effect>
+
+
+   <Effect Name="NovusDisruptVisualEffect">
+      <Duration> 5.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Blackout_Area </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>
+   
+   <Effect Name="TemplarDisruptVisualEffect">
+      <Duration> 9.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Masari_Templar_Disruptor_Blast </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
+	
 
    <!--=================================================================================================
 	== NovusReflexTrooperCloakingEffect: cloak for the novus reflex trooper
@@ -512,7 +735,7 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
-			<Modifier_Value> 1.6 </Modifier_Value>
+			<Modifier_Value> 1.1 </Modifier_Value>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
@@ -551,6 +774,16 @@
 	<!--=================================================================================================
 	== RoboticInfantryCaptureEffect: Capture object
 	================================================================================================== -->
+
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 4.0 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
 
 	<Effect Name="RoboticInfantryCaptureEffect">
 		<Duration> -1.0 </Duration>
@@ -620,6 +853,23 @@
          <Effect_Name> NovusRemoveMirageEffect </Effect_Name>
          <Apply_On_Expiration_Only> false </Apply_On_Expiration_Only>
       </Effect_Component>
+	</Effect>
+	
+
+
+	<Effect Name="MasariFigmentShadowshift">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+		
 	</Effect>
 
 

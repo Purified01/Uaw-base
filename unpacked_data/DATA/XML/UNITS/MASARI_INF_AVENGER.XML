@@ -134,10 +134,12 @@
     </BehaviorType>
 
          <Researched_Upgrades>
+		TEXT_MASARI_RESEARCH_TITLE_ADVANCED_DARK_MATTER_ARMOR			 
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
 		TEXT_MASARI_RESEARCH_TITLE_RECONSTRUCTION
 		TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
+		TEXT_MASARI_RESEARCH_TITLE_SIGHT_UNSEEN				
          </Researched_Upgrades>
 	 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -334,11 +336,35 @@
           <Effect_Generator_Entry Name="Entry2">
              <Duration> 0.5 </Duration>
              <Base_Delay> 0.4 </Base_Delay>
-             <Effect_Name> MasariFullArmorEffect </Effect_Name>
+             <Effect_Name> MasariFullArmorEffectInfantry </Effect_Name>
              <Target_Gathering_Mask> Self </Target_Gathering_Mask>
              <!-- only in ice mode -->
              <Target_Filter_C> In_Ice_Mode </Target_Filter_C>
           </Effect_Generator_Entry>
+		  
+				<Effect_Generator_Entry Name="Entry3">
+					<Duration> 15.1 </Duration>
+					<Base_Delay> 0.4 </Base_Delay>
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>
+				</Effect_Generator_Entry>					  
+				
+				<Effect_Generator_Entry Name="Entry4">
+					<Duration> 17.1 </Duration>
+					<Base_Delay> 0.8 </Base_Delay>
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch_Two </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> In_Fire_Mode </Target_Filter_C>					
+				</Effect_Generator_Entry>				
+
+				<!-- Apply effects -->
+            <Effect_Generator_Entry Name="Entry5">
+               <Effect_Name> MasariShadowshiftSwitch </Effect_Name>
+               <Duration> 16.0 </Duration>
+               <Base_Delay>0.0</Base_Delay>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>								
 
        </Effect_Generator>
 
@@ -352,6 +378,21 @@
           </Effect_Generator_Entry>
 
        </Effect_Generator>
+	   
+         <Effect_Generator Name="AffinityDefenceGenerator">
+            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 4.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> AffinityDefenceEffect </Effect_Name>
+               <Duration> -1.0 </Duration>
+<!--               <Base_Delay>1.5</Base_Delay>-->
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>				   
     </Effect_Generator_Data>
 
  </X13_Masari_Units>
@@ -504,7 +545,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-
+    <Max_Speed>1.8</Max_Speed>
  </X13_Masari_Units>
 
    <X13_Masari_Units Name="Masari_Avenger_Figment_Death_Clone_Resource">
@@ -612,7 +653,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-
+    <Max_Speed>1.8</Max_Speed>
   </X13_Masari_Units>
 
 
@@ -723,7 +764,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-
+    <Max_Speed>1.8</Max_Speed>
   </X13_Masari_Units>
 
 
@@ -836,7 +877,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-
+    <Max_Speed>1.8</Max_Speed>
   </X13_Masari_Units>
 
 
@@ -946,7 +987,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-     
+     <Max_Speed>1.8</Max_Speed>    
   </X13_Masari_Units>
 
 
@@ -978,7 +1019,123 @@
 
    </X13_Masari_Units>
 
+   <!-- **************************************************************************************** -->
+  <!-- *****                              Stormchaser                                     ********* -->
+  <!-- **************************************************************************************** -->
+  <X13_Masari_Units Name="Masari_Avenger_Stormchaser">
+     <Variant_Of_Existing_Type> Masari_Female_Avenger </Variant_Of_Existing_Type>
+	 
+		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge | Female </Attack_Category_Restrictions>			 
 
+     <!-- TEXT -->
+     <Text_ID>TEXT_UNIT_MASARI_AVENGER_STORM_CHASER </Text_ID>
+
+
+     <!-- ATTRIBUTES -->
+     <Attributes SubObjectList="Yes">
+        <Regenerate_Type>Masari_Stormchaser</Regenerate_Type>
+     </Attributes>
+
+
+     <BehaviorType Name="TooltipBehaviorType">
+        <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_AVENGER_STORM_CHASER </Tooltip_Description_Text_ID>
+     </BehaviorType>
+
+
+     <BehaviorType Name="ElementalModeType">
+        <Elemental_Object_Types> Fire, Masari_Avenger_Stormchaser_Fire </Elemental_Object_Types>
+        <Elemental_Object_Types> Ice, Masari_Avenger_Stormchaser_Ice </Elemental_Object_Types>
+     </BehaviorType>
+
+     <BehaviorType Name="TypeSwitchBehaviorType">
+        <!-- List of types this object can switch to - This is mainly needed to inforce build limits and must be
+						      only added to the base type used for production dependencies purposes -->
+        <Type_Switch_Types> Masari_Avenger_Stormchaser_Fire, Masari_Avenger_Stormchaser_Ice  </Type_Switch_Types>
+        <Switch_Effect_Generator_Name> MasariSwitchGenerator </Switch_Effect_Generator_Name>
+     </BehaviorType>
+	 
+    <BehaviorType Name="WeaponBehaviorType">
+      <Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
+      <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+      <Targeting_Priority_Set> Masari_Avenger_Target_Priority </Targeting_Priority_Set>
+      <Targeting_Fire_Inaccuracy> 0.0 </Targeting_Fire_Inaccuracy>
+      <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+      <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+    </BehaviorType>	 
+
+    <BehaviorType Name="SFXBehaviorType">
+		 <SFXEvent_On_Create> STORM_SELECTEDA</SFXEvent_On_Create>
+		 <SFXEvent_Fire> SFX_Masari_Infantry_Fire </SFXEvent_Fire>
+       <SFXEvent_Weapon_Firing_Loop>  </SFXEvent_Weapon_Firing_Loop>
+       <SFXEvent_Select>STORM_SELECTEDA</SFXEvent_Select>
+       <SFXEvent_Move>STORM_MOVEA</SFXEvent_Move>
+       <SFXEvent_Move_At_Top_Speed>STORM_PRIORITY_MOVEA</SFXEvent_Move_At_Top_Speed>
+       <SFXEvent_Attack>STORM_ATTACKA</SFXEvent_Attack>
+       <SFXEvent_Attack_At_Top_Speed>STORM_PRIORITY_ATTACKA</SFXEvent_Attack_At_Top_Speed>
+       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
+       <Death_SFXEvent_Start_Die> Unit_Death_Masari_Female </Death_SFXEvent_Start_Die>
+       <SFXEvent_Engine_Idle_Loop> </SFXEvent_Engine_Idle_Loop>
+       <SFXEvent_Engine_Moving_Loop> </SFXEvent_Engine_Moving_Loop>
+       <SFXEvent_Unit_Lost />
+       <SFXEvent_Tactical_Build_Started>GUI_BUILD_Infantry</SFXEvent_Tactical_Build_Started>
+       <SFXEvent_Tactical_Build_Complete>STORM_SELECTEDA</SFXEvent_Tactical_Build_Complete>
+       <SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Infantry_Canceled</SFXEvent_Tactical_Build_Cancelled>
+
+       <!-- Maria 05.01.2006 - Adding build sounds for Global production -->
+       <SFXEvent_Build_Started>GUI_BUILD_Infantry</SFXEvent_Build_Started>
+       <SFXEvent_Build_Complete>STORM_SELECTEDA</SFXEvent_Build_Complete>
+       <SFXEvent_Build_Cancelled>GUI_BUILD_Infantry_Canceled</SFXEvent_Build_Cancelled>
+    </BehaviorType>
+
+     <BehaviorType Name="DeathFXBehaviorType">
+        <Death_Clone> Damage_Default, Masari_Avenger_Stormchaser_Death_Clone_Resource </Death_Clone>
+     </BehaviorType>
+  </X13_Masari_Units>
+
+  <X13_Masari_Units Name="Masari_Avenger_Stormchaser_Fire">
+    <Variant_Of_Existing_Type> Masari_Avenger_Stormchaser </Variant_Of_Existing_Type>
+
+    <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
+    <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Light.xml" -->
+
+  </X13_Masari_Units>
+
+  <X13_Masari_Units Name="Masari_Avenger_Stormchaser_Ice">
+    <Variant_Of_Existing_Type> Masari_Avenger_Stormchaser </Variant_Of_Existing_Type>
+
+    <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
+    <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
+    <Max_Speed>1.8</Max_Speed>     
+  </X13_Masari_Units>
+
+
+   <X13_Masari_Units Name="Masari_Avenger_Stormchaser_Death_Clone_Resource">
+      <Variant_Of_Existing_Type>Masari_Avenger_Stormchaser</Variant_Of_Existing_Type>
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+      <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+      <CategoryMask> Resource_INST </CategoryMask>
+      <LandBehavior>
+         HIDE_WHEN_FOGGED,
+         BALLISTIC,
+         RESOURCE,
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY
+      </LandBehavior>
+
+      <BehaviorType Name="ResourceBehaviorType">
+         <Resource_Units> 11 </Resource_Units>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+         <Is_Single_Resource> true </Is_Single_Resource>
+         <Use_Death_Behavior> true </Use_Death_Behavior>
+      </BehaviorType>
+
+    <BehaviorType Name="SFXBehaviorType">
+		 <SFXEvent_On_Create> None </SFXEvent_On_Create>
+       <Death_SFXEvent_Start_Die> Unit_Death_Masari_Female </Death_SFXEvent_Start_Die>
+    </BehaviorType>
+
+   </X13_Masari_Units>
 
   <!-- **************************************************************************************** -->
   <!-- *****                              ENFORCER                                    ********* -->
@@ -1057,7 +1214,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-
+    <Max_Speed>1.8</Max_Speed>
   </X13_Masari_Units>
 
 
@@ -1158,7 +1315,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>9.0</Max_Speed>
+		<Max_Speed>10.0</Max_Speed>
 		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 		<AI_Combat_Power>200</AI_Combat_Power>
 

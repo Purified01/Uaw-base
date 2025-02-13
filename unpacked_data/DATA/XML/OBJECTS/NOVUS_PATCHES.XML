@@ -9,6 +9,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -115,6 +116,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -219,6 +221,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -305,6 +308,7 @@
       <Is_Decoration>No</Is_Decoration>
       <CategoryMask> Untargetable </CategoryMask>
       <Is_Attackable> false </Is_Attackable>
+      <Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
       <Scale_Factor>0.001</Scale_Factor>
       <Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -410,6 +414,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -495,6 +500,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -616,6 +622,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -764,6 +771,50 @@
 					<Target_Gathering_Mask> All </Target_Gathering_Mask>
 					<Target_Filter_C> Novus_Patch_No_Construction_Target </Target_Filter_C>
 				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> NovusPatchBackupSystemsRegenEffectStructure </Effect_Name>
+					<Remove_On_Generator_Death> true </Remove_On_Generator_Death>
+               <!-- MARIA: We are setting the duration here to -1.0 because the duration of the patch is 
+                     set by the field Patch_Duration_Time_Seconds -->
+               <Duration> 25.0 </Duration>
+					<Target_Gathering_Mask> All </Target_Gathering_Mask>
+					<Target_Filter_Categories>~HardPoint + Stationary </Target_Filter_Categories>					
+					<Target_Filter_C> Novus_Patch_No_Construction_Target </Target_Filter_C>
+				</Effect_Generator_Entry>				
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> NovusPatchBackupSystemsRegenEffectInfantry </Effect_Name>
+					<Remove_On_Generator_Death> true </Remove_On_Generator_Death>
+               <!-- MARIA: We are setting the duration here to -1.0 because the duration of the patch is 
+                     set by the field Patch_Duration_Time_Seconds -->
+               <Duration> 25.0 </Duration>
+					<Target_Gathering_Mask> All </Target_Gathering_Mask>
+					<Target_Filter_Categories>Small + ~HardPoint + ~Stationary </Target_Filter_Categories>					
+					<Target_Filter_C> Novus_Patch_No_Construction_Target </Target_Filter_C>
+				</Effect_Generator_Entry>								
+				
+				<Effect_Generator_Entry Name="Entry4">
+					<Effect_Name> NovusPatchBackupSystemsRegenEffectMediumVehicle </Effect_Name>
+					<Remove_On_Generator_Death> true </Remove_On_Generator_Death>
+               <!-- MARIA: We are setting the duration here to -1.0 because the duration of the patch is 
+                     set by the field Patch_Duration_Time_Seconds -->
+               <Duration> 25.0 </Duration>
+					<Target_Gathering_Mask> All </Target_Gathering_Mask>
+					<Target_Filter_Categories>Medium + ~HardPoint + ~Stationary </Target_Filter_Categories>					
+					<Target_Filter_C> Novus_Patch_No_Construction_Target </Target_Filter_C>
+				</Effect_Generator_Entry>							
+				
+				<Effect_Generator_Entry Name="Entry5">
+					<Effect_Name> NovusPatchBackupSystemsRegenEffectLargeVehicle </Effect_Name>
+					<Remove_On_Generator_Death> true </Remove_On_Generator_Death>
+               <!-- MARIA: We are setting the duration here to -1.0 because the duration of the patch is 
+                     set by the field Patch_Duration_Time_Seconds -->
+               <Duration> 25.0 </Duration>
+					<Target_Gathering_Mask> All </Target_Gathering_Mask>
+					<Target_Filter_Categories>Large + ~HardPoint + ~Stationary </Target_Filter_Categories>					
+					<Target_Filter_C> Novus_Patch_No_Construction_Target </Target_Filter_C>
+				</Effect_Generator_Entry>											
          </Effect_Generator>
 
          <Effect_Generator Name="NovusPatchTimeOutEffectGenerator">
@@ -791,6 +842,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -876,6 +928,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -976,6 +1029,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>
@@ -1131,6 +1185,7 @@
 		<Is_Decoration>No</Is_Decoration>
 		<CategoryMask> Untargetable </CategoryMask>
 		<Is_Attackable> false </Is_Attackable>
+		<Land_Model_Name>WV_Truck00.alo</Land_Model_Name>
 		<Scale_Factor>0.001</Scale_Factor>
 		<Affiliation> Novus </Affiliation>
       <AssetBank> BANK_NOVUS </AssetBank>

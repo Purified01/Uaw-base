@@ -84,7 +84,7 @@
 
 		<Influences_Capture_Point> True </Influences_Capture_Point>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | DeathCloneResource | Resource_INST </Attack_Category_Restrictions>
@@ -130,7 +130,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Infantry_Heavy </Armor_Type>
+			<Armor_Type> Armor_Alien_Infantry_Grunt </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -259,7 +259,9 @@
 			<!-- SFXEvent_Fire>SFX_Alien_Grunt_Fire</SFXEvent_Fire-->
 			<SFXEvent_Select>Unit_Select_Alien_Grunt</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_Alien_Grunt</SFXEvent_Move>
+			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Grunt</SFXEvent_Move_At_Top_Speed>
 			<SFXEvent_Attack>Unit_Attack_Alien_Grunt</SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Grunt</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Guard>Unit_Move_Alien_Grunt</SFXEvent_Guard>
 			<Death_SFXEvent_Start_Die>Unit_Death_Alien_Grunt</Death_SFXEvent_Start_Die>
 
@@ -387,6 +389,19 @@
       </Unit_Abilities_Data>
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+			<Effect_Generator Name="AlienExtraHealthGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>									
+<!--				<Is_Independent_Generator> true </Is_Independent_Generator>-->
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> GruntAndGrayExtraHealthEffect </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>		
 
 			<!-- capture  -->
 			<Effect_Generator Name="GruntCaptureGenerator">
@@ -413,7 +428,28 @@
 				</Effect_Generator_Entry>
 				
 			</Effect_Generator>
+			
+			<Effect_Generator Name="Alien_Grunt_Regenerate_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>								
 
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Grunt_Regenerate_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> Alien_Grunt_Regenerate_Irradiated_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\ALIEN_Sell_Generators.xml" -->
 			

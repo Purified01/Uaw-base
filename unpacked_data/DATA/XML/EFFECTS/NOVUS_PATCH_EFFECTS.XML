@@ -16,7 +16,7 @@
 
 	<!-- NovusPatchTimeOutEffect : Used to turn off a generator after it times out -->
 	<Effect Name="NovusPatchTimeOutEffect">
-		<Effect_Class> GenericNoExtendDuration </Effect_Class>
+		<Effect_Class> Transparent </Effect_Class>
 		<Duration> 1.0 </Duration>
 		<Extends_Same_Source_Duration_Only>false</Extends_Same_Source_Duration_Only>
 		<Extends_Existing_Duration> false </Extends_Existing_Duration>
@@ -50,8 +50,7 @@
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Novus_Patch_Radiation_Shield_Small </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
-      </Effect_Component>
+		</Effect_Component>
 
 	</Effect>
 
@@ -63,37 +62,35 @@
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Novus_Patch_Radiation_Shield_Large </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
-      </Effect_Component>
+		</Effect_Component>
 
-   </Effect>
+	</Effect>
+	
+	
+	
+	
+	<!-- Coolant Boost: All units and structures take 25% less damage from heat-based attacks for the duration. -->
+	<Effect Name="NovusPatchCoolantBoostEffect">
+		<Effect_Class> PatchCoolantBoost </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
+		<Effect_Component Type="ModifyArmor">
+			<!-- reduce heat damage by 50%, -->
+			<Amount> -0.50 </Amount>
+			<Damage_Type> Damage_Fire </Damage_Type>
+		</Effect_Component>
+		
+	</Effect>
 
+	
+	<Effect Name="NovusCoolantBoostVisualEffectSmall">
+		<Effect_Class> Transparent </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
-
-   <!-- Coolant Boost: All units and structures take 25% less damage from heat-based attacks for the duration. -->
-   <Effect Name="NovusPatchCoolantBoostEffect">
-      <Effect_Class> PatchCoolantBoost </Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-      <Effect_Component Type="ModifyArmor">
-         <!-- reduce heat damage by 50%, -->
-         <Amount> -0.50 </Amount>
-         <Damage_Type> Damage_Fire </Damage_Type>
-      </Effect_Component>
-
-   </Effect>
-
-
-   <Effect Name="NovusCoolantBoostVisualEffectSmall">
-      <Effect_Class> Transparent </Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-      <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Novus_Patch_Coolant_Boost_Small </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Novus_Patch_Coolant_Boost_Small </Particle_System_Type>
 		</Effect_Component>
 
 	</Effect>
@@ -106,48 +103,46 @@
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Novus_Patch_Coolant_Boost_Large </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
-      </Effect_Component>
+		</Effect_Component>
 
-   </Effect>
+	</Effect>
+	
+	
+	
+	
+	
+	
+	
+	<!-- Overclocking: All units move and fire 35% faster while Overclocking is in effect. Damage taken is doubled. -->
+	<Effect Name="NovusPatchOverclockEffect">
+		<Effect_Class> PatchOverclock </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.25 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Rate_Multiplier </Attribute>
+			<Modifier_Value> 0.65 </Modifier_Value>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.50 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
 
 
+	<Effect Name="NovusOverclockVisualEffectSmall">
+		<Effect_Class> Transparent </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
-
-
-
-
-   <!-- Overclocking: All units move and fire 35% faster while Overclocking is in effect. Damage taken is doubled. -->
-   <Effect Name="NovusPatchOverclockEffect">
-      <Effect_Class> PatchOverclock </Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Max_Speed_Mult_Coeff </Attribute>
-         <Modifier_Value> 0.25 </Modifier_Value>
-      </Effect_Component>
-
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Weapon_Rate_Multiplier </Attribute>
-         <Modifier_Value> 0.65 </Modifier_Value>
-      </Effect_Component>
-
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Damage_Taken_Mult_Coeff </Attribute>
-         <Modifier_Value> 0.50 </Modifier_Value>
-      </Effect_Component>
-   </Effect>
-
-
-   <Effect Name="NovusOverclockVisualEffectSmall">
-      <Effect_Class> Transparent </Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-      <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Novus_Patch_Overclock_Small </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Novus_Patch_Overclock_Small </Particle_System_Type>
 		</Effect_Component>
 
 	</Effect>
@@ -160,29 +155,28 @@
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Novus_Patch_Overclock_Large </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
-      </Effect_Component>
+		</Effect_Component>
 
-   </Effect>
+	</Effect>
+	
+	
+	
+	
+	
+	<!-- Optimized Assembly: All units build at 200% speed for the duration. -->
+	<Effect Name="NovusPatchOptimizedAssemblyEffect">
+		<Effect_Class> PatchOptimizedAssembly </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
+			<!-- +100% build rate -->
+			<Modifier_Value> 2.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
 
-
-
-
-   <!-- Optimized Assembly: All units build at 200% speed for the duration. -->
-   <Effect Name="NovusPatchOptimizedAssemblyEffect">
-      <Effect_Class> PatchOptimizedAssembly </Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Unit_Build_Rate_Multiplier </Attribute>
-         <!-- +100% build rate -->
-         <Modifier_Value> 1.0 </Modifier_Value>
-      </Effect_Component>
-   </Effect>
-
-
+	
 
    <!-- Backup Systems: All units and structures gain an additional 18% health (delivered full) for the duration. -->
    <Effect Name="NovusPatchBackupSystemsEffect">
@@ -211,64 +205,111 @@
 		</Effect_Component>-->
    </Effect>
 
-
-
-   <!-- Emergency Power: Instantly brings all structures on-line regardless of current powered state for the duration. -->
-   <Effect Name="NovusPatchEmergencyPowerEffect">
-      <Effect_Class> PatchEmergencyPower </Effect_Class>
-      <Duration> 30.0 </Duration>
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Is_Powered </Attribute>
-         <!-- A bitwise Or with value 1 will force the attribute to "true" for the duration. -->
-         <Modifier_Integer_Value> 1 </Modifier_Integer_Value>
-         <Modifier_Type> Bitwise_Or </Modifier_Type>
-      </Effect_Component>
-
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Powered_By_Patch </Attribute>
-         <Modifier_Value> 1 </Modifier_Value>
-      </Effect_Component>
-
-   </Effect>
-
-
-
-   <!-- Extrapolation: All units and structures increase sight range by 100% for the duration. -->
-   <Effect Name="NovusPatchExtrapolationEffect">
-      <Effect_Class> PatchExtrapolation </Effect_Class>
+   <Effect Name="NovusPatchBackupSystemsRegenEffectStructure">
+      <Effect_Class> PatchBackupSystems</Effect_Class>
       <Duration> -1.0 </Duration>
       <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Effect_Class> Healing </Effect_Class>
 
-      <Effect_Component Type="AttributeModifier">
-         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
-         <!-- 25% vision -->
-         <Modifier_Value> 0.25 </Modifier_Value>
-      </Effect_Component>
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0132</Percentage_Per_Second>
+		</Effect_Component>	
    </Effect>
-
-
-
-   <!-- Spectrum Cycle: All units and structures gain cloaking detection at their sight range for the duration. -->
-   <Effect Name="NovusPatchSpectrumCycleEffect">
-      <Effect_Class> PatchSpectrumCycle </Effect_Class>
+   
+   <Effect Name="NovusPatchBackupSystemsRegenEffectInfantry">
+      <Effect_Class> PatchBackupSystems</Effect_Class>
       <Duration> -1.0 </Duration>
       <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Effect_Class> Healing </Effect_Class>
 
-      <Effect_Component Type="ApplyGenerator">
-         <Effect_Generator_Name> NovusPatchGrantedSpectrumCycleEffectGenerator </Effect_Generator_Name>
-      </Effect_Component>
-
-   </Effect>
-
-
-   <Effect Name="NovusSpectrumCycleVisualEffectSmall">
-      <Effect_Class> Transparent </Effect_Class>
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 16 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
+		</Effect_Component>	
+   </Effect>   
+   
+   <Effect Name="NovusPatchBackupSystemsRegenEffectMediumVehicle">
+      <Effect_Class> PatchBackupSystems</Effect_Class>
       <Duration> -1.0 </Duration>
       <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Effect_Class> Healing </Effect_Class>
 
-      <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Novus_Patch_Spectrum_Cycle_Small </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 5.48 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
+		</Effect_Component>	
+   </Effect>      
+
+   <Effect Name="NovusPatchBackupSystemsRegenEffectLargeVehicle">
+      <Effect_Class> PatchBackupSystems</Effect_Class>
+      <Duration> -1.0 </Duration>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 4.8 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
+		</Effect_Component>	
+   </Effect>      
+
+	
+	
+	<!-- Emergency Power: Instantly brings all structures on-line regardless of current powered state for the duration. -->
+	<Effect Name="NovusPatchEmergencyPowerEffect">
+		<Effect_Class> PatchEmergencyPower </Effect_Class>
+		<Duration> 30.0 </Duration>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Powered </Attribute>
+			<!-- A bitwise Or with value 1 will force the attribute to "true" for the duration. -->
+			<Modifier_Integer_Value> 1 </Modifier_Integer_Value>
+			<Modifier_Type> Bitwise_Or </Modifier_Type>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Powered_By_Patch </Attribute>
+			<Modifier_Value> 1 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
+
+	
+	
+	<!-- Extrapolation: All units and structures increase sight range by 100% for the duration. -->
+	<Effect Name="NovusPatchExtrapolationEffect">
+		<Effect_Class> PatchExtrapolation </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<!-- 25% vision -->
+			<Modifier_Value> 0.25 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+
+	
+	
+	<!-- Spectrum Cycle: All units and structures gain cloaking detection at their sight range for the duration. -->
+	<Effect Name="NovusPatchSpectrumCycleEffect">
+		<Effect_Class> PatchSpectrumCycle </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		
+		<Effect_Component Type="ApplyGenerator">
+			<Effect_Generator_Name> NovusPatchGrantedSpectrumCycleEffectGenerator </Effect_Generator_Name>
+		</Effect_Component>
+	
+	</Effect>
+
+
+	<Effect Name="NovusSpectrumCycleVisualEffectSmall">
+		<Effect_Class> Transparent </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Novus_Patch_Spectrum_Cycle_Small </Particle_System_Type>
 		</Effect_Component>
 
 	</Effect>
@@ -281,7 +322,6 @@
 
 		<Effect_Component Type="ParticleSystem">
 			<Particle_System_Type> Novus_Patch_Spectrum_Cycle_Large </Particle_System_Type>
-         <Invisible_To_Source_Player> Yes </Invisible_To_Source_Player>
 		</Effect_Component>
 
 	</Effect>
@@ -297,16 +337,8 @@
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
 		</Effect_Component>
 
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> Mirage </Remove_Effect_Class>
-		</Effect_Component>
-
 		<Effect_Component Type="BlockEffect">
 			<Block_Effect_Class> Cloaking </Block_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> Mirage </Block_Effect_Class>
 		</Effect_Component>
 	</Effect>
 

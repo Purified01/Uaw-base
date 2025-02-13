@@ -81,7 +81,7 @@
       <Is_Attackable> true </Is_Attackable>
       <Ranged_Target_Z_Adjust>25.0</Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1100 </Tactical_Health>
       <Land_FOW_Reveal_Range>230</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | BodySocketHP </Attack_Category_Restrictions>
 
@@ -145,9 +145,9 @@
          <Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 1600 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 1600 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 60 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
-         <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
+         <Skirmish_Build_Hero_Cooldown_Seconds> 130 </Skirmish_Build_Hero_Cooldown_Seconds>
 		</BehaviorType>
 
 
@@ -175,7 +175,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_hero_alien_kamal_square.tga</Icon_Name>
+         <Icon_Name>camel_sex.TGA</Icon_Name>
       </BehaviorType>
 
 	<BehaviorType Name="TooltipBehaviorType">
@@ -221,7 +221,7 @@
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Kamal</SFXEvent_Move_At_Top_Speed>
          <SFXEvent_Attack>Unit_Attack_A_Alien_Kamal</SFXEvent_Attack>
 			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Kamal</SFXEvent_Attack_At_Top_Speed>
-         <SFXEvent_Guard> </SFXEvent_Guard>
+         <SFXEvent_Guard> Unit_TAUNT_Alien_Kamal </SFXEvent_Guard>
         
 			<SFXEvent_Ambient_Moving> </SFXEvent_Ambient_Moving>
 			<SFXEvent_Health_Low_Warning> Unit_Health_Low_Alien_Kamal </SFXEvent_Health_Low_Warning>
@@ -337,7 +337,7 @@
          <Unit_Ability Name="Kamal_Rex_Abduction_Unit_Ability">
             <Type>EFFECT_GENERATOR</Type>
             <Expiration_Seconds> 1 </Expiration_Seconds>
-            <Recharge_Seconds>60.0</Recharge_Seconds>
+            <Recharge_Seconds>61.0</Recharge_Seconds>
             <GUI_Activated_Ability_Name> Kamal_Rex_Abduction_Special_Ability </GUI_Activated_Ability_Name>
             <Effect_Generator_Name> AbductionGenerator </Effect_Generator_Name>
             <Area_Effect_Decal_Distance> 75.0 </Area_Effect_Decal_Distance>
@@ -356,10 +356,33 @@
 				<Unit_Ability_AI_Range> 75.0 </Unit_Ability_AI_Range>
 				<Unit_Ability_AI_Required_Targets> 4 </Unit_Ability_AI_Required_Targets>
 			</Unit_Ability>
+			
+<!--         <Unit_Ability Name="Kamal_Rex_Abduction_Unit_Ability_AI">
+            <Type>EFFECT_GENERATOR</Type>
+            <Expiration_Seconds> 1 </Expiration_Seconds>
+            <Recharge_Seconds>20.0</Recharge_Seconds>
+            <GUI_Activated_Ability_Name> Kamal_Rex_Abduction_Special_Ability_AI </GUI_Activated_Ability_Name>
+            <Effect_Generator_Name> AbductionGenerator </Effect_Generator_Name>
+            <Area_Effect_Decal_Distance> 75.0 </Area_Effect_Decal_Distance>
+            <Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
+            <Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
+            <Allows_Targeting_Under_Fog> false </Allows_Targeting_Under_Fog>
+            <Is_Modal>Yes</Is_Modal>
+				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
+				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />
+				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
+				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
+				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
+				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
+				<Unit_Ability_AI_Unit_Categories> ~Flying + ~HardPoint + ~Huge + ~Hero </Unit_Ability_AI_Unit_Categories>
+				<Unit_Ability_AI_Range> 75.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Required_Targets> 2 </Unit_Ability_AI_Required_Targets>
+			</Unit_Ability>			-->
 
          <Unit_Ability Name="Kamal_Rex_Force_Wall_Unit_Ability">
             <Type>BUILDING_PLACEMENT</Type>
             <Recharge_Seconds>28.0</Recharge_Seconds>
+			<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
             <GUI_Activated_Ability_Name> Kamal_Rex_Force_Wall_Special_Ability </GUI_Activated_Ability_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Alien_Kamal</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />
@@ -420,6 +443,27 @@
 				<Cancel_Ability_From_Anim_Change> false </Cancel_Ability_From_Anim_Change>
 
 			</Effect_Generator_Ability>
+			
+<!--         <Effect_Generator_Ability Name="Kamal_Rex_Abduction_Special_Ability_AI">
+            <Activation_Min_Range> 0 </Activation_Min_Range>
+            <Activation_Max_Range> 220 </Activation_Max_Range>
+            <Effect_Generator_Name> AbductionGeneratorAI </Effect_Generator_Name>
+            <Activation_Style> User_Input </Activation_Style>
+            <Pre_Generate_Anim_Type> Special_Start_A </Pre_Generate_Anim_Type>
+            <Generating_Anim_Type> Attack_Special_A </Generating_Anim_Type>
+            <Post_Generate_Anim_Type> </Post_Generate_Anim_Type>
+				<Applicable_Unit_Categories> DummyTarget  </Applicable_Unit_Categories>
+				
+            <Movement_Should_Cancel_Ability>No</Movement_Should_Cancel_Ability>
+
+            <Terminate_Effect_On_Move_Command> true </Terminate_Effect_On_Move_Command>
+            <Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
+
+				<Block_Other_Abilities_When_Active>Yes</Block_Other_Abilities_When_Active>
+				<Hold_Fire_For_Special_Ability> true </Hold_Fire_For_Special_Ability>
+				<Cancel_Ability_From_Anim_Change> false </Cancel_Ability_From_Anim_Change>
+
+			</Effect_Generator_Ability>			-->
 
          <Building_Placement_Ability Name="Kamal_Rex_Force_Wall_Special_Ability">
             <Activation_Style> User_Input </Activation_Style>
@@ -508,6 +552,30 @@
                    <Target_Filter_C> Alien_Kamal_Rex_Abduction </Target_Filter_C>
                 </Effect_Generator_Entry>
          </Effect_Generator>
+		 
+<!--			<Effect_Generator Name="AbductionGeneratorAI">
+                <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+                <Is_Independent_Generator> No </Is_Independent_Generator>
+
+               <Effect_Generator_Entry Name="Entry1">
+						<Base_Delay>.6</Base_Delay>
+                  <Effect_Name> KamalRexAbductionVisualEffect </Effect_Name>
+                  <Duration> 3 </Duration>
+                  <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+                  <Source_SFX_Event> SFX_Alien_Abduct_Fire </Source_SFX_Event>
+                  <Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>                  
+               </Effect_Generator_Entry>
+               
+                <Effect_Generator_Entry Name="Entry2">
+                   <Effect_Name> KamalRexAbductionEffect </Effect_Name>
+                   <Base_Delay>.6</Base_Delay>
+                   <Duration> 5 </Duration>
+                   <Target_Gathering_Mask> Target | TargetAE </Target_Gathering_Mask>
+                   <Can_Target_Allies>Yes</Can_Target_Allies>
+                   <Area_Effect_Radius> 100 </Area_Effect_Radius>                  
+                   <Target_Filter_C> Alien_Kamal_Rex_Abduction </Target_Filter_C>
+                </Effect_Generator_Entry>
+         </Effect_Generator>		 -->
 
          <Effect_Generator Name="NegateRevealCloakingGenerator">
             <Should_Deactivate_Manually> false </Should_Deactivate_Manually>

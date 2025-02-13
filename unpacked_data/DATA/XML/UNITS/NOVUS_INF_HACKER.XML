@@ -49,9 +49,9 @@
 
 		<!-- MOVEMENT -->
 		<MovementClass> Infantry </MovementClass>
-		<Max_Speed>1.4</Max_Speed>
-		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
+		<Max_Speed>1.6</Max_Speed>
+		<Max_Rate_Of_Turn>50.0</Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn> 60.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 3.5 </Custom_Soft_Footprint_Radius>
 		<Custom_Hard_XExtent> 2.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 2.0 </Custom_Hard_YExtent>
@@ -78,7 +78,7 @@
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
-		<Tactical_Health> 240 </Tactical_Health>
+		<Tactical_Health> 250 </Tactical_Health>
 
 		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -114,7 +114,7 @@
       </LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Infantry_Heavy </Armor_Type>
+			<Armor_Type> Armor_Novus_Infantry_Hack </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -302,7 +302,7 @@
 			<Unit_Ability Name="Novus_Hacker_Lockdown_Unit_Ability">
 				<Type>EFFECT_GENERATOR</Type>
 				<Expiration_Seconds> 100000.0 </Expiration_Seconds>
-				<Recharge_Seconds>3.0</Recharge_Seconds>
+				<Recharge_Seconds>0.5</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Novus_Hacker_Lockdown_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Lockdown_Effect_Generator </Effect_Generator_Name>
 				<Ignore_Lock_Unit_Ability_Attribute> Is_Mind_Controlled </Ignore_Lock_Unit_Ability_Attribute>
@@ -316,7 +316,7 @@
 			<Unit_Ability Name="Novus_Hacker_Lockdown_Area_Unit_Ability">
 				<Type>EFFECT_GENERATOR</Type>
 				<Expiration_Seconds> 100000.0 </Expiration_Seconds>
-				<Recharge_Seconds>3.0</Recharge_Seconds>
+				<Recharge_Seconds>0.5</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Novus_Hacker_Lockdown_Area_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> Novus_Hacker_Lockdown_Area_Effect_Generator </Effect_Generator_Name>
 				<Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
@@ -460,6 +460,34 @@
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
+		
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat_Ohm </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		
 				 
 			<!-- Non-upgraded version -->
 			<Effect_Generator Name="Novus_Hacker_Control_Turret_Effect_Generator">
@@ -492,7 +520,7 @@
 					<Effect_Name> Novus_Hacker_Control_Turret_Area_Effect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target | TargetAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 75 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 					<Target_Filter_Categories> Stationary + CanAttack </Target_Filter_Categories>
 					<Target_Filter_C> Is_Enemy_Not_Immune_To_MC	</Target_Filter_C>
 					<Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
@@ -578,7 +606,7 @@
                     <Effect_Name> Novus_Hacker_Viral_Bomb_Splash_Effect </Effect_Name>
                     <Duration>5.0</Duration>
                     <Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
-                    <Area_Effect_Radius> 100 </Area_Effect_Radius>
+                    <Area_Effect_Radius> 150 </Area_Effect_Radius>
                     <Target_Filter_Categories> Small | Piloted + ~Huge</Target_Filter_Categories>
                     <Target_Filter_C>  Is_Enemy </Target_Filter_C>
                 </Effect_Generator_Entry>
@@ -607,7 +635,7 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -615,7 +643,7 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
@@ -623,10 +651,34 @@
 					<Duration> 10.0 </Duration>
 					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 85 </Area_Effect_Radius>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 				
 				<Effect_Generator_Entry Name="Entry4">
+					<Effect_Name> NovusHackerFirewallCleanseMindControlUpgraded </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 192.5 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+				
+				<Effect_Generator_Entry Name="Entry5">
+					<Effect_Name> NovusHackerFirewallCleanseVirusUpgraded </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 192.5 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+				
+				<Effect_Generator_Entry Name="Entry6">
+					<Effect_Name> NovusHackerFirewallCleanseEnemyUpgraded </Effect_Name>
+					<Duration> 10.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 192.5 </Area_Effect_Radius>
+				</Effect_Generator_Entry>								
+				
+				<Effect_Generator_Entry Name="Entry7">
 					<Effect_Name> NovusHackerFirewallSelfVisualEffect </Effect_Name>
 					<Duration>0.5</Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>

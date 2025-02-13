@@ -367,7 +367,7 @@
 
 		<Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
 		
-		<Max_Speed>1.5</Max_Speed>
+		<Max_Speed>2.5</Max_Speed>
 		<Min_Speed> 0.8 </Min_Speed>
 		<Max_Rate_Of_Turn>15.0</Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 8.0 </Stopped_Rate_Of_Turn>
@@ -400,7 +400,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 175 </Tactical_Health>
+		<Tactical_Health> 475 </Tactical_Health>
 		<Land_FOW_Reveal_Range>150.0</Land_FOW_Reveal_Range>
 
 		<Attack_Category_Restrictions> Flying | Resource | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>
@@ -569,7 +569,7 @@
 				<Activation_Chance>1.0</Activation_Chance>
 				<Activation_Min_Range>0.0</Activation_Min_Range>
 				<Activation_Max_Range>20.0</Activation_Max_Range>
-				<Damage_Percentage>0.0</Damage_Percentage>
+				<Damage_Percentage>0.03</Damage_Percentage>
 				<Damage_Type> Damage_Alien_Mutant_Slave_Knockback </Damage_Type>
 				<Attack_Animation> ANIM_ATTACK </Attack_Animation>
 				<Animation_Duration_Override>1.8</Animation_Duration_Override>
@@ -669,7 +669,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>25.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>10.0</Projectile_Damage>
+			<Projectile_Damage>35.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Alien_Target_Hit</Projectile_Object_Detonation_Particle>

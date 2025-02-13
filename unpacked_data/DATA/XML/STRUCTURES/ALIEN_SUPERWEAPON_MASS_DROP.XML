@@ -97,7 +97,7 @@
       </BehaviorType>
 
       <BehaviorType Name="GroundStructureBehaviorType">
-         <Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
+         <Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
          <!-- Maria 01.31.2007 - This value is used to determine the facing of the ghost structure when in 
 				  building placement mode.  It must be a value between 0.0 - 359.0	-->
          <Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
@@ -295,7 +295,7 @@
          <Tactical_Sell_Time_Seconds>0.5</Tactical_Sell_Time_Seconds>
       </Attributes>
 
-      <CategoryMask> Large, Stationary, TacticalBuildableStructure  </CategoryMask>
+      <CategoryMask> Large, Stationary, TacticalBuildableStructure, Female  </CategoryMask>
       <Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
       <Victory_Relevant> No </Victory_Relevant>
 
@@ -473,7 +473,7 @@
       <Is_Attackable> Yes </Is_Attackable>
       <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-      <Tactical_Health>1</Tactical_Health>
+      <Tactical_Health>50</Tactical_Health>
 
       <!-- BEHAVIORS -->
       <Behavior>
@@ -661,7 +661,7 @@
 			<TSW_Cooldown_Countdown_Seconds> 247.0 </TSW_Cooldown_Countdown_Seconds>
 			<TSW_Area_Effect_Radius> 180.0 </TSW_Area_Effect_Radius>
 			<TSW_Resource_Units_Per_Shot>0</TSW_Resource_Units_Per_Shot>
-			<TSW_Warm_Up_Seconds> 240.0 </TSW_Warm_Up_Seconds>
+			<TSW_Warm_Up_Seconds> 180.0 </TSW_Warm_Up_Seconds>
 
          <!-- Frank TODO: Experiment with other tags -->
          <TSW_SFXEvent_Weapon_Power_Up>GUI_Alien_Mass_Drop_Power_Up</TSW_SFXEvent_Weapon_Power_Up>
@@ -760,11 +760,11 @@
 			<Projectile_Category>Laser</Projectile_Category>
 			<Projectile_Max_Flight_Distance>2200.0</Projectile_Max_Flight_Distance>
 
-			<Projectile_Damage>100.0</Projectile_Damage>
+			<Projectile_Damage>125.0</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 
-			<Projectile_Blast_Area_Damage> 30 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 37 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 75 </Projectile_Blast_Area_Range>
 
 		   <Projectile_Object_Detonation_Particle>mass_drop_hit</Projectile_Object_Detonation_Particle>
@@ -791,7 +791,7 @@
 
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> MassDropCatchFireEffect </Effect_Name>
-					<Duration> 2.1 </Duration>
+					<Duration> 2.6 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 80 </Area_Effect_Radius>
 					<Target_Filter_Categories> ~Resource + ~Resource_INST </Target_Filter_Categories>
@@ -1163,6 +1163,3 @@
 	
 
 </Alien_Superweapon_Mass_Drop_XML>
-
-
-

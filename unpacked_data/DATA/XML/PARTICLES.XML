@@ -1292,6 +1292,14 @@
 		<AssetBank> BANK_NOVUS </AssetBank>
 	</Particle>
 
+	<Particle Name="Novus_AEGIS">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_novus_aegis.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_NOVUS </AssetBank>
+	</Particle>
+
 
 	<Particle Name="Novus_Patch_Coolant_Boost_Small">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -1430,13 +1438,16 @@
 	</Particle>
 
 
-	<Particle Name="Blackout_Area">
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<Land_Model_Name>pp_blackout_burst.alo</Land_Model_Name>
-		<!--<Land_Model_Name>p_fire.alo</Land_Model_Name>-->
-		<Scale_Factor>1.0</Scale_Factor>
-		<AssetBank> BANK_ALWAYS </AssetBank>
-	</Particle>
+   <Particle Name="Blackout_Area">
+	  <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+	  <Land_Model_Name>pp_blackout_burst.alo</Land_Model_Name>
+      <Scale_Factor>1.0</Scale_Factor>
+      <Is_Decoration>No</Is_Decoration>
+      <Allow_Particle_Model_Culling>yes</Allow_Particle_Model_Culling>
+      <Behavior>PARTICLE </Behavior>
+      <Particle_Lifetime_Frames>300</Particle_Lifetime_Frames>
+      <AssetBank> BANK_ALWAYS </AssetBank>
+   </Particle>
 
 	
 	<Particle Name="Stormshift_Particle">
@@ -1848,6 +1859,71 @@
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
+	<Particle Name="TEMPLAR_STASIS">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_AEGIS.ALO</Land_Model_Name>
+		<Scale_Factor>0.5</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<LandBehavior>HIDE_WHEN_FOGGED</LandBehavior>
+      <Particle_Lifetime_Frames>480</Particle_Lifetime_Frames>		
+<!--		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_SMALL</Explosion_Scorch_Mark>-->
+<!--		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>-->
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
+	
+	<Particle Name="TEMPLAR_STASIS_DARK">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_AEGIS_DARK.ALO</Land_Model_Name>
+		<Scale_Factor>0.5</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<LandBehavior>HIDE_WHEN_FOGGED</LandBehavior>
+      <Particle_Lifetime_Frames>480</Particle_Lifetime_Frames>		
+<!--		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_SMALL</Explosion_Scorch_Mark>-->
+<!--		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>-->
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>			
+	
+	<Particle Name="TEMPLAR_STASIS_LONG">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_AEGIS.ALO</Land_Model_Name>
+		<Scale_Factor>0.6</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<LandBehavior>HIDE_WHEN_FOGGED</LandBehavior>
+      <Particle_Lifetime_Frames>480</Particle_Lifetime_Frames>		
+<!--		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_SMALL</Explosion_Scorch_Mark>-->
+<!--		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>-->
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
+	
+	<Particle Name="TEMPLAR_STASIS_DARK_LONG">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_AEGIS_DARK.ALO</Land_Model_Name>
+		<Scale_Factor>0.6</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<LandBehavior>HIDE_WHEN_FOGGED</LandBehavior>
+      <Particle_Lifetime_Frames>1200</Particle_Lifetime_Frames>		
+<!--		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_SMALL</Explosion_Scorch_Mark>-->
+<!--		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>-->
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>				
+	
+	<Particle Name="TEMPLAR_Bomb_blast">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_BOMB_EXPLOSION.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Behavior> PARTICLE </Behavior>
+		<LandBehavior>HIDE_WHEN_FOGGED</LandBehavior>
+		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
+<!--		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_SMALL</Explosion_Scorch_Mark>-->
+<!--		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>-->
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+
 
 	<Particle Name="Orlok_plasma_gun">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -1863,6 +1939,19 @@
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
 
+	<Particle Name="Aggressor_Plasma">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>	pp_aggressor_det.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Allow_Particle_Model_Culling>yes</Allow_Particle_Model_Culling>
+		<Behavior>PARTICLE </Behavior>
+		<Particle_Lifetime_Frames>150</Particle_Lifetime_Frames>
+
+		<Explosion_Scorch_Mark/>
+		<Explosion_Light_Source_Name>L_Alien_Ground_Hit</Explosion_Light_Source_Name>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
 
 	<Particle Name="Plasma_Explosion_Placeholder">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -3941,7 +4030,21 @@
 		<Explosion_Light_Source_Name>L_default_Masari_light_Lrg_Det</Explosion_Light_Source_Name>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	
+	<Particle Name="Masari_Enforcer_Light_Proj_Det_Templar">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_ZV_ENFORCER_LIGHT_PROJ_DET.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Allow_Particle_Model_Culling>yes</Allow_Particle_Model_Culling>
+		<Behavior>PARTICLE </Behavior>
+		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
 
+		<Explosion_Scorch_Mark>EXPLOSION_SCORCH_MARK_LARGE</Explosion_Scorch_Mark>
+		<Explosion_Light_Source_Name>L_default_Masari_light_Lrg_Det</Explosion_Light_Source_Name>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
 
 	<Particle Name="Masari_Enforcer_Light_Proj_Miss">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
@@ -4343,8 +4446,54 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
-
 	
+	<Particle Name="Masari_Purifying_Light_Large_Blaze">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_Templar_Blaze.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	<Particle Name="Masari_Purifying_Light_Phosphor">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FIRE_PHOSPHOR.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
+	
+	<Particle Name="Masari_Purifying_Light_Phosphor_Reduced_Twenty">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FIRE_PHOSPHOR_Reduced_Twenty.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>				
+	
+	<Particle Name="Masari_Purifying_Light_Phosphor_Reduced">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FIRE_PHOSPHOR_Reduced.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>			
+	
+	<Particle Name="Masari_Purifying_Light_Phosphor_Reduced_More">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FIRE_PHOSPHOR_Reduced_More.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>			
+
+	<Particle Name="Masari_Purifying_Light_Large_Skylord">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_MASARI_PURIFIYING_LIGHT_LARGE_SKYLORD.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
 	<Particle Name="Masari_Crippling_Shots_Small">
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Land_Model_Name>pp_Masari_Crippling_Shot_Small.alo</Land_Model_Name>
@@ -4370,6 +4519,25 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	
+	<Particle Name="Masari_Crippling_Shots_Large_Templar">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_TEMPLAR_STUN.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	
+	<Particle Name="Masari_Crippling_Shots_Large_Templar_Arrest">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_TEMPLAR_ARREST.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
 
 
 	<Particle Name="Air_Inspiration_Light">
@@ -5183,6 +5351,21 @@
 		<Explosion_Light_Source_Name>L_Skylord_Masari_light_Explosion_S</Explosion_Light_Source_Name>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	
+	<Particle Name="Masari_Templar_Light_Det">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>	pp_TEMPLAR_DET.alo </Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<Allow_Particle_Model_Culling>yes</Allow_Particle_Model_Culling>
+		<Behavior>PARTICLE </Behavior>
+		<Particle_Lifetime_Frames>30</Particle_Lifetime_Frames>
+
+		<Explosion_Scorch_Mark/>
+		<Explosion_Light_Source_Name>L_Skylord_Masari_light_Explosion_S</Explosion_Light_Source_Name>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
 
 	
 	<Particle Name="Masari_Peacebringer_Light_Det_Miss">
@@ -5428,6 +5611,18 @@
       <Particle_Lifetime_Frames>300</Particle_Lifetime_Frames>
       <AssetBank> BANK_MASARI </AssetBank>
    </Particle>
+   
+   
+   <Particle Name="Masari_Seeker_Facilitated_Growth_Target_Seer">
+      <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+      <Land_Model_Name>pp_ZV_Seeker_Facilitated_Growth_Target_Seer.alo</Land_Model_Name>
+      <Scale_Factor>0.7</Scale_Factor>
+      <Is_Decoration>No</Is_Decoration>
+      <Allow_Particle_Model_Culling>yes</Allow_Particle_Model_Culling>
+      <Behavior>PARTICLE </Behavior>
+      <Particle_Lifetime_Frames>300</Particle_Lifetime_Frames>
+      <AssetBank> BANK_MASARI </AssetBank>
+   </Particle>   
 
 
 	<Particle Name="Masari_Vortex_Particle">
@@ -5518,6 +5713,40 @@
 		<Is_Decoration>No</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	
+	<Particle Name="Masari_Structure_Burning_Aura_Fire_Dark">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name> p_fire_masari_dark.alo </Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+		
+	<Particle Name="Masari_Templar_Healing_Aura">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name> PP_TEMPLAR_BOMB_EXPLOSION_gold.alo </Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	<Particle Name="Masari_Templar_Burning_Aura_Fire">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name> P_TEMPLAR_FLAME.alo </Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>
+	
+	
+	<Particle Name="Masari_Templar_Burning_Aura_Fire_Dark">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name> P_TEMPLAR_FLAME_DARK.alo </Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>No</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
 
 
 	<Particle Name="Masari_seeker_hit">
@@ -5752,6 +5981,22 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	<Particle Name="Masari_Templar_Trailblazer">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FLASHPOINT.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	<Particle Name="Masari_Templar_Trailblazer_Dark">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_FLASHPOINT_DARK.ALO</Land_Model_Name>
+		<Scale_Factor>0.9</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
 
 	
 	<Particle Name="Masari_Charos_Frenzy">
@@ -5761,6 +6006,22 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	<Particle Name="Masari_Templar_Frenzy">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_ZH_CHAROS_FRENZY_NO_GLOW_LIGHT.ALO	</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	<Particle Name="Masari_Templar_Frenzy_Dark">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_ZH_CHAROS_FRENZY_NO_GLOW_DARK.ALO	</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
 
 	
 	<Particle Name="Masari_Charos_Frenzy_sycthe">
@@ -5770,6 +6031,22 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	<Particle Name="Masari_Charos_Frenzy_sycthe_DARK">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ZH_Charos_Frenzy_Sycthe_Dark.alo</Land_Model_Name>
+		<Scale_Factor>1.3</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
+	
+	<Particle Name="Masari_Charos_Frenzy_sycthe_light">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>pp_ZH_Charos_Frenzy_Sycthe_Light.alo</Land_Model_Name>
+		<Scale_Factor>1.3</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
 
 	
 	<Particle Name="Masari_Charos_Dark_vortex">
@@ -5884,6 +6161,42 @@
 		<Is_Decoration>Yes</Is_Decoration>
 		<AssetBank> BANK_ALWAYS </AssetBank>
 	</Particle>
+	
+	
+	<Particle Name="Masari_Zessus_Explode_Pre_Heal">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_ZH_ZESSUS_EXPLODE_TRANSFUSION.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	
+	<Particle Name="Masari_Templar_Disruptor">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_ZV_SEEKER_SHIELD_TEMPLAR.ALO</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>	
+	
+	
+	<Particle Name="Masari_Templar_Disruptor_Blast">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_TEMPLAR_DISRUPTOR.ALO</Land_Model_Name>
+		<Scale_Factor>0.2</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>		
+	
+	
+	<Particle Name="Masari_Templar_Disruptor_Blast_Affected">
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+		<Land_Model_Name>PP_DEFAULT_LIGHTNING_ARCS_Templar.ALO</Land_Model_Name>
+		<Scale_Factor>0.8</Scale_Factor>
+		<Is_Decoration>Yes</Is_Decoration>
+		<AssetBank> BANK_ALWAYS </AssetBank>
+	</Particle>			
 
 	
 	<Particle Name="Masari_Zessus_Explode">

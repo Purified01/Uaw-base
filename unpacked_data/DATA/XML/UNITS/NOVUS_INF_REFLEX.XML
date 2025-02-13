@@ -53,7 +53,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass> WaterWalker </MovementClass>
 		<Should_Move_At_Water_Level>True</Should_Move_At_Water_Level>
-		<Max_Speed> 1.3 </Max_Speed>
+		<Max_Speed> 2.0 </Max_Speed>
 		<Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 20.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 8.5 </Custom_Soft_Footprint_Radius>
@@ -85,7 +85,7 @@
 		<Land_FOW_Reveal_Range> 155.0 </Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 420 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -162,7 +162,7 @@
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 325 </Build_Cost_Credits>
 			<Build_Time_Seconds> 9 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Is_Research_Tech_Tree_Lockable> no</Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
 				Maria 11.07.2006 
@@ -380,7 +380,7 @@
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
 				
-				<Excluded_Unit_Categories> Flying, Resource, Resource_INST, BodySocketHP </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Flying, Resource, Resource_INST,  </Excluded_Unit_Categories>
 
 			</Effect_Generator_Ability>
 
@@ -403,6 +403,35 @@
 
 		<!-- EFFECTS -->
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
+		
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat_Blade">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		
 
 			<Effect_Generator Name="NovusReflexTrooperEnergyBladeGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
@@ -501,6 +530,20 @@
             </Effect_Generator_Entry>
 
          </Effect_Generator>
+		 
+<!--			<Effect_Generator Name="Alien_Blade_Regenerate_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Blade </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		-->			 
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -630,7 +673,7 @@
 		<BehaviorType Name="LocomotorBehaviorType">
 		  <Passability_Generators> DeepWater, ReflexBoostGenerator </Passability_Generators>
 		  <Passability_Generators> ShallowWater, ReflexBoostGenerator </Passability_Generators>
-		  <Path_Distance_Generator_Min_Distance> 140.0 </Path_Distance_Generator_Min_Distance>
+		  <Path_Distance_Generator_Min_Distance> 40.0 </Path_Distance_Generator_Min_Distance>
 		  <Path_Distance_Effect_Generator> ReflexBoostGenerator </Path_Distance_Effect_Generator>
 		</BehaviorType>
 
@@ -787,6 +830,7 @@
 				<Effect_Generator_Name> NovusReflexTrooperEnergyBladeGenerator </Effect_Generator_Name>
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
+				<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 
 				<Excluded_Unit_Categories> Flying, Resource, Resource_INST </Excluded_Unit_Categories>
 
@@ -804,11 +848,12 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -816,11 +861,12 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
@@ -833,6 +879,7 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry4">
@@ -845,6 +892,7 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
+					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -1034,7 +1082,7 @@
 			<Projectile_SFXEvent_Detonate> SFX_Novus_BlackOut_Bomb_Detonation </Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor />
 			<Projectile_Explosion_Causes_Chaining> false </Projectile_Explosion_Causes_Chaining>
-			<Projectile_Effect_Bomb_Effect_Name> BlackOutEffectGenerator </Projectile_Effect_Bomb_Effect_Name>
+			<Projectile_Effect_Bomb_Effect_Name> DisruptionEffectGenerator </Projectile_Effect_Bomb_Effect_Name>
 			<Projectile_Bomb_Timer_In_Secs> 1.0 </Projectile_Bomb_Timer_In_Secs>
 			<Projectile_Effect_Bomb_Duration_Seconds> 8.0 </Projectile_Effect_Bomb_Duration_Seconds>
          <Can_Be_Redirected>False</Can_Be_Redirected>
@@ -1043,39 +1091,27 @@
 		<!-- EFFECTS -->
 		<Effect_Generator_Data SubObjectList="Yes">
 
-			<Effect_Generator Name="BlackOutTargetEffectGenerator">
-
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 0.9 </Modal_Refresh_Frequency>
-				<Starts_Active> Yes </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> BlackOutTargetEffect </Effect_Name>
-					<Base_Delay> 1.5 </Base_Delay>
-					<Duration> 8 </Duration>
-					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 130 </Area_Effect_Radius>
-					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
-
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>
-
-			<Effect_Generator Name="BlackOutEffectGenerator">
+			<Effect_Generator Name="DisruptionEffectGenerator">
 
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
 				<Starts_Active> true </Starts_Active>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> BlackOutEffect </Effect_Name>
+					<Effect_Name> DisruptionEffect </Effect_Name>
 					<Base_Delay> 1.5 </Base_Delay>
 					<Duration> 8.0 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 130 </Area_Effect_Radius>
 					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
+					<Frames_Between_Remove_Invalid_Targets> 1 </Frames_Between_Remove_Invalid_Targets>
 				</Effect_Generator_Entry>
 
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> NovusDisruptVisualEffect </Effect_Name>
+					<Duration> 8.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
 			</Effect_Generator>
 
 		</Effect_Generator_Data>

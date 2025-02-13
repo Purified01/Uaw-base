@@ -266,7 +266,9 @@
          <SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
          <SFXEvent_Select> Unit_Select_Alien_Assembly </SFXEvent_Select>
          <SFXEvent_Move> Unit_Move_Alien_Assembly </SFXEvent_Move>
+         <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Alien_Habitat</SFXEvent_Move_At_Top_Speed>
          <SFXEvent_Attack> Unit_Attack_Alien_Assembly </SFXEvent_Attack>
+         <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Alien_Habitat</SFXEvent_Attack_At_Top_Speed>
          <SFXEvent_Guard> Unit_Move_Alien_Assembly </SFXEvent_Guard>
          <SFXEvent_Ambient_Moving> SFX_Alien_Walker_Random_Breath </SFXEvent_Ambient_Moving>
          <SFXEvent_Engine_Idle_Loop> SFX_Alien_Assembly_Idle_Engine_Loop </SFXEvent_Engine_Idle_Loop>
@@ -365,18 +367,44 @@
 
          <Effect_Generator Name="AssemblyWalkerHardPointArmorGenerator">
 
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-            <Effect_Generator_Entry Name="Entry1">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
 
-               <Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
-               <Duration> 3.1 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-               <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
 
-            </Effect_Generator_Entry>
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
+
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
 
          </Effect_Generator>
 
@@ -1955,7 +1983,7 @@
       </LandBehavior>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Leg </Armor_Type>
          <Damage_Type> Damage_Default </Damage_Type>
       </BehaviorType>
 
@@ -2583,7 +2611,113 @@
 
    </HardPoint>
 
+   <!-- ********************************************************************************************* -->
+   <!-- ****** Aggressor ASSEMBLY POD																				  ****** -->
+   <!-- ********************************************************************************************* -->
 
+   <HardPoint Name="Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod">
+      <Variant_Of_Existing_Type>Alien_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- ART -->
+      <Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
+      <Scale_Factor> 0.95 </Scale_Factor>	  
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_ALIEN_HP_AGGRESSOR_ASSEMBLY_POD </Text_ID>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 380 </Tactical_Health>
+      <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         SELECTABLE,
+         HARD_POINT
+      </Behavior>
+
+      <LandBehavior>
+         DAMAGE_TRACKING,
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         TACTICAL_SELL
+         <!-- Maria 12.14.2007: We will only allow the socket to have a GUI scene which will get updated based on the contents
+           of the socket. Thus, the hard points and their under construction versions won't need the GUI behavior nor the 
+           GUIBehaviorType data.
+         -->
+         <!-- ,GUI -->
+      </LandBehavior>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+         <Tactical_Under_Construction_Object_Type> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 9 </Tactical_UI_Build_Queue_Order>
+      </BehaviorType>
+
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_research_walker_hp_aggressor.tga</Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_AGGRESSOR_ASSEMBLY_POD </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+      </BehaviorType>
+
+   </HardPoint>
+
+   <!-- Advanced_Assembly_Pod Under Construction  -->
+   <HardPoint Name="Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod_Under_Construction">
+      <Variant_Of_Existing_Type>Alien_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+
+      <!-- ART -->
+      <Land_Model_Name> ABHP_Habitatwalker_BruteAssemblyPod.alo </Land_Model_Name>
+      <Scale_Factor> 0.95 </Scale_Factor>	  	  
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_ALIEN_HP_AGGRESSOR_ASSEMBLY_POD </Text_ID>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 380 </Tactical_Health>
+      <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+      <!-- BEHAVIORS -->
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <Tactical_Buildable_Constructed> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_research_walker_hp_aggressor.tga</Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_AGGRESSOR_ASSEMBLY_POD </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+      </BehaviorType>
+
+   </HardPoint>
 
    <!-- ********************************************************************************************* -->
    <!-- ****** ARMOR HARD POINT - Crown SOCKET																	  ****** -->
@@ -2603,7 +2737,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -2669,7 +2803,7 @@
       <Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2712,7 +2846,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2741,7 +2875,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
@@ -2990,7 +3124,9 @@
          <Tactical_Under_Construction_Object_Type> Alien_Walker_Assembly_HP_Material_Optimizer_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3449,7 +3585,7 @@
       </LandBehavior>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
       </BehaviorType>
 
       <BehaviorType Name="HardPointBehaviorType">
@@ -3509,9 +3645,9 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Alien_Walker_Assembly_HP_Armor_Leg </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 17 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -3576,7 +3712,9 @@
          <Tactical_Under_Construction_Object_Type> Alien_Walker_Assembly_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3655,7 +3793,7 @@
       <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 250 </Tactical_Health>
+      <Tactical_Health> 375 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
       <!-- ART -->
@@ -3682,7 +3820,9 @@
          -->
          <!-- ,GUI -->
       </LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3731,7 +3871,7 @@
       <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 250 </Tactical_Health>
+      <Tactical_Health> 375 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
       <!-- ART -->
@@ -3751,8 +3891,8 @@
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Alien_Walker_Assembly_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Multiplayer> 110 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 13 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -3841,7 +3981,9 @@
          <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
          <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
       </BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -3965,7 +4107,9 @@
          <Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
          <Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
       </BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
       </BehaviorType>
@@ -4479,7 +4623,7 @@
 
       <!-- ATTRIBUTES -->
       <Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
-      <CategoryMask> TacticalBuildableStructure, Large, Stationary </CategoryMask>
+      <CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
       <Space_Layer> LandDynamic </Space_Layer>
       <Victory_Relevant> No </Victory_Relevant>
 
@@ -4656,7 +4800,7 @@
       <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health>1</Tactical_Health>
+      <Tactical_Health>50</Tactical_Health>
 
       <!-- BEHAVIORS -->
       <Behavior>

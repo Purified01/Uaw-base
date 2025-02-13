@@ -63,7 +63,23 @@
 		<Effect_Component Type="SpawnFrom">
          <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
 			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
-			<Destroy_Source_Object> true </Destroy_Source_Object>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
+			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
+			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
+		</Effect_Component>
+
+		<Effect_Component Type="SpawnFrom">
+         <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
+			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
+			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
+			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
+		</Effect_Component>
+
+		<Effect_Component Type="SpawnFrom">
+         <!-- Oksana: if you change this type, please also change the target filter function in associated effect generator. -->
+			<Spawn_Type> Novus_Robotic_Infantry </Spawn_Type>
+			<Destroy_Source_Object> false </Destroy_Source_Object>
 			<Add_To_Spawn_Effect_Name> FounderRebuildVisualEffect </Add_To_Spawn_Effect_Name>
 			<Add_To_Pop_Cap> true </Add_To_Pop_Cap>
 		</Effect_Component>
@@ -95,7 +111,7 @@
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Default</Damage_Type>
 			<Damage_Amount>0.0</Damage_Amount>
-			<Damage_Percentage>0.2</Damage_Percentage>
+			<Damage_Percentage>0.15</Damage_Percentage>
 		</Effect_Component>
 
 		<Effect_Component Type="Animate">

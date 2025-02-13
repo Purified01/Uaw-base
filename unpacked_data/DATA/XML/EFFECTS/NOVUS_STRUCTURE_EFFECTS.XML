@@ -49,7 +49,7 @@
 	************************************************************************************************** -->
 	<Effect Name="NovusSignalTowerCloakingEffect">
 		<Duration> 10.0 </Duration>
-		<Effect_Class> Cloaking </Effect_Class>
+		<Effect_Class> CloakingConduit </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
 		<Effect_Component Type="Cloak">
@@ -341,7 +341,7 @@
 
 	<!-- Organic units can't attack for a while -->
 	<Effect Name="Novus_EMP_Superweapon_Disable_Weapons_Effect">
-		<Duration> 20.0 </Duration>
+		<Duration> 10.0 </Duration>
 		<Effect_Class> Stun </Effect_Class>
 		<Extends_Existing_Duration> false </Extends_Existing_Duration>
 

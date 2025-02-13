@@ -44,7 +44,7 @@
 
 		<!-- MOVEMENT -->
 		<MovementClass>Infantry</MovementClass>
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.6 </Max_Speed>
 		<Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 12.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 5.0 </Custom_Soft_Footprint_Radius>
@@ -126,7 +126,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Infantry_Light </Armor_Type>
+			<Armor_Type> Armor_Novus_Infantry_Ohm </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -147,7 +147,7 @@
          <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
          <Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 5 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 4.5 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -231,7 +231,9 @@
          <Researched_Upgrades>
             TEXT_NOVUS_RESEARCH_TITLE_RAPID_FLOW
             TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY
+<!--			TEXT_NOVUS_RESEARCH_TITLE_RAPID_REBUILD_EFFECT		-->	
             TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION
+            TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_FLECHETTES					
          </Researched_Upgrades>
 		</BehaviorType>
 		
@@ -348,6 +350,26 @@
       </Unit_Abilities_Data>
 
       <Abilities SubObjectList="Yes">
+
+			<Generic_Attack_Ability Name="Ohm_Advanced_Flechettes">
+				<Activation_Chance>1.0</Activation_Chance>
+				<Activation_Min_Range>0.0</Activation_Min_Range>
+				<Activation_Max_Range>150.0</Activation_Max_Range>
+				<Activation_Recharge_Time> 0.01 </Activation_Recharge_Time>
+<!--				<Attack_Animation>ATTACK_00</Attack_Animation>
+				<Attack_Animation_Speedup>0.0</Attack_Animation_Speedup>-->
+				<Damage_Frame_Number>1</Damage_Frame_Number>
+
+				<Applicable_Unit_Categories> Small | Medium | Large </Applicable_Unit_Categories>
+
+				<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
+				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
+				<Projectile_Type>Proj_Novus_Flechette_Rifle_Heavy</Projectile_Type>
+				<Is_Looping_Attack> true </Is_Looping_Attack>
+				<Projectile_Spawn_Bone_Name> muzzleA </Projectile_Spawn_Bone_Name>
+
+			</Generic_Attack_Ability> 				 		
+	  
          <Leap_Activation_Ability Name="Robotic_Infantry_Activate_Leap_Ability">
             <Activation_Style>USER_INPUT</Activation_Style>
 
@@ -390,6 +412,35 @@
       </Abilities>
 
       <Effect_Generator_Data SubObjectList="Yes">
+	  
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>	  -->
+	  
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat_Ohm </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>	  
 
          <!-- capture  -->
          <Effect_Generator Name="RoboticInfantryCaptureGenerator">
@@ -427,6 +478,20 @@
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
+			
+<!--			<Effect_Generator Name="Alien_Ohm_Regenerate_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Ohm </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>			-->
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -641,6 +706,50 @@
 			<Projectile_Absorbed_By_Shields_Particle />
 			<Projectile_SFXEvent_Detonate />
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+		</BehaviorType>
+
+	</Projectile>
+
+	<Projectile Name="Proj_Novus_Flechette_Rifle_Heavy">
+
+		<!-- ART -->
+		<Land_Model_Name>Laser_Novus_Flechette_Cannon_variant</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
+		<AssetBank> BANK_NOVUS </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Max_Speed>22.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS-->
+		<Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Novus_Robot_Infantry_Flechette_Rifle_Heavy </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Category>DEFAULT</Projectile_Category>
+
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
+			<Projectile_Damage>8.6</Projectile_Damage>
+			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Detonation_Particle>
+			<Projectile_Object_Armor_Reduced_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Armor_Reduced_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>Military_Rifle_Dirt_Collide</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle>Military_Rifle_Dirt_Collide</Projectile_Lifetime_Detonation_Particle>
+			<Projectile_Absorbed_By_Shields_Particle />
+			<Projectile_SFXEvent_Detonate />
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+			<Can_Be_Redirected>False</Can_Be_Redirected>				
 		</BehaviorType>
 
 	</Projectile>

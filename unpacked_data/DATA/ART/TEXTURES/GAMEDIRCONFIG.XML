@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<TextureConfig>
+   <PreprocessConfig platform="xbox360">
+      <Dir>
+         <!--Assume running from "Invasion\Run" folder-->
+         <DirPath path="..\Art\Textures\Game"/>
+         <Default resize="50" compress="default" mipmaps="0"/>
+      </Dir>
+   </PreprocessConfig>
+   <RuntimeConfig platform="PC">
+      <Dir>
+         <DirPath path="..\Art\Textures\Game"/>
+         <Texture name="wt_earth1_512.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth2_512.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth1.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth2.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth1_ORIGINAL_HUGE.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_earth2_ORIGINAL_HUGE.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_aliens.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_aliens_solid.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_masari.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_masari_solid.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_neutral.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_neutral_solid.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_novus.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_novus_solid.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_region.tga" no_dynamic_reduction="true"/>
+         <Texture name="Wt_earth_region_solid.tga" no_dynamic_reduction="true"/>
+         <Texture name="earth_clouds.tga" no_dynamic_reduction="true"/>
+         <Texture name="earth_clouds_512.tga" no_dynamic_reduction="true"/>
+         <Texture name="wt_star_cloud.tga" no_dynamic_reduction="true"/>
+         <Texture name="p_particle_master.tga" no_dynamic_reduction="true"/>
+         <Texture name="p_particle_smoke.tga" no_dynamic_reduction="true"/>
+         <Texture name="p_particle_explosion.tga" no_dynamic_reduction="true"/>
+         <Texture name="p_smoke_billow.tga" no_dynamic_reduction="true"/>
+         <Texture name="W_Laser_Pill.tga" no_dynamic_reduction="true"/>
+      </Dir>
+   </RuntimeConfig>
+</TextureConfig>

@@ -2,31 +2,31 @@
 <Difficulty_Adjustments>
 
 	<Difficulty_Adjustment Name="Easy_Default">
-		<Credit_Multiplier>0.75</Credit_Multiplier>
+		<Credit_Multiplier>1.5</Credit_Multiplier>
 		<Strategic_Build_Time_Multiplier>1.5</Strategic_Build_Time_Multiplier>
 		<Land_Build_Time_Multiplier>1.5</Land_Build_Time_Multiplier>
-		<Damage_Multiplier>0.5</Damage_Multiplier>
+		<Damage_Multiplier>1.0</Damage_Multiplier>
 	</Difficulty_Adjustment>
 
 	<Difficulty_Adjustment Name="Normal_Default">
-		<Credit_Multiplier>1.0</Credit_Multiplier>
-		<Strategic_Build_Time_Multiplier>1.0</Strategic_Build_Time_Multiplier>
-		<Land_Build_Time_Multiplier>1.0</Land_Build_Time_Multiplier>
-		<Damage_Multiplier>1.0</Damage_Multiplier>
+		<Credit_Multiplier>2.0</Credit_Multiplier>
+		<Strategic_Build_Time_Multiplier>0.9</Strategic_Build_Time_Multiplier>
+		<Land_Build_Time_Multiplier>0.9</Land_Build_Time_Multiplier>
+		<Damage_Multiplier>1.15</Damage_Multiplier>
 	</Difficulty_Adjustment>
 	
 	<Difficulty_Adjustment Name="Hard_Default">
-		<Credit_Multiplier>1.15</Credit_Multiplier>
-		<Strategic_Build_Time_Multiplier>0.9</Strategic_Build_Time_Multiplier>
-		<Land_Build_Time_Multiplier>0.9</Land_Build_Time_Multiplier>
-		<Damage_Multiplier>1.1</Damage_Multiplier>
+		<Credit_Multiplier>3.0</Credit_Multiplier>
+		<Strategic_Build_Time_Multiplier>0.5</Strategic_Build_Time_Multiplier>
+		<Land_Build_Time_Multiplier>0.3</Land_Build_Time_Multiplier>
+		<Damage_Multiplier>1.3</Damage_Multiplier>
 	</Difficulty_Adjustment>
 
 	<Difficulty_Adjustment Name="Hard_Scripted_Mission_Default">
 		<Credit_Multiplier>1.3</Credit_Multiplier>
 		<Strategic_Build_Time_Multiplier>1.0</Strategic_Build_Time_Multiplier>
 		<Land_Build_Time_Multiplier>0.75</Land_Build_Time_Multiplier>
-		<Damage_Multiplier>1.5</Damage_Multiplier>
+		<Damage_Multiplier>1.35</Damage_Multiplier>
 	</Difficulty_Adjustment>
 
 </Difficulty_Adjustments>

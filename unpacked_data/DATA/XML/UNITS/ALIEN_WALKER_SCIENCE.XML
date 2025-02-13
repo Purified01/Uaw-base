@@ -379,7 +379,7 @@
          <Unit_Ability Name="Alien_Radiation_Cascade_Unit_Ability">
             <Type>EFFECT_GENERATOR</Type>
             <Expiration_Seconds>1.0</Expiration_Seconds>
-            <Recharge_Seconds>188.0</Recharge_Seconds>
+            <Recharge_Seconds>150.0</Recharge_Seconds>
             <GUI_Activated_Ability_Name>Alien_Radiation_Cascade_Special_Ability</GUI_Activated_Ability_Name>
             <Effect_Generator_Name>ScienceRadiationCascadeGenerator</Effect_Generator_Name>
             <Should_Targeting_Ignore_Objects>true</Should_Targeting_Ignore_Objects>
@@ -1470,7 +1470,7 @@
 
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Leg </Armor_Type>
          <Damage_Type> Damage_Default </Damage_Type>
       </BehaviorType>
 
@@ -1781,7 +1781,7 @@
 
       <!-- ATTRIBUTES -->
 		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
-      <CategoryMask> TacticalBuildableStructure, Large, Stationary </CategoryMask>
+      <CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
       <Space_Layer> LandDynamic </Space_Layer>
       <Victory_Relevant> No </Victory_Relevant>
 
@@ -2545,6 +2545,277 @@
 
    </HardPoint>
 
+   <HardPoint Name="Alien_Walker_Habitat_HP_Shield_Node">
+
+      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_ALIEN_HP_FIREWALL_NODE </Text_ID>
+      <Attributes SubObjectList="Yes">
+         <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
+        <!-- Make sure that this is the same as Novus_Field_Inverter-->
+        <Generator_Area_Effect_Radius_1> 110.0 </Generator_Area_Effect_Radius_1>
+      </Attributes>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 1100 </Tactical_Health>
+      <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+      <!-- ART -->
+      <Land_Model_Name>NV_Field_Inverter_Shield.ALO</Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+      <Scale_Factor>0.37</Scale_Factor>
+
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list
+      <!- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         SELECTABLE,
+         HARD_POINT
+      </Behavior>
+
+      <LandBehavior>
+        DAMAGE_TRACKING,
+        EFFECT_GENERATOR,
+        EFFECT_REGISTRY,
+        ATTRIBUTE_DIRECTORY,
+        TACTICAL_SELL,
+        ABILITY_COUNTDOWN,
+        IDLE,
+       SHIELDED,
+       BALLISTIC
+      </LandBehavior>
+
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+        <Armor_Type> Armor_Alien_Structure_Light </Armor_Type>
+        <Shield_Armor_Type> Armor_Shield </Shield_Armor_Type>
+     </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+         <Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Shield_Node_Under_Construction </Tactical_Under_Construction_Object_Type>
+        <Tactical_UI_Build_Queue_Order> 6 </Tactical_UI_Build_Queue_Order>
+      </BehaviorType>
+
+      <BehaviorType Name="BallisticBehaviorType">
+        <Ballistic_Weight>1.5</Ballistic_Weight>
+        <!--           <Ballistic_Bounce>0.5</Ballistic_Bounce> -->
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_hp_firewall_bubble.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_FIREWALL_NODE </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+      </BehaviorType>
+
+      <BehaviorType Name="SFXBehaviorType">
+       <!--Frank TO DO - replace with shield inverter shield sound, other units shield effects can be done with this tag-->
+        <SFXEvent_Projectile_Hit_Shield>SFX_Novus_Shield_Hit_Detonation_1</SFXEvent_Projectile_Hit_Shield>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> True </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <BehaviorType Name="ShieldBehaviorType">
+         <Shield_Points>2000</Shield_Points>
+         <Shield_Refresh_Rate>85</Shield_Refresh_Rate>
+         <Shield_To_Object_Damage_Type>Damage_Novus_Shield_To_Inverter</Shield_To_Object_Damage_Type>
+
+         <Effect_Generator Name="NovusHackerFirewallGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency>3.0</Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> NovusHackerFirewallCleanseVirus </Effect_Name>
+               <Duration> 10.0 </Duration>
+               <Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+               <Target_Filter_C> Is_Ally </Target_Filter_C>
+               <Area_Effect_Radius> 110 </Area_Effect_Radius>
+            </Effect_Generator_Entry>
+         </Effect_Generator>
+
+        <!-- Non-upgraded shield wil stop only projectiles that do shield_damage -->
+        <Is_Shield_Upgraded>Yes</Is_Shield_Upgraded>
+
+        <!-- Ignore - damage is dissipated by shields without trace -->
+        <!-- Absorb - damage is taken by shield first, decreasing Shield_Points, until the shield is depleted -->
+        <!-- Redirect - damage is redirected to the owner objet, but the damage type is overridden. Modify
+                     damage amount via Armor/Damage system -->
+        <On_Damage_To_Shield>Absorb</On_Damage_To_Shield>
+        <Unhide_Immediately> false </Unhide_Immediately>
+      </BehaviorType>
+
+      <!--<BehaviorType Name="LightningBallEffectBehaviorType">
+        <Lightning_Source_Bone_Names>Lightning_Emitter_A</Lightning_Source_Bone_Names>
+        <Lightning_Target_Bone_Names>Lightning_Target_A</Lightning_Target_Bone_Names>
+        <Lightning_Effect_Names>Feild_Inverter_Sheild</Lightning_Effect_Names>
+        <Lightning_Ball_Effect_Description>
+           TriggerOnTimer | LoopIndefinitely | LiftTargetPointsToTerrain
+        </Lightning_Ball_Effect_Description>
+        <Lightning_Strike_Chance_Interpolator>0.0, 0.4,    1.0, 0.4</Lightning_Strike_Chance_Interpolator>
+        <Duration_Time_Sec>10</Duration_Time_Sec>
+        <Source_Particle_Effect />
+        <Target_Particle_Effect />
+        <Spawn_Object_On_Death />
+      </BehaviorType>-->
+
+      <Abilities SubObjectList="Yes">
+         <Redirect_Projectile_Ability Name="Inverter_Shield_Redirect_Projectile">
+            <Activation_Style>Take_Damage</Activation_Style>
+
+            <!-- Redirection chance is rolled first. If failed, we roll block chance. If failed, we take the damage. -->
+            <Redirect_Chance>15.00</Redirect_Chance>
+            <Block_Chance>25.00</Block_Chance>
+            <Redirect_If_Shield_Hit_Only>Yes</Redirect_If_Shield_Hit_Only>
+            <Reaction_Arc_In_Degrees>360.0</Reaction_Arc_In_Degrees>
+            <Max_Projectile_Redirection_Angle_In_Degrees> 135.0 </Max_Projectile_Redirection_Angle_In_Degrees>
+            <Turn_To_Face_Unblockable_Shots>No</Turn_To_Face_Unblockable_Shots>
+
+            <!-- We can block/redirect shots from the following units types: -->
+            <Applicable_Unit_Categories>All</Applicable_Unit_Categories>
+            <Applicable_Unit_Types />
+            <SFXEvent_Activate />
+            <Uses_Countdown_Timer>No</Uses_Countdown_Timer>
+            <Absorb_Damage> true </Absorb_Damage>
+         </Redirect_Projectile_Ability>
+      </Abilities>
+
+      <Effect_Generator_Data SubObjectList="Yes">
+
+         <Effect_Generator Name="NovusHackerFirewallGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency>2.0</Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+                                                                             
+
+         </Effect_Generator>
+
+         <Effect_Generator Name="AlienShieldEffectGenerator">
+            <Starts_Active> Yes </Starts_Active>
+            <Is_Independent_Generator>Yes</Is_Independent_Generator>
+            <Modal_Refresh_Frequency> 1.1 </Modal_Refresh_Frequency>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> AlienShieldEffect </Effect_Name>
+                <Duration> 21 </Duration>
+                <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+               <Target_Filter_C> Inverter_Raise_Shield_Filter </Target_Filter_C>
+               <Linked_Effect_Names> WalkerShieldRaised </Linked_Effect_Names>
+               <Linked_Effects_Only_Use_Effect_Duration> true </Linked_Effects_Only_Use_Effect_Duration>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> WalkerShieldLowered </Effect_Name>
+               <Duration> 7.5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+               <Target_Filter_C> Inverter_Lower_Shield_Filter </Target_Filter_C>
+               <Linked_Effect_Names> NovusFieldInverterReverseScaleEffect </Linked_Effect_Names>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+
+        <Effect_Generator Name="NovusFieldInverterReverseScaleEffectGenerator">
+           <Starts_Active> No </Starts_Active>
+           <Is_Independent_Generator>Yes</Is_Independent_Generator>
+            <Effect_Generator_Entry Name="Entry1">
+              <Effect_Name> NovusFieldInverterReverseScaleEffect </Effect_Name>
+              <Duration> 1 </Duration>
+              <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+
+         <Effect_Generator Name="NovusShieldRedirectionVisualGenerator">
+            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+            <Starts_Active> true </Starts_Active>
+            <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> NovusInverterRedirectionSelfEffect </Effect_Name>
+               <Duration> -1 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+
+         <Effect_Generator Name="MasariAlateaBeneficialFieldGenerator">
+           <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+           <Modal_Refresh_Frequency>3.0f</Modal_Refresh_Frequency>
+           <Starts_Active> true </Starts_Active>
+
+            <Effect_Generator_Entry Name="Entry1">
+              <Effect_Name> MasariSeekerIceVisualEffect </Effect_Name>
+              <Duration> 3.1f </Duration>
+              <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+              <Target_Filter_C> Is_Ally </Target_Filter_C>
+              <Area_Effect_Radius> 110 </Area_Effect_Radius>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+         <!-- Standard DMA generator - Oksana 05/14/2007 -->
+         <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
+
+      </Effect_Generator_Data>
+
+   </HardPoint>
+
+   <!-- Shield Node Under Construction  -->
+
+   <HardPoint Name="Alien_Walker_Habitat_HP_Shield_Node_Under_Construction">
+
+      <Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+      <Text_ID> TEXT_ALIEN_HP_FIREWALL_NODE </Text_ID>
+
+      <!-- ART -->
+      <Land_Model_Name> ABHP_Habitat_Teleport_Leg.alo </Land_Model_Name>
+     <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 975 </Tactical_Health>
+      <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+      
+      <!-- BEHAVIORS -->
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_hp_firewall_bubble.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_FIREWALL_NODE </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Shield_Node </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+   </HardPoint>
+
+      
+
 
 
 	<!-- =================================================================================================== -->
@@ -2611,7 +2882,7 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MIND_MAGNET </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_INFANTRY </Tooltip_Good_Against>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_ORGANICS </Tooltip_Good_Against>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -2708,7 +2979,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 690 </Tactical_Health>
 		<CategoryMask> HardPoint, CanAttack, BodySocketHP </CategoryMask>
 
 		<!-- INTERFACE -->
@@ -2801,7 +3072,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 690 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -2822,7 +3093,7 @@
 			<Tactical_Buildable_Constructed> Alien_Walker_Science_HP_AI_Magnet </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 30 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2852,7 +3123,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1500 </Tactical_Health>
+		<Tactical_Health> 1800 </Tactical_Health>
 		<CategoryMask> HardPoint, CanAttack, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -2941,7 +3212,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1500 </Tactical_Health>
+		<Tactical_Health> 1800 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -3064,6 +3335,14 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 350 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 300 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
 
 			</Effect_Generator>
 
@@ -3149,7 +3428,9 @@
          TACTICAL_SELL,
          ABILITY_COUNTDOWN
 		</LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3219,8 +3500,22 @@
 					<Duration> 20.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
-					<Area_Effect_Radius> 150.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
+			</Effect_Generator>				
+				
+		<Effect_Generator Name="NovusShiftFieldGenerator">
+			<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+			<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+			<Starts_Active> true </Starts_Active>
+
+			<Effect_Generator_Entry Name="Entry1">
+				<Effect_Name> Shift_Field_Effect </Effect_Name>
+				<Duration> 3.2 </Duration>
+				<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            
+
+			</Effect_Generator_Entry>				
 
 			</Effect_Generator>
 
@@ -3306,7 +3601,9 @@
          TACTICAL_SELL,
          ABILITY_COUNTDOWN
 		</LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3441,7 +3738,9 @@
 			<Tactical_Under_Construction_Object_Type> Alien_Walker_Science_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3543,7 +3842,9 @@
          ATTRIBUTE_DIRECTORY,
          TACTICAL_SELL
 		</LandBehavior>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3680,7 +3981,9 @@
 			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
 			<Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
-
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -4159,7 +4462,7 @@
 		<BehaviorType Name="MovingEffectObjectBehaviorType">
 			<Movement_Speed> 2.0 </Movement_Speed>
 			<Self_Destruct_Time> 20.0 </Self_Destruct_Time>
-			<Movement_Destruct_Distance> 600.0 </Movement_Destruct_Distance>
+			<Movement_Destruct_Distance> 1500.0 </Movement_Destruct_Distance>
 			<Nap_Height> 10.0 </Nap_Height>
 			<Mark_For_Effect> true </Mark_For_Effect>
 			<Effect_Width> 50.0 </Effect_Width>
@@ -4738,28 +5041,54 @@
           <Base_Delay> 2.0 </Base_Delay>
           <Effect_Name> ScienceRadiationCascadeObjectEffect </Effect_Name>
           <Remove_On_Death> false </Remove_On_Death>
-          <Duration> 3.0 </Duration>
+          <Duration> 5.0 </Duration>
           <Target_Gathering_Mask> Target </Target_Gathering_Mask>
         </Effect_Generator_Entry>
 
       </Effect_Generator>
 
-      <Effect_Generator Name="ScienceWalkerHardPointArmorGenerator">
+			<Effect_Generator Name="HabitatWalkerHardPointArmorGenerator">
 
-        <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-        <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-        <Starts_Active> true </Starts_Active>
-        <Is_Independent_Generator> true </Is_Independent_Generator>
-        <Effect_Generator_Entry Name="Entry1">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
 
-          <Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
-          <Duration> 3.1 </Duration>
-          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-          <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
 
-        </Effect_Generator_Entry>
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry2">
 
-      </Effect_Generator>
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+				
+								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry3">
+
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+
+				</Effect_Generator_Entry>
+
+         </Effect_Generator>
 
       <Effect_Generator Name="ScienceWalkerSpeedIncreaseGenerator">
 

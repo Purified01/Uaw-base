@@ -112,7 +112,7 @@
 		<Ranged_Target_Z_Adjust>0.0</Ranged_Target_Z_Adjust>
 		<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 
-		<Tactical_Health> 85 </Tactical_Health> <!--was 50-->
+		<Tactical_Health> 86 </Tactical_Health> <!--was 50-->
 						
 
 
@@ -142,7 +142,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Aircraft </Armor_Type>
+			<Armor_Type> Armor_Novus_Collector </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BallisticBehaviorType">
@@ -268,6 +268,34 @@
 		</Unit_Abilities_Data>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
+		
+         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		
+		
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		
 
 			<Effect_Generator Name="NovusGatherResourcesVisualGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>

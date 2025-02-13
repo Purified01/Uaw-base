@@ -68,6 +68,10 @@
 	<Damage_Alien_Orlok_Siege_Grenade/>
 	<Damage_Alien_Brute_Melee_Knockback/>
 	<Damage_Alien_Brute_Smash/>
+	<Damage_Alien_Aggressor_Plasma/>
+	<Damage_Aggressor_Plasma_Bomb/>	
+	<Damage_Alien_Aggressor_Plasma_Rocket/>
+	<Damage_Alien_Aggressor_Plasma_ANTIair/>	
 	<Damage_Alien_Brute_Death_From_Above/>
 	<Damage_Alien_Grunt_Melee_Knockback/>
 	<Damage_Alien_Grunt_Shotgun/>
@@ -95,7 +99,9 @@
 
 
 	<!-- Novus Damage Types -->
-
+	<Damage_Novus_Evictor_Flechette_Cannon/>	
+	<Damage_Novus_Evictor_Flechette_Rifle/>
+	<Damage_Novus_Monitor_Flechette/>	
 	<Damage_Novus_Founder_Prowess_Punch/>
 	<Damage_Novus_Founder_Performance_Punch/>
 	<Damage_Novus_Mirabel_Flechette/>
@@ -103,6 +109,7 @@
 	<Damage_Novus_Mirabel_Rocket_Attack/>
 	<Damage_Novus_Vertigo_Railgun/>
 	<Damage_Novus_Reflex_Melee/>
+	<Damage_Novus_Robot_Infantry_Flechette_Rifle_Heavy/>	
 	<Damage_Novus_Robot_Infantry_Flechette_Rifle/>
 	<Damage_Novus_Robot_Infantry_Self_Destruct/>
 	<Damage_Novus_Hero_Variant_Flechette/>
@@ -114,6 +121,7 @@
 	<Damage_Novus_Dervish_PBAE_Attack/>
 	<Damage_Novus_Field_Inverter_Railgun/>
 	<Damage_Hacker_Viral_Bomb/>
+	<Damage_Corruptor_Viral_Bomb/>	
 	<Damage_Novus_Shield_To_Inverter/>
 
 	<Damage_Novus_EMP_Superweapon/>
@@ -122,15 +130,31 @@
 
 
 	<!-- Masari Damage Types -->
-
+	<Damage_Fire_Storm_Chaser/>
+	<Damage_Fire_Skylord/>	
+	<Damage_Fire_Templar/>		
+	<Damage_Fire_Phosphor/>	
+	<Damage_Fire_Phosphor_Upgraded/>		
 	<Damage_Masari_Peacebringer_Disintegrate/>
 	<Damage_Masari_Disciple_Weapon/>
+	<Damage_Masari_Disciple_Weapon_Dark/>
+	<Damage_Masari_Templar_Melee_Knockback/>
+	<Damage_Masari_Templar_Super_Slash/>	
+	<Damage_Masari_Templar_Melee_Knockback_Upgraded/>	
+	<Damage_Masari_Stormchaser/>
+	<Damage_Masari_Templar_Perforating_Light/>
+	<Damage_Masari_Templar_Bombing_Light/>	
+	<Damage_Masari_Templar_Bombing_Light_Aftershock/>		
+	<Damage_TEMPLAR_Plasma_Bomb/>	
 	<Damage_Masari_Figment_Bolt/>
+	<Damage_Masari_Figment_Bolt_Dark/>	
 	<Damage_Masari_Figment_Mine/>
 	<Damage_Masari_Seeker_Pulse_Cannon/>
+	<Damage_Masari_Seeker_Pulse_Cannon_Dark/>	
 	<Damage_Masari_Zessus_Toy/>
 	<Damage_Masari_Zessus_Explosion/>
 	<Damage_Masari_Peacebringer_Pulse_Cannon/>
+	<Damage_Masari_Peacebringer_Pulse_Cannon_Dark/>
 	<Damage_Masari_Sentry_Missile/>
 	<Damage_Masari_Sentry_Beam/>
 	<Damage_Masari_Skylord_Screech/>

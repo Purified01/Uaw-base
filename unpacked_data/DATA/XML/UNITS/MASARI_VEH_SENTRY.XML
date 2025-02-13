@@ -39,10 +39,11 @@
 		<Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-         <DMA_Max> 150 </DMA_Max>
-         <DMA_Regen_Rate> 5 </DMA_Regen_Rate>
+         <DMA_Max> 260 </DMA_Max>
+         <DMA_Regen_Rate> 7 </DMA_Regen_Rate>
          <Regenerate_Type>Masari_Avenger_Sentry</Regenerate_Type>
 			<Generator_Area_Effect_Radius_2>200</Generator_Area_Effect_Radius_2>
       </Attributes>
@@ -51,7 +52,7 @@
 		<MovementClass>Wheeled</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
 		<Max_Speed>2.8</Max_Speed>
-		<Max_Rate_Of_Turn>8.0</Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn>15.0</Max_Rate_Of_Turn>
 		<Space_Layer> LandDynamic </Space_Layer>
 		<UnitCollisionClass> Vehicle </UnitCollisionClass>
 		<OverrideAcceleration> .25 </OverrideAcceleration>
@@ -70,12 +71,12 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
-		<Land_FOW_Reveal_Range>220.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>225.0</Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust>12.0</Ranged_Target_Z_Adjust>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
 
-		<Tactical_Health> 300 </Tactical_Health>
+		<Tactical_Health> 610 </Tactical_Health>
 
 		<!-- BEHAVIORS AND ABILITIES -->
 		<Behavior>
@@ -109,7 +110,6 @@
 			TACTICAL_SELL,
 			HARD_POINT_MANAGER,
 			WHEEL,
-			TACTICAL_AI,
          WEAPON,
 			<!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
 			ELEMENTAL_MODE
@@ -147,7 +147,7 @@
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 25 </Build_Cost_Credits>
-			<Build_Time_Seconds> 18 </Build_Time_Seconds>
+			<Build_Time_Seconds> 16 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 
@@ -157,16 +157,16 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Campaign> 35 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 29 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range> <!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 160.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range>  <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -174,22 +174,19 @@
 		 <Attack_Score_Rating> 0.7 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.9 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 225.0 </Tactical_AI_Search_Range>
-		 <Max_Crush_Distance> 200.0 </Max_Crush_Distance>
 	 </BehaviorType>
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Sentry_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Fire_Inaccuracy> 3.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
 		</BehaviorType>
 
-		<!--
 		<BehaviorType NAme="LuaScriptBehaviorType">
 			<Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 			<Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -202,7 +199,6 @@
 				DefensiveAI.KillTurret = false
 			</Lua_Script_Data>
 		</BehaviorType>
-			 -->
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
 			<Icon_Name> i_icon_mv_sentry.tga  </Icon_Name>
@@ -260,6 +256,15 @@
 		<BehaviorType Name="BlobShadowBehaviorType">
 			<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
 			<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Bracket_Size>1</GUI_Bracket_Size>
+			<!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+			<GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+			<GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+			<GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+			<GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
@@ -331,6 +336,15 @@
             <Effect_Generator_Name> Masari_Sentry_Load_Disciple_Effect_Generator </Effect_Generator_Name>
 				<Can_Be_Disabled> false </Can_Be_Disabled>
          </Unit_Ability>
+		 
+         <Unit_Ability Name="Masari_Sentry_Load_Landlord_Unit_Ability">
+            <Expiration_Seconds> 0.1 </Expiration_Seconds>
+            <Recharge_Seconds>0.0</Recharge_Seconds>
+            <Type>EFFECT_GENERATOR</Type>
+            <GUI_Activated_Ability_Name> Masari_Sentry_Load_Landlord_Special_Ability </GUI_Activated_Ability_Name>
+            <Effect_Generator_Name> Masari_Sentry_Load_Landlord_Effect_Generator </Effect_Generator_Name>
+				<Can_Be_Disabled> false </Can_Be_Disabled>
+         </Unit_Ability>		 
 
          <Unit_Ability Name="Masari_Sentry_Load_Architect_Unit_Ability">
             <Expiration_Seconds> 0.1 </Expiration_Seconds>
@@ -388,7 +402,7 @@
          <Effect_Generator_Ability Name="Masari_Sentry_Load_Female_Avenger_Special_Ability">
 
             <Activation_Min_Range> 0 </Activation_Min_Range>
-            <Activation_Max_Range> 20 </Activation_Max_Range>
+            <Activation_Max_Range> 30 </Activation_Max_Range>
             <Effect_Generator_Name> Masari_Sentry_Load_Female_Avenger_Effect_Generator </Effect_Generator_Name>
             <Activation_Style> SPECIAL_ATTACK </Activation_Style>
             <Can_Target_Enemies>No</Can_Target_Enemies>
@@ -413,7 +427,18 @@
             <Can_Target_Neutral>No</Can_Target_Neutral>
             <Applicable_Unit_Types> Masari_Disciple, Masari_Disciple_Fire, Masari_Disciple_Ice  </Applicable_Unit_Types>
          </Effect_Generator_Ability>
-
+		 
+         <Effect_Generator_Ability Name="Masari_Sentry_Load_Landlord_Special_Ability">
+            <Activation_Min_Range> 0 </Activation_Min_Range>
+            <Activation_Max_Range> 60 </Activation_Max_Range>
+            <Effect_Generator_Name> Masari_Sentry_Load_Landlord_Effect_Generator </Effect_Generator_Name>
+            <Activation_Style> SPECIAL_ATTACK </Activation_Style>
+            <Can_Target_Enemies>No</Can_Target_Enemies>
+            <Can_Target_Allies>Yes</Can_Target_Allies>
+            <Can_Target_Neutral>No</Can_Target_Neutral>
+            <Applicable_Unit_Types> Rosie_Landlord, Rosie_Landlord_Fire, Rosie_Landlord_Ice  </Applicable_Unit_Types>
+         </Effect_Generator_Ability>
+		 
          <Effect_Generator_Ability Name="Masari_Sentry_Load_Architect_Special_Ability">
             <Activation_Min_Range> 0 </Activation_Min_Range>
             <Activation_Max_Range> 20 </Activation_Max_Range>
@@ -559,7 +584,27 @@
             </Effect_Generator_Entry>
          </Effect_Generator>
 
+         <!-- Load LANDLORD -->
+         <Effect_Generator Name="Masari_Sentry_Load_Landlord_Effect_Generator">
+            <Should_Deactivate_Manually> No </Should_Deactivate_Manually>
 
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Sentry_Load_Target_Effect </Effect_Name>
+               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+               <Source_SFX_Event> SFX_Masari_Load </Source_SFX_Event>
+               <Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
+               <Idle_If_Inactive>Yes</Idle_If_Inactive>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> Masari_Sentry_Load_Landlord_Effect </Effect_Name>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+               <Target_Filter_C> Can_Vehicle_Pick_Up_Passenger </Target_Filter_C>
+               <Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
+
+            </Effect_Generator_Entry>
+         </Effect_Generator>
+		 
          <!-- Load SEER -->
          <Effect_Generator Name="Masari_Sentry_Load_Seer_Effect_Generator">
             <Should_Deactivate_Manually> No </Should_Deactivate_Manually>
@@ -617,7 +662,7 @@
 					<!-- set to 2.9 to keep particle running -->
                <Duration>2.9</Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Area_Effect_Radius> 150 </Area_Effect_Radius>
+               <Area_Effect_Radius> 200 </Area_Effect_Radius>
               <Target_Filter_C> Architect_Check_For_Healing_Units </Target_Filter_C>
             </Effect_Generator_Entry>
          </Effect_Generator>
@@ -631,6 +676,42 @@
                <Duration>-1.0</Duration>
                <Target_Gathering_Mask> Self </Target_Gathering_Mask>              
             </Effect_Generator_Entry>
+         </Effect_Generator>
+
+
+         <Effect_Generator Name="Masari_Sentry_With_Avenger_Effect_Generator_Light">
+            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Sentry_With_Architect_Owner_Effect </Effect_Name>
+               <Duration>-1.0</Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+            
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> Masari_Sentry_With_Architect_Effect_Avenger </Effect_Name>
+					<!-- set to 2.9 to keep particle running -->
+               <Duration>2.9</Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 100 </Area_Effect_Radius>
+              <Target_Filter_C> Architect_Check_For_Healing_Units </Target_Filter_C>
+            </Effect_Generator_Entry>
+			
+            <Effect_Generator_Entry Name="Entry3">
+					<Land_Behavior>HIDE_WHEN_FOGGED</Land_Behavior>
+					<Effect_Name> MasariResearchBurningAuraEffectSentry </Effect_Name>
+					<Duration> 1.8 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+          <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 85.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry4">
+					<Effect_Name> MasariResearchBurningAuraSelfEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>			
          </Effect_Generator>
          
          
@@ -649,15 +730,15 @@
                <Duration> 3.1 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-               <Area_Effect_Radius> 310.0 </Area_Effect_Radius>
+               <Area_Effect_Radius> 621.0 </Area_Effect_Radius>
             </Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> Masari_Seer_Group_Clarity </Effect_Name>
 					<Duration> 5 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 100 </Area_Effect_Radius>
-					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
+					<Area_Effect_Radius> 200 </Area_Effect_Radius>
+					<Target_Filter_C> Alatea_Beneficial_Target_Filter </Target_Filter_C>
 				</Effect_Generator_Entry>
 				
 				<Effect_Generator_Entry Name="Entry4">
@@ -712,10 +793,10 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		
      <!-- MOVEMENT -->
-     <Max_Speed>2.0</Max_Speed>
+     <Max_Speed>2.5</Max_Speed>
 
      <!-- CONFLICT -->
-     <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
+     <Land_FOW_Reveal_Range>270.0</Land_FOW_Reveal_Range>
 
 
 		<!-- BEHAVIORS AND ABILITIES -->
@@ -748,7 +829,6 @@
 			AI_RECRUITABLE,
 			AI_TARGET,
 			TACTICAL_SELL,
-			TACTICAL_AI,
 			HARD_POINT_MANAGER,
 			WHEEL,
 			<!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
@@ -765,7 +845,7 @@
 			<Targeting_Priority_Set> Masari_Sentry_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
 		</BehaviorType>
@@ -803,7 +883,7 @@
 
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 240 </Activation_Max_Range>
+				<Activation_Max_Range> 250 </Activation_Max_Range>
 				<Effect_Generator_Name> SentryLightBeamGenerator </Effect_Generator_Name>
 				
 				<Max_Channel_Range> 285 </Max_Channel_Range>
@@ -873,12 +953,12 @@
          <Muzzle_Bone_Name> MuzzleB </Muzzle_Bone_Name>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Sentry_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Fire_Inaccuracy> 1.5 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 160.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Masari_Sentry_Missile</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Count>4</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.2</Projectile_Fire_Pulse_Delay_Seconds>
 			<Use_Any_Turret_To_Validate_Attack> true </Use_Any_Turret_To_Validate_Attack>
 			<Bring_All_Turrets_Into_Range> true </Bring_All_Turrets_Into_Range>
@@ -1193,10 +1273,10 @@
 
          <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 215.0 </Targeting_Max_Attack_Distance>
-			<Projectile_Types>Proj_Masari_Disciple_Light_Bolt</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds> 4.0 </Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+			<Projectile_Types>Proj_Masari_Disciple_Light_Bolt_Rocket</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>1.9</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="TurretBehaviorType">
@@ -1234,14 +1314,103 @@
          <Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Masari_Disciple_Ice</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds> 4.0 </Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.15</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
    </HardPoint>
 
+	<HardPoint Name="Masari_Sentry_Landlord_Hardpoint">
+		<Variant_Of_Existing_Type> Masari_Sentry_Empty_Hardpoint </Variant_Of_Existing_Type>
 
+      <!-- Maria: In code we will take care of 'adding' the pilot's type name to the combined vehicle name.
+           Hence, all we need to set here is the original display name of the pilot -->
+      <Text_ID> TEXT_UNIT_MASARI_LANDLORD </Text_ID>
+      
+		<!-- ART -->
+		<Land_Model_Name> Rosie_Landlord_FIRE.ALO </Land_Model_Name>
+		<Scale_Factor>0.7</Scale_Factor>		
+      <AssetBank> BANK_MASARI </AssetBank>
+
+		<LandBehavior>
+         TURRET,
+         TARGETING,
+         WEAPON,
+         EFFECT_GENERATOR,
+         EFFECT_REGISTRY,
+         <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+         ELEMENTAL_MODE
+      </LandBehavior>
+
+		<Damage>20</Damage>
+      <CategoryMask> CanAttack, HardPoint </CategoryMask>
+      <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
+      <AI_Combat_Power>100</AI_Combat_Power>
+      <Affiliation> Masari </Affiliation>
+
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <!-- If this guy modifies its parent he must have the text ID that should be used!.  We set the modified descriptions in the
+            hard point's data given that they are the ones MODIFYING the parent's data tooltip data. -->
+         <Modified_Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_SENTRY_W_LANDLORD </Modified_Tooltip_Description_Text_ID>
+      </BehaviorType>
+
+		<BehaviorType Name="WeaponBehaviorType">
+         <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+         <Targeting_Priority_Set> Masari_Disciple_Target_Priority </Targeting_Priority_Set>
+
+         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 235.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Types>Proj_Rosie_Landlord_Light_Bomb</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds> 1.5 </Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.17</Projectile_Fire_Pulse_Delay_Seconds>
+		</BehaviorType>
+
+		<BehaviorType Name="TurretBehaviorType">
+			<Barrel_Bone_Name> Barrel </Barrel_Bone_Name>
+			<Turret_Bone_Name> Turret </Turret_Bone_Name>
+			<Turret_Rotate_Speed> 8.0 </Turret_Rotate_Speed>
+			<Apply_Z_Turret_Rotate_To_Axis>1</Apply_Z_Turret_Rotate_To_Axis>
+			<Apply_Y_Turret_Rotate_To_Axis>1</Apply_Y_Turret_Rotate_To_Axis>
+			<Turret_Rotate_Extent_Degrees> 270.0 </Turret_Rotate_Extent_Degrees>
+			<!-- if this is too low it will sit under fliers doing nothing -->
+			<Turret_Elevate_Extent_Degrees> 80.0 </Turret_Elevate_Extent_Degrees>
+			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
+			<Ground_Infantry_Turret_Target> Yes </Ground_Infantry_Turret_Target>
+			<Turret_XY_Only> false </Turret_XY_Only>
+		</BehaviorType>
+
+      <BehaviorType Name="ElementalModeType">
+         <Elemental_Object_Types> Fire, Masari_Sentry_Landlord_Hardpoint </Elemental_Object_Types>
+         <Elemental_Object_Types> Ice, Masari_Sentry_Landlord_Hardpoint_Dark </Elemental_Object_Types>
+      </BehaviorType>
+      
+	</HardPoint>
+
+   
+   <HardPoint Name="Masari_Sentry_Landlord_Hardpoint_Dark">
+      <Variant_Of_Existing_Type> Masari_Sentry_Landlord_Hardpoint </Variant_Of_Existing_Type>
+
+      <BehaviorType Name="WeaponBehaviorType">
+         <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+         <Targeting_Priority_Set> Masari_Disciple_Target_Priority </Targeting_Priority_Set>
+
+         <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
+         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+        
+         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
+
+			<Projectile_Types>Proj_Rosie_Landlord_Dark_Fissure</Projectile_Types>
+			<Projectile_Fire_Recharge_Seconds> 1.5 </Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>7</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.165</Projectile_Fire_Pulse_Delay_Seconds>
+		</BehaviorType>
+
+   </HardPoint>
 
    <HardPoint Name="Masari_Sentry_Seer_Hardpoint">
 		<Variant_Of_Existing_Type> Masari_Sentry_Empty_Hardpoint </Variant_Of_Existing_Type>
@@ -1352,7 +1521,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>7</Projectile_Damage>
+			<Projectile_Damage>10</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle>Masari_Guardian_Dark_Det</Projectile_Object_Detonation_Particle>

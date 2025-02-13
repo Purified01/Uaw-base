@@ -226,6 +226,14 @@
 					<Area_Effect_Radius> 375.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 375.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+				
 			</Effect_Generator>
 
 			<Effect_Generator Name="DetectionArrayScanPulseGenerator">

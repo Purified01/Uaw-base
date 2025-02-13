@@ -112,7 +112,7 @@
 	  <Custom_Hard_YExtent> 2.5 </Custom_Hard_YExtent>
 	  <Movement_Animation_Speed> 1.6 </Movement_Animation_Speed>
 	  <Walk_Animation_Speed> 1.05 </Walk_Animation_Speed>
-	  <Max_Speed> 1.6 </Max_Speed>
+	  <Max_Speed> 2.2 </Max_Speed>
 	  <Min_Speed> .1 </Min_Speed>
 	  <Max_Rate_Of_Turn> 30 </Max_Rate_Of_Turn>
 	  <Stopped_Rate_Of_Turn> 15 </Stopped_Rate_Of_Turn>
@@ -131,7 +131,7 @@
 	  <Land_FOW_Reveal_Range>235.0</Land_FOW_Reveal_Range>
 	  <Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
-	  <Tactical_Health> 1100 </Tactical_Health>
+	  <Tactical_Health> 1400 </Tactical_Health>
 
 	  <!-- BEHAVIORS -->
 	  <Behavior>
@@ -218,9 +218,9 @@
 	  <BehaviorType Name="BuildableObjectBehaviorType">
 		  <Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
 		  <Tactical_Build_Cost_Campaign> 1400 </Tactical_Build_Cost_Campaign>
-		  <Tactical_Build_Cost_Multiplayer> 1400 </Tactical_Build_Cost_Multiplayer>
-		  <Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
-		  <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
+		  <Tactical_Build_Cost_Multiplayer> 1300 </Tactical_Build_Cost_Multiplayer>
+		  <Tactical_Build_Time_Seconds> 33 </Tactical_Build_Time_Seconds>
+		  <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		  <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
 	  </BehaviorType>
 
@@ -247,7 +247,7 @@
 	  </BehaviorType>
 
 	  <BehaviorType Name="EncyclopediaBehaviorType">
-		  <Icon_Name> i_hero_novus_founder.tga  </Icon_Name>
+		  <Icon_Name> I_ICON_NI_FOUNDER.TGA  </Icon_Name>
 	  </BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -445,6 +445,21 @@
 	  
 		<!-- EFFECT GENERATORS -->
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+			<Effect_Generator Name="Negate_Mind_Control_Generator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Masari_Seer_Group_Clarity </Effect_Name>
+					<Duration> 5 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 100 </Area_Effect_Radius>
+					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
+				</Effect_Generator_Entry>
+			</Effect_Generator>		
 
 			<Effect_Generator Name="HeroPerksEffectGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -496,8 +511,8 @@
 					<Target_Filter_Categories> ~Flying + ~Resource + ~Resource_INST</Target_Filter_Categories>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					 <Area_Effect_Radius> 20.0 </Area_Effect_Radius>
-					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
+					 <Area_Effect_Radius> 40.0 </Area_Effect_Radius>
+					<Arc_Of_Effect> 185.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
           <!-- Frank TODO prowess (or put in animation) -->
@@ -604,7 +619,7 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Ranged_Target_Z_Adjust>20.0</Ranged_Target_Z_Adjust>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>210.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
 		<Tactical_Health> 650 </Tactical_Health>

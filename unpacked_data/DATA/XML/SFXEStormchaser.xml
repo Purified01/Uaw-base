@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+
+<SFXEvents>
+    <SFXEvent Name="Ice_Flight_Loop_Storm">
+        <Use_Preset>Preset_GUNV_Loop</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\EGL_MASARI_Ice_FLY_1.WAV
+        </Samples>
+		<Min_Pitch>90</Min_Pitch>
+		<Max_Pitch>95</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Gun_Light">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\Storm_Gun_Light.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+		<Min_Volume>50</Min_Volume>
+		<Max_Volume>55</Max_Volume>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Gun_Dark">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\Storm_Gun_Dark.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>			
+
+    <SFXEvent Name="Storm_SelectedA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>	
+        DATA\Audio\Stormchaser\SCA_SELECT_1.WAV			
+        DATA\Audio\Stormchaser\SCA_SELECT_2.WAV			
+        DATA\Audio\Stormchaser\SCA_SELECT_3.WAV			
+        DATA\Audio\Stormchaser\SCA_SELECT_4.WAV			
+        DATA\Audio\Stormchaser\SCA_SELECT_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>				
+    </SFXEvent>	
+
+    <SFXEvent Name="Storm_MoveA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\SCA_MOVE_1.WAV			
+        DATA\Audio\Stormchaser\SCA_MOVE_2.WAV			
+        DATA\Audio\Stormchaser\SCA_MOVE_3.WAV			
+        DATA\Audio\Stormchaser\SCA_MOVE_4.WAV			
+        DATA\Audio\Stormchaser\SCA_MOVE_5.WAV						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_MoveA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\SCA_PRIORITY_MOVE_1.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_MOVE_2.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_MOVE_3.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_MOVE_4.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_MOVE_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_AttackA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\SCA_ATTACK_1.WAV			
+        DATA\Audio\Stormchaser\SCA_ATTACK_2.WAV			
+        DATA\Audio\Stormchaser\SCA_ATTACK_3.WAV			
+        DATA\Audio\Stormchaser\SCA_ATTACK_4.WAV		
+        DATA\Audio\Stormchaser\SCA_ATTACK_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_AttackA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>		
+        DATA\Audio\Stormchaser\SCA_PRIORITY_ATTACK_1.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_ATTACK_2.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_ATTACK_3.WAV			
+        DATA\Audio\Stormchaser\SCA_PRIORITY_ATTACK_4.WAV			
+		DATA\Audio\Stormchaser\SCA_PRIORITY_ATTACK_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>				
+
+    <SFXEvent Name="Storm_Selected">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>	
+        DATA\Audio\Stormchaser\LSC_SELECT_1.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_2.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_3.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_4.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_5.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_7.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_8.wav			
+        DATA\Audio\Stormchaser\LSC_SELECT_6.wav						
+        DATA\Audio\Stormchaser\LSC_SELECT_9.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>				
+    </SFXEvent>	
+
+    <SFXEvent Name="Storm_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\LSC_MOVE_1.wav			
+        DATA\Audio\Stormchaser\LSC_MOVE_2.wav			
+        DATA\Audio\Stormchaser\LSC_MOVE_3.wav			
+        DATA\Audio\Stormchaser\LSC_MOVE_4.wav			
+        DATA\Audio\Stormchaser\LSC_MOVE_5.wav						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_1.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_2.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_3.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_4.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_5.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_MOVE_6.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Stormchaser\LSC_ATTACK_1.wav			
+        DATA\Audio\Stormchaser\LSC_ATTACK_2.wav			
+        DATA\Audio\Stormchaser\LSC_ATTACK_3.wav			
+        DATA\Audio\Stormchaser\LSC_ATTACK_4.wav			
+        DATA\Audio\Stormchaser\LSC_ATTACK_5.wav			
+        DATA\Audio\Stormchaser\LSC_ATTACK_6.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>		
+        DATA\Audio\Stormchaser\LSC_PRIORITY_ATTACK_1.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_ATTACK_2.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_ATTACK_3.wav			
+        DATA\Audio\Stormchaser\LSC_PRIORITY_ATTACK_4.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>				
+</SFXEvents> 

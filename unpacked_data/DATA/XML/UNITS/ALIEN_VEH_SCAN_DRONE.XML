@@ -194,6 +194,7 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_SCAN_DRONE </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_STEALTH_UNITS </Tooltip_Good_Against>			
          <Researched_Upgrades>
             TEXT_ALIEN_RESEARCH_TITLE_VOLATILE_REACTORS
             TEXT_ALIEN_RESEARCH_TITLE_MENTAL_FREQUENCY
@@ -283,7 +284,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -379,6 +380,13 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
 			</Effect_Generator>
 
 			<Effect_Generator Name="ScanDroneScanPulseGenerator">
@@ -527,7 +535,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> TacticalBuildableStructure, Large, Stationary </CategoryMask>
+		<CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
 		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
@@ -702,7 +710,7 @@
 		<Is_Attackable>Yes</Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
-		<Tactical_Health>1</Tactical_Health>
+		<Tactical_Health>50</Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -991,4 +999,3 @@
     </X10_Alien_Units>
 
 </Alien_Veh_Scan_Drone_XML>
-

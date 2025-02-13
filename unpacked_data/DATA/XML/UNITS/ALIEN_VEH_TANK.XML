@@ -75,7 +75,7 @@
 		<Ranged_Target_Z_Adjust>6.0</Ranged_Target_Z_Adjust>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
 		<Land_FOW_Reveal_Range> 235.0 </Land_FOW_Reveal_Range>
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 420 </Tactical_Health>
 		<Projectile_Types>Proj_Alien_Tank_Missile_Ground</Projectile_Types>
 		<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
 		<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
@@ -634,14 +634,14 @@
          <Projectile_Rocket_Straight_Distance>500</Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-         <Projectile_Damage>0.0</Projectile_Damage>
-         <Projectile_Blast_Area_Damage> 12 </Projectile_Blast_Area_Damage>
-         <Projectile_Blast_Area_Range> 20 </Projectile_Blast_Area_Range>
+         <Projectile_Damage>0</Projectile_Damage>
+         <Projectile_Blast_Area_Damage> 13.1 </Projectile_Blast_Area_Damage>
+         <Projectile_Blast_Area_Range> 21 </Projectile_Blast_Area_Range>
          <Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_3</Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-         <Projectile_Object_Detonation_Particle>Small_Explosion_Land</Projectile_Object_Detonation_Particle>
+         <Projectile_Object_Detonation_Particle>Plasma_Blob_Hit</Projectile_Object_Detonation_Particle>
          <Projectile_Ground_Detonation_Particle>Alien_Ground_Hit</Projectile_Ground_Detonation_Particle>
          <Projectile_Lifetime_Detonation_Particle>Tiny_Dud</Projectile_Lifetime_Detonation_Particle>
          <Projectile_Absorbed_By_Shields_Particle>Tiny_Dud</Projectile_Absorbed_By_Shields_Particle>

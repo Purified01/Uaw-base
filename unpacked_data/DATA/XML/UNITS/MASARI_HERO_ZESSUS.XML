@@ -92,7 +92,7 @@
       <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
       <Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
       <Land_FOW_Reveal_Range>260.0</Land_FOW_Reveal_Range>
-      <Tactical_Health> 850 </Tactical_Health>
+      <Tactical_Health> 950 </Tactical_Health>
 
       <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
 
@@ -145,7 +145,7 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_HERO_ZESSUS </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HERO </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_AIR_UNITS TEXT_TYPE_VERSUS_WALKERS </Tooltip_Good_Against>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_STRUCTURES TEXT_TYPE_VERSUS_WALKERS</Tooltip_Good_Against>
 			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_INFANTRY </Tooltip_Vulnerable_To>
 		</BehaviorType>
 
@@ -179,7 +179,7 @@
          <Tactical_Build_Cost_Campaign> 160 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 160 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 95 </Tactical_Build_Time_Seconds>
-         <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+         <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
          <Skirmish_Build_Hero_Cooldown_Seconds>120</Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
 
@@ -206,7 +206,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_m_research_upgrade_hero_zessus.tga</Icon_Name>
+         <Icon_Name>I_ICON_MI_ZESSUS.TGA</Icon_Name>
       </BehaviorType>
 
       <!-- Make hero icon button appear in the UI -->
@@ -273,7 +273,7 @@
 	
 			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
 			<SFXEvent_Build_Started>GUI_BUILD_Hero</SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete>Unit_Select_Masari_Zessus</SFXEvent_Build_Complete>
+			<SFXEvent_Build_Complete>Unit_TAUNT_Masari_Zessus</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 			<SFXEvent_Cant_Move_Unit_In_Production> MCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 
@@ -531,6 +531,8 @@
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
 				<Necessary_Health_Percentage>.51</Necessary_Health_Percentage>
 			</Unit_Ability>
+			
+								
 
 		</Unit_Abilities_Data>
 
@@ -565,6 +567,8 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
+		
+
 
          <!-- Standard DMA generator - Oksana 05/14/2007 -->
          <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Light_Mode_Generators.xml" -->
@@ -625,7 +629,7 @@
 		<!-- ABILITIES -->
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="false">
 				 
-			<Unit_Ability Name="Masari_Zessus_Blizzard_Unit_Ability">
+<!--			<Unit_Ability Name="Masari_Zessus_Blizzard_Unit_Ability">
 				<Type>EFFECT_GENERATOR</Type>
 				<Recharge_Seconds> 55 </Recharge_Seconds>
 				<Expiration_Seconds> 20.0 </Expiration_Seconds>
@@ -637,13 +641,89 @@
 				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_B_Masari_Zessus</SFXEvent_GUI_Unit_Ability_Activated>
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />
 				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
-			</Unit_Ability>
-
+			</Unit_Ability>-->
+			<Unit_Ability Name="Masari_Zessus_Explode_Unit_Ability_Heal">
+				<Type>EFFECT_GENERATOR</Type>
+				<Recharge_Seconds> 48 </Recharge_Seconds>
+            
+            <!-- Oksana: when changing the expiration seconds, you MUST change the Duration
+                  in Masari_Zessus_Explode_Generator for this to work properly!!! -->
+            <Expiration_Seconds> 2.3 </Expiration_Seconds>
+            <Is_Modal>Yes</Is_Modal>
+            <Effect_Generator_Name> Masari_Zessus_Explode_Generator_Heal </Effect_Generator_Name>
+				<GUI_Activated_Ability_Name> Masari_Zessus_Explode_Ability_Heal </GUI_Activated_Ability_Name>
+				<Only_In_Tactical_Mode> True </Only_In_Tactical_Mode>
+				<Targeting_Type> NONE </Targeting_Type>
+            <Clear_Formation>Yes</Clear_Formation>
+				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Masari_Zessus</SFXEvent_GUI_Unit_Ability_Activated>
+				<SFXEvent_GUI_Toggle_Non_Hero_Ability_On />
+				<SFXEvent_GUI_Toggle_Non_Hero_Ability_Off />
+				<Necessary_Health_Percentage>.51</Necessary_Health_Percentage>
+			</Unit_Ability>			
+			
+         <Unit_Ability Name="Unit_Ability_Stun_Shot">
+            <Type>ATTACK_SUBSTITUTE</Type>
+            <Expiration_Seconds> .5 </Expiration_Seconds>
+            <Recharge_Seconds>19.5</Recharge_Seconds>
+            <GUI_Activated_Ability_Name> Stun_Shot_Special_Ability </GUI_Activated_Ability_Name>
+            <SFXEvent_GUI_Unit_Ability_Activated> </SFXEvent_GUI_Unit_Ability_Activated>
+				<Is_Modal>No</Is_Modal>
+            <Targeting_Type> ANY_OBJECT </Targeting_Type>
+            <Should_Targeting_Ignore_Objects> nO </Should_Targeting_Ignore_Objects>
+            <Area_Effect_Decal_Distance> 20.0 </Area_Effect_Decal_Distance>
+				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
+				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
+				<Unit_Ability_AI_Range> 300.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Unit_Categories> ~Huge </Unit_Ability_AI_Unit_Categories>
+         </Unit_Ability>				
+		 
+			<Unit_Ability Name="Unit_Ability_Transfusion">
+				<Type>EFFECT_GENERATOR</Type>
+				<Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
+				<Is_Modal> No </Is_Modal>
+				<Expiration_Seconds>6</Expiration_Seconds>
+				<Recharge_Seconds>12.5</Recharge_Seconds>
+        <Effect_Generator_Name> TransfusionEffectGenerator </Effect_Generator_Name>
+			</Unit_Ability>				
 		</Unit_Abilities_Data>
 
 
 		<Abilities SubObjectList="Yes" Replace="False">
+			<Effect_Generator_Ability Name="Masari_Zessus_Explode_Ability_Heal">
+				<Pre_Generate_Anim_Type>  </Pre_Generate_Anim_Type>
+				<Post_Generate_Anim_Type>  </Post_Generate_Anim_Type>
+				<Generating_Anim_Type> ATTACK_SPECIAL_C </Generating_Anim_Type>
+				<Effect_Generator_Name> Masari_Zessus_Explode_Generator_Heal </Effect_Generator_Name>
+				<Activation_Style> USER_INPUT </Activation_Style>
+				<Max_Channel_Range> </Max_Channel_Range>
+				<Face_Target> false </Face_Target>
+				<Can_Target_Allies>True</Can_Target_Allies>
+            <Is_Self_Targeted>Yes</Is_Self_Targeted>
+			</Effect_Generator_Ability>
+         <Generic_Attack_Ability Name="Stun_Shot_Special_Ability">
+            <Activation_Min_Range> 0 </Activation_Min_Range>
+            <Activation_Max_Range> 200 </Activation_Max_Range>
+            <Activation_Style>USER_INPUT</Activation_Style>
+            <Activated_By_User>Yes</Activated_By_User>
 
+            <Attack_Animation>ATTACK_TOY_THROW</Attack_Animation>
+            <Animation_Duration_Override>0.86</Animation_Duration_Override>
+				<Damage_Frame_Number>18</Damage_Frame_Number>
+
+				<Face_Target_Before_Firing>Yes</Face_Target_Before_Firing>
+            <Excluded_Unit_Categories> Flying </Excluded_Unit_Categories>
+
+            <Projectile_Type> Proj_Rosie_Landlord_Dark_Fissure_Slash_Special_Turbo_Ominous_Wind_Blast_Ultra_Infinity </Projectile_Type>
+            <Is_Looping_Attack> false </Is_Looping_Attack>
+            <Projectile_Spawn_Bone_Name> MuzzleA_00 </Projectile_Spawn_Bone_Name>
+				<Activated_By_User>Yes</Activated_By_User>
+				<Clear_Out_Of_Range_Attack_Orders> true </Clear_Out_Of_Range_Attack_Orders>
+				<Applicable_Unit_Categories>  </Applicable_Unit_Categories>
+				<Excluded_Unit_Categories>  Huge </Excluded_Unit_Categories>
+				<Face_Target_Before_Firing>true</Face_Target_Before_Firing>			
+
+         </Generic_Attack_Ability>			
+		 
 			<Return_Projectile_Ability Name="Masari_Zessus_Range_Attack_Ability">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
 				<Activation_Min_Range> 0.0 </Activation_Min_Range>
@@ -682,7 +762,61 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
+         <Effect_Generator Name="Masari_Zessus_Explode_Generator_Heal">
+            <Is_Independent_Generator>Yes</Is_Independent_Generator>
+            <Should_Deactivate_Manually>Yes</Should_Deactivate_Manually>
 
+            <Effect_Generator_Entry Name="Entry1">
+               <!-- Oksana: this duration MUST be 0.1 seconds LESS than expiration_seconds in
+                  in Masari_Zessus_Explode_Unit_Ability for this to work properly!!! -->
+               <Duration> 2.2 </Duration>
+               <Effect_Name> Masari_Zessus_Pre_Explode_Effect_Heal </Effect_Name>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+			
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> TransfusionEffect </Effect_Name>
+					<!-- set to 2.9 to keep particle running -->
+               <Duration>2.9</Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 200 </Area_Effect_Radius>
+              <Target_Filter_C> Architect_Check_For_Healing_Units </Target_Filter_C>
+            </Effect_Generator_Entry>			
+			
+    		</Effect_Generator>		
+		
+         <Effect_Generator Name="TransfusionEffectGenerator">
+               <Duration>3.0</Duration>		 
+            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Sentry_With_Architect_Owner_Effect </Effect_Name>
+               <Duration>3.0</Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+            
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> TransfusionEffect </Effect_Name>
+					<!-- set to 2.9 to keep particle running -->
+               <Duration>2.9</Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 200 </Area_Effect_Radius>
+              <Target_Filter_C> Architect_Check_For_Healing_Units </Target_Filter_C>
+            </Effect_Generator_Entry>
+			
+         <Effect_Generator_Entry Name="Entry3">
+            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
+            <Duration> 3.0 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+         </Effect_Generator_Entry>			
+		 
+            <Effect_Generator_Entry Name="Entry4">
+               <Effect_Name> TransfusionEffectRecoil </Effect_Name>
+					<!-- set to 2.9 to keep particle running this hurts Zessus-->
+               <Duration>2.9</Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>		 
+         </Effect_Generator>		
          <!-- Standard DMA generator - Oksana 05/14/2007 -->
          <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
 
@@ -764,6 +898,79 @@
    <!-- **************************************************************************************** -->
 	<!-- *** PROJECTILES ************************************************************************ -->
 	<!-- **************************************************************************************** -->
+
+	<Projectile Name="Proj_Masari_Zessus_Explode_Heal">
+
+		<!-- ART -->
+		<Land_Model_Name>AI_Kamalrex_PsionicBlast.alo</Land_Model_Name>
+		<Scale_Factor>1.0</Scale_Factor>
+      <AssetBank> BANK_MASARI </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- MOVEMENT -->
+		<Max_Speed>7.0</Max_Speed>
+		<Max_Rate_Of_Turn>20.0</Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS -->
+		<Behavior>
+			PROJECTILE,
+			HIDE_WHEN_FOGGED
+		</Behavior>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Texture_Slot>1, 0</Projectile_Texture_Slot>
+			<Projectile_Width>0.8</Projectile_Width>
+			<Projectile_Length>4</Projectile_Length>
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Category />
+
+			<Projectile_Max_Lifetime>.2</Projectile_Max_Lifetime>
+			<Projectile_Damage>0.0</Projectile_Damage>
+			<Projectile_Blast_Area_Damage>1</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Range>100</Projectile_Blast_Area_Range>
+			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
+			<Projectile_Rocket_Target_Point_Z_Offset>2.5</Projectile_Rocket_Target_Point_Z_Offset>
+			<Projectile_Causes_Knockback_To_Enemy_Units>true</Projectile_Causes_Knockback_To_Enemy_Units>
+			<Projectile_Ballistic_Knockback_Radius>20.0</Projectile_Ballistic_Knockback_Radius>
+			<Projectile_Blast_Area_Damages_Caster>No</Projectile_Blast_Area_Damages_Caster>
+
+			<Projectile_Causes_Terrain_Damage>true</Projectile_Causes_Terrain_Damage>
+			<Terrain_Damage_Radius>50.0</Terrain_Damage_Radius>
+
+			<Ballistic_Knockback_Probability> 1.0 </Ballistic_Knockback_Probability>
+			<Ballistic_Knockback_Strength> 40.0 </Ballistic_Knockback_Strength>
+
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+
+			<Projectile_Target_Point_On_Terrain> false </Projectile_Target_Point_On_Terrain>
+         <!-- The explosion effect is in the effects file -->
+         <Projectile_Object_Detonation_Particle />
+
+         <Projectile_Ground_Detonation_Particle />
+         <Projectile_Lifetime_Detonation_Particle />
+			<Projectile_Absorbed_By_Shields_Particle />
+			<Projectile_Needs_Dynamic_Scanner_Lock>No</Projectile_Needs_Dynamic_Scanner_Lock>
+			<Projectile_Rocket_Straight_Distance>5</Projectile_Rocket_Straight_Distance>
+			<Projectile_Rocket_Curve_Distance>5</Projectile_Rocket_Curve_Distance>
+			<Projectile_Rocket_Curve_Offset>6</Projectile_Rocket_Curve_Offset>
+			<Projectile_SFXEvent_Detonate> SFX_Masari_Detonation_1 </Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Detonation_1 </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+			<SFXEvent_Projectile_Flying_Loop> </SFXEvent_Projectile_Flying_Loop>
+			<SFXEvent_Projectile_Start_Flight> </SFXEvent_Projectile_Start_Flight>
+         <Can_Be_Redirected>False</Can_Be_Redirected>
+		</BehaviorType>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Masari_Zessus_Explosion </Damage_Type>
+		</BehaviorType>
+
+	</Projectile>
 
 	<Projectile Name="Proj_Masari_Zessus_Explode">
 

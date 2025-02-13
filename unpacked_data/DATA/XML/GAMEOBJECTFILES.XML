@@ -2,66 +2,8 @@
 
 <Game_Object_Files>
 
-	<!-- ***** BEGIN TEST FILE SECTION ***** -->
-	
-	<!--
-	  This Section contains Test/Debug files.  These files should be removed from the project before shipping!
-	-->
-
-	<!--
-	<File> Units/Effect_Test_Units.xml </File>
-	<File> ___TEST_Hector.xml </File>
-	<File> ___TEST_MBL.xml </File>
-	<File> ___TEST_Oksana.xml </File>
-
-	<File> Structures/Test_01_Alien_Abduction_Core.xml </File>
-	<File> Structures/Test_02_Alien_Abduction_Core.xml </File>
-	<File> Structures/Test_01_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_02_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_03_Alien_Creation_Core.xml </File>
-	<File> Structures/Test_01_Alien_Foundation.xml </File>
-	<File> Structures/Test_02_Alien_Foundation.xml </File>
-	<File> Structures/Test_01_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_02_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_03_Alien_Theory_Core.xml </File>
-	<File> Structures/Test_01_Novus_Material_Center.xml </File>
-	<File> Structures/Test_02_Novus_Material_Center.xml </File>
-	<File> Structures/Test_01_Novus_Megacorp_Center.xml </File>
-	<File> Structures/Test_02_Novus_Megacorp_Center.xml </File>
-	<File> Structures/Test_01_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_02_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_03_Novus_Nanocenter.xml </File>
-	<File> Structures/Test_01_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_02_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_03_Novus_R_and_D_Center.xml </File>
-	<File> Structures/Test_01_Masari_Atlatea.xml </File>
-	<File> Structures/Test_02_Masari_Atlatea.xml </File>
-	<File> Structures/Test_01_Masari_Element_Magnet.xml </File>
-	<File> Structures/Test_02_Masari_Element_Magnet.xml </File>
-	<File> Structures/Test_01_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_02_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_03_Masari_Key_Inspiration.xml </File>
-	<File> Structures/Test_01_Masari_Will_Processor.xml </File>
-	<File> Structures/Test_02_Masari_Will_Processor.xml </File>
-	<File> Structures/Test_03_Masari_Will_Processor.xml </File>
-	  
-	-->
-	
-	<!-- ***** END TEST FILE SECTION ***** -->
-
-
-	<!-- ***** OBSOLETE! ***** -->
-	<!--
-	<File> SpecialStructures_Military.xml </File>
-	<File> Structures/Novus_Research_Center.xml </File>
-	<File> Structures/Novus_Consumption_Superturret.xml </File>
-  	<File> Structures/Masari_Fire_Wall.xml </File>
-	-->
-
-
-
 	<File> GlobeRegions.xml </File>
-	<!-- <File> HardPoints_Testing.xml </File> -->
+	<File> HardPoints_Testing.xml </File>
 	<File> CIV_Buildings.xml </File>
 	<File> Props_Generic.xml </File>
 	<File> Particles.xml </File>
@@ -69,17 +11,23 @@
 	<File> LandPrimarySkydomes.xml </File>
 	<File> LandSecondarySkydomes.xml </File>
 	<File> Bridges.xml </File>
+	<File> SpecialStructures_Military.xml </File>
 	<File> GlobalTransportBlips.xml </File>
 
-
+	
 	<File> Units/ALIEN_AIR_Retreat_Transport.xml </File>
 
+<!--	<File> Units/ALIEN_VEH_REVENANT.xml </File>-->
 	<File> Units/ALIEN_VEH_Tank.xml </File>
 	<File> Units/ALIEN_VEH_Cylinder.xml </File>
 	<File> Units/ALIEN_VEH_Foo_Fighter.xml </File>
 	<File> Units/ALIEN_VEH_Defiler.xml </File>
 	<File> Units/ALIEN_VEH_Reaper_Turret.xml </File>
 	<File> Units/ALIEN_VEH_Scan_Drone.xml </File>
+<!--	<File> Units/ALIEN_VEH_SIGNAL_WALKER.xml </File>	-->
+	<File> Units/ALIEN_AIR_Gunship.xml </File>
+<!--	<File> Units/ALIEN_AIR_SHADE.xml </File>	-->   <!--this will probably be in campaign only-->
+	<File> Units/ALIEN_AIR_TRANSPORT_SAUCER.xml </File>	
 
 	<File> Units/ALIEN_INF_Science_Team.xml </File>
 	<File> Units/ALIEN_INF_Grunt.xml </File>
@@ -87,6 +35,7 @@
 	<File> Units/ALIEN_INF_Glyph_Carver.xml </File>
 	<File> Units/ALIEN_INF_Mutant_Slave.xml </File>
 	<File> Units/ALIEN_INF_Lost_One.xml </File>
+<!--	<File> Units/ALIEN_INF_CIPHER.xml </File>	-->
 
 	<File> Units/ALIEN_WALKER_Habitat.xml </File>
 	<File> Units/ALIEN_WALKER_Assembly.xml </File>
@@ -131,10 +80,16 @@
 	<File> Units/Novus_Air_Retreat_Transport.xml </File>
 	<File> Units/Novus_Air_Collector.xml </File>
 	<File> Units/Novus_Veh_Amplifier.xml </File>
+	<File> Units/Novus_Veh_Winged_Collector.xml </File>	
+	<File> Units/Novus_Veh_Winged_Collector_Two.xml </File>		
 	<File> Units/NOVUS_VEH_Constructor.xml </File>
+<!--	<File> Units/NOVUS_VEH_Incinerator.xml </File>	-->
 	<File> Units/Novus_Veh_Antimatter_Tank.xml </File>
+<!--	<File> Units/Novus_Inf_Evictor.xml </File>	--> <!--Perhaps it will return in the campaign-->
+<!--	<File> Units/Novus_Inf_Evictor_Hologram.xml </File>		-->
 	<File> Units/Novus_Inf_Robots.xml </File>
 	<File> Units/Novus_Veh_Dervish_Jet.xml </File>
+<!--	<File> Units/Novus_Veh_Dervish_Gunship.xml </File>-->
 	<File> Units/Novus_Hero_Mech.xml </File>
 	<File> Units/NOVUS_VEH_Corruptor.xml </File>
 	<File> Units/NOVUS_VEH_Field_Inverter.xml </File>
@@ -146,7 +101,13 @@
 	<File> Units/NOVUS_INF_Reflex.xml </File>
 
 	<File> Units/MASARI_INF_Disciple.xml </File>
+	<File> Units/MASARI_INF_Landlord.xml </File>	
+<!--	<File> Units/MASARI_INF_Herald.xml </File>		
+	<File> Units/MASARI_VEH_STOMPER.xml </File>	
+	<File> Units/MASARI_INF_ECLIPSE.xml </File>		
+	<File> Units/MASARI_AIR_Strix.xml </File>	-->	
 	<File> Units/MASARI_AIR_Seeker.xml </File>
+	<File> Units/MASARI_AIR_Stormchaser.xml </File>	
 	<File> Units/MASARI_AIR_Skylord.xml </File>
 	<File> Units/MASARI_AIR_Figment.xml </File>
 	<File> Units/MASARI_VEH_Enforcer.xml </File>
@@ -203,16 +164,21 @@
 
 	<File> Structures/Novus_Input_Station.xml </File>
 	<File> Structures/Novus_Signal_Tower.xml </File>
+	<File> Structures/Novus_Signal_Tower_Evictor.xml </File>	
 	<File> Structures/Novus_Aircraft_Assembly.xml </File>
 	<File> Structures/Novus_Robotic_Assembly.xml </File>
 	<File> Structures/Novus_Vehicle_Assembly.xml </File>
 	<File> Structures/Novus_Power_Router.xml </File>
 	<File> Structures/Novus_Science.xml </File>
+<!--	<File> Structures/Novus_Repair_Pad.xml </File>	-->
+	<File> Structures/Novus_Detection_Conduit.xml </File>	
 	<File> Structures/Novus_Remote_Terminal.xml </File>
+	<File> Structures/Novus_Research_Center.xml </File>
 	<File> Structures/Novus_R_and_D_Center.xml </File>
 	<File> Structures/Novus_Material_Center.xml </File>
 	<File> Structures/Novus_Nanocenter.xml </File>
 	<File> Structures/Novus_Superweapon_EMP.xml </File>
+	<File> Structures/Novus_Consumption_Superturret.xml </File>
 	<File> Structures/Novus_Megaweapon.xml </File>
 	<File> Structures/Novus_Gravity_Bomb.xml </File>
 	<File> Structures/Novus_Redirection_Turret.xml </File>
@@ -232,6 +198,8 @@
 	<File> Structures/Alien_Gravitic_Manipulator.xml </File>
 	<File> Structures/Alien_Megaweapon_Purifier.xml </File>
 	<File> Structures/Alien_Superweapon_Mass_Drop.xml </File>
+	<File> Structures/Alien_Superweapon_Purifier.xml </File>
+	<File> Structures/Alien_Phase_Generator.xml </File>
 
 
 	<File> Structures/Masari_Atlatea.xml </File>
@@ -240,6 +208,8 @@
 	<File> Structures/Masari_Element_Magnet.xml </File>
 	<File> Structures/Masari_Elemental_Collector.xml </File>
 	<File> Structures/Masari_Guardian.xml </File>
+<!--	<File> Structures/Masari_Light_Bomb_Guardian.xml </File>	
+	<File> Structures/Masari_Temple_Guardian.xml </File>	-->
 	<File> Structures/Masari_Natural_Interpreter.xml </File>
 	<File> Structures/Masari_Inventors_Lab.xml </File>
 	<File> Structures/Masari_Infantry_Inspiration.xml </File>
@@ -247,6 +217,7 @@
 	<File> Structures/Masari_Air_Inspiration.xml </File>
 	<File> Structures/Masari_Foundation.xml </File>
 	<File> Structures/Masari_Sky_Guardian.xml </File>
+	<File> Structures/Masari_Fire_Wall.xml </File>
 	<File> Structures/Masari_Elemental_Controller.xml </File>
 	<File> Structures/Masari_Megaweapon.xml </File>
 

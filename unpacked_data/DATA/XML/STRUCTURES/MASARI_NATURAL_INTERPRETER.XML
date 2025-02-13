@@ -268,6 +268,27 @@
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+			<Effect_Generator Name="MasariOraclePassiveStealthDetectionGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> RevealCloakingEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 240.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 240.0 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+			</Effect_Generator>		
 
 			<Effect_Generator Name="MasariSwitchGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
@@ -666,13 +687,13 @@
 
 			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Light_Beam_Ability">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
-				<Activation_Max_Range> 275 </Activation_Max_Range>
+				<Activation_Min_Range> 25 </Activation_Min_Range>
+				<Activation_Max_Range> 300 </Activation_Max_Range>
 				<Effect_Generator_Name> OraclePiercingGazeLightBeamGenerator </Effect_Generator_Name>
 				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
 				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
 				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 295 </Max_Channel_Range>
+				<Max_Channel_Range> 330 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
@@ -822,13 +843,13 @@
 
 			<Effect_Generator_Ability Name="Oracle_Piercing_Gaze_Dark_Beam_Ability">
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
-				<Activation_Min_Range> 75 </Activation_Min_Range>
+				<Activation_Min_Range> 25 </Activation_Min_Range>
 				<Activation_Max_Range> 230 </Activation_Max_Range>
 				<Effect_Generator_Name> OraclePiercingGazeDarkBeamGenerator </Effect_Generator_Name>
 				<Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
 				<Pre_Generate_Anim_Type> ANIM_ATTACK_IDLE </Pre_Generate_Anim_Type>
 				<Generating_Anim_Type>ANIM_ATTACK</Generating_Anim_Type>
-				<Max_Channel_Range> 240 </Max_Channel_Range>
+				<Max_Channel_Range> 250 </Max_Channel_Range>
 
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
@@ -1478,7 +1499,7 @@
 					<Duration> 3.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 320 </Area_Effect_Radius>
+					<Area_Effect_Radius> 480 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>

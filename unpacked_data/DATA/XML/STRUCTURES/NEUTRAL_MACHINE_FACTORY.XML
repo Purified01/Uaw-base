@@ -163,7 +163,7 @@
 					<Effect_Name> NeutralFactoryEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> All </Target_Gathering_Mask>
-					<Target_Filter_Categories> Stationary </Target_Filter_Categories>
+					<Target_Filter_Categories> Stationary | Huge + Piloted </Target_Filter_Categories>
 					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
 				</Effect_Generator_Entry>
 

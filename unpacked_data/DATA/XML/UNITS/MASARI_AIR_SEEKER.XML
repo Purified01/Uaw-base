@@ -33,7 +33,7 @@
 		 <Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 		 <Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 		<Regenerate_Type>Masari_Avenger_Seeker</Regenerate_Type>
-		<Phoenix_Type>Masari_Seeker_Fire</Phoenix_Type>
+		<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
 		<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
     </Attributes>
 
@@ -148,6 +148,7 @@
 
          <Researched_Upgrades>
 		TEXT_MASARI_RESEARCH_TITLE_PHOENIX
+		TEXT_MASARI_RESEARCH_TITLE_FACILITATED_GROWTH_FIXED		
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
 		TEXT_MASARI_RESEARCH_TITLE_STASIS
@@ -340,6 +341,7 @@
         <Type>EFFECT_GENERATOR</Type>
         <Recharge_Seconds>30.0</Recharge_Seconds>
         <Expiration_Seconds>8.0</Expiration_Seconds>
+        <SFXEvent_Target_Ability>Unit_ABILITY_B_Masari_Inquisitor</SFXEvent_Target_Ability>
         <GUI_Activated_Ability_Name>Inquisitor_Destabilize_Ability</GUI_Activated_Ability_Name>
         <Targeting_Type>ANY_OBJECT</Targeting_Type>
         <Effect_Generator_Name>Masari_Inquisitor_Destabilize_Generator</Effect_Generator_Name>
@@ -417,29 +419,17 @@
       <Effect_Generator Name="MasariSpawnPhoenixOnDeathGenerator">
         <Starts_Active>Yes</Starts_Active>
         <Modal_Refresh_Frequency>1</Modal_Refresh_Frequency>
+        <SFXEvent_Target_Ability>Unit_ABILITY_A_Masari_Inquisitor</SFXEvent_Target_Ability>
         <Effect_Generator_Entry Name="Entry1">
           <Duration> 1.1 </Duration>
           <Effect_Name> MasariPhoenixEffect </Effect_Name>
           <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-          <Target_Application_Probability>0.5</Target_Application_Probability>
+          <Target_Application_Probability>0.001</Target_Application_Probability>
           <Target_Filter_C> Can_Create_Phoenix </Target_Filter_C>
           <Remove_On_Death>No</Remove_On_Death>
         </Effect_Generator_Entry>
       </Effect_Generator>
 
-      <!-- If I am a Phoenix, I should take 50% damage when created!-->
-      <Effect_Generator Name="MasariPhoenixDamageGenerator">
-        <Starts_Active>Yes</Starts_Active>
-        <Self_Start_Delay>0.5</Self_Start_Delay>
-
-        <Effect_Generator_Entry Name="Entry1">
-          <Effect_Name> MasariPhoenixDamageEffect </Effect_Name>
-          <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-          <Target_Filter_C> Is_Phoenix </Target_Filter_C>
-        </Effect_Generator_Entry>
-      </Effect_Generator>
-
-      <!-- If I am a Phoenix, I should play nice animation when created!-->
       <Effect_Generator Name="MasariPhoenixVisualGenerator">
         <Starts_Active>Yes</Starts_Active>
         <Self_Start_Delay>0.1</Self_Start_Delay>
@@ -581,8 +571,8 @@
       <SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
       <SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
       <SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-      <SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-      <SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+      <SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+      <SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
       <SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
       <Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
       <SFXEvent_Ambient_Moving> SFX_Masari_Inquisitor_Fly_By </SFXEvent_Ambient_Moving>
@@ -613,6 +603,21 @@
         </Effect_Generator_Entry>
 
       </Effect_Generator>
+	  
+			<Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Seeker">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Seeker </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>				  
 
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Light_Mode_Generators.xml" -->
@@ -645,7 +650,7 @@
 		</Attributes>
 
 		<!-- MOVEMENT -->
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.6 </Max_Speed>
 		<Movement_Animation_Speed> 1.0 </Movement_Animation_Speed>
 		<Walk_Animation_Speed> .366 </Walk_Animation_Speed>
       <MovementClass>Infantry</MovementClass>
@@ -708,8 +713,8 @@
 			<SFXEvent_Select>Unit_Select_Masari_Inquisitor</SFXEvent_Select>
 			<SFXEvent_Move>Unit_Move_A_Masari_Inquisitor</SFXEvent_Move>
 			<SFXEvent_Move_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Move_At_Top_Speed>
-			<SFXEvent_Attack>Unit_Move_A_Masari_Inquisitor</SFXEvent_Attack>
-			<SFXEvent_Attack_At_Top_Speed>Unit_Move_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
+			<SFXEvent_Attack>Unit_Attack_A_Masari_Inquisitor</SFXEvent_Attack>
+			<SFXEvent_Attack_At_Top_Speed>Unit_Attack_B_Masari_Inquisitor</SFXEvent_Attack_At_Top_Speed>
 			<SFXEvent_Turret_Rotating_Loop> </SFXEvent_Turret_Rotating_Loop>
 			<Death_SFXEvent_Start_Die> SFX_Masari_Small_Aircraft_Death </Death_SFXEvent_Start_Die>
 			<SFXEvent_Ambient_Moving>  </SFXEvent_Ambient_Moving>
@@ -739,9 +744,34 @@
         </Effect_Generator_Entry>
 
       </Effect_Generator>
+	  
+         <Effect_Generator Name="Masari_Sentry_With_Architect_Effect_Generator_Seeker">
+            <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+<!--            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Sentry_With_Architect_Owner_Effect </Effect_Name>
+               <Duration>-1.0</Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>-->
+            
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Sentry_With_Architect_Effect_Seeker </Effect_Name>
+					<!-- set to 2.9 to keep particle running -->
+               <Duration>2.9</Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 200 </Area_Effect_Radius>
+              <Target_Filter_C> Architect_Check_For_Healing_Units </Target_Filter_C>
+            </Effect_Generator_Entry>
+			
+         <Effect_Generator_Entry Name="Entry2">
+            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
+            <Duration> -1.0 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+         </Effect_Generator_Entry>			
+         </Effect_Generator>
 
       <!-- Increases DMA regen rate of objects in a radius  -->
-      <Effect_Generator Name="MasariSeekerAE_DMARegenGenerator">
+<!--      <Effect_Generator Name="MasariSeekerAE_DMARegenGenerator">
         <Is_Independent_Generator> true </Is_Independent_Generator>
         <Starts_Active> true </Starts_Active>
         <Modal_Refresh_Frequency> 4.9 </Modal_Refresh_Frequency>
@@ -752,7 +782,7 @@
           <Duration> 5.0 </Duration>
           <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
           <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
-          <Area_Effect_Radius> 100.0 </Area_Effect_Radius>
+          <Area_Effect_Radius> 200.0 </Area_Effect_Radius>
         </Effect_Generator_Entry>
 
          <Effect_Generator_Entry Name="Entry2">
@@ -761,9 +791,7 @@
             <Target_Gathering_Mask> Self </Target_Gathering_Mask>
          </Effect_Generator_Entry>
 
-      </Effect_Generator>
-
-
+      </Effect_Generator>      		 -->
 
       <!-- Standard DMA generator - Oksana 05/14/2007 -->
       <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
@@ -782,21 +810,27 @@
 
     <!-- ART -->
     <Land_Model_Name>ZV_Seeker_Air_Wing.ALO</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
+    <Scale_Factor>1.7</Scale_Factor>
+      <AssetBank> BANK_MASARI </AssetBank>
 
     <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
     <!-- ATTRIBUTES -->
-    <CategoryMask> Large, Flying, Piloted, Resource </CategoryMask>
+    <CategoryMask> Resource </CategoryMask>
+		<Text_ID>TEXT_NONE</Text_ID>
 
     <!-- CONFLICT -->
     <Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+		<Is_Attackable>Yes</Is_Attackable>
 
     <!-- BEHAVIORS -->
     <LandBehavior>
       BALLISTIC,
       SPAWN_DEBRIS,
       RESOURCE,
+      DEBRIS,
       EFFECT_REGISTRY,
       EFFECT_GENERATOR,
       ATTRIBUTE_DIRECTORY
@@ -822,8 +856,8 @@
 	</BehaviorType>
 
     <BehaviorType Name="DebrisBehaviorType">
-      <Debris_Min_Lifetime_Seconds> 35.0 </Debris_Min_Lifetime_Seconds>
-      <Debris_Max_Lifetime_Seconds> 40.0 </Debris_Max_Lifetime_Seconds>
+         <Debris_Min_Lifetime_Seconds> 120.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 120.0 </Debris_Max_Lifetime_Seconds>
     </BehaviorType>
 
     <BehaviorType Name="BallisticBehaviorType">
@@ -833,8 +867,6 @@
 
     <BehaviorType Name="DeathFXBehaviorType">
       <Death_Explosions>Masari_Large_Explosion</Death_Explosions>
-      <Death_Fade_Time> .25 </Death_Fade_Time>
-      <Death_Persistence_Duration> .27 </Death_Persistence_Duration>
       <Death_Speed_Min> 100.0 </Death_Speed_Min>
       <Death_Speed_Max> 120.0 </Death_Speed_Max>
       <Death_Ang_Min> 1.0 </Death_Ang_Min>
@@ -850,7 +882,7 @@
 
     <BehaviorType Name="ResourceBehaviorType">
       <Resource_Units> 300 </Resource_Units>
-      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+      <Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Masari </Resource_For_Faction>
       <Is_Single_Resource> false </Is_Single_Resource>
       <Use_Death_Behavior> true </Use_Death_Behavior>
     </BehaviorType>
@@ -1076,14 +1108,14 @@
     <Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
-      <Damage_Type> Damage_Masari_Seeker_Pulse_Cannon </Damage_Type>
+      <Damage_Type> Damage_Masari_Seeker_Pulse_Cannon_Dark </Damage_Type>
     </BehaviorType>
 
     <BehaviorType Name="ProjectileBehaviorType">
       <Projectile_Category>laser</Projectile_Category>
       <Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
       <Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-      <Projectile_Damage>8.0</Projectile_Damage>
+      <Projectile_Damage>9.0</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 0 </Projectile_Blast_Area_Damage>
       <Projectile_Blast_Area_Range> 0 </Projectile_Blast_Area_Range>
       <Projectile_SFXEvent_Detonate>SFX_Alien_Detonation_1</Projectile_SFXEvent_Detonate>

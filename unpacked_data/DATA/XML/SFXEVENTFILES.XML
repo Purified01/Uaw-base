@@ -21,5 +21,9 @@
 	<File>SFX_Events_Units_Masari.xml</File>
 	<File>SFX_Events_HUD.xml</File>
 	<File>SFXEventsGUI.xml</File>
-
+	<File>SFXEAir_Aggressor.xml</File>
+	<File>SFXEEvictor.xml</File>
+	<File>SFXETemplar.xml</File>	
+	<File>SFXEMonitor.xml</File>		
+	<File>SFXEStormchaser.xml</File>		
 </SFXEvent_Files>

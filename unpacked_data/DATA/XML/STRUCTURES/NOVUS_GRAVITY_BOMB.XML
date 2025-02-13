@@ -56,7 +56,7 @@
 
 		<AI_Combat_Power> 1 </AI_Combat_Power>
 		<Tactical_Health> 2000 </Tactical_Health>
-		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2</Land_Damage_Alternates>
 		<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, null</Land_Damage_SFX>
@@ -206,7 +206,7 @@
          <Researched_Upgrades>
             TEXT_NOVUS_RESEARCH_TITLE_MATTER_CONVERSION_ABILITY
             TEXT_NOVUS_RESEARCH_TITLE_RAPID_REBUILD_EFFECT
-            TEXT_NOVUS_RESEARCH_TITLE_RAPID_COMPRESSION_EFFECT
+<!--            TEXT_NOVUS_RESEARCH_TITLE_RAPID_COMPRESSION_EFFECT-->
          </Researched_Upgrades>
 		</BehaviorType>
 		
@@ -397,7 +397,7 @@
 			<Tactical_Build_Cost_Multiplayer> 4000 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 4000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 100 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 10 </Tactical_UI_Build_Queue_Order>
+			<Tactical_UI_Build_Queue_Order> 11 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
 

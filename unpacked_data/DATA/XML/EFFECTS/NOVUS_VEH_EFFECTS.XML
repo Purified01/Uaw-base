@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Effects>
+
+	<!--*************************************************************************************************
+	************************************************************************************************** 
+	************************************************************************************************** 
+	**	
+	**												PROXY
+	**	
+	************************************************************************************************** 
+	************************************************************************************************** 
+	************************************************************************************************* -->
+	
+	<Effect Name="NovusArcShotsEffect">
+
+		<Duration> 6.0 </Duration>
+		<Effect_Class> CripplingShots </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="DamageOverTime">
+			<Damage_Type> Damage_Novus_Evictor_Flechette_Arc </Damage_Type>
+			<Amount_Per_Second> 7.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Alien_Cylinder_Moving_Engine_Loop </Apply_Effect>
+			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="NovusArcVisualEffectSmall">
+
+		<Duration> 5.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+		
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> SPARKS </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="NovusArcVisualEffectMedium">
+
+		<Duration> 5.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> SPARKS </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="NovusArcVisualEffectLarge">
+
+		<Duration> 5.0 </Duration>
+		<Effect_Class> CripplingShotsVisual </Effect_Class>
+		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> SPARKS </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+
 	<!--*************************************************************************************************
 	************************************************************************************************** 
 	************************************************************************************************** 
@@ -13,6 +81,16 @@
 	<!--=================================================================================================
 	== [7/19/2006]   Novus Amplifier effect - Oksana Kubushyna
 	================================================================================================== -->
+
+	<Effect Name="Novus_Founder_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.5 </Amount_Per_Second>
+      <Percentage_Per_Second>.01</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
 
 	
 	<Effect Name="ResonanceBeamWeaponEffect">
@@ -248,6 +326,35 @@
       </Effect_Component>
 
    </Effect>
+   
+   <Effect Name="NovusAmplifierHarmonicPulseAircraftEffect">
+      <Duration> 0.5 </Duration>
+      <Effect_Class> KnockBack </Effect_Class>
+      <Extends_Existing_Duration> false </Extends_Existing_Duration>
+      <Extends_Same_Source_Duration_Only> false </Extends_Same_Source_Duration_Only>
+
+      <Effect_Component Type="KnockBack">
+         <Knock_Back_Strength> 90.0 </Knock_Back_Strength>
+         <Dampening_Fraction> 0.7 </Dampening_Fraction>
+         <Gravity_Fraction>0</Gravity_Fraction>
+         <XY_Knock_Back_Only> true </XY_Knock_Back_Only>
+      </Effect_Component>
+
+      <Effect_Component Type="CreateObject">
+         <Create_Object_Type> Knockback_Hand</Create_Object_Type>
+         <Position_Type> AttachToTarget </Position_Type>
+         <Destroy_On_Remove> yes </Destroy_On_Remove>
+         <Use_Source_Player_ID> yes </Use_Source_Player_ID>
+         <Attachment_Bone_Name>root</Attachment_Bone_Name>
+         <Attach_To_Empty_Bone_Only>No</Attach_To_Empty_Bone_Only>
+      </Effect_Component>
+
+      <Effect_Component Type="Damage">
+         <Damage_Type> Damage_Novus_Amplifier_Harmonic_Pulse </Damage_Type>
+         <Damage_Amount> 14 </Damage_Amount>
+      </Effect_Component>
+
+   </Effect>   
 
 
    <Effect Name="NovusAmplifierHarmonicPulseStructureEffect">
@@ -258,7 +365,7 @@
 
       <Effect_Component Type="Damage">
          <Percentage_Per_Second>0</Percentage_Per_Second>
-         <Damage_Amount> 75 </Damage_Amount>
+         <Damage_Amount> 74 </Damage_Amount>
          <Damage_Type> Damage_Novus_Amplifier_Harmonic_Pulse </Damage_Type>
       </Effect_Component>
 
@@ -388,7 +495,30 @@
 
 	<!-- Oksana [8/03/2006]: Novus Constructor Consumption Spray efsect -->
 	<Effect Name="Novus_Constructor_Consumption_Spray_Effect">
-		<Duration> 5.0 </Duration>
+		<Duration> 3.0 </Duration>
+		<Effect_Class> ConsumptionSpray </Effect_Class>
+
+		<!-- Create visual lightning effect -->
+		<Effect_Component Type="Lightning">
+			<Lightning_Effect_Name> Carve_Glyph_Beam </Lightning_Effect_Name>
+			<Source_Target_Type> SourceToTarget </Source_Target_Type>
+		</Effect_Component>
+
+
+		<Effect_Component Type="Transfer">
+			<Flow_Direction> TargetToSource </Flow_Direction>
+			<Target_Effect> HealthDamage </Target_Effect>
+			<Target_Damage> Damage_Novus_Monitor_Beam </Target_Damage>
+			<Source_Effect> ResourceUnits </Source_Effect>
+			<Amount_Per_Second> 14 </Amount_Per_Second>
+			<Transfer_Multiplicative> 2.0 <!--1.375 for 8 into 11--> </Transfer_Multiplicative>
+		</Effect_Component>
+
+	</Effect>
+
+	<!-- Oksana [8/03/2006]: Novus Monitor Consumption Spray efsect -->
+	<Effect Name="Novus_Monitor_Consumption_Spray_Effect">
+		<Duration> 4.0 </Duration>
 		<Effect_Class> ConsumptionSpray </Effect_Class>
 
 		<!-- Create visual lightning effect -->
@@ -402,13 +532,12 @@
 			<Flow_Direction> TargetToSource </Flow_Direction>
 			<Target_Effect> HealthDamage </Target_Effect>
 			<Target_Damage> Damage_Default </Target_Damage>
-			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> 8.0 </Amount_Per_Second>
-			<Transfer_Multiplicative> 0.5 </Transfer_Multiplicative>
+			<Source_Effect> HealthHeal </Source_Effect>
+			<Amount_Per_Second> 14.0 </Amount_Per_Second>
+			<Transfer_Multiplicative> 0.25 </Transfer_Multiplicative>
 		</Effect_Component>
 
 	</Effect>
-
 	
 	<!-- Oksana [8/03/2006]: Novus Constructor Repair Spray efsect -->
 	<Effect Name="Achievement_Novus_Constructor_Repair_Spray_Effect">

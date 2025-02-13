@@ -114,6 +114,21 @@
 		</Effect_Component>
 	</Effect>
 
+	<Effect Name="RevealCloakingConduitEffect">
+		<Duration> 3.0 </Duration>
+		<Effect_Class> RevealCloakingConduit </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Priority> 10.0 </Priority>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>
+
+	</Effect>
 	
 	<Effect Name="RevealCloakingEffect">
 		<Duration> 3.0 </Duration>
@@ -571,7 +586,17 @@
 	</Effect>
 
 
-	
+	<Effect Name="MooreMedpacEffectMirabelAI">
+		<Effect_Class> Healing </Effect_Class>
+		<Duration> 0.2 </Duration>
+		<CategoryMask> CanBeRemovedByAbility </CategoryMask>
+
+		<Effect_Component Type="Heal">
+			<!-- heal to full -->
+			<Percent_Heal> 0.18 </Percent_Heal>
+		</Effect_Component>
+
+	</Effect>	
 	
 	
 

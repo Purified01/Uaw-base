@@ -138,7 +138,7 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead> Yes </Collidable_By_Projectile_Dead>
-		<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 
@@ -243,7 +243,7 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_hero_novus_vertigo.tga</Icon_Name>
+			<Icon_Name>I_ICON_NV_VERTIGO.TGA</Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -300,7 +300,7 @@
 			<Tactical_Build_Cost_Campaign> 1600 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 1600 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
          <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
 

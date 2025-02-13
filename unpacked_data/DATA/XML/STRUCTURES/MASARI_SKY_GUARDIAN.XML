@@ -461,7 +461,7 @@
          <Tactical_Buildable_Constructed> Masari_Sky_Guardian </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 38 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 8 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
       </BehaviorType>
@@ -530,7 +530,6 @@
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SKY_GUARDIAN_LIGHT </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
-        <Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Vulnerable_To>
       </BehaviorType>
       
       <Effect_Generator_Data SubObjectList="Yes">
@@ -1006,9 +1005,9 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed>Masari_Sky_Guardian_Wind_Screen</Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 27 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <Attributes SubObjectList="Yes">
@@ -1058,7 +1057,7 @@
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 255.0 </Targeting_Max_Attack_Distance>
       </BehaviorType>
 
@@ -1099,7 +1098,7 @@
 
          <Effect_Generator_Ability Name="Sky_Guardian_Light_Beam_Ability">
             <Activation_Style>SPECIAL_ATTACK</Activation_Style>
-            <Activation_Min_Range> 40.0 </Activation_Min_Range>
+            <Activation_Min_Range> 1 </Activation_Min_Range>
             <Activation_Max_Range> 255.0 </Activation_Max_Range>
             <Effect_Generator_Name> SkyGuardianLightBeamGenerator </Effect_Generator_Name>
             <Generating_Anim_Speedup> 1.0 </Generating_Anim_Speedup>
@@ -1218,7 +1217,7 @@
          <Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
          <Targeting_Priority_Set> Masari_Sky_Guardian_Target_Priority </Targeting_Priority_Set>
          <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-         <Targeting_Min_Attack_Distance> 40.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
          <Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
 
          <Projectile_Types>Proj_Sky_Guardian_Bolt</Projectile_Types>
@@ -1292,15 +1291,14 @@
 			HIDE_WHEN_FOGGED,
 		</LandBehavior>
 
-      <BehaviorType Name="RedirectProjectileBehaviorType">
-         <Starting_Mode> Reflection </Starting_Mode>
-         <Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
-         <Absorption_Terminal_Velocity> 10.0 </Absorption_Terminal_Velocity>
-         <Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
-         <Max_Redirected_Projectiles> 3 </Max_Redirected_Projectiles>
-         <Redirection_Velocity> 15.0 </Redirection_Velocity>
-         <Reflection_Chance> 0.5 </Reflection_Chance>
-      </BehaviorType>
+		<BehaviorType Name="RedirectProjectileBehaviorType">
+			<Starting_Mode> Redirection </Starting_Mode>
+			<Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
+			<Absorption_Terminal_Velocity> 17.0 </Absorption_Terminal_Velocity>
+			<Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
+			<Max_Redirected_Projectiles> 4 </Max_Redirected_Projectiles>
+			<Redirection_Velocity> 7.0 </Redirection_Velocity>
+		</BehaviorType>
 
    </X13_Masari_Structures>
 

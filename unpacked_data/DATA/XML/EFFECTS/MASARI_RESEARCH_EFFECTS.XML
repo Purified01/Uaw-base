@@ -14,6 +14,39 @@
 		</Effect_Component>
 
 	</Effect>
+	
+	<Effect Name="MasariStationaryRevelationEffectSeer">
+		<Duration> 4.0 </Duration>
+		<Effect_Class> SightRange </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.50 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariStationaryRevelationEffectMonitor">
+		<Duration> 4.0 </Duration>
+		<Effect_Class> SightRange </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<Modifier_Value> 2.00 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>		
+	
+	<Effect Name="MasariStationaryRevelationEffectDetectionConduit">
+		<Duration> 4.0 </Duration>
+		<Effect_Class> SightRange </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<Modifier_Value> 2.25 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>			
 
 	<!--=================================================================================================
 	== MasariResearchBurningAuraEffect: Small AE fire effect from Masari buildings
@@ -32,6 +65,79 @@
 			<Particle_System_Type> Masari_Structure_Burning_Aura_Fire </Particle_System_Type>
 		</Effect_Component>
 	</Effect>
+	
+	<Effect Name="MasariResearchBurningAuraEffectSkyLord">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> PurifyingLightSkyLord </Effect_Class>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type> Damage_Fire_Skylord </Damage_Type>
+			<Damage_Amount> 5.0 </Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Structure_Burning_Aura_Fire </Particle_System_Type>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="DisruptionEffectTemplar">
+		<Duration> 5.0 </Duration>
+		<Effect_Class> TractorBeam </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Slow target down -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.99 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariResearchBurningAuraEffectSentry">
+		<Duration> 1.8 </Duration>
+		<Effect_Class> PurifyingLightPhosphor </Effect_Class>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type> Damage_Fire </Damage_Type>
+			<Damage_Amount> 6.0 </Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Structure_Burning_Aura_Fire </Particle_System_Type>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="MasariResearchBurningAuraEffectTemplar">
+		<Duration> 3.7 </Duration>
+		<Effect_Class> FireDamage </Effect_Class>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type> Damage_Fire </Damage_Type>
+			<Damage_Amount> 22.0 </Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Structure_Burning_Aura_Fire </Particle_System_Type>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="MasariResearchBurningAuraEffectTemplarDark">
+		<Duration> 3.7 </Duration>
+		<Effect_Class> FireDamage </Effect_Class>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type> Damage_Fire </Damage_Type>
+			<Damage_Amount> 25.0 </Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Structure_Burning_Aura_Fire_Dark </Particle_System_Type>
+		</Effect_Component>
+	</Effect>			
 
 	<!--=================================================================================================
 	== MasariResearchBurningAuraSelfEffect: Show that we are on fire
@@ -48,7 +154,89 @@
 		</Effect_Component>
 
 	</Effect>
+	
+	<Effect Name="MasariResearchBurningAuraSelfEffectSkylord">
+		<Duration> 1.8 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
 
+		<!-- placeholder -->
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Purifying_Light_Large_Skylord </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariResearchBurningAuraSelfEffectTemplar">
+		<Duration> 2.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
+
+		<!-- placeholder -->
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Templar_Trailblazer </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<Effect Name="MasariResearchBurningAuraSelfEffectTemplarDark">
+		<Duration> 2.0 </Duration>
+		<Effect_Class> PurifyingLightVisual </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
+
+		<!-- placeholder -->
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Masari_Templar_Trailblazer_Dark </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
+	
+	<!--=================================================================================================
+	== Templar range upgrade
+	================================================================================================== -->	
+
+	<Effect Name="RemoteTemplarEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+      <Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Range_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.75 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+
+	<!--=================================================================================================
+	== Infantry resist radiation and burn
+	================================================================================================== -->	
+
+	<Effect Name="AffinityDefenceEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+      <Extends_Existing_Duration> yes </Extends_Existing_Duration>
+
+		<Effect_Component Type="ModifyArmor">
+			<!-- reduce radiation damage by 50%, this could drop it to Zero -->
+			<Amount> -0.99 </Amount>
+			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
+		</Effect_Component>	
+				
+      <Effect_Component Type="ModifyArmor">
+         <!-- reduce heat damage by 50%, -->
+         <Amount> -0.99 </Amount>
+         <Damage_Type> Damage_Fire </Damage_Type>
+      </Effect_Component>		
+	  
+      <Effect_Component Type="ModifyArmor">
+         <!-- reduce heat damage by 50%, -->
+         <Amount> -0.40 </Amount>
+         <Damage_Type> Damage_Ice </Damage_Type>
+      </Effect_Component>	  
+
+	</Effect>
 
 	<!--=================================================================================================
 	== MasariResearchBurningAuraBlockEffect: Prevents the application of the Burning Aura effect
@@ -85,8 +273,7 @@
 			<Modifier_Value> 0.15 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
-
-
+		
 	<!--=================================================================================================
 	== TempMasariResearchFieryFury2Effect - Stacks with previous rank
 	================================================================================================== -->

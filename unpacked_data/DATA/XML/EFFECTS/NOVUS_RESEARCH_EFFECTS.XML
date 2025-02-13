@@ -23,6 +23,7 @@
 		</Effect_Component>
 	</Effect>
 
+
 	<!-- Add the FLOW behavior to the target. -->
 	<Effect Name="NovusResearchAdvancedFlowEffect">
 		<Effect_Class> ResearchAdvancedFlow </Effect_Class>
@@ -47,10 +48,6 @@
 	<Effect Name="NovusResearchPowerEfficiencyEffect">
 		<Effect_Class>PowerTransmissionRadius</Effect_Class>
 		<Duration> -1.0 </Duration>
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Novus_Power_Powerup_Radius_Mult_Coeff </Attribute>
-			<Modifier_Value> 0.75 </Modifier_Value>	<!-- 75% -->
-		</Effect_Component>
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Novus_Power_Transmission_Radius_Mult_Coeff </Attribute>
 			<Modifier_Value> 0.75 </Modifier_Value> <!-- 75% -->
@@ -111,7 +108,12 @@
 			<Modifier_Value> -0.25 </Modifier_Value>
 			<!--25% Price Reduction-->
 		</Effect_Component>
-	</Effect>	
+	</Effect>
+	
+	<Effect_Component Type="HealOverTime">
+		<Amount_Per_Second> 1.0 </Amount_Per_Second>
+  <Percentage_Per_Second>.01</Percentage_Per_Second>
+	</Effect_Component>
 
 	<!-- Increase movement speed and rate of material collection. -->
 	<Effect Name="NovusResearchCollectionEfficiencyEffect">
@@ -153,6 +155,11 @@
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Burden </Remove_Effect_Class>
 		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+			<Percentage_Per_Second>0.036</Percentage_Per_Second>	
+		</Effect_Component>	  
 
 		<!-- other bad things to be removed here -->
 		<!-- Visual -->

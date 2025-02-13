@@ -9,7 +9,7 @@
 
     <!-- ART -->
     <Land_Model_Name>AB_Alien_Theory_Core.alo</Land_Model_Name>
-    <Scale_Factor>1.0</Scale_Factor>
+    <Scale_Factor>1.1</Scale_Factor>
     <Multisample_FOW_Check>Yes</Multisample_FOW_Check>
     <Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
     <AssetBank> BANK_ALIEN </AssetBank>
@@ -38,7 +38,7 @@
      <Is_Attackable> true </Is_Attackable>
     <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
     <Target_Bones> Target_00, Target_01, Target_02, Target_03, Target_04, Target_05, Target_06, Target_07, Target_08 </Target_Bones>
-    <Tactical_Health> 3900 </Tactical_Health>
+    <Tactical_Health> 8000 </Tactical_Health>
     <Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
     <Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
     <Land_Damage_SFX>null,SFX_GENERIC_DETONATION, SFX_GENERIC_DETONATION,null</Land_Damage_SFX>
@@ -280,7 +280,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>AB_Alien_Theory_Core_DC.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>1.1</Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
@@ -342,7 +342,7 @@
 	  <Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 	  <Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 
-	  <Tactical_Health> 1000 </Tactical_Health>
+	  <Tactical_Health> 3000 </Tactical_Health>
 
 	  <Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 	  <Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -668,4 +668,3 @@
 
 
 </Alien_Theory_Core_XML>
-

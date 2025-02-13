@@ -89,7 +89,7 @@
 		<!-- CONFLICT -->
 		<Is_Attackable>true</Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 850 </Tactical_Health>
 		<Land_FOW_Reveal_Range>220</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>	
 				
@@ -156,7 +156,7 @@
 			<Tactical_Build_Cost_Multiplayer> 1400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-      <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
+      <Skirmish_Build_Hero_Cooldown_Seconds> 110 </Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
@@ -192,7 +192,7 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_hero_alien_nufai_square.tga  </Icon_Name>
+			<Icon_Name> I_ICON_AI_NUFAI.TGA  </Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -257,7 +257,7 @@
 
 			<!-- Maria 05.01.2006 - Adding build sounds for Global production -->
 			<SFXEvent_Build_Started>GUI_BUILD_Hero</SFXEvent_Build_Started>
-			<SFXEvent_Build_Complete>Unit_Select_Alien_Nufai</SFXEvent_Build_Complete>
+			<SFXEvent_Build_Complete>Unit_TAUNT_Alien_Nufai</SFXEvent_Build_Complete>
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Hero_Canceled</SFXEvent_Build_Cancelled>
 			<SFXEvent_Cant_Move_Unit_In_Production> HCO_GLOBAL_PROD_01 </SFXEvent_Cant_Move_Unit_In_Production>
 

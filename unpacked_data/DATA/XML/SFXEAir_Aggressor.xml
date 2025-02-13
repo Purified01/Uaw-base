@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<SFXEvents>
+
+
+    <SFXEvent Name="Air_Aggressor_Select">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Select_1.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Select_2.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Select_3.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Select_4.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Select_5.wav
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+
+    <SFXEvent Name="Air_Aggressor_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Move_1.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Move_2.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Move_3.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Move_4.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Move_5.wav
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+
+    <SFXEvent Name="Air_Aggressor_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Attack_5.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Attack_2.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Attack_3.wav
+        DATA\Audio\Air_Aggressor\Aggressor_Attack_4.wav
+        DATA\Audio\Air_Aggressor\Agressor_Attack_1.wav                                    
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+
+    <SFXEvent Name="Air_Aggressor_Shot">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Beam.wav                       
+        </Samples>
+		<Min_Pitch>120</Min_Pitch>
+		<Max_Pitch>130</Max_Pitch>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+	
+    <SFXEvent Name="Air_Aggressor_Bomb">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Beam.wav                       
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+	
+    <SFXEvent Name="Air_Aggressor_Rocket">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Rocket.wav                       
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+	
+    <SFXEvent Name="Air_Aggressor_Egg">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Air_Aggressor\Aggressor_Egg.wav                       
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+</SFXEvents> 

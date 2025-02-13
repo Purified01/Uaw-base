@@ -377,6 +377,18 @@
       </Abilities>
 
       <Effect_Generator_Data SubObjectList="Yes">
+	  
+			<Effect_Generator Name="AlienExtraHealthGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+<!--				<Is_Independent_Generator> true </Is_Independent_Generator>-->
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> GruntAndGrayExtraHealthEffect </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>			  
 
          <Effect_Generator Name="PhaseGenerator">
             <Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
@@ -497,7 +509,28 @@
 		</BehaviorType>
 
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+			<Effect_Generator Name="Alien_Grunt_Regenerate_Effect_Generator">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
 
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Grunt_Regenerate_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> Alien_Grunt_Regenerate_Irradiated_Effect </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+			
 			<Effect_Generator Name="LostRadiationImpactGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>

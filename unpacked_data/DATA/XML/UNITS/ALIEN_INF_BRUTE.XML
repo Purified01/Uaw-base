@@ -72,7 +72,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust>22.0</Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 625 </Tactical_Health>
+		<Tactical_Health> 800 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -221,8 +221,8 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_BRUTE </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_INFANTRY </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_STRUCTURES TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_HEROES </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_STRUCTURES TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_HEROES TEXT_TYPE_VERSUS_TURRETS </Tooltip_Good_Against>
+			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
          <Researched_Upgrades>
             TEXT_ALIEN_RESEARCH_TITLE_DEATH_FROM_ABOVE
          </Researched_Upgrades>
@@ -289,8 +289,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense> 36 </Crush_Defense> <!-- MLL Increased to be greater than the peacebringers crush power-->
-			<Crush_Power> 11 </Crush_Power><!-- jdg...4.12.07...upped from 7...I need this guy to stomp military infantry-->
+			<Crush_Defense> 40 </Crush_Defense> <!-- MLL Increased to be greater than the peacebringers crush power-->
+			<Crush_Power> 25 </Crush_Power><!-- jdg...4.12.07...upped from 7...I need this guy to stomp military infantry-->
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -512,6 +512,27 @@
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
+			
+			<Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Super">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Super </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>				
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> Alien_Brute_Regenerate_Irradiated_Effect_Super </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>			
 
 			<Effect_Generator Name="BruteSmashAttackGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<SFXEvents>
+
+
+    <SFXEvent Name="Evictor_Select">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Evictor\Evictor_Select_1.wav
+        DATA\Audio\Evictor\Evictor_Select_2.wav
+        DATA\Audio\Evictor\Evictor_Select_3.wav
+        DATA\Audio\Evictor\Evictor_Select_4.wav
+        DATA\Audio\Evictor\Evictor_Select_5.wav
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+
+    <SFXEvent Name="Evictor_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Evictor\Evictor_Move_1.wav
+        DATA\Audio\Evictor\Evictor_Move_2.wav
+        DATA\Audio\Evictor\Evictor_Move_3.wav
+        DATA\Audio\Evictor\Evictor_Move_4.wav
+        DATA\Audio\Evictor\Evictor_Move_5.wav
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+	
+    <SFXEvent Name="Evictor_Priority_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Evictor\Evictor_Priority_Move_1.wav
+        DATA\Audio\Evictor\Evictor_Priority_Move_2.wav
+        DATA\Audio\Evictor\Evictor_Priority_Move_3.wav
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+    <SFXEvent Name="Evictor_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Evictor\Evictor_Attack_6.wav			
+        DATA\Audio\Evictor\Evictor_Attack_1.wav    	
+        DATA\Audio\Evictor\Evictor_Attack_2.wav		
+        DATA\Audio\Evictor\Evictor_Attack_3.wav				
+        DATA\Audio\Evictor\Evictor_Attack_4.wav		
+        DATA\Audio\Evictor\Evictor_Attack_5.wav		
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+	
+    <SFXEvent Name="Evictor_Shot">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Evictor\Evictor_Shot.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+
+</SFXEvents> 

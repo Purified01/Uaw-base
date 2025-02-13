@@ -258,19 +258,6 @@
       
 		<Effect_Generator_Data SubObjectList="Yes">
 
-			<Effect_Generator Name="NovusCommandCoreRadarEffectsGenerator">
-				<Should_Deactivate_Manually>Yes</Should_Deactivate_Manually>
-				<Starts_Active> True </Starts_Active>
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Structure_Enable_Radar_Effect </Effect_Name>
-					<Duration> -1 </Duration>
-					<Target_Gathering_Mask> RadarFilters </Target_Gathering_Mask>
-
-					<!-- KDB 07-18-2007 design has changed this to player only, see Chris R -->
-					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
 			<Effect_Generator Name="NovusResearchRapidPatchingEffectGenerator">
 				<Starts_Active> true </Starts_Active>
 				<Effect_Generator_Entry Name="Entry1">
@@ -508,7 +495,7 @@
 			<Tactical_Buildable_Beacon_Type> Novus_Remote_Terminal_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Build_Cost_Multiplayer> 2400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 2400 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 65 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 60 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>

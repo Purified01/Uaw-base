@@ -351,6 +351,23 @@
 				<Activation_Style>USER_INPUT</Activation_Style>
 			</FooCore_Heal_Ability>	
 
+			<Effect_Generator_Ability Name="Alien_Foo_Core_Heal_Attack">
+				<Activation_Min_Range> 0.0  </Activation_Min_Range>
+				<Activation_Max_Range> 200.0 </Activation_Max_Range>
+				<Can_Target_Enemies>Yes</Can_Target_Enemies>
+				<Can_Target_Allies>Yes</Can_Target_Allies>
+				<Can_Target_Neutral>Yes</Can_Target_Neutral>
+				<Pre_Generate_Anim_Type>   </Pre_Generate_Anim_Type>
+				<Post_Generate_Anim_Type>  </Post_Generate_Anim_Type>
+				<Generating_Anim_Type>  </Generating_Anim_Type>
+				<Effect_Generator_Name> Alien_Foo_Core_Repair_Bridge_Generator </Effect_Generator_Name>
+				<Activation_Style> USER_INPUT </Activation_Style>
+				<Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
+				<Deactivate_On_User_Move_Order> true </Deactivate_On_User_Move_Order>            
+            <Applicable_Unit_Categories> Bridge  </Applicable_Unit_Categories>
+				<Stop_And_Clear_Target_On_Remove>true</Stop_And_Clear_Target_On_Remove>
+			</Effect_Generator_Ability>
+
 			<Effect_Generator_Ability Name="Alien_Foo_Core_Repair_Bridge_Ability">
 				<Activation_Min_Range> 0.0  </Activation_Min_Range>
 				<Activation_Max_Range> 200.0 </Activation_Max_Range>
@@ -757,6 +774,18 @@
 					<Duration> -1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> FooAntiJammingEffect </Effect_Name>
+					<Duration> -1 </Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 15 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+<!--				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> FooAreaHealEffect </Effect_Name>
+					<Duration> -1 </Duration>
+               <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+               <Area_Effect_Radius> 65 </Area_Effect_Radius>
+				</Effect_Generator_Entry>								-->
 			</Effect_Generator>			
 		</Effect_Generator_Data>
 		

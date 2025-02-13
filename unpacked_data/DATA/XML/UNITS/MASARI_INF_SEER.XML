@@ -133,15 +133,21 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SEER_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_INFANTRY </Tooltip_Category>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_STEALTH_UNITS </Tooltip_Good_Against>			
 			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_GROUND_UNITS TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Vulnerable_To>
 		</BehaviorType>
 
          <Researched_Upgrades>
 		TEXT_MASARI_RESEARCH_TITLE_REMOTE_HARM
+		TEXT_MASARI_RESEARCH_TITLE_PHOENIX		
+		TEXT_MASARI_RESEARCH_TITLE_ADVANCED_DARK_MATTER_ARMOR	
+<!--		TEXT_MASARI_RESEARCH_TITLE_PIERCING_GAZE_BROKEN_TEXT		-->
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
+		TEXT_MASARI_RESEARCH_TITLE_METHODS_OF_DECEPTION	
 		TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
 		TEXT_MASARI_RESEARCH_TITLE_SHADOWED_PERCEPTION
+		TEXT_MASARI_RESEARCH_TITLE_SIGHT_UNSEEN		
          </Researched_Upgrades>
 	 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -172,7 +178,7 @@
 			<Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
+			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -340,11 +346,49 @@
 				<Effect_Generator_Entry Name="Entry2">
 					<Duration> 0.5 </Duration>
 					<Base_Delay> 0.4 </Base_Delay>
-					<Effect_Name> MasariFullArmorEffect </Effect_Name>
+					<Effect_Name> MasariFullArmorEffectInfantry </Effect_Name>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<!-- only in ice mode -->
 					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>
 				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Duration> 15.1 </Duration>
+					<Base_Delay> 0.4 </Base_Delay>
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch_Seer </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>									
+				</Effect_Generator_Entry>					
+
+				<Effect_Generator_Entry Name="Entry4">
+					<Duration> 17.1 </Duration>
+					<Base_Delay> 0.8 </Base_Delay>
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch_Two </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> In_Fire_Mode </Target_Filter_C>					
+				</Effect_Generator_Entry>					
+
+				<!-- Apply effects -->
+            <Effect_Generator_Entry Name="Entry5">
+               <Effect_Name> MasariShadowshiftSwitch </Effect_Name>
+               <Duration> 18.0 </Duration>
+               <Base_Delay>0.0</Base_Delay>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>								
+				
+			<Effect_Generator Name="MasariStationaryRevelationGeneratorFour">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator>Yes</Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> yes </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Duration> 3.1 </Duration>
+					<Effect_Name> MasariStationaryRevelationEffectSeer </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>				
 
 			</Effect_Generator>
 
@@ -449,6 +493,20 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
+		
+			<Effect_Generator Name="MasariStationaryRevelationGeneratorFour">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator>Yes</Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> yes </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Duration> 3.1 </Duration>
+					<Effect_Name> MasariStationaryRevelationEffectSeer </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>						
 
 			<Effect_Generator Name="Masari_Seer_Burning_Sight_Link_Effect_Generator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -548,7 +606,7 @@
 					<Effect_Name> Masari_Seer_Group_Clarity </Effect_Name>
 					<Duration> 5 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 100 </Area_Effect_Radius>
+					<Area_Effect_Radius> 201 </Area_Effect_Radius>
 					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
@@ -600,7 +658,21 @@
             </Effect_Generator_Entry>
 
          </Effect_Generator>
-         
+
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Seer">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Seer </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>				         
 
 		</Effect_Generator_Data>
 
@@ -612,7 +684,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- CONFLICT -->
-		<Land_FOW_Reveal_Range>170.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 
 		<!-- MOVEMENT -->
 		<Max_Speed>1.8</Max_Speed>
@@ -661,6 +733,20 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
+		
+			<Effect_Generator Name="MasariStationaryRevelationGeneratorFour">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator>Yes</Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> yes </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Duration> 3.1 </Duration>
+					<Effect_Name> MasariStationaryRevelationEffectSeer </Effect_Name>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>						
 
 			<Effect_Generator Name="Masari_Seer_Sight_Link_Effect_Generator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -711,9 +797,17 @@
 					<Duration> -1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 150 </Area_Effect_Radius>
+					<Area_Effect_Radius> 200 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
-			</Effect_Generator>
+			
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 250 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+			</Effect_Generator>			
 
 			<!-- This is put on the enemy to reveal his pals -->
 			<Effect_Generator Name="Seer_Reveal_Ally_Cloaking_Generator">
@@ -728,7 +822,7 @@
 					<Duration> -1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
-					<Area_Effect_Radius> 120 </Area_Effect_Radius>
+					<Area_Effect_Radius> 200 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
@@ -743,7 +837,7 @@
 					<Duration> 5 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
-					<Area_Effect_Radius> 100 </Area_Effect_Radius>
+					<Area_Effect_Radius> 200 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
@@ -791,6 +885,43 @@
             </Effect_Generator_Entry>
 
          </Effect_Generator>
+		 
+         <Effect_Generator Name="AffinityDefenceGenerator">
+            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 4.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> AffinityDefenceEffect </Effect_Name>
+               <Duration> -1.0 </Duration>
+<!--               <Base_Delay>1.5</Base_Delay>-->
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>					 
+
+<!--      <Effect_Generator Name="MasariSeerAE_DMARegenGenerator">
+        <Is_Independent_Generator> true </Is_Independent_Generator>
+        <Starts_Active> true </Starts_Active>
+        <Modal_Refresh_Frequency> 4.9 </Modal_Refresh_Frequency>
+        <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+        <Effect_Generator_Entry Name="Entry1">
+          <Effect_Name> MasariSeerDMARegenEffect </Effect_Name>
+          <Duration> 5.0 </Duration>
+          <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+          <Target_Filter_C> Is_Ally_Not_Self </Target_Filter_C>
+          <Area_Effect_Radius> 200.0 </Area_Effect_Radius>
+        </Effect_Generator_Entry>
+
+         <Effect_Generator_Entry Name="Entry2">
+            <Effect_Name> MasariSeekerDMARegenVisualEffect </Effect_Name>
+            <Duration> 5.0 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+         </Effect_Generator_Entry>
+
+      </Effect_Generator>      -->
          
 
          <!-- Standard DMA generator - Oksana 05/14/2007 -->

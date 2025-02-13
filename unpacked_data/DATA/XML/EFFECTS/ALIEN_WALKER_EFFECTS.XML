@@ -37,13 +37,13 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
 			<!--  +60% speed -->
-			<Modifier_Value> 0.60 </Modifier_Value>
+			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Rate_Of_Turn_Add </Attribute>
 			<!--  +60% faster rot -->
-			<Modifier_Value> 0.60 </Modifier_Value>
+			<Modifier_Value> 1.2 </Modifier_Value>
 		</Effect_Component>
 
 	</Effect>
@@ -71,8 +71,8 @@
 	<!-- ************************************************************** -->
 	<!-- WalkerHardPointArmorEffect effect -->
 	<!-- ************************************************************** -->
-	<Effect Name="WalkerHardPointArmorEffect">
-		<Effect_Class> WalkerArmor </Effect_Class>
+	<Effect Name="WalkerHardPointArmorEffectA3">
+		<Effect_Class> WalkerArmorA3 </Effect_Class>
 		<Priority> 10.0 </Priority>
 		<Duration> 3.1 </Duration>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -80,12 +80,38 @@
 		<!-- Takes less damage due to molecular armor -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.5 </Modifier_Value>
+			<Modifier_Value> -0.25 </Modifier_Value>
 		</Effect_Component>
 		
 	</Effect>
 
+	<Effect Name="WalkerHardPointArmorEffectM3">
+		<Effect_Class> WalkerArmorM3 </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>
+	
+	<Effect Name="WalkerHardPointArmorEffectQ3">
+		<Effect_Class> WalkerArmorQ3 </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>	
    <!-- ************************************************************** -->
    <!-- WalkerStage1PostConstructionEffect effect -->
    <!-- ************************************************************** -->
@@ -335,7 +361,7 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
 			<!-- max vision -->
-			<Modifier_Value> 1000.0 </Modifier_Value>
+			<Modifier_Value> 5.4 </Modifier_Value>
 		</Effect_Component>
 
 	</Effect>
@@ -368,6 +394,14 @@
       <Effect_Class> RevealCloaking </Effect_Class>
       <Extends_Existing_Duration> true </Extends_Existing_Duration>
       <Priority> 10.0 </Priority>
+	  
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+         <Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+      </Effect_Component>	  
 
       <Effect_Component Type="RemoveEffect">
          <Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -573,7 +607,7 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
 			<!-- +12% build speed -->
-			<Modifier_Value> 0.12 </Modifier_Value>
+			<Modifier_Value> 0.69 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
 
@@ -848,6 +882,63 @@
 	************************************************************************************************** 
 	************************************************************************************************** -->
 
+
+	<!-- ************************************************************** -->
+	<!-- Shield Node Effect -->
+	<!-- ************************************************************** -->
+
+
+	<Effect Name="AlienShieldEffect">
+		<Effect_Class> Scale </Effect_Class>
+		 <Effect_Component Type="ScaleOverTime">
+			<Start_Scale>.01</Start_Scale>
+			<End_Scale>450</End_Scale>
+			<Use_World_Scale>true</Use_World_Scale>
+			<Bone_Name>b_Shield</Bone_Name>
+		</Effect_Component>
+		
+	  <!-- Frank TODO: shield power up-->
+	  <Effect_Component Type="Sound">
+		<Apply_Effect> SFX_Novus_Shield_Power_Up </Apply_Effect>
+	  </Effect_Component>
+	</Effect>
+
+	<Effect Name="WalkerShieldRaised">
+		<Effect_Class> InverterShieldUp </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Duration> -1.0 </Duration>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Inverter_Shield_Up </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+
+	<Effect Name="WalkerShieldLowered">
+		<Effect_Class> InverterShieldDown </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> InverterShieldUp </Remove_Effect_Class>
+		</Effect_Component>
+	</Effect>
+
+	<Effect Name="AlienWalkerReverseScaleEffect">
+		<Effect_Class> Scale </Effect_Class>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+		<Effect_Component Type="ScaleOverTime">
+			<Start_Scale>450</Start_Scale>
+			<End_Scale>.01</End_Scale>
+			<Use_World_Scale>true</Use_World_Scale>
+			<Bone_Name>b_Shield</Bone_Name>
+		</Effect_Component>
+
+	  <!-- Frank TODO: shield power down-->
+	  <Effect_Component Type="Sound">
+		<Apply_Effect> SFX_Novus_Shield_Power_Down </Apply_Effect>
+	  </Effect_Component>
+	</Effect>
+
    <!-- ************************************************************** -->
    <!-- ScienceRadiationCascadeNotReadyEffect: visual on Walker -->
    <!-- ************************************************************** -->
@@ -1041,8 +1132,8 @@
 
 		<Duration> 0.1 </Duration>
 		<Effect_Class> Transparent </Effect_Class>
-		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> false </Extends_Same_Source_Duration_Only>
 
 		<Effect_Component Type="ResetAllAbilities">
 		</Effect_Component>

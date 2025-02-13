@@ -83,7 +83,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust>40.0</Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range> 200.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 240.0 </Land_FOW_Reveal_Range>
 
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
 
@@ -649,10 +649,25 @@
 					<Area_Effect_Radius> 125.0 </Area_Effect_Radius>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-				</Effect_Generator_Entry>
+				</Effect_Generator_Entry>		
 				
 			</Effect_Generator>
-
+			
+			<Effect_Generator Name="DefilerOnDeathExplosionGeneratorUpgrade">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>		
+				
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> VehicleVolatileReactorGammaDamageEffectDefiler </Effect_Name>
+					<Remove_On_Death> false </Remove_On_Death>
+					<Duration> 30.0 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Radiation_Field_Damage </Target_Filter_C>
+					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
+					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+				</Effect_Generator_Entry>					
+			</Effect_Generator>
 		</Effect_Generator_Data>
 
 

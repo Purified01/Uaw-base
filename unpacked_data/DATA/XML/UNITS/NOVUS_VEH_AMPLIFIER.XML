@@ -218,6 +218,8 @@
             TEXT_NOVUS_RESEARCH_TITLE_CASCADE_RESONANCE_BEAM_EFFECT
             TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY
             TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION
+			TEXT_NOVUS_RESEARCH_TITLE_IMPROVED_MANIPULATION_HACKER			
+			TEXT_NOVUS_RESEARCH_TITLE_IMPROVED_MANIPULATION			
          </Researched_Upgrades>
 		</BehaviorType>
 		
@@ -284,7 +286,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>35</Crush_Defense>
+			<Crush_Defense>38</Crush_Defense>
       <Crush_Power>21</Crush_Power>
 		</BehaviorType>
 
@@ -324,6 +326,7 @@
             <Recharge_Seconds>6</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> NovusAmplifierHarmonicPulseGeneratorAbility </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> NovusAmplifierHarmonicPulseGenerator </Effect_Generator_Name>
+				<SFXEvent_GUI_Unit_Ability_Activated>Unit_ABILITY_A_Novus_Amplifier</SFXEvent_GUI_Unit_Ability_Activated>
 				<Is_Modal>Yes</Is_Modal>
             <Clear_Formation>Yes</Clear_Formation>
 				<SFXEvent_GUI_Unit_Ability_Activated> SFX_Novus_Amplifier_On</SFXEvent_GUI_Unit_Ability_Activated>
@@ -414,6 +417,35 @@
 		
 		
 		<Effect_Generator_Data SubObjectList="Yes">
+		
+<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
+            <Starts_Active> true </Starts_Active>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
+               <Duration> 5 </Duration>
+               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>		-->
+		
+      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>		
 
 			<Effect_Generator Name="AmplifierResonanceBeamEffectGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -583,6 +615,25 @@
 					<Target_Filter_C> Is_Not_Ally </Target_Filter_C>
                <Can_Target_Dead_Objects>No</Can_Target_Dead_Objects>
 				</Effect_Generator_Entry>
+				
+<!--				<Effect_Generator_Entry Name="Entry5">
+					<Effect_Name> NovusAmplifierCleanseMindControl </Effect_Name>
+					<Duration> 6.0 </Duration>
+					<Target_Gathering_Mask> Self | SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 175 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				-->
+				
+				<Effect_Generator_Entry Name="Entry5"> <!--"Entry6" if above is enabled-->
+					<Effect_Name> NovusAmplifierHarmonicPulseAircraftEffect </Effect_Name>
+					<Duration>1.2</Duration>
+					<Delay_Per_Distance>0.008</Delay_Per_Distance>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Area_Effect_Radius> 180 </Area_Effect_Radius>
+               <Target_Filter_Categories> Piloted + ~Huge + Flying </Target_Filter_Categories>
+					<Target_Filter_C> Is_Not_Ally </Target_Filter_C>
+               <Can_Target_Dead_Objects>No</Can_Target_Dead_Objects>
+				</Effect_Generator_Entry>				
 			</Effect_Generator>
 
 			
@@ -610,9 +661,12 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
+			
+
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
-			
+
+
 		</Effect_Generator_Data>
 
 	</X12_Novus_Units>

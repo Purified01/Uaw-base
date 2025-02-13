@@ -69,7 +69,7 @@
 		<OverrideAcceleration> .125 </OverrideAcceleration>
 		<OverrideDeceleration> .125 </OverrideDeceleration>
 
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.8 </Max_Speed>
 		<Min_Speed> 0.1 </Min_Speed>
 		<Max_Rate_Of_Turn> 30 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 15 </Stopped_Rate_Of_Turn>
@@ -94,10 +94,10 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Land_FOW_Reveal_Range>100.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range>230.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
 
-		<Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 1175 </Tactical_Health>
 
 		<Attributes SubObjectList="Yes">
 			<Generator_Area_Effect_Radius_1> 250 </Generator_Area_Effect_Radius_1>
@@ -231,8 +231,8 @@
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 180 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 180 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 95 </Tactical_Build_Time_Seconds>
-			<Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
+			<Tactical_Build_Time_Seconds> 80 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
 			<Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
 		</BehaviorType>
 
@@ -259,7 +259,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_m_research_upgrade_hero_charos.tga</Icon_Name>
+			<Icon_Name>I_ICON_MV_CHAROS.TGA</Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="LuaScriptBehaviorType">
@@ -502,7 +502,6 @@
 	================================================================================================== -->
 	<X13_Masari_Heroes Name="Masari_Hero_Charos_Fire">
 		<Variant_Of_Existing_Type> Masari_Hero_Charos </Variant_Of_Existing_Type>
-
 		<!-- ART -->
 		<Land_Model_Name> ZH_Charos.ALO </Land_Model_Name>
 		<Cache_Crusher_Boxes>False</Cache_Crusher_Boxes>
@@ -513,7 +512,7 @@
 
 		<Land_FOW_Reveal_Range>225.0</Land_FOW_Reveal_Range>
 		<Movement_Animation_Speed> 1.5 </Movement_Animation_Speed>
-		<Max_Speed> 1.5 </Max_Speed>
+		<Max_Speed> 1.9 </Max_Speed>
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_HERO_CHAROS </Tooltip_Description_Text_ID>
@@ -550,13 +549,13 @@
 				<Activation_Style>SPECIAL_ATTACK</Activation_Style>
 				<Activation_Chance>1.0</Activation_Chance>
 				<Activation_Min_Range>0</Activation_Min_Range>
-				<Activation_Max_Range>25.0</Activation_Max_Range>
+				<Activation_Max_Range>26.0</Activation_Max_Range>
 				<Attack_Animation>ANIM_ATTACK</Attack_Animation>
 
-				<Damage_Amount>23.0</Damage_Amount>
-				<Damage_Percentage>0.013</Damage_Percentage>
+				<Damage_Amount>30.75</Damage_Amount>
+				<Damage_Percentage>0.014</Damage_Percentage>
 				<Damage_Type>Damage_Masari_Charos_Sword</Damage_Type>
-				<Damage_Frame_Number>7</Damage_Frame_Number>
+				<Damage_Frame_Number>1</Damage_Frame_Number>
 				<Effect_Generator_Name>MasariCharosFlamingScytheEffectGenerator</Effect_Generator_Name>
 
 				<Excluded_Unit_Categories> Flying | Resource |Resource_INST | BodySocketHP </Excluded_Unit_Categories>
@@ -567,7 +566,7 @@
 				<Is_Looping_Attack> false </Is_Looping_Attack>
 				<Uses_Countdown_Timer> false </Uses_Countdown_Timer>
 				<Face_Target_Before_Firing> true </Face_Target_Before_Firing>
-				<Animation_Duration_Override>1.5</Animation_Duration_Override>
+				<Animation_Duration_Override>1.0</Animation_Duration_Override>
 			</Generic_Attack_Ability>
 
 		</Abilities>
@@ -599,11 +598,11 @@
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_Categories> ~Flying + ~Resource + ~Resource_INST</Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 50.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>180</Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Base_Delay> 1.5 </Base_Delay>
+					<Base_Delay> 1.0 </Base_Delay>
 
 				</Effect_Generator_Entry>
 
@@ -612,7 +611,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> ~Flying + ~Resource + ~Resource_INST</Target_Filter_Categories>
+					<Target_Filter_Categories> + ~Resource + ~Resource_INST</Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -632,7 +631,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Small + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Small + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -645,7 +644,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Medium + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Medium + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -658,7 +657,7 @@
 					<Duration> 6.0 </Duration>
 					<Disable_Entry_Attribute> Is_Mind_Controlled </Disable_Entry_Attribute>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Large | Huge + ~Flying + ~Resource + ~Resource_INST </Target_Filter_Categories>
+					<Target_Filter_Categories> Large | Huge + ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C>  Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect>150</Arc_Of_Effect>
@@ -685,13 +684,13 @@
 					<Effect_Name> MasariCharosBlazeOfGloryDamageEffect </Effect_Name>
 					<Duration> 12.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 60 </Area_Effect_Radius>
+					<Area_Effect_Radius> 120 </Area_Effect_Radius>
 					<Source_SFX_Event />
 					<Source_SFX_Loop_Type />
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Target_Filter_Categories> ~Flying </Target_Filter_Categories>
+					<Target_Filter_Categories>  ~Resource + ~Resource_INST </Target_Filter_Categories>
 					<Target_Filter_C> Is_Not_Ally </Target_Filter_C>
 				</Effect_Generator_Entry>
 
@@ -713,7 +712,6 @@
 	================================================================================================== -->
 	<X13_Masari_Heroes Name="Masari_Hero_Charos_Ice">
 		<Variant_Of_Existing_Type> Masari_Hero_Charos </Variant_Of_Existing_Type>
-
 		<!-- ART -->
 		<Land_Model_Name> ZH_Charos.ALO </Land_Model_Name>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -727,7 +725,7 @@
 
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
 		<Movement_Animation_Speed> 1.8 </Movement_Animation_Speed>
-		<Max_Speed> 1.8 </Max_Speed>
+		<Max_Speed> 2.1 </Max_Speed>
 
 		<Unit_Abilities_Data SubObjectList="Yes" Replace="No">
 
@@ -761,10 +759,10 @@
 				<Activation_Max_Range>25.0</Activation_Max_Range>
 				<Attack_Animation>ANIM_ATTACK</Attack_Animation>
 
-				<Damage_Amount>20.0</Damage_Amount>
+				<Damage_Amount>30.0</Damage_Amount>
 				<Damage_Percentage>0.013</Damage_Percentage>
 				<Damage_Type>Damage_Masari_Charos_Sword</Damage_Type>
-				<Damage_Frame_Number>7</Damage_Frame_Number>
+				<Damage_Frame_Number>1</Damage_Frame_Number>
 				<Effect_Generator_Name>MasariCharosFrostScytheEffectGenerator</Effect_Generator_Name>
 
 				<Excluded_Unit_Categories> Flying | Resource |Resource_INST | BodySocketHP </Excluded_Unit_Categories>
@@ -814,7 +812,7 @@
 					<Arc_Of_Effect>180</Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Base_Delay> 1.5 </Base_Delay>
+					<Base_Delay> 1.0 </Base_Delay>
 
 				</Effect_Generator_Entry>
 

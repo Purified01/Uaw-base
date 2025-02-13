@@ -37,9 +37,10 @@
     <Shot_Type> Vehicle </Shot_Type>
 
 		<Attributes SubObjectList="Yes">
+			<Is_Phasable> true </Is_Phasable>
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
 			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
-			<DMA_Max> 400 </DMA_Max>
+			<DMA_Max> 420 </DMA_Max>
 			<DMA_Regen_Rate> 10 </DMA_Regen_Rate>
 			<Regenerate_Type>Masari_Avenger_Enforcer</Regenerate_Type>
 		</Attributes>
@@ -48,7 +49,7 @@
     <MovementClass>Wheeled</MovementClass>
     <OccupationStyle>1x1</OccupationStyle>
     <Max_Speed>1.5</Max_Speed>
-    <Max_Rate_Of_Turn>5.0</Max_Rate_Of_Turn>
+    <Max_Rate_Of_Turn>10.0</Max_Rate_Of_Turn>
     <Space_Layer> LandDynamic </Space_Layer>
     <UnitCollisionClass> Vehicle </UnitCollisionClass>
     <OverrideAcceleration> .25 </OverrideAcceleration>
@@ -81,41 +82,33 @@
 	 </Behavior>
 
     <LandBehavior>
-		 EFFECT_GENERATOR
-		 EFFECT_REGISTRY
-		 ATTRIBUTE_DIRECTORY,
-		 SWITCH_TYPE,
-		 GUI,
-		 SURFACE_FX,
-		 RADAR_MAP_VISIBLE,
-		 WALK_LOCOMOTOR,
-		 FORMATION,
-		 IDLE,
-		 TARGETING,
-		 WEAPON,
-		 TURRET,
-		 REVEAL,
-		 HIDE_WHEN_FOGGED,
-		 SQUASH,
-		 UNIT_AI,
-		 BALLISTIC,
-		 SWITCH_TYPE,
-		 DAMAGE_TRACKING,
-		 AI_RECRUITABLE,
-		 TACTICAL_SELL,
-		 AI_TARGET,
-		 TACTICAL_AI,
-		 WHEEL,
-		 <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+      EFFECT_GENERATOR
+      EFFECT_REGISTRY
+      ATTRIBUTE_DIRECTORY,
+      SWITCH_TYPE,
+      GUI,
+      SURFACE_FX,
+      RADAR_MAP_VISIBLE,
+      WALK_LOCOMOTOR,
+      FORMATION,
+      IDLE,
+      TARGETING,
+      WEAPON,
+      TURRET,
+      REVEAL,
+      HIDE_WHEN_FOGGED,
+      SQUASH,
+      UNIT_AI,
+      BALLISTIC,
+      SWITCH_TYPE,
+      DAMAGE_TRACKING,
+      AI_RECRUITABLE,
+      TACTICAL_SELL,
+      AI_TARGET,
+      WHEEL,
+      <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
       ELEMENTAL_MODE
     </LandBehavior>
-
-	  <BehaviorType Name="SelectableBehaviorType">
-		  <!-- DME 02/05/08 magnetism testing-->
-		  <Allow_Friendly_Cursor_Magnetism> true </Allow_Friendly_Cursor_Magnetism>
-		  <Allow_Enemy_Cursor_Magnetism> true </Allow_Enemy_Cursor_Magnetism>
-		  <Cursor_Magnetism_Extent_Adder> 10 </Cursor_Magnetism_Extent_Adder>
-	  </BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_ENFORCER_LIGHT </Tooltip_Description_Text_ID>
@@ -125,7 +118,8 @@
 		</BehaviorType>
 
          <Researched_Upgrades>
-		TEXT_MASARI_RESEARCH_TITLE_BURNING_FURY
+		TEXT_MASARI_RESEARCH_TITLE_BURNING_FURY	
+<!--		TEXT_MASARI_RESEARCH_TITLE_BURST_INSTABILITY-->
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_AFINITY
 		TEXT_MASARI_RESEARCH_TITLE_DARK_MATTER_MASTERY
 		TEXT_MASARI_RESEARCH_TITLE_CLEANSING_ENERGY
@@ -136,7 +130,7 @@
     </BehaviorType>
 
     <BehaviorType Name="ArmorAndDamageBehaviorType">
-      <Armor_Type> Armor_Masari_Vehicle_Light </Armor_Type>
+      <Armor_Type> Armor_Masari_Vehicle_Heavy </Armor_Type>
     </BehaviorType>
 
     <BehaviorType Name="TacticalSellBehaviorType">
@@ -162,13 +156,13 @@
       <Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
       <Tactical_Build_Cost_Campaign> 75 </Tactical_Build_Cost_Campaign>
       <Tactical_Build_Cost_Multiplayer> 75 </Tactical_Build_Cost_Multiplayer>
-      <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
+      <Tactical_Build_Time_Seconds> 49.5 </Tactical_Build_Time_Seconds>
       <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
     </BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
       <AI_Combat_Power> 1 </AI_Combat_Power>
-      <Idle_Chase_Range> 0.1 </Idle_Chase_Range><!-- Double click guard area Keep very small-->
+      <Idle_Chase_Range> 20.0 </Idle_Chase_Range><!-- Double click guard area Keep very small-->
       <Guard_Chase_Range> 175.0 </Guard_Chase_Range> <!-- Guard radius for unit-->
       <Autonomous_Move_Extension_Vs_Attacker> 25.0 </Autonomous_Move_Extension_Vs_Attacker> <!--Range outside of guard area unit will move-->
       <Attack_Move_Response_Range> 50.0 </Attack_Move_Response_Range> <!-- When given a attack move command unit will travel this distance from path to attack-->
@@ -176,8 +170,6 @@
 		 <Attack_Score_Rating> 1.0 </Attack_Score_Rating>
 		 <Scout_Score_Rating> 0.6 </Scout_Score_Rating>
 		 <Guerilla_Score_Rating> 0.0 </Guerilla_Score_Rating>
-		 <Tactical_AI_Search_Range> 225.0 </Tactical_AI_Search_Range>
-		 <Max_Crush_Distance> 200.0 </Max_Crush_Distance>
 	 </BehaviorType>
 
     <BehaviorType Name="WeaponBehaviorType">
@@ -259,12 +251,20 @@
       <No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
     </BehaviorType>
 
+    <BehaviorType Name="GUIBehaviorType">
+      <GUI_Bracket_Size>1</GUI_Bracket_Size>
+      <!-- Maria 05.18.2006  Data needed for the models attached to the mouse in Global -->
+      <GUI_Is_Top_View> Yes </GUI_Is_Top_View>
+      <GUI_Rotate_Angle_Degrees> -45.0 </GUI_Rotate_Angle_Degrees>
+      <GUI_Is_Model_Shifted_Down> No </GUI_Is_Model_Shifted_Down>
+      <GUI_Strategic_Mode_Scale> 0.04 </GUI_Strategic_Mode_Scale>
+    </BehaviorType>
+
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense> 40 </Crush_Defense>
       <Crush_Power> 25 </Crush_Power>
     </BehaviorType>
 
-	  <!--
 	  <BehaviorType NAme="LuaScriptBehaviorType">
 		  <Lua_Only_Service_If_AI>True</Lua_Only_Service_If_AI>
 		  <Lua_Land_Behaviors>Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior</Lua_Land_Behaviors>
@@ -291,7 +291,6 @@
 			  DefensiveAI.Abilities[2].NoCollectors = true
 		  </Lua_Script_Data>
 	  </BehaviorType>
-		 -->
 
 	  <BehaviorType Name="RadarMapBehaviorType">
       <Radar_Icon_Size>0.04  0.04</Radar_Icon_Size>
@@ -362,33 +361,32 @@
     <Land_FOW_Reveal_Range>255.0</Land_FOW_Reveal_Range>
 
     <LandBehavior>
-		 EFFECT_GENERATOR,
-		 EFFECT_REGISTRY,
-		 ATTRIBUTE_DIRECTORY,
-		 ABILITY_COUNTDOWN,
-		 SWITCH_TYPE,
-		 GUI,
-		 SURFACE_FX,
-		 RADAR_MAP_VISIBLE,
-		 WALK_LOCOMOTOR,
-		 FORMATION,
-		 IDLE,
-		 TARGETING,
-		 TURRET,
-		 REVEAL,
-		 HIDE_WHEN_FOGGED,
-		 SQUASH,
-		 UNIT_AI,
-		 DAMAGE_TRACKING,
-		 BALLISTIC,
-		 SWITCH_TYPE,
-		 WEAPON,
-		 TACTICAL_SELL,
-		 AI_RECRUITABLE,
-		 AI_TARGET,
-		 TACTICAL_AI,
-		 WHEEL,
-		 <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
+      EFFECT_GENERATOR,
+      EFFECT_REGISTRY,
+      ATTRIBUTE_DIRECTORY,
+      ABILITY_COUNTDOWN,
+      SWITCH_TYPE,
+      GUI,
+      SURFACE_FX,
+      RADAR_MAP_VISIBLE,
+      WALK_LOCOMOTOR,
+      FORMATION,
+      IDLE,
+      TARGETING,
+      TURRET,
+      REVEAL,
+      HIDE_WHEN_FOGGED,
+      SQUASH,
+      UNIT_AI,
+      DAMAGE_TRACKING,
+      BALLISTIC,
+      SWITCH_TYPE,
+      WEAPON,
+      TACTICAL_SELL,
+      AI_RECRUITABLE,
+      AI_TARGET,
+      WHEEL,
+      <!-- ELEMENTAL_MODE must be last because it causes add behavior to be called -->
       ELEMENTAL_MODE
     </LandBehavior>
 
@@ -423,17 +421,30 @@
 			<Effect_Generator_Name> MasariEnforcerFireVortexEffectGenerator </Effect_Generator_Name>
 			<Is_Modal>Yes</Is_Modal>
 			<SFXEvent_GUI_Unit_Ability_Activated>SFX_Masari_Ability_Vortex_Start</SFXEvent_GUI_Unit_Ability_Activated>
-			<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-			<Unit_Ability_AI_Required_Targets> 3 </Unit_Ability_AI_Required_Targets>
-			<Unit_Ability_AI_Range> 80.0 </Unit_Ability_AI_Range>
-			<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-			<!-- not blocked by dodging retreating etc -->
-			<Unit_Ability_AI_Can_Always> true </Unit_Ability_AI_Can_Always>
 		</Unit_Ability>
 		
 	</Unit_Abilities_Data>
 
     <Abilities SubObjectList="Yes">
+
+<!--		<Generic_Attack_Ability Name="Burst_Instability_Researched_Upgrade_Enforcer">
+			<Activation_Chance>1.0</Activation_Chance>
+			<Activation_Min_Range>0.0</Activation_Min_Range>
+			<Activation_Max_Range>240.0</Activation_Max_Range>
+			<Activation_Recharge_Time> 6.9 </Activation_Recharge_Time>
+			<Attack_Animation_Speedup>0.1</Attack_Animation_Speedup>
+			<Damage_Frame_Number>1</Damage_Frame_Number>
+
+			<Applicable_Unit_Categories> Small | Medium | Large | Piloted | HardPoint | Flying | Stationary </Applicable_Unit_Categories>
+
+			<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
+			<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
+			<Projectile_Type>Proj_Masari_Enforcer_Light_Light</Projectile_Type>
+			<Is_Looping_Attack> true </Is_Looping_Attack>
+			<Projectile_Spawn_Bone_Name> MuzzleA </Projectile_Spawn_Bone_Name>
+
+			</Generic_Attack_Ability> 			-->
+	
       <Effect_Generator_Ability Name="Masari_Enforcer_Fire_Vortex_Ability">
         <Activation_Style> User_Input </Activation_Style>
         <Is_Self_Targeted>Yes</Is_Self_Targeted>
@@ -532,9 +543,9 @@
       <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
       <Targeting_Max_Attack_Distance> 170.0 </Targeting_Max_Attack_Distance>
       <Projectile_Types>Proj_Masari_Enforcer_Dark</Projectile_Types>
-      <Projectile_Fire_Recharge_Seconds>2.3</Projectile_Fire_Recharge_Seconds>
-      <Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+      <Projectile_Fire_Pulse_Count>2</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>1.56</Projectile_Fire_Pulse_Delay_Seconds>
     </BehaviorType>
 
     <BehaviorType Name="TooltipBehaviorType">
@@ -542,6 +553,27 @@
       <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
     </BehaviorType>
 
+<!--    <Abilities SubObjectList="Yes">
+
+		<Generic_Attack_Ability Name="Burst_Instability_Researched_Upgrade_Enforcer">
+			<Activation_Chance>1.0</Activation_Chance>
+			<Activation_Min_Range>0.0</Activation_Min_Range>
+			<Activation_Max_Range>240.0</Activation_Max_Range>
+			<Activation_Recharge_Time> 12.9 </Activation_Recharge_Time>
+			<Attack_Animation_Speedup>0.1</Attack_Animation_Speedup>
+			<Damage_Frame_Number>1</Damage_Frame_Number>
+
+			<Applicable_Unit_Categories> Small | Medium | Large | Piloted | HardPoint | Flying | Stationary </Applicable_Unit_Categories>
+
+			<Only_Appropriate_When_In_Range> true </Only_Appropriate_When_In_Range>
+			<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
+			<Projectile_Type>Proj_Masari_Enforcer_Light_Light</Projectile_Type>
+			<Is_Looping_Attack> true </Is_Looping_Attack>
+			<Projectile_Spawn_Bone_Name> MuzzleA </Projectile_Spawn_Bone_Name>
+
+			</Generic_Attack_Ability> 			
+
+    </Abilities>-->
 
     <Effect_Generator_Data SubObjectList="Yes" Replace="No">
 
@@ -778,7 +810,9 @@
       <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
       <Projectile_Category>DEFAULT</Projectile_Category>
       <Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-      <Projectile_Damage>50.0</Projectile_Damage>
+      <Projectile_Damage>0.0</Projectile_Damage>
+      <Projectile_Blast_Area_Damage> 52 </Projectile_Blast_Area_Damage>
+      <Projectile_Blast_Area_Range> 11 </Projectile_Blast_Area_Range>	  
       <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
       <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
       <Projectile_Object_Detonation_Particle> Masari_Enforcer_Dark_Proj_Det </Projectile_Object_Detonation_Particle>
@@ -804,7 +838,7 @@
 
   <Projectile Name="Proj_Masari_Enforcer_Light">
     <!-- ART -->
-    <Land_Model_Name>ZV_Enforcer_Light_Shot.alo</Land_Model_Name>
+    <Land_Model_Name>ZV_Enforcer_Light_Shot</Land_Model_Name>
     <Scale_Factor> 1.0 </Scale_Factor>
     <AssetBank> BANK_MASARI </AssetBank>
 
@@ -834,9 +868,9 @@
       <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
       <Projectile_Category>DEFAULT</Projectile_Category>
       <Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-      <Projectile_Damage>0.0</Projectile_Damage>
+      <Projectile_Damage>0</Projectile_Damage>
       <Projectile_Blast_Area_Damage> 50 </Projectile_Blast_Area_Damage>
-      <Projectile_Blast_Area_Range> 20 </Projectile_Blast_Area_Range>
+      <Projectile_Blast_Area_Range> 23 </Projectile_Blast_Area_Range>
       <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
       <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
       <Projectile_Object_Detonation_Particle> Masari_Enforcer_Light_Proj_Det </Projectile_Object_Detonation_Particle>
@@ -858,6 +892,53 @@
     </Effect_Generator_Data>
   </Projectile>
 
+  <Projectile Name="Proj_Masari_Enforcer_Light_Light">
 
+    <Land_Model_Name>ZV_Enforcer_Dark_Shot.alo</Land_Model_Name>
+    <Scale_Factor> 0.8 </Scale_Factor>
+    <AssetBank> BANK_MASARI </AssetBank>
+
+
+    <Text_ID>TEXT_NONE</Text_ID>
+    <Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+
+    <Max_Speed>14.0</Max_Speed>
+    <Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+
+
+    <AI_Combat_Power> 1 </AI_Combat_Power>
+
+
+    <Behavior>
+      PROJECTILE,
+      HIDE_WHEN_FOGGED,
+      EFFECT_GENERATOR
+    </Behavior>
+
+    <BehaviorType Name="ArmorAndDamageBehaviorType">
+      <Damage_Type> Damage_Masari_Enforcer_Dark </Damage_Type>
+    </BehaviorType>
+
+    <BehaviorType Name="ProjectileBehaviorType">
+      <Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+      <Projectile_Category>DEFAULT</Projectile_Category>
+      <Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
+      <Projectile_Damage>0</Projectile_Damage>
+      <Projectile_Blast_Area_Damage> 15 </Projectile_Blast_Area_Damage>
+      <Projectile_Blast_Area_Range> 16 </Projectile_Blast_Area_Range>
+      <Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
+      <Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+      <Projectile_Object_Detonation_Particle> Masari_Enforcer_Light_Proj_Det </Projectile_Object_Detonation_Particle>
+      <Projectile_Object_Armor_Reduced_Detonation_Particle> Masari_Enforcer_Light_Proj_Det </Projectile_Object_Armor_Reduced_Detonation_Particle>
+      <Projectile_Ground_Detonation_Particle> Masari_Enforcer_Light_Proj_Ground </Projectile_Ground_Detonation_Particle>
+      <Projectile_Lifetime_Detonation_Particle> Masari_Enforcer_Light_Proj_Miss </Projectile_Lifetime_Detonation_Particle>
+      <Projectile_Absorbed_By_Shields_Particle>	Masari_Enforcer_Light_Proj_Miss </Projectile_Absorbed_By_Shields_Particle>
+      <Projectile_SFXEvent_Detonate> SFX_Masari_Fire_Detonation </Projectile_SFXEvent_Detonate>
+      <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+      <Impact_Effect_Generator_Name>PurifyingLightImpactGenerator</Impact_Effect_Generator_Name>
+    </BehaviorType>
+
+  </Projectile>
 
 </Masari_VEH_Enforcer_XML>

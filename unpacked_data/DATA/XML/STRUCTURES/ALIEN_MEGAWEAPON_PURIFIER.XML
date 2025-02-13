@@ -38,7 +38,7 @@
 	  <Custom_Hard_YExtent> 130.0 </Custom_Hard_YExtent>
 	  <Movement_Animation_Speed> .625 </Movement_Animation_Speed>
 	  <Rotation_Animation_Speed> 0.45 </Rotation_Animation_Speed>
-	  <Max_Speed> 0.3 </Max_Speed>
+	  <Max_Speed> 1.0 </Max_Speed>
 	  <Min_Speed> 0.1 </Min_Speed>
 	  <Max_Rate_Of_Turn> .6 </Max_Rate_Of_Turn>
 	  <Stopped_Rate_Of_Turn> .5 </Stopped_Rate_Of_Turn>
@@ -642,5 +642,3 @@
 	
   
 </Alien_Megaweapon_Purifier_XML>
-
-

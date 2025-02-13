@@ -9,7 +9,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Peacebringer.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>0.94</Scale_Factor>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
 		<SurfaceFX_Name>Masari_Peacebringer_Wheel_track</SurfaceFX_Name>
 		<AssetBank> BANK_MASARI </AssetBank>
@@ -300,7 +300,7 @@
 				<Unit_Ability_AI_No_Autofire> true </Unit_Ability_AI_No_Autofire>
 				<Unit_Ability_AI_Direct> true </Unit_Ability_AI_Direct>
 				<Unit_Ability_AI_Unit_Categories> ~Flying </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 180.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Range> 190.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -310,7 +310,7 @@
 			<Effect_Generator_Ability Name="Masari_Peacebringer_Disintegrate_Special_Ability">
 				<Excluded_Unit_Categories>  Flying </Excluded_Unit_Categories>
 				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 180 </Activation_Max_Range>
+				<Activation_Max_Range> 190 </Activation_Max_Range>
 				<Effect_Generator_Name> Masari_Peacebringer_Disintegrate_Generator </Effect_Generator_Name>
 				<Activation_Style> User_Input </Activation_Style>
 				<Can_Target_Enemies>Yes</Can_Target_Enemies>
@@ -406,7 +406,7 @@
 
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
-		<Max_Speed>1.0</Max_Speed>
+		<Max_Speed>1.3</Max_Speed>
 		<Land_FOW_Reveal_Range>200.0</Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -503,23 +503,28 @@
 	<X13_Masari_Units Name="Masari_Peacebringer_Death_Clone">
 
 		<!-- ART -->
-		<Land_Model_Name>MV_tank_debri_A.ALO</Land_Model_Name>
-		<Scale_Factor>0.9</Scale_Factor>
+		<Land_Model_Name>ZV_Sentry_Wheel.ALO</Land_Model_Name>
+		<Scale_Factor>1.1</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Piloted, Resource </CategoryMask>
+		<CategoryMask> Resource </CategoryMask>
+		<Text_ID>TEXT_NONE</Text_ID>
 
 		<!-- CONFLICT -->
 		<Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
+		<Is_Attackable>Yes</Is_Attackable>
 
 		<!-- BEHAVIORS -->
 		<LandBehavior>
          BALLISTIC,
          SPAWN_DEBRIS,
          RESOURCE,
+         DEBRIS,
          EFFECT_REGISTRY,
          EFFECT_GENERATOR,
          ATTRIBUTE_DIRECTORY,
@@ -548,6 +553,11 @@
 			<Debris_Ang_Max> 20.0 </Debris_Ang_Max>
 		</BehaviorType>
 
+		<BehaviorType Name="DebrisBehaviorType">
+         <Debris_Min_Lifetime_Seconds> 120.0 </Debris_Min_Lifetime_Seconds>
+         <Debris_Max_Lifetime_Seconds> 120.0 </Debris_Max_Lifetime_Seconds>
+		</BehaviorType>
+
 		<BehaviorType Name="BallisticBehaviorType">
 			<Ballistic_Weight>7.0</Ballistic_Weight>
 			<Ballistic_Bounce>0.3</Ballistic_Bounce>
@@ -555,8 +565,6 @@
 
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Death_Explosions>masari_large_explosion</Death_Explosions>
-			<Death_Fade_Time> .25 </Death_Fade_Time>
-			<Death_Persistence_Duration> .27 </Death_Persistence_Duration>
 			<Death_Speed_Min> 100.0 </Death_Speed_Min>
 			<Death_Speed_Max> 120.0 </Death_Speed_Max>
 			<Death_Ang_Min> 1.0 </Death_Ang_Min>
@@ -571,7 +579,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 1000 </Resource_Units>
+			<Resource_Units> 900 </Resource_Units>
 			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
@@ -583,7 +591,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Wheel.ALO</Land_Model_Name>
-		<Scale_Factor>1.4</Scale_Factor>
+		<Scale_Factor>1.35</Scale_Factor>
 		<AssetBank> BANK_NOVUS </AssetBank>
 
 		<!-- INTERFACE -->
@@ -624,7 +632,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Blade.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>0.95</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -665,7 +673,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ZV_Sentry_Blade.ALO</Land_Model_Name>
-		<Scale_Factor>0.5</Scale_Factor>
+		<Scale_Factor>0.45</Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -747,7 +755,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 
 			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>15.0</Projectile_Damage>
+			<Projectile_Damage>15</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle>Masari_Peacebringer_Light_Det</Projectile_Object_Detonation_Particle>
@@ -772,12 +780,79 @@
 
 	</Projectile>
 
+	<Projectile Name="Proj_Peacebringer_Pulse_Cannon_Middle">
+
+		<!-- ART -->
+		<Land_Model_Name>Laser_Masari_Peacebringer_Light_Bolt</Land_Model_Name>
+		<!-- Defined in LASERBEAMS.XML -->
+		<AssetBank> BANK_MASARI </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- MOVEMENT -->
+		<Max_Speed>17.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
+
+		<!-- CONFLICT -->
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+
+		<!-- BEHAVIORS -->
+		<Behavior>
+			PROJECTILE,
+			HIDE_WHEN_FOGGED,
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR
+		</Behavior>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_PEACEBRINGER_LIGHT </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Masari_Peacebringer_Pulse_Cannon </Damage_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProjectileBehaviorType">
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Projectile_Category>DEFAULT</Projectile_Category>
+
+			<Projectile_Max_Flight_Distance>5000.0</Projectile_Max_Flight_Distance>
+			<Projectile_Damage>16</Projectile_Damage>
+			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
+			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
+			<Projectile_Object_Detonation_Particle>Masari_Peacebringer_Light_Det</Projectile_Object_Detonation_Particle>
+			<Projectile_Object_Armor_Reduced_Detonation_Particle>Masari_Peacebringer_Light_Det</Projectile_Object_Armor_Reduced_Detonation_Particle>
+			<Projectile_Ground_Detonation_Particle>Masari_Peacebringer_Light_Det_Ground</Projectile_Ground_Detonation_Particle>
+			<Projectile_Lifetime_Detonation_Particle>Masari_Peacebringer_Light_Det_Miss</Projectile_Lifetime_Detonation_Particle>
+         <Projectile_Absorbed_By_Shields_Particle>Masari_Peacebringer_Light_Det_Miss</Projectile_Absorbed_By_Shields_Particle>
+			<Projectile_SFXEvent_Detonate> SFX_Masari_Detonation_1 </Projectile_SFXEvent_Detonate>
+			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+			<Projectile_Causes_Terrain_Damage>false</Projectile_Causes_Terrain_Damage>
+			<Projectile_Causes_Blackening>false</Projectile_Causes_Blackening>
+			<Terrain_Damage_Radius>10.0</Terrain_Damage_Radius>
+			<Impact_Effect_Generator_Name>PurifyingLightImpactGenerator</Impact_Effect_Generator_Name>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
+
+			<!-- Standard Purifying Light generator - Jeff P 07/09/2007 -->
+			<!--INCLUDE ".\Data\XML\Includes\Masari_Impact_Generators\MASARI_Purifying_Light_Generator.xml" -->
+
+		</Effect_Generator_Data>
+
+	</Projectile>
 
 	<Projectile Name="Proj_Peacebringer_Pulse_Cannon_Dark">
 		<Variant_Of_Existing_Type>Proj_Peacebringer_Pulse_Cannon</Variant_Of_Existing_Type>
 
 		<Land_Model_Name>Laser_Masari_Peacebringer_Dark_Energy_Bolt</Land_Model_Name>
 		<!-- Defined in LASERBEAMS.XML -->
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Damage_Type> Damage_Masari_Peacebringer_Pulse_Cannon_Dark </Damage_Type>
+		</BehaviorType>
 
 		<BehaviorType Name="ProjectileBehaviorType">
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
@@ -819,7 +894,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ZV_Peacebringer_gunner.ALO </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.95 </Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->
@@ -886,7 +961,7 @@
 			<Targeting_Stickiness_Time_Threshold>30.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance>0.0</Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 190.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
 			<Projectile_Fire_Pulse_Count>6</Projectile_Fire_Pulse_Count>
@@ -927,7 +1002,7 @@
 			<Targeting_Priority_Set> Masari_Peacebringer_Target_Priority </Targeting_Priority_Set>
 			<Projectile_Types> Proj_Peacebringer_Pulse_Cannon_Dark </Projectile_Types>
 			<Targeting_Stickiness_Time_Threshold>30.0</Targeting_Stickiness_Time_Threshold>
-			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Fire_Inaccuracy> 2.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance>0.0</Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
@@ -941,6 +1016,19 @@
 
 	<HardPoint Name="HP_Peacebringer_Pulse_Cannon_01">
 		<Variant_Of_Existing_Type>HP_Peacebringer_Pulse_Cannon_00</Variant_Of_Existing_Type>
+		<BehaviorType Name="WeaponBehaviorType">
+			<Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+			<Targeting_Priority_Set> Masari_Peacebringer_Target_Priority </Targeting_Priority_Set>
+			<Projectile_Types> Proj_Peacebringer_Pulse_Cannon_Middle </Projectile_Types>
+			<Targeting_Stickiness_Time_Threshold>30.0</Targeting_Stickiness_Time_Threshold>
+			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+			<Targeting_Min_Attack_Distance>0.0</Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 190.0 </Targeting_Max_Attack_Distance>
+			<Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Recharge_Max_Random_Frames> 2 </Projectile_Fire_Recharge_Max_Random_Frames>
+			<Projectile_Fire_Pulse_Count>7</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+		</BehaviorType>		
 	</HardPoint>
 
 
@@ -963,7 +1051,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>  ZV_Peacebringer_beam.ALO </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.95 </Scale_Factor>
 		<AssetBank> BANK_MASARI </AssetBank>
 
 		<!-- INTERFACE -->

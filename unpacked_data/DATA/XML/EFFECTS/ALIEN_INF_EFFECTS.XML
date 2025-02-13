@@ -44,7 +44,7 @@
 
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Alien_Brute_Death_From_Above</Damage_Type>
-			<Damage_Amount>20.0</Damage_Amount>
+			<Damage_Amount>40.0</Damage_Amount>
 		</Effect_Component>
             
    </Effect>
@@ -126,7 +126,279 @@
       <Percentage_Per_Second>.025</Percentage_Per_Second>
 		</Effect_Component>
 	</Effect>
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Super">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
 
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1 </Amount_Per_Second>
+      <Percentage_Per_Second>.005</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>	
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Variant">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.012</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Seer">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.009</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+	
+<!--	<Effect Name="Alien_Brute_Regenerate_Effect_Architect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.009</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			-->
+
+	<Effect Name="Alien_Brute_Regenerate_Effect_Seeker">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.015</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+
+	<Effect Name="Alien_Brute_Regenerate_Effect_Storm">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.052</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>		
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Fig">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.086</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Skylord">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0205</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>		
+
+	<Effect Name="Alien_Brute_Regenerate_Effect_Evictor_Cloaked">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second>0</Amount_Per_Second>
+      <Percentage_Per_Second>.0095</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Evictor">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second>0</Amount_Per_Second>
+      <Percentage_Per_Second>.011</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+	
+<!--	<Effect Name="Alien_Brute_Regenerate_Effect_Templar">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1.18 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>		-->
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Templar_Dark">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1.534 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>			
+
+	<Effect Name="Alien_Brute_Regenerate_Effect_Flat_Blade">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 12.3 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Flat_Ohm">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 11.2 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Flat">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 4.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>					
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Switch">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0666</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Switch_Two">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.0588</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Switch_Seer">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.1</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>					
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Switch_Templar">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.777</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>								
+	
+	<Effect Name="Alien_Brute_Regenerate_Effect_Corruptor">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 2.475 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>					
+	
+	<Effect Name="Alien_Brute_Regenerate_Irradiated_Effect_Super">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.00625</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>	
+
+	<Effect Name="Alien_Grunt_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 11.9 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+	
+   <Effect Name="GruntAndGrayExtraHealthEffect">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+      <Effect_Component Type="MaxHealth">
+         <Modifier_Value> 1.0 </Modifier_Value>
+         <Adjust_Health_By_Same_Percent>Yes</Adjust_Health_By_Same_Percent>
+      </Effect_Component>
+	  
+   </Effect>	     	
+   
+<!--   <Effect Name="QuantumSpecialist">
+      <Effect_Class> QuantumSpecialist </Effect_Class>
+      <Duration> -1.0 </Duration>
+
+       <Effect_Component Type="AttributeModifier">
+            <Attribute> Phase_Effect_Duration_Mult_Coeff </Attribute>
+            <Modifier_Value> 0.6 </Modifier_Value>
+       </Effect_Component>
+   </Effect>   -->
+
+	<Effect Name="Alien_Grunt_Regenerate_Irradiated_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.00625</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="Alien_Gray_Regenerate_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 5.75 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>
+
+	<Effect Name="Alien_Gray_Regenerate_Irradiated_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>.00625</Percentage_Per_Second>
+		</Effect_Component>
+	</Effect>	
 
 	<Effect Name="BruteSmashAttackDamage">
 		<Duration> .10 </Duration>
@@ -462,7 +734,7 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> As_Target_Accuracy_Decrease_Multiplier </Attribute>
-			<Modifier_Value> 10.0 </Modifier_Value>
+			<Modifier_Value> 50.0 </Modifier_Value>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
@@ -715,6 +987,19 @@
 
 	</Effect>
 
+	<!-- Mutants self damage (die over time) -->
+	<Effect Name="MutantDyingEffectHot">
+		<Effect_Class> MutantDeath </Effect_Class>
+		<Duration> 0.5 </Duration>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type>Damage_Default</Damage_Type>
+			<Damage_Amount>0.0</Damage_Amount>
+			<!-- jdg was 10 -->
+			<Damage_Percentage>0.084f</Damage_Percentage>
+		</Effect_Component>
+
+	</Effect>
 
 	<!-- Mutants self damage (die over time) -->
 	<Effect Name="MutantDyingEffect">

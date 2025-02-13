@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+
+<SFXEvents>
+	
+    <SFXEvent Name="Fire_Flight_Loop">
+        <Use_Preset>Preset_GUNV_Loop</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\EGL_MASARI_FIRE_FLY_1.WAV			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+    <SFXEvent Name="Ice_Flight_Loop">
+        <Use_Preset>Preset_GUNV_Loop</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\EGL_MASARI_Ice_FLY_1.WAV
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Templar_Gun">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_gun.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+		<Min_Volume>26</Min_Volume>
+		<Max_Volume>30</Max_Volume>					
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Templar_Gun_Echo">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\templar_gun_echo.WAV		
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+		<Min_Volume>40</Min_Volume>
+		<Max_Volume>45</Max_Volume>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>			
+	
+    <SFXEvent Name="Templar_Sprint">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Sprint.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+    <SFXEvent Name="Templar_Zeal">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Zeal.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+	
+    <SFXEvent Name="Templar_Bomb">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Bomb.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Templar_Blast">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Blast.wav			
+        </Samples>
+		<Min_Pitch>70</Min_Pitch>
+		<Max_Pitch>80</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>			
+	
+    <SFXEvent Name="Templar_Gust">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Gust.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>120</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>				
+	
+    <SFXEvent Name="Templar_Napalm_Loop">
+        <Use_Preset>Preset_GUNV_Loop</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\Templar_Napalm.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>105</Max_Pitch>			
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>					
+	
+    <SFXEvent Name="Light_Templar_Summoned">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\LT_SUMMON_1.wav			
+        DATA\Audio\Templar\LT_SELECT_1.wav			
+        DATA\Audio\Templar\LT_SELECT_2.wav			
+        DATA\Audio\Templar\LT_SELECT_3.wav			
+        DATA\Audio\Templar\LT_SELECT_4.wav			
+        DATA\Audio\Templar\LT_SELECT_5.wav			
+        DATA\Audio\Templar\LT_SELECT_6.wav			
+        DATA\Audio\Templar\LT_SELECT_7.wav			
+        DATA\Audio\Templar\LT_SELECT_8.wav			
+        DATA\Audio\Templar\LT_SELECT_9.wav					
+<!--        DATA\Audio\Templar\LT_SUMMON_2.wav			
+        DATA\Audio\Templar\LT_SUMMON_3.wav			
+        DATA\Audio\Templar\LT_SUMMON_4.wav			
+        DATA\Audio\Templar\LT_SUMMON_5.wav			
+        DATA\Audio\Templar\LT_SUMMON_6.wav			
+        DATA\Audio\Templar\LT_SUMMON_7.wav			
+        DATA\Audio\Templar\LT_SUMMON_8.wav			
+        DATA\Audio\Templar\LT_SUMMON_9.wav			
+        DATA\Audio\Templar\LT_SUMMON_10.wav			
+        DATA\Audio\Templar\LT_SUMMON_11.wav			
+        DATA\Audio\Templar\LT_SUMMON_12.wav					
+        DATA\Audio\Templar\LT_SUMMON_13.wav			-->		
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>	
+
+    <SFXEvent Name="Light_Templar_Selected">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\LT_SUMMON_1.wav			
+        DATA\Audio\Templar\LT_SELECT_1.wav			
+        DATA\Audio\Templar\LT_SELECT_2.wav			
+        DATA\Audio\Templar\LT_SELECT_3.wav			
+<!--        DATA\Audio\Templar\LT_SELECT_4.wav			-->
+        DATA\Audio\Templar\LT_SELECT_5.wav			
+        DATA\Audio\Templar\LT_SELECT_6.wav			
+        DATA\Audio\Templar\LT_SELECT_7.wav			
+        DATA\Audio\Templar\LT_SELECT_8.wav			
+        DATA\Audio\Templar\LT_SELECT_9.wav				
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>	
+
+    <SFXEvent Name="Light_Templar_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\LT_MOVE_1.wav			
+        DATA\Audio\Templar\LT_MOVE_2.wav			
+        DATA\Audio\Templar\LT_MOVE_3.wav			
+        DATA\Audio\Templar\LT_MOVE_5.wav			
+        DATA\Audio\Templar\LT_MOVE_6.wav						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Light_Templar_Priority_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+<!--        DATA\Audio\Templar\LT_PRIORITY_MOVE_1.wav			-->
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_3.wav			
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_2.wav			
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_4.wav			
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_5.wav			
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_6.wav			
+        DATA\Audio\Templar\LT_PRIORITY_MOVE_7.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>		
+	
+    <SFXEvent Name="Light_Templar_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\LT_ATTACK_1.wav			
+        DATA\Audio\Templar\LT_ATTACK_2.wav			
+        DATA\Audio\Templar\LT_ATTACK_3.wav			
+        DATA\Audio\Templar\LT_ATTACK_4.wav			
+        DATA\Audio\Templar\LT_ATTACK_5.wav			
+        DATA\Audio\Templar\LT_ATTACK_6.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Light_Templar_Priority_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>		
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_2.wav			
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_3.wav			
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_4.wav			
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_5.wav			
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_6.wav			
+        DATA\Audio\Templar\LT_PRIORITY_ATTACK_7.wav					
+		DATA\Audio\Templar\LT_PRIORITY_ATTACK_8.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>		
+    </SFXEvent>				
+	
+    <SFXEvent Name="Dark_Templar_Summoned">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\DT_SUMMON_1.wav			
+        DATA\Audio\Templar\DT_SELECT_1.wav			
+        DATA\Audio\Templar\DT_SELECT_2.wav			
+        DATA\Audio\Templar\DT_SELECT_3.wav			
+        DATA\Audio\Templar\DT_SELECT_4.wav			
+        DATA\Audio\Templar\DT_SELECT_5.wav			
+        DATA\Audio\Templar\DT_SELECT_6.wav			
+        DATA\Audio\Templar\DT_SELECT_7.wav			
+        DATA\Audio\Templar\DT_SELECT_8.wav			
+        DATA\Audio\Templar\DT_SELECT_9.wav							
+<!--        DATA\Audio\Templar\DT_SUMMON_2.wav			
+        DATA\Audio\Templar\DT_SUMMON_3.wav			
+        DATA\Audio\Templar\DT_SUMMON_4.wav			
+        DATA\Audio\Templar\DT_SUMMON_5.wav			
+        DATA\Audio\Templar\DT_SUMMON_6.wav			
+        DATA\Audio\Templar\DT_SUMMON_7.wav			
+        DATA\Audio\Templar\DT_SUMMON_8.wav			
+        DATA\Audio\Templar\DT_SUMMON_9.wav			
+        DATA\Audio\Templar\DT_SUMMON_10.wav			-->	
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+    <SFXEvent Name="Dark_Templar_Selected">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\DT_SUMMON_1.wav					
+        DATA\Audio\Templar\DT_SELECT_1.wav			
+        DATA\Audio\Templar\DT_SELECT_2.wav			
+        DATA\Audio\Templar\DT_SELECT_3.wav			
+<!--        DATA\Audio\Templar\DT_SELECT_4.wav			-->
+        DATA\Audio\Templar\DT_SELECT_5.wav			
+        DATA\Audio\Templar\DT_SELECT_6.wav			
+        DATA\Audio\Templar\DT_SELECT_7.wav			
+        DATA\Audio\Templar\DT_SELECT_8.wav						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>				
+    </SFXEvent>	
+
+    <SFXEvent Name="Dark_Templar_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\DT_MOVE_1.wav			
+        DATA\Audio\Templar\DT_MOVE_2.wav			
+        DATA\Audio\Templar\DT_MOVE_3.wav			
+<!--        DATA\Audio\Templar\DT_MOVE_4.wav			-->
+        DATA\Audio\Templar\DT_MOVE_5.wav			
+        DATA\Audio\Templar\DT_MOVE_6.wav			
+<!--        DATA\Audio\Templar\DT_MOVE_7.wav					-->
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>				
+    </SFXEvent>	
+	
+    <SFXEvent Name="Dark_Templar_Priority_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        DATA\Audio\Templar\DT_PRIORITY_MOVE_1.wav			
+        DATA\Audio\Templar\DT_PRIORITY_MOVE_2.wav				
+        DATA\Audio\Templar\DT_PRIORITY_MOVE_4.wav			
+        DATA\Audio\Templar\DT_PRIORITY_MOVE_5.wav				
+        DATA\Audio\Templar\DT_PRIORITY_MOVE_7.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>				
+    </SFXEvent>		
+	
+    <SFXEvent Name="Dark_Templar_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+<!--        DATA\Audio\Templar\DT_ATTACK_1.wav			-->
+        DATA\Audio\Templar\DT_ATTACK_2.wav			
+        DATA\Audio\Templar\DT_ATTACK_3.wav			
+        DATA\Audio\Templar\DT_ATTACK_4.wav			
+        DATA\Audio\Templar\DT_ATTACK_5.wav			
+        DATA\Audio\Templar\DT_ATTACK_6.wav			
+        DATA\Audio\Templar\DT_ATTACK_7.wav			
+        DATA\Audio\Templar\DT_ATTACK_8.wav			
+        DATA\Audio\Templar\DT_ATTACK_9.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>				
+    </SFXEvent>	
+	
+    <SFXEvent Name="Dark_Templar_Priority_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>				
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_1.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_2.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_3.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_4.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_5.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_6.wav			
+        DATA\Audio\Templar\DT_PRIORITY_ATTACK_7.wav						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>				
+    </SFXEvent>					
+</SFXEvents> 

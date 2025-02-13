@@ -402,8 +402,8 @@
 			<Tactical_Buildable_Beacon_Type> Masari_Guardian_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Buildable_Constructed> Masari_Guardian </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Multiplayer> 55 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 55 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 36 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 95 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>
@@ -605,7 +605,7 @@
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 270.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Light_Bolt</Projectile_Types>
@@ -685,7 +685,7 @@
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Dark_Bolt</Projectile_Types>
@@ -926,9 +926,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 35 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 80 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 23 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="GameEventSourceBehaviorType">
@@ -1105,9 +1105,9 @@
       
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed>Masari_Guardian_Two_Faced_HP</Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 45 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 35 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 30 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 55 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 21 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<Attributes SubObjectList="Yes">
@@ -1128,7 +1128,7 @@
 	<HardPoint Name="Masari_Guardian_Two_Faced_HP_Fire">
 		<Variant_Of_Existing_Type>Masari_Guardian_Two_Faced_HP</Variant_Of_Existing_Type>
 
-		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 302.5 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
 			<Is_Buildable_By_Constructor> false </Is_Buildable_By_Constructor>
@@ -1146,8 +1146,8 @@
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 280.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Light_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
@@ -1207,7 +1207,7 @@
 	<HardPoint Name="Masari_Guardian_Two_Faced_HP_Ice">
 		<Variant_Of_Existing_Type>Masari_Guardian_Two_Faced_HP</Variant_Of_Existing_Type>
 
-		<Land_FOW_Reveal_Range> 220.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 253.0 </Land_FOW_Reveal_Range>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -1234,8 +1234,8 @@
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Guardian_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 220.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 225.0 </Targeting_Max_Attack_Distance>
 
 			<Projectile_Types>Proj_Guardian_Dark_Bolt</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds> 2.0 </Projectile_Fire_Recharge_Seconds>
@@ -1305,7 +1305,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>13.0</Projectile_Damage>
+			<Projectile_Damage>13.1</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Object_Detonation_Particle> Masari_Guardian_Light_Det </Projectile_Object_Detonation_Particle>

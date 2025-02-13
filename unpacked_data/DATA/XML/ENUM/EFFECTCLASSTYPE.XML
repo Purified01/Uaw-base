@@ -39,12 +39,14 @@
 	<DervishSpin/>
 	<Scale/>
 	<Cloaking/>
+	<CloakingConduit/>
 	<Mirage/>
 	<BlockMirage/>
    <RemoveMirage/>
 	<BlackOut/>
 	<BlackOutTarget/>
 	<RevealCloaking/>
+	<RevealCloakingConduit/>
 	<NegateRevealCloaking/>
 	<DefilerRadiation/>
 	<NovusVirus/>
@@ -54,6 +56,8 @@
    <TacticalUpgradedBuild/>
    <TacticalBuildSingleBuilder/>
    <Healing/>
+   <HealingSeeker/>
+	<HealingSentry/>
 	<MutantDeath/>
 	<MutantNoHeal/>
 	<MutantCreation/>
@@ -133,6 +137,7 @@
 	<Teleportation_Finish/>
 	<PatchBackupSystems/>
 	<PatchExtrapolation/>
+	<PatchExtrapolationUpgrade/>
 	<PatchOptimizedAssembly/>
 	<PatchOverclock/>
 	<PatchEmergencyPower/>
@@ -183,6 +188,7 @@
    <AchievementAssaultSpecialist/>
    <AchievementMutagenSpecialist/>
    <AchievementQuantumSpecialist/>
+<!--   <QuantumSpecialist/>   -->
    <AchievementSocketEmblem/>
    <AchievementInsigniaOfCorruption/>
    <AchievementKamalsBlessing/>
@@ -203,8 +209,21 @@
 	<MasariVortex/>
 	<ResearchFieryFury/>
 	<PurifyingLight/>
+	<PurifyingLightTemplar/>
+	<PurifyingLightSkyLord/>	
+	<PhosphorAftershock/>		
+	<PurifyingLightPhosphor/>	
+	<PurifyingLightPhosphorStackable/>		
+	<PurifyingLightPhosphorStackableUpgraded/>			
+	<PurifyingLightPhosphorStackableTwenty/>		
+	<PurifyingLightPhosphorStackableUpgradedThirty/>				
+	<PurifyingLightPhosphorStackableLight/>			
    <PurifyingLightVisual/>
+   <PurifyingLightVisualPhosphor/>   
+   <PurifyingLightVisualPhosphorLong/>      
+   <PurifyingLightVisualPhosphorLonger/>         
    <CripplingShots/>
+   <CripplingShotsTemplar/>   
 	<CripplingShotsVisual/>
    <UpgradingStructure/>
 	<MasariCleanse/>
@@ -308,6 +327,9 @@
 	<AbilityRecharge/>
    <PlayerProduction/>
 	<WalkerArmor/>
+	<WalkerArmorA3/>		
+	<WalkerArmorM3/>		
+	<WalkerArmorQ3/>		
 	<WalkerSpeed/>
 	<WalkerNoCrush/>
 	<PlasmaDamage/>
@@ -346,7 +368,7 @@
 	<Incignificance/>
 
 	<MatterEngineLeech/>
-
+	<MatterEngineLeechTemplar/>
    <LightBeam/>
    <UpgradedLightBeam/>
 

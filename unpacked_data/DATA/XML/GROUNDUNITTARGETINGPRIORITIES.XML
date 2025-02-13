@@ -230,6 +230,26 @@
 
 		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource  </Category_Restrictions>
 	</Priority_Set>
+	
+	
+	<Priority_Set Name="Dark_Templar_Target_Priority">
+		<Attack_Priorities>
+
+	  Stationary + CanAttack, 1,	  
+      Stationary, 2,   	  
+      Small, 3,	  
+      Hero, 4,
+      Medium, 5,   
+      Piloted, 6,	  
+
+    </Attack_Priorities>
+
+		<Type_Exclusions> Rosie_Monitor, Novus_Collector, Novus_Corruptor, Novus_Dervish_Jet, Novus_Hero_Vertigo, Alien_Cylinder, Alien_Foo_Core, Alien_Heavy_Gunship, Masari_Stormchaser, Masari_Seeker, Masari_Skylord, Masari_Elemental_Collector </Type_Exclusions>
+
+		<Category_Exclusions> Insignificant </Category_Exclusions>
+
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource  </Category_Restrictions>
+	</Priority_Set>	
 
 
 	<Priority_Set Name="Alien_Gray_Target_Priority">
@@ -340,12 +360,12 @@
     </Attack_Priorities>
 
 		<Category_Exclusions>
-			Insignificant, Bridge
+			Insignificant
 		</Category_Exclusions>
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Resource_INST, Resource, Untargetable </Category_Restrictions>
+		<Category_Restrictions> Resource_INST, Resource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1121,7 +1141,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Bridge, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, Resource, Resource_INST, Bridge </Category_Restrictions>
 	</Priority_Set>
 
 	
@@ -1275,6 +1295,7 @@
       Piloted, 4,
       Stationary + CanAttack, 5,
       Medium + Organic, 6,
+	  HardPoint, 1
       Small, 7,
       Stationary, 8,
       
@@ -1286,7 +1307,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1339,9 +1360,50 @@
 
 	</Priority_Set>
 
+	<Priority_Set Name="Masari_Stormchaser_Fire_Target_Priority">
+		<Attack_Priorities>
 
+      Hero + Flying, 1,
+      Flying, 2,
+      Novus_Collector, 3,
 
+    </Attack_Priorities>
 
+		<Category_Restrictions> ~Flying </Category_Restrictions>
+
+	</Priority_Set>
+
+	<Priority_Set Name="Masari_Stormchaser_Ice_Target_Priority">
+		<Attack_Priorities>
+
+      Hero + Flying, 1,
+      Flying, 2,
+      Novus_Collector, 3,
+
+    </Attack_Priorities>
+
+		<Category_Restrictions> ~Flying </Category_Restrictions>
+
+	</Priority_Set>
+	
+	<Priority_Set Name="Rosie_Monitor_Target_Priority">
+		<Attack_Priorities>
+
+      Hero + Flying, 1,
+      Flying, 2,
+      Novus_Collector, 3,
+      HardPoint, 4,
+<!--      Large + Piloted, 5,
+      Piloted, 6,
+      Hero, 7,
+      Small, 8,
+      Stationary, 9,	-->  
+
+    </Attack_Priorities>
+	
+		<Category_Restrictions> ~Flying </Category_Restrictions>	
+
+	</Priority_Set>	
 
 
 	<!-- ================================================================================================ -->

@@ -45,7 +45,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass> Flying </MovementClass>
 		<OccupationStyle> 1x1 </OccupationStyle>
-		<Max_Speed> 7.0 </Max_Speed>
+		<Max_Speed> 5.5 </Max_Speed>
 		<Min_Speed> 5.0 </Min_Speed>
 		<OverrideAcceleration> .15 </OverrideAcceleration>
 		<OverrideDeceleration> .2 </OverrideDeceleration>

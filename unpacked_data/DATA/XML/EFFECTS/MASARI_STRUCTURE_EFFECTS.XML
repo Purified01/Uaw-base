@@ -259,6 +259,56 @@
       </Effect_Component>
 
    </Effect>
+   
+   
+   <Effect Name="MatterEngineResearchedLeechEffectTemplar">
+		<Duration> 6.1 </Duration>
+		<Effect_Class> MatterEngineLeechTemplar </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="Transfer">
+			<Flow_Direction> TargetToSource </Flow_Direction>
+			<Target_Effect>  HealthDamage	</Target_Effect>
+			<Target_Damage> Damage_Unconditional </Target_Damage>
+			<Source_Effect> HealthHeal </Source_Effect>
+			<Amount_Per_Second> 5.0 </Amount_Per_Second>
+			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
+			<Transfer_Multiplicative> 2.0 </Transfer_Multiplicative>
+		</Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+         <Particle_System_Type> Masari_Templar_Burning_Aura_Fire </Particle_System_Type>
+         <Attachment_Bone_Name> b_Target </Attachment_Bone_Name>
+      </Effect_Component>
+
+   </Effect>   
+   
+   
+   <Effect Name="MatterEngineResearchedLeechEffectTemplarDark">
+		<Duration> 7.1 </Duration>
+		<Effect_Class> MatterEngineLeechTemplar </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="Transfer">
+			<Flow_Direction> TargetToSource </Flow_Direction>
+			<Target_Effect>  HealthDamage	</Target_Effect>
+			<Target_Damage> Damage_Unconditional </Target_Damage>
+			<Source_Effect> HealthHeal </Source_Effect>
+			<Amount_Per_Second> 5.1 </Amount_Per_Second>
+			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
+			<Transfer_Multiplicative> 2.0 </Transfer_Multiplicative>
+		</Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+         <Particle_System_Type> Masari_Templar_Burning_Aura_Fire_Dark </Particle_System_Type>
+         <Attachment_Bone_Name> b_Target </Attachment_Bone_Name>
+      </Effect_Component>
+
+   </Effect>      
 
 
    <Effect Name="MatterEngineResearchedLeechVisualEffect">
@@ -1089,6 +1139,60 @@
 	== MasariIronWillEffect: boost for infantry
 	================================================================================================== -->
 
+   <Effect Name="MasariIronWillEffectDiscipleDark">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Speed_Mult_Coeff </Attribute>
+         <Modifier_Value> 0.14 </Modifier_Value>
+      </Effect_Component>-->
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <!-- 30% fire rate increase -->
+         <Modifier_Value> 0.3 </Modifier_Value>
+      </Effect_Component>
+
+<!--      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
+      </Effect_Component>-->
+
+   </Effect>
+   
+   <Effect Name="MasariExtraHealthEffect">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+      <Effect_Component Type="MaxHealth">
+         <Modifier_Value> 0.30 </Modifier_Value>
+         <Adjust_Health_By_Same_Percent>Yes</Adjust_Health_By_Same_Percent>
+      </Effect_Component>
+	  
+   </Effect>	     
+   
+   <Effect Name="MasariZealEffectTemplar">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Speed_Mult_Coeff </Attribute>
+         <Modifier_Value> 0.06 </Modifier_Value>
+      </Effect_Component>
+
+<!--     <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <Modifier_Value> 0.3 </Modifier_Value>
+      </Effect_Component>      -->
+	  
+   </Effect>	  
+
    <Effect Name="MasariIronWillEffect">
       <Duration> -1.0 </Duration>
       <!-- if you don't want stacking change following line -->
@@ -1097,21 +1201,554 @@
 
       <Effect_Component Type="AttributeModifier">
          <Attribute> Max_Speed_Mult_Coeff </Attribute>
-         <!-- 50% faster move rate -->
-         <Modifier_Value> 0.5 </Modifier_Value>
+         <Modifier_Value> 0.06 </Modifier_Value>
       </Effect_Component>
+
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <Modifier_Value> 0.35 </Modifier_Value>
+      </Effect_Component>-->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Delay_Multiplier </Attribute>
+			<Modifier_Value> -0.5 </Modifier_Value>
+		</Effect_Component>	  
+
+<!--      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
+      </Effect_Component>-->
+
+   </Effect>
+   
+   <Effect Name="TemplarOverkill">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
       <Effect_Component Type="AttributeModifier">
          <Attribute> Weapon_Rate_Multiplier </Attribute>
-         <!-- 25% fire rate increase -->
-         <Modifier_Value> 0.25 </Modifier_Value>
+         <Modifier_Value> 1.1 </Modifier_Value>
       </Effect_Component>
+	  
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Delay_Multiplier </Attribute>
+			<Modifier_Value> -1.1 </Modifier_Value>
+		</Effect_Component>	  
+		
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Accuracy_Decrease_Multiplier </Attribute>
+			<Modifier_Value> 6.9 </Modifier_Value>
+		</Effect_Component>   		
 
       <Effect_Component Type="ParticleSystem">
          <Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
       </Effect_Component>
 
-   </Effect>
+   </Effect>   
+   
+	<!--== Templar Destabilize Effect == -->
+	
+	<Effect Name="MasariTemplarDestablizeEffectLightLong">
+		<Effect_Class> Destabilize </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -100.0 </Modifier_Value>
+		</Effect_Component>
+
+      <!-- add special category that will prevent Seeker from targeting this target with regular weapons -->
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Category_Mask </Attribute>
+         <Modifier_Integer_Value Converter="GameObjectCategoryType"> UnderDestabilizeEffect </Modifier_Integer_Value>
+         <Modifier_Type> Bitwise_Or </Modifier_Type>
+      </Effect_Component>-->
+      
+		<!-- Target can't attack -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>-->
+
+		<!-- Target can't move -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> SLAVE_TO_PARENT_LOCOMOTOR, CIVILIAN_LOCOMOTOR, ALIEN_TANK_AIR_LOCOMOTOR, VTOL_LOCOMOTOR, LAND_TEAM_CONTAINER_LOCOMOTOR, LAND_TEAM_INFANTRY_LOCOMOTOR, WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, POWERED </Behaviors>
+		</Effect_Component>-->
+
+      <!-- Target is not powered -->
+<!--      <Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Powered </Attribute>
+			<Modifier_Integer_Value> 0 </Modifier_Integer_Value>
+			<Modifier_Type> Bitwise_And </Modifier_Type>
+		 </Effect_Component>-->
+
+      <!-- Target can't use any abilities -->
+<!--		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>-->
+
+<!--		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Phased </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Phased </Block_Effect_Class>
+		</Effect_Component>-->
+		
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
+		</Effect_Component>		
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+      
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirus </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Burden </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Category> CanBeRemovedByAbility </Remove_Effect_Category>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> ViralControl </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> TEMPLAR_STASIS </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+   <Effect Name="MasariTemplarDestabilizeVisualEffectLong">
+      <Duration> 4.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> TEMPLAR_STASIS_LONG </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+	<!--== Templar Destabilize Effect == -->
+	
+	<Effect Name="MasariTemplarDestablizeEffectLong">
+		<Effect_Class> Destabilize </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -175.0 </Modifier_Value>
+		</Effect_Component>
+
+      <!-- add special category that will prevent Seeker from targeting this target with regular weapons -->
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Category_Mask </Attribute>
+         <Modifier_Integer_Value Converter="GameObjectCategoryType"> UnderDestabilizeEffect </Modifier_Integer_Value>
+         <Modifier_Type> Bitwise_Or </Modifier_Type>
+      </Effect_Component>-->
+      
+		<!-- Target can't attack -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>-->
+
+		<!-- Target can't move -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> SLAVE_TO_PARENT_LOCOMOTOR, CIVILIAN_LOCOMOTOR, ALIEN_TANK_AIR_LOCOMOTOR, VTOL_LOCOMOTOR, LAND_TEAM_CONTAINER_LOCOMOTOR, LAND_TEAM_INFANTRY_LOCOMOTOR, WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, POWERED </Behaviors>
+		</Effect_Component>-->
+
+      <!-- Target is not powered -->
+<!--      <Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Powered </Attribute>
+			<Modifier_Integer_Value> 0 </Modifier_Integer_Value>
+			<Modifier_Type> Bitwise_And </Modifier_Type>
+		 </Effect_Component>-->
+
+      <!-- Target can't use any abilities -->
+<!--		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>-->
+
+<!--		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Phased </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Phased </Block_Effect_Class>
+		</Effect_Component>-->
+		
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
+		</Effect_Component>		
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+      
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirus </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Burden </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Category> CanBeRemovedByAbility </Remove_Effect_Category>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> ViralControl </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> TEMPLAR_STASIS_DARK </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
+   
+   <Effect Name="MasariTemplarDestabilizeVisualEffectDarkLong">
+      <Duration> 20.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> TEMPLAR_STASIS_DARK_LONG </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+	<!--== Templar Destabilize Effect == -->
+	
+	<Effect Name="MasariTemplarDestablizeEffectLight">
+		<Effect_Class> Destabilize </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -75.0 </Modifier_Value>
+		</Effect_Component>
+
+      <!-- add special category that will prevent Seeker from targeting this target with regular weapons -->
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Category_Mask </Attribute>
+         <Modifier_Integer_Value Converter="GameObjectCategoryType"> UnderDestabilizeEffect </Modifier_Integer_Value>
+         <Modifier_Type> Bitwise_Or </Modifier_Type>
+      </Effect_Component>-->
+      
+		<!-- Target can't attack -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>-->
+
+		<!-- Target can't move -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> SLAVE_TO_PARENT_LOCOMOTOR, CIVILIAN_LOCOMOTOR, ALIEN_TANK_AIR_LOCOMOTOR, VTOL_LOCOMOTOR, LAND_TEAM_CONTAINER_LOCOMOTOR, LAND_TEAM_INFANTRY_LOCOMOTOR, WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, POWERED </Behaviors>
+		</Effect_Component>-->
+
+      <!-- Target is not powered -->
+<!--      <Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Powered </Attribute>
+			<Modifier_Integer_Value> 0 </Modifier_Integer_Value>
+			<Modifier_Type> Bitwise_And </Modifier_Type>
+		 </Effect_Component>-->
+
+      <!-- Target can't use any abilities -->
+<!--		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>-->
+
+<!--		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Phased </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Phased </Block_Effect_Class>
+		</Effect_Component>-->
+		
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
+		</Effect_Component>		
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+      
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirus </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Burden </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Category> CanBeRemovedByAbility </Remove_Effect_Category>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> ViralControl </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> TEMPLAR_STASIS </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+   <Effect Name="MasariTemplarDestabilizeVisualEffect">
+      <Duration> 16.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> TEMPLAR_STASIS </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>      
+   
+	<!--== Templar Destabilize Effect == -->
+	
+	<Effect Name="MasariTemplarDestablizeEffect">
+		<Effect_Class> Destabilize </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -100.0 </Modifier_Value>
+		</Effect_Component>
+
+      <!-- add special category that will prevent Seeker from targeting this target with regular weapons -->
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Category_Mask </Attribute>
+         <Modifier_Integer_Value Converter="GameObjectCategoryType"> UnderDestabilizeEffect </Modifier_Integer_Value>
+         <Modifier_Type> Bitwise_Or </Modifier_Type>
+      </Effect_Component>-->
+      
+		<!-- Target can't attack -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+		</Effect_Component>-->
+
+		<!-- Target can't move -->
+<!--		<Effect_Component Type="DisableBehavior">
+			<Behaviors> SLAVE_TO_PARENT_LOCOMOTOR, CIVILIAN_LOCOMOTOR, ALIEN_TANK_AIR_LOCOMOTOR, VTOL_LOCOMOTOR, LAND_TEAM_CONTAINER_LOCOMOTOR, LAND_TEAM_INFANTRY_LOCOMOTOR, WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, POWERED </Behaviors>
+		</Effect_Component>-->
+
+      <!-- Target is not powered -->
+<!--      <Effect_Component Type="AttributeModifier">
+			<Attribute> Is_Powered </Attribute>
+			<Modifier_Integer_Value> 0 </Modifier_Integer_Value>
+			<Modifier_Type> Bitwise_And </Modifier_Type>
+		 </Effect_Component>-->
+
+      <!-- Target can't use any abilities -->
+<!--		<Effect_Component Type="DisableAbility">
+			<Abilities/>
+		</Effect_Component>-->
+
+<!--		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> Phased </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Phased </Block_Effect_Class>
+		</Effect_Component>-->
+		
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
+		</Effect_Component>		
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControl </Block_Effect_Class>
+		</Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
+		</Effect_Component>
+      
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirus </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> Burden </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Category> CanBeRemovedByAbility </Remove_Effect_Category>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> ViralControl </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> TEMPLAR_STASIS_DARK </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
+   
+   <Effect Name="MasariTemplarDestabilizeVisualEffectDark">
+      <Duration> 20.0 </Duration>
+      <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> TEMPLAR_STASIS_DARK </Particle_System_Type>
+      </Effect_Component>
+
+   </Effect>   
+   
+	<Effect Name="MasariFullArmorEffectTemplar">
+		<Duration> 9.1 </Duration>
+		<Effect_Class> DMARegen </Effect_Class>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Current_DMA_Level </Attribute>
+			<Modifier_Value> 9999.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>   
+   
+   <Effect Name="EvictorIronWillEffectSpeed">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Speed_Mult_Coeff </Attribute>
+         <Modifier_Value> 0.25 </Modifier_Value>
+      </Effect_Component>
+
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <Modifier_Value> 0.15 </Modifier_Value>
+      </Effect_Component>-->
+
+<!--      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
+      </Effect_Component>-->
+
+   </Effect>      
+   
+   <Effect Name="EvictorIronWillEffect">
+      <Duration> -1.0 </Duration>
+      <!-- if you don't want stacking change following line -->
+      <Effect_Class> Transparent </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Speed_Mult_Coeff </Attribute>
+         <Modifier_Value> 0.25 </Modifier_Value>
+      </Effect_Component>-->
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <!-- 30% fire rate increase -->
+         <Modifier_Value> 0.15 </Modifier_Value>
+      </Effect_Component>
+
+<!--      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
+      </Effect_Component>-->
+
+   </Effect>   
 
    <!--=================================================================================================
 	== InfantryInspirationFireVisualEffect: Visual on building

@@ -161,7 +161,7 @@
          <!-- MLL: 1/16/07 Changed from Tactical_Build_Rate, which did not exist, to Builder_Upgrade_Rate. -->
          <!-- KDB 01-22-2007 changed again to Structure_Speed_Build -->
          <Attribute> Structure_Speed_Build </Attribute>
-         <Modifier_Value> 0.2 </Modifier_Value>
+         <Modifier_Value> 0.3 </Modifier_Value>
       </Effect_Component>
 
       <Effect_Component Type="RemoveEffect">
@@ -604,7 +604,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Fire </Damage_Type>
-			<Amount_Per_Second> 3.0 </Amount_Per_Second>
+			<Amount_Per_Second> 10.0 </Amount_Per_Second>
       <Percentage_Per_Second>.033</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -646,13 +646,13 @@
 		<!-- Takes less damage due to elemental shield -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.75 </Modifier_Value>
+			<Modifier_Value> -0.8 </Modifier_Value>
 		</Effect_Component>
 
     <!-- Does more damage -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
-			<Modifier_Value> 0.25 </Modifier_Value>
+			<Modifier_Value> 0.35 </Modifier_Value>
 		</Effect_Component>
 
     <Effect_Component Type="Sound">
@@ -660,7 +660,223 @@
     </Effect_Component>
 
 	</Effect>
+	
+  <Effect Name="MasariTemplarElementalFuryEffectDark">
+    <Duration> .5 </Duration>
+    <Effect_Class> BlazeOfGlory </Effect_Class>
 
+    <!-- Attach "Flaming" particle to the horse -->
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Templar_Frenzy_Dark </Particle_System_Type>
+    </Effect_Component>
+
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Charos_Frenzy_sycthe_DARK </Particle_System_Type>
+      <Attachment_Bone_Name>MUZZLE_A</Attachment_Bone_Name>
+    </Effect_Component>
+
+      <!-- Moves and attacks faster -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.35 </Modifier_Value>
+		</Effect_Component>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+
+    <!-- Does more damage -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.03 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 1.534 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>		
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Sprint </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>		
+	
+  <Effect Name="MasariTemplarElementalFuryEffectDarkUpgraded">
+    <Duration> .5 </Duration>
+    <Effect_Class> BlazeOfGlory </Effect_Class>
+
+    <!-- Attach "Flaming" particle to the horse -->
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Templar_Frenzy_Dark </Particle_System_Type>
+    </Effect_Component>
+
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Charos_Frenzy_sycthe_DARK </Particle_System_Type>
+      <Attachment_Bone_Name>MUZZLE_A</Attachment_Bone_Name>
+    </Effect_Component>
+
+      <!-- Moves and attacks faster -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 1.2 </Modifier_Value>
+		</Effect_Component>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+
+    <!-- Does more damage -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.30 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 3.534 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>		
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Sprint </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>			
+	
+  <Effect Name="MasariTemplarElementalFuryEffect">
+    <Duration> .5 </Duration>
+    <Effect_Class> BlazeOfGlory </Effect_Class>
+
+    <!-- Attach "Flaming" particle to the horse -->
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Templar_Frenzy </Particle_System_Type>
+    </Effect_Component>
+
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Charos_Frenzy_sycthe_light </Particle_System_Type>
+      <Attachment_Bone_Name>MUZZLE_A</Attachment_Bone_Name>
+    </Effect_Component>
+
+      <!-- Moves and attacks faster -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.37 </Modifier_Value>
+		</Effect_Component>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.05 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.003</Percentage_Per_Second>
+		</Effect_Component>		
+		
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <Modifier_Value> 0.6 </Modifier_Value>
+      </Effect_Component>		-->
+
+    <!-- Does more damage -->
+<!--		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
+			<Modifier_Value> 2.30 </Modifier_Value>
+		</Effect_Component>-->
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Sprint </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>	
+	
+	
+  <Effect Name="MasariTemplarElementalFuryEffectUpgraded">
+    <Duration> .5 </Duration>
+    <Effect_Class> BlazeOfGlory </Effect_Class>
+
+    <!-- Attach "Flaming" particle to the horse -->
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Templar_Frenzy </Particle_System_Type>
+    </Effect_Component>
+
+    <Effect_Component Type="ParticleSystem">
+      <Particle_System_Type> Masari_Charos_Frenzy_sycthe_light </Particle_System_Type>
+      <Attachment_Bone_Name>MUZZLE_A</Attachment_Bone_Name>
+    </Effect_Component>
+
+      <!-- Moves and attacks faster -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 1.2 </Modifier_Value>
+		</Effect_Component>
+
+		<!-- Takes less damage due to elemental shield -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.06 </Modifier_Value>
+		</Effect_Component>
+		
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0 </Amount_Per_Second>
+      <Percentage_Per_Second>0.006</Percentage_Per_Second>
+		</Effect_Component>		
+		
+<!--      <Effect_Component Type="AttributeModifier">
+         <Attribute> Weapon_Rate_Multiplier </Attribute>
+         <Modifier_Value> 0.6 </Modifier_Value>
+      </Effect_Component>		-->
+
+    <!-- Does more damage -->
+<!--		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
+			<Modifier_Value> 2.30 </Modifier_Value>
+		</Effect_Component>-->
+
+    <Effect_Component Type="Sound">
+      <Apply_Effect> Templar_Sprint </Apply_Effect>
+    </Effect_Component>
+
+	</Effect>		
+
+	<Effect Name="TransfusionEffect">
+    <Duration> 3.5 </Duration>	
+		<Effect_Class> Healing </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 50.0 </Amount_Per_Second>
+      <Percentage_Per_Second>0</Percentage_Per_Second>
+		</Effect_Component>
+		
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>	  
+         <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Target_Seer </Particle_System_Type>
+      </Effect_Component>		
+	</Effect>
+
+	<Effect Name="TransfusionEffectRecoil">
+    <Duration> 3.5 </Duration>	
+		<Effect_Class> SelfDestruct </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type>Damage_Masari_Zessus_Explosion</Damage_Type>
+			<Damage_Amount>100</Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>	
+		
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>	  
+         <Particle_System_Type> Masari_Seeker_Facilitated_Growth_Target_Seer </Particle_System_Type>
+      </Effect_Component>		
+	</Effect>
+	
 
 	
 	<!--=================================================================================================
@@ -947,6 +1163,44 @@
 		</Effect_Component>
 
    </Effect>
+   
+   <Effect Name="Masari_Zessus_Pre_Explode_Effect_Heal">
+      <Effect_Class> SelfDestructCountdown </Effect_Class>
+
+      <Effect_Component Type="DisableBehavior">
+         <Behaviors> WALK_LOCOMOTOR, TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+      </Effect_Component>
+
+      <Effect_Component Type="DisableAbility">
+         <Abilities>
+            Masari_Zessus_Range_Attack_Ability,
+            Masari_Zessus_Light_Melee_Attack_Ability
+         </Abilities>
+      </Effect_Component>
+
+      <Effect_Component Type="ApplyEffectOnRemove">
+         <Apply_On_Expiration_Only> Yes </Apply_On_Expiration_Only>
+         <Effect_Name> Masari_Zessus_Explode_Effect_Heal </Effect_Name>
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>Masari_Zessus_Explode_Pre_Heal</Particle_System_Type>
+         <Attachment_Bone_Name>B_Bomb</Attachment_Bone_Name>
+      </Effect_Component>
+      
+      <Effect_Component Type="Shake">
+			<!-- Lower number causes faster shaking -->
+			<Shake_Speed> .003 </Shake_Speed>
+			<Shake_Min> -0.4f, -0.4f, 0.2f </Shake_Min>
+            <Shake_Max> 0.4f, 0.4f, 0.3f </Shake_Max>
+		</Effect_Component>
+
+      <Effect_Component Type="Sound">
+         <Apply_Effect> SFX_Masari_Zessus_Explode_Power_Up</Apply_Effect>
+      </Effect_Component>
+     
+
+   </Effect>   
 
    <Effect Name="Masari_Zessus_Pre_Explode_Effect">
       <Effect_Class> SelfDestructCountdown </Effect_Class>
@@ -1017,6 +1271,38 @@
       </Effect_Component>
 
    </Effect>
+   
+   
+	<Effect Name="Masari_Zessus_Explode_Effect_Heal">
+		<Duration> 2.0 </Duration>
+		<Effect_Class> SelfDestruct </Effect_Class>
+
+		<Effect_Component Type="CreateObject">
+			<Create_Object_Type> Proj_Masari_Zessus_Explode_Heal </Create_Object_Type>
+			<Position_Type> AtTarget </Position_Type>
+			<Use_Source_Player_ID> true </Use_Source_Player_ID>
+		</Effect_Component>
+
+		<Effect_Component Type="Damage">
+			<Damage_Type>Damage_Masari_Zessus_Explosion</Damage_Type>
+			<Damage_Amount>420</Damage_Amount>
+			<Damage_Percentage>0.0</Damage_Percentage>
+		</Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>Masari_Zessus_Explode_Pre_Heal</Particle_System_Type>
+         <Attachment_Bone_Name>B_Bomb</Attachment_Bone_Name>
+      </Effect_Component>
+
+<!--    <Effect_Component Type="Sound">
+      <Apply_Effect> SFX_Masari_Zessus_Explode </Apply_Effect>
+    </Effect_Component>-->
+
+      <Effect_Component Type="Sound">
+         <Apply_Effect> SFX_Masari_Zessus_Explode_Power_Down</Apply_Effect>
+      </Effect_Component>
+
+   </Effect>   
 
 
 

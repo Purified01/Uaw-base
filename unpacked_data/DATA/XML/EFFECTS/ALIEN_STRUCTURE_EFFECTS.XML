@@ -382,7 +382,7 @@
 		<!-- Initial hit does straight damage -->
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Alien_Mass_Drop</Damage_Type>
-			<Damage_Amount>125</Damage_Amount>
+			<Damage_Amount>150</Damage_Amount>
 		</Effect_Component>
 
 		<!-- intial hit particle removed 
