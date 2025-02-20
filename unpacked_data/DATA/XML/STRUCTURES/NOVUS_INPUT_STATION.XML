@@ -591,7 +591,7 @@
 	</X12_Novus_Structures>
 
         <HardPoint Name="Novus_Recycle_Center_Basic_Defense_Upgrade">
-		<Variant_Of_Existing_Type>Novus_Material_Center_HP</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Novus_Research_Center_HP</Variant_Of_Existing_Type>
 		<Land_Model_Name>NV_Antitank.ALO </Land_Model_Name>
 		<Scale_Factor> 0.75 </Scale_Factor>
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>

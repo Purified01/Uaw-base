@@ -970,6 +970,8 @@
 		<!--CONFLICT-->
 		<Tactical_Health> 1100 </Tactical_Health>
 		<CategoryMask> CanAttack, HardPoint, BodySocketHP </CategoryMask>
+		<Is_Attackable> False </Is_Attackable>
+		<HP_Is_Immune_To_Damage>Yes</HP_Is_Immune_To_Damage>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_AssemblyWalker_TerrainConditioner.alo</Land_Model_Name>
@@ -1096,6 +1098,8 @@
 
       <!-- CONFLICT -->
       <Tactical_Health> 1000 </Tactical_Health>
+		<Is_Attackable> False </Is_Attackable>
+		<HP_Is_Immune_To_Damage>Yes</HP_Is_Immune_To_Damage>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->

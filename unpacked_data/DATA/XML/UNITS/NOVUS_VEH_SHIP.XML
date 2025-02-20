@@ -344,41 +344,9 @@
 		
                 <Unit_Abilities_Data SubObjectList="Yes">
 
-			<!-- Activates Dervish_Spin_Attack special ability below -->
-			<Unit_Ability Name="Unit_Ability_Dervish_Spin_Attack">
-				<Type> DERVISH_SPIN_ATTACK </Type>
-				<Is_Modal>yes</Is_Modal>
-				<Expiration_Seconds> 0.0 </Expiration_Seconds>
-				<Recharge_Seconds> 0.0 </Recharge_Seconds>
-				<Can_Be_Canceled_By_User>No</Can_Be_Canceled_By_User>
-				<Should_Targeting_Ignore_Objects> YES </Should_Targeting_Ignore_Objects>
-				<GUI_Activated_Ability_Name> Dervish_Spin_Attack </GUI_Activated_Ability_Name>
-				<SFXEvent_GUI_Unit_Ability_Activated> GUI_NOVUS_ABILITY_SPIN </SFXEvent_GUI_Unit_Ability_Activated>
-				<Targeting_Type> NONE </Targeting_Type>
-				<Unit_Ability_AI_PBAoE> true </Unit_Ability_AI_PBAoE>
-				<!-- the -4 is not an error, when required targets is < 0 then it needs abs(req_targets) regardless of any high value targets -->
-				<Unit_Ability_AI_Required_Targets> -4 </Unit_Ability_AI_Required_Targets>
-				<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 135.0 </Unit_Ability_AI_Range>
-			</Unit_Ability>
-
 		</Unit_Abilities_Data>
 
 		<Abilities SubObjectList="Yes">
-
-			<Dervish_Spin_Attack_Ability Name="Dervish_Spin_Attack">
-				<Activation_Style>USER_INPUT</Activation_Style>
-				<Attack_Duration_Seconds> 0.0 </Attack_Duration_Seconds>
-				<Attack_Radius> 00.0 </Attack_Radius>
-				<AOE_Damage_Per_Second> 0.0 </AOE_Damage_Per_Second>
-				<AOE_Additional_Random_Damage> 23.0 </AOE_Additional_Random_Damage>
-				<Spin_Up_Seconds> 0.0 </Spin_Up_Seconds>
-				<Attack_Animation> Attack_Special_A </Attack_Animation>
-				<SFXEvent_Activate> SFX_Novus_Dervish_Spin_Attack </SFXEvent_Activate>
-				<Effect_Generator> DervishSpinAttackEffectGenerator </Effect_Generator>
-				<Excluded_Unit_Categories>  Resource, Resource_INST </Excluded_Unit_Categories>
-				<Damage_Type> Damage_Novus_Dervish_Weapon </Damage_Type>
-			</Dervish_Spin_Attack_Ability>
 
 		</Abilities> 
 
@@ -394,13 +362,6 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 
-			<Effect_Generator Name="DervishSpinAttackEffectGenerator">
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> DervishSpinAttackEffect </Effect_Name>
-					<Duration> .5 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -821,7 +782,7 @@
         <HardPoint Name="Novus_Material_Center_Basic_Defense_Upgrade">
 		<Variant_Of_Existing_Type>Novus_Material_Center_HP</Variant_Of_Existing_Type>
 		<Land_Model_Name>NBHQ_Basic_Defenses.alo </Land_Model_Name>
-		<Scale_Factor> 0.1 </Scale_Factor>
+		<Scale_Factor> 0.65 </Scale_Factor>
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 		<AssetBank> BANK_NOVUS </AssetBank>
 
@@ -894,12 +855,13 @@
 
 		<BehaviorType Name="TurretBehaviorType">
 			<Turret_Rotate_Extent_Degrees> 360 </Turret_Rotate_Extent_Degrees>
-			<Turret_Elevate_Extent_Degrees> 180 </Turret_Elevate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 90 </Turret_Elevate_Extent_Degrees>
 			<Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
 			<Barrel_Bone_Name> Barrel_00 </Barrel_Bone_Name>
 			<Turret_Rotate_Speed> 5.0 </Turret_Rotate_Speed>
-			<Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
-			<Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
+			<Apply_X_Turret_Rotate_To_Axis> 2 </Apply_X_Turret_Rotate_To_Axis>
+			<Apply_Z_Turret_Rotate_To_Axis> 3 </Apply_Z_Turret_Rotate_To_Axis>
+			<Apply_Y_Turret_Rotate_To_Axis> 0 </Apply_Y_Turret_Rotate_To_Axis>
 			<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 			<Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
 		</BehaviorType>
@@ -1000,7 +962,7 @@
 			<Apply_Z_Turret_Rotate_To_Axis>1</Apply_Z_Turret_Rotate_To_Axis>
 			<Apply_Y_Turret_Rotate_To_Axis>2</Apply_Y_Turret_Rotate_To_Axis>
 			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
-			<Turret_Elevate_Extent_Degrees> 90.0 </Turret_Elevate_Extent_Degrees>
+			<Turret_Elevate_Extent_Degrees> 180.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
