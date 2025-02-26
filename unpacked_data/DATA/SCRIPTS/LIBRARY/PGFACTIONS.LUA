@@ -87,7 +87,7 @@ function PGFactions_Init()
 	PGFactionTextures[PG_FACTION_NOVUS] = "i_logo_novus.tga"
 	PGFactionTextures[PG_FACTION_ALIEN] = "i_logo_aliens.tga"
 	PGFactionTextures[PG_FACTION_MASARI] = "i_logo_masari.tga"
-	PGFactionTextures[PG_FACTION_PROTO] = "i_icon_hazard.tga"
+	PGFactionTextures[PG_FACTION_PROTO] = "i_icon_proto.tga"
 		
 		
 	-- Maria 07.03.2007
