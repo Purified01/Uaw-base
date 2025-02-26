@@ -53,26 +53,30 @@ function PGFactions_Init()
 	PG_FACTION_NOVUS	= Declare_Enum()
 	PG_FACTION_ALIEN	= Declare_Enum()
 	PG_FACTION_MASARI	= Declare_Enum()
+	PG_FACTION_PROTO	= Declare_Enum()
 	PG_FACTION_MILITARY	= Declare_Enum()
 	PG_FACTION_NEUTRAL	= Declare_Enum()
 	
 	PG_SELECTABLE_FACTION_MIN = PG_FACTION_NOVUS
-	PG_SELECTABLE_FACTION_MAX = PG_FACTION_MASARI
+	PG_SELECTABLE_FACTION_MAX = PG_FACTION_PROTO
 	
 	-- String form factions for networking
 	PG_FACTION_NOVUS_STRING = "Novus"
 	PG_FACTION_ALIEN_STRING = "Alien"
 	PG_FACTION_MASARI_STRING = "Masari"
+	PG_FACTION_PROTO_STRING = "Proto"
 	PGFactionStringLookup = {}
 	PGFactionStringLookup[PG_FACTION_NOVUS] = PG_FACTION_NOVUS_STRING
 	PGFactionStringLookup[PG_FACTION_ALIEN] = PG_FACTION_ALIEN_STRING
 	PGFactionStringLookup[PG_FACTION_MASARI] = PG_FACTION_MASARI_STRING
+	PGFactionStringLookup[PG_FACTION_PROTO] = PG_FACTION_PROTO_STRING
 	
 
 	-- Localized wide strings for user display.
 	PGFactionLocalizedLookup = {}
 	PGFactionLocalizedLookup[PG_FACTION_NOVUS] = Get_Game_Text("TEXT_FACTION_NOVUS")
 	PGFactionLocalizedLookup[PG_FACTION_ALIEN] = Get_Game_Text("TEXT_FACTION_ALIEN")
+	PGFactionLocalizedLookup[PG_FACTION_PROTO] = Get_Game_Text("TEXT_FACTION_ALIEN")
 	PGFactionLocalizedLookup[PG_FACTION_MASARI] = Get_Game_Text("TEXT_FACTION_MASARI")
 	PGFactionLocalizedLookup[PG_FACTION_MILITARY] = Get_Game_Text("TEXT_FACTION_MILITARY")
 	PGFactionLocalizedLookup[PG_FACTION_NEUTRAL] = Get_Game_Text("TEXT_FACTION_NEUTRAL")
@@ -83,6 +87,7 @@ function PGFactions_Init()
 	PGFactionTextures[PG_FACTION_NOVUS] = "i_logo_novus.tga"
 	PGFactionTextures[PG_FACTION_ALIEN] = "i_logo_aliens.tga"
 	PGFactionTextures[PG_FACTION_MASARI] = "i_logo_masari.tga"
+	PGFactionTextures[PG_FACTION_PROTO] = "i_icon_hazard.tga"
 		
 		
 	-- Maria 07.03.2007
@@ -90,6 +95,7 @@ function PGFactions_Init()
 	PGFactionNameToFactionTexture["NOVUS"]		= PGFactionTextures[PG_FACTION_NOVUS]
 	PGFactionNameToFactionTexture["ALIEN"]		= PGFactionTextures[PG_FACTION_ALIEN]
 	PGFactionNameToFactionTexture["MASARI"]	= PGFactionTextures[PG_FACTION_MASARI]
+	PGFactionNameToFactionTexture["PROTO"]		= PGFactionTextures[PG_FACTION_ALIEN]
 
 	-- Starting Cash
 	-- These constants MUST stay syncronized with the same values in InvasionStartGameHandler.cpp

@@ -35,7 +35,7 @@ function On_Init()
   PGPlayerProfile_Init_Constants()
   Net.Register_Event_Handler(On_Network_Event)
   ENABLE_NEW_MULTIPLAYER_FLOW = true
-  Mainmenu.Text_Version_Info_String.Set_Text(Get_Full_Version_Info_String() .. " | Community Patch 4 by Rosie.")
+  Mainmenu.Text_Version_Info_String.Set_Text(Get_Full_Version_Info_String() .. " | Community Patch 4 by Rosie. | Alternate Hierarchy Faction by Purified")
   DialogToOpen = nil
   Dialog_Box_Common_Init()
   CheckForNonLiveUpdates = true
