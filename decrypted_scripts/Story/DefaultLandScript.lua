@@ -1,4 +1,39 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultLandScript.lua#137 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[194] = true
+LuaGlobalCommandLinks[32] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[2] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[57] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[148] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultLandScript.lua#44 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +60,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultLandScript.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultLandScript.lua $
 --
 --    Original Author: Eric Yiskis
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90634 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/09 14:38:51 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #137 $
+--          $Revision: #44 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +86,7 @@ require("PGObjectives")
 require("PGHintSystemDefs")
 require("PGHintSystem")
 require("Story_Campaign_Hint_System")
+require("UIControl")
 
 
 -- -------------------------------------------------------------------------------------------------
@@ -58,19 +94,19 @@ require("Story_Campaign_Hint_System")
 -- -------------------------------------------------------------------------------------------------
 function Define_Starting_Forces()
 	StartingForces = { 
-		[Find_Player("Alien").Get_Faction_Name()] = {
+		["ALIEN"] = {
 			"ALIEN_ARRIVAL_SITE",
 			"ALIEN_GLYPH_CARVER",
 		},
-		[Find_Player("Novus").Get_Faction_Name()] = {
+		["NOVUS"] = {
 			"NOVUS_REMOTE_TERMINAL",
 			"NOVUS_CONSTRUCTOR",
 		},
-		[Find_Player("Masari").Get_Faction_Name()] = {
+		["MASARI"] = {
 			"MASARI_FOUNDATION",
 			"MASARI_ARCHITECT",
 		},
-		[Find_Player("Military").Get_Faction_Name()] = {
+		["MILITARY"] = {
 			"MILITARY_HUMMER",
 			"MILITARY_HUMMER",
 			"MILITARY_HUMMER",
@@ -464,7 +500,7 @@ function State_Init(message)
 		end
 	
 		Initialize_Game()
-		
+
 		Sleep(0.01)
 		if (DEFCONEnabled) then
 			if (not DEFCONRunning) then
@@ -548,6 +584,7 @@ function Initialize_Game()
 	
 	-- this displays the hints for how to use transports and research trees in the masari campaign
 	if Is_Campaign_Game() and not Is_Scenario_Campaign() then
+		UI_On_Mission_Start()
 		Create_Thread("Masari_Story_Campaign_Tactical_Hints")
 		Create_Thread("Masari_Story_Campaign_Attribute_Modifiers")
 		Create_Thread("Thread_Masari_Story_Campaign_Limit_Income")
@@ -605,9 +642,9 @@ function Masari_Story_Campaign_Tactical_Hints()
 		Register_Hint_Context_Scene(scene)			-- Set the scene to which independant hints will be attached.
 		
 		
-		Add_Independent_Hint(HINT_MM02_TRANSPORTS)
+		Add_Independent_Hint(128)
 		Sleep(2)
-		Add_Independent_Hint(HINT_MM02_MISSION_COMPLETE)
+		Add_Independent_Hint(138)
 		Sleep(2)
 
 		--jdg 7/20/07 adding a research-hint to the button for masari-campaign-sandbox
@@ -616,7 +653,7 @@ function Masari_Story_Campaign_Tactical_Hints()
 			Sleep(1)
 			_CustomScriptMessage("JoeLog.txt", string.format("DefaultLandScript.lua not TestValid(research_button)"))
 		end
-		Add_Attached_GUI_Hint(PG_GUI_HINT_HERO_ICON, research_button, HINT_MM02_RESEARCH)
+		Add_Attached_GUI_Hint(PG_GUI_HINT_HERO_ICON, research_button, 129)
 	end
 end
 
@@ -715,21 +752,26 @@ function Apply_Medal_Effects(client)
 	for _, achievement_id in ipairs(client.applied_medals) do
 	
 		local dao = OnlineAchievementMap[achievement_id]
-		local achievement_label = dao.BuffLabel
-	
-		if ((achievement_label ~= nil) and (achievement_label ~= "NIY")) then
-			DebugMessage("LUA_MEDALS:  Creating effect object '" .. tostring(achievement_label) .. "' [ID: " .. tostring(achievement_id) .. "] on player '" .. tostring(client.name) .. "'")
-			Create_Generic_Object(Find_Object_Type(achievement_label), position, player)
-		end
 		
-		-- Some buffs have script-only requirements
-		if (achievement_id == ACHIEVEMENT_MP_RESEARCHER) then			-- MEDAL:  Researcher
+		if (dao ~= nil) then
 		
-			player.Get_Script().Call_Function("Set_Research_Time_Modifier", dao.BuffValue)
+			local achievement_label = dao.BuffLabel
+		
+			if ((achievement_label ~= nil) and (achievement_label ~= "NIY")) then
+				DebugMessage("LUA_MEDALS:  Creating effect object '" .. tostring(achievement_label) .. "' [ID: " .. tostring(achievement_id) .. "] on player '" .. tostring(client.name) .. "'")
+				Create_Generic_Object(Find_Object_Type(achievement_label), position, player)
+			end
 			
-		elseif (achievement_id == ACHIEVEMENT_MP_UNLIMITED_POWER) then	-- MEDAL:  Modular Proficiency
-		
-			player.Add_To_Elemental_Mode_Speed_Modifer(dao.BuffValue)
+			-- Some buffs have script-only requirements
+			if (achievement_id == ACHIEVEMENT_MP_RESEARCHER) then			-- MEDAL:  Researcher
+			
+				player.Get_Script().Call_Function("Set_Research_Time_Modifier", dao.BuffValue)
+				
+			elseif (achievement_id == ACHIEVEMENT_MP_UNLIMITED_POWER) then	-- MEDAL:  Modular Proficiency
+			
+				player.Add_To_Elemental_Mode_Speed_Modifer(dao.BuffValue)
+				
+			end
 			
 		end
 		
@@ -778,7 +820,7 @@ function Initialize_DEFCON()
 	--[[JOE DELETE
 	-- MAKE SURE THIS IS LAST:  Repeat until we issue a Cancel_Timer on this funciton
 	Register_Timer(Service_DEFCON, DEFCON_COUNTDOWN)--]]
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("DEFCON_Set_Enabled", nil, {true})
+	Get_Game_Mode_GUI_Scene().Raise_Event("DEFCON_Set_Enabled", nil, {true})
 	
 end
 
@@ -814,21 +856,25 @@ function Service_DEFCON()
 		
 		-- Start research only if we are not at the last defcon level for there are only 4 levels of research!.
 		if NextDEFCONTechLevel <= NUMBER_OF_SUITES_PER_RESEARCH_PATH then	
-			player.Get_Script().Call_Function("Set_Current_DEFCON_Level", NextDEFCONTechLevel)
-			
-			local node_info = 
-			{
-				"A",
-				NextDEFCONTechLevel
-			}
-			
-			-- Maria: NOTE: by calling Start_Research we make sure the research tree scene is updated as 
-			-- research progresses!.
-			player.Get_Script().Call_Function("Start_Research", node_info)
-			node_info[1] = "B"
-			player.Get_Script().Call_Function("Start_Research", node_info)
-			node_info[1] = "C"
-			player.Get_Script().Call_Function("Start_Research", node_info)		
+			local player_script = player.Get_Script()
+			if player_script then
+				
+				player_script.Call_Function("Set_Current_DEFCON_Level", NextDEFCONTechLevel)
+				
+				local node_info = 
+				{
+					"A",
+					NextDEFCONTechLevel
+				}
+				
+				-- Maria: NOTE: by calling Start_Research we make sure the research tree scene is updated as 
+				-- research progresses!.
+				player_script.Call_Function("Start_Research", node_info)
+				node_info[1] = "B"
+				player_script.Call_Function("Start_Research", node_info)
+				node_info[1] = "C"
+				player_script.Call_Function("Start_Research", node_info)		
+			end
 		end
 		
 		-- Send SFX notification of DEFCON level advancement.
@@ -841,7 +887,7 @@ function Service_DEFCON()
 		NextDEFCONLevel,
 		DEFCON_COUNTDOWN
 	}
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("DEFCON_Set_Model", nil, {data_model})
+	Get_Game_Mode_GUI_Scene().Raise_Event("DEFCON_Set_Model", nil, {data_model})
 	
 	NextDEFCONLevel = NextDEFCONLevel - 1
 	NextDEFCONTechLevel = NextDEFCONTechLevel + 1
@@ -950,6 +996,7 @@ function End_Mission(player)
 			--during shutdown and causing the mouse cursor to be gone when
 			--returning to the main menu
 			GameOver = true
+			UI_On_Mission_End()
 			Create_Thread("Announce_Game_End_Thread", player)
 		end
 	else
@@ -976,7 +1023,7 @@ end
 function Skirmish_Game_End_Thread(winner)
 	Lock_Controls(1)
 	Letter_Box_In(1)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Skirmish_Game_End_Announcement_Text", nil, {winner} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Skirmish_Game_End_Announcement_Text", nil, {winner} )
 	Sleep(4)
 	Fade_Screen_Out(1)
 	Sleep(1)
@@ -998,13 +1045,13 @@ function Announce_Game_End_Thread(winner)
 	else
 		announce_text = Get_Game_Text("TEXT_LOSE_TACTICAL")
 	end
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {announce_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {announce_text} )
 	local all_units = Find_All_Objects_Of_Type(winner)
 	for _, unit in pairs(all_units) do
 		unit.Make_Invulnerable(true)
 	end
 	Sleep(4)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {""} )
 	Lock_Controls(0)
 	-- params: winning_player, quit_to_main_menu, destroy_loser_forces, build_temporary_command_center, VerticalSliceTriggerVictorySplashFlag, show_fleet_management
 	Quit_Game_Now(winner, not Is_Campaign_Game(), true, Is_Campaign_Game(), false, true)
@@ -1397,6 +1444,10 @@ function On_Construction_Complete(object)
 		local owner = object.Get_Owner()
 		if not VictoryRelevantUnits[owner.Get_ID()] then VictoryRelevantUnits[owner.Get_ID()] = {} end
 		if not VictoryRelevantUnits[owner.Get_ID()][object.Get_ID()] then
+			-- Oksana: this somehow ends up being 0 on some maps
+			if not VictoryRelevantUnits[owner.Get_ID()].victory_relevant_count then
+				VictoryRelevantUnits[owner.Get_ID()].victory_relevant_count = 0
+			end
 			VictoryRelevantUnits[owner.Get_ID()].victory_relevant_count = VictoryRelevantUnits[owner.Get_ID()].victory_relevant_count + 1
 			VictoryRelevantUnits[owner.Get_ID()][object.Get_ID()] = true
 			object.Register_Signal_Handler(On_Victory_Object_Killed, "OBJECT_DELETE_PENDING")
@@ -1457,16 +1508,9 @@ function Test_For_Victory_Event_Based()
 			local player = Find_Player(client.PlayerID)	
 			if VictoryRelevantUnits[player.Get_ID()].victory_relevant_count > 0 then
 				if not surviving_team or surviving_team == team_id then
-					if is_single_player_skirmish then
-						if not player.Is_AI_Player() then
-							surviving_team = team_id
-							survivor_is_human = true
-						end
-					else
-						surviving_team = team_id
-						if not player.Is_AI_Player() then
-							survivor_is_human = true
-						end
+					surviving_team = team_id
+					if not player.Is_AI_Player() then
+						survivor_is_human = true
 					end
 				elseif not player.Is_AI_Player() or survivor_is_human then
 					--Multiple teams have human players that are still in the game or
@@ -1500,6 +1544,7 @@ function Test_For_Victory_Event_Based()
 
 		if surviving_team == nil then
 			--No teams with units left??  How??  I give up
+			End_Mission(Find_Player(0))
 			return
 		end
 	end
@@ -1553,11 +1598,11 @@ function Is_Victory_Relevant(object)
 		return false
 	end
 	
-	if object.Has_Behavior(BEHAVIOR_FLEET) then
+	if object.Has_Behavior(4) then
 		return false
 	end
 	
-	if object.Has_Behavior(BEHAVIOR_MARKER) then
+	if object.Has_Behavior(17) then
 		return false
 	end
 	
@@ -1586,14 +1631,18 @@ function Notify_Faction_Eliminated(player)
 	if not Is_Campaign_Game() then
 		Kill_All_Units_Of_Player(player)
 		player.Get_Script().Call_Function("Reset_Research")
-		local message = Replace_Token(Get_Game_Text("TEXT_TACTICAL_PLAYER_ELIMINATED"), player.Get_Display_Name(), 0)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {message} )
+		-- set this flag so the player will shut down all AI goals
+		player.Set_Player_Has_Been_Eliminated(true)
 		--Should find something better to play here.
 		Play_SFX_Event("GUI_Generic_Bad_Sound")
 		local game_options = GameScoringManager.Get_Game_Options_Table()
 		if IsEndMissionCalled then
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 		elseif IsEndMissionCalled == false then
+			--Only announce player elimination if the match isn't over, 
+			local message = Replace_Token(Get_Game_Text("TEXT_TACTICAL_PLAYER_ELIMINATED"), player.Get_Display_Name(), 0)
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {message} )
+			
 			player.Set_As_Observer()
 			RadarMap.Add_Filter("Radar_Map_Enable", player)
 			RadarMap.Add_Filter("Radar_Map_Allow_Mouse_Input", player)
@@ -1608,6 +1657,8 @@ function Notify_Faction_Eliminated(player)
 end
 
 function Pre_Save_Callback()
+	Base_Pre_Save_Callback()
+	HintSystemContextScene = nil
 	local game_mode_scene = Get_Game_Mode_GUI_Scene()
 	if TestValid(game_mode_scene.DEFCON_Overlay) then
 		DEFCONDataModel = game_mode_scene.DEFCON_Overlay.Get_Model()
@@ -1624,7 +1675,7 @@ function Post_Load_Callback()
 			-- Update the view layer.
 			if DEFCONDataModel ~= nil then
 				-- Do not call DEFCON_Initialize again, but let the game mode gui scene know that it needs to display it
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("DEFCON_Set_Enabled", nil, {true})
+				Get_Game_Mode_GUI_Scene().Raise_Event("DEFCON_Set_Enabled", nil, {true})
 
 				local data_model = 
 				{
@@ -1632,10 +1683,10 @@ function Post_Load_Callback()
 					DEFCONDataModel.DEFCONCountdown
 				}
 				DEFCONDataModel = nil
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("DEFCON_Set_Model", nil, {data_model})
+				Get_Game_Mode_GUI_Scene().Raise_Event("DEFCON_Set_Model", nil, {data_model})
 			else
 				-- Something was wrong with the save... disable DEFCON
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("DEFCON_Set_Enabled", nil, {false})
+				Get_Game_Mode_GUI_Scene().Raise_Event("DEFCON_Set_Enabled", nil, {false})
 			end
 		end
 	end
@@ -1643,4 +1694,85 @@ end
 
 ---------------------------------------------------------------------------------------------------
 -- EOF
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Callback_Alien_Hero_Killed = nil
+	Callback_Novus_Hero_Killed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Close_All_Huds = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Movie_Commands_Post_Load_Callback = nil
+	Notify_Attached_Hint_Created = nil
+	Objective_Complete = nil
+	Objectives_Test = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Next_State = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	movie_thread = nil
+	Kill_Unused_Global_Functions = nil
+end
 

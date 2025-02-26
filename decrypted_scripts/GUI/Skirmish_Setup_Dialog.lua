@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Skirmish_Setup_Dialog.lua#63 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Skirmish_Setup_Dialog.lua#28 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Skirmish_Setup_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Skirmish_Setup_Dialog.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90228 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/02 17:37:40 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #63 $
+--          $Revision: #28 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,7 +75,7 @@ require("PGMapOverlayManager")
 -- LAN / Internet distinction.
 -------------------------------------------------------------------------------
 function GUI_Init()
-	
+
 	-- Library init
 	PGColors_Init()
 	PGNetwork_Init()
@@ -181,6 +192,7 @@ function Initialize_Components()
 		map.Handle = cluster
 		map.Handle.Set_Hidden(true)
 		map.Handle.Set_Seat(index)
+		map.Handle.Set_Accept_UI_Visible(false)
 		table.insert(ViewPlayerInfoClusters, map)
 	
 	end
@@ -200,6 +212,8 @@ function Initialize_Traversal()
 	panel.Combo_DEFCON_Active.Set_Tab_Order(Declare_Enum())
 	panel.Combo_Hero_Respawn.Set_Tab_Order(Declare_Enum())
 	panel.Combo_Starting_Credits.Set_Tab_Order(Declare_Enum())
+	panel.Combo_Unit_Population_Limit.Set_Tab_Order(Declare_Enum())
+
 	
 	-- Base Panel
 	panel = this
@@ -374,7 +388,7 @@ function Constants_Init()
 	VIEW_STATE_GAME_OPTIONS_HOST_STAGING = Declare_Enum()
 	VIEW_STATE_GAME_STAGING = Declare_Enum()
 	
-	SYSTEM_CHAT_COLOR = COLOR_WHITE
+	SYSTEM_CHAT_COLOR = 1
 	
 	VIEW_CLUSTER_COLUMN_LEFT_X = 0.200
 	VIEW_CLUSTER_COLUMN_LEFT_Y = 0.220
@@ -382,16 +396,16 @@ function Constants_Init()
 	VIEW_CLUSTER_COLUMN_RIGHT_Y = 0.220
 	VIEW_CLUSTER_COLUMN_VERTICAL_DELTA = 0.130
 	
-	VIEW_MAX_TEAM = 8
+	VIEW_MAX_TEAM = MAX_TEAMS
 	
-	VIEW_MAX_PLAYER_COUNT = 8
+	VIEW_MAX_PLAYER_COUNT = MAP_MAX_PLAYER_COUNT
 	
 	AVAILABLE_SESSIONS_REFRESH_PERIOD = 3
 	CLIENT_VALIDATION_PERIOD = 5
 	
 	LOBBY_DEFAULT_FACTION = PG_FACTION_NOVUS
 	LOBBY_DEFAULT_TEAM = 1
-	LOBBY_DEFAULT_COLOR = MP_COLORS[MP_COLORS_MIN]
+	LOBBY_DEFAULT_COLOR = ({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[0]
 	
 	NO_MAP_PREVIEW_TEXTURE = "i_no_button.tga"
 	SPINNER_UP_NORMAL = "i_combobox_small_up.tga"
@@ -431,6 +445,8 @@ function Variables_Init()
 
 	-- Needed for certain networking functions to behave properly
 	HostingGame = true
+	
+	RestartingMap = false
 	
 end
 
@@ -610,7 +626,7 @@ function Close_Dialog()
 	this.Get_Containing_Component().Set_Hidden(true)
 	PGLobby_Passivate_Movies()
 	PGLobby_Set_Dialog_Is_Hidden(true)
-	this.Get_Containing_Scene().Raise_Event_Immediate("Heavyweight_Child_Scene_Closing", nil, {})
+	this.Get_Containing_Scene().Raise_Event("Heavyweight_Child_Scene_Closing", nil, {"Skirmish_Setup_Dialog"})
 end
 
 -------------------------------------------------------------------------------
@@ -718,6 +734,11 @@ end
 -------------------------------------------------------------------------------
 function On_Go_Clicked()
 	
+	-- Is the go button enabled? 
+	if (not (this.Button_Go.Is_Enabled())) then
+		return
+	end
+		
 	Persist_UI_To_Profile()
 		
 	if (ViewState == VIEW_STATE_GAME_OPTIONS_HOST) then
@@ -826,7 +847,6 @@ function On_Player_Faction_Up_Clicked()
 	
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.faction = client.faction
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Local_Client()	
@@ -851,7 +871,6 @@ function On_Player_Faction_Down_Clicked()
 	
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.faction = client.faction
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Local_Client()	
@@ -877,7 +896,6 @@ function On_Player_Team_Up_Clicked()
 
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.team = client.team
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Selected_Player_View()
@@ -902,7 +920,6 @@ function On_Player_Team_Down_Clicked()
 	
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.team = client.team
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Selected_Player_View()
@@ -919,16 +936,15 @@ function On_Player_Color_Up_Clicked()
 
 	local client = CurrentlySelectedClient
 	
-	local index = MP_COLOR_INDICES[client.color]
+	local index = ({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })[client.color]
 	index = index - 1
-	if (index < MP_COLORS_MIN) then
-		index = NUM_MP_COLORS
+	if (index < 0) then
+		index = 7
 	end
-	client.color = MP_COLORS[index]
+	client.color = ({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[index]
 	
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.color = client.color
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Selected_Player_View()
@@ -945,16 +961,15 @@ function On_Player_Color_Down_Clicked()
 
 	local client = CurrentlySelectedClient
 	
-	local index = MP_COLOR_INDICES[client.color]
+	local index = ({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })[client.color]
 	index = index + 1
-	if (index > NUM_MP_COLORS) then
-		index = MP_COLORS_MIN
+	if (index > 7) then
+		index = 0
 	end
-	client.color = MP_COLORS[index]
+	client.color = ({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[index]
 	
 	if (client.common_addr == LocalClient.common_addr) then
 		LocalClient.color = client.color
-		Persist_UI_To_Profile()
 	end
 	
 	Update_Selected_Player_View()
@@ -1019,6 +1034,7 @@ function On_Combo_Map_Selection_Changed()
 		this.Panel_Game_Setup.Quad_Map_Preview.Set_Hidden(true)
 		this.Panel_Game_Setup.Globe_Movie.Play()
 		PGMO_Hide()
+		this.Panel_Game_Setup.Text_Player_Count.Set_Text("")
 
 	else
 
@@ -1029,7 +1045,9 @@ function On_Combo_Map_Selection_Changed()
 		-- Preview quad texture
 		local map_preview = map_dao.file_name_no_extension
 		map_preview = map_preview .. ".tga"
-		local player_count_text = Get_Game_Text("TEXT_LAN_PLAYERS").append(Get_Localized_Formatted_Number(map_dao.num_players))
+		local player_count_text = Get_Game_Text("TEXT_GAMEPAD_MULTIPLAYER_MAP_PLAYER_COUNT")
+		local localized_player_count = Get_Localized_Formatted_Number(map_dao.num_players)
+		Replace_Token(player_count_text, localized_player_count, 1)
 
 		-- Map Overlay
 		PGMO_Set_Start_Marker_Model(map_dao.num_players, map_dao.normalized_start_positions)
@@ -1037,7 +1055,7 @@ function On_Combo_Map_Selection_Changed()
 
 		-- Update the preview textures.
 		this.Panel_Game_Setup.Quad_Map_Preview.Set_Texture(tostring(map_preview))
-		this.Panel_Game_Setup.Quad_Map_Preview.Set_Render_Mode(ALPRIM_OPAQUE)
+		this.Panel_Game_Setup.Quad_Map_Preview.Set_Render_Mode(0)
 		this.Panel_Game_Setup.Text_Player_Count.Set_Text(player_count_text)
 
 	end
@@ -1055,6 +1073,11 @@ end
 -- 
 -------------------------------------------------------------------------------
 function On_Player_Cluster_Clicked(event_label, _, common_addr)
+
+	if ( common_addr == nil ) then
+		Update_Selected_Player_View()
+		Update_Player_List()
+	end
 
 	local client = Network_Get_Client(common_addr)
 	
@@ -1343,7 +1366,7 @@ function Refresh_Game_Settings_View()
 	local map_preview = map .. ".tga" 
 	this.Panel_Game_Staging.Text_Map.Set_Text(map)
 	this.Panel_Game_Staging.Quad_Map_Preview.Set_Texture(tostring(map_preview))
-	this.Panel_Game_Staging.Quad_Map_Preview.Set_Render_Mode(ALPRIM_OPAQUE)
+	this.Panel_Game_Staging.Quad_Map_Preview.Set_Render_Mode(0)
 		
 	-- Map Overlay
 	local map_dao = MPMapLookup[GameOptions.map_filename_only]
@@ -1380,11 +1403,11 @@ function Refresh_Game_Settings_View()
 	-- Display!
 	this.Panel_Game_Staging.Text_Map.Set_Text(map_label)
 	this.Panel_Game_Staging.Quad_Map_Preview.Set_Texture(tostring(map_preview))
-	this.Panel_Game_Staging.Quad_Map_Preview.Set_Render_Mode(ALPRIM_OPAQUE)
+	this.Panel_Game_Staging.Quad_Map_Preview.Set_Render_Mode(0)
 	this.Panel_Game_Staging.Panel_Settings.Text_Starting_Cash.Set_Text(starting_cash_label)
 	this.Panel_Game_Staging.Panel_Settings.Text_DEFCON.Set_Text(defcon_label)
 	this.Panel_Game_Staging.Panel_Settings.Text_Win_Condition.Set_Text(win_condition_label)
-	this.Panel_Game_Staging.Panel_Settings.Text_Hero_Respawn.Set_Text(hero_respawn_label)--]]
+	this.Panel_Game_Staging.Panel_Settings.Text_Hero_Respawn.Set_Text(hero_respawn_label)
 
 	
 	-- Settings display planel
@@ -1451,7 +1474,7 @@ function Populate_UI_From_Profile()
 	
 		LocalClient.faction = Get_Profile_Value(PP_SKIRMISH_PLAYER_FACTION, LOBBY_DEFAULT_FACTION)
 		LocalClient.team = Get_Profile_Value(PP_SKIRMISH_PLAYER_TEAM, LOBBY_DEFAULT_TEAM)
-		LocalClient.color = Get_Profile_Value(PP_SKIRMISH_PLAYER_COLOR, LOBBY_DEFAULT_COLOR)
+		LocalClient.color = PGLobby_Get_Preferred_Color()
 
 		LocalClient.faction = Validate_Client_Faction(LocalClient.faction)
 		
@@ -1509,6 +1532,7 @@ function Update_Player_List()
 		handle.Clear_UI()
 		handle.Set_Model()
 		handle.Set_Hidden(false)
+		handle.Set_Tab_Order(Declare_Enum())
 	end
 
 	local client_selected = false
@@ -1660,6 +1684,7 @@ function Update_Player_List()
 	end
 	
 end
+
 -------------------------------------------------------------------------------
 --
 -------------------------------------------------------------------------------
@@ -1758,6 +1783,7 @@ function Refresh_Staging_System_Message()
 	local can_start, messages = Check_Game_Start_Conditions()
 	if (can_start and (not GameIsStarting)) then
 		
+		this.Button_Go.Set_Hidden(false)
 		Set_Staging_System_Message(Get_Game_Text("TEXT_MULTIPLAYER_READY_TO_START"))
 			
 	elseif (not can_start) then
@@ -1799,7 +1825,13 @@ function Finish_Host_Game()
 	ClientSeatAssignments[HOST_SEAT_POSITION] = LocalClient
 	Set_Currently_Selected_Client(LocalClient)
 	Update_Selected_Player_View()
-	Add_AI_Player() -- we have an AI player by default
+	
+	-- Only add an AI player if the map has at least two start markers.
+		-- Map Overlay
+	local map_dao = MPMapLookup[GameOptions.map_filename_only]
+	if (#(map_dao.normalized_start_positions) >= 2) then
+		Add_AI_Player() -- we have an AI player by default
+	end
 
 	-- Every few seconds, we are going to check our ClientTable and make sure we know everything
 	-- about everyone and all the game settings.
@@ -1825,9 +1857,12 @@ end
 -------------------------------------------------------------------------------
 function On_Menu_System_Activated()
 
+	DebugMessage("LUA_LOBBY: Menu System Activated!!")
+	
 	PGLobby_Set_Tooltip_Visible(false)
 
-	if (not GameHasStarted) then
+	if (not GameHasStarted or RestartingMap) then
+		DebugMessage("LUA_LOBBY: Game has not started or we are doing a map restart.  Early out...")
 		return
 	end
 	
@@ -1877,6 +1912,8 @@ function Start_Game()
 	GameScoringManager.Set_Game_Script_Data_Table(GameScriptData)
 	GameScoringManager.Set_Is_Ranked_Game(false)
 	GameScoringManager.Set_Is_Global_Conquest_Game(false)
+	GameScoringManager.Set_Is_Custom_Multiplayer_Game(false)
+	GameScoringManager.Set_Is_Disconnect_Detected(false)
 	
 	GameHasStarted = true
 	return true
@@ -1937,7 +1974,7 @@ function Update_Local_Client()
 
 	-- Color
 	if (LocalClient.color == nil) then
-		LocalClient.color = Get_Preferred_Color()
+		LocalClient.color = PGLobby_Get_Preferred_Color()
 	end
 	
 	-- Medals
@@ -1959,13 +1996,16 @@ function Leave_Game()
 	Stop_Client_Validation_Checking()
 
 	for seat = 1, MAP_MAX_PLAYER_COUNT do
-		local handle = ViewPlayerInfoClusters[seat].Handle
-		handle.Clear_UI()
-		handle.Set_Model()
-		handle.Set_Hidden(true)
+		if (seat <= #ViewPlayerInfoClusters) then
+			local handle = ViewPlayerInfoClusters[seat].Handle
+			handle.Clear_UI()
+			handle.Set_Model()
+			handle.Set_Hidden(true)
+		end
 	end
 
 	CurrentlySelectedSession = nil
+	Network_Clear_All_Clients()
 		
 end
 
@@ -2204,23 +2244,6 @@ function Get_Preferred_Team()
 end
 
 -------------------------------------------------------------------------------
---
--------------------------------------------------------------------------------
-function Get_Preferred_Color()
-
-	local color = Get_Profile_Value(PP_COLOR_INDEX, MP_COLORS[MP_COLORS_MIN])
-	local index = MP_COLOR_INDICES[color]
-	if (color == nil or index == nil) then
-		color = COLOR_BRIGHT_GRAY
-	else
-		color = tonumber(color)
-	end
-	
-	return color
-		
-end
-
--------------------------------------------------------------------------------
 -- 
 -------------------------------------------------------------------------------
 function Build_Game_Start_Positions()
@@ -2341,7 +2364,7 @@ function Network_On_Live_Connection_Changed(event)
 	if (ViewState == VIEW_STATE_GAME_STAGING) then
 		Update_Player_List()
 	end
-		
+
 end
 
 -------------------------------------------------------------------------------
@@ -2358,6 +2381,14 @@ function Add_AI_Player()
 		end
 	end
 
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Set_Restarting_Map(value)
+	DebugMessage("LUA_SKIRMISH: Setting Restarting Flag: " .. tostring(value))
+	RestartingMap = value
 end
 	
 
@@ -2380,3 +2411,130 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 Interface = {}
 Interface.On_Play_Again_Restart = On_Play_Again_Restart
+Interface.Set_Restarting_Map = Set_Restarting_Map
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Check_Accept_Status = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Currently_Selected_Session = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Selected_Client = nil
+	Hide_Modal_Message = nil
+	Is_Player_Of_Faction = nil
+	Min = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	OutputDebug = nil
+	PGLobby_Begin_Stats_Registration = nil
+	PGLobby_Convert_Faction_Strings_To_IDs = nil
+	PGLobby_Create_Random_Game_Name = nil
+	PGLobby_Create_Session = nil
+	PGLobby_Display_Custom_Modal_Message = nil
+	PGLobby_Display_NAT_Information = nil
+	PGLobby_Hide_Modal_Message = nil
+	PGLobby_Init_Modal_Message = nil
+	PGLobby_Is_Game_Joinable = nil
+	PGLobby_Keepalive_Close_Bracket = nil
+	PGLobby_Keepalive_Open_Bracket = nil
+	PGLobby_Lookup_Map_DAO = nil
+	PGLobby_Print_Client_Table = nil
+	PGLobby_Refresh_Available_Games = nil
+	PGLobby_Request_All_Medals_Progress_Stats = nil
+	PGLobby_Request_All_Required_Backend_Data = nil
+	PGLobby_Request_Global_Conquest_Properties = nil
+	PGLobby_Request_Stats_Registration = nil
+	PGLobby_Reset = nil
+	PGLobby_Restart_Networking = nil
+	PGLobby_Save_Vanity_Game_Start_Data = nil
+	PGLobby_Set_Player_BG_Gradient = nil
+	PGLobby_Set_Player_Solid_Color = nil
+	PGLobby_Start_Heartbeat = nil
+	PGLobby_Stop_Heartbeat = nil
+	PGLobby_Update_NAT_Warning_State = nil
+	PGLobby_Update_Player_Count = nil
+	PGLobby_Validate_Client_Medals = nil
+	PGLobby_Validate_NAT_Type = nil
+	PGMO_Clear_Start_Position_By_Seat = nil
+	PGMO_Clear_Start_Positions = nil
+	PGMO_Disable_Neutral_Structure = nil
+	PGMO_Enable_Neutral_Structure = nil
+	PGMO_Get_First_Empty_Start_Position = nil
+	PGMO_Get_Reverse_First_Empty_Start_Position = nil
+	PGMO_Get_Saved_Start_Pos_User_Data = nil
+	PGMO_Is_Seat_Assigned = nil
+	PGMO_Restore_Start_Position_Assignments = nil
+	PGMO_Save_Start_Position_Assignments = nil
+	PGMO_Set_Marker_Size = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGOfflineAchievementDefs_Init = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Currently_Selected_Session = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Selected_Player_Color = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	_TEMP_Make_Hack_Map_Model = nil
+	Kill_Unused_Global_Functions = nil
+end
+

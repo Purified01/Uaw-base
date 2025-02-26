@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Defend_Controller.lua#8 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[162] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[172] = true
+LuaGlobalCommandLinks[133] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Defend_Controller.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,15 +34,15 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Defend_Controller.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Defend_Controller.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 80347 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/09 10:22:59 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
 --          $Revision: #8 $
 --
@@ -185,7 +194,7 @@ function Score_Defense_Target(ai_target)
 	
 	-- Only accept non-mobile allied base structures as targets.
 	local target_type = ai_target.Get_Target_Type()
-	if (target_type == "Game_Object") and (ai_target.Get_Game_Object().Has_Behavior(BEHAVIOR_GROUND_STRUCTURE)) and (not ai_target.Get_Game_Object().Can_Move()) then
+	if (target_type == "Game_Object") and (ai_target.Get_Game_Object().Has_Behavior(99)) and (not ai_target.Get_Game_Object().Can_Move()) then
 		if target_type.Get_Health() < 1.0 then
 			local score = 1.0
 			log("\tScore_Defense_Target(%s) called, returning %g", Describe_Target(ai_target), score)
@@ -214,7 +223,7 @@ function Score_Base_Response_Target(ai_target)
 			end
 		elseif target_type == "Game_Object" then
 			-- Don't attack resource objects!
-			if ai_target.Get_Game_Object().Has_Behavior(BEHAVIOR_RESOURCE) or ai_target.Get_Game_Object().Has_Behavior(BEHAVIOR_PHASED) then
+			if ai_target.Get_Game_Object().Has_Behavior(143) or ai_target.Get_Game_Object().Has_Behavior(114) then
 				return 0.0
 			end
 			score = score * 0.8		-- we'd rather attack groups
@@ -348,7 +357,7 @@ function Analyze_Map()
 	local player_base_clusters = {}
 
 	-- Find all immobile allied base structures.
-	local base_structures = Find_Objects_With_Behavior(BEHAVIOR_GROUND_STRUCTURE, Player)
+	local base_structures = Find_Objects_With_Behavior(99, Player)
 	if base_structures then
 		local remove_keys = {}
 		for k,v in pairs(base_structures) do
@@ -399,4 +408,44 @@ function Count_Num_Active_Base_Response_Subgoals()
 	end
 	log("%d active base response subgoals.", active_base_response_subgoals)
 	return active_base_response_subgoals
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	PG_Vector_Add = nil
+	PG_Vector_Multiply_Scalar = nil
+	PG_Vector_Normalize = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
 end

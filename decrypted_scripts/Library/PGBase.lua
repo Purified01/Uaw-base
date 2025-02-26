@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGBase.lua#31 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGBase.lua#19 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGBase.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGBase.lua $
 --
 --    Original Author: Brian Hayes
 --
 --            $Author: James_Yarrow $
 --
---            $Change: 83784 $
+--            $Change: 94166 $
 --
---          $DateTime: 2007/09/13 19:42:40 $
+--          $DateTime: 2008/02/27 14:56:33 $
 --
---          $Revision: #31 $
+--          $Revision: #19 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,14 +65,14 @@ end
 function Sleep(time)
 
 	--DebugMessage("Sleeping...  SleepTime: %.3f, CurTime: %.3f\n", time, GetCurrentTime())
-	ThreadValue.Set("StartTime", GetCurrentTime())
+	local start_time = GetCurrentTime()
 	
 	-- AJA 12/19/2006 - Changed from a 'while ... do' to a 'repeat ... until'
 	-- structure so that PumpEvents() is always called at least once, so that
 	-- calls like Sleep(0) are supported.
 	repeat
 		PumpEvents()
-	until GetCurrentTime() - ThreadValue("StartTime") >= time
+	until GetCurrentTime() - start_time >= time
 	
 	--DebugMessage("Done with Sleep.  Continuing, CurTime: %.3f\n", GetCurrentTime())
 end
@@ -78,21 +86,14 @@ function BlockOnCommand(block, max_duration, alternate_break_func)
 	if not block then
 		return nil
 	end
-
-	break_block = false
 	
-	ThreadValue.Set("BlockStart", GetCurrentTime())
+	local block_start = GetCurrentTime()
 	
 	repeat
-		if break_block == true then
-			break_block = false
-			return nil
-		end
-
 		PumpEvents()
 	
 		if ((max_duration ~= nil) and (max_duration ~= -1) 
-			and (GetCurrentTime() - ThreadValue("BlockStart") > max_duration)) then
+			and (GetCurrentTime() - block_start > max_duration)) then
 			--MessageBox("%s -- Had a time limit and it expired", tostring(Script))
 			return nil
 		end
@@ -109,9 +110,6 @@ function BlockOnCommand(block, max_duration, alternate_break_func)
 	return block.Result()
 end
 
-function BreakBlock()
-	break_block = true
-end
 
 function TestCommand(block)
 	if not block then
@@ -141,6 +139,18 @@ end
 
 function PumpEvents()
 
+	if ThreadValue("InPumpEvents") then
+		ScriptError("%s -- Already in pump event!!", tostring(Script))
+	end
+
+	ThreadValue.Set("InPumpEvents", true)
+
+	if not Thread.Is_Pumping_Thread() then
+		coroutine.yield(true) -- yield here and return to 'C'
+		ThreadValue.Set("InPumpEvents", false)
+		return
+	end
+
 	if Object then
 		local service_wrapper = Object.Service_Wrapper
 		if service_wrapper then
@@ -148,24 +158,11 @@ function PumpEvents()
 		end
 	end
 
-	if Thread.Get_Current_ID() == -1 then
-		ScriptError("%s -- Attempt to call PumpEvents from main thread!!!", tostring(Script))
-	end
-
-	if Pump_Service and type(Pump_Service) == "function" and Thread.Is_Pumping_Thread() then
+	if Pump_Service and type(Pump_Service) == "function" then
 		Pump_Service()
 	end
-
-	if ThreadValue("InPumpEvents") then
-		ScriptError("%s -- Already in pump event!!", tostring(Script))
-	end
-
-	ThreadValue.Set("InPumpEvents", true)
 	
-	--DebugMessage("%s -- Entering yield.  Count: %d, Time: %.3f\n", tostring(Script), YieldCount, GetCurrentTime())
-	YieldCount = YieldCount + 1
 	coroutine.yield(true) -- yield here and return to 'C'
-	--DebugMessage("%s -- Return from yield.  Count: %d, Time: %.3f\n", tostring(Script), YieldCount, GetCurrentTime())
 	
 	CurrentEvent = GetEvent()
 	while CurrentEvent do
@@ -224,6 +221,14 @@ function Max(a, b)
 	end
 end
 
+function Abs(a)
+	if (a < 0) then
+		return -a
+	else
+		return a
+	end
+end
+
 -- Nasty hack of a floor function to be replaced if a math library floor funciton is exposed
 function Dirty_Floor(val)
 	return tonumber(string.format("%d", val)) -- works on implicit string to int conversion
@@ -251,54 +256,7 @@ function Declare_Enum(svar)
 	return EnumVar
 end
 
--- Returns if something happened, given a % chance
-function Chance(seed, percent)
-	roll = Simple_Mod((seed + 1), 100)
-	is_allowed = roll < percent
-	DebugMessage("%s -- seed:%d percent:%d roll:%d is_allowed:%s", tostring(Script), seed, percent, roll, tostring(is_allowed))
-	return is_allowed
-end
-
--- If the item is in the table, returns its index. 
--- If it isn't there, returns nil.
-function Table_Find(array, findme)
-	for i=1,table.getn(array) do
-		if array[i] == findme then
-			return i
-		end
-	end
-	return nil
-end
-
-function GetCurrentMinute()
-	--return math.floor(GetCurrentTime()/60)
-	return Dirty_Floor(GetCurrentTime()/60)
-end
-
--- Every X seconds, the AI will have a new opportunity to see if it's allowed to use an ability
-function GetAbilityChanceSeed()
-	return Dirty_Floor(GetCurrentTime()/10) + 9
-end
-
-function GetChanceAllowed(difficulty)
-	chance = 60
-	if difficulty == "Easy" then
-		chance = 20
-	elseif difficulty == "Hard" then
-		chance = 100
-	end
-	return chance
-end
-
-
-function PlayerSpecificName(player_object, var_name)
---	ret_value = tostring(player_object.Get_ID()) .. "_" .. var_name
---	DebugMessage("%s -- creating player specific string %s.", tostring(Script), ret_value)
---	return ret_value
-        return (tostring("PLAYER" .. player_object.Get_ID()) .. "_" .. var_name)
-end
-
-function Pre_Save_Callback()
+function Base_Pre_Save_Callback()
 	non_persistent_tables = {
         PGObjectives_Listeners
 	}
@@ -311,6 +269,10 @@ function Pre_Save_Callback()
         end
 		mt.__persist = false
 	end
+end
+
+function Pre_Save_Callback()
+	Base_Pre_Save_Callback()
 end
 
 function Flush_G()
@@ -332,7 +294,8 @@ function Flush_G()
 								table,
 								BehaviorNameTable,
 								entries_for_deletion,
-								Interface,								
+								Interface,
+								LuaGlobalCommandLinks,								
 								KeyboardGameCommands
 							}
 	
@@ -342,13 +305,15 @@ function Flush_G()
 	--Iterate all globals
 	for i,g_entry in pairs(_G) do
 	
-		if type(g_entry) == "table" then
+		local data_type = type(g_entry)
+		if data_type == "table" then
 			--Tables are inherently unsafe: who knows what might be in there?
 			--If they're not in the list of things we must keep then they go.
 			
 			for j,important_entry in pairs(very_important_tables) do
 				if important_entry == g_entry then
 					keep_table = true
+					break
 				end
 			end
 			if not keep_table then
@@ -357,7 +322,7 @@ function Flush_G()
 			
 			keep_table = nil
 			
-		elseif type(g_entry) == "userdata" then
+		elseif data_type == "userdata" then
 			--Some User Data (e.g. our code functions) should be kept, but some is very, very dangerous.
 			--Query the object to see whether it's safe to persist.
 	
@@ -637,4 +602,31 @@ function Persist_Wrapper_For_Signal_Registration(wrapper)
 		_SignalPersistentWrappers = {}
 	end
 	_SignalPersistentWrappers[wrapper] = wrapper
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

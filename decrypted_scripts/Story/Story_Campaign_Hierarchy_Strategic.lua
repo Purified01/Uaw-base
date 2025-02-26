@@ -1,4 +1,37 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_Strategic.lua#57 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[131] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[60] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[199] = true
+LuaGlobalCommandLinks[59] = true
+LuaGlobalCommandLinks[180] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[62] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[81] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[183] = true
+LuaGlobalCommandLinks[125] = true
+LuaGlobalCommandLinks[179] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_Strategic.lua#33 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +58,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_Strategic.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_Strategic.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Jeff_Stewart $
+--            $Author: Joe_Howes $
 --
---            $Change: 86904 $
+--            $Change: 95773 $
 --
---          $DateTime: 2007/10/29 17:13:16 $
+--          $DateTime: 2008/03/26 11:57:26 $
 --
---          $Revision: #57 $
+--          $Revision: #33 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,6 +80,7 @@ require("RetryMission")
 require("PGColors")
 require("PGPlayerProfile")
 require("PGFactions")
+require("PGCampaigns")
 
 -- DON'T REMOVE! Needed for objectives to function properly, even when they are 
 -- called from other scripts. (The data is stored here.)
@@ -68,7 +102,6 @@ function Definitions()
 	Define_State("State_Start_ZM05_Dialogue", State_Start_ZM05_Dialogue)
 	Define_State("State_Start_ZM05", State_Start_ZM05) -- fifth Hierarchy mission: (13) Indochina (Masari Temple)
 	Define_State("State_Start_ZM06", State_Start_ZM06) -- sixth Hierarchy mission: (35) Central America (Arecibo, Puerto Rico)
-	Define_State("State_Hierarchy_Campaign_Over", State_Hierarchy_Campaign_Over) -- goto Masari campaign -- right now just exits to main menu
 
 	Define_Retry_State()
 	
@@ -80,12 +113,13 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 	PGFactions_Init()
+	PGCampaigns_Init()
 --	PGColors_Init_Constants()
 	PGPlayerProfile_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	military.Enable_Colorization(true, COLOR_GREEN)
---	masari.Enable_Colorization(true, COLOR_DARK_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	military.Enable_Colorization(true, 5)
+--	masari.Enable_Colorization(true, 21)
 	
 	-- Pip Heads
 	pip_orlok = "AH_Orlok_Pip_Head.alo"
@@ -128,11 +162,14 @@ function State_Init(message)
 		Register_Game_Scoring_Commands()
 
 		local data_table = GameScoringManager.Get_Game_Script_Data_Table()
-		if data_table == nil or data_table.Debug_Start_Mission == nil then
+		-- Maria 11.07.2007
+		-- Changing this name since we are going to have similar functionality (to the Debug Load Mission)
+		-- for loading missions in the Gamepad Version.
+		if data_table == nil or data_table.Start_Mission == nil then
 			Set_Next_State("State_Start_ZM01")
 		else
-			Set_Next_State(tostring(data_table.Debug_Start_Mission))
-			data_table.Debug_Start_Mission = nil
+			Set_Next_State(tostring(data_table.Start_Mission))
+			data_table.Start_Mission = nil
 			GameScoringManager.Set_Game_Script_Data_Table(data_table)
 		end
 		
@@ -150,6 +187,8 @@ function State_Init(message)
 		current_global_story_dialogue_id_sub_b=nil
 		
 		Pause_Sun(true)
+		Set_Profile_Value(PP_LAST_PLAYED_CAMPAIGN, PG_CAMPAIGN_ALIEN)
+		Commit_Profile_Values()
 
 	end
 end
@@ -166,14 +205,25 @@ function State_Start_ZM01(message)
 		UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
 		UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 		UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE01_LOAD_SCREEN_TEXT")
+		
+		-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+		--player is Hierarchy vs Novus
+		aliens.Set_Is_AI_Required(false) 
+		novus.Set_Is_AI_Required(true)
+		masari.Set_Is_AI_Required(false)
+		military.Set_Is_AI_Required(false)
+
 			
 		local region = Find_First_Object("Region16") -- (16 - Sahara)
+		Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_01)
+		Commit_Profile_Values()
 		Force_Land_Invasion(region, null, aliens, false)
 	end
 end
 
 function State_Start_ZM02_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 
 		JumpToNextMission=false
@@ -373,7 +423,16 @@ function State_Start_ZM02(message)
 			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE02_LOAD_SCREEN_TEXT")
 			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			-- player is Hierarchy vs Novus with some military presense
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(true)
+			masari.Set_Is_AI_Required(false)
+			military.Set_Is_AI_Required(true)
+			
 			local region = Find_First_Object("Region23") -- (23 - Gulf Coast)
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_02)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, null, aliens, false)
 		end
 
@@ -382,6 +441,7 @@ end
 
 function State_Start_ZM03_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -573,7 +633,16 @@ function State_Start_ZM03(message)
 			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE03_LOAD_SCREEN_TEXT")
 			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			-- player is Hierarchy vs Masari
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(false)
+			masari.Set_Is_AI_Required(true)
+			military.Set_Is_AI_Required(false)
+			
 			local region = Find_First_Object("Region22") -- (22 - Appalachia)
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_03)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, null, aliens, false)
 		end
 	end
@@ -581,6 +650,7 @@ end
 
 function State_Start_ZM04_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -738,7 +808,17 @@ function State_Start_ZM04(message)
 			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE04_LOAD_SCREEN_TEXT")
 			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			-- player is Hierarchy vs Novus
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(true)
+			masari.Set_Is_AI_Required(false)
+			military.Set_Is_AI_Required(false)
+			
+			
 			local region = Find_First_Object("Region30") -- (30 - Altiplano)
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_04)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, null, aliens, false)
 		end
 	end
@@ -746,6 +826,7 @@ end
 
 function State_Start_ZM05_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -913,7 +994,16 @@ function State_Start_ZM05(message)
 			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE05_LOAD_SCREEN_TEXT")
 			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Hierarchy vs. Masari
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(false)
+			masari.Set_Is_AI_Required(true)
+			military.Set_Is_AI_Required(false)
+			
 			local region = Find_First_Object("Region13") -- (30 - Altiplano)
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_05)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, null, aliens, false)
 		end
 	end
@@ -937,29 +1027,22 @@ function State_Start_ZM06(message)
 			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE06_LOAD_SCREEN_TEXT")
 			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Hierarchy vs. Hierarchy (with some Masari presence)
+			--jdg 1/14/08 removing masari asset bank...manually loading anything that's needed (zessus and disciples only..no audio right now)
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(false)
+			masari.Set_Is_AI_Required(false)
+			military.Set_Is_AI_Required(false)
+			
 			local region = Find_First_Object("Region35") -- (30 - Altiplano)
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_06)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, null, aliens, false)
 		end
 	end
 end
 
-
---detects the win of ZM07 and then exits to main menu
-function State_Hierarchy_Campaign_Over(message)
-	if message == OnEnter then
-		_CustomScriptMessage("RickLog.txt", string.format("*************State_Hierarchy_Campaign_Over"))
-		--MessageBox("You Won! Thanks for playing\nNow returning you to the Main Menu...")
-		Set_Profile_Value(PP_CAMPAIGN_HIERARCHY_COMPLETED, true)
-		
-		-- Oksana: Notify achievements
-		GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Alien")
-
-		
-		--Quit_Game_Now(aliens, true, true, false)
-		Register_Campaign_Commands()
-		CampaignManager.Start_Campaign("MASARI_Story_Campaign", true)
-	end
-end
 
 --***************************************THREADS*********************************************************************************************
 
@@ -1055,37 +1138,105 @@ end
 -- This is the "global" win/lose function triggered in the Hierarchy "TACTICAL" mission scripts
 
 function Hierarchy_Tactical_Mission_Over(victorious)
+	--local completed_mission = 0
 	if CurrentState == "State_Start_ZM01" then 
 		if victorious then
 			ZM01_successful = true
+			
+			-- Since this is the completion of the first mission, we have to mark this one
+ 			-- as available too.  The proceeding ones will be marked as the previous one gets
+ 			-- completed.
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_01_AVAILABLE, true)
+ 			
+ 			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_02_AVAILABLE, true)
+
 			Set_Next_State("State_Start_ZM02_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 1
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(10, "H")
 		end
 	elseif CurrentState == "State_Start_ZM02" then 
 		if victorious then
 			ZM02_successful = true
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_03_AVAILABLE, true)
 			Set_Next_State("State_Start_ZM03_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 2
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(11, "H")
 		end
 	elseif CurrentState == "State_Start_ZM03" then 
 		if victorious then
 			ZM03_successful = true
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_04_AVAILABLE, true)
 			Set_Next_State("State_Start_ZM04_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 3
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(12, "H")
 		end
 	elseif CurrentState == "State_Start_ZM04" then 
 		if victorious then
 			ZM04_successful = true
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_05_AVAILABLE, true)
 			Set_Next_State("State_Start_ZM05_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 4
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(13, "H")
 		end
 	elseif CurrentState == "State_Start_ZM05" then 
 		if victorious then
 			ZM05_successful = true
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_HIERARCHY_MISSION_06_AVAILABLE, true)
 			Set_Next_State("State_Start_ZM06")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE06_LOAD_SCREEN_TEXT")
+			--completed_mission = 5
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(14, "H")
 		end
 	elseif CurrentState == "State_Start_ZM06" then 
 		if victorious then
 			ZM06_successful = true
-			Set_Next_State("State_Hierarchy_Campaign_Over")
+			Set_Profile_Value(PP_CAMPAIGN_HIERARCHY_COMPLETED, true)
+		
+			-- Oksana: Notify achievements
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(15, "H")
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Alien")
+				
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+			UI_Set_Loading_Screen_Background("splash_masari.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS01_LOAD_SCREEN_TEXT")
+			
+			-- Handle campaign completion immediately: it's more efficient
+			-- than doing a quit out to global and a state pump
+			Register_Campaign_Commands()
+			CampaignManager.Start_Campaign("MASARI_Story_Campaign")
 		end
 	end
+	
+	-- Notify the achievement system, i applicable
+ 	--[[if completed_mission > 0 then
+		GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(completed_mission, "H")
+  	end--]]
+	
+	Commit_Profile_Values()
 	
 	if not victorious then
 		Retry_Current_Mission()
@@ -1186,3 +1337,84 @@ function ZM06()
 	Delete_Objective(objective_skipping_info)
 	objective_triggering_info = Add_Objective("You have chosen to play: ZM06\nMove your hero to any enemy territory to trigger the mission.")
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Fake_Fleet_Move = nil
+	Find_All_Parent_Units = nil
+	Flash_Region = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Next_State = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	Objective_Complete = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PGHintSystem_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Hint_Context_Scene = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Set_Objective_Text = nil
+	Show_Object_Attached_UI = nil
+	Show_Retry_Dialog = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_On_Mission_End = nil
+	UI_On_Mission_Start = nil
+	UI_Pre_Mission_End = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

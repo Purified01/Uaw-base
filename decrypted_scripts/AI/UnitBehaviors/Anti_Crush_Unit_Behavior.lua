@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Anti_Crush_Unit_Behavior.lua#15 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[197] = true
+LuaGlobalCommandLinks[18] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Anti_Crush_Unit_Behavior.lua#12 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,21 +34,21 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Anti_Crush_Unit_Behavior.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Anti_Crush_Unit_Behavior.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84404 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/20 13:10:30 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #15 $
+--          $Revision: #12 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
-require("AIIdleThreads")
+require("PGBase")
 
 function Check_For_Crushers(object, search_range, kite_range, crush_defense )
 
@@ -89,7 +98,7 @@ function Check_For_Crushers(object, search_range, kite_range, crush_defense )
 		if TestValid(unit) then
 			if player.Is_Enemy(unit.Get_Owner()) and not unit.Is_Phased() and not unit.Is_Death_Clone() and not unit.Is_Cloaked() then
 				if not unit.Is_Flying() or unit.Get_Attribute_Value( "Is_Grounded" ) ~= 0 then
-					if unit.Has_Behavior(BEHAVIOR_HARD_POINT) then
+					if unit.Has_Behavior(68) then
 						local parent = unit.Get_Highest_Level_Hard_Point_Parent()
 						if TestValid(parent) then
 							final_obj_list[parent]=parent	
@@ -129,6 +138,7 @@ function Check_For_Crushers(object, search_range, kite_range, crush_defense )
 			local xextent = close_crusher.Get_Type().Get_Hard_Coord_Radius()
 			local def_pos = Project_Position(close_crusher, object, kite_range + xextent, 40.0 - GameRandom(0.0, 80.0))
 			object.Move_To(def_pos)
+			Sleep(1.5)
 		end
 		
 		if best_distance < kite_range then
@@ -218,15 +228,44 @@ function Check_To_Crush(object, obj_list, crush_range, crush_attack )
 		if issue_move_order then
 			object.Move_To(att_pos)
 			CrushTargetPosition = att_pos
+			Sleep(2.0)
 		end
 		CrushTarget = close_crushee
 		AntiCrushUnitBehaviorActionTaken = true
 		if Object.Is_Category("Huge") then
-			Sleep(15.0)
+			Sleep(13.0)
 		end
 		return true
 	end
 
 	return false
 	
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Check_For_Crushers = nil
+	Check_To_Crush = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

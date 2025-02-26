@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Conquest_Win_Dialog.lua#3 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Conquest_Win_Dialog.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Conquest_Win_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Conquest_Win_Dialog.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 83108 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/07 14:16:27 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #3 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,22 +90,24 @@ end
 --
 -------------------------------------------------------------------------------
 function On_No_Clicked(event_name, source)
+
+	Global_Conquest_Win_Dialog.End_Modal()
 	Global_Conquest_Win_Dialog.Get_Containing_Scene().Raise_Event_Immediate("On_Leave_Globe_Conquered", nil, {})
 	IsShowing = false
-    if (Global_Conquest_Win_Dialog ~= nil) then
-        Global_Conquest_Win_Dialog.Get_Containing_Component().Set_Hidden(true)
-    end
+	Global_Conquest_Win_Dialog.Get_Containing_Component().Set_Hidden(true)
+	
 end
 
 -------------------------------------------------------------------------------
 --
 -------------------------------------------------------------------------------
 function On_Yes_Clicked(event_name, source)
+
+	Global_Conquest_Win_Dialog.End_Modal()
 	Global_Conquest_Win_Dialog.Get_Containing_Scene().Raise_Event_Immediate("On_Reset_Global_Conquest", nil, {})
 	IsShowing = false
-    if (Global_Conquest_Win_Dialog ~= nil) then
-        Global_Conquest_Win_Dialog.Get_Containing_Component().Set_Hidden(true)
-    end
+	Global_Conquest_Win_Dialog.Get_Containing_Component().Set_Hidden(true)
+	
 end
 
 -------------------------------------------------------------------------------
@@ -178,3 +186,33 @@ Interface.Set_Title = Set_Title
 Interface.Set_Message = Set_Message
 Interface.Is_Showing = Is_Showing
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Prepare_Fadeout = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

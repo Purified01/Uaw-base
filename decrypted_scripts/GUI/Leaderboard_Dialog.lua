@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Leaderboard_Dialog.lua#17 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Leaderboard_Dialog.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Leaderboard_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Leaderboard_Dialog.lua $
 --
 --    Original Author: Joe Howes
 --
 --            $Author: Nader_Akoury $
 --
---            $Change: 88091 $
+--            $Change: 95204 $
 --
---          $DateTime: 2007/11/19 14:50:39 $
+--          $DateTime: 2008/03/13 17:48:05 $
 --
---          $Revision: #17 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -218,6 +228,7 @@ end
 -- V I E W   F U N C T I O N S
 -- --------------------------------------------------------------------------------------------------------------------
 function Display_Dialog()
+	this.Movie_1.Play()
 	if Net.Get_Signin_State() ~= "online" then
 		Net.Show_Signin_UI()
 		Close_Dialog()
@@ -231,10 +242,14 @@ function Display_Dialog()
 end
 
 function Close_Dialog(event, source, key)
-	this.End_Modal()
+	this.Movie_1.Stop()
 	this.Set_Hidden(true)
 	this.Leader_List.Clear()
 	this.Leader_List.Reset_Row_Selection()
+	
+	this.Get_Containing_Scene().Raise_Event("Heavyweight_Child_Scene_Closing", nil, {"Leaderboard_Dialog"})
+	
+	this.End_Modal()
 end
 
 -------------------------------------------------------------------------------
@@ -334,6 +349,15 @@ function Rank_Compare(player1_table, player2_table)
 end
 
 function Display_Stats(stats)
+	-- Maria 10.17.2007
+	-- If the player keep clicking on the right arrow the list will try to get 
+	-- populated even though there's no more data.  I am placing this safe
+	-- guard here but ideally we would like to get the arrow disabled so that
+	-- the user knows there's no more content.
+	if not stats then 
+		return
+	end
+	
 	this.Leader_List.Clear()
 
 	-- Sort the table based on ranks
@@ -341,7 +365,7 @@ function Display_Stats(stats)
 
 	local new_row = this.Leader_List.Add_Row()
 	this.Leader_List.Set_Row_Font(new_row, "Arial_White_14_Bold")
-	this.Leader_List.Set_Row_Background(new_row, COLOR_DARK_RED, "i_dialogue_button_large_middle_mouse_over.tga")
+	this.Leader_List.Set_Row_Background(new_row, 18, "i_dialogue_button_large_middle_mouse_over.tga")
 	if Owner_Stats == nil then
 		local stats = {}
 		stats.gamer_tag = Net.Get_User_Name()
@@ -464,7 +488,136 @@ function Download_Replay_Clicked()
 end
 
 function Toggle_Friends_Filter()
+	Init_Page_Variables()
 	Friends_Filter_Enabled = not Friends_Filter_Enabled
 	this.Checkbox_Filter_By_Friends.Set_Checked(Friends_Filter_Enabled)
 	Query_Stats()
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Download_Replay_Clicked = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	OutputDebug = nil
+	PGLobby_Activate_Movies = nil
+	PGLobby_Begin_Stats_Registration = nil
+	PGLobby_Convert_Faction_IDs_To_Strings = nil
+	PGLobby_Convert_Faction_Strings_To_IDs = nil
+	PGLobby_Create_Random_Game_Name = nil
+	PGLobby_Create_Session = nil
+	PGLobby_Display_Custom_Modal_Message = nil
+	PGLobby_Display_NAT_Information = nil
+	PGLobby_Generate_Map_Selection_Model = nil
+	PGLobby_Get_Preferred_Color = nil
+	PGLobby_Hide_Modal_Message = nil
+	PGLobby_Init_Modal_Message = nil
+	PGLobby_Is_Game_Joinable = nil
+	PGLobby_Keepalive_Close_Bracket = nil
+	PGLobby_Keepalive_Open_Bracket = nil
+	PGLobby_Lookup_Map_DAO = nil
+	PGLobby_Mouse_Move = nil
+	PGLobby_Passivate_Movies = nil
+	PGLobby_Print_Client_Table = nil
+	PGLobby_Refresh_Available_Games = nil
+	PGLobby_Request_All_Medals_Progress_Stats = nil
+	PGLobby_Request_All_Required_Backend_Data = nil
+	PGLobby_Request_Global_Conquest_Properties = nil
+	PGLobby_Request_Stats_Registration = nil
+	PGLobby_Reset = nil
+	PGLobby_Restart_Networking = nil
+	PGLobby_Save_Vanity_Game_Start_Data = nil
+	PGLobby_Set_Dialog_Is_Hidden = nil
+	PGLobby_Set_Player_BG_Gradient = nil
+	PGLobby_Set_Player_Solid_Color = nil
+	PGLobby_Set_Tooltip_Model = nil
+	PGLobby_Start_Heartbeat = nil
+	PGLobby_Stop_Heartbeat = nil
+	PGLobby_Update_NAT_Warning_State = nil
+	PGLobby_Update_Player_Count = nil
+	PGLobby_Validate_Client_Medals = nil
+	PGLobby_Validate_Local_Session_Data = nil
+	PGLobby_Validate_NAT_Type = nil
+	PGLobby_Vars_Init = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Init = nil
+	PGOfflineAchievementDefs_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Set_Local_User_Applied_Medals = nil
+	Show_Object_Attached_UI = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Toggle_Next_Filter = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	_TEMP_Make_Hack_Map_Model = nil
+	Kill_Unused_Global_Functions = nil
 end

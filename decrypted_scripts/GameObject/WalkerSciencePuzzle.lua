@@ -1,3 +1,9 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -24,7 +30,7 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/WalkerSciencePuzzle.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/WalkerSciencePuzzle.lua $
 --
 --    Original Author: Oksana Kubushyna
 --
@@ -94,7 +100,7 @@ local function Behavior_First_Service()
 	if Crown_Hard_Point and TestValid(Crown_Hard_Point[1]) then
 		Crown_Hard_Point = Crown_Hard_Point[1]
 		Crown_Hard_Point.Register_Signal_Handler(my_behavior.On_HP_Destroyed, "OBJECT_HEALTH_AT_ZERO")
-		Crown_Hard_Point.Enable_Behavior(BEHAVIOR_GUI, false)	
+		Crown_Hard_Point.Enable_Behavior(85, false)	
 	else
 		MessageBox("Unable to find %s on %s!", "Alien_Walker_Science_Crown", tostring(Object));
 		Crown_Hard_Point = nil
@@ -167,15 +173,15 @@ local function Behavior_First_Service()
 		
 			--JSY: Disable GUI behavior by default.  That way our possible call to Enable_Behavior below is not
 			--in danger of undoing somebody else's call to disable (e.g. story script)
-			hp.Enable_Behavior(BEHAVIOR_GUI, false)		
+			hp.Enable_Behavior(85, false)		
 		
 			-- Assign vulnerability
 			if HP_INITIALLY_VULNERABLE[hp.Get_Type().Get_Name()] then
-				hp.Enable_Behavior(BEHAVIOR_GUI, true)
+				hp.Enable_Behavior(85, true)
 				hp.Make_Invulnerable(false)
 				hp.Set_Cannot_Be_Killed(false)
 			else
-				hp.Enable_Behavior(BEHAVIOR_GUI, false)
+				hp.Enable_Behavior(85, false)
 				hp.Make_Invulnerable(true)
 				hp.Set_Cannot_Be_Killed(true)
 			end
@@ -218,7 +224,7 @@ local function Behavior_On_HP_Attached(source, new_obj)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[new_obj.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(BEHAVIOR_GUI, false)
+				parent_hp.Enable_Behavior(85, false)
 				parent_hp.Make_Invulnerable(true)
 				parent_hp.Set_Cannot_Be_Killed(true)
 			end
@@ -306,7 +312,7 @@ local function Behavior_On_HP_Destroyed(source)
 					local hp = Object.Find_All_Hard_Points_Of_Type(type)
 					if hp and TestValid(hp[1]) then
 						hp = hp[1]
-						hp.Enable_Behavior(BEHAVIOR_GUI, true)
+						hp.Enable_Behavior(85, true)
 						hp.Make_Invulnerable(false)
 						hp.Set_Cannot_Be_Killed(false)
 					else
@@ -320,7 +326,7 @@ local function Behavior_On_HP_Destroyed(source)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[source.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(BEHAVIOR_GUI, true)
+				parent_hp.Enable_Behavior(85, true)
 				parent_hp.Make_Invulnerable(false)
 				parent_hp.Set_Cannot_Be_Killed(false)
 			end
@@ -422,7 +428,7 @@ function Thread_Walker_Death()
 	Object.Prevent_All_Fire(true)
 	Object.Set_Selectable(false)
 	Object.Set_In_Limbo(true)
-	Object.Enable_Behavior(BEHAVIOR_IDLE, false)
+	Object.Enable_Behavior(7, false)
 
 	Walker_About_To_Die = true
 	
@@ -500,3 +506,30 @@ my_behavior.Clean_Up = Common_Puzzle_Clean_Up
 -- my_behavior.Service = Behavior_Service
 --my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Register_For_Production_Complete_Callback = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Thread_Walker_Destroy_HP_On_Frame = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

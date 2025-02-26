@@ -1,3 +1,12 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[160] = true
+LuaGlobalCommandLinks[98] = true
+LuaGlobalCommandLinks[14] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -109,6 +118,15 @@ function State_Init(message)
 	end	
 end
 
+
+-------------------------------------------------------------------------------
+-- Oksana: reset the player script when user hits replay
+-------------------------------------------------------------------------------
+function On_Restart_Game()
+	Reset_Research_Tree()
+end
+
+
 -------------------------------------------------------------------------------
 -- Lock the lockable/unlockable medals on everyone.
 -- JLH 07-30-2007, KDB 08-21-2007 needs to be in player to lock properly
@@ -135,11 +153,11 @@ function Debug_Switch_Sides()
 	
 	if NumberPoweredEnablers ~= nil then 
 		-- we need to update the UI for the local player only!!!!!.
-		game_mode_scene.Raise_Event_Immediate("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
+		game_mode_scene.Raise_Event("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
 	end
 	
 	-- Update the tree scenes.
-	game_mode_scene.Raise_Event_Immediate("Update_Tree_Scenes", nil, {Player})		
+	game_mode_scene.Raise_Event("Update_Tree_Scenes", nil, {Player})		
 end
 
 
@@ -248,4 +266,62 @@ function Player_Reset_Faction_Specific_Controls()
 	if Reset_Faction_Specific_Controls then
 		Reset_Faction_Specific_Controls()
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Advance_State = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Common_Player_Definitions = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Current_State = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Next_State = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	PG_Vector_Add = nil
+	PG_Vector_Multiply_Scalar = nil
+	PG_Vector_Normalize = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Set_Next_State = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

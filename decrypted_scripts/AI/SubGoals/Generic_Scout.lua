@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Scout.lua#17 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[33] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[18] = true
+LuaGlobalCommandLinks[113] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Scout.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Scout.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Scout.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 83822 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/14 12:04:18 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #17 $
+--          $Revision: #11 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +86,7 @@ end
 function Compute_Desire()
 	-- If we were not given any UserData then we won't run. We should only be
 	-- run as a sub-goal of Generic_Scout_Controller.
+	
 	if not Goal.Get_User_Data() then
 		Goal.Suppress_Goal()
 		return 0.0
@@ -94,7 +104,7 @@ end
 
 function Score_Unit(unit)
 
-	if unit.Has_Behavior(BEHAVIOR_GARRISONABLE) or unit.Get_Garrison() ~= nil then
+	if unit.Has_Behavior(141) or unit.Get_Garrison() ~= nil then
 		return 0.0
 	end
 
@@ -183,7 +193,7 @@ end
 function On_Activate()
 	USERDATA_STR = tostring(Goal.Get_User_Data())
 	log("Generic_Scout(%s) activated!", USERDATA_STR)
-	goal_creation_timeout = GetCurrentTime() + 60.0
+	goal_creation_timeout = GetCurrentTime() + 30.0
 	stop_scouting = false
 	scout_go = false
 	wait_after_scout = false
@@ -277,14 +287,14 @@ function Scout_Thread(scout_tf)
 
 	if TestValid( ReturnToBaseObject ) then
 		log( "Generic_Scout(%s): Scouting is returning to %s .", USERDATA_STR, ReturnToBaseObject.Get_Type().Get_Name() )
-		local wait_time = GetCurrentTime() + 20.0
+		local wait_time = GetCurrentTime() + 15.0
 		while not Back_To_Base() and GetCurrentTime() < wait_time do
 			scout_tf.Move_To(ReturnToBaseObject)
 			Sleep(5.0)
 		end
 	end
 
-	--log("Generic_Scout(%s): Scouting of %s complete.", USERDATA_STR, Describe_Target(scout_target))
+	log("Generic_Scout(%s): Scouting of %s complete.", USERDATA_STR, Describe_Target(scout_target))
 	ScriptExit()
 end
 
@@ -342,4 +352,45 @@ function Stop_Scouting()
 
 	return false
 		
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	In_Potential_Units = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
 end

@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/AI_Setup_Row.lua#7 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/AI_Setup_Row.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/AI_Setup_Row.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/AI_Setup_Row.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 74360 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/06/26 09:45:52 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #7 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -82,10 +92,10 @@ function On_Init()
 
 	-- Initialize the color list
 	PGColors_Init()
-	for i = 0, NUM_MP_COLORS do
+	for i = 0, 7 do
 		this.Combo_Color.Add_Texture(Create_Wide_String("chat_color_rect.tga"))
-		local label = MP_COLORS_LABEL_LOOKUP[MP_COLORS[i]]
-		local dao = MP_COLOR_TRIPLES[label]
+		local label = ({ [1] = "WHITE", [2] = "RED", [3] = "ORANGE", [4] = "YELLOW", [5] = "GREEN", [6] = "CYAN", [7] = "BLUE", [8] = "PURPLE", [9] = "GRAY", })[({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[i]]
+		local dao = ({ RED = { a = 1, b = 0.09, g = 0.09, r = 1, }, YELLOW = { a = 1, b = 0.18, g = 0.87, r = 0.89, }, PURPLE = { a = 1, b = 0.82, g = 0.44, r = 1, }, CYAN = { a = 1, b = 0.88, g = 0.85, r = 0.44, }, GREEN = { a = 1, b = 0.31, g = 1, r = 0.47, }, ORANGE = { a = 1, b = 0.09, g = 0.58, r = 1, }, BLUE = { a = 1, b = 1, g = 0.59, r = 0.31, }, GRAY = { a = 1, b = 0.12, g = 0.12, r = 0.12, }, })[label]
 		this.Combo_Color.Set_Item_Color(i, dao.r, dao.g, dao.b, dao.a)
 	end
 
@@ -137,7 +147,7 @@ function Initialize_Default_Selections()
 
 	Default_Color_Map = {}
 	local combo_index = 0
-	for _, color_index in pairs(MP_COLOR_INDICES) do
+	for _, color_index in pairs(({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })) do
 		Default_Color_Map[combo_index] = color_index
 		combo_index = combo_index + 1
 	end
@@ -161,7 +171,7 @@ end
 
 function Swap_Client_Color(event, source, new, old)
 	if new == this.Combo_Color.Get_Selected_Item_Color() then
-		local index = MP_COLOR_INDICES[old]
+		local index = ({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })[old]
 		if (index == nil) then
 			index = 0
 		end
@@ -212,7 +222,7 @@ end
 -------------------------------------------------------------------------------
 function Color_Combo_Selection_Changed(event, source)
 	local old = Client_Data.color
-	Client_Data.color = MP_COLORS[this.Combo_Color.Get_Selected_Index()]
+	Client_Data.color = ({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[this.Combo_Color.Get_Selected_Index()]
 	if old ~= nil and old ~= Client_Data.color then
 		for _, row in pairs(Other_Rows) do
 			row.Raise_Event_Immediate("Swap_Client_Color", {Client_Data.color, old})
@@ -247,7 +257,7 @@ function Set_Client_Data(data)
 	this.Combo_Skill.Set_Selected_Index(data.ai_difficulty)
 	this.Combo_Faction.Set_Selected_Index(Reverse_Faction_Lookup_Table[data.faction])
 	
-	local index = MP_COLOR_INDICES[data.color]
+	local index = ({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })[data.color]
 	if (index == nil) then
 		this.Combo_Color.Set_Selected_Index(0)
 	else
@@ -259,3 +269,43 @@ Interface = {}
 Interface.Set_As_Player = Set_As_Player
 Interface.Get_Client_Data = Get_Client_Data
 Interface.Set_Client_Data = Set_Client_Data
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,3 +1,11 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[124] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -131,9 +139,8 @@ function Set_Walker_For_Customization(walker)
 			end
 		end
 		
-		Raise_Event_Immediate_All_Scenes("Close_HP_Configuration_Menu", nil)
-		
 		SelectedObject = walker
+		
 		-- Set the button for this walker as selected.
 		if WalkerToButtonMap[SelectedObject] then 
 			WalkerToButtonMap[SelectedObject].Set_Selected(true)
@@ -146,7 +153,7 @@ end
 -- of walkers by adding this new enabler!
 -- ------------------------------------------------------------------------------------------------------------------
 function On_Construction_Complete(event, source, object)
-	if object.Has_Behavior(BEHAVIOR_TACTICAL_ENABLER) then
+	if object.Has_Behavior(89) then
 		-- insert the new element at the tail!
 		local pos = table.getn(Walkers)
 		table.insert(Walkers, pos+1, object)
@@ -193,7 +200,7 @@ function On_Update_Enablers_List(event, source, enablers_table)
 	for i = 1, table.getn(enablers_table) do
 		local obj = enablers_table[i]
 		
-		if obj.Get_Type().Is_Mobile_Structure() == true then 
+		if obj.Get_Type().Is_Walker() == true then 
 			table.insert(clean_list, obj)
 		end	
 	end
@@ -251,7 +258,7 @@ function Update_Button_List()
 		local walker = Walkers[index]
 		
 		-- only display WALKERS!
-		if walker.Get_Type().Is_Mobile_Structure() == true then 
+		if walker.Get_Type().Is_Walker() == true then 
 			button.Set_User_Data(walker)
 			WalkerToButtonMap[walker] = button
 			
@@ -315,7 +322,7 @@ function Set_Up_Button_List()
 		local walker = Walkers[idx]
 		
 		-- only display WALKERS!
-		if walker.Get_Type().Is_Mobile_Structure() == true then 
+		if walker.Get_Type().Is_Walker() == true then 
 			if walker.Get_Owner() == Find_Player('local') then
 				button.Set_User_Data(walker)
 				WalkerToButtonMap[walker] = button
@@ -381,7 +388,7 @@ end
 -- Is_Initialized
 -- ------------------------------------------------------------------------------------------------------------------
 function Is_Initialized()
-	return( table.getn(Walkers) > 0)
+	return Walkers ~= nil
 end
 
 
@@ -428,3 +435,41 @@ Interface.Is_Scene_Hidden = Is_Scene_Hidden
 Interface.Is_Initialized  = Is_Initialized
 Interface.Update = Update
 Interface.Refresh_Focus = Refresh_Focus
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

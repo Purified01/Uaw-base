@@ -1,4 +1,42 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Tutorial_Tut03.lua#31 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[181] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[146] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[147] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[63] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Tutorial_Tut03.lua#15 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +63,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Tutorial_Tut03.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Tutorial_Tut03.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Brian_Hayes $
+--            $Author: Nader_Akoury $
 --
---            $Change: 87106 $
+--            $Change: 96950 $
 --
---          $DateTime: 2007/10/31 19:15:20 $
+--          $DateTime: 2008/04/14 17:15:42 $
 --
---          $Revision: #31 $
+--          $Revision: #15 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,10 +113,10 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 	PGColors_Init_Constants()
-	--uea.Enable_Colorization(true, COLOR_GREEN)
-	--aliens.Enable_Colorization(true, COLOR_RED)
-	--novus.Enable_Colorization(true, COLOR_CYAN)
-	--hostile.Enable_Colorization(true, COLOR_RED)
+	--uea.Enable_Colorization(true, 5)
+	--aliens.Enable_Colorization(true, 2)
+	--novus.Enable_Colorization(true, 6)
+	--hostile.Enable_Colorization(true, 2)
 
 	--this allows a win here to be reported to the strategic level lua script
 	global_script = Get_Game_Mode_Script("Strategic")
@@ -1797,13 +1835,112 @@ function Force_Victory(player)
 		-- Inform the campaign script of our victory.
 		global_script.Call_Function("Alien_Tactical_Mission_Over", true) -- true == player wins/false == player loses
 		--Quit_Game_Now( winning_player, quit_to_main_menu, destroy_loser_forces, build_temp_command_center, VerticalSliceTriggerVictorySplashFlag)
-		Quit_Game_Now(player, false, true, false)
+		Quit_Game_Now(player, true, true, false)
 	else
-		Quit_Game_Now(player, false, true, false)
+		Quit_Game_Now(player, true, true, false)
 	end
 end
 
 function Post_Load_Callback()
 	UI_Hide_Sell_Button()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Check_Camera_Bounds_AF = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Hunt = nil
+	Max = nil
+	Min = nil
+	Movie_Commands_Post_Load_Callback = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Objective_Text = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Show_Objective_U = nil
+	Show_Retry_Dialog = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	SpawnList = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_On_Mission_End = nil
+	UI_On_Mission_Start = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/MegaweaponBehavior.lua#14 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/MegaweaponBehavior.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,15 +34,15 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/MegaweaponBehavior.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/MegaweaponBehavior.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Mike_Lytle $
+--            $Author: Brian_Hayes $
 --
---            $Change: 80582 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/10 14:23:47 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
 --          $Revision: #14 $
 --
@@ -54,6 +63,8 @@ local my_behavior = {
 local function Behavior_Init()
 	WeaponStartCooldown = GetCurrentTime()
 	WeaponEndCooldown = WeaponStartCooldown + MEGAWEAPON_DATA.COOLDOWN_TIME
+	Script.Set_Async_Data("WeaponType", "Offensive")
+	Script.Set_Async_Data("MegaweaponTargetsEnemies", true)
 end
 
 
@@ -79,6 +90,10 @@ local function Behavior_Service()
 		Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Ready", nil, {Object, "Offensive"} )
 		Raise_Game_Event("Mega_Weapon_Ready", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type() )
 	end
+	local cd_data = {}
+	cd_data.EndTime = WeaponEndCooldown
+	cd_data.StartTime = WeaponStartCooldown
+	Script.Set_Async_Data("MegaweaponCooldown", cd_data)	
 end
 
 -- --------------------------------------------------------------------------------------------------------------------
@@ -193,22 +208,17 @@ function Animation_Finished()
 	LastService = nil
 end
 
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Get_Megaweapon_Cooldown
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Get_Megaweapon_Cooldown()
-	local ret = {}
-	ret.EndTime = WeaponEndCooldown
-	ret.StartTime = WeaponStartCooldown
-	ret.CooldownTime = MEGAWEAPON_DATA.COOLDOWN_TIME
-	return ret
+function Debug_Force_Complete()
+	WeaponEndCooldown = 0
+	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Ready", nil, {Object, "Offensive"} )
+	Raise_Game_Event("Mega_Weapon_Ready", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type() )
 end
 
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Is_Legal_Megaweapon_Target
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Is_Legal_Megaweapon_Target(region)
-	return Object.Get_Owner().Is_Enemy(region.Get_Owner())
+local function Behavior_Post_Load_Game()
+	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Registration", nil, {Object, "Offensive"} )
+	if WeaponEndCooldown > 0 then
+		Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Not_Ready", nil, {Object, "Offensive"})	
+	end	
 end
 
 function Is_Megaweapon_Counter(object)
@@ -228,23 +238,6 @@ function Is_Megaweapon_Counter(object)
 	return MegaweaponDefenseTypeTable[object.Get_Type()]	
 end
 
-function Get_Weapon_Type()
-	return "Offensive"
-end
-
-function Debug_Force_Complete()
-	WeaponEndCooldown = 0
-	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Ready", nil, {Object, "Offensive"} )
-	Raise_Game_Event("Mega_Weapon_Ready", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type() )
-end
-
-local function Behavior_Post_Load_Game()
-	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Registration", nil, {Object, "Offensive"} )
-	if WeaponEndCooldown > 0 then
-		Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Not_Ready", nil, {Object, "Offensive"})	
-	end	
-end
-
 
 -- This line must be at the bottom of the file.
 my_behavior.Init = Behavior_Init
@@ -253,3 +246,29 @@ my_behavior.Service = Behavior_Service
 my_behavior.Refresh_After_Mode_Switch = Behavior_Refresh_After_Mode_Switch
 my_behavior.Post_Load_Game = Behavior_Post_Load_Game
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

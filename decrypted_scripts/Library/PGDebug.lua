@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGDebug.lua#8 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGDebug.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGDebug.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGDebug.lua $
 --
 --    Original Author: Brian Hayes
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 67089 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/04/03 20:40:58 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #8 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -123,3 +125,16 @@ function DebugBreak()
 	_DebugBreak()
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	DebugBreak = nil
+	DebugEventAlert = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	OutputDebug = nil
+	ScriptError = nil
+	ScriptMessage = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,3 +1,17 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[116] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -73,15 +87,17 @@ function On_Init()
 	
 	BackBarMargin = 4.0 / 1024.0
 	
-	Init_Button_Maps()
-	
 	IsTreeOpen = false
 	ActiveSuiteDisplay = nil -- keeps track of the suite whose contents are being displayed so that they can be updated properly
 	CurrentResearchProgress = 0.0
 	IsDEFCONMode = Initialize_DEFCON()
+	Init_Button_Maps()
+	
 	Update_Tree_Scene()	
 	
 	last_time = nil
+	
+	FlashResearchOptions = {}
 end
 
 
@@ -140,12 +156,16 @@ end
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Initialize_Buttons(buttons_table, tab_order_count)
 	for index, button in pairs(buttons_table) do
-		button.Set_Enabled(false)
-		button.Set_Clockwise(false)
+		button.Set_Button_Enabled(false)
+--		button.Set_Clockwise(false)
 		button.Set_Clock_Tint(ClockTint)
 		button.Set_Tab_Order( tab_order_count + index)
 		table.insert(Buttons, button)
 		
+		if IsDEFCONMode then
+			button.Hide_A_Button_Overlay(true)
+		end
+
 		-- Display/Hide Contents scene -- Mouse
 		-- NOTE: we do not register for Mouse_On, Mouse_Off events becuase the Focus_Gained, Focus_Lost events
 		-- trigger a selectable icon mouse on/off events, respectively.  Hence, we inlcude both cases in here.
@@ -168,6 +188,10 @@ function Update_Tree_Scene(event, source)
 
 	Player = Find_Player("local")
 	Player_Script = Player.Get_Script()
+	if not Player_Script then
+		return
+	end
+	
 	local TreeData = Player_Script.Get_Async_Data("CachedTreeDataForGUI")
 	if TreeData == nil then return end
 	local is_campaign = Is_Campaign_Game()
@@ -196,7 +220,10 @@ function Update_Tree_Scene(event, source)
 	-- (14) - Name of the texture assigned to the suite's current state
 	-- (15) - Name of the current suite (branch direction and suite name)
 	-- (16) - Tactical Cost (if applicable)
-	
+	-- For the gamepad version we also have
+	-- (17) - gamepad_display_x_overlay
+	-- (18) - gamepad_display_a_overlay
+
 	--NOTE: must reset because we only get information from the nodes that are enabled!
 	Reset_Buttons()
 	
@@ -250,9 +277,32 @@ function Update_Tree_Scene(event, source)
 		end
 		
 		UI_button.Set_User_Data(node_info)		
-		UI_button.Set_Enabled(node_info.Enabled)
+		UI_button.Set_Button_Enabled(node_info.Enabled)
 		UI_button.Set_Texture(node_info.SuiteTexture)
 		
+		-- Maria 02.05.2008
+		-- If the suite has been completed research or research is under way, we expose the X overlay for the button.
+		-- Otherwise, we use the A overlay
+		if Is_Gamepad_Active() and not IsDEFCONMode and node_info.Enabled then
+			-- node_data[17] = gamepad_display_x_overlay
+			-- node_data[18] = gamepad_display_a_overlay	
+			if not node_data[18] and not node_data[17] then
+				UI_button.Hide_A_Button_Overlay(true)
+			else
+				-- Make sure the overlay is not hidden.
+				UI_button.Hide_A_Button_Overlay(false)
+				
+				-- Now display the proper button graphics.
+				if node_data[17] then
+					-- display the X button overlay.
+					UI_button.Use_X_Overlay(true)
+				else
+					-- display the A button overlay.
+					UI_button.Use_X_Overlay(false)
+				end
+			end			
+		end
+
 		local progress = 0.0
 		if node_info.StartResearchTime ~= -1 then
 			progress = GetCurrentTime.Frame() - node_info.StartResearchTime
@@ -298,35 +348,56 @@ function On_Update(event, source)
 	end
 
 	if nice_service_time then
-		for _, button in pairs(Buttons) do
-			local node_info = button.Get_User_Data()
+		Refresh_Buttons()
+	end
+	
+	--Make sure the tooltip-like info panel gets frequent updates while it's waiting
+	--for text to be ready
+	if nice_service_time or not Scene.SuiteContentsScene.Is_Scene_Ready() then
+		Scene.SuiteContentsScene.Update_Scene()
+	end
+
+end
+
+
+-- --------------------------------------------------------------------------
+-- Refresh_Buttons
+-- --------------------------------------------------------------------------
+function Refresh_Buttons()
+	for _, button in pairs(Buttons) do
+		local node_info = button.Get_User_Data()
+		
+		if node_info ~= nil then 
+			if node_info.Completed == false and node_info.StartResearchTime ~= -1 then
+				-- There's research under way at this node so update its progress!.
+				local progress = GetCurrentTime.Frame() - node_info.StartResearchTime
 			
-			if node_info ~= nil then 
-				if node_info.Completed == false and node_info.StartResearchTime ~= -1 then
-					-- There's research under way at this node so update its progress!.
-					local progress = GetCurrentTime.Frame() - node_info.StartResearchTime
+				if (IsDEFCONMode) then
+					progress = progress/DEFCON_COUNTDOWN
+				else
+					progress = progress/node_info.TotalResearchTime
+				end		
 				
-					if (IsDEFCONMode) then
-						progress = progress/DEFCON_COUNTDOWN
-					else
-						progress = progress/node_info.TotalResearchTime
-					end		
-					
-					--Update the back bar before we flip the progress
-					Update_Back_Bar(node_info.NodePath, node_info.NodeIndex, progress)
-					progress = 1.0 - progress
-					
-					if progress < 0.0 then progress = 0.0 
-					elseif progress > 1.0 then progress = 1.0
-					end
-					
-					--CurrentResearchProgress = progress
-					
-					button.Set_Clock_Filled(progress)
+				--Update the back bar before we flip the progress
+				Update_Back_Bar(node_info.NodePath, node_info.NodeIndex, progress)
+				progress = 1.0 - progress
+				
+				if progress < 0.0 then progress = 0.0 
+				elseif progress > 1.0 then progress = 1.0
 				end
+				
+				--CurrentResearchProgress = progress
+				
+				button.Set_Clock_Filled(progress)
+			end
+			
+			-- Finally, check to see if we have to flash this button or not.
+			if FlashResearchOptions[node_info.NodePath] and FlashResearchOptions[node_info.NodePath][node_info.NodeIndex] then
+				button.Start_Flash()
+			else
+				button.Stop_Flash()
 			end
 		end
-		Scene.SuiteContentsScene.Update_Scene()
 	end
 end
 
@@ -370,10 +441,6 @@ end
 	-- update the active display data
 	ActiveSuiteDisplay = {}
 	ActiveSuiteDisplay= { NodePath = node.NodePath, NodeIndex =  node.NodeIndex }
-
-	-- unhide the scene
-	Scene.SuiteContentsScene.Set_Hidden(false)
-	Scene.SuiteContentsScene.Play_Animation("FadeIn", false)
 	
 	-- Maria 10.29.2007
 	-- Before passing down the data to the Display scene, let's make sure the TotalResearchTime for this
@@ -412,15 +479,35 @@ end
 -- On_Suite_Button_Clicked
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function On_Suite_Button_Clicked(event, source)
+	if not TestValid(source) then 
+		return
+	end
+	
+	if not source.Is_Button_Enabled() then
+		return 
+	end
+		
 	-- If possible, start researching this node.
 	local node = source.Get_User_Data()
-	Send_GUI_Network_Event("Network_Start_Research", {Find_Player("local"), node.NodePath, node.NodeIndex})	
+	Send_GUI_Network_Event("Network_Start_Research", {Find_Player("local"), node.NodePath, node.NodeIndex})
+
+	if FlashResearchOptions[node.NodePath] and FlashResearchOptions[node.NodePath][node.NodeIndex] then	
+		FlashResearchOptions[node.NodePath][node.NodeIndex] = nil
+	end
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- On_Suite_Button_Right_Clicked
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function On_Suite_Button_Right_Clicked(event, source)
+	if not TestValid(source) then 
+		return
+	end
+	
+	if not source.Is_Button_Enabled() then
+		return 
+	end
+	
 	-- If possible, cancel completed or under going research for this node.
 	local node = source.Get_User_Data()
 	Send_GUI_Network_Event("Network_Cancel_Research", {Find_Player("local"), node.NodePath, node.NodeIndex})	
@@ -457,6 +544,7 @@ function On_Tree_Displayed(event, source)
 	Play_SFX_Event("GUI_Generic_Open_Window")
 	IsTreeOpen = true
 	-- reset the focus so that the components on the newly opened scene gain focus!
+	this.Enable(true)
 	this.Focus_First()
 end
 
@@ -490,6 +578,21 @@ function Get_Research_Progress()
 	return CurrentResearchProgress
 end
 
+-- -------------------------------------------------------------------------------
+-- Set_Flash_Research_Option
+-- -------------------------------------------------------------------------------
+function Set_Flash_Research_Option(branch, suite)
+	
+	if not FlashResearchOptions[branch] then
+		FlashResearchOptions[branch] = {}
+	end
+	
+	FlashResearchOptions[branch][suite] = true
+	
+	Refresh_Buttons()
+end
+
+
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- INTERFACE
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -497,3 +600,43 @@ Interface = {}
 Interface.Is_Open = Is_Open
 Interface.Close = Close
 Interface.Get_Research_Progress = Get_Research_Progress
+Interface.Set_Flash_Research_Option = Set_Flash_Research_Option
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

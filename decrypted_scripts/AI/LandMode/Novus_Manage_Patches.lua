@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Novus_Manage_Patches.lua#13 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Novus_Manage_Patches.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Novus_Manage_Patches.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Novus_Manage_Patches.lua $
 --
 --    Original Author: James Yarrow
 --
 --            $Author: Keith_Brors $
 --
---            $Change: 86527 $
+--            $Change: 97234 $
 --
---          $DateTime: 2007/10/24 11:53:47 $
+--          $DateTime: 2008/04/21 13:36:32 $
 --
---          $Revision: #13 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,13 +75,17 @@ RebootCheckTime = 0.0
 function Compute_Desire()
 
 	if not Is_Player_Of_Faction(Player, "NOVUS") then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -2.0
+	end
+
+	if Player.Get_Player_Is_Crippled() then
+		return -2.0
 	end
 
 	if Target then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -1.0
 	end
 	
 	return 1.0
@@ -98,6 +110,10 @@ function On_Activate()
 		player_script = Player.Get_Script()
 	end
 	
+	PatchTimer = 0.0
+	
+	LastPatchObject = {}
+	
 end
 
 function Service()
@@ -116,6 +132,9 @@ end
 
 function Use_Patch()
 
+	if GetCurrentTime() < PatchTimer then
+		return
+	end
 
 	if Create_Patch( heal_type ) then
 		return
@@ -181,13 +200,16 @@ end
 -------------------------------------------------------
 function Create_Patch( patch_type )
 
-	if TestValid( patch_type ) then
+	if TestValid( patch_type ) and not TestValid(LastPatchObject[patch_type]) then
 		if Player.Is_Object_Type_Enabled(patch_type) then
 		
 			if player_script.Call_Function("Can_Build_Patch_Of_Type",patch_type) then
-				Get_Game_Mode_GUI_Scene().Raise_Event("Build_Patch_Now", nil, {Player, patch_type})
+				--Call the player script function directly.  Raising the GUI event would
+				--cause a game object to be created from the render thread(!)
+				local patch_object = player_script.Call_Function("Build_Patch", patch_type)			
 				log("Novus_Patches: Created patch %s.", patch_type.Get_Name() )
-				wait_time = GetCurrentTime() + 1.0
+				PatchTimer = GetCurrentTime() + 12.0
+				LastPatchObject[patch_type] = patch_object
 				return true
 			end
 		end
@@ -197,3 +219,56 @@ function Create_Patch( patch_type )
 	
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Describe_Target = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

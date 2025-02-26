@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGGlobalConquestDefs.lua#16 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGGlobalConquestDefs.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGGlobalConquestDefs.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGGlobalConquestDefs.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87062 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/31 14:42:26 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #16 $
+--          $Revision: #8 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -427,3 +433,39 @@ end--]]
 
 end--]]
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Default_Global_Conquest_Regions = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGGlobalConquestDefs_Init = nil
+	PG_GC_Create_Clean_Region_Set = nil
+	PG_GC_Create_Props_From_Lobby = nil
+	PG_GC_Merge_Regions_From_Load = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Validate_Region_Definitions = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

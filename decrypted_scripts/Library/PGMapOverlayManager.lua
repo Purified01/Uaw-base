@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMapOverlayManager.lua#31 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMapOverlayManager.lua#23 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMapOverlayManager.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMapOverlayManager.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 86742 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/25 17:52:13 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #31 $
+--          $Revision: #23 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,6 +75,29 @@ function PGMO_Initialize()  -- JOE DELETE: , start_pos_quads, neutral_structure_
 	-- Constants
 	PGMO_MARKER_SIZE_STANDARD = Declare_Enum(1)
 	PGMO_MARKER_SIZE_SMALL = Declare_Enum()
+	
+	PGMO_UNLABELLED_OUTLINE_TEXTURE = "LobbyStart_Outline.tga"
+	PGMO_UNLABELLED_FILL_TEXTURE = "LobbyStart_fill.tga"
+	
+	PGMO_LABELLED_START_OUTLINE_TEXTURES = {}
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_A.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_B.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_C.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_D.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_E.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_F.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_G.tga")
+	table.insert(PGMO_LABELLED_START_OUTLINE_TEXTURES, "LobbyStart_Outline_H.tga")
+	
+	PGMO_LABELLED_START_FILL_TEXTURES = {}
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_A.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_B.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_C.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_D.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_E.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_F.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_G.tga")
+	table.insert(PGMO_LABELLED_START_FILL_TEXTURES, "LobbyStart_fill_H.tga")
 	
 	-- Variables
 	GUI_Tooltip_Constants()
@@ -110,14 +140,29 @@ function PGMO_Set_Interactive(value)
 
 	_PGMOInteractive = value
 	
-	for _, handle in ipairs(_PGMOStartMarkerPool) do
-		handle.Set_Interactive(_PGMOInteractive)
+	if (not _PGMOInteractive) then
+		_PGMO_Clear_Start_Marker_Colors()
 	end
 	
 	for _, handle in ipairs(_PGMONeutralStructureMarkerPool) do
 		handle.Set_Interactive(_PGMOInteractive)
 	end
 	
+	for _, handle in ipairs(_PGMOStartMarkerPool) do
+		handle.Set_Interactive(_PGMOInteractive)
+	end
+	
+end
+
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function _PGMO_Clear_Start_Marker_Colors()
+
+	for _, handle in ipairs(_PGMOStartMarkerPool) do
+		handle.Clear_Color()
+	end
+		
 end
 
 -------------------------------------------------------------------------------
@@ -169,6 +214,7 @@ function _PGMO_Create_Markers(num_required, pool, scene)
 		else
 			handle.Set_Size_Small()
 		end
+		handle.Set_Tab_Order(-1)
 		table.insert(pool, handle)
 	end
 	
@@ -248,6 +294,11 @@ function _PGMO_Set_All_Visible(value)
 
 	for _, handle in ipairs(_PGMOStartMarkerPool) do
 		handle.Set_Hidden(not value)
+		if ( value ) then
+			handle.Set_Tab_Order(Declare_Enum())
+		else
+			handle.Set_Tab_Order(-1)
+		end
 	end
 	
 	for _, handle in ipairs(_PGMONeutralStructureMarkerPool) do
@@ -263,6 +314,11 @@ function _PGMO_Set_All_Start_Markers_Visible(value)
 
 	for _, handle in ipairs(_PGMOStartMarkerPool) do
 		handle.Set_Hidden(not value)
+		if ( value ) then
+			handle.Set_Tab_Order(Declare_Enum())
+		else
+			handle.Set_Tab_Order(-1)
+		end
 	end
 	
 	_PGMO_Refresh_UI()
@@ -476,7 +532,7 @@ end
 -------------------------------------------------------------------------------
 -- Sets up the start marker data model underlying the map overlay.
 -------------------------------------------------------------------------------
-function PGMO_Set_Start_Marker_Model(num_players, position_coords)
+function PGMO_Set_Start_Marker_Model(num_players, position_coords, use_labels)
 
 	_PGMONumPlayers = num_players
 	_PGMOStartMarkerCoords = position_coords
@@ -507,24 +563,41 @@ function PGMO_Set_Start_Marker_Model(num_players, position_coords)
 	-- We're good
 	_PGMO_Set_All_Start_Markers_Visible(false)
 	_PGMOSeatAssignments = {}
-	--_PGMO_Set_Default_Textures()
 	
 	_PGMO_Position_Markers()
 	
-	--_PGMO_Refresh_UI()
-	--[[for id, quad in ipairs(_PGMOStartPosQuads) do
-	
-		local seat = PGMO_Get_Seat_Assignment(id)
-		if (seat ~= nil) then
-			quad.Set_Texture(_PGMO_SEAT_TEXTURES[seat])
-		end
-
-	end--]]
+	-- Are we placing labelled or unlabelled markers?
+	PGMO_Set_Use_Labels(use_labels)
 	
 	return true
 
 end
 	
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function PGMO_Set_Use_Labels(value)
+
+	for index, handle in ipairs(_PGMOStartMarkerPool) do
+	
+		local outline = nil
+		local fill = nil
+			
+		if (value) then
+			outline = PGMO_LABELLED_START_OUTLINE_TEXTURES[index]
+			fill = PGMO_LABELLED_START_FILL_TEXTURES[index]
+		else
+			outline = PGMO_UNLABELLED_OUTLINE_TEXTURE
+			fill = PGMO_UNLABELLED_FILL_TEXTURE
+		end
+		
+		handle.Set_Outline_Texture(outline)
+		handle.Set_Fill_Texture(fill)
+			
+	end
+	
+end
+
 -------------------------------------------------------------------------------
 --
 -------------------------------------------------------------------------------
@@ -637,6 +710,56 @@ function PGMO_Assign_Random_Start_Position(seat)
 end
 
 -------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function PGMO_Get_First_Empty_Start_Position(seat, start_looking_from)
+
+	if ( start_looking_from  and 
+			start_looking_from > _PGMONumPlayers ) then
+		return -1
+	end
+
+	for i, handle in ipairs(_PGMOStartMarkerPool) do
+		if ( start_looking_from ~= nil and i < start_looking_from ) then
+			i = start_looking_from
+		elseif (handle.Get_Seat_Assignment() == -1) then
+			return i
+		end
+	end
+	
+	return -1
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function PGMO_Get_Reverse_First_Empty_Start_Position(seat, start_looking_from)
+
+	if (start_looking_from == nil) then
+		start_looking_from = _PGMONumPlayers
+	end
+			
+	local last_valid_handle = nil
+	local last_valid_index = nil
+	for i, handle in ipairs(_PGMOStartMarkerPool) do
+		if ( start_looking_from ~= nil and i > start_looking_from ) then
+			break
+		elseif (handle.Get_Seat_Assignment() == -1) then
+			last_valid_handle = handle
+			last_valid_index = i
+		end
+	end
+
+	if ( last_valid_handle ~= nil ) then
+		return last_valid_index
+	else
+		return -1
+	end
+	
+end
+
+-------------------------------------------------------------------------------
 --
 -------------------------------------------------------------------------------
 function PGMO_Get_Assignment_Count()
@@ -645,9 +768,11 @@ function PGMO_Get_Assignment_Count()
 	
 	for i = 1, _PGMONumPlayers do
 		local handle = _PGMOStartMarkerPool[i]
-		local seat = handle.Get_Seat_Assignment()
-		if (handle.Get_Seat_Assignment() ~= -1) then
-			count = count + 1
+		if (handle ~= nil) then
+			local seat = handle.Get_Seat_Assignment()
+			if (handle.Get_Seat_Assignment() ~= -1) then
+				count = count + 1
+			end
 		end
 	end
 	
@@ -765,13 +890,78 @@ end
 -------------------------------------------------------------------------------
 function PGMO_Set_Seat_Color(seat, color)
 
+	if ((not _PGMOEnabled) or (not _PGMOInteractive)) then
+		return
+	end
+
 	for i = 1, _PGMONumPlayers do
 		local handle = _PGMOStartMarkerPool[i]
-		local id = handle.Get_ID()
-		local curr_seat = handle.Get_Seat_Assignment()
-		if (seat == curr_seat) then
-			handle.Set_Seat_Color(color)
+		if TestValid(handle) then 
+			local id = handle.Get_ID()
+			local curr_seat = handle.Get_Seat_Assignment()
+			if (seat == curr_seat) then
+				handle.Set_Seat_Color(color)
+			end
 		end
 	end
 	
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Min = nil
+	OutputDebug = nil
+	PGMO_Assign_Random_Start_Position = nil
+	PGMO_Assign_Start_Position = nil
+	PGMO_Bind_To_Quad = nil
+	PGMO_Clear = nil
+	PGMO_Clear_Start_Position_By_Seat = nil
+	PGMO_Clear_Start_Positions = nil
+	PGMO_Disable_Neutral_Structure = nil
+	PGMO_Enable_Neutral_Structure = nil
+	PGMO_Get_Assignment_Count = nil
+	PGMO_Get_Enabled = nil
+	PGMO_Get_First_Empty_Start_Position = nil
+	PGMO_Get_Reverse_First_Empty_Start_Position = nil
+	PGMO_Get_Saved_Start_Pos_User_Data = nil
+	PGMO_Get_Seat_Assignment = nil
+	PGMO_Get_Start_Marker_ID = nil
+	PGMO_Get_Start_Marker_ID_From_Seat = nil
+	PGMO_Hide = nil
+	PGMO_Initialize = nil
+	PGMO_Is_Seat_Assigned = nil
+	PGMO_Mouse_Move = nil
+	PGMO_Restore_Start_Position_Assignments = nil
+	PGMO_Save_Start_Position_Assignments = nil
+	PGMO_Set_Enabled = nil
+	PGMO_Set_Interactive = nil
+	PGMO_Set_Justification = nil
+	PGMO_Set_Marker_Size = nil
+	PGMO_Set_Neutral_Structure_Marker_Model = nil
+	PGMO_Set_Seat_Color = nil
+	PGMO_Set_Start_Marker_Model = nil
+	PGMO_Show = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

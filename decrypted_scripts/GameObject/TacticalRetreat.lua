@@ -1,3 +1,11 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[153] = true
+LuaGlobalCommandLinks[182] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -203,7 +211,7 @@ function Behavior_Object_In_Range(prox_object, object)
 		return
 	end
 	
-	if object.Has_Behavior(BEHAVIOR_HARD_POINT) then
+	if object.Has_Behavior(68) then
 		local parent_object = object.Get_Highest_Level_Hard_Point_Parent()
 		
 		if TestValid(parent_object) then 
@@ -246,7 +254,7 @@ function Valid_Object(object)
 		return false
 	end
 	
-	if object.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) then
+	if object.Has_Behavior(99) then
 		return false
 	end
 	
@@ -276,7 +284,7 @@ function Finalize_Retreat()
 		end
 	else
 		--The retreat failed.  Destroy the transport with damage so that we kill its contents
-		Object.Take_Damage(BIG_FLOAT, "Damage_Default")
+		Object.Take_Damage(1e+018, "Damage_Default")
 	end		
 end
 
@@ -288,7 +296,7 @@ function On_Transport_Owner_Death()
 	
 	-- destroy the transport!
 	if TestValid(Object) then 
-		Object.Take_Damage(BIG_FLOAT, "Damage_Default")
+		Object.Take_Damage(1e+018, "Damage_Default")
 	end
 end
 
@@ -327,3 +335,31 @@ my_behavior.Init = Behavior_Init
 my_behavior.Service = Behavior_Service
 --my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Retrieve_Retreat_Data = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

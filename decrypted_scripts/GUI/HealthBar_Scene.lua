@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/HealthBar_Scene.lua#30 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/HealthBar_Scene.lua#17 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/HealthBar_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/HealthBar_Scene.lua $
 --
 --    Original Author: Chris Brooks
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 84600 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/22 16:38:03 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #30 $
+--          $Revision: #17 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -85,12 +92,15 @@ function On_Init()
 	
 	Initialize_Ammo_Bar()
 	Initialize_Shield_Bar()
-	Initialize_Control_Group_Display()
-
-	-- Oksana: need for DMA display
-	Initialize_DMA_Bar()
 	
-	if TestValid(this.ControlGroup) then
+	
+	-- Oksana: need for DMA display
+	if Initialize_DMA_Bar then
+		Initialize_DMA_Bar()
+	end
+	
+	if TestValid(this.CtrlGQuad) then
+		Initialize_Control_Group_Display()
 		this.Register_Event_Handler("Object_Control_Group_Assignment_Changed", nil, On_Control_Group_Assignment_Changed)
 	end
 	
@@ -117,11 +127,11 @@ function On_Init()
 			Set_GUI_Variable("GarrisonableExit", garrisonable_exit)				
 		end
 		
-		Set_GUI_Variable("RequiresAmmoBar", Object.Has_Behavior(BEHAVIOR_ENERGY_POOL))
-		Set_GUI_Variable("RequiresShieldBa", Object.Has_Behavior(BEHAVIOR_SHIELDED))
+		Set_GUI_Variable("RequiresAmmoBar", Object.Has_Behavior(15))
+		Set_GUI_Variable("RequiresShieldBar", Object.Has_Behavior(BEHAVIOR_SHIELDED))
 		
 		-- In some cases, the health bar is attached to a hard point and we may need to keep track of its parent.
-		if Object.Has_Behavior(BEHAVIOR_HARD_POINT) then
+		if Object.Has_Behavior(68) then
 			Set_GUI_Variable("HighestLevelParent", Object)
 		end		
 	end
@@ -132,6 +142,7 @@ function On_Init()
 	this.Register_Event_Handler("Update_LetterBox_Mode_State", nil, On_Update_LetterBox_Mode_State)
 	this.Register_Event_Handler("Reset_Last_Service", nil, On_Reset_Last_Service)
 	
+
 end
 
 -- -------------------------------------------------------------------------------------------------------------------------------------
@@ -151,7 +162,7 @@ end
 
 -- =====================================================================================
 function Initialize_Control_Group_Display()
-	if not TestValid(this.ControlGroup) then return end
+	if not TestValid(this.CtrlGQuad) then return end
 	Set_GUI_Variable("ControlGroupIndex", -1)
 	Update_Control_Group_Display()
 end
@@ -178,15 +189,19 @@ end
 
 -- =====================================================================================
 function Update_Control_Group_Display()
-	if not TestValid(this.ControlGroup) then return end
+	
+	if not TestValid(this.CtrlGQuad) then
+		return 
+	end
+
 	local group_id = Get_GUI_Variable("ControlGroupIndex")
 	-- if we are not the local player or the object is not assigned to any control group then hide the display!.
 	if Object.Get_Owner() ~= Find_Player("local") or group_id <= -1 then 
-		this.ControlGroup.Set_Hidden(true)
+		this.CtrlGQuad.Set_Hidden(true)
 	else
-		this.ControlGroup.Set_Hidden(false)
+		this.CtrlGQuad.Set_Hidden(false)
 		local texture_name = "I_icon_ctrl_"..group_id..".tga"
-		this.ControlGroup.CtrlGQuad.Set_Texture(texture_name)
+		this.CtrlGQuad.Set_Texture(texture_name)
 	end
 end
 
@@ -201,25 +216,6 @@ function Initialize_Shield_Bar()
 	Set_GUI_Variable("ShieldsHeight", ShieldsHeight)
 	Set_GUI_Variable("ShieldsOrigWidth", ShieldsWidth)
 end
-
-
--- =====================================================================================
-function Initialize_DMA_Bar()
-	if not TestValid(this.DMAQuad) then return end
-	DMABar_X, DMABar_Y, DMABar_Width, DMABar_Height = this.DMAQuad.Get_Bounds()
-	Set_GUI_Variable("DMABar_X", DMABar_X)
-	Set_GUI_Variable("DMABar_Y", DMABar_Y)
-	Set_GUI_Variable("DMABar_Width", DMABar_Width)
-	Set_GUI_Variable("DMABar_Height", DMABar_Height)
-	Set_GUI_Variable("DMABar_OrigWidth", DMABar_Width)
-	
-	this.DMAQuad.Set_Hidden(true)
-	if TestValid(this.DMABGQuad) then
-		this.DMABGQuad.Set_Hidden(true)
-	end	
-end
-
-
 
 -- =====================================================================================
 function Initialize_Ammo_Bar()
@@ -277,7 +273,11 @@ function On_Update()
 			Update_Health_Bar()
 			Update_Ammo_Bar()
 			Update_Shield_Bar()
-			Update_DMA_Bar()
+			-- Do we have a DMA bar to refresh?
+			if Update_DMA_Bar then
+				Update_DMA_Bar()
+			end
+
 		end	
 	end
 end
@@ -367,50 +367,6 @@ function Update_Health_Bar()
 end
 
 
--- =====================================================================================
-function Update_DMA_Bar()
-	if not TestValid(this.DMABGQuad) then return end
-	
-	local DMA_percent = 0.0
-	local should_hide = true
-	
-	if Is_Player_Of_Faction(Object.Get_Owner(), "MASARI") then
-		if StringCompare( Object.Get_Owner().Get_Elemental_Mode(), "Ice" ) then
-			
-			-- Ok, we are masari and we are in Dark mode. We should display our DMA bar.		
-			should_hide = false;
-			local current_dma_level = Object.Get_Attribute_Value( "Current_DMA_Level" )
-			local max_dma_level = Object.Get_Attribute_Value( "DMA_Max" )
-			if max_dma_level and current_dma_level and max_dma_level ~= 0 then
-				DMA_percent = current_dma_level / max_dma_level
-			end
-					
-			-- If we don't have any more DMA left and we don't have regen, hide the bar.
-			if DMA_percent <= 0.0 and Object.Is_Category("Stationary") and Object.Get_Owner().Is_Generator_Locked("DMAStructureRegenGenerator") then
-				should_hide = true;
-			end
-			
-		end -- if ice
-	end -- if masari
-	
-	--Display or hide the bar
-	this.DMAQuad.Set_Hidden(should_hide)
-	if TestValid(this.DMABGQuad) then
-		this.DMABGQuad.Set_Hidden(should_hide)
-	end
-
-	if not should_hide then
-		--Show the bar at proper percent		
-		local width = Get_GUI_Variable("DMABar_OrigWidth") * DMA_percent
-		Set_GUI_Variable("DMABar_Width", width)
-		Scene.DMAQuad.Set_Bounds(	Get_GUI_Variable("DMABar_X"), 
-											Get_GUI_Variable("DMABar_Y"),
-											Get_GUI_Variable("DMABar_Width"), 
-											Get_GUI_Variable("DMABar_Height"))
-	end
-end
-
-
 
 -- =====================================================================================
 function Update_Shield_Bar()
@@ -448,4 +404,41 @@ function On_Enter_Inactive_State()
 	if Get_GUI_Variable("GarrisonablePipContainer") then
 		Get_GUI_Variable("GarrisonablePipContainer").Set_State( "Hidden" )
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

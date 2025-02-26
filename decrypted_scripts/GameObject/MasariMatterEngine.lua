@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/MasariMatterEngine.lua#10 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[210] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/MasariMatterEngine.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/MasariMatterEngine.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/MasariMatterEngine.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 86802 $
+--            $Change: 94569 $
 --
---          $DateTime: 2007/10/26 15:15:48 $
+--          $DateTime: 2008/03/04 17:24:35 $
 --
---          $Revision: #10 $
+--          $Revision: #11 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,7 +201,7 @@ local function Behavior_Service()
 						-- Let the UI know we've harvested a resource...
 						-- show near value (i.e round)
 						local show_resources = resources + 0.5
-						Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Resource_Harvested", nil, {Object, Object, show_resources})
+						Create_Generic_Object_With_GUI_Data(Find_Object_Type("Resource_Floaty"), Object.Get_Position(), Object.Get_Owner(), show_resources)
 					end
 				end				
 			end
@@ -210,3 +218,51 @@ my_behavior.First_Service = Behavior_First_Service
 my_behavior.Service = Behavior_Service
 
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

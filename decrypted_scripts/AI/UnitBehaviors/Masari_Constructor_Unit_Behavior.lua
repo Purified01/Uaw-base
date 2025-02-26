@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Masari_Constructor_Unit_Behavior.lua#15 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[18] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Masari_Constructor_Unit_Behavior.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,21 +34,21 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Masari_Constructor_Unit_Behavior.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Masari_Constructor_Unit_Behavior.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87963 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/11/15 17:33:46 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #15 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
-require("AIIdleThreads")
+require("PGBase")
 
 ScriptShouldCRC = true
 
@@ -143,7 +152,7 @@ function AI_Behavior_Update()
 
 	-- give newly recruited constructors time to aquire their target	
 	-- also if it has q queued target we are done
-	if Object.Is_AI_Recruited() and ( cur_time < RecruitTime + 1.0 or (TestValid(q_att_target) and (q_att_target.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) or q_att_target.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON)) ) ) then
+	if Object.Is_AI_Recruited() and ( cur_time < RecruitTime + 1.0 or (TestValid(q_att_target) and (q_att_target.Has_Behavior(39) or q_att_target.Has_Behavior(70)) ) ) then
 		Clear_Info_And_Sleep(1.0)
 		return
 	end 
@@ -164,7 +173,7 @@ function AI_Behavior_Update()
 	
 	-- if we are targeting a build object we are done	
 	if TestValid( att_target ) then
-		if att_target.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) or att_target.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON) then
+		if att_target.Has_Behavior(39) or att_target.Has_Behavior(70) then
 			ActiveConstructionObject = att_target
 			Clear_Info_And_Sleep(1.0)
 			return
@@ -273,8 +282,8 @@ function Clear_Info_And_Sleep( sleep_time, idle, kill_heal_target, sleep_full )
 
 	if not TestValid(ActiveConstructionObject) or
 		(
-			not ActiveConstructionObject.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) and
-			not ActiveConstructionObject.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON)
+			not ActiveConstructionObject.Has_Behavior(39) and
+			not ActiveConstructionObject.Has_Behavior(70)
 		)
 	then
 		if ActiveConstructionObject ~= nil then
@@ -357,10 +366,10 @@ function Unit_Filter(self_obj, trigger_obj)
 		
 		if not TestValid(ActiveConstructionObject) and trigger_obj.Get_Owner() == Object.Get_Owner() and
 			( 
-				trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) or
-				trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON)
+				trigger_obj.Has_Behavior(39) or
+				trigger_obj.Has_Behavior(70)
 			) and
-			not trigger_obj.Has_Behavior(BEHAVIOR_HARD_POINT) and
+			not trigger_obj.Has_Behavior(68) and
 			Number_Builders(trigger_obj) < Masari_Constructor.MAX_BUILDERS
 		then
 			local distance = Object.Get_Distance( trigger_obj )
@@ -381,8 +390,8 @@ function Unit_Filter(self_obj, trigger_obj)
 				AllyCount = AllyCount + 1
 					
 				if trigger_obj.Is_Category("Stationary | Piloted | Small + Organic") and 
-					not trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) and
-					not trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON) and
+					not trigger_obj.Has_Behavior(39) and
+					not trigger_obj.Has_Behavior(70) and
 					Number_Healers( trigger_obj ) < 2
 				then
 
@@ -490,3 +499,30 @@ end
 my_behavior.First_Service = Behavior_First_Service
 my_behavior.Service = Behavior_Service
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Mid_Point = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

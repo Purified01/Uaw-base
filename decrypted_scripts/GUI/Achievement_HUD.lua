@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_HUD.lua#3 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_HUD.lua#6 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_HUD.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_HUD.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 72769 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/06/11 11:49:36 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #3 $
+--          $Revision: #6 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -145,7 +153,7 @@ function Refresh_UI()
 		local new_row = Achievement_HUD.Achievement_List.Add_Row()
 		local name_str = " " .. tostring(name)
 		Achievement_HUD.Achievement_List.Set_Text_Data(BUFF_COLUMN, new_row, name_str)
-		Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(COLOR_YELLOW))
+		Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(4))
 		local has_buffs = false
 
 			for _, buff in pairs(buff_list) do
@@ -154,7 +162,7 @@ function Refresh_UI()
 				local new_row = Achievement_HUD.Achievement_List.Add_Row()
 				local buff_str = Create_Wide_String("   - ").append(Get_Game_Text(buff))
 				Achievement_HUD.Achievement_List.Set_Text_Data(BUFF_COLUMN, new_row, buff_str)
-				Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(COLOR_DARK_ORANGE))
+				Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(19))
 
 			end
 
@@ -162,7 +170,7 @@ function Refresh_UI()
 			local new_row = Achievement_HUD.Achievement_List.Add_Row()
 			local buff_str = Create_Wide_String("   - ").append(Get_Game_Text("TEXT_NO_BUFFS_SELECTED"))
 			Achievement_HUD.Achievement_List.Set_Text_Data(BUFF_COLUMN, new_row, buff_str)
-			Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(COLOR_GRAY))
+			Achievement_HUD.Achievement_List.Set_Row_Color(new_row, tonumber(9))
 		end
 
 	end
@@ -207,3 +215,33 @@ Interface = {}
 Interface.Set_Model = Set_Model
 Interface.Is_Showing = Is_Showing
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Prepare_Fadeout = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Legal.lua#7 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[112] = true
+LuaGlobalCommandLinks[79] = true
+LuaGlobalCommandLinks[192] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Legal.lua#15 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,48 +33,60 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Legal.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Legal.lua $
 --
 --    Original Author: Justin Fic
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84946 $
+--            $Change: 93153 $
 --
---          $DateTime: 2007/09/27 12:23:47 $
+--          $DateTime: 2008/02/12 11:04:35 $
 --
---          $Revision: #7 $
+--          $Revision: #15 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
-require("PGDebug")
+ScriptPoolCount = 0
 
 function On_Init()
 	this.Register_Event_Handler("Movie_Finished", this.LogoMovie, On_Movie_Finished)
 	this.Register_Event_Handler("Closing_All_Displays", nil, On_Skip_Movie)
 
-	OutputDebug("JOE::::   Doing movie table: Build: %s", tostring(BETA_BUILD))
+	this.Register_Event_Handler("Controller_A_Button_Up", nil, On_Skip_Movie)
+	this.Register_Event_Handler("Controller_B_Button_Up", nil, On_Skip_Movie)
+	this.Register_Event_Handler("Controller_Start_Button_Up", nil, On_Skip_Movie)	
+	this.LogoMovie.Set_Tab_Order(0)
+	this.Focus_First()
 		
 	if (BETA_BUILD) then
 
 		MovieData = {
-							{ Movie="blank.bik", Text="", CanSkip=false },
-							{ Movie="Sega_Logo.bik", Text="TEXT_SEGA_LEGAL", CanSkip=false },
-							{ Movie="PetroglyphLogo.bik", Text="TEXT_PETROGLYPH_LEGAL", CanSkip=true },
-							{ Movie="Creative.bik", Text="TEXT_SOUND_BLASTER_LEGAL", CanSkip=true },
-							{ Movie="NVidia.bik", Text="TEXT_NVIDIA_LEGAL", CanSkip=true },
+							{ Movie="blank.bik", Text="", CanSkip=false, Surround=false },
+							{ Movie="Sega_Logo.bik", Text="TEXT_SEGA_LEGAL", CanSkip=false, Surround=false },
+							{ Movie="PetroglyphLogo.bik", Text="TEXT_PETROGLYPH_LEGAL", CanSkip=true, Surround=false },
+							{ Movie="Creative.bik", Text="TEXT_SOUND_BLASTER_LEGAL", CanSkip=true, Surround=false },
+							{ Movie="NVidia.bik", Text="TEXT_NVIDIA_LEGAL", CanSkip=true, Surround=false },
 						}
 						
 	else
-					
-		MovieData = {
-							{ Movie="blank.bik", Text="", CanSkip=false },
-							{ Movie="Sega_Logo.bik", Text="TEXT_SEGA_LEGAL", CanSkip=false },
-							{ Movie="PetroglyphLogo.bik", Text="TEXT_PETROGLYPH_LEGAL", CanSkip=true },
-							{ Movie="Creative.bik", Text="TEXT_SOUND_BLASTER_LEGAL", CanSkip=true },
-							{ Movie="NVidia.bik", Text="TEXT_NVIDIA_LEGAL", CanSkip=true },
-							{ Movie="Trailer.bik", Text="", CanSkip=true },
-						}
+		if not Is_Xbox() then		
+			MovieData = {
+								{ Movie="blank.bik", Text="", CanSkip=false, Surround=false },
+								{ Movie="Sega_Logo.bik", Text="TEXT_SEGA_LEGAL", CanSkip=false, Surround=false },
+								{ Movie="PetroglyphLogo.bik", Text="TEXT_PETROGLYPH_LEGAL", CanSkip=true, Surround=false },
+								{ Movie="Creative.bik", Text="TEXT_SOUND_BLASTER_LEGAL", CanSkip=true, Surround=false },
+								{ Movie="NVidia.bik", Text="TEXT_NVIDIA_LEGAL", CanSkip=true, Surround=false },
+								{ Movie="Trailer.bik", Text="", CanSkip=true, Surround=false },
+							}
+		else
+			MovieData = {
+								{ Movie=Get_Ratings_Movie_For_Locale(), Text="", CanSkip=false, Surround=false },
+								{ Movie="Sega_Logo.bik", Text="TEXT_SEGA_LEGAL", CanSkip=false, Surround=true },
+								{ Movie="PetroglyphLogo.bik", Text="TEXT_PETROGLYPH_LEGAL", CanSkip=true, Surround=true },
+								{ Movie="Trailer.bik", Text="", CanSkip=true, Surround=true },
+							}
+		end
 						
 	end
 				
@@ -85,8 +105,18 @@ function On_Init()
 	On_Movie_Finished()
 end
 
+function Get_Ratings_Movie_For_Locale()
+	if Locale == 0 then
+		--0 is USA
+		return "ESRB.bik"
+	else
+		return "PEGI.bik"
+	end
+end
+
 function On_Movie_Finished()
 	MovieIndex = MovieIndex + 1
+	ResetLastControllerInputTime();		
 
 	local any_set = false
 	local movie_data = MovieData[MovieIndex]
@@ -96,10 +126,11 @@ function On_Movie_Finished()
 		this.End_Modal()
 		this.LogoMovie.Set_Hidden(true)
 		this.LegalText.Set_Hidden(true)
-		this.LoadModel.Set_Hidden(false)		
+		this.LoadModel.Set_Hidden(false)
 		return
 	end		
 	
+	this.LogoMovie.Set_Surround(movie_data.Surround)
 	this.LogoMovie.Set_Movie(movie_data.Movie)
 	this.LegalText.Set_Text(movie_data.Text)	
 end
@@ -118,3 +149,7 @@ end
 
 Interface = {}
 Interface.Start_Movie_Sequence = On_Movie_Finished
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Kill_Unused_Global_Functions = nil
+end

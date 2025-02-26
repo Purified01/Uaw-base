@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Hero_Manager.lua#21 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[123] = true
+LuaGlobalCommandLinks[109] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Hero_Manager.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Hero_Manager.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Hero_Manager.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Maria_Teruel $
 --
---            $Change: 84180 $
+--            $Change: 92893 $
 --
---          $DateTime: 2007/09/18 13:06:05 $
+--          $DateTime: 2008/02/08 11:49:59 $
 --
---          $Revision: #21 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +63,6 @@ function On_Init()
 	this.Register_Event_Handler("Selectable_Icon_Double_Clicked", this.HeroButton, On_Hero_Button_Double_Clicked)
 				
 	this.Register_Event_Handler("Selection_Changed", nil, On_Selection_Changed)
-	
 	this.HeroButton.Set_Tab_Order(1)
 end
 
@@ -74,6 +80,12 @@ function Update_Respawning()
 	this.HeroButton.Set_Clock_Filled(1.0 - respawn_percent)
 	local respawn_cost = hero.Get_Instant_Respawn_Cost()
 	if respawn_cost then
+		if respawn_cost > hero.Get_Owner().Get_Credits() then
+			this.HeroButton.Set_Insufficient_Funds_Display(true)
+		else
+			this.HeroButton.Set_Insufficient_Funds_Display(false)
+		end		
+		
 		this.HeroButton.Set_Cost(respawn_cost)
 	end	
 end
@@ -88,6 +100,12 @@ function On_Begin_Respawning()
 	local hero = Get_GUI_Variable("HeroObject")
 	local respawn_cost = hero.Get_Instant_Respawn_Cost()
 	if respawn_cost then
+		if respawn_cost > hero.Get_Owner().Get_Credits() then
+			this.HeroButton.Set_Insufficient_Funds_Display(true)
+		else
+			this.HeroButton.Set_Insufficient_Funds_Display(false)
+		end		
+		
 		this.HeroButton.Set_Cost(respawn_cost)
 	end
 end
@@ -266,3 +284,42 @@ Interface.Get_Fleet = Get_Fleet
 Interface.Set_Health = Set_Health
 Interface.Set_Clock_Filled = Set_Clock_Filled
 Interface.Get_Hero_Button = Get_Hero_Button
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	On_Closing_All_Displays = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

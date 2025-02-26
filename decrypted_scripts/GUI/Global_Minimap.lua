@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Minimap.lua#4 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[22] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Minimap.lua#4 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,15 +33,15 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Minimap.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Minimap.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 74452 $
+--            $Change: 92481 $
 --
---          $DateTime: 2007/06/26 15:18:18 $
+--          $DateTime: 2008/02/05 12:16:28 $
 --
 --          $Revision: #4 $
 --
@@ -125,3 +133,7 @@ end
 Interface = {}
 Interface.Set_Region_Color = Set_Region_Color
 Interface.Get_Mouse_Over_Region = Get_Mouse_Over_Region
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Kill_Unused_Global_Functions = nil
+end

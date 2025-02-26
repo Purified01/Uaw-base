@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Novus_Constructor_Unit_Behavior.lua#15 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[109] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Novus_Constructor_Unit_Behavior.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,22 +32,21 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/UnitBehaviors/Novus_Constructor_Unit_Behavior.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/UnitBehaviors/Novus_Constructor_Unit_Behavior.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84404 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/20 13:10:30 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #15 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
-require("AIIdleThreads")
-
+require("PGBase")
 ScriptShouldCRC = true
 
 --A behavior that allows AI to take advantage of opportunities to trigger point blank area effect abilities.
@@ -145,7 +151,7 @@ function AI_Behavior_Update()
 	
 	-- if we are targeting a build object we are done	
 	if TestValid( att_target ) then
-		if att_target.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) or att_target.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON) then
+		if att_target.Has_Behavior(39) or att_target.Has_Behavior(70) then
 			Clear_Info_And_Sleep(2.0)
 			return
 		end			
@@ -241,7 +247,7 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Object_Has_Power( object )
 	if TestValid( object ) then
-		if object.Has_Behavior( BEHAVIOR_POWERED ) then
+		if object.Has_Behavior( 161 ) then
 			if object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 				return false
 			end
@@ -265,8 +271,8 @@ function Unit_Filter(self_obj, trigger_obj)
 			CommandCenter = trigger_obj
 		end
 		
-		if trigger_obj.Get_Owner() == ObjectPlayer and ( trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) or trigger_obj.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON) ) and
-			not trigger_obj.Has_Behavior(BEHAVIOR_HARD_POINT) then
+		if trigger_obj.Get_Owner() == ObjectPlayer and ( trigger_obj.Has_Behavior(39) or trigger_obj.Has_Behavior(70) ) and
+			not trigger_obj.Has_Behavior(68) then
 			local distance = Object.Get_Distance( trigger_obj )
 			if  distance < ConstructionDistance and trigger_obj.Get_Attribute_Value("Number_Of_Assigned_Builders") < Novus_Constructor.MAX_BUILDERS then
 				ConstructionDistance = distance
@@ -300,3 +306,29 @@ end
 my_behavior.First_Service = Behavior_First_Service
 my_behavior.Service = Behavior_Service
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

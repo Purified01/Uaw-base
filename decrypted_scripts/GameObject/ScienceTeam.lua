@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/ScienceTeam.lua#5 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[114] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/ScienceTeam.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/ScienceTeam.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/ScienceTeam.lua $
 --
 --    Original Author: Brian Hayes
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 62842 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/02/13 17:43:32 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #5 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,7 +75,7 @@ function Tech_Powerup_Retrieval_Failed(tech_object)
 	local scene = tech_object.Get_GUI_Scene()
 	
 	if scene then
-		scene.Raise_Event_Immediate("Tech_Object_Retrieval_Failed", tech_object, {} )		
+		scene.Raise_Event("Tech_Object_Retrieval_Failed", tech_object, {} )		
 	end
 	
 	Object.Play_SFX_Event("Unit_Retrieve_Fail_UEA_Science_Team")		
@@ -88,7 +95,7 @@ function Tech_Powerup_Retrieval_Finished(params)
 	
 	local scene = tech_object.Get_GUI_Scene()
 	if scene then
-		scene.Raise_Event_Immediate("Tech_Object_Retrieval_Completed", tech_object, {})
+		scene.Raise_Event("Tech_Object_Retrieval_Completed", tech_object, {})
 	end
 	
 	local player_script = Object.Get_Owner().Get_Script()
@@ -116,7 +123,7 @@ function Tech_Powerup_In_Range(tech_object)
 						
 			scene = tech_object.Get_GUI_Scene()
 			if scene then
-				scene.Raise_Event_Immediate("Start_Tech_Object_Retrieval", tech_object, {CountdownTimer, tech_object.Get_Type().Get_Name()})
+				scene.Raise_Event("Start_Tech_Object_Retrieval", tech_object, {CountdownTimer, tech_object.Get_Type().Get_Name()})
 			end
 
 			-- If there is a scenario script
@@ -141,3 +148,29 @@ end
 -- my_behavior.Service = Behavior_Service
 --my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

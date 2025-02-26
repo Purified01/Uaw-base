@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGLogging.lua#2 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGLogging.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGLogging.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGLogging.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Andre_Arsenault $
+--            $Author: Brian_Hayes $
 --
---            $Change: 61352 $
+--            $Change: 92481 $
 --
---          $DateTime: 2007/01/23 18:35:25 $
+--          $DateTime: 2008/02/05 12:16:28 $
 --
---          $Revision: #2 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,3 +75,8 @@ function show_table (k, v)
 	log( tostring(k) .. " " .. tostring(v) )
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

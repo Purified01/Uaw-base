@@ -1,4 +1,44 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM05.lua#60 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM05.lua#31 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +65,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM05.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM05.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Maria_Teruel $
 --
---            $Change: 90396 $
+--            $Change: 95033 $
 --
---          $DateTime: 2008/01/07 13:51:24 $
+--          $DateTime: 2008/03/11 13:06:08 $
 --
---          $Revision: #60 $
+--          $Revision: #31 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,6 +102,8 @@ function Definitions()
 	--MessageBox("%s -- definitions", tostring(Script))
 	Define_State("State_Init", State_Init)
 	
+	ServiceRate = 1
+	
 	neutral = Find_Player("Neutral")
 	civilian = Find_Player("Civilian")
 	uea = Find_Player("Military")
@@ -70,9 +112,9 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	uea.Enable_Colorization(true, COLOR_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	uea.Enable_Colorization(true, 5)
 		
 	pip_moore = "MH_Moore_pip_Head.alo"
 	pip_comm = "mi_comm_officer_pip_head.alo"
@@ -97,6 +139,9 @@ end
 -- below are all the various states that this script will go through
 function State_Init(message)
 	if message == OnEnter then
+      -- RAD: Allowing research in this mission.
+      novus.Set_Research_Points_Override(3)
+      
 		-- ***** ACHIEVEMENT_AWARD *****
 		PGAchievementAward_Init()
 		-- ***** ACHIEVEMENT_AWARD *****
@@ -113,13 +158,22 @@ function State_Init(message)
 		if TestValid(hero) then hero.Add_Attribute_Modifier( "Universal_Damage_Modifier", -.45) end
 		Point_Camera_At(hero)
 		
-	uea.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
+		uea.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM05_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 			
 	
 		Create_Thread("Thread_Mission_Start")
@@ -136,11 +190,21 @@ end
 -- below are the various threads used in this script
 function Thread_Mission_Start()
 	aliens.Allow_Autonomous_AI_Goal_Activation(false)	
-	
-	UI_Hide_Research_Button()
+	-- RAD: Allowing research in this mission.
+	-- UI_Hide_Research_Button()
 	--UI_Hide_Sell_Button()
 	
-	novus.Give_Money(15000)
+		-- Initial Starting Credits
+		--RAD: Forcing starting cash to 7000.
+		local credit_total = 7000
+		local credits = novus.Get_Credits()
+      if credits > credit_total then
+         credits = (credits - credit_total) * -1
+         novus.Give_Money(credits)
+      elseif credits < credit_total then
+         credits = credit_total - credits
+         novus.Give_Money(credits)
+      end
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED"
 	
 	--define defeat condifition: hero dies
@@ -290,14 +354,13 @@ function Thread_Mission_Start()
 	time_objective_sleep = 5
 	time_radar_sleep = 2
 	reminder_wait_time = 30
+	highuserpop = 45
 	
 	--set low civ population on large maps (esp single player)
-	Spawn_Civilians_Automatically(true)
-	Set_Desired_Civilian_Population(25)
-	Make_Civilians_Panic(mapcenter, 9999)
+	--Spawn_Civilians_Automatically(true)
+	--Set_Desired_Civilian_Population(25)
+	--Make_Civilians_Panic(mapcenter, 9999)
 	
-	novus.Give_Money(10000)
-
 	Fade_Screen_In(1)
 	
 	Create_Thread("Setup_Defilers")
@@ -333,14 +396,21 @@ function Thread_Mission_Start()
 		if not mission_success and not mission_failure then
 			novus_built_labs = Find_All_Objects_Of_Type("NOVUS_SCIENCE_LAB")
 			novus_built_air = Find_All_Objects_Of_Type("NOVUS_AIRCRAFT_ASSEMBLY")
+			pop_cap_data = novus.Get_Tactical_Popcap_Information()
+			
+			--_CustomScriptMessage("_DanLog.txt", string.format("%d -- used popcap", pop_cap_data.Used))
 			if not base_built then
 				if table.getn(novus_built_labs)>0 and table.getn(novus_built_air)>0 then
 					base_built = true
+				elseif (pop_cap_data.Used >= highuserpop) and (num_power_attacks == 0) then
+					highuserpop = highuserpop + 20
+					num_power_attacks=num_power_attacks+1
+					Create_Thread("Send_Power_Attacks")
 				end
 			else
 				Set_Objective_Text(nov05_objective_a, "TEXT_SP_MISSION_NVS05_OBJECTIVE_A")
 				Objective_Complete(nov05_objective_a)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_A_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_A_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_a_completed=true;
@@ -367,7 +437,7 @@ function Thread_Mission_Start()
 			if aided_uea_a and aided_uea_b and aided_uea_c and aided_uea_d then
 				Set_Objective_Text(nov05_objective_b, "TEXT_SP_MISSION_NVS05_OBJECTIVE_B_STATE_2")
 				Objective_Complete(nov05_objective_b)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_B_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_B_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_b_completed=true;
@@ -394,7 +464,7 @@ function Thread_Mission_Start()
 				Remove_Radar_Blip("blip_objective_bsub")
 				Set_Objective_Text(nov05_objective_bsub, "TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB")
 				Objective_Complete(nov05_objective_bsub)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_bsub_completed=true;
@@ -414,7 +484,7 @@ function Thread_Mission_Start()
 				objective_c_location.Highlight(true)
 				Set_Objective_Text(nov05_objective_c, "TEXT_SP_MISSION_NVS05_OBJECTIVE_C")
 				Objective_Complete(nov05_objective_c)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_C_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_C_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_c_completed=true;
@@ -438,7 +508,7 @@ function Thread_Mission_Start()
 end
 
 function Flash_Patches()
-	Add_Independent_Hint(HINT_NM05_PATCHES)  --PUT THIS BACK IN!!!!
+	Add_Independent_Hint(123)  --PUT THIS BACK IN!!!!
 	UI_Start_Patch_Menu_Button_Flash()
 	Sleep(10)
 	UI_Stop_Patch_Menu_Button_Flash()
@@ -470,7 +540,6 @@ function Send_Power_Attacks()
 	if true then
 		if not mission_success and not mission_failure then
 			alien_forces = { "ALIEN_FOO_CORE", "ALIEN_FOO_CORE", "ALIEN_FOO_CORE",
-							"ALIEN_FOO_CORE", "ALIEN_FOO_CORE",
 							"ALIEN_CYLINDER", "ALIEN_CYLINDER", "ALIEN_CYLINDER"  }
 			strike_power = SpawnList(alien_forces, alienspawner.Get_Position(), aliens)
 			Create_Thread("Thread_Power_Strike_AI",strike_power)
@@ -485,9 +554,32 @@ function Thread_Power_Strike_AI(team)
 	local air_switch=false
 	air=table.getn(team)
 	maxair=air
+	local targetlist = Find_All_Objects_Of_Type(novus)
+	local targetcount = table.getn(targetlist)
 	--Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
-	power=Find_Nearest(alienspawner,"NOVUS_POWER_ROUTER")
-	Hunt(team, "Nov05_Power_Attack_Priorities", false, false,power,200)
+	local striketarget = Find_Nearest(alienspawner,"NOVUS_POWER_ROUTER")
+	if not TestValid(striketarget) then
+		striketarget = Find_First_Object("Novus_Hero_Mech")
+		if not TestValid(striketarget) then
+			return
+		end
+	end
+	
+	for units, unit in pairs(team) do
+		if TestValid(unit) then
+			if unit.Get_Type() == Find_Object_Type("ALIEN_CYLINDER") then
+				local cylindertarget = targetlist[GameRandom(1, targetcount)]
+				if not TestValid(cylindertarget) then
+					cylindertarget = Find_First_Object("Novus_Hero_Mech")
+				end
+				Full_Speed_Move(unit, cylindertarget)
+			else
+				unit.Attack_Move(striketarget)
+			end
+		end
+	end
+
+	--Hunt(team, "Nov05_Power_Attack_Priorities", false, false,power,200)
 	while not team_disband do
 		air=0
 		airhull=0
@@ -615,7 +707,7 @@ end
 
 -- adds mission objective for objective A
 function Show_Objective_A()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_A_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_A_ADD"} )
 	Sleep(time_objective_sleep)
 	nov05_objective_a = Add_Objective("TEXT_SP_MISSION_NVS05_OBJECTIVE_A")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -623,7 +715,7 @@ end
 
 -- adds mission objective and radar blips for objective B
 function Show_Objective_B()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_B_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_B_ADD"} )
 	Sleep(time_radar_sleep)
 	nov05_objective_b = Add_Objective("TEXT_SP_MISSION_NVS05_OBJECTIVE_B_STATE_1")
 	Add_Radar_Blip(objective_b_location_a, "DEFAULT", "blip_objective_ba")
@@ -849,7 +941,7 @@ function Moore_Health_Tracker()
 end
 
 function Show_Objective_B_Sub()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB_ADD"} )
 	Sleep(time_objective_sleep)
 	nov05_objective_bsub = Add_Objective("TEXT_SP_MISSION_NVS05_OBJECTIVE_BSUB_STATE_1")
 	if TestValid(walker1) then Add_Radar_Blip(walker1, "DEFAULT", "blip_objective_bsub_1") end
@@ -864,7 +956,7 @@ end
 
 -- adds mission objective and radar blip for objective C
 function Show_Objective_C()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_C_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS05_OBJECTIVE_C_ADD"} )
 	Sleep(time_radar_sleep)
 	nov05_objective_c = Add_Objective("TEXT_SP_MISSION_NVS05_OBJECTIVE_C")
 	Add_Radar_Blip(objective_c_location, "DEFAULT", "blip_objective_c")
@@ -895,7 +987,9 @@ function Reinforce_UEA()
 		moore.Set_Cannot_Be_Killed(true)
 		--Add_Radar_Blip(moore, "DEFAULT", "blip_objective_b_primary")
 		--moore.Highlight_Small(true, -50)
-		Register_Death_Event(moore, Death_Moore)
+		
+		--jdg removing Moore's death register...he cannot be killed.
+		--Register_Death_Event(moore, Death_Moore)
 		Create_Thread("Moore_Health_Tracker")
 		
 		for forces, unit in pairs(military_forces) do
@@ -938,9 +1032,25 @@ end
 
 --on hero death, force defeat
 function Death_Hero()
-	Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14")
+	if mission_failure == false then
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero")
+	end
+end
+
+function Thread_Death_Hero()
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+
+	local block = Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+	
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
 	Create_Thread("Thread_Mission_Failed")
+
 end
 
 function Death_Chopper()
@@ -970,7 +1080,7 @@ function Thread_Assembly_Walker_Produced_Hunt()
 		for i, unit in pairs(defilers) do
 			unit.Guard_Target(novusbase7)
 		end
-		Sleep(GameRandom(5,7))
+		Sleep(30)
 	end
 end
 
@@ -1003,7 +1113,7 @@ function Thread_Assembly_Walker_Produce(params)
 		if (queued+build)<prod_num then
 			Tactical_Enabler_Begin_Production(walker_obj, prod_unit, 1, aliens)
 		end
-		Sleep(GameRandom(4,5))
+		Sleep(5)
 	end
 end
 
@@ -1016,23 +1126,33 @@ function Death_Walker_2()
 end
 
 --on hero death, force defeat
-function Death_Moore()
-	if not moore_got_out then
-		if TestValid(hero) then
-			BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS05_SCENE03_18"))
-		end
-		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE"
-		Create_Thread("Thread_Mission_Failed")
-	end
-end
+--jdg moore set to cannot be killed...removing the death callback.
+--function Death_Moore()
+--	Create_Thread("Thread_Death_Moore")
+--end
+
+--function Thread_Death_Moore()
+--	if not moore_got_out then
+--		if TestValid(hero) then
+--			UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+			-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+			-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+			-- will prevent any future speech events from being queued).
+--			local block = Queue_Talking_Head(pip_mirabel, "NVS05_SCENE03_18")
+--			Allow_Speech_Events(false)
+--			BlockOnCommand(block)
+--		end
+--		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE"
+	--	Create_Thread("Thread_Mission_Failed")
+	--end
+--end
 
 
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
-			
+
+	UI_On_Mission_End()
+	
 	mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
 	Lock_Controls(1)
@@ -1044,9 +1164,9 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1054,9 +1174,11 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End()
 			
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1067,9 +1189,9 @@ function Thread_Mission_Complete()
 	--Zoom_Camera.Set_Transition_Time(10)
 	--Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1082,7 +1204,6 @@ end
 -- below are the various functions used in this script
 function Force_Victory(player)
 		if player == novus then
-			Lock_Objects(false)
 			novus.Reset_Story_Locks()
 			
 			-- ***** ACHIEVEMENT_AWARD *****
@@ -1115,25 +1236,30 @@ end
 
 -- here is where objects are locked or unlocked for the tactical game
 function Lock_Objects(boolean)
+
+		novus.Lock_Object_Type(Find_Object_Type("NOVUS_HERO_FOUNDER"),boolean,STORY)
+		novus.Lock_Object_Type(Find_Object_Type("NOVUS_HERO_VERTIGO"),boolean,STORY)
+		novus.Lock_Object_Type(Find_Object_Type("NOVUS_HERO_MECH"),boolean,STORY)
+
 		novus.Lock_Unit_Ability("Novus_Hero_Founder", "Novus_Founder_Retreat_From_Tactical_Ability", boolean, STORY)
 		novus.Lock_Unit_Ability("Novus_Hero_Vertigo", "Novus_Vertigo_Retreat_From_Tactical_Ability", boolean, STORY)
 		novus.Lock_Unit_Ability("Novus_Hero_Mech", "Novus_Mech_Retreat_From_Tactical_Ability", boolean, STORY)
 		novus.Lock_Object_Type(Find_Object_Type("NM04_NOVUS_PORTAL"),boolean,STORY)
 		novus.Lock_Object_Type(Find_Object_Type("Novus_Superweapon_Gravity_Bomb"),boolean,STORY)
 		novus.Lock_Object_Type(Find_Object_Type("Novus_Science_Lab_Upgrade_Singularity_Processor"),boolean,STORY)
-		novus.Lock_Generator("VirusInfectAuraGenerator", false ,STORY)	
-		novus.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false ,STORY)
+		-- novus.Lock_Generator("VirusInfectAuraGenerator", false ,STORY)	
+		-- novus.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false ,STORY)
 
-		novus.Lock_Generator("Resonance_Beam_Effect_Generator", false ,STORY)
-		novus.Lock_Generator("Resonance_Cascade_Beam_Effect_Generator", false ,STORY)
-		novus.Lock_Generator("Novus_Amplifier_Resonance_Weapon", false ,STORY)
-		novus.Lock_Generator("Novus_Amplifier_Resonance_Cascade_Weapon", false ,STORY)
-		novus.Lock_Generator("AmplifierResonanceBeamEffectGenerator", false ,STORY)
-		novus.Lock_Generator("AmplifierCascadeResonanceBeamEffectGenerator", false ,STORY)
+		-- novus.Lock_Generator("Resonance_Beam_Effect_Generator", false ,STORY)
+		-- novus.Lock_Generator("Resonance_Cascade_Beam_Effect_Generator", false ,STORY)
+		-- novus.Lock_Generator("Novus_Amplifier_Resonance_Weapon", false ,STORY)
+		-- novus.Lock_Generator("Novus_Amplifier_Resonance_Cascade_Weapon", false ,STORY)
+		-- novus.Lock_Generator("AmplifierResonanceBeamEffectGenerator", false ,STORY)
+		-- novus.Lock_Generator("AmplifierCascadeResonanceBeamEffectGenerator", false ,STORY)
 		
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
 		
 		aliens.Lock_Unit_Ability("Alien_Brute", "Brute_Death_From_Above", false, STORY) 
 end
@@ -1291,7 +1417,93 @@ function Audio_Mission_Ending()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

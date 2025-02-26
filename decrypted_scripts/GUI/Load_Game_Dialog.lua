@@ -1,3 +1,14 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[122] = true
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[77] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
 require("PGBase")
 require("PGUICommands")
 require("PGAchievementsCommon")
@@ -71,6 +82,12 @@ function On_Init()
 	Loading_Dialog_Params = { }
 	Loading_Dialog_Params.spawned_from_script = true
 	Loading_Dialog_Params.caption = Get_Game_Text("TEXT_SAVELOAD_LOADING_MSG")
+
+	Bad_Save_Dialog_Params = { }
+	Bad_Save_Dialog_Params.script = Script
+	Bad_Save_Dialog_Params.spawned_from_script = true
+	Bad_Save_Dialog_Params.caption = Get_Game_Text("TEXT_GAMEPAD_SAVE_GAME_CORRUPT")
+	Bad_Save_Dialog_Params.middle_button = Get_Game_Text("TEXT_BUTTON_OK")
 
 	DontDisplayDialog = false
 	In_Retry_Dialog = false
@@ -179,6 +196,11 @@ function Load_Clicked(event_name, source)
 	if (not Is_Replay_Mode() and Highlighted_Slot ~= -1) or
 		(Mode == SAVE_LOAD_MODE_REPLAY and Highlighted_Replay_Is_Valid()) then
 
+		if not SaveLoadManager.Get_Is_Valid_Save(Highlighted_Slot) then
+			Spawn_Dialog_Box(Bad_Save_Dialog_Params)
+			return
+		end
+
 		-- Dialog_Box_Opened = true
 		-- Spawn_Dialog_Box(Loading_Dialog_Params)
 
@@ -193,14 +215,14 @@ function Load_Clicked(event_name, source)
 
 		if not Is_Replay_Mode() then
 			if At_Front_End() or In_Retry_Dialog then
-				In_Retry_Dialog = false
-				this.Set_Hidden(true)
-				this.End_Modal()
 				if SaveLoadManager.Can_Earn_Achievements(Highlighted_Slot) then
 					this.Get_Containing_Scene().Raise_Event_Immediate("Request_Hide", nil, nil)
+					In_Retry_Dialog = false
+					this.Set_Hidden(true)
+					this.End_Modal()
 					SaveLoadManager.Load(Highlighted_Slot)
 				else
-					Spawn_Dialog_Box(Achievements_Dialog_Params, "SimpleDialogBox")
+					Spawn_Dialog_Box(Achievements_Dialog_Params, "SimpleDialogBox", false)
 				end
 			else
 				this.Set_Hidden(true)
@@ -228,7 +250,7 @@ function Delete_Clicked(event_name, source)
 end
 
 function Delete_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		if not Is_Replay_Mode() then
 			SaveLoadManager.Delete(Highlighted_Slot)
 		elseif Mode == SAVE_LOAD_MODE_REPLAY then
@@ -240,17 +262,22 @@ function Delete_Confirm_Callback(button)
 end
 
 function Load_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		this.Set_Hidden(true)
 		this.Get_Containing_Scene().Raise_Event_Immediate("Request_Hide", nil, nil)
 		this.End_Modal()
-		SaveLoadManager.Load(Highlighted_Slot)
+
+		if not Is_Replay_Mode() then
+			SaveLoadManager.Load(Highlighted_Slot)
+		elseif Mode == SAVE_LOAD_MODE_REPLAY then
+			Net.Start_Replay(Highlighted_Replay)
+		end
 	end
 	DontDisplayDialog = true
 end
 
 function Achievements_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		this.Set_Hidden(true)
 		this.Get_Containing_Scene().Raise_Event_Immediate("Request_Hide", nil, nil)
 		this.End_Modal()
@@ -293,10 +320,8 @@ function On_Update()
 	-- Needed for Xbox version
 	SaveLoadManager.Update()
 	-- On the Xbox, the user may change the storage device so the save list will also change
-	if this.Is_Modal_Scene() then
-		if SaveLoadManager.Get_List_Needs_Refresh() then
-			Display_Save_Games()
-		end
+	if SaveLoadManager.Get_List_Needs_Refresh() then
+		Display_Save_Games()
 	end
 end
 
@@ -306,7 +331,7 @@ function Set_Mode(mode)
 	if Mode == SAVE_LOAD_MODE_REPLAY and Net == nil then
 		Register_Net_Commands()
 	end
-  
+
 	if Is_Replay_Mode() then
 		-- Also make sure we change the header text of the window (otherwise it will say LOAD GAME)
 		this.Controls.Text_1.Set_Text("TEXT_BUTTON_LOAD_REPLAY")
@@ -327,3 +352,47 @@ Interface = { }
 Interface.Set_Mode = Set_Mode
 Interface.Display_Dialog = Display_Dialog
 Interface.Set_In_Retry_Dialog = Set_In_Retry_Dialog
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGOfflineAchievementDefs_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,3 +1,14 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -70,6 +81,8 @@ function Init_Scene()
 	
 	InnerMarginHeight = 2.0/768.0
 	LowerMarginHeight = 8.0/768.0
+	
+	ReadyDelay = -1
 end
 
 
@@ -255,9 +268,8 @@ function Set_Up_Scene()
 	Add_To_Display(DisplayingSuite.EffectsList)
 	Add_To_Display(DisplayingSuite.LockEffectGeneratorsList)
 	Add_To_Display(DisplayingSuite.PatchesList)
-	IsSceneOpen = true
 	
-	Resize_Scene()
+	ReadyDelay = 1
 end
 
 
@@ -265,9 +277,46 @@ end
 -- Resize_Scene
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Resize_Scene()
-
+		
 	local display = Offset - 1
 	if display < 0 or display > table.getn(TechDescriptions) then return end
+	
+	for idx = 1, display do
+		local quad = TechQuads[idx]
+		local description_txt = TechDescriptions[idx]
+		local title_txt = Titles[idx]
+		local border = TechBorders[idx]
+		local original_world_bounds = nil
+		
+		-- Maria 09.15.2007
+		-- Resize the title text box to make sure all of it fits properly.
+		local txt_height = title_txt.Get_Text_Height()
+		original_world_bounds = title_txt.Get_User_Data()
+		title_txt.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, txt_height)
+		
+		-- Update the YOfsset used to relocate all remaining components.
+		local extra_y_offset = txt_height - original_world_bounds.h
+		if extra_y_offset > 0.0 then
+			YOffset = YOffset + extra_y_offset + (5.0/768.0) -- this last fraction is a margin value so that the title doesn't overlap the quad!.
+		end									
+		
+		-- update the quad
+		original_world_bounds = quad.Get_User_Data()
+		quad.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, original_world_bounds.h)				
+		
+		original_world_bounds = border.Get_User_Data()
+		border.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, original_world_bounds.h)				
+		
+		-- update the text
+		txt_height = description_txt.Get_Text_Height()
+		original_world_bounds = description_txt.Get_User_Data()
+		description_txt.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, txt_height)
+		
+		extra_y_offset = txt_height - original_world_bounds.h
+		if extra_y_offset > 0.0 then
+			YOffset = YOffset + extra_y_offset
+		end
+	end
 	
 	-- Given that World bounds are stored relative to the parent scene and we are modifying the
 	-- bounds of the parent scene here, we must make sure that we reset those before working on 
@@ -352,41 +401,17 @@ function Add_To_Display(new_list)
 				if table_param.TitleTextID ~= nil and table_param.TitleTextID ~= "" then
 					title_txt.Set_Hidden(false)
 					title_txt.Set_Text(table_param.TitleTextID)
-					
-					-- Maria 09.15.2007
-					-- Resize the title text box to make sure all of it fits properly.
-					local txt_height = title_txt.Get_Text_Height()
-					original_world_bounds = title_txt.Get_User_Data()
-					title_txt.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, txt_height)
-					
-					-- Update the YOfsset used to relocate all remaining components.
-					local extra_y_offset = txt_height - original_world_bounds.h
-					if extra_y_offset > 0.0 then
-						YOffset = YOffset + extra_y_offset + (5.0/768.0) -- this last fraction is a margin value so that the title doesn't overlap the quad!.
-					end									
 				end
 				
 				-- update the quad
 				quad.Set_Hidden(false)
 				quad.Set_Texture(table_param.IconName)
-				original_world_bounds = quad.Get_User_Data()
-				quad.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, original_world_bounds.h)				
 				
 				border.Set_Hidden(false)
-				original_world_bounds = border.Get_User_Data()
-				border.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, original_world_bounds.h)				
 				
 				-- update the text
 				description_txt.Set_Hidden(false)
 				description_txt.Set_Text(table_param.DescriptionTextID)
-				local txt_height = description_txt.Get_Text_Height()
-				original_world_bounds = description_txt.Get_User_Data()
-				description_txt.Set_World_Bounds(original_world_bounds.x, original_world_bounds.y + YOffset, original_world_bounds.w, txt_height)
-				
-				local extra_y_offset = txt_height - original_world_bounds.h
-				if extra_y_offset > 0.0 then
-					YOffset = YOffset + extra_y_offset
-				end
 				
 				Offset = Offset + 1			
 			end
@@ -446,6 +471,18 @@ function Update_Scene()
 		Replace_Token(wstr_progress, Get_Localized_Formatted_Number(Dirty_Floor(progress)), 0)
 		ProgressText.Set_Text(wstr_progress)
 	end
+	
+	--Handle delayed display (to allow time to get proper text size measurement)
+	if ReadyDelay == 0 then
+		Resize_Scene()
+		-- unhide the scene
+		this.Set_Hidden(false)
+		this.Play_Animation("FadeIn", false)	
+		ReadyDelay = -1
+		IsSceneOpen = true
+	elseif ReadyDelay > 0 then
+		ReadyDelay = ReadyDelay - 1
+	end
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -462,8 +499,15 @@ function Hide_Scene()
 
 		-- Reset all variables
 		DisplayingSuite = nil
-		IsSceneOpen = false
 	end
+end
+
+function Is_Scene_Open()
+	return IsSceneOpen
+end
+
+function Is_Scene_Ready()
+	return ReadyDelay < 0
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -476,3 +520,42 @@ Interface.Hide_Scene = Hide_Scene
 Interface.Update_Scene = Update_Scene
 Interface.Update_Display = Update_Display
 Interface.Is_Scene_Open = Is_Scene_Open
+Interface.Is_Scene_Ready = Is_Scene_Ready
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

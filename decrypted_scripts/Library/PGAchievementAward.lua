@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAchievementAward.lua#7 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[115] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAchievementAward.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAchievementAward.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAchievementAward.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 82568 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/31 18:19:24 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #7 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -267,9 +273,9 @@ end
 -------------------------------------------------------------------------------
 function Update_Achievement(achievement, arg1, arg2, arg3)
 
-	if (achievement.UpdateType == INCREMENT_UPDATE_TYPE) then
+	if (achievement.UpdateType == 1) then
 		Do_Update_Increment_Achievement(achievement, arg1) 
-	elseif (achievement.UpdateType == BOOLEAN_UPDATE_TYPE) then
+	elseif (achievement.UpdateType == 2) then
 		Do_Update_Boolean_Achievement(achievement, arg1) 
 	end
 
@@ -337,4 +343,46 @@ function Get_Player_By_Faction(faction_string)
 
 	return -1
 
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Offline_Achievement = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

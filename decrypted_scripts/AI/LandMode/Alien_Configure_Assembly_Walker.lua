@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Alien_Configure_Assembly_Walker.lua#14 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Alien_Configure_Assembly_Walker.lua#12 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Alien_Configure_Assembly_Walker.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Alien_Configure_Assembly_Walker.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 85508 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/04 16:01:54 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #14 $
+--          $Revision: #12 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -45,14 +51,18 @@ ScriptShouldCRC = true
 
 function Compute_Desire()
 	
+	if Player.Get_Player_Is_Crippled() then
+		return -2.0
+	end
+	
 	if not TestValid(Target) then
 		Goal.Suppress_Goal()
 		return 0.0
 	end
 	
 	if not Is_Player_Of_Faction(Player, "ALIEN") and not Is_Player_Of_Faction(Player, "ALIEN_ZM06_KAMALREX") then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -2.0
 	end	
 	
 	if not Target.Is_Ally(Player) then
@@ -233,4 +243,45 @@ function On_Walker_Damaged(tf, walker, attacker, projectile_type, hard_point, de
 	--	Goal.Activate_Sub_Goal("Generic_Sub_Goal_Build_Hard_Point", Target, Find_Object_Type("Alien_Walker_Assembly_HP_EM_Field_Generator"))
 	--end
 	
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	Describe_Target = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
 end

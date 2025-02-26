@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Skirmish_Battle_Setup.lua#13 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[116] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Skirmish_Battle_Setup.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Skirmish_Battle_Setup.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Skirmish_Battle_Setup.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Chris_Rubyor $
+--            $Author: Brian_Hayes $
 --
---            $Change: 76916 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/07/17 09:33:25 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #13 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -179,17 +188,8 @@ end
 
 function Get_Map_Names()
 	Maps = {}
-	table.insert(Maps, "Brazillian_Highlands_E3.ted")
-	table.insert(Maps, "M07_Turkestan.ted")
-	table.insert(Maps, "M29_Brazillian_Highlands.ted")
-	table.insert(Maps, "M08_Eastern_Siberia.ted")
-	table.insert(Maps, "M21_South_Africa.ted")
-	table.insert(Maps, "M24_Midwest.ted")
-	table.insert(Maps, "M15_Middle_East.ted")
-	table.insert(Maps, "BMH_Multi_Test.ted")
-	table.insert(Maps, "BMH_Multi_Test2.ted")
-	table.insert(Maps, "Barebones_MP.ted")
-	table.insert(Maps, "_Multi_Base_Test.ted")
+	table.insert(Maps, "Controller_Demo.ted")
+
 end
 
 function Populate_Map_List(map)
@@ -316,4 +316,102 @@ function Start_Game()
 	Skirmish_Configuration.Number_Of_AI = Number_Of_AI - 1 -- number is actually one fewer because the first index is the player
 	Skirmish_Configuration.Victory_Condition_Index = Victory_Condition_Index
 	Set_Profile_Value(PP_LAST_SKIRMISH_CONFIGURATION, Skirmish_Configuration)
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Heartbeat = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Broadcast_Stats_Registration_Begin = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Client_Table_Count = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	Network_Update_Local_Common_Addr = nil
+	OutputDebug = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Internet_Init = nil
+	PGNetwork_LAN_Init = nil
+	PGOfflineAchievementDefs_Init = nil
+	PGPlayerProfile_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Set_Local_User_Applied_Medals = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

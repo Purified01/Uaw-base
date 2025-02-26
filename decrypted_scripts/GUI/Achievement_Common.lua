@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_Common.lua#13 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_Common.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_Common.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_Common.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87644 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/11/09 10:05:36 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #13 $
+--          $Revision: #11 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -206,4 +213,44 @@ function PGAchievement_Merge_Live_Backend_Data(live_raw, local_model)
 	
 	return status, medals_unlocked
 	
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Achievement_Common_Init = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievement_Merge_Live_Backend_Data = nil
+	PGColors_Init = nil
+	Prune_Unachieved_Achievements = nil
+	Remove_Invalid_Objects = nil
+	Restore_Model_State = nil
+	Set_Local_User_Applied_Medals = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

@@ -1,4 +1,16 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Lobby_Network_Logic.lua#129 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[192] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[7] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Lobby_Network_Logic.lua#36 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +37,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Lobby_Network_Logic.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Lobby_Network_Logic.lua $
 --
 --    Original Author: Joe Howes
 --
 --            $Author: Joe_Howes $
 --
---            $Change: 90524 $
+--            $Change: 95141 $
 --
---          $DateTime: 2008/01/08 15:42:34 $
+--          $DateTime: 2008/03/12 16:56:44 $
 --
---          $Revision: #129 $
+--          $Revision: #36 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -80,6 +92,7 @@ function PGLobby_Vars_Init()
 		["TASK_VERIFY_CHAT_TEXT"]						= Network_On_Text_Verified,
 		["TASK_LIVE_CONNECTION_CHANGED"]				= Network_On_Live_Connection_Changed,
 		["TASK_MM_LOCATOR_SERVER_COUNT"]				= Network_On_Locator_Server_Count,
+		["TASK_MM_GAMER_PICTURE_RETRIEVED"]			= Network_On_Gamer_Picture_Retrieved,
 	}
 
 	-- ----------------------------------------------------------------------------------------------------------------
@@ -170,8 +183,13 @@ function PGLobby_Constants_Init()
 	MISSING = Create_Wide_String("[MISSING]")						-- For clearing out text blocks and edit boxes.
 	MAP_DIRECTORY = ".\\Data\\Art\\Maps\\"				-- JOE TODO::  Properly implement multiplayer map enumeration.
 	HOST_SEAT_POSITION = 1
-	CLIENT_SEATS_MAX = 8
-	DEFAULT_PLAYER_CAP = 8
+	if ( Is_Xbox() ) then
+		CLIENT_SEATS_MAX = 4
+		DEFAULT_PLAYER_CAP = 4
+	else
+		CLIENT_SEATS_MAX = 8
+		DEFAULT_PLAYER_CAP = 8
+	end
 	DEFAULT_POPULATION_CAP = 90
 	CLIENT_VALIDATION_PERIOD = 10
 	HEARTBEAT_INTERVAL = 10
@@ -326,6 +344,12 @@ function PGLobby_Validate_Local_Session_Data(filter, request_rebroadcasts, is_gl
 		
 		-- Human-only stuff
 		if (not client.is_ai) then
+		
+			-- Platform
+			if (client.platform == nil) then
+				client_data_valid = false
+				break
+			end
 		
 			-- Applied medals
 			if ((NetworkState == NETWORK_STATE_INTERNET) and 
@@ -537,9 +561,41 @@ function PGLobby_Update_Player_Count()
 	if (CurrentlyJoinedSession == nil) then
 		return
 	end
+	
+	local map_max = VIEW_PLAYER_INFO_CLUSTER_COUNT 
+	if (CurrentlyJoinedSession.map_crc ~= nil) then
+		local idx = _PGLobby_Get_Map_Index_From_CRC(CurrentlyJoinedSession.map_crc)
+		if idx then
+			local map_dao = MPMapModel[idx]		-- MPMapModel is 1-based
+			map_max = map_dao.num_players
+		end
+	end
+
+	local count = 0
+	local cluster_idx = 0
+	for _, dao in pairs(ClientSeatAssignments) do
+	
+		cluster_idx = cluster_idx + 1
+		if (cluster_idx > map_max) then
+			break
+		end
+	
+		local occupied = dao.common_addr ~= nil
+		if ((occupied and (dao.is_ai == nil)) or 						-- The spot is occupied by a human or...
+			((not occupied) and (dao.is_closed == false))) then	-- ...the spot is not occupied but open.
+			count = count + 1
+		end
+		
+	end
+	MaxPlayerCount = count
 
 	CurrentlyJoinedSession.max_players = MaxPlayerCount
 	CurrentlyJoinedSession.player_count = Network_Get_Client_Table_Count(false)
+	
+	-- Make sure that the max_players is greater than or equal to the number of players in the actual game.
+	if (CurrentlyJoinedSession.max_players < CurrentlyJoinedSession.player_count) then
+		CurrentlyJoinedSession.max_players = CurrentlyJoinedSession.player_count
+	end
 
 	local player_count = Network_Get_Client_Table_Count(false)
 	if player_count >= MaxPlayerCount then
@@ -604,9 +660,9 @@ function PGLobby_Set_Player_BG_Gradient(quad, triple)
 		return
 	end
 	quad.Set_Vertex_Color(0, 0, 0, 0, 1)
-	quad.Set_Vertex_Color(1, triple[PG_R], triple[PG_G], triple[PG_B], 1)
+	quad.Set_Vertex_Color(1, triple["r"], triple["g"], triple["b"], 1)
 	quad.Set_Vertex_Color(2, 0, 0, 0, 1)
-	quad.Set_Vertex_Color(3, triple[PG_R], triple[PG_G], triple[PG_B], 1)
+	quad.Set_Vertex_Color(3, triple["r"], triple["g"], triple["b"], 1)
 	
 end
 
@@ -618,10 +674,10 @@ function PGLobby_Set_Player_Solid_Color(quad, triple)
 	if (quad == nil) then
 		return
 	end
-	quad.Set_Vertex_Color(0, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	quad.Set_Vertex_Color(1, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	quad.Set_Vertex_Color(2, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	quad.Set_Vertex_Color(3, triple[PG_R], triple[PG_G], triple[PG_B], 1)
+	quad.Set_Vertex_Color(0, triple["r"], triple["g"], triple["b"], 1)
+	quad.Set_Vertex_Color(1, triple["r"], triple["g"], triple["b"], 1)
+	quad.Set_Vertex_Color(2, triple["r"], triple["g"], triple["b"], 1)
+	quad.Set_Vertex_Color(3, triple["r"], triple["g"], triple["b"], 1)
 	
 end
 
@@ -915,14 +971,14 @@ function PGLobby_Generate_Map_Selection_Model(session)
 					local msg = "LUA_LOBBY: ERROR: Map File: " .. tostring(dao.file_name) .. " -> Map name is invalid.";
 					DebugMessage(msg)
 					table.insert(errors, msg)
-					dao.display_name = Create_Wide_String(dao.file_name_no_extension .. " (incomplete)")
+					dao.display_name = Create_Wide_String(dao.file_name_no_extension .. " (display name problem)")
 					dao.incomplete = true
 			
 				end
 				
 			else
 			
-				dao.display_name = Create_Wide_String(dao.file_name_no_extension .. " (incomplete)")
+				dao.display_name = Create_Wide_String(dao.file_name_no_extension .. " (start marker problem)")
 				dao.incomplete = true
 			
 			end
@@ -1042,7 +1098,10 @@ function PGLobby_Get_Map_Player_Count(map_crc)
 		if (map_dao ~= nil) then
 			local num_players = map_dao.num_players
 			if ((num_players ~= nil) and (num_players > 1)) then
-				result = num_players
+				--result = num_players
+  				if ( result > num_players ) then
+ 					result = num_players
+	 			end
 			end
 		end
 	end
@@ -1156,7 +1215,7 @@ function PGLobby_Display_Custom_Modal_Message(message, text_left, text_middle, t
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Set_Checkbox_Visible(false)
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Set_Model(model)
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Bring_To_Front()
-	
+		
 	local was_hidden = PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Get_Hidden()
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Set_Hidden(false)
 	
@@ -1173,6 +1232,15 @@ end
 function PGLobby_Hide_Modal_Message()
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.End_Modal()
 	PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Set_Hidden(true)
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function PGLobby_Is_Modal_Message_Showing()
+	return TestValid(PGLobbyModalMessageScene) and
+	TestValid(PGLobbyModalMessageScene.Yes_No_Ok_Dialog) and
+	(PGLobbyModalMessageScene.Yes_No_Ok_Dialog.Get_Hidden() == false)
 end
 
 
@@ -1765,6 +1833,7 @@ function PGLobby_Display_NAT_Information(text_object)
 	local display = Get_Profile_Value(PP_LOBBY_DISPLAY_LOCAL_NAT_WARNINGS, true)
 	local nat_type = Net.Get_NAT_Type()
 	local nat_type_message = Get_Game_Text("TEXT_MULTIPLAYER_NAT_TYPE").append(": ")
+	local spawned_dialog = false
 	
 	-- If the client's NAT is OPEN, there's no need to worry.
 	if (nat_type == XONLINE_NAT_OPEN) then
@@ -1777,6 +1846,7 @@ function PGLobby_Display_NAT_Information(text_object)
 		local message = Get_Game_Text("TEXT_MULTIPLAYER_LOCAL_MODERATE_NAT_WARNING")
 		if (display) then
 			PGLobby_Display_Modal_Message(message, false, true, PGLOBBY_NAT_WARNING_TOKEN)
+			spawned_dialog = true
 		end
 	end
 	
@@ -1786,6 +1856,7 @@ function PGLobby_Display_NAT_Information(text_object)
 		local message = Get_Game_Text("TEXT_MULTIPLAYER_LOCAL_STRICT_NAT_WARNING")
 		if (display) then
 			PGLobby_Display_Modal_Message(message, false, true, PGLOBBY_NAT_WARNING_TOKEN)
+			spawned_dialog = true
 		end
 	end
 	
@@ -1793,6 +1864,7 @@ function PGLobby_Display_NAT_Information(text_object)
 		text_object.Set_Text(nat_type_message)
 	end
 	
+	return spawned_dialog
 end
 
 -------------------------------------------------------------------------------
@@ -1853,6 +1925,29 @@ function PGLobby_Update_NAT_Warning_State()
 	
 end
 
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function PGLobby_Get_Preferred_Color()
+
+	local default_color = nil
+	if TestValid(Net) then
+		default_color = Net.Get_Gamer_Preferred_Color()
+	end
+	if not default_color then
+		default_color = 7
+	end
+	local color = Get_Profile_Value(PP_COLOR_INDEX, default_color)
+	local index = ({ [6] = 5, [7] = 1, [8] = 6, [3] = 2, [2] = 7, [4] = 3, [9] = 0, [5] = 4, })[color]
+	if (color == nil or index == nil) then
+		color = 7
+	else
+		color = tonumber(color)
+	end
+	
+	return color
+		
+end
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------------
@@ -1905,4 +2000,131 @@ function PGLobby_Save_Vanity_Game_Start_Data(ranked)
 end
 
 
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	Commit_Profile_Values = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Is_Player_Of_Faction = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	OutputDebug = nil
+	PGLobby_Activate_Movies = nil
+	PGLobby_Begin_Stats_Registration = nil
+	PGLobby_Convert_Faction_IDs_To_Strings = nil
+	PGLobby_Convert_Faction_Strings_To_IDs = nil
+	PGLobby_Create_Random_Game_Name = nil
+	PGLobby_Create_Session = nil
+	PGLobby_Display_Custom_Modal_Message = nil
+	PGLobby_Display_NAT_Information = nil
+	PGLobby_Generate_Map_Selection_Model = nil
+	PGLobby_Get_Preferred_Color = nil
+	PGLobby_Hide_Modal_Message = nil
+	PGLobby_Init_Modal_Message = nil
+	PGLobby_Is_Game_Joinable = nil
+	PGLobby_Keepalive_Close_Bracket = nil
+	PGLobby_Keepalive_Open_Bracket = nil
+	PGLobby_Lookup_Map_DAO = nil
+	PGLobby_Mouse_Move = nil
+	PGLobby_Passivate_Movies = nil
+	PGLobby_Print_Client_Table = nil
+	PGLobby_Refresh_Available_Games = nil
+	PGLobby_Request_All_Medals_Progress_Stats = nil
+	PGLobby_Request_All_Required_Backend_Data = nil
+	PGLobby_Request_Global_Conquest_Properties = nil
+	PGLobby_Request_Stats_Registration = nil
+	PGLobby_Reset = nil
+	PGLobby_Restart_Networking = nil
+	PGLobby_Save_Vanity_Game_Start_Data = nil
+	PGLobby_Set_Dialog_Is_Hidden = nil
+	PGLobby_Set_Player_BG_Gradient = nil
+	PGLobby_Set_Player_Solid_Color = nil
+	PGLobby_Set_Tooltip_Model = nil
+	PGLobby_Start_Heartbeat = nil
+	PGLobby_Stop_Heartbeat = nil
+	PGLobby_Update_NAT_Warning_State = nil
+	PGLobby_Update_Player_Count = nil
+	PGLobby_Validate_Client_Medals = nil
+	PGLobby_Validate_Local_Session_Data = nil
+	PGLobby_Validate_NAT_Type = nil
+	PGLobby_Vars_Init = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	_TEMP_Make_Hack_Map_Model = nil
+	Kill_Unused_Global_Functions = nil
+end
 

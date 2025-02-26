@@ -1,4 +1,45 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM05.lua#44 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[141] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[150] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[145] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM05.lua#32 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +66,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM05.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM05.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90434 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/07 16:47:00 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #44 $
+--          $Revision: #32 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -78,8 +119,8 @@ function Definitions()
 	player_faction = Find_Player("Alien")
 
 --	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	masari.Enable_Colorization(true, COLOR_DARK_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	masari.Enable_Colorization(true, 21)
 	
 	-- Pip head objects
 	dialog_hie_comm = "AI_Comm_Officer_Pip_Head.alo"
@@ -177,22 +218,23 @@ end
 
 function State_Init(message)
 	if message == OnEnter then
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		
 		novus.Allow_Autonomous_AI_Goal_Activation(false)
 		masari.Allow_Autonomous_AI_Goal_Activation(false)		
 	
-	military.Allow_AI_Unit_Behavior(false)
-	novus.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		military.Allow_AI_Unit_Behavior(false)
+		novus.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
 		
 		_CustomScriptMessage("RickLog.txt", string.format("*********************************************Story_Campaign_Hierarchy_ZM05 START!"))
 		
 		Lock_Objects(true)
 
-		UI_Hide_Research_Button()
+		-- UI_Hide_Research_Button()
+     	aliens.Set_Research_Points_Override(0)
+
 		UI_Hide_Sell_Button()
 		
 		-- ***** ACHIEVEMENT_AWARD *****
@@ -249,6 +291,8 @@ function State_Init(message)
 		foo_1_spawn = Find_Hint("MARKER_GENERIC_YELLOW","foo1spawn")
 		foo_0_goto = Find_Hint("MARKER_GENERIC_GREEN","foo0goto")
 		foo_1_goto = Find_Hint("MARKER_GENERIC_GREEN","foo1goto")
+		--jdg fix for orlok getting picked up (out of context) by paint tool
+		orlok_spawn_start = Find_Hint("MARKER_GENERIC_GREEN","orlokspawn-start")
 		orlok_spawn = Find_Hint("MARKER_GENERIC_GREEN","orlokspawn")
 		brute0_spawn = Find_Hint("MARKER_GENERIC_GREEN","brutespawn0")
 		brute1_spawn = Find_Hint("MARKER_GENERIC_GREEN","brutespawn1")
@@ -317,7 +361,12 @@ function State_Init(message)
 			hero.Set_Object_Context_ID("hide_me")
 		else
 			--MessageBox("Story_Campaign_Hierarchy_ZM05 cannot find Orlok!")
-			hero = Spawn_Unit(Find_Object_Type("Alien_Hero_Orlok"), defiler0, aliens)
+			hero = Spawn_Unit(Find_Object_Type("Alien_Hero_Orlok"), orlok_spawn_start, aliens)
+			
+			
+			
+			--jdg putting olrok off map to prevent context issues.
+			hero.Teleport_And_Face(orlok_spawn_start)
 
    		-- Orlok 1200 from 2000 = -.4
 		   hero.Add_Attribute_Modifier("Universal_Damage_Modifier", -.4)
@@ -365,6 +414,13 @@ function State_Init(message)
 		local radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Enemy", aliens)
 		local radar_filter_id8 = RadarMap.Add_Filter("Radar_Map_Show_Neutral", aliens)
 		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_HM05_NAME")
+		if Is_Gamepad_Active() then
+			--UI_Show_Controller_Context_Display(false)
+			UI_Set_Display_Credits_Pop(false)
+		end
+		
 		Set_Next_State("State_ZM05_Act01")
 				
 	end
@@ -389,6 +445,8 @@ function State_ZM05_Act01(message)
 		--Starting Defiler
 		defiler0.Register_Signal_Handler(Callback_Defiler_Killed, "OBJECT_HEALTH_AT_ZERO")
 		defiler1.Register_Signal_Handler(Callback_Defiler_Killed, "OBJECT_HEALTH_AT_ZERO")
+		
+		masari.Set_Elemental_Mode("Ice")
 		
 		-- Zessus
 		zessus.Make_Invulnerable(true)
@@ -522,7 +580,7 @@ function Thread_Add_Objective(objective_num)
 	
 	if objective_modified then
 		objective_modified = false
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {objective_add[objective_num]} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {objective_add[objective_num]} )
 	    Sleep(time_objective_sleep)
 		objective[objective_num] = Add_Objective(objective_text[objective_num])
 	else
@@ -578,7 +636,7 @@ function Thread_Complete_Objective(objective_num)
 	
 	if objective_modified then
 		objective_modified = false
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {objective_completed[objective_num]} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {objective_completed[objective_num]} )
 		Objective_Complete(objective[objective_num])
 	else
 		--MessageBox("Complete Objective called, but no objective was modified!")
@@ -586,13 +644,9 @@ function Thread_Complete_Objective(objective_num)
 end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
    mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
-   Stop_All_Speech()
-   Flush_PIP_Queue()
    Letter_Box_In(1)
    Lock_Controls(1)
    Suspend_AI(1)
@@ -606,7 +660,7 @@ function Thread_Mission_Failed()
    -- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
    -- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
    Sleep(time_objective_sleep)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
    Fade_Screen_Out(2)
    Sleep(2)
    Lock_Controls(0)
@@ -617,7 +671,7 @@ function Thread_Village_1_Cleared()
 	
 	current_civ_list = Find_All_Objects_Of_Type(civilian, "Insignificant", "Organic")
 	for i, unit in pairs(current_civ_list) do
-		if TestValid(unit) and not unit.Has_Behavior(BEHAVIOR_DEATH) then
+		if TestValid(unit) and not unit.Has_Behavior(57) then
 			_CustomScriptMessage("_DanLog.txt", string.format("Forcing %s to Paniced State.", tostring(unit)))
 			--unit.Set_Civilian_State(CIVILIAN_STATE_PANIC)	
 		else
@@ -652,7 +706,7 @@ function Thread_Reinforce_Grunts()
 	grunt_transport.Despawn()
 	unit = Find_First_Object("Alien_Brute")
 	if TestValid(unit) then
-      Add_Attached_Hint(unit, HINT_BUILT_ALIEN_BRUTE)
+      Add_Attached_Hint(unit, 17)
    end
 end
 
@@ -661,7 +715,7 @@ function Thread_Reinforce_Orlok()
 	if TestValid(foo_0) then
 	   foo_0.Activate_Ability("Unit_Ability_Foo_Core_Heal_Attack_Toggle", true)
    	foo_0.Move_To(foo_0_goto)
-      Add_Attached_Hint(foo_0, HINT_BUILT_ALIEN_SAUCER)
+      Add_Attached_Hint(foo_0, 23)
    end
 	local foo_1 = Spawn_Unit(Find_Object_Type("ALIEN_FOO_CORE"), foo_1_spawn, aliens)
 	foo_1.Activate_Ability("Unit_Ability_Foo_Core_Heal_Attack_Toggle", true)
@@ -835,8 +889,10 @@ end
 function Callback_Grunt_Killed(callback_obj)
 	total_alien_forces = total_alien_forces - 1
 	if total_alien_forces <= 0 then
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
+		if mission_failure == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
@@ -845,8 +901,10 @@ function Callback_Slave_Killed(callback_obj)
 	total_slaves = total_slaves - 1
 	total_alien_forces = total_alien_forces - 1
 	if total_alien_forces <= 0 then
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
+		if mission_failure == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 	if total_slaves <= 15 and civ_spawner_off then
 		civ_spawner_off = false
@@ -935,7 +993,7 @@ function Callback_Patrol_0_Handler()
 		Create_Thread("Thread_Complete_Objective", 6)
 		current_civ_list = Find_All_Objects_Of_Type(civilian, "Resource_INST", "Insignificant", "Organic")
 		for i, unit in pairs(current_civ_list) do
-			if TestValid(unit) and not unit.Has_Behavior(BEHAVIOR_DEATH) then
+			if TestValid(unit) and not unit.Has_Behavior(57) then
 				_CustomScriptMessage("_DanLog.txt", string.format("Forcing %s to Paniced State.", tostring(unit)))
 				--unit.Set_Civilian_State(CIVILIAN_STATE_PANIC)	
 			else
@@ -1024,16 +1082,20 @@ end
 
 function Callback_Orlok_Killed()
 	if not mission_success then
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
+		if mission_failure == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
 function Callback_Defiler_Killed()
 	total_alien_forces = total_alien_forces - 1
 	if total_alien_forces <= 0 then
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED"} )
+		if mission_failure == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 	if defiler_counter > 0 then
 		defiler_counter = defiler_counter - 1
@@ -1045,18 +1107,14 @@ function Callback_Defiler_Killed()
 end
 
 function Callback_Zessus_Killed()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE05_OBJECTIVE_F_COMPLETE"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE05_OBJECTIVE_F_COMPLETE"} )
 	Create_Thread("Thread_Mission_Complete")
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
-   Stop_All_Speech()
-   Flush_PIP_Queue()
 	Letter_Box_In(1)
 	Lock_Controls(1)
 	Suspend_AI(1)
@@ -1067,9 +1125,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1356,7 +1414,7 @@ function Dialog_HM05_07_04()
 	BlockOnCommand(Queue_Talking_Head(dialog_hie_comm, "HIE05_SCENE07_04"))
 	Create_Thread("Thread_Reinforce_Grunts")
 	Sleep(8)
- 	Create_Thread("Dialog_HM05_07_05")
+	Create_Thread("Dialog_HM05_07_05")
 end
 
 --Hierarchy Comm (HCO) --Those turrets are inaccessable to most of our troops.  Fortunately, our Brutes have the ability to jump up there and take them out.
@@ -1410,8 +1468,107 @@ function Dialog_HM05_08_07()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dialog_HM05_01_01 = nil
+	Dialog_HM05_05_01 = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Objective_Text = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

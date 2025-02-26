@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/GameScoring.lua#63 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[98] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/GameScoring.lua#25 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/GameScoring.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/GameScoring.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90634 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/09 14:38:51 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #63 $
+--          $Revision: #25 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -498,7 +508,7 @@ function Game_Mode_Ending_Event(mode_name)
 	if StringCompare(mode_name, "Strategic") then
 		CampaignGame = false
 	elseif CampaignGame == false then
-		Raise_Event_Immediate_All_Scenes("Multiplayer_Game_Mode_Ending", nil)
+		Raise_Event_All_Scenes("Multiplayer_Game_Mode_Ending", nil)
 	else
 		-- Tactical transition to Strategic.
 		Script.Set_Async_Data("GameOver", false)
@@ -835,7 +845,9 @@ function Get_Game_Script_Data_Table()
 end
 
 function Set_Game_Script_Data_Table(table)
-	GameScoringManager.Set_Game_Script_Data_Table(table)
+	if table then
+		GameScoringManager.Set_Game_Script_Data_Table(table)
+	end
 end
 
 function Update_GFW_Live_Stats()
@@ -892,7 +904,7 @@ function Record_End_Game_Stats(winner)
 		player_frags = StrategicKillStatsTable[frag_index][playerID]
 		if player_frags ~= nil then
 			for object_type, frag_stats in pairs(player_frags) do
-				if object_type.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) then
+				if object_type.Has_Behavior(99) then
 					ResultsTable.buildings_destroyed = ResultsTable.buildings_destroyed + frag_stats.kills
 				elseif object_type.Object_Is_Hero() then
 					ResultsTable.heroes_destroyed = ResultsTable.heroes_destroyed + frag_stats.kills
@@ -951,7 +963,7 @@ function Record_End_Game_Stats(winner)
 			player_frags = TacticalKillStatsTable[frag_index][client.PlayerID]
 			if player_frags ~= nil then
 				for object_type, frag_stats in pairs(player_frags) do
-					if object_type.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) then
+					if object_type.Has_Behavior(99) then
 						player_results_table.buildings_destroyed = player_results_table.buildings_destroyed + frag_stats.kills
 					elseif object_type.Object_Is_Hero() then
 						player_results_table.heroes_destroyed = player_results_table.heroes_destroyed + frag_stats.kills
@@ -1005,3 +1017,63 @@ end
 function Set_Is_Ranked_Game(value)
 	GameScoringManager.Set_Is_Ranked_Game(value)
 end
+
+function Set_Is_Custom_Multiplayer_Game(value)
+	GameScoringManager.Set_Is_Custom_Multiplayer_Game(value)
+end
+
+function Set_Is_Disconnect_Detected(value)
+	GameScoringManager.Set_Is_Disconnect_Detected(value)
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Current_Winner_By_Score = nil
+	Get_Default_Global_Conquest_Regions = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGOfflineAchievementDefs_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	PG_GC_Create_Clean_Region_Set = nil
+	PG_GC_Create_Props_From_Lobby = nil
+	PG_GC_Merge_Regions_From_Load = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Strategic_Starbase_Level_Change = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Live_Player_Stats = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	Validate_Region_Definitions = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

@@ -1,3 +1,33 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[30] = true
+LuaGlobalCommandLinks[124] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[148] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[191] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[119] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[123] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[37] = true
+LuaGlobalCommandLinks[40] = true
+LuaGlobalCommandLinks[79] = true
+LuaGlobalCommandLinks[195] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[156] = true
+LuaGlobalCommandLinks[187] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -42,6 +72,7 @@ require("Superweapons")
 require("PGHintSystem")
 require("KeyboardMappingsHandler")
 require("PGColors")
+require("RetryMission")
 
 MODE_INVALID = -1
 MODE_CONSTRUCTION = 1 -- can make buildings
@@ -285,6 +316,7 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	Scene.Register_Event_Handler("Networked_Select_Next_Builder", nil, On_Networked_Select_Next_Builder)
 	Scene.Register_Event_Handler("Networked_Point_Camera_At_Next_Builder", nil, On_Networked_Point_Camera_At_Next_Builder)	
 	Scene.Register_Event_Handler("Network_Forfeit_Game", nil, On_Network_Forfeit_Game)
+	Scene.Register_Event_Handler("Network_Toggle_Hunt_Mode", nil, On_Network_Toggle_Hunt_Mode)
 	
 	-- Figure out current mode, based on selected objects
 	Selection_Changed()
@@ -296,8 +328,6 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	QueueButtonsByType = {}
 	for index, button in pairs(QueueButtons) do 
 		button.Set_User_Data(QueueTypes[index])
-		button.Show_Queue_Line(false)
-		button.Show_Queue_Buy_Line(false)
 		QueueButtonsByType[QueueTypes[index]] = button
 		Scene.Register_Event_Handler("Selectable_Icon_Clicked", button, On_Queue_Button_Clicked)
 		
@@ -358,21 +388,21 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	Register_Hint_Context_Scene(Scene)
 	
 	Scene.Register_Event_Handler("Type_Lock_State_Changed", nil, On_Update_Construction_Mode)
-	Scene.Register_Event_Handler("Resource_Harvested", nil, On_Resource_Harvested)
 	
 	HardPointConfigurationMode = false	
-	Scene.Register_Event_Handler("Network_Sell_Structure", nil, On_Network_Sell_Structure)
+	Scene.Register_Event_Handler("Network_Sell_Object", nil, On_Network_Sell_Object)
 	
 	Init_Keyboard_Mappings_Handler()
 	
 	-- When zooming the radar map in, we want all other capabilities of the command bar to be disabled.
 	CommandBarEnabled = true
+	IsRadarAnimating = false
 	
 	--RADAR stuff
 	RADAR_MAP_ANIMATION_LENGTH = 7.0/30.0 -- 7 frames
 	RADAR_MAP_ENLARGE_FACTOR = 2.0 -- enlarge the map by this much.
 	IsRadarOpen = false
-	IsRadarAnimating = false
+	RadarMap.Resume()
 	
 	if this.RadarTray then
 		Scene.Register_Event_Handler("Animation_Finished", this.RadarTray, Unlock_Command_Bar)	
@@ -382,7 +412,7 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 		--background_texture = RadarMap.Get_Background_Texture_Name()
 		--if background_texture then
 			--this.RadarBackground.Set_Texture(background_texture)
-			--this.RadarBackground.Set_Render_Mode(0) --ALPRIM_OPAQUE
+			--this.RadarBackground.Set_Render_Mode(0) --0
 			--Scene.Register_Event_Handler("Radar_Map_Show_Terrain", nil, Radar_Map_Show_Terrain)
 			--Scene.Register_Event_Handler("Radar_Map_Hide_Terrain", nil, Radar_Map_Hide_Terrain)
 		--end
@@ -398,7 +428,9 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 		this.RadarOverlay.Set_Hidden(true)
 	end
 	
-	Update_Radar_Map_Bounds()
+	-- Moved to Update_Common_Scene - Oksana
+	--Update_Radar_Map_Bounds()
+	IsRadarInitialized = false
 	
 	-- Maria 04.13.2007 - CLICK/SELL functionality
 	SellModeOn = false
@@ -512,20 +544,9 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 
 	end
 	
-	-- Maria 07.09.2007
-	-- We will be using this to toggle the visibility and focus of the special ability/production GUIs when a controller is detected as well as to 
-	-- hide/display the radar map zoom button (since this one should be hidden when no controllers are connected)
-	AreAnyControllersConnected = Are_Any_Controllers_Connected()
 	if TestValid(this.RadarZoomButton) then
 		this.RadarZoomButton.Set_Hidden(true)
 	end
-	
-	-- Maria 07.09.2007
-	-- this can only be used if there are controllers connected!!!!!!.
-	-- By default we always hide the selection UI
-	Controller_Display_Selection_UI(not AreAnyControllersConnected)
-	
-	this.Register_Event_Handler("Controller_Display_Selection_UI", nil, On_Controller_Display_Selection_UI)
 	
 	if TestValid(this.BattleCam) then
 		Init_Battle_Cam_Button()
@@ -573,6 +594,10 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	-- Called when a masari light sw is created
 	Scene.Register_Event_Handler("Network_Select_Super_Weapon", nil, Select_Super_Weapon)
 
+	this.Register_Event_Handler("Show_Game_End_Screen", nil, Show_Game_End_Screen)
+	this.Register_Event_Handler("Objectives_Changed", nil, On_Objectives_Changed)
+	this.Register_Event_Handler("Suspend_Objectives", nil, On_Suspend_Objectives)
+	this.Register_Event_Handler("Show_Retry_Mission_Screen", nil, Show_Retry_Mission_Screen)
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -813,50 +838,6 @@ function Update_Minor_Announcement_Text_Fade()
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
--- On_Controller_Display_Selection_UI
--- ------------------------------------------------------------------------------------------------------------------
-function On_Controller_Display_Selection_UI(event, source, on_off)
-	if not AreAnyControllersConnected then
-		if not ControllerDisplayingSelectionUI then 
-			-- make sure everything is back up!.
-			Controller_Display_Selection_UI(true)
-		end		
-		return
-	end	
-	Controller_Display_Selection_UI(on_off)	
-end
-
--- ------------------------------------------------------------------------------------------------------------------
--- Controller_Display_Selection_UI
--- ------------------------------------------------------------------------------------------------------------------
-function Controller_Display_Selection_UI(on_off)
-	if ControllerToggleUIDisplay == on_off then return end
-	
-	local hide = not on_off
-	QueueManager.Set_Hidden(hide)
-	this.CommandBar.SpecialAbilityButtons.Set_Hidden(hide)
-	
-	local update_local_focus = true
-	if Controller_Display_Specific_UI then
-		update_local_focus = Controller_Display_Specific_UI(on_off)
-	end
-	
-	if TestValid(this.CommandBar.BuildButtons) then
-		this.CommandBar.BuildButtons.Set_Hidden(hide)
-	end
-	
-	if not hide then 
-		if QueueManager.Is_Open() then
-			QueueManager.Update_Display_Focus()
-		elseif update_local_focus then
-			this.Focus_First()
-		end
-	end
-	
-	ControllerDisplayingSelectionUI = on_off
-end
-
--- ------------------------------------------------------------------------------------------------------------------
 -- Init_Battle_Cam_Button
 -- ------------------------------------------------------------------------------------------------------------------
 function Init_Battle_Cam_Button()
@@ -867,7 +848,6 @@ function Init_Battle_Cam_Button()
 	this.Register_Event_Handler("Mouse_Left_Down", this.BattleCam, On_Handle_BattleCam_Button_Down)
 	this.Register_Event_Handler("Mouse_Left_Up", this.BattleCam, On_Handle_BattleCam_Button_Up)
 end
-
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Init_Battle_Cam_Textures
@@ -1259,19 +1239,17 @@ end
 -- Toggle_Sell_Mode_State 
 -- ------------------------------------------------------------------------------------------------------------------
 function Toggle_Sell_Mode_State()
-	if not Are_Any_Controllers_Connected() then
-		-- Make sure we have a valid Sell Button and it is not hidden!.
-		-- NOTE: this call may be made from the Keyboard Mappings Handler since Toggling the Sell mode can 
-		-- be linked to a hotkey!.
-		if TestValid(SellButton) and not SellButton.Get_Hidden() then 
-			SellModeOn = Toggle_Sell_Mode()
-			SellButton.Set_Selected(SellModeOn)
-			Raise_Event_Immediate_All_Scenes("Refresh_Sell_Mode", {SellModeOn})
-		
-			if SellModeOn == true then
-				-- Close all other menus, end any other modes!.
-				Close_All_Displays()	
-			end
+	-- Make sure we have a valid Sell Button and it is not hidden!.
+	-- NOTE: this call may be made from the Keyboard Mappings Handler since Toggling the Sell mode can 
+	-- be linked to a hotkey!.
+	if TestValid(SellButton) and not SellButton.Get_Hidden() then 
+		SellModeOn = Toggle_Sell_Mode()
+		SellButton.Set_Selected(SellModeOn)
+		Raise_Event_Immediate_All_Scenes("Refresh_Sell_Mode", {SellModeOn})
+	
+		if SellModeOn == true then
+			-- Close all other menus, end any other modes!.
+			Close_All_Displays()	
 		end
 	end
 end
@@ -1321,13 +1299,6 @@ function Show_Radar_Map()
 	if TestValid(this.RadarMap) then
 		this.RadarMap.Set_Hidden(false)
 	end
-	
-	if TestValid(this.RadarZoomButton) then
-		if AreAnyControllersConnected then
-			this.RadarZoomButton.Set_Hidden(false)			
-		end
-	end
-	
 end
 
 
@@ -1542,7 +1513,12 @@ function Unlock_Command_Bar(event, source)
 		-- refresh the selection data just in case.
 		Update_Mode()
 	end
+	
+	if IsRadarAnimating == true then
+		RadarMap.Resume()
+	end
 	IsRadarAnimating = false
+
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -1583,6 +1559,11 @@ function Radar_Map_Zoom_In()
 	this.RadarMap.Play_Animation("Open", false)	
 	
 	IsRadarOpen = true
+	
+	--Only suspend is not already suspended - Oksana
+	if IsRadarAnimating == false then
+		RadarMap.Suspend()
+	end
 	IsRadarAnimating = true
 end
 
@@ -1602,6 +1583,11 @@ function Radar_Map_Zoom_Out()
 	this.RadarMap.Play_Animation_Backwards("Open", false)	
 
 	IsRadarOpen = false
+	
+	--Only suspend is not already suspended - Oksana
+	if IsRadarAnimating == false then
+		RadarMap.Suspend()
+	end
 	IsRadarAnimating = true
 end
 
@@ -1613,13 +1599,6 @@ function Is_Radar_Map_Open()
 	return( IsRadarOpen )
 end
 
-
--- ------------------------------------------------------------------------------------------------------------------------------------
--- Is_Radar_Map_Animating
--- ------------------------------------------------------------------------------------------------------------------------------------
-function Is_Radar_Map_Animating()
-	return IsRadarAnimating
-end
 
 -- ------------------------------------------------------------------------------------------------------------------------------------
 -- Set_UI_Display_Tooltip_Resources
@@ -1661,11 +1640,11 @@ end
 
 
 -- -----------------------------------------------------------------------------------------------------------------
--- On_Network_Sell_Structure
+-- On_Network_Sell_Object
 -- -----------------------------------------------------------------------------------------------------------------
-function On_Network_Sell_Structure(event, source, building, player)
-	if TestValid(building) then 
-		local success = building.Sell()	
+function On_Network_Sell_Object(event, source, object, player)
+	if TestValid(object) then 
+		local success = object.Sell()	
 		if success == false then 	
 			MessageBox("UGH?!")
 		end
@@ -1794,7 +1773,7 @@ function Display_Build_Menu(event, source, structure)
 
 	if structure ~= nil then 
 		
-		if not structure.Has_Behavior(BEHAVIOR_TACTICAL_ENABLER) then 
+		if not structure.Has_Behavior(89) then 
 			MessageBox("Tactical_Command_Bar::Display_Build_Menu - The specified structure is not a tactical enabler!. Aborting command")
 			return
 		end
@@ -1858,36 +1837,30 @@ end
 function Init_Queue_Textures()
 	PlayerToQueueTexturesMap = {}
 
-	local faction_name = Find_Player("Alien").Get_Faction_Name()
-	PlayerToQueueTexturesMap[faction_name] = {}
-	PlayerToQueueTexturesMap[faction_name]['Command'] 	= 'i_icon_a_build_tab_command.tga' 
-	PlayerToQueueTexturesMap[faction_name]['Air'] 		= 'i_icon_a_build_tab_air.tga' 
-	PlayerToQueueTexturesMap[faction_name]['Infantry'] 	= 'i_icon_a_build_tab_infantry.tga' 
-	PlayerToQueueTexturesMap[faction_name]['Vehicle'] 		= 'i_icon_a_build_tab_vehicle.tga' 
-	
+	PlayerToQueueTexturesMap["ALIEN"] = {}
+	PlayerToQueueTexturesMap["ALIEN"]['Command'] 	= 'i_icon_a_build_tab_command.tga' 
+	PlayerToQueueTexturesMap["ALIEN"]['Air'] 		= 'i_icon_a_build_tab_air.tga' 
+	PlayerToQueueTexturesMap["ALIEN"]['Infantry'] 	= 'i_icon_a_build_tab_infantry.tga' 
+	PlayerToQueueTexturesMap["ALIEN"]['Vehicle'] 		= 'i_icon_a_build_tab_vehicle.tga' 
 
-	faction_name = Find_Player("Military").Get_Faction_Name()
-	PlayerToQueueTexturesMap[faction_name] = {}
-	PlayerToQueueTexturesMap[faction_name]['Command'] 	= 'i_icon_ca.tga'
-	PlayerToQueueTexturesMap[faction_name]['Air'] 		= 'i_icon_ca.tga'
-	PlayerToQueueTexturesMap[faction_name]['Infantry'] 	= 'i_icon_ci.tga'
-	PlayerToQueueTexturesMap[faction_name]['Vehicle'] 		= 'i_icon_cv.tga'
-	
-	
-	faction_name = Find_Player("Novus").Get_Faction_Name()
-	PlayerToQueueTexturesMap[faction_name] = {}
-	PlayerToQueueTexturesMap[faction_name]['Command'] 	= 'i_icon_n_build_tab_command.tga'
-	PlayerToQueueTexturesMap[faction_name]['Air'] 		= 'i_icon_n_build_tab_air.tga'
-	PlayerToQueueTexturesMap[faction_name]['Infantry'] 	= 'i_icon_n_build_tab_infantry.tga'
-	PlayerToQueueTexturesMap[faction_name]['Vehicle'] 		= 'i_icon_n_build_tab_vehicle.tga'
-	
-	
-	faction_name = Find_Player("Masari").Get_Faction_Name()
-	PlayerToQueueTexturesMap[faction_name] = {}
-	PlayerToQueueTexturesMap[faction_name]['Command'] 	= 'i_icon_m_build_tab_command.tga'
-	PlayerToQueueTexturesMap[faction_name]['Air'] 		= 'i_icon_m_build_tab_air.tga'
-	PlayerToQueueTexturesMap[faction_name]['Infantry'] 	= 'i_icon_m_build_tab_infantry.tga'
-	PlayerToQueueTexturesMap[faction_name]['Vehicle'] 		= 'i_icon_m_build_tab_vehicle.tga'
+	PlayerToQueueTexturesMap["MILITARY"] = {}
+	PlayerToQueueTexturesMap["MILITARY"]['Command'] 	= 'i_icon_ca.tga'
+	PlayerToQueueTexturesMap["MILITARY"]['Air'] 		= 'i_icon_ca.tga'
+	PlayerToQueueTexturesMap["MILITARY"]['Infantry'] 	= 'i_icon_ci.tga'
+	PlayerToQueueTexturesMap["MILITARY"]['Vehicle'] 		= 'i_icon_cv.tga'
+
+	PlayerToQueueTexturesMap["NOVUS"] = {}
+	PlayerToQueueTexturesMap["NOVUS"]['Command'] 	= 'i_icon_n_build_tab_command.tga'
+	PlayerToQueueTexturesMap["NOVUS"]['Air'] 		= 'i_icon_n_build_tab_air.tga'
+	PlayerToQueueTexturesMap["NOVUS"]['Infantry'] 	= 'i_icon_n_build_tab_infantry.tga'
+	PlayerToQueueTexturesMap["NOVUS"]['Vehicle'] 		= 'i_icon_n_build_tab_vehicle.tga'
+
+
+	PlayerToQueueTexturesMap["MASARI"] = {}
+	PlayerToQueueTexturesMap["MASARI"]['Command'] 	= 'i_icon_m_build_tab_command.tga'
+	PlayerToQueueTexturesMap["MASARI"]['Air'] 		= 'i_icon_m_build_tab_air.tga'
+	PlayerToQueueTexturesMap["MASARI"]['Infantry'] 	= 'i_icon_m_build_tab_infantry.tga'
+	PlayerToQueueTexturesMap["MASARI"]['Vehicle'] 		= 'i_icon_m_build_tab_vehicle.tga'
 end
 
 -- ------------------------------------------------------------------------------------------------------------------------------------
@@ -1911,9 +1884,9 @@ end
 -- ------------------------------------------------------------------------------------------------------------------------------------
 function Init_Idle_Builder_Textures()
 	PlayerToIdleBuilderTexturesMap = {}
-	PlayerToIdleBuilderTexturesMap[Find_Player("Alien").Get_Faction_Name()] = "i_icon_a_idle_builder.tga"
-	PlayerToIdleBuilderTexturesMap[Find_Player("Novus").Get_Faction_Name()] = "i_icon_n_idle_builder.tga"
-	PlayerToIdleBuilderTexturesMap[Find_Player("Masari").Get_Faction_Name()] = "i_icon_m_idle_builder.tga"
+	PlayerToIdleBuilderTexturesMap["ALIEN"] = "i_icon_a_idle_builder.tga"
+	PlayerToIdleBuilderTexturesMap["NOVUS"] = "i_icon_n_idle_builder.tga"
+	PlayerToIdleBuilderTexturesMap["MASARI"] = "i_icon_m_idle_builder.tga"
 end
 
 
@@ -1957,58 +1930,70 @@ function Get_Unit_Special_Abilities(units_list)
 	CurrentAbilityCount = {}
 	local has_priorities = false
 	if TestValid(unit) then
-		for unit_ability_name, ability in pairs(SpecialAbilities) do
-			
+	
+		local unit_ability_names = unit.Get_Ability_Names()
+		if not unit_ability_names then
+			return
+		end
+		
+		-- go through each ability name
+		for _, unit_ability_name in pairs(unit_ability_names) do
+		
 			local count = 0
-			
-			local unit_has_ability = unit.Has_Ability(unit_ability_name)
-			local multi_exclude_ability = false
-
-			if Is_Campaign_Game() == false and ability.campaign_game_only == true then
-				unit_has_ability = false
-				multi_exclude_ability = true
-			end
-			
-			if unit_has_ability == true then 
-				-- this will allow us to distinguish between abilities that belong to an individual object and those attached to an object
-				-- by other objects attached to it (eg. the walker doesn't have a Jammer ability unless it has the Jammer hp attached to it)
-				CurrentAbilityCount[unit_ability_name] = -1
-				ability.AbilityOwner = unit
-			end
-			
-			hardpoints = unit.Get_All_Hard_Points()
-			if hardpoints and multi_exclude_ability == false then
-				for _, hp in pairs(hardpoints) do
-					if TestValid(hp) then
-						unit_has_ability = (unit_has_ability or hp.Has_Ability(unit_ability_name))
 						
-						if hp.Has_Ability(unit_ability_name) then
-							count = count + 1
-							CurrentAbilityCount[unit_ability_name] = count
+			-- get the special ability by the name
+			local ability = SpecialAbilities[unit_ability_name]
+			if ability then
+				
+				local unit_has_ability = true
+				local multi_exclude_ability = false
+				
+				if Is_Campaign_Game() == false and ability.campaign_game_only == true then
+					unit_has_ability = false
+					multi_exclude_ability = true
+				end
+				
+				if unit_has_ability == true then 
+					-- this will allow us to distinguish between abilities that belong to an individual object and those attached to an object
+					-- by other objects attached to it (eg. the walker doesn't have a Jammer ability unless it has the Jammer hp attached to it)
+					CurrentAbilityCount[unit_ability_name] = -1
+					ability.AbilityOwner = unit
+				end
+				
+				hardpoints = unit.Get_All_Hard_Points()
+				if hardpoints and multi_exclude_ability == false then
+					for _, hp in pairs(hardpoints) do
+						if TestValid(hp) then
+							unit_has_ability = (unit_has_ability or hp.Has_Ability(unit_ability_name))
 							
-							if not ability.AbilityOwner then 
-								ability.AbilityOwner = hp
+							if hp.Has_Ability(unit_ability_name) then
+								count = count + 1
+								CurrentAbilityCount[unit_ability_name] = count
+								
+								if not ability.AbilityOwner then 
+									ability.AbilityOwner = hp
+								end
 							end
 						end
 					end
 				end
-			end
-			
-			if unit_has_ability then
-				if not abilities then 
-					abilities = {}
-				end
 				
-				-- is this ability enabled!?
-				local enabled = Is_Ability_Ready(units_list, unit_ability_name)
-				ability.unit_ability_name = unit_ability_name
-				table.insert(abilities, {ability, enabled})
-				
-				if ability.priority then
-					has_priorities = true
-				end
-			end
-		end
+				if unit_has_ability then
+					if not abilities then 
+						abilities = {}
+					end
+					
+					-- is this ability enabled!?
+					local enabled = Is_Ability_Ready(units_list, unit_ability_name)
+					ability.unit_ability_name = unit_ability_name
+					table.insert(abilities, {ability, enabled})
+					
+					if ability.priority then
+						has_priorities = true
+					end
+				end	
+			end		
+		end	
 	end
 	
 	-- coming out of this function, 'abilities' will contain all the special abilities sorted based on the
@@ -2019,7 +2004,6 @@ function Get_Unit_Special_Abilities(units_list)
 	end
 	return abilities
 end
-
 
 -- -----------------------------------------------------------------------------------------------------------------
 -- Is_Ability_Ready - Returns true if at least one of the units in the list has the 
@@ -2211,7 +2195,7 @@ function On_Queue_Button_Clicked(event, button)
 	if CommandBarEnabled == false or IsLetterboxMode then return end
 	
 	-- since we may be issuing this event without the button having been clicked make sure the button is in a valid state
-	if button.Get_Hidden() == true or button.Is_Enabled() == false then 
+	if button.Get_Hidden() == true or button.Is_Button_Enabled() == false then 
 		return
 	end
 	
@@ -2331,7 +2315,7 @@ function Hide_All_Buttons()
 	for index, button in pairs(BuildButtons) do
 		button.Set_Hidden(true)
 		-- reset their enabled state as well!.
-		button.Set_Enabled(true)
+		button.Set_Button_Enabled(true)
 	end
 
 	_PG_Hint_Refresh_GUI_Hints()
@@ -2374,8 +2358,8 @@ function Selection_Changed(event, source, update_focus)
 	for index, object in pairs(SelectedObjects) do
 		if TestValid(object) then
 			Show_Object_Attached_UI(object, false)
-			object.Unregister_Signal_Handler(On_Object_Removed_From_Selection_List)
-			object.Unregister_Signal_Handler(On_Switch_Type)
+			object.Unregister_Signal_Handler(On_Object_Removed_From_Selection_List, this)
+			object.Unregister_Signal_Handler(On_Switch_Type, this)
 		end
 	end
 	
@@ -2392,22 +2376,22 @@ function Selection_Changed(event, source, update_focus)
 		if TestValid(object) then
 			-- Don't include team members (which have BEHAVIOR_TEAM)
 			local parent = object.Get_Parent_Object()
-			if not parent or not parent.Has_Behavior(BEHAVIOR_TEAM) then
+			if not parent or not parent.Has_Behavior(22) then
 				table.insert(SelectedObjects, object)
-				object.Register_Signal_Handler(On_Object_Removed_From_Selection_List, "OBJECT_HEALTH_AT_ZERO")
-				object.Register_Signal_Handler(On_Object_Removed_From_Selection_List, "OBJECT_SOLD")
-				object.Register_Signal_Handler(On_Switch_Type, "OBJECT_SWITCH_TYPE")
+				object.Register_Signal_Handler(On_Object_Removed_From_Selection_List, "OBJECT_HEALTH_AT_ZERO", this)
+				object.Register_Signal_Handler(On_Object_Removed_From_Selection_List, "OBJECT_SOLD", this)
+				object.Register_Signal_Handler(On_Switch_Type, "OBJECT_SWITCH_TYPE", this)
 				
 				
 				if object.Get_Type().Get_Type_Value("Is_Tactical_Base_Builder") then
 					table.insert(CurrentConstructorsList, object)
 				end
 				
-				if object.Has_Behavior(BEHAVIOR_TACTICAL_ENABLER) then		
+				if object.Has_Behavior(89) then		
 					SelectedBuilding = object
 				end
 				
-				if object.Has_Behavior(BEHAVIOR_TACTICAL_BUILD_OBJECTS) and object.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) then
+				if object.Has_Behavior(38) and object.Has_Behavior(99) then
 					SelectedBuilding = object
 				end
 				
@@ -2487,7 +2471,7 @@ function Update_UI_After_Selection_Change()
 			-- Per design request: for walkers we only display their UI on Mouse_Over
 			if CustomizationModeOn == false and Is_Walker(object) and object ~= MouseOverObject then 
 				Show_Object_Attached_UI(object, false)
-			elseif CustomizationModeOn == false and object.Has_Behavior(BEHAVIOR_HARD_POINT) and Is_Walker(object.Get_Highest_Level_Hard_Point_Parent()) then 
+			elseif CustomizationModeOn == false and object.Has_Behavior(68) and Is_Walker(object.Get_Highest_Level_Hard_Point_Parent()) then 
 				Show_Object_Attached_UI(object, false)
 			else
 				Show_Object_Attached_UI(object, true)
@@ -2500,6 +2484,9 @@ function Update_UI_After_Selection_Change()
 	local is_faction_specific_menu_open = false	
 	local num_constructors_selected = Update_Constructors_List()
 	
+	if UpdateFocus == true and (not SelectedBuilding or not Is_Walker(SelectedBuilding)) then
+		Update_Faction_Specific_UI()
+	end
 
 	if UpdateFocus == true and CustomizationModeOn == false then 
 		-- selection has actually changed, so let's close all open displays!.
@@ -2535,8 +2522,6 @@ function Update_UI_After_Selection_Change()
 
 	if SelectedBuilding then
 		building_type = QueueManager.Get_Building_Queue_Type(SelectedBuilding)
-	elseif UpdateFocus == true then
-		Update_Faction_Specific_UI()
 	end
 	
 	BuildModeOn = false
@@ -2721,7 +2706,7 @@ function Setup_Mode_Construction()
 					-- enough pop cap for it to be built, disbale its button!.
 					if can_produce == false then 
 						-- disable the button
-						button.Set_Enabled(false)
+						button.Set_Button_Enabled(false)
 					elseif not enough_credits then 
 						-- the button should display a redish border and the cost should be displayed in red.
 						button.Set_Insufficient_Funds_Display(true)
@@ -3093,7 +3078,7 @@ function Add_Ability_Group_To_Display(objects, abilities, ab_button_index)
 			end
 
 			-- Start flashing this button if the owner is a hard point only! and the ability has a targeting type!
-			if objects[1].Has_Behavior(BEHAVIOR_HARD_POINT) then
+			if objects[1].Has_Behavior(68) then
 				if ability.action == SPECIALABILITYACTION_TARGET_TERRAIN or ability.action == SPECIALABILITYACTION_TARGET_OBJECT then
 					CurrentTargetingAbilityButton = button
 					CurrentTargetingAbilityButton.Start_Flash()
@@ -3115,9 +3100,9 @@ function Add_Ability_Group_To_Display(objects, abilities, ab_button_index)
 			end
 			
 			if ability_data[2] == false or disable_without_behavior then -- this ability is disabled so disable its button
-				button.Set_Enabled(false)
+				button.Set_Button_Enabled(false)
 			else
-				button.Set_Enabled(true)
+				button.Set_Button_Enabled(true)
 			end 
 		
 			local object_type = objects[1].Get_Type()
@@ -3191,15 +3176,15 @@ function Update_SA_Button_Text(button_idx)
 		-- MLL: Enable/disable the button when state changes.
 		if time_left == nil then
 			if count > 0 then
-				button.Set_Enabled(true)
+				button.Set_Button_Enabled(true)
 			else
-				button.Set_Enabled(false)
+				button.Set_Button_Enabled(false)
 			end
 		end
 
 		-- Wait, if we have a disable withouth behavior we must take that into account as well
 		if user_data.disable_without_behavior_data and user_data.disable_without_behavior_data <= 0 then
-			button.Set_Enabled(false)
+			button.Set_Button_Enabled(false)
 		end
 		
 		--Make sure we always pass a reasonable value for the time_left parameter or silly LUA will
@@ -3388,10 +3373,10 @@ function Update_Mouse_Over()
 		cursorOverObject, mouse_over_ui, object_owns_ui, gui_scene_owner = Get_Object_At_Cursor()
 		
 		-- if this object is a hard point built on a socket then we want to display its tooltip information!
-		if cursorOverObject and cursorOverObject.Has_Behavior(BEHAVIOR_HARD_POINT) then 
+		if cursorOverObject and cursorOverObject.Has_Behavior(68) then 
 		 -- Maria 12.11.2006 - commenting this out since we want each individual (attackable) hard point socket to display
 		 -- its own tooltip so that we can keep track of walker components taking damage.
-		 --  cursorOverObject.Has_Behavior(BEHAVIOR_TACTICAL_SELL) then 
+		 --  cursorOverObject.Has_Behavior(40) then 
 		 
 		 -- Only hard points with text assigned are the ones that get their tooltips displayed!
 			local name = cursorOverObject.Get_Type().Get_Display_Name()
@@ -3416,7 +3401,7 @@ function Update_Mouse_Over()
 			-- Also show the object's tooltip, if applicable.
 			if tooltip_target == nil then 
 				local parent_object = MouseOverObject.Get_Parent_Object()
-				if parent_object ~= nil and parent_object.Has_Behavior(BEHAVIOR_TEAM) then
+				if parent_object ~= nil and parent_object.Has_Behavior(22) then
 					tooltip_target = parent_object
 				else 
 					tooltip_target = MouseOverObject				
@@ -3458,12 +3443,12 @@ end
 -- Process_Mouse_Off_Object
 -- ------------------------------------------------------------------------------------------------------------------
 function Process_Mouse_Off_Object(object)
-	if not object.Has_Behavior(BEHAVIOR_HARD_POINT) and not Is_Selected(object) then 
+	if not object.Has_Behavior(68) and not Is_Selected(object) then 
 		Show_Object_Attached_UI(object, false)
 	else
 		if CustomizationModeOn == false and Is_Walker(object) then 
 			Show_Object_Attached_UI(object, false)
-		elseif CustomizationModeOn == false and object.Has_Behavior(BEHAVIOR_HARD_POINT) and Is_Walker(object.Get_Highest_Level_Hard_Point_Parent()) then 
+		elseif CustomizationModeOn == false and object.Has_Behavior(68) and Is_Walker(object.Get_Highest_Level_Hard_Point_Parent()) then 
 			Show_Object_Attached_UI(object, false)
 		end
 	end
@@ -3514,8 +3499,15 @@ function Update_Common_Scene()
 		nice_service_time = true
 	end
 	
+	-- Update once on second frame (after things are initialized) -Oksana
+	if nice_service_time and not IsRadarInitialized then
+		Update_Radar_Map_Bounds()
+		IsRadarInitialized = true	
+	end
+	
+	
 	if LocalPlayer.Is_Build_Types_List_Initialized() == true and ResearchTreesInitialized == false then
-		Raise_Event_Immediate_All_Scenes("Initialize_Tree_Scenes", nil)
+		Raise_Event_All_Scenes("Initialize_Tree_Scenes", nil)
 		ResearchTreesInitialized = true
 	end
 	
@@ -3623,10 +3615,6 @@ function Update_Common_Scene()
 		Scene.FadeQuad.Set_Hidden(true)
 	end
 
-	if nice_service_time then 
-		Update_Are_Any_Controllers_Connected()
-	end
-	
 	if not IsLetterboxMode then
 		Update_Mouse_Over()
 	end
@@ -3677,13 +3665,6 @@ function Update_Common_Scene()
 		end				
 	end
 	
-	-- JAC - Sell functionality is different if controller is connected
-	if TestValid(SellButton) then 
-		if AreAnyControllersConnected then
-			SellButton.Set_Hidden(true)
-		end
-	end
-
 	if UpdateHeroTooltips then 
 		Update_Hero_Icons_Tooltip_Data()
 		UpdateHeroTooltips = false
@@ -3717,27 +3698,6 @@ function Update_Credits_Popcap_Tooltip_Display(cur_time)
 	end
 end
 
-
--- ------------------------------------------------------------------------------------------------------------------
--- Update_Are_Any_Controllers_Connected
--- ------------------------------------------------------------------------------------------------------------------
-function Update_Are_Any_Controllers_Connected()
-	if IsLetterboxMode then return end
-	
-	local new_state = Are_Any_Controllers_Connected()
-	if new_state ~= AreAnyControllersConnected then 
-		this.RadarZoomButton.Set_Hidden(not new_state)
-		AreAnyControllersConnected = new_state
-		
-		if not AreAnyControllersConnected and not ControllerDisplayingSelectionUI then 
-			Controller_Display_Selection_UI(true)
-		elseif AreAnyControllersConnected and ControllerDisplayingSelectionUI then
-			-- by default we hide the selection UI
-			Controller_Display_Selection_UI(false)
-		end
-	end	
-end
-
 -- ------------------------------------------------------------------------------------------------------------------
 -- Announcement Text is a big text string centered on the screen.
 -- Handy for things like "You are Victorious!"
@@ -3769,6 +3729,15 @@ end
 -- Handy for things like "Objective Completed"
 -- ------------------------------------------------------------------------------------------------------------------
 function Set_Minor_Announcement_Text(event, source, text_string)
+
+	if ObjectivesSuspended then
+		return
+	end
+	
+	if not text_string then
+		text_string = ""
+	end
+	
 	Scene.MinorAnnouncement.MinorAnnouncementText.Set_Hidden(false)
 	if text_string then
 		Scene.MinorAnnouncement.MinorAnnouncementText.Set_Text(text_string)
@@ -3812,6 +3781,25 @@ function On_Comm_Officer_Double_Clicked(hero)
 end
 
 
+function On_Objectives_Changed(_, _, adding, remove_at_index)
+	Scene.Objectives.Raise_Event_Immediate("Objectives_Changed", { adding, remove_at_index })
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Suspend_Objectives
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Suspend_Objectives(_, _, on_off)
+	Scene.Objectives.Raise_Event_Immediate("Suspend_Objectives", {on_off })
+
+	if on_off then
+		-- Clear the minor announcement text!!!!!!
+		this.MinorAnnouncement.MinorAnnouncementText.Set_Text("")
+		MinorAnnouncementFading = false
+	end
+	
+	ObjectivesSuspended = on_off
+end
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Maria 08.09.2006
@@ -3961,7 +3949,7 @@ function Update_Button_Flash_State()
 			local building_type = button.Get_User_Data()
 			if building_type then
 				local building_type_name = building_type.Get_Name()
-				if button.Is_Enabled() == true and BuildingTypesToFlash[building_type_name] then
+				if button.Is_Button_Enabled() == true and BuildingTypesToFlash[building_type_name] then
 					button.Start_Flash()
 				else
 					button.Stop_Flash()
@@ -4204,7 +4192,7 @@ function Activate_Ability(unit_ability_name, type_name)
 			CurrentSpecialAbilityUnitTypeName = type_name
 			CurrentSpecialAbilityName = unit_ability_name
 			local success = GUI_Begin_Special_Ability_Passable_Terrain_Targeting(objects, unit_ability_name)
-			if success == true and objects[1].Has_Behavior(BEHAVIOR_HARD_POINT) then
+			if success == true and objects[1].Has_Behavior(68) then
 				CurrentTargetingAbilityButton = button
 				CurrentTargetingAbilityButton.Start_Flash()
 			end
@@ -4230,7 +4218,7 @@ function Activate_Ability(unit_ability_name, type_name)
 			end
 			
 			local success = GUI_Begin_Special_Ability_Object_Targeting(objects, unit_ability_name, ability.special_ability_name, ability.max_range, ability_min_range)
-			if success == true and objects[1].Has_Behavior(BEHAVIOR_HARD_POINT) then
+			if success == true and objects[1].Has_Behavior(68) then
 				CurrentTargetingAbilityButton = button
 				CurrentTargetingAbilityButton.Start_Flash()
 			end
@@ -4449,7 +4437,7 @@ end
 function On_Hard_Point_Attached(event, source, parent_object)
 	if parent_object ~= nil then
 		-- does this HP give the object a new ability!?. If so, add units that have a special ability to SelectedObjectsByType
-		if parent_object.Has_Behavior(BEHAVIOR_TACTICAL_ENABLER) then
+		if parent_object.Has_Behavior(89) then
 			if SelectedBuilding == parent_object then
 				local type_name = parent_object.Get_Type().Get_Name()
 				if Get_Unit_Special_Abilities({parent_object}) then
@@ -4493,7 +4481,7 @@ function Can_Reset_Attached_UI_Display(object)
 	if CustomizationModeOn == true then 
 		-- is the object part of the current walker being configured?
 		if WalkerConfigurationData then
-			if object.Has_Behavior(BEHAVIOR_HARD_POINT) then 
+			if object.Has_Behavior(68) then 
 				object = object.Get_Highest_Level_Hard_Point_Parent()
 			end
 			if not TestValid(object) then return false end
@@ -4523,8 +4511,8 @@ function Detach_Object(object)
 	for i, obj in pairs(SelectedObjects) do
 		if obj == object then
 			table.remove(SelectedObjects, i)
-			object.Unregister_Signal_Handler(On_Object_Removed_From_Selection_List)
-			object.Unregister_Signal_Handler(On_Switch_Type)
+			object.Unregister_Signal_Handler(On_Object_Removed_From_Selection_List, this)
+			object.Unregister_Signal_Handler(On_Switch_Type, this)
 			break
 		end
 	end
@@ -4613,22 +4601,6 @@ function On_Toggle_Achievement_Buff_Window()
 	Scene.Achievement_HUD.Set_Hidden(AchievementBuffWindowHidden)
 
 end
-
--- ------------------------------------------------------------------------------------------------------------------
--- 2/2/2007 2:18:49 PM -- BMH
--- Event response that gets fired when a harvester harvests a resource.
--- ------------------------------------------------------------------------------------------------------------------
-function On_Resource_Harvested(event, source, object, harvester, units)
-
-	local local_player = Find_Player('local')
-	
-	if harvester.Get_Owner() == local_player then
-	    local particle = Create_Generic_Object(Find_Object_Type("Resource_Floaty"), harvester.Get_Position(), harvester.Get_Owner())
-       local scene = particle.Get_GUI_Scenes()[1]
-       scene.Text.Set_Text(Get_Localized_Formatted_Number(units))
-	end
-	
-end	
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Subtitles_On_Speech_Event_Begin.
@@ -4811,6 +4783,16 @@ function On_Network_Forfeit_Game(_, _, player)
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
+-- On_Network_Toggle_Hunt_Mode
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Network_Toggle_Hunt_Mode(_, _, player)
+	Toggle_Hunt_Mode(player)
+-- 	if player == Find_Player("local") then
+-- 		Update_Hunt_Button()
+-- 	end
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
 --  Disable_GUI_For_Replay
 -- ------------------------------------------------------------------------------------------------------------------
 function Disable_GUI_For_Replay()
@@ -4822,3 +4804,128 @@ function Disable_GUI_For_Replay()
 		Disable_Faction_GUI_For_Replay()
 	end
 end
+
+function Show_Game_End_Screen(_, _, scene_name, winner, to_main_menu, destroy_loser, build_temp_cc, game_end, for_multiplayer)
+
+	if (for_multiplayer == nil) then
+		for_multiplayer = false
+	end
+	
+	local quit_params = {}
+	quit_params.Winner = winner
+	quit_params.DestroyLoser = destroy_loser
+	quit_params.ToMainMenu = to_main_menu
+	quit_params.BuildTempCC = build_temp_cc
+	quit_params.GameEndTime = game_end
+	
+	local post_game_ui = this[scene_name]
+	if not TestValid(post_game_ui) then
+		post_game_ui = this.Create_Embedded_Scene(scene_name, scene_name)
+	end
+	post_game_ui.Set_Bounds(0.0, 0.0, 1.0, 1.0)
+	post_game_ui.Set_Hidden(false)
+	post_game_ui.Bring_To_Front()
+	post_game_ui.Set_User_Data(quit_params)
+	if (for_multiplayer) then
+		post_game_ui.Set_Dialog_For_Multiplayer(for_multiplayer)
+	end
+	if post_game_ui.Finalize_Init() then
+		post_game_ui.Start_Modal(Really_Quit)
+	else
+		_Quit_Game_Now(winner, to_main_menu, destroy_loser, build_temp_cc)
+	end	
+end
+
+function Really_Quit(post_game_ui)
+	local quit_params = post_game_ui.Get_User_Data()
+	_Quit_Game_Now(quit_params.Winner, quit_params.ToMainMenu, quit_params.DestroyLoser, quit_params.BuildTempCC)
+end
+
+function Show_Retry_Mission_Screen(_, _, scene_file, scene_name)
+
+	local retry_dialog = nil
+	local game_scene = Get_Game_Mode_GUI_Scene()
+	if TestValid(game_scene.RetryDialog) then
+		retry_dialog = game_scene.RetryDialog
+		retry_dialog.Set_Hidden(false)
+	else
+		retry_dialog = game_scene.Create_Embedded_Scene(scene_file, scene_name)
+	end
+	retry_dialog.Set_Screen_Position(0.5, 0.5)
+	retry_dialog.Start_Modal(On_Retry_Response)
+
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Activate_Superweapon_By_Index = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Commit_Profile_Values = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Hero_Button = nil
+	GUI_Cancel_Talking_Head = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Pool_Free = nil
+	Get_Button_Index_For_Unit_Type = nil
+	Get_Chat_Color_Index = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Selected_Unit_Type_For_Button_Index = nil
+	Init_Tab_Orders = nil
+	Init_Tactical_Command_Bar_Common = nil
+	Max = nil
+	Min = nil
+	Mission_Text_User_Event = nil
+	Notify_Attached_Hint_Created = nil
+	On_Mouse_Off_Hero_Button = nil
+	On_Mouse_Over_Hero_Button = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Set_Achievement_Buff_Display_Model = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Post_Load_Game = nil
+	Process_Tactical_Mission_Over = nil
+	Radar_Map_Hide_Terrain = nil
+	Radar_Map_Show_Terrain = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Show_Retry_Dialog = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Common_Scene = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

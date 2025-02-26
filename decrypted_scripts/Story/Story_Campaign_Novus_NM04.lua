@@ -1,4 +1,47 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM04.lua#59 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM04.lua#34 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +68,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM04.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM04.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90680 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/09 17:53:49 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #59 $
+--          $Revision: #34 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,8 +127,8 @@ function Definitions()
    hostile = Find_Player("Hostile")
 
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
 	   
    player_faction = novus
 	
@@ -156,6 +199,7 @@ function Definitions()
 	bool_humantown02_active = true
 	bool_humantown03_active = true
 	bool_humantown04_active = true
+	bool_alien_arrival = false
 	
 	starting_camera_position = nil
 
@@ -260,14 +304,25 @@ function State_Init(message)
 	aliens.Allow_AI_Unit_Behavior(false)
 	masari.Allow_AI_Unit_Behavior(false)
 	
-		UI_Hide_Research_Button()
+      -- RAD: Allowing research in this mission.
+      novus.Set_Research_Points_Override(2)
+		-- UI_Hide_Research_Button()
 		UI_Hide_Sell_Button()
 
 		civilian.Make_Enemy(aliens)
 		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		-- All this is done in the call to UI_On_Mission_Start above
+		--[[
 		Stop_All_Speech()
 		Flush_PIP_Queue()
 		Allow_Speech_Events(true)
+		]]-- 
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM04_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 			
 		Set_Next_State("State_NM04_Act01")
       
@@ -350,10 +405,11 @@ function Thread_NM04_Act01_Start()
 
 	
 	--put hint on field inverter
-	--field_inverter = Find_First_Object("NOVUS_FIELD_INVERTER")
 	if TestValid(starting_inverter) then
-		--Add_Attached_Hint(starting_inverter, HINT_BUILT_NOVUS_FIELD_INVERTER)
-		Add_Attached_Hint(starting_inverter, HINT_NM04_FIELDINVERTERS)
+		--jdg 10/30/07 squelching this hint on the 360 because it pops during a dialog line
+		if not Is_Gamepad_Active() then
+			Add_Attached_Hint(starting_inverter, 136)
+		end
 		Create_Thread("Thread_Starting_Inverter")
 	end	
 	-- ***** HINT SYSTEM *****
@@ -416,9 +472,11 @@ function Thread_NM04_Act03_Start()
 	while TestValid(starting_reaper) do
 		Sleep(5)
 	end
-
-	Create_Thread("Thread_Aliens_SetUp_Base")
-	Create_Thread("Thread_Monitor_For_Arrival_Site")
+	if not bool_alien_arrival then
+		bool_alien_arrival = true
+		Create_Thread("Thread_Aliens_SetUp_Base")
+		Create_Thread("Thread_Monitor_For_Arrival_Site")
+	end
 end
 
 function Thread_Monitor_For_Arrival_Site()
@@ -438,19 +496,42 @@ end
 
 function Thread_Monitor_For_Portal()
 	while not bool_portal_built do
-		Sleep(3)
+		Sleep(1)
 		--DME: changing the object search to the beacon rather than the under construction version.
-		local portal_beacon = Find_First_Object("NM04_NOVUS_PORTAL_BEACON")
+		--local portal_beacon = Find_First_Object("NM04_NOVUS_PORTAL_BEACON")
 		
-		if TestValid(portal_beacon) then
-			--prevent further portals from being built
-			player_faction.Lock_Object_Type(type_novus_portal_buildable,true,STORY)
-			--player_faction.Lock_Object_Type(type_novus_portal,true,STORY)
-		end
+		--while not TestValid(portal_beacon) do
+		--	portal_beacon = Find_First_Object("NM04_NOVUS_PORTAL_BEACON")
+		--	Sleep(1)
+		--end
+		
+		--
 		
 		local portal_construction = Find_First_Object("NM04_NOVUS_PORTAL_CONSTRUCTION")
 		
 		if TestValid(portal_construction) then
+			player_faction.Lock_Object_Type(type_novus_portal_buildable,true,STORY)
+		
+			--look for other beacons and destroy them
+			local beacon_list = Find_All_Objects_Of_Type("NM04_NOVUS_PORTAL_BEACON")
+			for i, beacon in pairs(beacon_list) do
+				if TestValid(beacon) then
+					beacon.Despawn()
+					player_faction.Give_Money(20000)--refunding players money for extra portals built
+				end
+			end
+			
+			--also check for any player tricks with extra portals
+			local portal_list = Find_All_Objects_Of_Type("NM04_NOVUS_PORTAL_CONSTRUCTION")
+			for i, portal in pairs(portal_list) do
+			if TestValid(portal) then
+					if portal ~= portal_construction then
+						portal.Despawn()
+						player_faction.Give_Money(20000)--refunding players money for extra portals built
+					end
+				end
+			end
+			
 			--portal_trasnport.Move_To(portal_construction.Get_Position())
 			portal_construction.Register_Signal_Handler(Callback_Portal_Destroyed, "OBJECT_HEALTH_AT_ZERO") 
 	
@@ -473,7 +554,7 @@ function Thread_Monitor_For_Portal()
 				if NM04_Objective01_Hint ~= nil then
 					Delete_Objective(NM04_Objective01_Hint) -- removes the hint to capture oil derriks
 				end
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_AD_COMPLETE"} )--Objective complete: Build the Home Portal within five minutes.
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_AD_COMPLETE"} )--Objective complete: Build the Home Portal within five minutes.
 
 				Create_Thread("Thread_Add_Protect_Portal_Objective")
 				
@@ -515,7 +596,7 @@ function Thread_Monitor_Objective01_Timer()
 	
 	Create_Thread("Thread_Monitor_For_Portal")
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_AD_ADD"} )--New objective: Build the Wormhole Portal within six minutes.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_AD_ADD"} )--New objective: Build the Wormhole Portal within six minutes.
 	Sleep(time_objective_sleep)
 	NM04_Objective01 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_AD2")--Build the Home Portal within six minutes (##1:0##2).
 	out_string = Get_Game_Text("TEXT_SP_MISSION_NVS04_OBJECTIVE_AD2")
@@ -586,7 +667,10 @@ function Thread_Monitor_Objective01_Timer()
 	if not bool_portal_built then
 		bool_portal_objective_failed = true
 		failure_text = "TEXT_SP_MISSION_NVS04_OBJECTIVE_AA_FAILED"
-		Create_Thread("Thread_Mission_Failed")
+		if bool_mission_failure == false then
+			bool_mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
@@ -933,7 +1017,7 @@ function Thread_Track_Victory_Conditions()
 		if obj_base_established and (counter_arrival_sites == 0) and (counter_habitat_walkers == 0) and (counter_scan_drones == 0)  and (not win_cond_1) then
 			
 			Objective_Complete(NM04_Objective05) --("Destroy the Hierarchy Base.")
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_E_COMPLETE"})--Objective complete: Destroy the Hierarchy base.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_E_COMPLETE"})--Objective complete: Destroy the Hierarchy base.
 			
 	_CustomScriptMessage("JoeLog.txt", string.format("win"))
 			Create_Thread("Thread_Dialog_Controller", dialog_alien_base_destroyed)
@@ -943,7 +1027,7 @@ function Thread_Track_Victory_Conditions()
 		
 		if obj_assembly_given and obj_assembly_down and (not win_cond_2) then
 			Objective_Complete(NM04_Objective04) --("Destroy the Assembly Walker.")
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_D_COMPLETE"})--Objective complete: Destroy the Hierarchy base.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_D_COMPLETE"})--Objective complete: Destroy the Hierarchy base.
 	_CustomScriptMessage("JoeLog.txt", string.format("win"))
 			win_cond_2=true
 	_CustomScriptMessage("JoeLog.txt", string.format("cond_2"))
@@ -986,8 +1070,20 @@ function Thread_Victory_Checks()
 	end
 end
 
+-- 02/07/08 DME adding timeout for main Alien attck force to come in if Reaper gets distracted and never killed.
+function Thread_Aliens_Attack_Humans_Timeout()
+	Sleep(180)
+	if not bool_alien_arrival then
+		bool_alien_arrival = true
+		Create_Thread("Thread_Aliens_SetUp_Base")
+		Create_Thread("Thread_Monitor_For_Arrival_Site")
+	end
+end
+
 function Thread_Aliens_Attack_Humans()
 	--Create_Thread("Thread_Dialog_Controller", dialog_protect_the_humans) -- may want to delay this dialog until humans acutally get attacked
+	
+	Create_Thread("Thread_Aliens_Attack_Humans_Timeout")
 	
 	for i, human_attacker01 in pairs(human_attackers01_list) do
 		if TestValid(human_attacker01) then
@@ -1170,7 +1266,7 @@ function Callback_Town01_Human_Destroyed()
 		if counter_human_villages <= 0 then 
 			counter_human_villages = 0 
 		else
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
 			if bool_human_attackers01_on_board then
 				Hunt(human_attackers01_list, "NM04_Human_Hunters_Priorities", true, false)
 			elseif bool_human_attackers02_on_board then
@@ -1191,6 +1287,7 @@ function Callback_Town01_Human_Destroyed()
 	if counter_human_villages == 0 then -- all humans have been destroyed, fail the objective and the mission
 		if bool_mission_success ~= true then
 			bool_mission_failure = true
+			
 			failure_text = "TEXT_SP_MISSION_NVS04_OBJECTIVE_B_FAILED"
 			
 			Create_Thread("Thread_Dialog_Controller", dialog_mirabel_killed) -- probably need human-protecting failure specific dialog here
@@ -1213,15 +1310,15 @@ function Callback_Town02_Human_Destroyed()
 		if counter_human_villages <= 0 then 
 			counter_human_villages = 0 
 		else
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
 			if bool_human_attackers01_on_board then
-				Hunt(human_attackers01_list, "NM04_Human_Hunters_Priorities", true, false)
+				Hunt(human_attackers01_list, "Alien_Gray_Target_Priority", true, false, novus_base, 250)
 			elseif bool_human_attackers02_on_board then
-				Hunt(human_attackers02_list, "NM04_Human_Hunters_Priorities", true, false)
+				Hunt(human_attackers02_list, "Alien_Gray_Target_Priority", true, false, novus_base, 250)
 			elseif bool_human_attackers03_on_board then
-				Hunt(human_attackers03_list, "NM04_Human_Hunters_Priorities", true, false)
+				Hunt(human_attackers03_list, "Alien_Gray_Target_Priority", true, false, novus_base, 250)
 			elseif bool_human_attackers04_on_board then
-				Hunt(human_attackers04_list, "NM04_Human_Hunters_Priorities", true, false)
+				Hunt(human_attackers04_list, "Alien_Gray_Target_Priority", true, false, novus_base, 250)
 			end
 		end
 		
@@ -1255,7 +1352,7 @@ function Callback_Town03_Human_Destroyed()
 		if counter_human_villages <= 0 then 
 			counter_human_villages = 0 
 		else
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
 			if bool_human_attackers01_on_board then
 				Hunt(human_attackers01_list, "NM04_Human_Hunters_Priorities", true, false)
 			elseif bool_human_attackers02_on_board then
@@ -1295,7 +1392,7 @@ function Callback_Town04_Human_Destroyed()
 		if counter_human_villages <= 0 then 
 			counter_human_villages = 0 
 		else
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_NOTICE"} )--Objective complete: Protect the sentients.
 			if bool_human_attackers01_on_board then
 				Hunt(human_attackers01_list, "NM04_Human_Hunters_Priorities", true, false)
 			elseif bool_human_attackers02_on_board then
@@ -1500,9 +1597,8 @@ end
 --***************************************FUNCTIONS****************************************************************************************************
 -- below are the various functions used in this script
 function Callback_Mirabel_Destroyed()
-	if bool_mission_success ~= true then
-		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-		Flush_PIP_Queue() -- removes any queded dialog
+	if bool_mission_success ~= true and bool_mission_failure == false then
+		bool_mission_failure = true 
 		Create_Thread("Thread_Dialog_Controller", dialog_mirabel_killed)
 		failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
 	end
@@ -1510,18 +1606,16 @@ end
 
 
 function Callback_Portal_Destroyed()
-	if bool_mission_success ~= true then
-		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-		Flush_PIP_Queue() -- removes any queded dialog
+	if bool_mission_success ~= true and bool_mission_failure == false then
+		bool_mission_failure = true 
 		Create_Thread("Thread_Dialog_Controller", dialog_mirabel_killed)
 		failure_text = "TEXT_SP_MISSION_NVS04_OBJECTIVE_C_FAILED"
 	end
 end
 
 function Callback_Transport_Destroyed()
-	if bool_mission_success ~= true then
-		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-		Flush_PIP_Queue() -- removes any queded dialog
+	if bool_mission_success ~= true and bool_mission_failure == false then
+		bool_mission_failure = true 
 		Create_Thread("Thread_Dialog_Controller", dialog_mirabel_killed)
 		failure_text = "TEXT_SP_MISSION_NVS04_OBJECTIVE_C_FAILED"
 	end
@@ -1883,42 +1977,48 @@ function Lock_Out_Stuff(bool)
 	
 	player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hero_Vertigo"),bool,STORY) 
 	player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hero_Founder"),bool,STORY) 
+	player_faction.Lock_Object_Type(Find_Object_Type("NOVUS_HERO_MECH"),bool,STORY)
 	
 	player_faction.Lock_Unit_Ability("Novus_Hero_Mech", "Novus_Mech_Retreat_From_Tactical_Ability",bool,STORY)
 	
-		player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
-		player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
-		player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
+		-- player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
+		-- player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
+		-- player_faction.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
 		
-	player_faction.Lock_Generator("VirusInfectAuraGenerator", false )	
-	player_faction.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false )
+	-- player_faction.Lock_Generator("VirusInfectAuraGenerator", false )	
+	-- player_faction.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false )
 	
 	--please dont produce any extra walkers
 	aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly"),bool,STORY) 
 	aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat"),bool,STORY) 
 	
-	
-	
 	if bool == true then -- this alien stuff gets unlocked, then locked...works opposite of standard player unit bool-calls.
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"),false,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Radiation_Spitter"),false,STORY) 
 		
-		player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hacker"),false,STORY) 
+		-- player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hacker"),false,STORY) 
 	else
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"),true,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Radiation_Spitter"),true,STORY) 
 		
-		player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hacker"),true,STORY) 
+		-- player_faction.Lock_Object_Type(Find_Object_Type("Novus_Hacker"),true,STORY) 
 	end
 end
 
 
 --***************************************WIN/LOSS STUFF****************************************************************************************************
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
 		
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+		
+		-- All this is done in the call to UI_On_Mission_End above
+		--[[
+			Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+			Stop_All_Speech()
+			Flush_PIP_Queue()
+			Allow_Speech_Events(false)
+		]]--
+
 	if bool_mission_success ~= true then
 		
 		bool_mission_failure = true
@@ -1938,9 +2038,9 @@ function Thread_Mission_Failed()
       Rotate_Camera_By(180,30)
       -- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
       -- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
       Sleep(5)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
       Fade_Screen_Out(2)
       Sleep(2)
       Lock_Controls(0)
@@ -1952,9 +2052,14 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events, Suspend_Hint_System
+		
+		-- All this is done in the call to UI_On_Mission_End above
+		--[[
 		Stop_All_Speech()
 		Flush_PIP_Queue()
 		Allow_Speech_Events(false)
+		]]--
 		
 	if not bool_mission_failure then
 		Objective_Complete(NM04_Objective03)
@@ -1973,7 +2078,7 @@ function Thread_Mission_Complete()
       Rotate_Camera_By(180,90)
       Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
       Sleep(5)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
       Fade_Screen_Out(2)
       Sleep(2)
 		
@@ -2004,211 +2109,186 @@ end
 
 --***************************************DIALOG CONTROLLER****************************************************************************************************
 
-
-
-
 function Thread_Dialog_Controller(conversation)
-	if not bool_mission_failed and not bool_mission_success then
-		if conversation == dialog_establishing_shot and bool_dialog_establishing_shot == false then
-			bool_dialog_establishing_shot = true
+	--if ( bool_mission_failure or bool_mission_success ) then
+	-- Maria 02.04.2008
+	-- The bool_mission_failure variable is now being set in the Callback of the heroes so we must let this call process whatever is necessary even if that
+	-- flag has been set and the conversation is the one used to end the mission.
+	if (bool_mission_failure and conversation ~= dialog_mirabel_killed) or bool_mission_success then
+		--  this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+		UI_Pre_Mission_End()
+		return
+	end
+	
+	if conversation == dialog_establishing_shot and bool_dialog_establishing_shot == false then
+		bool_dialog_establishing_shot = true
 		--bool_mission_failure
 		--bool_mission_success
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE06_25")--Founder (FOU): This is our only way home, Mirabel.  The quantum waveforms in your area are at optimal levels. Construct the portal before they weaken - our window is closing.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_02")--Mirabel (MIR): I understand.
-			end
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE06_25")--Founder (FOU): This is our only way home, Mirabel.  The quantum waveforms in your area are at optimal levels. Construct the portal before they weaken - our window is closing.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_02")--Mirabel (MIR): I understand.
 
-			Sleep(5)
-			if not bool_mission_failed and not bool_mission_success then
-				Create_Thread("Thread_Dialog_Controller", dialog_build_the_portal)
-			end
+
+		Sleep(5)
+		Create_Thread("Thread_Dialog_Controller", dialog_build_the_portal)
+		
+	elseif conversation == dialog_mirabels_lament and bool_dialog_mirabels_lament == false then
+		bool_dialog_mirabels_lament = true
+
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_01") --I've been thinking about what you said about the faces on the tombs.
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE02_02")--It is in your nature as an organic to be highly emotional.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_03")--But I should be one of them - back on Lieta Novus with all the others like me. Yet you saved me from extinction. Why?
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE02_04")--Our programming was different then. Your ancestors – our creators – felt the worth of a species had value.(regrets) Our purpose no longer allows such distractions. The tombs became too numerous to count.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_05")--But they're for the dead, sir.  These sentients have a chance to fight!  Shouldn't we be doing more to help them?
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE02_06")--They may as well be dead. Our programming accepts that outcome, and so should you.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_07")--(swallows her emotions)I understand.  I'm just tired of building tombs.
+
+	elseif conversation == dialog_build_the_portal and bool_dialog_build_the_portal == false then
+		bool_dialog_build_the_portal = true
+		
+		-- ***** HINT SYSTEM *****
+		--putting a capture hint on the closest refinery
+		refinery01 = Find_Hint("NEUTRAL_REFINERY","refinery01")
+		local scene = Get_Game_Mode_GUI_Scene()
+		--jdg 10/30/07 squelching this hint on the 360 because it pops during a dialog line
+		--Oksana - adding check for failed mission - hint should not pop up after player forfeits the game
+		if not Is_Gamepad_Active() then
+			Add_Attached_Hint(refinery01, 135)
+		end
+		BlockOnCommand(Queue_Talking_Head(pip_founder, "NVS04_SCENE06_26"))--Founder (FOU): First, you will need to gather local resources to build the portal.  We have detected carbon deposits in the area that should be suitable.
+		
+		--jdg 10/30/07 moving this hint to here on the 360 because it pops during a dialog line
+		--Oksana - adding check for failed mission - hint should not pop up after player forfeits the game
+		if Is_Gamepad_Active() then
+			Point_Camera_At(refinery01)
+			Add_Independent_Hint(135)
+		end
+		
+		Create_Thread("Thread_Monitor_Objective01_Timer")
+		Create_Thread("Thread_Monitor_Players_Money")
+		--Sleep(3)
+		--put arrows and radar blips on the oil derricks
+		for i, refinery in pairs(refinery_list) do
+			if TestValid(refinery) then
+				bool_flagging_refineries = true
+				--refinery.Highlight(true, -50)
+				Add_Radar_Blip(refinery, "DEFAULT", "blip_refinery_"..i)
 			
-		elseif conversation == dialog_mirabels_lament and bool_dialog_mirabels_lament == false then
-			bool_dialog_mirabels_lament = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_01") --I've been thinking about what you said about the faces on the tombs.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE02_02")--It is in your nature as an organic to be highly emotional.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_03")--But I should be one of them - back on Lieta Novus with all the others like me. Yet you saved me from extinction. Why?
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE02_04")--Our programming was different then. Your ancestors – our creators – felt the worth of a species had value.(regrets) Our purpose no longer allows such distractions. The tombs became too numerous to count.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_05")--But they're for the dead, sir.  These sentients have a chance to fight!  Shouldn't we be doing more to help them?
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE02_06")--They may as well be dead. Our programming accepts that outcome, and so should you.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_07")--(swallows her emotions)I understand.  I'm just tired of building tombs.
-			end
-		elseif conversation == dialog_build_the_portal and bool_dialog_build_the_portal == false then
-			bool_dialog_build_the_portal = true
-			if not bool_mission_failed and not bool_mission_success then
-					-- ***** HINT SYSTEM *****
-				--putting a capture hint on the closest refinery
-				refinery01 = Find_Hint("NEUTRAL_REFINERY","refinery01")
-				local scene = Get_Game_Mode_GUI_Scene()
-				Add_Attached_Hint(refinery01, HINT_NM04_CAPTURING)
-				BlockOnCommand(Queue_Talking_Head(pip_founder, "NVS04_SCENE06_26"))--Founder (FOU): First, you will need to gather local resources to build the portal.  We have detected carbon deposits in the area that should be suitable.
-				Create_Thread("Thread_Monitor_Objective01_Timer")
-				Create_Thread("Thread_Monitor_Players_Money")
-				--Sleep(3)
-			--put arrows and radar blips on the oil derricks
-				for i, refinery in pairs(refinery_list) do
-					if TestValid(refinery) then
-						bool_flagging_refineries = true
-						--refinery.Highlight(true, -50)
-						Add_Radar_Blip(refinery, "DEFAULT", "blip_refinery_"..i)
-					
-						Create_Thread("Thread_Monitor_Refinery_Owner", refinery)
-						
-						fow_reveal_refinery_list[i] = FogOfWar.Reveal(player_faction, refinery, 50, 50)
-					end
-				end
+				Create_Thread("Thread_Monitor_Refinery_Owner", refinery)
 				
-				Sleep(1)
-				--NM04_Objective01_Hint = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_A_HINT")--HINT: Use Ohm Robots to capture oil derriks for added resources.
-
-				bool_establishing_shot_finished = true
-				local block02 = Queue_Talking_Head(pip_founder, "NVS04_SCENE06_27")--Founder (FOU): Employ your Field Inverters.  They can provide a magnetic shield against projectiles or serve as an offensive weapon should the conditions dictate.
-				BlockOnCommand(block02)
-				
-			end
-	
-		elseif conversation == dialog_protect_the_humans and bool_dialog_protect_the_humans == false then
-			bool_dialog_protect_the_humans = true
-
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_42")--Mirabel (MIR): Founder, the Hierarchy are attacking the local humans.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				local block03 = Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_43")---Mirabel (MIR): I'm sorry. I can't stand by while this happens.  I’m going to help them.
-				--dialog is MIA...blcoking is breaking stuff?
-				BlockOnCommand(block03)
-			end
-			
-			Create_Thread("Thread_Add_Sentient_Objective")
-			
-		elseif conversation == dialog_aliens_invade and bool_dialog_aliens_invade == false then
-			bool_dialog_aliens_invade = true 
-
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_novus_comm, "NVS04_SCENE05_08") --Novus Comm (NCO): Mirabel, we are detecting a large enemy force entering from the North.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE06_28")--Founder (FOU): Mirabel, your intervention has revealed our location.  If the Hierarchy capture the portal, they will have a direct route back to our planet.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_29")--We can't give up! We still have a chance to go home!
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE06_30")--Founder (FOU): The risk is too great.  Eliminate the Hierarchy forces and we'll reassemble the portal at a safer location.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_13")--Viktor (VIK): blitherty blatherty blue
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_14")--Mirabel (MIR): Easy, Victor.  Ready the defenses.
-			end
-		elseif conversation == dialog_intro_new_walker and bool_dialog_intro_new_walker == false then
-			bool_dialog_intro_new_walker = true 
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_founder, "NVS04_SCENE05_15")--Founder (FOU): Gads! The hierarchy are using a new walker.
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_16")--Mirabel (MIR): New Walker?
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				local block05 = Queue_Talking_Head(pip_founder, "NVS04_SCENE05_17")--Founder (FOU): It's heading right for the portal, you must destroy it quickly!
-			
-				BlockOnCommand(block05)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_D_ADD"} )--New objective: Destroy the Assembly Walker.
-				Sleep(time_objective_sleep)
-				NM04_Objective04 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_D")--Destroy the Assembly Walker.
-
-				Add_Radar_Blip(assembly_walker, "DEFAULT", "blip_assembly_walker")
-				--Create_Thread("Thread_Highlight_Assembly_Walker_Hardpoints")
-				obj_assembly_given=true
-				Sleep(3)
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_31")--Mirabel (MIR):We can bring that Walker down by destroying its core. We'll hit the hardpoints first - start with its arms!
-			end
-						
-		elseif conversation == dialog_assembly_walker_arms_destoyed and bool_dialog_assembly_walker_arms_destoyed == false then
-			bool_dialog_assembly_walker_arms_destoyed = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_32")--Mirabel (MIR):Good job. Now we can attack the shield generators. Hit them hard!
-			end
-		elseif conversation == dialog_assembly_walker_shields_destoyed and bool_dialog_assembly_walker_shields_destoyed == false then
-			bool_dialog_assembly_walker_shields_destoyed = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_33")--Mirabel (MIR)That did it.  Direct your fire on the front panel now.
-			end
-		elseif conversation == dialog_assembly_walker_front_panel_destroyed and bool_dialog_assembly_walker_front_panel_destroyed == false then	
-			bool_dialog_assembly_walker_front_panel_destroyed = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_34")--Mirabel (MIR)There's our target - the core is exposed! Give it everything we've got!
-			end
-		elseif conversation == dialog_assembly_walker_destroyed and bool_dialog_assembly_walker_destroyed == false then
-			bool_dialog_assembly_walker_destroyed = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_35")--Mirabel (MIR):Attention all units - the walker is down!
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_18")--Viktor (VIK): Zippity zap!
-			end
-			if not bool_mission_failed and not bool_mission_success then
-				-- what if you destroy all this crap before the base is built?  this makes sure the objective is skipped [jgs]
-				if counter_arrival_sites>0 then
-					local blocking_dialog = Queue_Talking_Head(pip_founder, "NVS04_SCENE06_36")--Founder (FOU): Begin your assault on the base - we can't let them reinforce this position.
-					BlockOnCommand(blocking_dialog)
-					Create_Thread("Thread_Add_Hierarchy_Base_Objective")
-				end
-			end
-			
-		elseif conversation == dialog_alien_base_destroyed and bool_dialog_alien_base_destroyed == false then
-			bool_dialog_alien_base_destroyed = true
-			if not bool_mission_failed then
-				_CustomScriptMessage("JoeLog.txt", string.format("dialog_alien_base_destroyed HIT!"))
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_37")--Mirabel (MIR): Looks like they're falling back, let's get those portal pieces out of here.
-			end
-			if not bool_mission_failed then
-				local block08 = Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_23")--Viktor (VIK): Wooty Wooty Woot.
-				
-				BlockOnCommand(block08)
-			end
-		elseif conversation == dialog_mirabel_killed and bool_dialog_mirabel_killed == false then
-			bool_dialog_mirabel_killed = true
-			if not bool_mission_success then
-				bool_mission_failed = true
-				Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-				BlockOnCommand(Queue_Talking_Head(pip_founder, "NVS04_SCENE05_24"))--Founder (FOU): We're doomed. You've failed us all, Mirabel! 
-				
-				Create_Thread("Thread_Mission_Failed")
-			end
-			
-		elseif conversation == dialog_player_has_20k and bool_dialog_player_has_20k == false then 
-			bool_dialog_player_has_20k = true
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_08")--Mirabel (MIR):Good. Now we enough have resources to build the portal.
-				--UI_Start_Flash_Queue_Buttons("NM04_NOVUS_PORTAL")
-				--UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY")
-				UI_Start_Flash_Construct_Building("NM04_NOVUS_PORTAL")
+				fow_reveal_refinery_list[i] = FogOfWar.Reveal(player_faction, refinery, 50, 50)
 			end
 		end
+		
+		Sleep(1)
+		--NM04_Objective01_Hint = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_A_HINT")--HINT: Use Ohm Robots to capture oil derriks for added resources.
+
+		bool_establishing_shot_finished = true
+		local block02 = Queue_Talking_Head(pip_founder, "NVS04_SCENE06_27")--Founder (FOU): Employ your Field Inverters.  They can provide a magnetic shield against projectiles or serve as an offensive weapon should the conditions dictate.
+		BlockOnCommand(block02)
+		
+		--jdg 10/30/07 this hint has been moved here for the 360 so it doesn't overlap with spoken dialog.
+		--Oksana - adding check for failed mission - hint should not pop up after player forfeits the game
+		if Is_Gamepad_Active() then
+			Point_Camera_At(starting_inverter)
+			Add_Independent_Hint(136)
+		end
+		
+	elseif conversation == dialog_protect_the_humans and bool_dialog_protect_the_humans == false then
+		bool_dialog_protect_the_humans = true
+
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_42")--Mirabel (MIR): Founder, the Hierarchy are attacking the local humans.
+		local block03 = Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_43")---Mirabel (MIR): I'm sorry. I can't stand by while this happens.  I’m going to help them.
+		--dialog is MIA...blcoking is breaking stuff?
+		BlockOnCommand(block03)
+		
+		Create_Thread("Thread_Add_Sentient_Objective")
+		
+	elseif conversation == dialog_aliens_invade and bool_dialog_aliens_invade == false then
+		bool_dialog_aliens_invade = true 
+
+		Queue_Talking_Head(pip_novus_comm, "NVS04_SCENE05_08") --Novus Comm (NCO): Mirabel, we are detecting a large enemy force entering from the North.
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE06_28")--Founder (FOU): Mirabel, your intervention has revealed our location.  If the Hierarchy capture the portal, they will have a direct route back to our planet.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_29")--We can't give up! We still have a chance to go home!
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE06_30")--Founder (FOU): The risk is too great.  Eliminate the Hierarchy forces and we'll reassemble the portal at a safer location.
+		Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_13")--Viktor (VIK): blitherty blatherty blue
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_14")--Mirabel (MIR): Easy, Victor.  Ready the defenses.
+		
+	elseif conversation == dialog_intro_new_walker and bool_dialog_intro_new_walker == false then
+		bool_dialog_intro_new_walker = true 
+		Queue_Talking_Head(pip_founder, "NVS04_SCENE05_15")--Founder (FOU): Gads! The hierarchy are using a new walker.
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE05_16")--Mirabel (MIR): New Walker?
+		
+		local block05 = Queue_Talking_Head(pip_founder, "NVS04_SCENE05_17")--Founder (FOU): It's heading right for the portal, you must destroy it quickly!
+	
+		BlockOnCommand(block05)
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_D_ADD"} )--New objective: Destroy the Assembly Walker.
+		Sleep(time_objective_sleep)
+		NM04_Objective04 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_D")--Destroy the Assembly Walker.
+
+		Add_Radar_Blip(assembly_walker, "DEFAULT", "blip_assembly_walker")
+		--Create_Thread("Thread_Highlight_Assembly_Walker_Hardpoints")
+		obj_assembly_given=true
+		Sleep(3)
+		
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_31")--Mirabel (MIR):We can bring that Walker down by destroying its core. We'll hit the hardpoints first - start with its arms!
+		
+	elseif conversation == dialog_assembly_walker_arms_destoyed and bool_dialog_assembly_walker_arms_destoyed == false then
+		bool_dialog_assembly_walker_arms_destoyed = true
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_32")--Mirabel (MIR):Good job. Now we can attack the shield generators. Hit them hard!
+		
+	elseif conversation == dialog_assembly_walker_shields_destoyed and bool_dialog_assembly_walker_shields_destoyed == false then
+		bool_dialog_assembly_walker_shields_destoyed = true
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_33")--Mirabel (MIR)That did it.  Direct your fire on the front panel now.
+		
+	elseif conversation == dialog_assembly_walker_front_panel_destroyed and bool_dialog_assembly_walker_front_panel_destroyed == false then	
+		bool_dialog_assembly_walker_front_panel_destroyed = true
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_34")--Mirabel (MIR)There's our target - the core is exposed! Give it everything we've got!
+		
+	elseif conversation == dialog_assembly_walker_destroyed and bool_dialog_assembly_walker_destroyed == false then
+		bool_dialog_assembly_walker_destroyed = true
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_35")--Mirabel (MIR):Attention all units - the walker is down!
+		Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_18")--Viktor (VIK): Zippity zap!
+		
+		-- what if you destroy all this crap before the base is built?  this makes sure the objective is skipped [jgs]
+		if counter_arrival_sites>0 then
+			local blocking_dialog = Queue_Talking_Head(pip_founder, "NVS04_SCENE06_36")--Founder (FOU): Begin your assault on the base - we can't let them reinforce this position.
+			BlockOnCommand(blocking_dialog)
+			Create_Thread("Thread_Add_Hierarchy_Base_Objective")
+		end		
+		
+	elseif conversation == dialog_alien_base_destroyed and bool_dialog_alien_base_destroyed == false then
+		bool_dialog_alien_base_destroyed = true
+		_CustomScriptMessage("JoeLog.txt", string.format("dialog_alien_base_destroyed HIT!"))
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE06_37")--Mirabel (MIR): Looks like they're falling back, let's get those portal pieces out of here.
+		local block08 = Queue_Talking_Head(pip_viktor, "NVS04_SCENE05_23")--Viktor (VIK): Wooty Wooty Woot.
+		BlockOnCommand(block08)
+		
+	elseif conversation == dialog_mirabel_killed and bool_dialog_mirabel_killed == false then
+		bool_dialog_mirabel_killed = true
+		if not bool_mission_success  then
+			bool_mission_failure = true 
+			UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+			-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+			-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+			-- will prevent any future speech events from being queued).
+			local block = Queue_Talking_Head(pip_founder, "NVS04_SCENE05_24")
+			Allow_Speech_Events(false)
+			BlockOnCommand(block)--Founder (FOU): We're doomed. You've failed us all, Mirabel! 
+			
+			Create_Thread("Thread_Mission_Failed")
+		end
+		
+	elseif conversation == dialog_player_has_20k and bool_dialog_player_has_20k == false then 
+		bool_dialog_player_has_20k = true
+		Queue_Talking_Head(pip_mirabel, "NVS04_SCENE02_08")--Mirabel (MIR):Good. Now we enough have resources to build the portal.
+		--UI_Start_Flash_Queue_Buttons("NM04_NOVUS_PORTAL")
+		--UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY")
+		UI_Start_Flash_Construct_Building("NM04_NOVUS_PORTAL")
 	end
 end
 
 function Thread_Add_Sentient_Objective()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_ADD"} )--New objective: Build the Wormhole Portal within five minutes.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_B_ADD"} )--New objective: Build the Wormhole Portal within five minutes.
       Sleep(time_objective_sleep)
 	NM04_Objective03 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_B")--Protect the sentients (##1 remain).
 	out_string = Get_Game_Text("TEXT_SP_MISSION_NVS04_OBJECTIVE_B")
@@ -2231,7 +2311,7 @@ function Thread_Add_Sentient_Objective()
 	--Sleep(4)
 	
 	--if TestValid(town01_turret01) then
-	--	Add_Attached_Hint(town01_turret01, HINT_NM04_REPAIRING)
+	--	Add_Attached_Hint(town01_turret01, 137)
 	--end
 
 	--NM04_Objective03_Hint = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_B_HINT")--HINT: Repair the nearby turrets with your Constructors to help protect the villages.
@@ -2248,7 +2328,7 @@ function Thread_Add_Sentient_Objective()
 end
 
 function Thread_Add_Hierarchy_Base_Objective()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_E_ADD"} )--New objective: Destroy the Hierarchy base.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_E_ADD"} )--New objective: Destroy the Hierarchy base.
       Sleep(time_objective_sleep)
 	NM04_Objective05 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_E")--Destroy the Hierarchy base.
 
@@ -2271,20 +2351,20 @@ function Thread_Add_Hierarchy_Base_Objective()
 		object_scan_drone.Highlight(true, -50)
 	end
 	
-	object_glyph_carver_list = Find_All_Objects_Of_Type("Alien_Glyph_Carver")
-	for i, glyph_carver in pairs(object_glyph_carver_list) do
-		if TestValid(glyph_carver) then
-			Add_Radar_Blip(glyph_carver, "DEFAULT", "blip_glyph_carver_"..i)
-			glyph_carver.Highlight(true, -50)
-		end
-	end
+	--object_glyph_carver_list = Find_All_Objects_Of_Type("Alien_Glyph_Carver")
+	--for i, glyph_carver in pairs(object_glyph_carver_list) do
+	--	if TestValid(glyph_carver) then
+			--Add_Radar_Blip(glyph_carver, "DEFAULT", "blip_glyph_carver_"..i)
+			--glyph_carver.Highlight(true, -50)
+	--	end
+	--end
 	
 end
 
 function Thread_Add_Protect_Portal_Objective()
 	Sleep(time_objective_sleep)
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_C_ADD"} )--New objective: Protect the Home Portal at all costs.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS04_OBJECTIVE_C_ADD"} )--New objective: Protect the Home Portal at all costs.
 	Sleep(time_objective_sleep)
 	NM04_Objective02 = Add_Objective("TEXT_SP_MISSION_NVS04_OBJECTIVE_C")--Protect the Home Portal at all costs.
 end
@@ -2610,7 +2690,7 @@ function Thread_Reinforce_FieldInverters()
 		novus_transport.Set_Selectable(false)
 		novus_transport.Make_Invulnerable(true)
 		
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_REINFORCEMENT_NOTICE"})--Notice: Reinforcements have arrived.
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_REINFORCEMENT_NOTICE"})--Notice: Reinforcements have arrived.
 		
 		BlockOnCommand(novus_transport.Move_To(reinforcement_spawn_point.Get_Position()))
 		
@@ -2650,8 +2730,100 @@ function TestListValid(list)
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+   -- RAD: Allowing research in this mission.
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 
