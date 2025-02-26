@@ -813,6 +813,30 @@
 
 
 
+	<MusicEvent Name="Proto_Win_Tactical_Event">
+		<Files> Damage_King_Edit.mp3</Files>
+		<Volume_Percent>75</Volume_Percent>
+		<Fade_In_Seconds>0.0</Fade_In_Seconds>
+		<Fade_Out_Previous_Seconds>2.0</Fade_Out_Previous_Seconds>
+		<Loop>Yes</Loop>
+	</MusicEvent>
+
+	<MusicEvent Name="Proto_Win_Strategic_Event">
+		<Files> Damage_King_Edit.mp3 </Files>
+		<Volume_Percent>75</Volume_Percent>
+		<Fade_In_Seconds>0.0</Fade_In_Seconds>
+		<Fade_Out_Previous_Seconds>2.0</Fade_Out_Previous_Seconds>
+		<Loop>Yes</Loop>
+	</MusicEvent>
+
+	<MusicEvent Name="Lose_To_Proto_Event">
+		<Files> Lose_To_Hierarchy.mp3 </Files>
+		<Volume_Percent>75</Volume_Percent>
+		<Fade_In_Seconds>0.0</Fade_In_Seconds>
+		<Fade_Out_Previous_Seconds>2.0</Fade_Out_Previous_Seconds>
+		<Loop>Yes</Loop>
+	</MusicEvent>
+
 
 
 	<MusicEvent Name="Novus_Win_Tactical_Event">

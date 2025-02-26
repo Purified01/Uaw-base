@@ -10,7 +10,7 @@
 		<!-- ART -->
 		<!-- STUB FOR ELIE -->
 		<Land_Model_Name>AV_GlyphCarver.ALO</Land_Model_Name>
-		<Scale_Factor>1.0</Scale_Factor>
+		<Scale_Factor>2.0</Scale_Factor>
 		<Occlusion_Silhouette_Enabled>1</Occlusion_Silhouette_Enabled>
       <AssetBank> BANK_ALIEN </AssetBank>
 
