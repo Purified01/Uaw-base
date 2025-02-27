@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_Won_List.lua#9 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_Won_List.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Achievement_Won_List.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Achievement_Won_List.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 72945 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/06/12 12:58:52 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #9 $
+--          $Revision: #8 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -184,14 +193,14 @@ function Refresh_UI()
 		local new_row = Achievement_Won_List.List_Won_Achievements.Add_Row()
 		Achievement_Won_List.List_Won_Achievements.Set_Text_Data(ACHIEVEMENT_LIST_NAME, new_row, Get_Game_Text("TEXT_NO_ACHIEVEMENTS_AWARDED"))
 		Achievement_Won_List.List_Won_Achievements.Set_Text_Data(ACHIEVEMENT_LIST_BUFF_DESC, new_row, Create_Wide_String(""))
-		Achievement_Won_List.List_Won_Achievements.Set_Row_Color(new_row, tonumber(COLOR_GRAY))
+		Achievement_Won_List.List_Won_Achievements.Set_Row_Color(new_row, tonumber(9))
 	else
 		-- Iterate and display achievements.
 		for key, achievement in pairs(model) do
 			local new_row = Achievement_Won_List.List_Won_Achievements.Add_Row()
 			Achievement_Won_List.List_Won_Achievements.Set_Text_Data(ACHIEVEMENT_LIST_NAME, new_row, achievement.Name)
 			Achievement_Won_List.List_Won_Achievements.Set_Text_Data(ACHIEVEMENT_LIST_BUFF_DESC, new_row, Get_Game_Text(achievement.BuffDesc))
-			Achievement_Won_List.List_Won_Achievements.Set_Row_Color(new_row, tonumber(COLOR_GREEN))
+			Achievement_Won_List.List_Won_Achievements.Set_Row_Color(new_row, tonumber(5))
 		end
 	end
 
@@ -266,3 +275,33 @@ Interface.Set_Offline_Model = Set_Offline_Model
 Interface.Set_Online_Model = Set_Online_Model
 Interface.Is_Showing = Is_Showing
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Prepare_Fadeout = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

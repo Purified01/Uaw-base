@@ -1,4 +1,48 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM04.lua#51 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM04.lua#32 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -26,17 +70,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM04.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM04.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Rich_Donnelly $
+--            $Author: Brian_Hayes $
 --
---            $Change: 85895 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/10/15 11:49:01 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #51 $
+--          $Revision: #32 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -171,17 +215,16 @@ end
 
 function State_Init(message)
 	if message == OnEnter then	
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		
 		novus.Allow_Autonomous_AI_Goal_Activation(false)
 		masari.Allow_Autonomous_AI_Goal_Activation(false)		
 
-	military.Allow_AI_Unit_Behavior(false)
-	novus.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	aliens02.Allow_AI_Unit_Behavior(false)
-	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		military.Allow_AI_Unit_Behavior(false)
+		novus.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
+		aliens02.Allow_AI_Unit_Behavior(false)
 		
 		_CustomScriptMessage("JoeLog.txt", string.format("\n\n\n\n\n\n\n\n\n\n*****************Story_Campaign_Hierarchy_ZM04 START!"))
 		--this following OutputDebug puts a message in the logfile that lets me determine where mission relevent info starts...mainly using to determine what assets need
@@ -190,7 +233,10 @@ function State_Init(message)
 		
 		Cache_Models()
 		
-		UI_Hide_Research_Button()
+		-- RAD: Allowing research in this mission.
+		-- UI_Hide_Research_Button()
+   	aliens.Set_Research_Points_Override(3)
+		
 		UI_Hide_Sell_Button()
 		
 		novus.Reset_Story_Locks()
@@ -299,6 +345,20 @@ function State_Init(message)
 	   if not TestValid(orlok_start_spot) then
 		   _CustomScriptMessage("JoeLog.txt", string.format("ERROR - Cannot find orlok_start_spot!"))
 		end
+		
+		list_novus_weapon_crates = Find_All_Objects_Of_Type("ZM04_NOVUS_GRAVBOMB_CONTAINER")
+		for i, novus_weapon_crate in pairs(list_novus_weapon_crates) do
+			if TestValid(novus_weapon_crate) then
+				novus_weapon_crate.Make_Invulnerable(true)
+				novus_weapon_crate.Set_Cannot_Be_Killed(true)
+			end
+		end
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_HM04_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 
 		Set_Next_State("State_ZM04_Act01")
 
@@ -309,7 +369,7 @@ function State_ZM04_Act01(message)
 	if message == OnEnter then
 
 	   -- Initial Funds and Production Dependencies
-	   local credit_total = 10000
+	   local credit_total = 7000
 	   credits = aliens.Get_Credits()
 	   if credits > credit_total then
 		   credits = (credits - credit_total) * -1
@@ -323,8 +383,8 @@ function State_ZM04_Act01(message)
 
       -- Faction Colors and Allegiances
 	   PGColors_Init_Constants()
-	   aliens02.Enable_Colorization(true, COLOR_DARK_RED)
---	   aliens.Enable_Colorization(true, COLOR_RED)
+	   aliens02.Enable_Colorization(true, 18)
+--	   aliens.Enable_Colorization(true, 2)
    	military.Make_Ally(novus)
    	novus.Make_Ally(military)
 	   aliens.Make_Ally(aliens02)
@@ -473,6 +533,14 @@ function State_ZM04_Act01(message)
 			   novus_unit.Set_Service_Only_When_Rendered(true)
 		   end
 	   end   	
+	   --turning corruptors attack team off of service restrictions
+	   for i, novus_unit in pairs(purifier_attackteam_01) do
+		   if TestValid(novus_unit) then
+			   novus_unit.Set_Service_Only_When_Rendered(false)
+		   end
+	   end   
+	   
+	   
 	   for i, civilian_unit in pairs(civilian_unit_list) do
 		   if TestValid(civilian_unit) then
 			   civilian_unit.Set_Service_Only_When_Rendered(true)
@@ -493,7 +561,11 @@ function State_ZM04_Act01(message)
 	   gravbomb_base_vehicle_list = Find_All_Objects_With_Hint("gravbomb-base-vehicle")
 	   for i, gravbomb_base_vehicle in pairs(gravbomb_base_vehicle_list) do
 		   if TestValid(gravbomb_base_vehicle) then
-			   gravbomb_base_vehicle.Suspend_Locomotor(true)
+			   if gravbomb_base_vehicle.Get_Type() == Find_Object_Type("NOVUS_REFLEX_TROOPER") then
+					gravbomb_base_vehicle.Guard_Target(gravbomb_base_vehicle.Get_Position())
+			   else
+					gravbomb_base_vehicle.Suspend_Locomotor(true)
+				end
 		   end
 	   end
 
@@ -520,18 +592,19 @@ function State_ZM04_Act01(message)
 	   Hunt(gravbomb_base_inverter_guard02_list, "AntiDefault", false, true, gravbomb_base_inverter_shield02, 10)	
 
       -- Novus Transports
-	   gravbomb_transport01 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport01")
-	   gravbomb_transport02 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport02")
-	   gravbomb_transport03 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport03")
-	   if TestValid(gravbomb_transport01) then
-		   gravbomb_transport01.Suspend_Locomotor(true)
-	   end
-	   if TestValid(gravbomb_transport02) then
-		   gravbomb_transport02.Suspend_Locomotor(true)
-	   end
-	   if TestValid(gravbomb_transport03) then
-		   gravbomb_transport03.Suspend_Locomotor(true)
-	   end
+	   --gravbomb_transport01 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport01")
+	   --gravbomb_transport02 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport02")
+	   --gravbomb_transport03 = Find_Hint("ZM04_Novus_Transport","gravbomb-transport03")
+		--jdg 12/12/07 these transports are causing issues...eliminating
+	  -- if TestValid(gravbomb_transport01) then
+		--   gravbomb_transport01.Despawn()
+	   --end
+	   --if TestValid(gravbomb_transport02) then
+		--   gravbomb_transport02.Despawn()
+	  -- end
+	  -- if TestValid(gravbomb_transport03) then
+		--   gravbomb_transport03.Despawn()
+	  -- end
 	   
 	   -- Novus Structures
 	   if TestValid(novusbase_remote_terminal) then
@@ -758,7 +831,7 @@ function Thread_Novus_Base_Build_Aircraft()
 end
 
 function Thread_Add_Objective_Scout_The_Base()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_06_ADD"} )--New objective: Post a scout on the ridge.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_06_ADD"} )--New objective: Post a scout on the ridge.
 	Sleep(time_objective_sleep)
 	zm04_objective06 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_06")--Post a scout on the ridge.
 	Sleep(time_radar_sleep)
@@ -770,18 +843,16 @@ function Thread_Add_Objective_Scout_The_Base()
 end
 
 function Thread_Add_Objective_Destroy_The_WeaponCrates()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_07_ADD"} )--New objective: Protect and escort the Purifier to the Relocator.
-	Sleep(time_objective_sleep)
-	zm04_objective07 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_07")
 	
-	out_string = Get_Game_Text("TEXT_SP_MISSION_HIE04_OBJECTIVE_07")
-	out_string = Replace_Token(out_string, Get_Localized_Formatted_Number(counter_weapon_crates_destroyed), 1)
-	Set_Objective_Text(zm04_objective07, out_string)
 	
-	list_novus_weapon_crates = Find_All_Objects_Of_Type("ZM04_NOVUS_GRAVBOMB_CONTAINER")
+	
 	
 	for i, novus_weapon_crate in pairs(list_novus_weapon_crates) do
 		if TestValid(novus_weapon_crate) then
+		
+			novus_weapon_crate.Make_Invulnerable(false)
+			novus_weapon_crate.Set_Cannot_Be_Killed(false)
+			
 			_CustomScriptMessage("JoeLog.txt", string.format("cyle %d: start", i))
 			novus_weapon_crate.Highlight(true, -50)
 			_CustomScriptMessage("JoeLog.txt", string.format("cyle %d: novus_weapon_crate.Highlight(true, -50)", i))
@@ -793,6 +864,14 @@ function Thread_Add_Objective_Destroy_The_WeaponCrates()
 			_CustomScriptMessage("JoeLog.txt", string.format("counter_weapon_crates = %d", counter_weapon_crates))
 		end
 	end
+	
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_07_ADD"} )--Destroy the Novus weapon crates (##1 of 4).
+	Sleep(time_objective_sleep)
+	zm04_objective07 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_07")
+	
+	out_string = Get_Game_Text("TEXT_SP_MISSION_HIE04_OBJECTIVE_07")
+	out_string = Replace_Token(out_string, Get_Localized_Formatted_Number(counter_weapon_crates_destroyed), 1)
+	Set_Objective_Text(zm04_objective07, out_string)
 end
 
 function Thread_Show_Gravbomb_Base()
@@ -815,20 +894,23 @@ function Thread_Show_Gravbomb_Base()
 	end
 end
 
-function Thread_Novus_Transports_Leave()
+--[[function Thread_Novus_Transports_Leave()
 	if TestValid(gravbomb_transport01) then
+		gravbomb_transport01.Set_Service_Only_When_Rendered(false)
 		gravbomb_transport01.Suspend_Locomotor(false)
 		Create_Thread("Thread_Novus_Transports_Leave_Real", gravbomb_transport01)
 	end
 	
 	Sleep(2)
 	if TestValid(gravbomb_transport02) then
+		gravbomb_transport02.Set_Service_Only_When_Rendered(false)
 		gravbomb_transport02.Suspend_Locomotor(false)
 		Create_Thread("Thread_Novus_Transports_Leave_Real", gravbomb_transport02)
 	end
 	
 	Sleep(2)
 	if TestValid(gravbomb_transport03) then
+		gravbomb_transport03.Set_Service_Only_When_Rendered(false)
 		gravbomb_transport03.Suspend_Locomotor(false)
 		Create_Thread("Thread_Novus_Transports_Leave_Real", gravbomb_transport03)
 	end
@@ -842,11 +924,12 @@ function Thread_Novus_Transports_Leave_Real(transport)
 			transport.Despawn()
 		end
 	end
-end
+end]]
 
 function Thread_GravBombBase_Attacks_Purifier()
 	for i, gravbomb_base_vehicle in pairs(gravbomb_base_vehicle_list) do
 		if TestValid(gravbomb_base_vehicle) then
+			gravbomb_base_vehicle.Set_Service_Only_When_Rendered(false)
 			gravbomb_base_vehicle.Suspend_Locomotor(false)
 			gravbomb_base_vehicle.Prevent_All_Fire(false)
 		end
@@ -867,7 +950,7 @@ end
 
 function Thread_TurnOn_Escort_Objective()
    escort_objective_active = true
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_01_ADD"} )--New objective: Protect and escort the Purifier to the Relocator.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_01_ADD"} )--New objective: Protect and escort the Purifier to the Relocator.
 
    Sleep(time_objective_sleep)
 	zm04_objective01 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_01")--Protect and escort the Purifier to the Relocator.
@@ -886,7 +969,7 @@ function Thread_Approaching_Hierarchy_Base()
 		Sleep(1)
 	end
 	
-	aliens02.Enable_Colorization(true, COLOR_RED)
+	aliens02.Enable_Colorization(true, 2)
 	Remove_Radar_Blip("blip_purifier")
 	Remove_Radar_Blip("blip_objective01")
 	if TestValid(hierarchy_relocator) then
@@ -897,7 +980,7 @@ function Thread_Approaching_Hierarchy_Base()
 	end
 	purifier_escort_complete = true
 	Objective_Complete(zm04_objective01)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_01_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_01_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
 	
 	--now giving  player control of pre-placed base objects
 	for i, alien_base_object in pairs(alien_base_list) do
@@ -933,13 +1016,13 @@ function Thread_Approaching_Hierarchy_Base()
 
 	Sleep(time_objective_sleep)
 	if not bool_mission_failure then
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_02_ADD"})--New objective: Defend the Purifier while Nufai activates the Relocator.
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_02_ADD"})--New objective: Defend the Purifier while Nufai activates the Relocator.
 	   Sleep(time_objective_sleep)
 		zm04_objective02 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_02")--Defend the Purifier while Nufai activates the Relocator.
 		
 		Sleep(time_radar_sleep)
 	   if not bool_mission_failure then
-		   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_05_ADD"})--New objective: Destroy the Novus base.
+		   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_05_ADD"})--New objective: Destroy the Novus base.
 		   Sleep(time_objective_sleep)
 		   zm04_objective03 = Add_Objective("TEXT_SP_MISSION_HIE04_OBJECTIVE_05")--Destroy the Novus base.
    		
@@ -1034,9 +1117,7 @@ function Thread_Monitor_Win_Conditions()
 end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	if bool_mission_success ~= true then
 		bool_mission_failure = true
@@ -1051,9 +1132,9 @@ function Thread_Mission_Failed()
       Rotate_Camera_By(180,30)
       -- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
       -- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
       Sleep(5)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
       Fade_Screen_Out(2)
       Sleep(2)
       Lock_Controls(0)
@@ -1062,9 +1143,7 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	if bool_mission_failure ~= true then
 		bool_mission_success = true
@@ -1076,9 +1155,9 @@ function Thread_Mission_Complete()
       Zoom_Camera.Set_Transition_Time(10)
       Zoom_Camera(.3)
       Rotate_Camera_By(180,90)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
       Sleep(5)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
       Fade_Screen_Out(2)
       Sleep(2)
 		
@@ -1154,7 +1233,7 @@ function Prox_Show_Gravbomb_Base(prox_obj, trigger_obj)
 	prox_obj.Cancel_Event_Object_In_Range(Prox_Show_Gravbomb_Base)
 	if not scout_mission_overridden then
 		Objective_Complete(zm04_objective06)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_06_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_06_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
    	Function_Show_Gravbomb_Base(trigger_obj)
    end
 end
@@ -1173,7 +1252,7 @@ function Function_Show_Gravbomb_Base(trigger_obj)
 	if bool_first_time_gravbomb_base_revealed then
 		bool_first_time_gravbomb_base_revealed = false
 		Create_Thread("Thread_Show_Gravbomb_Base")
-		Create_Thread("Thread_Novus_Transports_Leave")
+		--Create_Thread("Thread_Novus_Transports_Leave")
 
 		if TestValid(proxflag_show_gravbomb_base) then
 			proxflag_show_gravbomb_base.Highlight(false)
@@ -1269,7 +1348,7 @@ function Callback_Novus_WeaponCrate_Killed()
          bomb_objective_complete = true
 		   Create_Thread("Thread_Dialog_Controller", dialog_weaponcrate_objective_complete) 
 		   Objective_Complete(zm04_objective07)
-		   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_07_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
+		   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_OBJECTIVE_07_COMPLETE"})--Objective complete: Protect and escort the Purifier to the Relocator.	
 		end
 	   Create_Thread("Thread_Novus_Attacks_Purifier")
 	end
@@ -1295,7 +1374,7 @@ function Callback_Purifier_Attacked(obj, attacker)
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE03_08")--Don't separate the Purifier from our escort. We're the only defense it has.
 			end
 		end
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_WARNING_PURIFIER_UNDER_ATTACK"} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE04_WARNING_PURIFIER_UNDER_ATTACK"} )
 		Create_Thread("Thread_Hero_Attack_Warning_TimeOut")
 	end
 end
@@ -1310,11 +1389,7 @@ function Callback_Orlok_Killed()
 		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
 		Flush_PIP_Queue() -- removes any queded dialog
 	
-		Create_Thread("Thread_Dialog_Controller", dialog_orlok_killed)
-				
-		bool_mission_failure = true
-		failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"
-		Create_Thread("Thread_Mission_Failed")
+		Create_Thread("Thread_Dialog_Controller", dialog_orlok_killed)	
 	end
 end
 
@@ -1324,10 +1399,6 @@ function Callback_Nufai_Killed()
 		Flush_PIP_Queue() -- removes any queded dialog
 		
 		Create_Thread("Thread_Dialog_Controller", dialog_nufai_killed)
-
-		bool_mission_failure = true
-		failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_NUFAI"
-		Create_Thread("Thread_Mission_Failed")
 	end
 end
 
@@ -1337,10 +1408,6 @@ function Callback_Purifier_Killed()
 		Flush_PIP_Queue() -- removes any queded dialog
 		
 		Create_Thread("Thread_Dialog_Controller", dialog_purifier_killed)
-		
-		bool_mission_failure = true
-		failure_text = "TEXT_SP_MISSION_HIE04_MISSION_FAILED_PURIFIER_DEAD" --Mission failed: The Purifier must survive.
-		Create_Thread("Thread_Mission_Failed")
 	end
 end
 
@@ -1362,19 +1429,24 @@ end
 
 function Lock_Out_Stuff(bool)
 	-- Construction Locks/Unlocks
-	aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science"),bool, STORY)
-	aliens.Lock_Object_Type(Find_Object_Type("Alien_Brute"),bool, STORY)
-	aliens.Lock_Object_Type(Find_Object_Type("Alien_Recon_Tank"),bool, STORY)
+
+		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Kamal_Rex"),true,STORY)
+		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Nufai"),true,STORY)
+		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Orlok"),true,STORY)		
+
+	-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science"),bool, STORY)
+	-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Brute"),bool, STORY)
+	-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Recon_Tank"),bool, STORY)
 	aliens.Lock_Unit_Ability("Alien_Hero_Orlok", "Alien_Orlok_Retreat_From_Tactical_Ability", bool, STORY)
 	
 	if bool == true then
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false, STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false, STORY)
-		aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false, STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false, STORY)
+		-- aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
 	else
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", true, STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", true, STORY)
-		aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", true, STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", true, STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", true, STORY)
+		-- aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", true, STORY)
 	end
 end
 
@@ -1411,59 +1483,59 @@ function Thread_Mirabel_Retreats()
 end
 
 function Thread_Dialog_Controller(conversation)
-	if not bool_mission_failed and not bool_mission_success then
+	if not bool_mission_failure and not bool_mission_success then
 		if conversation == dialog_approaching_novus_main_base_firstwarning and bool_purifier_at_base ~= true then
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE03_05")--Orlok (ORL): The main route is heavily protected - bring the Purifier around to the east!
 			end
 		elseif conversation == dialog_approaching_novus_main_base_secondwarning and bool_purifier_at_base ~= true then
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_nufai, "HIE04_SCENE03_10")--Nufai (NUF): You're getting too close to their main base - keep the Purifier away from danger!
 			end
 		elseif conversation == dialog_purifier_reached_base then
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE04_01")--Orlok (ORL): Nufai, is the Uplink ready?
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_nufai, "HIE04_SCENE04_02")--Nufai (NUF): Soon! The altitude here gives us problems. 
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE04_03")--Orlok (ORL): Bigger problems are about to arrive on our door! We're running out of time.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				local blocking_dialog = Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_09")--Nufai (NUF): Nufai needs time to activate the uplink... I give control of the base to you now, Commander.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_comm, "HIE04_SCENE07_30")--Comm: Our sensors show a Novus base west of your position, Commander. They pose a direct threat.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_11")--Orlok (ORL): Then we must go on the offensive. Nufai, we'll summon an assault force and hold Novus off as long as we can!
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_10")--Nufai (NUF): Remember, Commander - our saucers can provide repairs. Use Assembly Walkers to build them.
 				BlockOnCommand(blocking_dialog)
 				bool_purifier_at_base = true
 			end
 		elseif conversation == dialog_mirabel_attacked then
-			if not bool_mission_failed and not bool_mission_success then
-				Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_08")--Nufai (NUF): We've spotted the Novus lieutenant known as Mirabel. Kill her and we can decapitate their leadership.
+			if not bool_mission_failure and not bool_mission_success then
+				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_08")--Nufai (NUF): We've spotted the Novus lieutenant known as Mirabel. Kill her and we can decapitate their leadership.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_mirabel, "HIE04_SCENE04_05")--Mirabel (MIR): I advise you to surrender now, Hierarchy slave. Machines are immortal.. but your flesh is not.
 			end
 		elseif conversation == dialog_nufai_sends_reinforcements then
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_nufai, "HIE04_SCENE03_11")--Nufai (NUF): Nufai sends reinforcements your way. Look for them.
 			end
 		elseif conversation == dialog_take_out_the_novus_base_first then
 			--ping the radar here
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Add_Radar_Blip(gravbomb_base_reveal_flag.Get_Position(), "Game_Event_Info_High_Importance_Persistent", "blip_novus_gravbomb_base")
 				Queue_Talking_Head(pip_comm, "HIE04_SCENE07_19") --We have detected a large Novus presence to the east that must be cleared.
 			end
 			Sleep(3)
 			Remove_Radar_Blip("blip_novus_gravbomb_base")
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				if not scout_mission_overridden then
    				local blocking_dialog = Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_20") --Orlok (ORL): We'll post a unit on that ridge.  From that vantage point, we'll have a tactical view of Novus' movements.
 	   			BlockOnCommand(blocking_dialog)
@@ -1471,62 +1543,84 @@ function Thread_Dialog_Controller(conversation)
 				end
 			end
 			Sleep(10)
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_25") --We should use the Reaper to gather resources as we go.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_comm, "HIE04_SCENE07_26") --We've detected large quantities of animal life in the area that should be suitable. 
 			end
 		elseif conversation == dialog_attack_those_weapon_crates then
 			Sleep(5)
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_23") --Orlok (ORL): Novus appears to be guarding those crates for some reason.  They could be for weapon storage.
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
+				Create_Thread("Thread_Add_Objective_Destroy_The_WeaponCrates")
 				local blocking_dialog = Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_24") --Orlok (ORL): We'll deploy a Lost One to infiltrate the base.  It can plant plasma bombs and destroy those weapons crates.
 				BlockOnCommand(blocking_dialog)
-			   Create_Thread("Thread_Add_Objective_Destroy_The_WeaponCrates")
+			   
 			end
 		elseif conversation == dialog_novus_is_stupid then
 			Sleep(4)
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_18") --Orlok (ORL): I would expect a better war-plan from machines. Is that the best they can muster?
 			end
 		elseif conversation == dialog_weaponcrate_objective_complete then
 			Sleep(3)
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				BlockOnCommand(Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_16")) --Orlok (ORL): These machines are obsolete.  They lack the programming for victory.
 			end
 			Sleep(1)
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_27")--Nufai (NUF): What is your status, Commander?
 			end
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_28")--The Purifier is still intact.  We've eliminated the Novus outpost and are heading your way.
 			end
 			if not escort_objective_active then
 			   Create_Thread("Thread_TurnOn_Escort_Objective")
 			end
 		elseif conversation == dialog_orlok_killed then	
-			if not bool_mission_failed and not bool_mission_success then
-				bool_mission_failed = true
-				Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-				Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_15")--Nufai (NUF): Nufai is almost done, Commander. Commander Orlok? 
+			if not bool_mission_failure and not bool_mission_success then
+				bool_mission_failure = true
+				UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+				-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+				-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+				-- will prevent any future speech events from being queued).
+				local block = Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_15")--Nufai (NUF): Nufai is almost done, Commander. Commander Orlok? 
+				Allow_Speech_Events(false)
+				BlockOnCommand(block)
+				failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"
+				Create_Thread("Thread_Mission_Failed")
 			end
 		elseif conversation == dialog_nufai_killed then	
-			if not bool_mission_failed and not bool_mission_success then
-				bool_mission_failed = true
-				Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-				Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_14")--Orlok (ORL): Nufai, what is your status? Nufai? Are you there?
+			if not bool_mission_failure and not bool_mission_success then
+				bool_mission_failure = true
+				UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+				-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+				-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+				-- will prevent any future speech events from being queued).
+				local block = Queue_Talking_Head(pip_orlok, "HIE04_SCENE07_14")--Orlok (ORL): Nufai, what is your status? Nufai? Are you there?
+				Allow_Speech_Events(false)
+				BlockOnCommand(block)
+				failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_NUFAI"
+				Create_Thread("Thread_Mission_Failed")
 			end
 		elseif conversation == dialog_purifier_killed then	
-			if not bool_mission_failed and not bool_mission_success then
-				bool_mission_failed = true
-				Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-				Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_12")--Nufai (NUF): Commander, we have failed our mission! Kamal will execute us!
+			if not bool_mission_failure and not bool_mission_success then
+				bool_mission_failure = true
+				UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+				-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+				-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+				-- will prevent any future speech events from being queued).
+				local block = Queue_Talking_Head(pip_nufai, "HIE04_SCENE07_12")--Nufai (NUF): Commander, we have failed our mission! Kamal will execute us!
+				Allow_Speech_Events(false)
+				BlockOnCommand(block)
+				failure_text = "TEXT_SP_MISSION_HIE04_MISSION_FAILED_PURIFIER_DEAD" --Mission failed: The Purifier must survive.
+				Create_Thread("Thread_Mission_Failed")
 			end
 		elseif conversation == dialog_intro_variants then		
-			if not bool_mission_failed and not bool_mission_success then
+			if not bool_mission_failure and not bool_mission_success then
 				Queue_Talking_Head(pip_comm, "HIE04_SCENE07_29")--Novus has the ability to mimic their surroundings. Be alert to their trickery.
 			end
 		end
@@ -1664,7 +1758,7 @@ function Force_Victory(player)
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 
 	if purifier_escort_complete then
 		UI_Show_Sell_Button()
@@ -1672,5 +1766,98 @@ function Post_Load_Callback()
 		UI_Hide_Sell_Button()
 	end
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	SpawnList = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

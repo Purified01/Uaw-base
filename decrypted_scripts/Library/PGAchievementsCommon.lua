@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAchievementsCommon.lua#11 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[116] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAchievementsCommon.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,15 +31,15 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAchievementsCommon.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAchievementsCommon.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Evan_Pipho $
+--            $Author: Brian_Hayes $
 --
---            $Change: 81652 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/23 15:31:16 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
 --          $Revision: #11 $
 --
@@ -48,17 +54,26 @@ require("PGBase")
 -------------------------------------------------------------------------------
 function PGAchievementsCommon_Init()
 
-	-- Versioning
-	PG_ACHIEVEMENTS_FORMAT_VERSION_MAJOR = 1
-	PG_ACHIEVEMENTS_FORMAT_VERSION_MINOR = 1
-	
-	-- Achievement types
-	OFFLINE_ACHIEVEMENT 			= Declare_Enum(1)
-	ONLINE_ACHIEVEMENT 				= Declare_Enum()
+-- The following 3 lines are required by the lua preprocessor.  1/22/2008 3:14:28 PM -- BMH
+--[[
 
-	-- Update types
-	INCREMENT_UPDATE_TYPE 			= Declare_Enum(1)
-	BOOLEAN_UPDATE_TYPE 			= Declare_Enum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]--
 
 end
 
@@ -72,8 +87,8 @@ function Create_Base_Achievement_Definition(id, faction, is_medal, is_achievemen
 	local achievement = {}
 	
 	achievement.Id = id	
-	achievement.FormatVersionMajor = PG_ACHIEVEMENTS_FORMAT_VERSION_MAJOR
-	achievement.FormatVersionMinor = PG_ACHIEVEMENTS_FORMAT_VERSION_MINOR
+	achievement.FormatVersionMajor = 1
+	achievement.FormatVersionMinor = 1
 	achievement.IsMedal = is_medal
 	achievement.IsAchievement = is_achievement
 	achievement.Faction = faction
@@ -106,7 +121,7 @@ function Create_Base_Increment_Achievement_Definition(id, faction, is_medal, is_
 	local achievement = Create_Base_Achievement_Definition(id, faction, is_medal, is_achievement, name, texture, requirements, description, buff_label, backend_key)
 	
 	-- The Specifics
-	achievement.UpdateType = INCREMENT_UPDATE_TYPE
+	achievement.UpdateType = 1
 	achievement.IncAmtComplete = 0
 	achievement.IncAmtRequired = completion_target
 	
@@ -124,7 +139,7 @@ function Create_Base_Boolean_Achievement_Definition(id, faction, is_medal, is_ac
 	local achievement = Create_Base_Achievement_Definition(id, faction, is_medal, is_achievement, name, texture, requirements, description, buff_label, backend_key)
 	
 	-- The Specifics
-	achievement.UpdateType = BOOLEAN_UPDATE_TYPE
+	achievement.UpdateType = 2
 	
 	return achievement
 
@@ -153,8 +168,8 @@ end
 function Validate_Achievement_Definition(def)
 
 	-- If the version matches, we know the format is good.
-	if ((def.FormatVersionMajor == PG_ACHIEVEMENTS_FORMAT_VERSION_MAJOR) and
-		(def.FormatVersionMinor == PG_ACHIEVEMENTS_FORMAT_VERSION_MINOR)) then
+	if ((def.FormatVersionMajor == 1) and
+		(def.FormatVersionMinor == 1)) then
 		return true
 	end
 
@@ -164,8 +179,8 @@ function Validate_Achievement_Definition(def)
 
 	-- Update v1.0:
 	-- Added versioning.
-	def.FormatVersionMajor = PG_ACHIEVEMENTS_FORMAT_VERSION_MAJOR
-	def.FormatVersionMinor = PG_ACHIEVEMENTS_FORMAT_VERSION_MINOR
+	def.FormatVersionMajor = 1
+	def.FormatVersionMinor = 1
 
 	DebugMessage("Achievement '" .. tostring(def.Name) .. "' is now up to date.")
 	return false
@@ -211,8 +226,10 @@ function Create_Player_Info_Table(client_table)
             if (client.applied_medals ~= nil and OnlineAchievementMap ~= nil) then
                   for k, v in pairs(client.applied_medals) do
                         local achievement = OnlineAchievementMap[v]
-                        table.insert(display_list, achievement.BuffDesc)
-                        table.insert(label_list, achievement.BuffLabel)
+								if (achievement ~= nil) then
+									table.insert(display_list, achievement.BuffDesc)
+									table.insert(label_list, achievement.BuffLabel)
+								end
                   end
             end
  
@@ -238,3 +255,34 @@ end
 
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementsCommon_Init = nil
+	Remove_Invalid_Objects = nil
+	Set_Achievement_Map_Type = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

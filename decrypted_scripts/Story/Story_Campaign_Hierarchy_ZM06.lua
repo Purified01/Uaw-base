@@ -1,4 +1,42 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM06.lua#60 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM06.lua#31 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +63,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM06.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM06.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Rich_Donnelly $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84816 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/09/25 17:02:25 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #60 $
+--          $Revision: #31 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +98,9 @@ require("PGObjectives")
 ---------------------------------------------------------------------------------------------------
 
 function Definitions()
+	-- only service once a second
+	ServiceRate = 1
+	
 	--MessageBox("%s -- definitions", tostring(Script))
 	Define_State("State_Init", State_Init)
 	Define_State("State_ZM06_Act01", State_ZM06_Act01)
@@ -110,29 +151,30 @@ function Definitions()
       "Alien_Recon_Tank"
 	}
 
+	--jdg 1/14/08 slash and burn 360 balancing
    list_kamal_initial_engagement_units = {
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
+     -- "Alien_Brute",
+      --"Alien_Brute",
+     -- "Alien_Lost_One",
+      --"Alien_Lost_One",
+      --"Alien_Lost_One",
+		--"Alien_Grunt",
+		--"Alien_Grunt",
 		"Alien_Grunt",
 		"Alien_Grunt",
 		"Alien_Grunt",
 		"Alien_Grunt",
 		"Alien_Grunt",
 		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-      "Alien_Brute",
-      "Alien_Brute",
-      "Alien_Lost_One",
-      "Alien_Lost_One",
-      "Alien_Lost_One",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-		"Alien_Grunt",
-      "Alien_Brute",
+      --"Alien_Brute",
       "Alien_Brute",
       "Alien_Lost_One",
       "Alien_Lost_One",
@@ -143,20 +185,20 @@ function Definitions()
       "Alien_Grunt",
       "Alien_Grunt",
       "Alien_Grunt",
-      "Alien_Grunt",
+      --"Alien_Grunt",
       "Alien_Brute",
+      --"Alien_Lost_One",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Lost_One",
-      "Alien_Recon_Tank",
+      --"Alien_Recon_Tank",
       "Alien_Recon_Tank"
    }
    
    list_kamal_base_assault_units_01 = {
       "Alien_Grunt",
       "Alien_Grunt",
-      "Alien_Grunt",
-      "Alien_Lost_One",
+      --"Alien_Grunt",
+      --"Alien_Lost_One",
       "Alien_Lost_One",
       "Alien_Lost_One"
    }
@@ -166,7 +208,7 @@ function Definitions()
       "Alien_Grunt",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Recon_Tank",
+      --"Alien_Recon_Tank",
       "Alien_Recon_Tank"
    }
 
@@ -177,14 +219,14 @@ function Definitions()
       "Alien_Lost_One",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Defiler",
-      "Alien_Defiler"
+      --"Alien_Defiler",
+      --"Alien_Defiler"
    }
 
    list_kamal_final_units_05 = {
       "Alien_Grunt",
       "Alien_Lost_One",
-      "Alien_Foo_Core",
+      --"Alien_Foo_Core",
       "Alien_Recon_Tank",
       "Alien_Brute"
    }
@@ -195,10 +237,10 @@ function Definitions()
       "Alien_Grunt",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Foo_Core",
+      --"Alien_Foo_Core",
       "Alien_Recon_Tank",
       "Alien_Recon_Tank",
-      "Alien_Brute",
+      --"Alien_Brute",
       "Alien_Brute"
    }
 
@@ -211,12 +253,12 @@ function Definitions()
       "Alien_Lost_One",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Foo_Core",
-      "Alien_Foo_Core",
+      --"Alien_Foo_Core",
+     -- "Alien_Foo_Core",
       "Alien_Recon_Tank",
       "Alien_Recon_Tank",
       "Alien_Recon_Tank",
-      "Alien_Brute",
+      --"Alien_Brute",
       "Alien_Brute"
    }
 
@@ -231,15 +273,15 @@ function Definitions()
       "Alien_Lost_One",
       "Alien_Lost_One",
       "Alien_Lost_One",
-      "Alien_Foo_Core",
-      "Alien_Foo_Core",
-      "Alien_Foo_Core",
+      --"Alien_Foo_Core",
+      --"Alien_Foo_Core",
+      --"Alien_Foo_Core",
       "Alien_Recon_Tank",
       "Alien_Recon_Tank",
       "Alien_Recon_Tank",
       "Alien_Brute",
-      "Alien_Brute",
-      "Alien_Brute",
+      --"Alien_Brute",
+     -- "Alien_Brute",
       "Alien_Brute"
    }
    
@@ -247,7 +289,7 @@ function Definitions()
       "Alien_Foo_Core",
       "Alien_Foo_Core",
       "Alien_Foo_Core",
-      "Alien_Foo_Core"
+     -- "Alien_Foo_Core"
    }
    
    list_kamal_reapers = {
@@ -286,9 +328,9 @@ function Definitions()
    list_masari_disciples = {
       "Masari_Disciple",
       "Masari_Disciple",
-      "Masari_Disciple",
-      "Masari_Disciple",
-      "Masari_Disciple"
+      --"Masari_Disciple",
+      --"Masari_Disciple",
+      --"Masari_Disciple"
    }
    
    list_single_habitat_walker = {
@@ -326,7 +368,11 @@ function Definitions()
 
    time_clear_orlok_base = 60
    time_spawn_base_defenders = 10
-   time_spawn_attackers = 30
+	
+	--jdg tring to optimize for the 360...increasing time between spawned attacks
+   --time_spawn_attackers = 30
+	time_spawn_attackers = 60
+	
    time_zessus_ai_cycle = 5
    time_zessus_arrival = 180
    
@@ -352,8 +398,14 @@ function Definitions()
    distance_orlok_to_transmitter = 200
    distance_zessus_approach_reinforcement_point = 200
    
-   minimum_attackers = 15
-   minimum_kamal_base_guards = 11
+	
+	--jdg tring to optimize for the 360...reducing number of guys being called to guard the dish
+   --minimum_attackers = 15
+	minimum_attackers = 8
+	
+	--jdg slash and burn balancing...this will cause a respawn...reducing to 0
+   --minimum_kamal_base_guards = 11
+	minimum_kamal_base_guards = 0
 
    orlok_habitat_walker = nil
    kamal_habitat_walker = nil
@@ -412,28 +464,28 @@ function State_Init(message)
 	local i, structure, credits, credit_total, list_comm_terminals, terminal
 	
 	if message == OnEnter then
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		
 		novus.Allow_Autonomous_AI_Goal_Activation(false)
 		masari.Allow_Autonomous_AI_Goal_Activation(false)		
 		kamals_aliens.Allow_Autonomous_AI_Goal_Activation(false)		
 
-	military.Allow_AI_Unit_Behavior(false)
-	novus.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	kamals_aliens.Allow_AI_Unit_Behavior(false)
-	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		military.Allow_AI_Unit_Behavior(false)
+		novus.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
+		kamals_aliens.Allow_AI_Unit_Behavior(false)
 		
 		_CustomScriptMessage("RickLog.txt", string.format("*********************************************Story_Campaign_Hierarchy_ZM06 START!"))
 
 		Cache_Models()
 
-		UI_Hide_Research_Button()
+		-- UI_Hide_Research_Button()
 		--UI_Hide_Sell_Button()
+   	aliens.Set_Research_Points_Override(6)
 
 		-- Initial Starting Credits
-		credit_total = 10000
+		credit_total = 7000
 		credits = aliens.Get_Credits()
       if credits > credit_total then
          credits = (credits - credit_total) * -1
@@ -454,9 +506,9 @@ function State_Init(message)
 		
 		-- House Colors
 		PGColors_Init_Constants()
---		aliens.Enable_Colorization(true, COLOR_RED)
-	   kamals_aliens.Enable_Colorization(true, COLOR_DARK_BLUE)
---	   masari.Enable_Colorization(true, COLOR_DARK_GREEN)
+--		aliens.Enable_Colorization(true, 2)
+	   kamals_aliens.Enable_Colorization(true, 23)
+--	   masari.Enable_Colorization(true, 21)
 
       -- Alliegiances
 		aliens.Make_Ally(masari)
@@ -469,23 +521,24 @@ function State_Init(message)
 		-- Construction Locks/Unlocks
 		aliens.Reset_Story_Locks()
 		aliens.Lock_Unit_Ability("Alien_Hero_Orlok", "Alien_Orlok_Retreat_From_Tactical_Ability",true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Superweapon_Mass_Drop"),true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_AI_Magnet"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Superweapon_Mass_Drop"),true,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_AI_Magnet"),false,STORY)
 		
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Kamal_Rex"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Nufai"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Orlok"),true,STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false,STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false,STORY)
-		aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
+		
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false,STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false,STORY)
+		-- aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
 
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Defiler_Assembly_Pod"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Foo_Chamber"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Lost_One_Mutator"),false,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Brute_Mutator"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Defiler_Assembly_Pod"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly_HP_Foo_Chamber"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Lost_One_Mutator"),false,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Brute_Mutator"),false,STORY)
 
 		-- Hint System Initialization
 		PGHintSystemDefs_Init()
@@ -561,6 +614,7 @@ function State_Init(message)
 		marker_final_kamal_units = Find_Hint("MARKER_GENERIC_RED","final-kamal-units")
 		if not TestValid(marker_final_kamal_units) then
 			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find marker_final_kamal_units!"))
+			marker_final_kamal_units_loc = marker_final_kamal_units.Get_Position()
 		end
 
 		marker_list_orlok_grunts = Find_All_Objects_With_Hint("orlok-grunt")
@@ -630,6 +684,12 @@ function State_Init(message)
 		if not TestValid(hero) then
 			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find hero!"))
 		end
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_HM06_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 
 		Set_Next_State("State_ZM06_Act01")
 	end
@@ -675,10 +735,10 @@ function State_ZM06_Act01(message)
       end
 		-- SpawnList(type_list, entry_marker, player, allow_ai_usage, delete_after_scenario, add_to_pop_cap)
 
-		list_kamal_guards = SpawnList(list_kamal_starting_units, marker_kamal_base_01, kamals_aliens, false, true, true)
-		for i, unit in pairs(list_kamal_guards) do
-		   unit.Set_Service_Only_When_Rendered(true)
-		end
+		--list_kamal_guards = SpawnList(list_kamal_starting_units, marker_kamal_base_01, kamals_aliens, false, true, true)
+		--for i, unit in pairs(list_kamal_guards) do
+		--   unit.Set_Service_Only_When_Rendered(true)
+		--end
 
   		list_kamal_initial_units = SpawnList(list_kamal_initial_engagement_units, marker_kamal_forces, kamals_aliens, false, true, true)
 		-- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
@@ -730,16 +790,22 @@ function State_ZM06_Act01(message)
 		for i, unit in pairs(spawn_list) do
 		   if TestValid(unit) then
 		      unit.Move_To(marker_kamal_reapers.Get_Position())
+				unit.Set_Service_Only_When_Rendered(true)
 		   end
 		end
 		
 		spawn_list = SpawnList(list_single_glyph_carver, marker_orlok_arrival_site, aliens, false, true, true)
 		
 		-- SpawnList(type_list, entry_marker, player, allow_ai_usage, delete_after_scenario, add_to_pop_cap)
-		spawn_list = SpawnList(list_single_science_walker, marker_kamal_reinforcement, kamals_aliens, false, true, false)
+		
+		--jdg 1/15/08 trying to optimize a bit...this guy no loger spawns at x and moves to y....just spawns at y.
+		--spawn_list = SpawnList(list_single_science_walker, marker_kamal_reinforcement, kamals_aliens, false, true, false)
+		spawn_list = SpawnList(list_single_science_walker, marker_kamal_walker_science, kamals_aliens, false, true, false)
+		
       kamal_science_walker = spawn_list[1]
       if TestValid(kamal_science_walker) then
-         kamal_science_walker.Attack_Move(marker_kamal_walker_science.Get_Position())
+         --kamal_science_walker.Attack_Move(marker_kamal_walker_science.Get_Position())
+			kamal_science_walker.Guard_Target(kamal_science_walker.Get_Position())
       end
 
 		Create_Thread("Thread_Mission_Introduction")
@@ -784,7 +850,7 @@ function Thread_Mission_Introduction()
    End_Cinematic_Camera()
 
 	Sleep(time_radar_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_04_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_04_ADD"} )
    Sleep(time_objective_sleep)
    zm06_objective04 = Add_Objective("TEXT_SP_MISSION_HIE06_OBJECTIVE_04")
 
@@ -912,7 +978,7 @@ function Call_Base_Assault_Saucer(list_attackers)
 end
 
 function Thread_Kamal_Arrives()
-   local player_object_list, i, unit, type, orlok_unit_list, orlok_unit_spawn_list, kamal_object_list, kamal_unit_list, kamal_unit_spawn_list, spawn_list, size
+   local player_object_list, i, unit, local_type, orlok_unit_list, orlok_unit_spawn_list, kamal_object_list, kamal_unit_list, kamal_unit_spawn_list, spawn_list, size
 
    if TestValid(hero) then
       hero.Make_Invulnerable(true)
@@ -933,20 +999,20 @@ function Thread_Kamal_Arrives()
    
    for i, unit in pairs(player_object_list) do
       if TestValid(unit) then
-         type = unit.Get_Type()
+         local_type = unit.Get_Type()
          
          -- Non-Conflict Units (move to respective bases):
-         if type == object_type_glyph_carver or type == object_type_scan_drone then
+         if local_type == object_type_glyph_carver or local_type == object_type_scan_drone then
             unit.Teleport(marker_orlok_arrival_site.Get_Position())
             unit.Stop()
             
          -- Basic Conflict Units (put types in a list, delete, spawnlist at appropriate location):
-         elseif type == object_type_monolith or type == object_type_lost_one or type == object_type_grunt or type == object_type_brute or type == object_type_mutant_slave or type == object_type_defiler or type == object_type_saucer or type == object_type_phase_tank then
-            table.insert(orlok_unit_list, type)
+         elseif local_type == object_type_monolith or local_type == object_type_lost_one or local_type == object_type_grunt or local_type == object_type_brute or local_type == object_type_mutant_slave or local_type == object_type_defiler or local_type == object_type_saucer or local_type == object_type_phase_tank then
+            table.insert(orlok_unit_list, local_type)
             unit.Despawn()
             
          -- Walkers (teleport the first to the dish, move any others):
-         elseif type == object_type_troop_walker then
+         elseif local_type == object_type_troop_walker then
             if not moved_final_orlok_troop_walker then
                moved_final_orlok_troop_walker = true
                unit.Teleport_And_Face(marker_final_orlok_troop_walker)
@@ -954,7 +1020,7 @@ function Thread_Kamal_Arrives()
             else
                unit.Attack_Move(marker_final_orlok_troop_walker.Get_Position())
             end
-         elseif type == object_type_assembly_walker then
+         elseif local_type == object_type_assembly_walker then
             if not moved_final_orlok_assembly_walker then
                moved_final_orlok_assembly_walker = true
                unit.Teleport_And_Face(marker_final_orlok_assembly_walker)
@@ -962,7 +1028,7 @@ function Thread_Kamal_Arrives()
             else
                unit.Attack_Move(marker_final_orlok_assembly_walker.Get_Position())
             end
-         elseif type == object_type_science_walker then
+         elseif local_type == object_type_science_walker then
             if not moved_final_orlok_science_walker then
                moved_final_orlok_science_walker = true
                unit.Teleport_And_Face(marker_final_orlok_science_walker)
@@ -970,7 +1036,7 @@ function Thread_Kamal_Arrives()
             else
                unit.Attack_Move(marker_final_orlok_science_walker.Get_Position())
             end
-         elseif type == object_type_orlok or type == object_type_orlok_base or type == object_type_orlok_siege or type == object_type_orlok_endure then
+         elseif local_type == object_type_orlok or local_type == object_type_orlok_base or local_type == object_type_orlok_siege or local_type == object_type_orlok_endure then
             unit.Teleport_And_Face(marker_final_orlok)
          end
       end
@@ -991,19 +1057,19 @@ function Thread_Kamal_Arrives()
    
    for i, unit in pairs(kamal_object_list) do
       if TestValid(unit) then
-         type = unit.Get_Type()
+         local_type = unit.Get_Type()
          
          -- Non-Conflict Units (move to respective bases):
-         if type == object_type_glyph_carver or type == object_type_scan_drone then
+         if local_type == object_type_glyph_carver or local_type == object_type_scan_drone then
             unit.Despawn()
             
          -- Basic Conflict Units (put types in a list, delete, spawnlist at appropriate location):
-         elseif type == object_type_monolith or type == object_type_lost_one or type == object_type_grunt or type == object_type_brute or type == object_type_mutant_slave or type == object_type_defiler or type == object_type_saucer or type == object_type_phase_tank then
-            table.insert(kamal_unit_list, type)
+         elseif local_type == object_type_monolith or local_type == object_type_lost_one or local_type == object_type_grunt or local_type == object_type_brute or local_type == object_type_mutant_slave or local_type == object_type_defiler or local_type == object_type_saucer or local_type == object_type_phase_tank then
+            table.insert(kamal_unit_list, local_type)
             unit.Despawn()
             
          -- Walkers (teleport the first to the dish, move any others):
-         elseif type == object_type_troop_walker or type == object_type_kamal_troop_walker then
+         elseif local_type == object_type_troop_walker or local_type == object_type_kamal_troop_walker then
             if not moved_final_kamal_troop_walker then
                moved_final_kamal_troop_walker = true
                unit.Teleport_And_Face(marker_kamal_walker_defense_01)
@@ -1011,7 +1077,7 @@ function Thread_Kamal_Arrives()
             else
                unit.Attack_Move(marker_kamal_walker_defense_01.Get_Position())
             end
-         elseif type == object_type_assembly_walker or type == object_type_kamal_assembly_walker then
+         elseif local_type == object_type_assembly_walker or local_type == object_type_kamal_assembly_walker then
             if not moved_final_kamal_assembly_walker then
                moved_final_kamal_assembly_walker = true
                unit.Teleport_And_Face(marker_kamal_walker_defense_02)
@@ -1019,7 +1085,7 @@ function Thread_Kamal_Arrives()
             else
                unit.Attack_Move(marker_kamal_walker_defense_02.Get_Position())
             end
-         elseif type == object_type_science_walker or type == object_type_kamal_science_walker then
+         elseif local_type == object_type_science_walker or local_type == object_type_kamal_science_walker then
             if not moved_final_kamal_science_walker then
                moved_final_kamal_science_walker = true
                unit.Teleport_And_Face(marker_kamal_walker_science)
@@ -1080,7 +1146,7 @@ function Thread_Kamal_Arrives()
       kamal_rex.Register_Signal_Handler(Callback_Kamal_Rex_Damaged, "OBJECT_DAMAGED")
       kamal_rex.Set_Cannot_Be_Killed(true)
    	-- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
-	   Hunt(spawn_list, "AntiDefault", true, true, marker_final_kamal_units.Get_Position(), 400)   
+	   Hunt(spawn_list, "AntiDefault", true, true, marker_final_kamal_units_loc, 400)   
    end
    
    -- Teleport_And_Face Zessus
@@ -1120,7 +1186,7 @@ function Thread_Kamal_Arrives()
 end
 
 function Thread_Final_Conversation()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_03_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_03_ADD"} )
    Sleep(time_objective_sleep)
    zm06_objective02 = Add_Objective("TEXT_SP_MISSION_HIE06_OBJECTIVE_03")
 
@@ -1555,12 +1621,12 @@ function Callback_Kamal_Rex_Damaged(tf, walker, attacker, projectile_type, hard_
 end
 
 function Use_Kamal_Rex_Abilities(attacker)
-   local type
+   local local_type
    
    if TestValid(attacker) then
       if kamal.Is_Ability_Ready("Kamal_Rex_Abduction_Unit_Ability") then
-         type = attacker.Get_Type()
-         if type == object_type_glyph_carver or type == object_type_lost_one or type == object_type_grunt or type == object_type_brute or type == object_type_phase_tank then
+         local_type = attacker.Get_Type()
+         if local_type == object_type_glyph_carver or local_type == object_type_lost_one or local_type == object_type_grunt or local_type == object_type_brute or local_type == object_type_phase_tank then
             kamal.Activate_Ability("Kamal_Rex_Abduction_Unit_Ability", true, attacker.Get_Position())
          else
             if kamal.Is_Ability_Ready("Kamal_Rex_Force_Wall_Unit_Ability") then
@@ -1576,10 +1642,10 @@ function Use_Kamal_Rex_Abilities(attacker)
 end
 
 function Prox_Inside_Kamals_Base(prox_obj, trigger_obj)
-   local type
+   local local_type
    
-   type = trigger_obj.Get_Type()
-   if type ~= object_type_monolith then
+   local_type = trigger_obj.Get_Type()
+   if local_type ~= object_type_monolith then
    	prox_obj.Cancel_Event_Object_In_Range(Prox_Inside_Kamals_Base)
    	Create_Thread("Thread_Inside_Kamals_Base")
    end
@@ -1598,10 +1664,10 @@ function Thread_Inside_Kamals_Base()
 end
 
 function Prox_Orlok_Approaching_Transmitter_Far(prox_obj, trigger_obj)
-   local type
+   local local_type
    
-   type = trigger_obj.Get_Type()
-   if type == object_type_orlok or type == object_type_orlok_base or type == object_type_orlok_siege or type == object_type_orlok_endure then
+   local_type = trigger_obj.Get_Type()
+   if local_type == object_type_orlok or local_type == object_type_orlok_base or local_type == object_type_orlok_siege or local_type == object_type_orlok_endure then
    	prox_obj.Cancel_Event_Object_In_Range(Prox_Orlok_Approaching_Transmitter_Far)
    	Create_Thread("Thread_Prox_Orlok_Approaching_Transmitter_Far")
    end
@@ -1610,7 +1676,7 @@ end
 function Thread_Prox_Orlok_Approaching_Transmitter_Far()
    if not transmitter_objective_issued then
       transmitter_objective_issued = true
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_ADD"} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_ADD"} )
 	   Sleep(time_objective_sleep)
       zm06_objective01 = Add_Objective("TEXT_SP_MISSION_HIE06_OBJECTIVE_01")
       Sleep(time_radar_sleep)
@@ -1619,10 +1685,10 @@ function Thread_Prox_Orlok_Approaching_Transmitter_Far()
 end
 
 function Prox_Orlok_Approaching_Transmitter(prox_obj, trigger_obj)
-   local type
+   local local_type
    
-   type = trigger_obj.Get_Type()
-   if type == object_type_orlok or type == object_type_orlok_base or type == object_type_orlok_siege or type == object_type_orlok_endure then
+   local_type = trigger_obj.Get_Type()
+   if local_type == object_type_orlok or local_type == object_type_orlok_base or local_type == object_type_orlok_siege or local_type == object_type_orlok_endure then
    	prox_obj.Cancel_Event_Object_In_Range(Prox_Orlok_Approaching_Transmitter)
    	Create_Thread("Thread_Approaching_Transmitter")
    end
@@ -1634,7 +1700,7 @@ function Thread_Approaching_Transmitter()
       transmitter_effect_obj.Teleport_And_Face(marker_transmitter_effect)
    end
    
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_COMPLETE"} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_COMPLETE"} )
    
    -- DEBUG turn the transmitter on here. Turn it off when Orlok fails it, and turn it off for the finale.
    
@@ -1661,7 +1727,7 @@ function Thread_Monitor_Objective02_Timer()
       BlockOnCommand(Queue_Talking_Head(pip_orlok, "HIE06_SCENE05_09"))
       conversation_active = false
    end
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_ADD"} )
 	   Sleep(time_objective_sleep)
    
 	Set_Objective_Text(zm06_objective01, "TEXT_SP_MISSION_HIE06_OBJECTIVE_02A")
@@ -1712,9 +1778,9 @@ function Thread_Monitor_Objective02_Timer()
          if TestValid(transmitter_effect_obj) then
             transmitter_effect_obj.Despawn()
          end      
-      	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_FAILED"} )
+      	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_FAILED"} )
          orlok_left_transmitter = false
-      	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_ADD"} )
+      	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_01_ADD"} )
       	Sleep(time_objective_sleep)
       	Set_Objective_Text(zm06_objective01, "TEXT_SP_MISSION_HIE06_OBJECTIVE_01")
    		Register_Prox(marker_transmitter, Prox_Orlok_Approaching_Transmitter, distance_orlok_approach_transmitter, aliens)
@@ -1722,7 +1788,7 @@ function Thread_Monitor_Objective02_Timer()
       	Set_Objective_Text(zm06_objective01, "TEXT_SP_MISSION_HIE06_OBJECTIVE_01")
       	Remove_Radar_Blip("blip_transmitter")
          Objective_Complete(zm06_objective01)
-      	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_COMPLETE"} )
+      	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_02_COMPLETE"} )
          while conversation_active do
             Sleep(1)
          end
@@ -1735,10 +1801,10 @@ function Thread_Monitor_Objective02_Timer()
 end
 
 function Prox_Approaching_Zessus(prox_obj, trigger_obj)
-   local type
+   local local_type
 
-   type = trigger_obj.Get_Type()
-   if type == object_type_grunt or type == object_type_lost_one then
+   local_type = trigger_obj.Get_Type()
+   if local_type == object_type_grunt or local_type == object_type_lost_one then
       zessus_ai_spotted_infantry = true
    else
       zessus_ai_spotted_enemy = true
@@ -1800,7 +1866,7 @@ end
 
 function Thread_Complete_First_Objective()
    Objective_Complete(zm06_objective04)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_04_COMPLETE"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE06_OBJECTIVE_04_COMPLETE"} )
    Remove_Radar_Blip("blip_arrival_site")
    
    while conversation_active do
@@ -1852,7 +1918,7 @@ function Thread_Prox_Approaching_Kamals_Base()
 end
 
 function Callback_Orlok_Killed()
-	if not mission_success then
+	if not mission_success and mission_failure == false then
 		Create_Thread("Thread_Mission_Failed")
 	end
 end
@@ -1862,11 +1928,14 @@ function Callback_Orlok_Habitat_Walker_Killed()
 
    Create_Thread("Thread_Force_Move_Walker_01")
    Create_Thread("Thread_Force_Move_Walker_02")
-   Create_Thread("Thread_Kamal_Base_Defenders")
+   --Create_Thread("Thread_Kamal_Base_Defenders") --jdg no longer reinforcing this base...eliminating thread
    Create_Thread("Thread_Kamal_Attackers")
    for i, unit in pairs(list_kamal_initial_units) do
       if not TestValid(unit) then
          table.remove(list_kamal_initial_units, i)
+		else
+			--jdg 1/14/08 trying to optimize a bit here.
+			unit.Set_Service_Only_When_Rendered(true)
       end
    end
    -- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
@@ -1907,13 +1976,9 @@ function Thread_Force_Move_Walker_02()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_success = true
-   Stop_All_Speech()
-   Flush_PIP_Queue()
 	Remove_Radar_Blip("blip_kamal_rex")
    Objective_Complete(zm06_objective02)
    Letter_Box_In(1)
@@ -1924,9 +1989,9 @@ function Thread_Mission_Complete()
    Zoom_Camera.Set_Transition_Time(10)
    Zoom_Camera(.3)
    Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1937,13 +2002,9 @@ function Thread_Mission_Complete()
 end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_failure = true
-   Stop_All_Speech()
-   Flush_PIP_Queue()
 	Letter_Box_In(1)
 	Lock_Controls(1)
 	Suspend_AI(1)
@@ -1952,9 +2013,9 @@ function Thread_Mission_Failed()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,30)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
 	Sleep(time_objective_sleep)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
    Fade_Screen_Out(2)
    Sleep(2)
    Lock_Controls(0)
@@ -1967,15 +2028,114 @@ function Force_Victory(player)
 	if player == aliens then	
 		-- Inform the campaign script of our victory.
 		global_script.Call_Function("Hierarchy_Tactical_Mission_Over", true) -- true == player wins/false == player loses
-		--Quit_Game_Now( winning_player, quit_to_main_menu, destroy_loser_forces, build_temp_command_center, VerticalSliceTriggerVictorySplashFlag)
-		Quit_Game_Now(player, false, true, false)
+
+		--Rely on the global script to schedule the next campaign, thus triggering a quit.
 	else
 		Show_Retry_Dialog()
 	end
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Thread_Kamal_Base_Defenders = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

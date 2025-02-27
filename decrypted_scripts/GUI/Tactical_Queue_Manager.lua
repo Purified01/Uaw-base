@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Tactical_Queue_Manager.lua#60 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[166] = true
+LuaGlobalCommandLinks[190] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Tactical_Queue_Manager.lua#21 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Tactical_Queue_Manager.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Tactical_Queue_Manager.lua $
 --
 --    Original Author: Chris_Brooks
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 79785 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/03 17:20:08 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #60 $
+--          $Revision: #21 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,6 +115,14 @@ function On_Init()
 	TacticalQueueUpdateTime = 0.0
 	
 	QueueTypeToBldgCount = {}
+
+	-- We don't want to be comparing strings.  Until we remove the string queue type let's keep this map to do fast compares
+	QueueTypeStrgToEnumValue = {}
+	QueueTypeStrgToEnumValue['NonProduction'] = Declare_Enum(0)
+	QueueTypeStrgToEnumValue['Command'] = Declare_Enum()
+	QueueTypeStrgToEnumValue['Infantry'] = Declare_Enum()
+	QueueTypeStrgToEnumValue['Vehicle'] = Declare_Enum()
+	QueueTypeStrgToEnumValue['Air'] = Declare_Enum()	
 	
 end
 
@@ -170,9 +189,9 @@ function Remove_Building(building)
 	
 	for i = 1, #Buildings do
 		if Buildings[i] == building then 
-			building.Unregister_Signal_Handler(On_Production_Change)
-			building.Unregister_Signal_Handler(On_Enabler_Destroyed)
-			building.Unregister_Signal_Handler(On_Remove_Enabler)
+			building.Unregister_Signal_Handler(On_Production_Change, this)
+			building.Unregister_Signal_Handler(On_Enabler_Destroyed, this)
+			building.Unregister_Signal_Handler(On_Remove_Enabler, this)
 			table.remove(Buildings, i)
 			break
 		end
@@ -200,6 +219,8 @@ function Find_Tactical_Enablers()
 
 	-- Find all tactical enablers, and listen to signals we care about from them.
 	-- NOTE: We need to make sure we get ONLY the buildings that belong to the active context!!!.
+	-- Maria 08.07.2007
+	-- When playing with the controller, this list will contain all the ground structures (event those that are not enablers!)
   	Buildings = Find_Tactical_Enablers_In_Active_Context(Find_Player("local"))
 
 	for i, building in pairs(Buildings) do
@@ -299,7 +320,9 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Update_Display_Focus()
 	-- Clear the focus from any other UI component so that we can update the focus properly.
-	Clear_Key_Focus()
+	if not WalkerCustomizationModeOn then 
+		Clear_Key_Focus()
+	end
 	Refresh(true) -- true means the refresh function if being called from an open order and not an update.
 end
 
@@ -338,7 +361,10 @@ function Update_Selected_Queue()
 				-- inner_table[11] = current build cap
 				-- inner_table[12] = current build count
 				
-				local allowed_units = SelectedBuilding.Get_Tactical_Enabler_Build_Menu(player)
+				local allowed_units = nil
+				if QueueTypeStrgToEnumValue[QueueType] ~= QueueTypeStrgToEnumValue['NonProduction'] then 
+					allowed_units = SelectedBuilding.Get_Tactical_Enabler_Build_Menu(player)
+				end
 				
 				if allowed_units ~= nil or controller_connected then
 					-- Show the buy menu for this queue. (Its building selected.)
@@ -352,8 +378,8 @@ function Update_Selected_Queue()
 						structure_powered = (SelectedBuilding.Get_Attribute_Integer_Value( "Is_Powered" ) ~= 0.0)
 					end
 					
-					BuyMenu.Populate_Buy_Menu(allowed_units, structure_powered)
-
+					BuyMenu.Populate_Buy_Menu(allowed_units, structure_powered, SpecialAbilities)
+					
 					-- JAC - Combine buy and upgrade onto same set of buttons when using a controller
 					if controller_connected then
 						BuyMenu.Update_Upgrade_Menu(SelectedBuilding,GetCurrentTime())
@@ -395,7 +421,8 @@ function Refresh(set_building_button_focus)
 	if IsOpen then
 		-- Flash building icons? (leading user down path to buy units)
 		local flash_all_buildings = IsFlashingBuyButtons
-		if flash_all_buildings and TestValid(SelectedBuilding) and Get_Building_Queue_Type(SelectedBuilding) == QueueType then
+		local bldg_qtype = Get_Building_Queue_Type(SelectedBuilding)
+		if flash_all_buildings and TestValid(SelectedBuilding) and  QueueTypeStrgToEnumValue[bldg_qtype] == QueueTypeStrgToEnumValue[QueueType] then
 			flash_all_buildings = false
 		end
 	
@@ -415,7 +442,8 @@ function Refresh(set_building_button_focus)
 		local local_player = Find_Player('local')
 		local this_queue_count = QueueTypeToBldgCount[QueueType]
 		for i, building in pairs(Buildings) do
-			if TestValid(building) and building.Get_Owner() == local_player and Get_Building_Queue_Type(building) == QueueType then
+			local bldg_qtype = Get_Building_Queue_Type(building)
+			if TestValid(building) and building.Get_Owner() == local_player and QueueTypeStrgToEnumValue[bldg_qtype] == QueueTypeStrgToEnumValue[QueueType] then
 				local queue_gui = Queues[queue_index]
 				BuildingToQueueMap[building] = queue_gui
 				IndexToQueueMap[this_queue_count+1] = queue_gui
@@ -474,9 +502,9 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Listen_Building(building)
 	if TestValid(building) then
-		building.Register_Signal_Handler(On_Production_Change, "OBJECT_TACTICAL_QUEUE_CHANGED")
-		building.Register_Signal_Handler(On_Enabler_Destroyed, "OBJECT_HEALTH_AT_ZERO")
-		building.Register_Signal_Handler(On_Remove_Enabler, "OBJECT_SOLD")
+		building.Register_Signal_Handler(On_Production_Change, "OBJECT_TACTICAL_QUEUE_CHANGED", this)
+		building.Register_Signal_Handler(On_Enabler_Destroyed, "OBJECT_HEALTH_AT_ZERO", this)
+		building.Register_Signal_Handler(On_Remove_Enabler, "OBJECT_SOLD", this)
 	end
 end
 
@@ -532,7 +560,7 @@ end
 -- On_Construction_Complete - 
 -- ------------------------------------------------------------------------------------------------------------------
 function On_Construction_Complete(event, source, object)
-	if object.Has_Behavior(BEHAVIOR_TACTICAL_ENABLER) and not Is_In_List(object) then
+	if object.Has_Behavior(89) and not Is_In_List(object) then
 		table.insert(Buildings, object)
 		Listen_Building(object)
 	end
@@ -642,6 +670,37 @@ function Stop_Flashing_Building_Button(building_type)
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
+-- Set_Walker_Customization_Mode_On
+-- ------------------------------------------------------------------------------------------------------------------
+function Set_Walker_Customization_Mode_On(on_off)
+	WalkerCustomizationModeOn = on_off
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- UI_Show_Sell_Button
+-- ------------------------------------------------------------------------------------------------------------------
+function UI_Show_Sell_Button()
+	BuyMenu.UI_Show_Sell_Button()
+	if IsOpen then	
+		-- Force an update.
+		Update_Selected_Queue()
+	end
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- UI_Hide_Sell_Button
+-- ------------------------------------------------------------------------------------------------------------------
+function UI_Hide_Sell_Button()
+	BuyMenu.UI_Hide_Sell_Button()
+	if IsOpen then	
+		-- Force an update.
+		Update_Selected_Queue()
+	end
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
 -- Interface functions (accessible to other scenes)
 -- ------------------------------------------------------------------------------------------------------------------
 Interface = {}
@@ -662,3 +721,45 @@ Interface.Stop_Flashing_Building_Button = Stop_Flashing_Building_Button
 Interface.Update_Refresh  = Update_Refresh
 Interface.Update_Display_Focus = Update_Display_Focus
 Interface.Open_Queue_At_Index = Open_Queue_At_Index
+Interface.Set_Walker_Customization_Mode_On = Set_Walker_Customization_Mode_On
+Interface.UI_Show_Sell_Button = UI_Show_Sell_Button
+Interface.UI_Hide_Sell_Button = UI_Hide_Sell_Button
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

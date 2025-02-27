@@ -1,4 +1,47 @@
-  -- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM03.lua#64 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[193] = true
+LUA_PREP = true
+
+  -- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM03.lua#33 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +68,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM03.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM03.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Nader_Akoury $
 --
---            $Change: 90267 $
+--            $Change: 97630 $
 --
---          $DateTime: 2008/01/03 16:44:06 $
+--          $DateTime: 2008/04/28 09:22:23 $
 --
---          $Revision: #64 $
+--          $Revision: #33 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,8 +116,8 @@ function Definitions()
 	masari = Find_Player("Masari")
 	
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
 	
    player_faction = novus
 
@@ -177,14 +220,15 @@ function State_Init(message)
 		Lock_Objects(true)
 		
 		--AI Base maintenance stuff.
-		aliens.Allow_Autonomous_AI_Goal_Activation(true)
+		--jdg 11/01/07 turning to false to prevent ai from researching
+		aliens.Allow_Autonomous_AI_Goal_Activation(false)
 		Maintain_Base(aliens, "NM03_AI_Layout")
 		
 		player_script = aliens.Get_Script()
 	
-	uea.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
+		uea.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
 	
 		-- ***** ACHIEVEMENT_AWARD *****
 		PGAchievementAward_Init()
@@ -297,10 +341,16 @@ function State_Init(message)
 		
 		walker_1=Find_Hint("NM03_CUSTOM_HABITAT_WALKER","walker1")
 		walker_1.Prevent_AI_Usage(true)
+		walker_1.Set_In_Limbo(true)
+		walker_1.Hide(true)
 		walker_2=Find_Hint("NM03_CUSTOM_HABITAT_WALKER","walker2")
 		walker_2.Prevent_AI_Usage(true)
+		walker_2.Set_In_Limbo(true)
+		walker_2.Hide(true)
 		walker_3=Find_Hint("NM03_CUSTOM_HABITAT_WALKER","walker3")
 		walker_3.Prevent_AI_Usage(true)
+		walker_3.Set_In_Limbo(true)
+		walker_3.Hide(true)
 
 		walker_spawn_loc[1] = Find_Hint("MARKER_GENERIC_PURPLE","walkerloc01")
 		walker_spawn_loc[2] = Find_Hint("MARKER_GENERIC_PURPLE","walkerloc02")
@@ -341,9 +391,21 @@ function State_Init(message)
 		ohm_3 = Find_Hint("NOVUS_ROBOTIC_INFANTRY", "ohm3")
 		Create_Thread("Patrol2_Ohm", ohm_3)
             
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+  		
+  		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM03_NAME")
+  		--if Is_Gamepad_Active() then
+  		--	UI_Show_Controller_Context_Display(false)
+  		--end
+  		
+      -- RAD: Allowing research in this mission.
+      novus.Set_Research_Points_Override(1)
 			
       Create_Thread("Thread_Mission_Start_Bink")
 	elseif message == OnUpdate then
@@ -354,7 +416,11 @@ function Story_Mode_Service()
 	if mission_started and not mission_complete and pieces_collected == 7 then
 	
 		Create_Thread("Dialog_NM03_10_02")
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_A_COMPLETE"} )
+		
+		-- Maria 04.03.2008
+		-- Per Sega Bug #4256: removing this call to set the minor announcement text because it won't be executed before the 
+		-- the "Thread_Mission_Complete runs and thus it won't show up (best case) or it will display an empty text box (worst case).
+		--Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_A_COMPLETE"} )
 		Objective_Complete(nov03_objective00)
 
 		mission_complete = true
@@ -441,8 +507,8 @@ function Thread_Move_Vert_To_Start()
 end
 
 function Thread_Mission_Start()
-	UI_Hide_Research_Button()
-	--UI_Hide_Sell_Button()
+	-- UI_Hide_Research_Button()
+	-- UI_Hide_Sell_Button()
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED"
 	
 	Create_Thread("Thread_Alien_Unit_Controller")
@@ -500,7 +566,7 @@ function Thread_Build_Base_Objectives(obj_num)
 		--	Sleep(5)
 		--end 
 		if not TestValid(Find_First_Object("Novus_Input_Station")) and not TestValid(Find_First_Object("Novus_Input_Station_Construction")) then
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_E_ADD"} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_E_ADD"} )
 			Sleep(time_objective_sleep)
 			Create_Thread("Dialog_NM03_01_09")
 			construction_objective_04_given = true
@@ -512,7 +578,7 @@ function Thread_Build_Base_Objectives(obj_num)
 	end
 	if obj_num == 4 then
 		if construction_objective_04_given then
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_E_COMPLETE"} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_E_COMPLETE"} )
 			Objective_Complete(nov03_build_objective_04)
 			Sleep(time_objective_sleep)
 		end
@@ -543,19 +609,22 @@ function Thread_Build_Base_Objectives(obj_num)
 		--	Sleep(time_objective_sleep)
 		--end
 		if not TestValid(Find_First_Object("Novus_Aircraft_Assembly")) and not TestValid(Find_First_Object("Novus_Aircraft_Assembly_Construction")) then
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_H_ADD"} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_H_ADD"} )
 			Sleep(time_objective_sleep)
 			Create_Thread("Dialog_NM03_12_13")
 			construction_objective_07_given = true
 			nov03_build_objective_07 = Add_Objective("TEXT_SP_MISSION_NVS03_OBJECTIVE_H")
-			Add_Independent_Hint(HINT_NM03_VIRUS_EXPLOIT)
+  			--jdg 11/01/07 making sure this hint doesn't pop during a dialog line
+  			if not Is_Gamepad_Active() then
+  				Add_Independent_Hint(126)
+  			end
 		else
 			obj_num = 7
 		end
 	end
 	if obj_num == 7 then
 		if construction_objective_07_given then
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_H_COMPLETE"} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_H_COMPLETE"} )
 			Objective_Complete(nov03_build_objective_07)
 			Sleep(time_objective_sleep)
 		end
@@ -567,23 +636,28 @@ function Thread_Spawn_Piece_1()
 	Hunt(foo_list, true, false, piece_loc[piece_offset], 200)
 	Create_Thread("Thread_Spawn_Portal_Piece", (piece_loc[piece_offset]))
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_A_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS03_OBJECTIVE_A_ADD"} )
 	Sleep(time_objective_sleep)
 	nov03_objective00 = Add_Objective("TEXT_SP_MISSION_NVS03_OBJECTIVE_A")
 	Out_string = Get_Game_Text("TEXT_SP_MISSION_NVS03_OBJECTIVE_A")
 	Out_string = Replace_Token(Out_string, Get_Localized_Formatted_Number(pieces_collected), 1)
 	Set_Objective_Text(nov03_objective00, Out_string)
 	
-	if TestValid(vertigo) then
-		novus.Select_Object(vertigo)
-		Add_Attached_GUI_Hint(PG_GUI_HINT_SPECIAL_ABILITY_ICON, "TEXT_ABILITY_NOVUS_UPLOAD", HINT_NM02_VERTIGO_UPLOAD)        -- JOE: To attach to a special ability, pass it's TextID.
+  	--jdg  10/30/07 this hint is popping during a dialog line on the 360...squelching until after the dialog line
+  	if not Is_Gamepad_Active() then
+  		if TestValid(vertigo) then
+  			novus.Select_Object(vertigo)
+  			Add_Attached_GUI_Hint(PG_GUI_HINT_SPECIAL_ABILITY_ICON, "TEXT_ABILITY_NOVUS_UPLOAD", 121)        -- JOE: To attach to a special ability, pass it's TextID.
+  		end
 	end
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End()
 			
 	Sleep(time_objective_sleep)
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
@@ -598,9 +672,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -641,9 +715,12 @@ function Show_Earned_Achievements_Thread(map)
 end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	--Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End()
 			
    mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
    Flush_PIP_Queue()
@@ -659,24 +736,34 @@ function Thread_Mission_Failed()
    Rotate_Camera_By(180,30)
    -- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
    -- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
    Sleep(time_objective_sleep)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
    Fade_Screen_Out(2)
    Sleep(2)
    Lock_Controls(0)
-		player_script = aliens.Get_Script()
+	player_script = aliens.Get_Script()
 		
    Force_Victory(aliens)
 end
 
 function Thread_Spawn_Portal_Piece(piece_loc)	
+		-- Maria 01.15.2008
+		-- If spawn events are triggered too close together it is possible for 2 of these threads to
+		-- run 'at the same time' thus modifying the variable piece_offset and breaking the mission.
+		-- Hence, we have to make sure we modify the piece_offset variable before any call to sleep.
+		-- This was causing a soft-lock when dowloading the last piece since it was failing to make it 
+		-- vulnerable and couldn't be picked up by the transport.  Please let me know if you have any
+		-- questions.  Thanks.
+		local piece_offset_on_entry = piece_offset
+		piece_offset = piece_offset + 1
+		
 		Register_Prox(piece_loc, Prox_Clear_Piece_Area_Novus, 30, novus)
 		Register_Prox(piece_loc, Prox_Clear_Piece_Area_Alien, 30, aliens)
 		Sleep(1)
 		--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"A NEW PORTAL PIECE HAS BEEN DETECTED!"} )
 		
-		if piece_offset==1 then 
+		if piece_offset_on_entry==1 then 
 			portal1.Set_Object_Context_ID("StoryCampaign")
 			portal1.Teleport(portal1_orig_loc)
 			portal1.Play_Animation("Anim_Build", true, 0)
@@ -684,7 +771,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			portal1.Play_Animation("Anim_Idle", true, 0)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_1")
 		end
-		if piece_offset==2 then
+		if piece_offset_on_entry==2 then
 			portal2.Set_Object_Context_ID("StoryCampaign")
 			portal2.Teleport(portal2_orig_loc)
 			portal2.Play_Animation("Anim_Build", true, 0)
@@ -692,7 +779,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			portal2.Play_Animation("Anim_Idle", true, 0)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_2")
 		end
-		if piece_offset==3 then 
+		if piece_offset_on_entry==3 then 
 			portal3.Set_Object_Context_ID("StoryCampaign")
 			portal3.Teleport(portal3_orig_loc)
 			portal3.Play_Animation("Anim_Build", true, 0)
@@ -700,7 +787,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			portal3.Play_Animation("Anim_Idle", true, 0)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_3")
 		end
-		if piece_offset==4 then 
+		if piece_offset_on_entry==4 then 
 			portal4.Set_Object_Context_ID("StoryCampaign")
 			portal4.Teleport(portal4_orig_loc)
 			portal4.Play_Animation("Anim_Build", true, 0)
@@ -709,7 +796,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_4")
 			Create_Thread("Midtro")
 		end
-		if piece_offset==5 then 
+		if piece_offset_on_entry==5 then 
 			portal5.Set_Object_Context_ID("StoryCampaign")
 			portal5.Teleport(portal5_orig_loc)
 			portal5.Play_Animation("Anim_Build", true, 0)
@@ -717,7 +804,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			portal5.Play_Animation("Anim_Idle", true, 0)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_5")
 		end
-		if piece_offset==6 then 
+		if piece_offset_on_entry==6 then 
 			portal6.Set_Object_Context_ID("StoryCampaign")
 			portal6.Teleport(portal6_orig_loc)
 			portal6.Play_Animation("Anim_Build", true, 0)
@@ -725,7 +812,7 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 			portal6.Play_Animation("Anim_Idle", true, 0)
 			Add_Radar_Blip(piece_loc, "DEFAULT", "blip_portal_piece_6")
 		end
-		if piece_offset==7 then 
+		if piece_offset_on_entry==7 then 
 			portal7.Set_Object_Context_ID("StoryCampaign")
 			portal7.Teleport(portal7_orig_loc)
 			portal7.Play_Animation("Anim_Build", true, 0)
@@ -735,46 +822,46 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 		end
 		
 		Sleep(1.5)
-		portal_piece[piece_offset] = Spawn_Unit(Find_Object_Type("NOVUS_PORTAL_PIECE_01"), piece_loc, novus)
-		portal_piece[piece_offset].Make_Invulnerable(true)
-		portal_piece[piece_offset].Teleport_And_Face(piece_loc)
-		portal_piece[piece_offset].Prevent_All_Fire(true)
+		portal_piece[piece_offset_on_entry] = Spawn_Unit(Find_Object_Type("NOVUS_PORTAL_PIECE_01"), piece_loc, novus)
+		portal_piece[piece_offset_on_entry].Make_Invulnerable(true)
+		portal_piece[piece_offset_on_entry].Teleport_And_Face(piece_loc)
+		portal_piece[piece_offset_on_entry].Prevent_All_Fire(true)
 		
-		portal_piece[piece_offset].Register_Signal_Handler(Callback_Piece_Uploaded, "OBJECT_EFFECT_APPLIED")
+		portal_piece[piece_offset_on_entry].Register_Signal_Handler(Callback_Piece_Uploaded, "OBJECT_EFFECT_APPLIED")
 		
-		portal_piece[piece_offset].Highlight(true, -50)
+		portal_piece[piece_offset_on_entry].Highlight(true, -50)
 		Sleep(1)
-		if piece_offset==1 then 
+		if piece_offset_on_entry==1 then 
 			portal1.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal1.Hide(true)
 		end
-		if piece_offset==2 then 
+		if piece_offset_on_entry==2 then 
 			portal2.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal2.Hide(true)
 		end
-		if piece_offset==3 then 
+		if piece_offset_on_entry==3 then 
 			portal3.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal3.Hide(true)
 		end
-		if piece_offset==4 then 
+		if piece_offset_on_entry==4 then 
 			portal4.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal4.Hide(true)
 		end
-		if piece_offset==5 then 
+		if piece_offset_on_entry==5 then 
 			portal5.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal5.Hide(true)
 		end
-		if piece_offset==6 then 
+		if piece_offset_on_entry==6 then 
 			portal6.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal6.Hide(true)
 		end
-		if piece_offset==7 then 
+		if piece_offset_on_entry==7 then 
 			portal7.Play_Animation("Anim_Die", true, 0)
 			Sleep(1.5)
 			portal7.Hide(true)
@@ -783,7 +870,6 @@ function Thread_Spawn_Portal_Piece(piece_loc)
 	piece_loc.Cancel_Event_Object_In_Range(Prox_Clear_Piece_Area_Novus)
 	piece_loc.Cancel_Event_Object_In_Range(Prox_Clear_Piece_Area_Alien)
 	
-	piece_offset = piece_offset + 1
 end
 
 function Prox_Clear_Piece_Area_Novus(prox_obj, trigger_obj)
@@ -857,6 +943,8 @@ function Thread_Walker_Handler(variant)
 	walker_list[variant].Teleport_And_Face(walker_spawn_loc[variant])
 	walker_list[variant].Register_Signal_Handler(Callback_Walker_Killed, "OBJECT_HEALTH_AT_ZERO")
 	walker_list[variant].Move_To(walker_goto[variant])
+	walker_list[variant].Set_In_Limbo(false)
+	walker_list[variant].Hide(false)
 	Sleep(2)
 	Create_Thread("Thread_Habitat_Walker_Produce",{walker_list[variant],3})
 end
@@ -1112,9 +1200,9 @@ function Lock_Objects(boolean)
 		novus.Lock_Object_Type(Find_Object_Type("Novus_Aircraft_Assembly_Scramjet"),boolean,STORY)
 		novus.Lock_Object_Type(Find_Object_Type("Novus_Science_Lab_Upgrade_Singularity_Processor"),boolean,STORY)
 		
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
-		novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Unit_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Control_Turret_Area_Special_Ability", false, STORY)
+		-- novus.Lock_Unit_Ability("Novus_Hacker", "Novus_Hacker_Lockdown_Area_Special_Ability", false, STORY)
 		
 		novus.Lock_Unit_Ability("Novus_Robotic_Infantry", "Robotic_Infantry_Capture", true, STORY)
 		novus.Lock_Generator("RoboticInfantryCaptureGenerator", true, STORY)
@@ -1135,8 +1223,9 @@ function Lock_Objects(boolean)
 		aliens.Lock_Generator("ScienceWalkerOnDeathExplosionGenerator", true)
 		--aliens.Lock_Generator("FooCoreOnDeathExplosionGenerator", true)
 		
-		novus.Lock_Generator("VirusInfectAuraGenerator", false)
-		novus.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false )
+		-- RAD: Removed these unlocks as research is being inserted.
+		-- novus.Lock_Generator("VirusInfectAuraGenerator", false)
+		-- novus.Lock_Generator("NovusResearchAdvancedFlowEffectGenerator", false )
 end
 
 function Create_Hunt_Groups()
@@ -1201,6 +1290,7 @@ end
 
 
 function PROX_Portal_Piece(prox_obj, trigger_obj)
+	
 	if trigger_obj == portal_piece[1] then
 		pieces_at_base[1] = true
 		portal_piece[1].Highlight(false)
@@ -1267,17 +1357,23 @@ end
 -- Callbacks go here:
 function Callback_Mirabel_Killed()
 	if not mission_success then
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"} )
-   	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"} )
+		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
+		if mission_failure == false then
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
 function Callback_Vertigo_Killed()
 	if not mission_success then
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_VERTIGO"} )
-   	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_VERTIGO"
-		Create_Thread("Thread_Mission_Failed")
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_VERTIGO"} )
+   		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_VERTIGO"
+   		if mission_failure == false then
+				mission_failure = true
+				Create_Thread("Thread_Mission_Failed")
+			end
 	end
 end
 
@@ -1348,7 +1444,10 @@ function Callback_Piece_Uploaded(callback_obj, effect, is_target, source_obj)
 		if callback_obj == portal_piece[1] and not download_hint_given then 
 			download_hint_given = true
 		   Create_Thread("Dialog_NM03_01_07")			
-			Add_Attached_GUI_Hint(PG_GUI_HINT_SPECIAL_ABILITY_ICON, "TEXT_ABILITY_NOVUS_DOWNLOAD", HINT_NM02_VERTIGO_DOWNLOAD)        -- JOE: To attach to a special ability, pass it's TextID.
+  			--jdg 11/01/07 squelching this hint unitl dialog is finished for the 360
+  			if not Is_Gamepad_Active() then
+  				Add_Attached_GUI_Hint(PG_GUI_HINT_SPECIAL_ABILITY_ICON, "TEXT_ABILITY_NOVUS_DOWNLOAD", 122)        -- JOE: To attach to a special ability, pass it's TextID.
+  			end
 		end
 		if callback_obj == portal_piece[1] then
 			Remove_Radar_Blip("blip_portal_piece_1")
@@ -1419,7 +1518,10 @@ function Callback_Gatherer_07_Killed(callback_obj)
 end
 
 function Callback_Transport_Destroyed()
-	Create_Thread("Thread_Mission_Failed")
+	if mission_failure == false then
+		mission_failure = true
+		Create_Thread("Thread_Mission_Failed")
+	end
 end
 
 function Reinforcements_Handler()
@@ -1575,7 +1677,13 @@ end
 
 --Vertigo (VER)	On my way.
 function Dialog_NM03_01_03()
-	Queue_Talking_Head(dialog_vertigo, "NVS03_SCENE01_03")
+  	--jdg 10/30/07 fix for 360 hint popping during a dialog event.
+  	if Is_Gamepad_Active() then
+  		BlockOnCommand(Queue_Talking_Head(dialog_vertigo, "NVS03_SCENE01_03"))
+  		Add_Independent_Hint(121)
+  	else
+  		Queue_Talking_Head(dialog_vertigo, "NVS03_SCENE01_03")
+  	end
 	Create_Thread("Thread_Spawn_Piece_1")
 end
 
@@ -1598,7 +1706,13 @@ end
 
 --Mirabel (MIR)   To keep the pieces safe, I want you to download them to the portal transport in our base.  I'm highlighting it on the radar for you now.
 function Dialog_NM03_01_07()
-	Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE01_07")
+  	--jdg 10/30/07 fix for 360 hint popping during a dialog event.
+  	if Is_Gamepad_Active() then
+  		BlockOnCommand(Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE01_07"))
+  		Add_Independent_Hint(122)
+  	else
+  		Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE01_07")
+  	end
 end
 
 --Vertigo (VER)   Affirmative.
@@ -1981,7 +2095,13 @@ end
 
 --Mirabel (MIR)	We should also construct an Aircraft Assembly.  Then we can build Corruptors to infect Hierarchy units with computer viruses. That should slow them down and give us feedback on their positions.
 function Dialog_NM03_12_13()
-	Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE12_13")
+  	--jdg 11/01/07 fix for 360 hint popping during a dialog event.
+  	if Is_Gamepad_Active() then
+  		BlockOnCommand(Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE12_13"))
+  		Add_Independent_Hint(126)
+  	else
+  		Queue_Talking_Head(dialog_mirabel, "NVS03_SCENE12_13")
+  	end
 end
 
 --Mirabel (MIR)	To replenish our infantry, we will first need to build a Robotic Assembly.
@@ -1990,7 +2110,123 @@ function Dialog_NM03_12_14()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+   -- RAD: Allowing research in this mission.
+	-- UI_Hide_Research_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dialog_NM03_01_06 = nil
+	Dialog_NM03_01_08 = nil
+	Dialog_NM03_03_05 = nil
+	Dialog_NM03_03_06 = nil
+	Dialog_NM03_03_07 = nil
+	Dialog_NM03_05_01 = nil
+	Dialog_NM03_05_02 = nil
+	Dialog_NM03_05_03 = nil
+	Dialog_NM03_05_04 = nil
+	Dialog_NM03_07_03 = nil
+	Dialog_NM03_09_01 = nil
+	Dialog_NM03_09_02 = nil
+	Dialog_NM03_09_03 = nil
+	Dialog_NM03_10_01 = nil
+	Dialog_NM03_11_01 = nil
+	Dialog_NM03_12_01 = nil
+	Dialog_NM03_12_04 = nil
+	Dialog_NM03_12_06 = nil
+	Dialog_NM03_12_09 = nil
+	Dialog_NM03_12_10 = nil
+	Dialog_NM03_12_11 = nil
+	Dialog_NM03_12_14 = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

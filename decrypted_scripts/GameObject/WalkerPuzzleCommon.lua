@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/WalkerPuzzleCommon.lua#8 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/WalkerPuzzleCommon.lua#9 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/WalkerPuzzleCommon.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/WalkerPuzzleCommon.lua $
 --
 --    Original Author: Brian Hayes
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 90369 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/07 11:16:22 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #8 $
+--          $Revision: #9 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -190,7 +192,7 @@ function Walker_Set_Invulnerable(on_off)
 			Walker_Invulnerable_Points = {}
 			local hp_table = Object.Get_All_Hard_Points()
 			for i,hard_point in pairs(hp_table) do
-				if hard_point.Has_Behavior(BEHAVIOR_INVULNERABLE) == false then
+				if hard_point.Has_Behavior(62) == false then
 					table.insert(Walker_Invulnerable_Points, hard_point)
 					--hard_point.Make_Invulnerable(true)
 					hard_point.Set_Cannot_Be_Killed(true)
@@ -227,4 +229,15 @@ function Destroy_Walker_Object( object, final_blow_player, final_blow_object_typ
 		
 		object.Take_Damage(9999999999, "Damage_Default", final_blow_player, final_blow_object_type)  -- kill it
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Behavior_On_Production_Complete = nil
+	Common_Puzzle_Clean_Up = nil
+	Common_Puzzle_Init = nil
+	Destroy_Walker_Object = nil
+	Index_To_Key_Table = nil
+	Register_For_Production_Complete_Callback = nil
+	Table_Merge = nil
+	Kill_Unused_Global_Functions = nil
 end

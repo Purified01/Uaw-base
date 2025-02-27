@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGCrontab.lua#9 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGCrontab.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGCrontab.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGCrontab.lua $
 --
 --    Original Author: Joe Howes
 --
 --            $Author: Joe_Howes $
 --
---            $Change: 86742 $
+--            $Change: 96589 $
 --
---          $DateTime: 2007/10/25 17:52:13 $
+--          $DateTime: 2008/04/08 16:51:17 $
 --
---          $Revision: #9 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -178,6 +184,23 @@ function PGCrontab_Schedule(function_handle, minutes, seconds, repeat_count)
 
 end
 
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function PGCrontab_Kill_Scheduled_Functions(function_handle)
+
+	local new_cron_table = {}
+	
+	for key, cron in pairs(_PGCronTable) do
+		if (cron.Function ~= function_handle) then
+			new_cron_table[key] = cron
+		end
+	end
+	
+	_PGCronTable = new_cron_table
+
+end
+
 
 -- ---------------------------------------------------------------------------------------------------------------------
 -- ---------------------------------------------------------------------------------------------------------------------
@@ -275,4 +298,32 @@ end
 -------------------------------------------------------------------------------
 function _PGCrontab_Compute_Delta(curr_time, cron)
 	return (curr_time - cron.Timestamp)
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGCrontab_Init = nil
+	PGCrontab_Schedule = nil
+	PGCrontab_Update = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

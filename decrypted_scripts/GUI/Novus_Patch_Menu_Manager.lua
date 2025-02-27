@@ -1,3 +1,9 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -50,12 +56,18 @@ function Init_Patches_Menu()
 	Clock.Set_Hidden(true)
 	Clock.Set_Filled(0.0)
 	-- this is a cooldown clock so it must be red and go backwards!
-	Clock.Set_Clockwise(true)	
+--	Clock.Set_Clockwise(true)	
 	Clock.Set_Tint(1.0, 0.0, 0.0, 120.0/255.0)
 	
 	-- Find all the patch menu buttons (all available patches)
 	-- -----------------------------------------------------------------------
-	PatchButtons = Find_GUI_Components(this, "Patch")
+	PatchButtons = {}
+	if TestValid(this.Patches) then 
+		PatchButtons = Find_GUI_Components(this.Patches, "Patch")
+	else
+		PatchButtons = Find_GUI_Components(this, "Patch")
+	end
+	
 	for index, button in pairs(PatchButtons) do
 		button.Set_Hidden(true)
 		this.Register_Event_Handler("Selectable_Icon_Clicked", button, On_Build_Patch_Button_Click)
@@ -176,9 +188,9 @@ function Setup_Menu()
 			
 			-- enable the button only if the player has enough credits to purchase this unit.
 			if MenuDisabled == true then 
-				button.Set_Enabled(false)
+				button.Set_Button_Enabled(false)
 			else
-				button.Set_Enabled(can_produce)
+				button.Set_Button_Enabled(can_produce)
 			end
 			
 			if build_cost > 0.0 then 
@@ -211,7 +223,7 @@ end
 function Reset_Menu()
 	for _, button in pairs(PatchButtons) do
 		button.Set_Hidden(true)
-		button.Set_Enabled(true)
+		button.Set_Button_Enabled(true)
 	end	
 end
 
@@ -305,11 +317,11 @@ function Disable_Menu(on_off)
 	for _, button in pairs(PatchButtons) do
 		if button.Get_Hidden() == false then
 			if on_off then 
-				button.Set_Enabled(false)
+				button.Set_Button_Enabled(false)
 			else
 				local data = button.Get_User_Data()
 				if data and #data >= 2 then 
-					button.Set_Enabled(data[2])
+					button.Set_Button_Enabled(data[2])
 				end
 			end
 		end
@@ -341,3 +353,42 @@ Interface.Update_Scene = Update_Scene
 Interface.Refresh_Menu = Refresh_Menu
 Interface.Refresh_Focus = Refresh_Focus
 Interface.Set_Animating = Set_Animating
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

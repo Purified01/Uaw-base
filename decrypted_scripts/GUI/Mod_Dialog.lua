@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Mod_Dialog.lua#1 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Mod_Dialog.lua#3 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Mod_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Mod_Dialog.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87256 $
+--            $Change: 92481 $
 --
---          $DateTime: 2007/11/02 15:10:03 $
+--          $DateTime: 2008/02/05 12:16:28 $
 --
---          $Revision: #1 $
+--          $Revision: #3 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,7 +73,7 @@ function Play_Clicked()
 	ClientTable[1].name = Create_Wide_String("LocalPlayer")
 	ClientTable[1].common_addr = Net.Get_Local_Addr()
 	ClientTable[1].faction = "Novus"
-	ClientTable[1].color = COLOR_BRIGHT_BLUE
+	ClientTable[1].color = 15
 	ClientTable[1].is_ai = false
 	ClientTable[1].team = 1
 	LocalClient = ClientTable[1]
@@ -76,7 +83,7 @@ function Play_Clicked()
 	ClientTable[2].name = Create_Wide_String("AIPlayer")
 	ClientTable[2].common_addr = "AIPlayer1"
 	ClientTable[2].faction = "Alien"
-	ClientTable[2].color = COLOR_RED
+	ClientTable[2].color = 2
 	ClientTable[2].is_ai = true
 	ClientTable[2].ai_difficulty = 1
 	ClientTable[2].team = 2
@@ -156,3 +163,7 @@ end
 
 Interface = { }
 Interface.Display_Dialog = Display_Dialog
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Kill_Unused_Global_Functions = nil
+end

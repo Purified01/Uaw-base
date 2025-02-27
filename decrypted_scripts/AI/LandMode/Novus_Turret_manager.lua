@@ -1,4 +1,16 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Novus_Turret_manager.lua#11 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[18] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[161] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[164] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Novus_Turret_manager.lua#9 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +37,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Novus_Turret_manager.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Novus_Turret_manager.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 86515 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/24 11:49:35 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #11 $
+--          $Revision: #9 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,8 +82,12 @@ end
 function Compute_Desire()
 
 	if not Is_Player_Of_Faction(Player, "NOVUS") then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -2.0
+	end
+
+	if Player.Get_Player_Is_Crippled() then
+		return -2.0
 	end
 
 	-- Only start the goal with the nil object
@@ -219,7 +235,7 @@ function Look_For_Turret_Placement()
 							table.insert(turret_list, object)
 						elseif object_type == power_type or object_type.Get_Type_Value("Is_Command_Center") or object_type == air_type or object_type == science_type or object_type == vehicle_type then
 							table.insert(target_list, object)
-						elseif object.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) and object.Get_Health() < 0.9 then
+						elseif object.Has_Behavior(99) and object.Get_Health() < 0.9 then
 							table.insert(target_list, object)
 						end
 					end
@@ -345,3 +361,45 @@ function Build_Turret()
 	
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	Describe_Target = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Resource_Value = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

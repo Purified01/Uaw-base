@@ -1,4 +1,54 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut01.lua#168 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[204] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[139] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[144] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[88] = true
+LuaGlobalCommandLinks[84] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[206] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut01.lua#49 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +75,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut01.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut01.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: oksana_kubushyna $
+--            $Author: Brian_Hayes $
 --
---            $Change: 85397 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/10/03 15:32:26 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #168 $
+--          $Revision: #49 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +101,7 @@ require("PGHintSystem")
 require("Story_Campaign_Hint_System")
 require("RetryMission")
 require("PGColors")
+require("PGCommands")
 
 -- DON'T REMOVE! Needed for objectives to function properly, even when they are 
 -- called from other scripts. (The data is stored here.)
@@ -92,9 +143,6 @@ function Definitions()
 	chopper_faction.Make_Ally(uea)
 
 	PGColors_Init_Constants()
---	chopper_faction.Enable_Colorization(true, COLOR_DARK_GREEN)
---	uea.Enable_Colorization(true, COLOR_GREEN)
---	aliens.Enable_Colorization(true, COLOR_RED)
 	
    player_faction = uea 
 	
@@ -115,6 +163,7 @@ function Definitions()
    fow_fuel_truck = nil
 	fow_final_reveal = nil
 	fow_checkpoint_charlie = nil
+	fow_mission_start = nil -- this is a fudge reveal/unreveal to try and get by a weird context bug.
 	
 	--counters
 	counter_obj01_greys = 0
@@ -190,12 +239,12 @@ function Definitions()
 		"American_Civilian_Urban_11_Script",
 	}
 	
-	schoolchildren_type_list = {
-		"American_Child_Female_01",
-		"American_Child_Female_02",
-		"American_Child_Male_01",
-		"American_Child_Male_02",
-	}
+	--schoolchildren_type_list = {
+	--	"American_Child_Female_01",
+	--	"American_Child_Female_02",
+	--	"American_Child_Male_01",
+	--	"American_Child_Male_02",
+	--}
 	
 	troop_charlie_spawn_list = {
 		"MILITARY_TEAM_MARINES",
@@ -218,9 +267,9 @@ function Definitions()
 	}
 	
 	counter_civ_types = 0 -- determines itself later
-	counter_schoolchildren_types = 0 --ditto
+	--counter_schoolchildren_types = 0 --ditto
 	civ_spawn_list = {}
-	schoolchildren_list = {}
+	--schoolchildren_list = {}
 
 	total_spawn_flags = 0 --dynamically changes as the acts progress
 	
@@ -326,8 +375,9 @@ function State_Init(message)
       Define_Hints()
 		--Init_Radar()
 		Define_Explosion_Hints()
-				
-		Set_Desired_Civilian_Population(50) 
+	
+	--jdg testing....turning off civ spawning.
+		--Set_Desired_Civilian_Population(50) 
 		uea.Reset_Story_Locks()
 		aliens.Reset_Story_Locks()
 		
@@ -339,6 +389,16 @@ function State_Init(message)
 		
 		--making military and civilians allies 
 		civilian.Make_Ally(player_faction)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		if Is_Gamepad_Active() then
+			--UI_Show_Controller_Context_Display(false)
+			Controller_Set_Tactical_Component_Lock("LEFT_SHOULDER_BUTTON",true)
+			Set_Level_Name("TEXT_GAMEPAD_TUTORIAL01_NAME")
+		end
 
 		Set_Next_State("State_Tut01_Act01")
 		Create_Thread("Thread_Ambient_Explsions")
@@ -351,9 +411,13 @@ function State_Tut01_Act01(message)
 	if message == OnEnter then
 		_CustomScriptMessage("JoeLog.txt", string.format("Tut01 Now entering State_Tut01_Act01"))
 		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		-- All this is done in the call to UI_On_Mission_Start above
+		--[[
 		Stop_All_Speech()
 		Flush_PIP_Queue()
 		Allow_Speech_Events(true)
+		]]--
 			
       --Set_Active_Context("Tut01_Opening_AVI")
 		Create_Thread("Thread_Mission_Start_Bink")
@@ -378,9 +442,9 @@ function Thread_Mission_Start_Bink()
    
    --Set_Active_Context("Tut01_StoryCampaign")
    --rehide the starting_flyover -- large saucer
-   if TestValid(starting_flyover) then
-      starting_flyover.Hide(true)
-   end
+  -- if TestValid(starting_flyover) then
+   --   starting_flyover.Hide(true)
+   --end
 
    panicked_civ_spawner_list = act01_panicked_civ_spawner_list
    total_spawn_flags = table.getn(panicked_civ_spawner_list)
@@ -423,9 +487,9 @@ function Thread_Mission_Start_Setup_CameraMoves ()
 	Create_Thread("Thread_Spawn_Panicked_Civs")
 	
 	--***** HINT SYSTEM *****
-	Add_Attached_Hint(col_moore, HINT_SYSTEM_HEROES)
+	Add_Attached_Hint(col_moore, 75)
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_A"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_A"} )
 	Sleep(time_objective_sleep)
 	tut01_objective03 = Add_Objective("TEXT_SP_MISSION_TUT01_OBJECTIVE_A")--Secure the Capitol Building and rescue the President.
 	Add_Radar_Blip(objective03_location, "DEFAULT", "blip_president")
@@ -458,18 +522,6 @@ function Thread_Cine_Mission_Start()
 	if not bool_testing then
 		Create_Thread("Thread_Mission_Start_Setup_CameraMoves")
 	end
-	
-   -- ***** HINT SYSTEM *****
-	--Add_Independent_Hint(HINT_SYSTEM_OBJECTIVES)
-	--Add_Independent_Hint(HINT_SYSTEM_ABILITIES)
-	--Add_Attached_GUI_Hint(PG_GUI_HINT_SPECIAL_ABILITY_ICON, "TEXT_ABILITY_MILITARY_MOORE_GRENADE", HINT_SYSTEM_ABILITIES)	-- JOE: To attach to a special ability, pass it's TextID.
-   --xxx
-	
-	
-	
-	
-	--Abilities: Most units have abilities. To use Col. Moore's Grenade ability, left-click the Grenade ability button and select a target.
-	-- ***** HINT SYSTEM *****
    
    for i, gawker in pairs(gawker_list) do
 		if TestValid(gawker) then
@@ -610,7 +662,7 @@ end
 --  below are the various threads used in this script
 function Thread_Mission_Start()
    --spawn in some civs for the first set of grays to "chase"
-   local spawn_number_roll = 10 --spawn 10 guys
+   local spawn_number_roll = 3 --spawn 10 guys
    local spawn_flag = act01_greys_civ_spawner
    
    --fill in the spawn list
@@ -643,7 +695,7 @@ function Thread_Col_Moore_Health_Monitor()
 				bool_taught_med_pack = true
 				
 				UI_Start_Flash_Ability_Button("TEXT_ABILITY_MILITARY_MOORE_MEDPACK")
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_HEALTH_WARNING_COL_MOORE"} )--Warning! Colonel Moore's health is low.
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_HEALTH_WARNING_COL_MOORE"} )--Warning! Colonel Moore's health is low.
 
 			end
          Sleep(30)
@@ -654,7 +706,7 @@ end
 
 function Thread_Spawn_Panicked_Civs()
 	while (true) do
-		local spawn_number_roll = GameRandom(1, 5) --spawn a max of 5 guys
+		local spawn_number_roll = GameRandom(1, 3) --spawn a max of 5 guys
 
       if bool_display_all_joelog == true then
          _CustomScriptMessage("JoeLog.txt", string.format("Spawn_Civilians(spawn_number_roll, panicked_civ_spawner_list, civ_type_list, CIVILIAN_STATE_PANIC, true)"))
@@ -679,12 +731,12 @@ function Thread_Spawn_Civilian_Survivors(thread_info)
 		return
 	end
 	
-	local spawn_number_roll = GameRandom(10, 15) --spawn between 10 - 15 civs to sell rescue event
+	local spawn_number_roll = GameRandom(5, 7) --spawn between 10 - 15 civs to sell rescue event
 	
 	if spawn_location == objective05_schoolchildren_spawn then
-		for i=1,spawn_number_roll do
-			civ_spawn_list[i] = schoolchildren_type_list[GameRandom(1,counter_schoolchildren_types)]   
-		end
+		--for i=1,spawn_number_roll do
+		--	civ_spawn_list[i] = schoolchildren_type_list[GameRandom(1,counter_schoolchildren_types)]   
+		--end
 	else
 		--fill in the spawn list
 		for i=1,spawn_number_roll do
@@ -698,10 +750,10 @@ function Thread_Spawn_Civilian_Survivors(thread_info)
 		new_civ = Spawn_Unit(Find_Object_Type(civ_spawn), mirabel_wait_spot, civilian) 
 		new_civ.Teleport_And_Face(spawn_location)
 		
-		schoolchildren_list[i] = new_civ
+		--schoolchildren_list[i] = new_civ
       
       if spawn_location == objective05_schoolchildren_spawn then
-			Create_Thread("Thread_SchoolChildren_RunAway", new_civ)
+			--Create_Thread("Thread_SchoolChildren_RunAway", new_civ)
 		elseif spawn_location == Find_Hint("MARKER_GENERIC_GREEN","gasstation-civ-spawn-location") then
 			gasstation_civ_despawn = Find_Hint("MARKER_CIVILIAN_DESPAWNER","despawn")
 			new_civ.Set_Civilian_To_Despawn(gasstation_civ_despawn)
@@ -710,37 +762,37 @@ function Thread_Spawn_Civilian_Survivors(thread_info)
       end
 	end
 	
-	if spawn_location == objective05_schoolchildren_spawn then
-		Sleep(1)
-		Remove_Radar_Blip("blip_objective05")
+	--if spawn_location == objective05_schoolchildren_spawn then
+	--	Sleep(1)
+	--	Remove_Radar_Blip("blip_objective05")
 		
-		local school_kids_still_around = true
-		while (school_kids_still_around == true) do
-			school_kids_still_around = false
-			for i, schoolchild in pairs(schoolchildren_list) do
-				if TestValid(schoolchild) then
-					_CustomScriptMessage("JoeLog.txt", string.format("TestValid(schoolchild)"))
-					school_kids_still_around = true
-					break
-				end
-			end
-			Sleep(1)
-		end
-	elseif spawn_location ~= Find_Hint("MARKER_GENERIC_GREEN","gasstation-civ-spawn-location") then
+	--	local school_kids_still_around = true
+	--	while (school_kids_still_around == true) do
+	--		school_kids_still_around = false
+	--		for i, schoolchild in pairs(schoolchildren_list) do
+	--			if TestValid(schoolchild) then
+	--				_CustomScriptMessage("JoeLog.txt", string.format("TestValid(schoolchild)"))
+	--				school_kids_still_around = true
+	--				break
+	--			end
+	--		end
+	--		Sleep(1)
+	--	end
+	if spawn_location ~= Find_Hint("MARKER_GENERIC_GREEN","gasstation-civ-spawn-location") then
 		Sleep(1)
 		Make_Civilians_Panic(goto_location.Get_Position(), 100)
 	end
 end
 
-function Thread_SchoolChildren_RunAway(child)
-	Sleep(GameRandom(0,1.5)) 
-	if TestValid(child) then
-		BlockOnCommand(child.Move_To(objective05_schoolchildren_exit_goto))
-		if TestValid(child) then
-			child.Despawn()
-		end
-	end
-end
+--function Thread_SchoolChildren_RunAway(child)
+--	Sleep(GameRandom(0,1.5)) 
+--	if TestValid(child) then
+--		BlockOnCommand(child.Move_To(objective05_schoolchildren_exit_goto))
+--		if TestValid(child) then
+--			child.Despawn()
+--		end
+--	end
+--end
 
 function Thread_Mission_Victorious()
 	Lock_Controls(1)
@@ -815,7 +867,6 @@ function Thread_Grunts_Brutalize_Civs()
 
 	for i, obj01_alien_guards02 in pairs(obj01_alien_guards02_list) do
 		if TestValid(obj01_alien_guards02) then
-			--bool_alien_guards02_still_alive = true xxx
 			obj01_alien_guards02.Set_Service_Only_When_Rendered(false)
 		end
 	end
@@ -859,32 +910,46 @@ function Callback_Col_Moore_Killed()
 	
 	
 	if not bool_mission_won then
-		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-		Flush_PIP_Queue() -- removes any queded dialog
+	
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+
+				
+				
+		--Stop_All_Speech() -- stopping any other mission dialog that might be going on.
+		--Flush_PIP_Queue() -- removes any queded dialog
 		failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE_COLONEL"
-		bool_mission_failed = true
-		Create_Thread("Thread_Mission_Failed")
+		if bool_mission_failed == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
 function Callback_Sgt_Woolard_Killed()
 	_CustomScriptMessage("JoeLog.txt", string.format("Callback_Sgt_Woolard_Killed"))
 	
-
 	if not bool_mission_won then
-		Stop_All_Speech() -- stopping any other mission dialog that might be going on.
-		Flush_PIP_Queue() 
+	
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+
+		--Stop_All_Speech() -- stopping any other mission dialog that might be going on.
+		--Flush_PIP_Queue() 
 		failure_text = "TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_WOOLARD"
-		bool_mission_failed = true
-		Create_Thread("Thread_Mission_Failed")
+		if bool_mission_failed == false then
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
 function Thread_Mission_Failed()
-
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+		
+		-- All this is done in the call to UI_On_Mission_End above
+		--[[
+			Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+			Stop_All_Speech()
+			Flush_PIP_Queue()
+			Allow_Speech_Events(false)
+		]]--
 			
 	bool_mission_failed = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -902,7 +967,7 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(5)
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
@@ -915,7 +980,7 @@ function Thread_Sgt_Woolard_Health_Monitor()
 	while TestValid(sgt_woolard) do
       sgt_woolard_health = sgt_woolard.Get_Health()
       if sgt_woolard_health < 0.4 then
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_HEALTH_WARNING_SGT_WOOLARD"} )--Warning! Sergeant Woolard's health is low.
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_HEALTH_WARNING_SGT_WOOLARD"} )--Warning! Sergeant Woolard's health is low.
          Sleep(30)
       end
       Sleep(5)
@@ -935,7 +1000,7 @@ end
 function Thread_Spawn_Turret_Fodder()
    while TestValid(radiation_spitter) do
       spawned_civs = {}
-      spawned_civs = Spawn_Civilians(5, radiation_spitter_civ_spawner, civ_type_list, CIVILIAN_STATE_PANIC, true)
+      spawned_civs = Spawn_Civilians(1, radiation_spitter_civ_spawner, civ_type_list, CIVILIAN_STATE_PANIC, true)
 
       for i, civ in pairs(spawned_civs) do
          if TestValid(civ) then
@@ -1055,8 +1120,19 @@ function Callback_Passguard_Attacked()
    --send in the ambient guys
    for i, passguard_ambient_grey in pairs(passguard_ambient_grey_list) do
 		if TestValid(passguard_ambient_grey) then
-         Create_Thread("Thread_Ambient_Greys_Orders", passguard_ambient_grey)
+			passguard_ambient_grey.Set_Object_Context_ID("Tut01_StoryCampaign")
 		end
+	end
+	
+	Hunt(passguard_ambient_grey_list, "Tut01_Reaper_Attack_Priorities", true, true, passguard_guard_spot, 100)
+	
+	--passguard has been attacked...put the brutes back into context
+	if TestValid(schoolchildren_brute_roof) then
+		schoolchildren_brute_roof.Set_Object_Context_ID("Tut01_StoryCampaign")
+	end
+	
+	if TestValid(schoolchildren_brute_roof02) then
+		schoolchildren_brute_roof02.Set_Object_Context_ID("Tut01_StoryCampaign")
 	end
 end
 
@@ -1073,11 +1149,17 @@ function Callback_Capitolguard_Attacked()
    Hunt(capitolguard_list, "Tut01_Reaper_Attack_Priorities", true, true, capitolguard_guard_spot, 200) 
    
    --start ufo routine here 
-   Start_Saucer_Encounter()
+	local thread_info = {} 
+	thread_info[1] = saucer01
+	thread_info[2] = saucer01_grey_list
+	thread_info[3] = saucer01_entry
+	Create_Thread("Thread_Saucer_Leaves", thread_info)
+   --Start_Saucer_Encounter()
    
    --send in the ambient guys
    for i, capitolguard_ambient_grey in pairs(capitolguard_ambient_grey_list) do
 		if TestValid(capitolguard_ambient_grey) then
+			capitolguard_ambient_grey.Set_Object_Context_ID("Tut01_StoryCampaign")
          thread_id_capitol_ambient_grey[i] = Create_Thread("Thread_Ambient_Greys_Orders", capitolguard_ambient_grey)
 		end
 	end
@@ -1132,6 +1214,7 @@ end
 
 function Thread_Capitolguard02_Attacked()
 	if not bool_mission_failed then
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		bool_mission_won = true
 	else
 		return
@@ -1235,10 +1318,12 @@ function Callback_Schoolchildren_Brute_Killed()
 	if counter_brutes_killed == 2 then
 		_CustomScriptMessage("JoeLog.txt", string.format("All school_brutes killed"))
 			
-		local thread_info = {}
-		thread_info[1]  = objective05_schoolchildren_spawn
-		thread_info[2]  = objective05_schoolchildren_exit_goto
-		Create_Thread("Thread_Spawn_Civilian_Survivors", thread_info)
+			
+		--jdg killing the schoolkids encounter entirely...12/13/07
+		--local thread_info = {}
+		--thread_info[1]  = objective05_schoolchildren_spawn
+		--thread_info[2]  = objective05_schoolchildren_exit_goto
+		--Create_Thread("Thread_Spawn_Civilian_Survivors", thread_info)
       
       Create_Thread("Thread_Dialog_Controller", dialog_post_brutes)
 		
@@ -1283,7 +1368,7 @@ function Callback_FirstTanker_Killed(obj, killer)
 	for i, first_tanker_tree in pairs(first_tanker_tree_list) do
 		if TestValid(first_tanker_tree) then
 			--ufo_grey.Take_Damage(150, "Damage_Fire")
-			first_tanker_tree.Enable_Behavior(BEHAVIOR_BURNING, true)
+			first_tanker_tree.Enable_Behavior(41, true)
 		end
 	end
 	
@@ -1304,7 +1389,7 @@ function Thread_FirstTanker_Killed(thread_info)
 	
 	if tut01_objective01~= nil then
 		tanker_flag.Highlight(false)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_B_COMPLETE"} )--Complete: Use Colonel Moore's Grenade ability to destroy the fuel tanker.
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_B_COMPLETE"} )--Complete: Use Colonel Moore's Grenade ability to destroy the fuel tanker.
 		Objective_Complete(tut01_objective01)
 	end
 	
@@ -1457,12 +1542,6 @@ function PROX_Reveal_Saucer(prox_obj, trigger_obj)
 		end
 	
       fow_reveal_saucer_encounter  = FogOfWar.Reveal(player_faction, saucer01.Get_Position(), 250, 250)
-	
-		local thread_info = {} 
-      thread_info[1] = saucer01
-      thread_info[2] = saucer01_grey_list
-      thread_info[3] = saucer01_entry
-      Create_Thread("Thread_Saucer_Leaves", thread_info)
    end
 end
 
@@ -1719,15 +1798,32 @@ function Thread_UEA_InRange_of_CkPtCharlie()
 	
 	for i, troop_charlie in pairs(troop_charlie_list) do
 		if TestValid(troop_charlie) then
-			troop_charlie.Suspend_Locomotor(false)
+			troop_charlie.Set_Object_Context_ID("Tut01_StoryCampaign")
+			troop_charlie.Change_Owner(chopper_faction)
+			--troop_charlie.Suspend_Locomotor(false)
+			
+			troop_charlie.Teleport_And_Face(troop_charlie)
+			--make sure chk point charlie guys are no longer only serviced when rendered
+			troop_charlie.Set_Service_Only_When_Rendered(false)
+		end
+	end
+	
+	for i, troop_charlie_turret in pairs(troop_charlie_turret_list) do
+		if TestValid(troop_charlie_turret) then
+			troop_charlie_turret.Set_Object_Context_ID("Tut01_StoryCampaign")
+			troop_charlie_turret.Change_Owner(chopper_faction)
+			
+			
 		end
 	end
 	
 	Hunt(troop_charlie_list, "AntiDefault", false, true, charlie_guard_location, 10)
 
 	--send in the fodder guys
+	--jdg 11/05/07 new context stuff 
 	for i, charlie_fodder in pairs(charlie_fodder_list) do
 		if TestValid(charlie_fodder) then
+			charlie_fodder.Set_Object_Context_ID("Tut01_StoryCampaign")
 			charlie_fodder.Suspend_Locomotor(false)
 			charlie_fodder.Set_Service_Only_When_Rendered(false)
 		end
@@ -1742,13 +1838,60 @@ function Thread_UEA_InRange_of_CkPtCharlie()
 	if TestValid(radiation_spitter) then
 		fow_reveal_radiation_spitter_encounter  = FogOfWar.Reveal(player_faction, radiation_spitter, 250, 250)
 		radiation_spitter.Prevent_All_Fire(false)
+		
+		
+		--put the mall hunt packs into context here
+		--fix me
+		for i, unit in pairs(hunt_pack01) do
+			if TestValid(unit) then
+				--jdg 11/05/07 putting these guys back into playing context
+				unit.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		for i, unit in pairs(hunt_pack02) do
+			if TestValid(unit) then
+				--jdg 11/05/07 putting these guys back into playing context
+				unit.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		for i, unit in pairs(hunt_pack03) do
+			if TestValid(unit) then
+				--jdg 11/05/07 putting these guys back into playing context
+				unit.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		for i, unit in pairs(hunt_pack04) do
+			if TestValid(unit) then
+				--jdg 11/05/07 putting these guys back into playing context
+				unit.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		for i, unit in pairs(hunt_pack06) do
+			if TestValid(unit) then
+				--jdg 11/05/07 putting these guys back into playing context
+				unit.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack01[1], 50)
+		Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack02[1], 50)
+		Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack03[1], 50)
+		Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack04[1], 50)
+		Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack06[1], 50)
+		
 	end
 	
 	Create_Thread("Thread_Spawn_Turret_Fodder")
-
+	
+	--jdg 11/05/07 putting into hide-me context until needed
 	for i, act02_ambient_grey in pairs(act02_ambient_grey_list) do
 		if TestValid(act02_ambient_grey) then
-			act02_ambient_grey.Set_In_Limbo(false)
+			act02_ambient_grey.Set_Object_Context_ID("Tut01_StoryCampaign")
+			
 			Create_Thread("Thread_Ambient_Greys_Orders", act02_ambient_grey)
 		end
 	end
@@ -1758,7 +1901,7 @@ end
 function Thread_Give_CheckPointCharlie_Objectives()
 --TEST
 	Sleep(2)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_C_ADD"})
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_C_ADD"})
 	Sleep(time_objective_sleep)
 	tut01_objective02a = Add_Objective("TEXT_SP_MISSION_TUT01_OBJECTIVE_C")--Help defend the checkpoint.
 	
@@ -1859,6 +2002,21 @@ function PROX_Reveal_Brutes(prox_obj, trigger_obj)
 	
 		fow_reveal_schoolchildren = FogOfWar.Reveal(player_faction, roof_brute_target, 250, 250)
       Create_Thread("Thread_Dialog_Controller", dialog_introduce_brutes)
+		
+		--putting the capitol guys back into context
+		for i, capitolguard in pairs(capitolguard_list) do
+			if TestValid(capitolguard) then
+				capitolguard.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
+		
+		--jdg 11/05/07  puting saucer 01 guys back into context
+		for i, saucer01_grey in pairs(saucer01_grey_list) do
+			if TestValid(saucer01_grey) then
+				saucer01_grey.Set_Service_Only_When_Rendered(false)
+				saucer01_grey.Set_Object_Context_ID("Tut01_StoryCampaign")
+			end
+		end
 	end
 end
 
@@ -1909,28 +2067,34 @@ end
 function Thread_Shoot_The_Tanker()
 	--remove any hints that might not have been opened yet...
 
-	if (HINT_SYSTEM_HINT_SYSTEM ~= nil) then
-		Remove_Independent_Hint(HINT_SYSTEM_HINT_SYSTEM)
+	if (73 ~= nil) then
+		Remove_Independent_Hint(73)
 	end
 	
 	fow_fuel_truck = FogOfWar.Reveal(player_faction, first_tanker, 250, 250)
 	
 	player_faction.Lock_Unit_Ability("Military_Hero_Randal_Moore", "Randal_Moore_Grenade_Attack_Ability", false, STORY)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_B_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_B_ADD"} )
 	
-	
-	Add_Independent_Hint(HINT_SYSTEM_ABILITIES)
+	if not Is_Gamepad_Active() then
+		Add_Independent_Hint(92)
+	end
 	UI_Start_Flash_Ability_Button("TEXT_ABILITY_MILITARY_MOORE_GRENADE")
 	--UI_Start_Flash_Ability_Button("TEXT_ABILITY_MILITARY_MOORE_MEDPACK")
 	
 	Sleep(time_objective_sleep)
 	if not bool_fuel_truck_dead then
 	   tut01_objective01 = Add_Objective("TEXT_SP_MISSION_TUT01_OBJECTIVE_B")--Use Colonel Moore's Grenade ability to destroy the fuel tanker.
-	   Add_Independent_Hint(HINT_SYSTEM_OBJECTIVES)
+		if not Is_Gamepad_Active() then
+			Add_Independent_Hint(74)
+		end
 	   --Sleep(2)
 	   --first_tanker.Highlight(true, -65)
 	   tanker_flag.Highlight(true, -65)
 	end	
+	
+	
+	
 end
 
 function PROX_Start_Smithsonian_Objective(prox_obj, trigger_obj)
@@ -2034,19 +2198,22 @@ function Thread_Start_ArtGallery_Objective()
 		end
 	end
 	
+	--jdg 11/05/07 reaper stuff-- turn back to mission context here
 	for i, reaper in pairs(harvest01_reaper_list) do
 		if TestValid(reaper) then
-			reaper.Suspend_Locomotor(false)
-			reaper.Prevent_All_Fire(false)
-			--turn off further notifications
-			--reaper.Unregister_Signal_Handler(Callback_Harvest01_Object_Damaged)
+			reaper.Set_Object_Context_ID("Tut01_StoryCampaign")
+		end
+	end
+	
+	for i, harvest01_grunt in pairs(harvest01_grunt_list) do
+      if TestValid(harvest01_grunt) then      
+			harvest01_grunt.Set_Object_Context_ID("Tut01_StoryCampaign")
 		end
 	end
 	
 	for i, civ in pairs(harvest01_civilian_list) do
 		if TestValid(civ) then
-			civ.Make_Invulnerable(false)
-			civ.Set_Cannot_Be_Killed(false)
+			civ.Set_Object_Context_ID("Tut01_StoryCampaign")
 			Create_Thread("Thread_Captive_Civs_Move_Orders", civ)
 		end
 	end
@@ -2124,7 +2291,19 @@ end
 
 function Callback_GalleryReaper_Damaged()
 	_CustomScriptMessage("JoeLog.txt", string.format("Callback_Reaper_Damaged HIT!! reapers now to attack uea infantry"))
-	--Play_SFX_Event("SFX_Alien_Walker_Announce_2") 
+	
+	--jdg 11/05/07 a reaper has been attacked...put the passguards back into context
+	for i, passguard in pairs(passguard_list) do
+		if TestValid(passguard) then
+			passguard.Set_Object_Context_ID("Tut01_StoryCampaign")
+		end
+	end
+	
+	for i, passguard_ambient_grey in pairs(passguard_ambient_grey_list) do
+		if TestValid(passguard_ambient_grey) then
+			passguard_ambient_grey.Set_Object_Context_ID("Tut01_StoryCampaign")
+		end
+	end
 end
 
 function Callback_GalleryReaper_Destroyed()
@@ -2197,14 +2376,16 @@ function Thread_Saucer_Leaves(thread_info)
          
       Sleep(0.5)
    end
-   
-   if TestValid(saucer) then
+	
+	if TestValid(saucer) then
       BlockOnCommand(saucer.Play_Animation("Anim_Cinematic", false, 1))
    end
    
    if TestValid(saucer) then
       saucer.Despawn()
    end
+   
+  
    
    if fow_reveal_saucer_encounter ~= nil then
       fow_reveal_saucer_encounter.Undo_Reveal()
@@ -2218,7 +2399,7 @@ function Thread_SaucerGrey_GetsOnboard(thread_info)
 
    Sleep(GameRandom(0,1)) -- artificial variation
    
-   if TestValid(grey) and TestValid(entry_point) then
+   if TestValid(grey) and TestValid(entry_point) and TestValid(saucer01) then
       grey.Activate_Ability("Grey_Phase_Unit_Ability", true)
       BlockOnCommand(grey.Move_To(entry_point.Get_Position()))
    else
@@ -2228,6 +2409,8 @@ function Thread_SaucerGrey_GetsOnboard(thread_info)
    if TestValid(grey) then
       grey.Despawn()
    end
+	
+	 
 end
 
 function Thread_Papaya_Arrives()
@@ -2404,11 +2587,13 @@ end
 
 function Thread_Mission_Complete()
 
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
-			
-	Set_Hint_System_Visible(false)
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+	--Set_Hint_System_Visible(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+
+	
 	bool_mission_won = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
 	Lock_Controls(1)
@@ -2421,9 +2606,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(6)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	
@@ -2491,9 +2676,23 @@ end
 	radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Allied", player_faction, true, "Bitwise_And")
 end]]
 
+function Thread_Define_Hints()
+	Sleep(2)
+	
+	for i, troop_charlie in pairs(troop_charlie_list) do
+      if TestValid(troop_charlie) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			troop_charlie.Set_Object_Context_ID("hide_me")
+      end
+   end
+	
+end
 
 function Define_Hints()
 	_CustomScriptMessage("JoeLog.txt", string.format("#*#*#*NOTICE: Define_Hints: Start!"))
+	
+	--jdg 11/05/new define_hints thread so I can work around new init bugs....must be an aritificial delay due to code wackiness
+	Create_Thread("Thread_Define_Hints")
 
 	player_list = Find_All_Objects_Of_Type(player_faction)
 	
@@ -2504,7 +2703,7 @@ function Define_Hints()
 		if TestValid(player_unit) then
          --player_unit.Register_Signal_Handler(Callback_Player_Unit_Attacked, "OBJECT_DAMAGED")
 			
-			--if player_unit.Has_Behavior(BEHAVIOR_LOCO) then
+			--if player_unit.Has_Behavior(1) then
 				--_CustomScriptMessage("JoeLog.txt", string.format("player_unit.Override_Max_Speed(1.25)"))
 			player_unit.Override_Max_Speed(1.25)
 			--end
@@ -2589,19 +2788,14 @@ function Define_Hints()
 	
 	player_faction.Lock_Unit_Ability("Military_Apache", "Unit_Ability_Apache_Rocket_Barrage", true, STORY)
 	player_faction.Lock_Unit_Ability("Military_Hero_Randal_Moore", "Randal_Moore_Grenade_Attack_Ability", true, STORY)
-	--aliens.Lock_Object_Type(Find_Object_Type("Alien_Mutant_Slave"),true,STORY) -- dont want mutant slaves in this mission
 	
-
 	first_grey_list = Find_All_Objects_With_Hint("firstgrey")
 	firstgrey = first_grey_list[1]
 	
 	if TestValid(firstgrey) then
-		--Hunt(firstgrey, "Tut01_Human_Killers_Attack_Priorities", true, true, firstgrey, 20)
-		--Create_Thread("Thread_FirstGrey_AttackOrders")
 		firstgrey.Prevent_All_Fire(true)
 	end
 	
-	--TEST: unit.Set_Service_Only_When_Rendered(true)
 	alien_units = Find_All_Objects_Of_Type(aliens)
 	civilian_units = Find_All_Objects_Of_Type(civilian)
 	
@@ -2617,42 +2811,63 @@ function Define_Hints()
 		end
 	end
 	
-	
-	
-	--first_grey_target_list = Find_All_Objects_With_Hint("firstgrey-target")
-	--for i, first_grey_target in pairs(first_grey_target_list) do
-	--	if TestValid(first_grey_target) then
-			--first_grey_target.Suspend_Locomotor(true)
-			--first_grey_target.Make_Invulnerable(true)
-	--	end
-	--end
-	
-	
+	--[[mall encounter
+hunt-pack01 (2xgrunts)
+hunt-pack02 (2xgrunts)
+hunt-pack03 (2xgrunts)
+hunt-pack04 (2xgrunts)
+hunt-pack05 (MIA)
+hunt-pack06 (2xgrunts)
+act02-ambient (grays)
+
+for i, unit in pairs(hunt_pack01) do
+	if TestValid(unit) then
+		--jdg 11/05/07 putting these guys into hide-me context until needed
+		unit.Set_Object_Context_ID("hide_me")
+	end
+end--]]
 	
    --hunting packs stuff
    hunt_pack01 = Find_All_Objects_With_Hint("hunt-pack01")
-   Hunt(hunt_pack01, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack01[1], 50)
+
+	for i, unit in pairs(hunt_pack01) do
+		if TestValid(unit) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			unit.Set_Object_Context_ID("hide_me")
+		end
+	end
    
    hunt_pack02 = Find_All_Objects_With_Hint("hunt-pack02")
-   Hunt(hunt_pack02, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack02[1], 50)
+	for i, unit in pairs(hunt_pack02) do
+		if TestValid(unit) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			unit.Set_Object_Context_ID("hide_me")
+		end
+	end
    
    hunt_pack03 = Find_All_Objects_With_Hint("hunt-pack03")
-   Hunt(hunt_pack03, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack03[1], 50)
+	for i, unit in pairs(hunt_pack03) do
+		if TestValid(unit) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			unit.Set_Object_Context_ID("hide_me")
+		end
+	end
    
    hunt_pack04 = Find_All_Objects_With_Hint("hunt-pack04")
-   Hunt(hunt_pack04, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack04[1], 50)
-   
-   hunt_pack05 = Find_All_Objects_With_Hint("hunt-pack05")
-   Hunt(hunt_pack05, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack05[1], 50)
+	for i, unit in pairs(hunt_pack04) do
+		if TestValid(unit) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			unit.Set_Object_Context_ID("hide_me")
+		end
+	end
    
    hunt_pack06 = Find_All_Objects_With_Hint("hunt-pack06")
-   Hunt(hunt_pack06, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack06[1], 50)
-   
-   --hunt_pack07 = Find_All_Objects_With_Hint("hunt-pack07")
-   --Hunt(hunt_pack07, "Tut01_Grunt_Attack_Priorities", true, true, hunt_pack07[1], 50)
-   
-   hunt_pack08 = Find_All_Objects_With_Hint("hunt-pack08")
-   Hunt(hunt_pack08, "Tut01_Grunt_Attack_Priorities", false, true, hunt_pack08[1], 25)
+	for i, unit in pairs(hunt_pack06) do
+		if TestValid(unit) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			unit.Set_Object_Context_ID("hide_me")
+		end
+	end
    
    passguard_list = Find_All_Objects_With_Hint("passguard")
    passguard_guard_spot = Find_Hint("MARKER_GENERIC_RED","passguard-guard-spot")
@@ -2660,29 +2875,34 @@ function Define_Hints()
    for i, passguard in pairs(passguard_list) do
 		if TestValid(passguard) then
          passguard.Register_Signal_Handler(Callback_Passguard_Attacked, "OBJECT_DAMAGED")
+			passguard.Set_Object_Context_ID("hide_me")
 		end
 	end
    
    passguard_ambient_grey_list = Find_All_Objects_With_Hint("passguard-ambient", "ALIEN_SCIENCE_GREY_INDIVIDUAL")
-   --passguard_ambient_grey_hide_spot_list = Find_All_Objects_With_Hint("passguard-alien-hide-spot", "MARKER_GENERIC_YELLOW")
-   
+	for i, passguard_ambient_grey in pairs(passguard_ambient_grey_list) do
+		if TestValid(passguard_ambient_grey) then
+			passguard_ambient_grey.Set_Object_Context_ID("hide_me")
+		end
+	end
    --capitol guard stuff
    capitolguard_list = Find_All_Objects_With_Hint("capitolguard")
    counter_capitolguard = table.getn(capitolguard_list)
 	counter_capitolguard_killed = 0
    capitolguard_guard_spot = Find_Hint("MARKER_GENERIC_RED","capitolguard-guard-spot")
 	
-	Hunt(capitolguard_list, "Tut01_Reaper_Attack_Priorities", false, true, capitolguard_guard_spot, 125) 
+	--Hunt(capitolguard_list, "Tut01_Reaper_Attack_Priorities", false, true, capitolguard_guard_spot, 125) 
 	
 	
-	capitolguard_northpath_list = Find_All_Objects_With_Hint("capitolguard-northpath")
-	Hunt(capitolguard_northpath_list, "Tut01_Reaper_Attack_Priorities", false, true, capitolguard_northpath_list[1], 125) 
+	--capitolguard_northpath_list = Find_All_Objects_With_Hint("capitolguard-northpath")
+	--Hunt(capitolguard_northpath_list, "Tut01_Reaper_Attack_Priorities", false, true, capitolguard_northpath_list[1], 125) 
 	
-   
    for i, capitolguard in pairs(capitolguard_list) do
 		if TestValid(capitolguard) then
          capitolguard.Register_Signal_Handler(Callback_Capitolguard_Attacked, "OBJECT_DAMAGED")
          capitolguard.Register_Signal_Handler(Callback_Capitolguard_Killed, "OBJECT_HEALTH_AT_ZERO")
+			
+			capitolguard.Set_Object_Context_ID("hide_me")
 		end
 	end
    
@@ -2690,6 +2910,14 @@ function Define_Hints()
    capitolguard_ambient_grey_hide_spot_list = Find_All_Objects_With_Hint("capitolguard-alien-hide-spot", "MARKER_GENERIC_YELLOW")
    capitolguard_ambient_grey_scatter_spot_list = Find_All_Objects_With_Hint("capitolguard-alien-scatter-spot", "MARKER_GENERIC_YELLOW")
    
+	
+	--put the ambient guys into a hide me context for now
+   for i, capitolguard_ambient_grey in pairs(capitolguard_ambient_grey_list) do
+		if TestValid(capitolguard_ambient_grey) then
+			capitolguard_ambient_grey.Set_Object_Context_ID("hide_me")
+		end
+	end
+	
 	capitol_building = Find_First_Object("TM01_CAPITOL_BUILDING")
    capitolguard02_list = Find_All_Objects_With_Hint("capitolguard02")
 	counter_capitolguard02 = table.getn(capitolguard02_list)
@@ -2707,7 +2935,7 @@ function Define_Hints()
 	--does a quick count of how many "types" of civs are listed above in "civ_type_list"
 	counter_civ_types = table.getn(civ_type_list)
    counter_script_civ_types = table.getn(script_civ_type_list)
-	counter_schoolchildren_types = table.getn(schoolchildren_type_list)
+	--counter_schoolchildren_types = table.getn(schoolchildren_type_list)
 	
 	mission_start_prox_flag_list = Find_All_Objects_With_Hint("prox-mission-start", "MARKER_GENERIC_GREEN")
 	for i, prox_flag in pairs(mission_start_prox_flag_list) do
@@ -2754,9 +2982,6 @@ function Define_Hints()
    if TestValid(radiation_spitter) then
       radiation_spitter.Register_Signal_Handler(Callback_Radiation_Spitter_Killed, "OBJECT_HEALTH_AT_ZERO")
 		radiation_spitter.Prevent_All_Fire(true)
-		
-		--XXX TESTING
-		--radiation_spitter.Make_Invulnerable(true)--safety
    end
    
    radiation_spitter_civ_spawner = Find_Hint("MARKER_GENERIC_BLUE","turret-civ-spawner")
@@ -2832,8 +3057,8 @@ function Define_Hints()
 	gallery_chopper02_goto = Find_Hint("MARKER_GENERIC_BLUE","gallery-chopper02-goto")
 	gallery_chopper03_goto = Find_Hint("MARKER_GENERIC_BLUE","gallery-chopper03-goto")
    
-	schoolchildren_brute01 = Find_Hint("ALIEN_BRUTE_TUT01","school-brute-01")
-	schoolchildren_brute01.Despawn()
+	--schoolchildren_brute01 = Find_Hint("ALIEN_BRUTE_TUT01","school-brute-01")
+	--schoolchildren_brute01.Despawn()
 	schoolchildren_brute_roof = Find_Hint("ALIEN_BRUTE_TUT01","school-brute-roof")
    schoolchildren_brute_roof02 = Find_Hint("ALIEN_BRUTE_TUT01","school-brute-roof02")
 	
@@ -2851,11 +3076,17 @@ function Define_Hints()
 	if TestValid(schoolchildren_brute_roof02) then
       schoolchildren_brute_roof02.Suspend_Locomotor(true)
 		schoolchildren_brute_roof02.Register_Signal_Handler(Callback_Schoolchildren_Brute_Killed, "OBJECT_HEALTH_AT_ZERO")
+		
+		---fix me
+		schoolchildren_brute_roof02.Set_Object_Context_ID("hide_me")
 	end
 	
 	if TestValid(schoolchildren_brute_roof) then
 		schoolchildren_brute_roof.Suspend_Locomotor(true)
 		schoolchildren_brute_roof.Register_Signal_Handler(Callback_Schoolchildren_Brute_Killed, "OBJECT_HEALTH_AT_ZERO")
+		---fix me
+		schoolchildren_brute_roof.Set_Object_Context_ID("hide_me")
+
 	end
 	
 	human_services_building = Find_Hint("TM01_DEPARTMENT_OF_HEALTH","human-services")
@@ -2867,7 +3098,7 @@ function Define_Hints()
 	proxflag_reveal_brute_encounter = Find_Hint("MARKER_GENERIC_BLUE","prox-reveal-brute-encounter")
 	Register_Prox(proxflag_reveal_brute_encounter, PROX_Reveal_Brutes, 50, player_faction)
    	
-   schoolbus01_exit = Find_Hint("MARKER_GENERIC_RED","schoolbus-exit")
+  -- schoolbus01_exit = Find_Hint("MARKER_GENERIC_RED","schoolbus-exit")
    
 	schoolbus_list = Find_All_Objects_With_Hint("schoolbus")
 	for i, schoolbus in pairs(schoolbus_list) do
@@ -2917,10 +3148,14 @@ function Define_Hints()
    
    --checkpoint charlie stuff
    troop_charlie_list = {}
+	
+	
+	--troop-charlie01 (MIA)
+	--troop-charlie04 (MIA)
    
-   troop_charlie01_list = {}
-	troop_charlie01_list = Find_All_Objects_With_Hint("troop-charlie01")
-   troop_charlie01 = troop_charlie01_list[1]
+  -- troop_charlie01_list = {}
+	--troop_charlie01_list = Find_All_Objects_With_Hint("troop-charlie01")
+  -- troop_charlie01 = troop_charlie01_list[1]
    
    troop_charlie02_list = {}
 	troop_charlie02_list = Find_All_Objects_With_Hint("troop-charlie02")
@@ -2930,9 +3165,9 @@ function Define_Hints()
 	troop_charlie03_list = Find_All_Objects_With_Hint("troop-charlie03")
    troop_charlie03 = troop_charlie03_list[1]
    
-   troop_charlie04_list = {}
-	troop_charlie04_list = Find_All_Objects_With_Hint("troop-charlie04")
-   troop_charlie04 = troop_charlie04_list[1]
+   --troop_charlie04_list = {}
+	--troop_charlie04_list = Find_All_Objects_With_Hint("troop-charlie04")
+   --troop_charlie04 = troop_charlie04_list[1]
    
    troop_charlie05_list = {}
 	troop_charlie05_list = Find_All_Objects_With_Hint("troop-charlie05")
@@ -2963,23 +3198,34 @@ function Define_Hints()
    troop_charlie_turret_list = Find_All_Objects_With_Hint("troop-charlie", "TUT01_MILITARY_TURRET_GROUND")
 	counter_charlie_turrets_killed = 0
 	counter_charlie_turrets = 2
+	
+	 for i, troop_charlie_turret in pairs(troop_charlie_turret_list) do
+      if TestValid(troop_charlie_turret) then
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			troop_charlie_turret.Set_Object_Context_ID("hide_me")
+      end
+   end
    
-	troop_charlie_list[1] = troop_charlie01
-   troop_charlie_list[2] = troop_charlie02
-   troop_charlie_list[3] = troop_charlie03
-   troop_charlie_list[4] = troop_charlie04
-   troop_charlie_list[5] = troop_charlie05
-   troop_charlie_list[6] = troop_charlie06
-   troop_charlie_list[7] = troop_charlie07
-   troop_charlie_list[8] = troop_charlie08
+	--troop_charlie_list[1] = troop_charlie01
+   troop_charlie_list[1] = troop_charlie02
+   troop_charlie_list[2] = troop_charlie03
+   --troop_charlie_list[4] = troop_charlie04
+   troop_charlie_list[3] = troop_charlie05
+   troop_charlie_list[4] = troop_charlie06
+   troop_charlie_list[5] = troop_charlie07
+   troop_charlie_list[6] = troop_charlie08
    
    for i, troop_charlie in pairs(troop_charlie_list) do
       if TestValid(troop_charlie) then
-         troop_charlie.Suspend_Locomotor(true)
+         --troop_charlie.Suspend_Locomotor(true)
          troop_charlie.Register_Signal_Handler(Callback_CharlieTroop_Killed, "OBJECT_HEALTH_AT_ZERO")
+			--troop_charlie.Enable_Behavior(24, false)
+			
+			--jdg 11/05/07 putting these guys into hide-me context until needed
+			troop_charlie.Set_Object_Context_ID("hide_me")
       end
    end
-  
+	
   prox_checkpoint_charlie_fleers = Find_Hint("MARKER_GENERIC_BLUE","prox-checkpoint-charlie-fleers")
    if TestValid(prox_checkpoint_charlie_fleers) then
       Register_Prox(prox_checkpoint_charlie_fleers, PROX_UEA_InRange_of_CkPtCharlie_Fleers, 100, player_faction)
@@ -2997,6 +3243,8 @@ function Define_Hints()
 	
 	charlie_fodder_respawn = Find_Hint("MARKER_GENERIC_PURPLE","charlie-fodder-respawn")
 	
+	
+	--jdg 11/05/07 putting mission units into a different context to try and help 360 performance.
    charlie_fodder_list = Find_All_Objects_With_Hint("charlie-fodder")
    counter_charlie_fodder = table.getn(charlie_fodder_list)
    counter_charlie_fodder_killed = 0
@@ -3004,9 +3252,10 @@ function Define_Hints()
    for i, charlie_fodder in pairs(charlie_fodder_list) do
 		if TestValid(charlie_fodder) then
 			charlie_fodder.Suspend_Locomotor(true)
-         
          charlie_fodder.Register_Signal_Handler(Callback_Charlie_Fodder_Killed, "OBJECT_HEALTH_AT_ZERO")
 			counter_charlie_fodder_registered = counter_charlie_fodder_registered + 1
+			
+			charlie_fodder.Set_Object_Context_ID("hide_me")
 		end
 	end
    
@@ -3031,12 +3280,14 @@ function Define_Hints()
 	act02_ambient_grey_list = Find_All_Objects_With_Hint("act02-ambient")
 	act02_ambient_grey_hide_spot_list = Find_All_Objects_With_Hint("act02-alien-hide-spot", "MARKER_GENERIC_YELLOW")
 	
+	
+	
 	act02_grunts_list = Find_All_Objects_With_Hint("act02-grunt", "ALIEN_GRUNT")
 	
-	--set the ambient_greys into wait mode...they will start their routines once player gets close
+	--jdg 11/05/07 putting into hide-me context until needed
 	for i, act02_ambient_grey in pairs(act02_ambient_grey_list) do
 		if TestValid(act02_ambient_grey) then
-         act02_ambient_grey.Set_In_Limbo(true)
+			act02_ambient_grey.Set_Object_Context_ID("hide_me")
 		end
 	end
 	
@@ -3107,22 +3358,7 @@ function Define_Hints()
    
    harvest_01_respawn = Find_Hint("MARKER_GENERIC_RED","harvest01-respawn")
    
-   for i, harvest01_reaper in pairs(harvest01_reaper_list) do
-      if TestValid(harvest01_reaper) then
-		   harvest01_reaper.Suspend_Locomotor(true)
-			harvest01_reaper.Prevent_All_Fire(true)
-         harvest01_reaper.Register_Signal_Handler(Callback_GalleryReaper_Damaged, "OBJECT_DAMAGED")
-         harvest01_reaper.Register_Signal_Handler(Callback_GalleryReaper_Destroyed, "OBJECT_HEALTH_AT_ZERO")
-      end
-	end
-   
-   for i, civ in pairs(harvest01_civilian_list) do
-      if TestValid(civ) then
-			civ.Make_Invulnerable(true)
-			civ.Set_Cannot_Be_Killed(true)
-         civ.Register_Signal_Handler(Callback_Harvest01_Civ_Killed, "OBJECT_HEALTH_AT_ZERO")
-      end
-	end
+ 
 	
 	starting_reaper_list = Find_All_Objects_Of_Type("ALIEN_SUPERWEAPON_REAPER_TURRET")
 	for i, starting_reaper in pairs(starting_reaper_list) do
@@ -3130,6 +3366,34 @@ function Define_Hints()
 			starting_reaper.Activate_Ability("Reaper_Auto_Gather_Resources", false)
 		end
 	end
+	
+	for i, harvest01_reaper in pairs(harvest01_reaper_list) do
+      if TestValid(harvest01_reaper) then
+		   --harvest01_reaper.Suspend_Locomotor(true)
+			--harvest01_reaper.Prevent_All_Fire(true)
+         harvest01_reaper.Register_Signal_Handler(Callback_GalleryReaper_Damaged, "OBJECT_DAMAGED")
+         harvest01_reaper.Register_Signal_Handler(Callback_GalleryReaper_Destroyed, "OBJECT_HEALTH_AT_ZERO")
+			harvest01_reaper.Set_Object_Context_ID("hide_me")
+		end
+	end
+	
+	for i, harvest01_grunt in pairs(harvest01_grunt_list) do
+      if TestValid(harvest01_grunt) then      
+			harvest01_grunt.Set_Object_Context_ID("hide_me")
+		end
+	end
+   
+   for i, civ in pairs(harvest01_civilian_list) do
+      if TestValid(civ) then
+			--civ.Make_Invulnerable(true)
+			--civ.Set_Cannot_Be_Killed(true)
+         civ.Register_Signal_Handler(Callback_Harvest01_Civ_Killed, "OBJECT_HEALTH_AT_ZERO")
+			
+			civ.Set_Object_Context_ID("hide_me")
+      end
+	end
+	
+	--... putting reaper encoutner stuff into a hide me context unitl needed
    
    --saucer encounter stuff
    saucer01 = Find_Hint("MOV_TAKEOFF_LARGESAUCER","saucer01")
@@ -3146,7 +3410,7 @@ function Define_Hints()
    
    if TestValid(saucer01) then
       saucer01.Play_Animation("Anim_Cinematic", true, 0)
-      Create_Thread("Delete_Saucer_After_Time")
+      --Create_Thread("Delete_Saucer_After_Time")
    end
    
    saucer_prox_list = Find_All_Objects_With_Hint("prox-saucer")
@@ -3154,6 +3418,13 @@ function Define_Hints()
 	for i, saucer_prox in pairs(saucer_prox_list) do
 		if TestValid(saucer_prox) then
 			Register_Prox(saucer_prox, PROX_Reveal_Saucer, 125, player_faction)
+		end
+	end
+	
+	--jdg 11/05/07 put the saucer grays into the hide me context
+	for i, saucer01_grey in pairs(saucer01_grey_list) do
+		if TestValid(saucer01_grey) then
+			saucer01_grey.Set_Object_Context_ID("hide_me")
 		end
 	end
    
@@ -3261,8 +3532,8 @@ function Define_Hints()
 	
 	
 	
-	starting_flyover = Find_Hint("MOV_FLYOVER_LARGESAUCER","starting-flyover")
-	starting_flyover.Hide(true)
+	--starting_flyover = Find_Hint("MOV_FLYOVER_LARGESAUCER","starting-flyover")
+	--starting_flyover.Hide(true)
 	
 	opening_foo01 = Find_Hint("MOV_FLYOVER_FOOFIGHTER","opening-foo01")
 	opening_foo02 = Find_Hint("MOV_FLYOVER_FOOFIGHTER","opening-foo02")
@@ -3342,7 +3613,12 @@ end
 function Force_Victory(player)
 	uea.Reset_Story_Locks()
 	aliens.Reset_Story_Locks()
-
+	
+	--jdg safety reset for x360 controller locks
+	if Is_Gamepad_Active() then
+		Controller_Set_Tactical_Component_Lock("NONE",true)
+	end
+	
 	if player == player_faction then
 		Fade_Out_Music() 
 		
@@ -3390,22 +3666,21 @@ end
 function Hint_Dismissal_Callback(hint_id)
 	_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT::::  Hint dismissed!!: " .. tostring(hint_id)))
 	
-	if hint_id == HINT_SYSTEM_HINT_SYSTEM then
+	if hint_id == 73 then
 		_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_HINT_SYSTEM  dismissed!! Thread_Unit_Selection_Hints" ))
 		
-		--Create_Thread("Thread_Objective_Hints") xxx
 		Create_Thread("Thread_Unit_Selection_Hints")
 		
-	elseif hint_id == HINT_SYSTEM_OBJECTIVES then	
+	elseif hint_id == 74 then	
 		--Create_Thread("Thread_Unit_Selection_Hints")
 		
-	--elseif hint_id == HINT_SYSTEM_UNIT_SELECTION then
+	--elseif hint_id == 82 then
 		--_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_UNIT_SELECTION  dismissed!! Thread_Unit_Movement_Hints" ))
 		--Create_Thread("Thread_Unit_Movement_Hints")
-	elseif hint_id == HINT_SYSTEM_MOVING then
+	elseif hint_id == 83 then
 		_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_MOVING  dismissed!! Thread_Unit_Attacking_Hints" ))
 		-- Create_Thread("Thread_Unit_Attacking_Hints")
-	elseif hint_id == HINT_SYSTEM_ATTACKING then
+	elseif hint_id == 85 then
 		--_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_ATTACKING  dismissed!!" ))
 		--Create_Thread("Thread_Unit_Selection_Hints_Advanced")
 		
@@ -3416,10 +3691,10 @@ function Hint_Dismissal_Callback(hint_id)
 		end
 		
 		
-	--elseif hint_id == HINT_SYSTEM_MULTIPLE_UNITS then	
+	--elseif hint_id == 86 then	
 	--	_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_MULTIPLE_UNITS  dismissed!! Thread_Unit_Movement_Hints_Advanced" ))
 	--	Create_Thread("Thread_Unit_Movement_Hints_Advanced")
-	--elseif hint_id == HINT_SYSTEM_FORCE_MARCH then
+	--elseif hint_id == 84 then
 	--	_CustomScriptMessage("JoeLog.txt", string.format("JOE HINT:::: HINT_SYSTEM_FORCE_MARCH  dismissed!! Thread_Unit_Attacking_Hints_Advanced" ))
 	--	Create_Thread("Thread_Unit_Attacking_Hints_Advanced")
 	end
@@ -3428,9 +3703,9 @@ end
 
 --function Thread_Objective_Hints()
 --	Sleep(1)
---	Add_Independent_Hint(HINT_SYSTEM_OBJECTIVES)
+--	Add_Independent_Hint(74)
 
-	--Add_Independent_Hint(HINT_SYSTEM_SIMILAR_UNITS) -- still not using...should probably sneak in somewhere
+	--Add_Independent_Hint(87) -- still not using...should probably sneak in somewhere
 --end
 
 function Thread_Unit_Selection_Hints_Pause()	
@@ -3445,11 +3720,11 @@ end
 function Thread_Unit_Selection_Hints()
 	if bool_mission_started == false then 
 		Sleep(0.5)
-		Add_Independent_Hint(HINT_SYSTEM_UNIT_SELECTION)
+		Add_Independent_Hint(82)
 		Sleep(0.5)
-		Add_Independent_Hint(HINT_SYSTEM_MOVING)
+		Add_Independent_Hint(83)
 		Sleep(0.5)
-		Add_Independent_Hint(HINT_SYSTEM_ATTACKING)
+		Add_Independent_Hint(85)
 		
 		
 	end
@@ -3457,7 +3732,7 @@ function Thread_Unit_Selection_Hints()
 	while bool_mission_started == false do
 		Sleep(0.5)
 		
-		if (HINT_SYSTEM_UNIT_SELECTION == nil) and (HINT_SYSTEM_MOVING == nil) and (HINT_SYSTEM_ATTACKING == nil) then
+		if (82 == nil) and (83 == nil) and (85 == nil) then
 			--player has dismissed the hints....kill this thread
 			_CustomScriptMessage("JoeLog.txt", string.format("(Thread_Unit_Selection_Hints: player has dismissed the hints....kill this thread " ))
 			return
@@ -3466,32 +3741,32 @@ function Thread_Unit_Selection_Hints()
 	
 	
 	--player has started the mission, these hints are now redundant...go away
-	if (HINT_SYSTEM_UNIT_SELECTION ~= nil) then
-		Remove_Independent_Hint(HINT_SYSTEM_UNIT_SELECTION)
+	if (82 ~= nil) then
+		Remove_Independent_Hint(82)
 	end
 	
-	if (HINT_SYSTEM_MOVING ~= nil) then
-		Remove_Independent_Hint(HINT_SYSTEM_MOVING)
+	if (83 ~= nil) then
+		Remove_Independent_Hint(83)
 	end
 	
-	if (HINT_SYSTEM_ATTACKING ~= nil) then
-		Remove_Independent_Hint(HINT_SYSTEM_ATTACKING)
+	if (85 ~= nil) then
+		Remove_Independent_Hint(85)
 	end
 
-	--Add_Independent_Hint(HINT_SYSTEM_SIMILAR_UNITS) -- still not using...should probably sneak in somewhere
+	--Add_Independent_Hint(87) -- still not using...should probably sneak in somewhere
 end
 
 --function Thread_Unit_Movement_Hints()
 	--Sleep(3)
-	--Add_Independent_Hint(HINT_SYSTEM_MOVING)
+	--Add_Independent_Hint(83)
 
 --end
 
 --function Thread_Unit_Attacking_Hints()
 	--Sleep(3)
-	--Add_Independent_Hint(HINT_SYSTEM_ATTACKING)
+	--Add_Independent_Hint(85)
 
-   --Add_Independent_Hint(HINT_SYSTEM_FORCE_FIRE) -- this hint is actually untrue
+   --Add_Independent_Hint(89) -- this hint is actually untrue
 --end
 
 --function Thread_Unit_Selection_Hints_Advanced()
@@ -3499,21 +3774,21 @@ end
 --		Sleep(5)
 --	end
 		
---	Add_Independent_Hint(HINT_SYSTEM_MULTIPLE_UNITS)
+--	Add_Independent_Hint(86)
 	--Sleep(1)
-	--Add_Independent_Hint(HINT_SYSTEM_FORCE_MARCH)
+	--Add_Independent_Hint(84)
 	--Sleep(1)
-	--Add_Independent_Hint(HINT_SYSTEM_ATTACKING_MULTIPLE)
+	--Add_Independent_Hint(88)
 --end
 
 --function Thread_Unit_Movement_Hints_Advanced()
 	--Sleep(3)
-	--Add_Independent_Hint(HINT_SYSTEM_FORCE_MARCH)
+	--Add_Independent_Hint(84)
 --end
 
 --function Thread_Unit_Attacking_Hints_Advanced()
 	--Sleep(3)
-	--Add_Independent_Hint(HINT_SYSTEM_ATTACKING_MULTIPLE)
+	--Add_Independent_Hint(88)
 --end
 
 
@@ -3551,28 +3826,44 @@ function Thread_Dialog_Controller(conversation)
 		if conversation == dialog_mission_intro then
 			if not bool_testing then
 			
-				if not bool_mission_failed and not bool_mission_won then
-					Queue_Talking_Head(pip_comm_officer, "MIL_TUT01_SCENE05_05")--Colonel Moore, we're linking you to the Pentagon's battlefield intelligence system. Click on the question mark on the right of your HUD if you need assistance.
+				--if not Are_Any_Controllers_Connected() then
+				if not Is_Gamepad_Active() then
+					if not bool_mission_failed and not bool_mission_won then
+						Queue_Talking_Head(pip_comm_officer, "MIL_TUT01_SCENE05_05")--Colonel Moore, we're linking you to the Pentagon's battlefield intelligence system. Click on the question mark on the right of your HUD if you need assistance.
+					end
+					Sleep(5)
+					
+					--Create_Thread("Thread_LargeSaucer_Flyover", starting_flyover)
+					-- ***** HINT SYSTEM *****
+					-- Set the scene down here so we're sure of getting the right scene...
+					Set_Hint_System_Visible(true)
+					Add_Independent_Hint(73)
+					-- ***** HINT SYSTEM *****
+					if not bool_mission_failed and not bool_mission_won then
+						local block01a = Queue_Talking_Head(pip_col_moore, "MIL_TUT01_SCENE05_06") --Roger, comm. (I'm sure that cost a few billion.)
+					end
+					
+					if not bool_mission_failed and not bool_mission_won then
+						Queue_Talking_Head(pip_col_moore, "MIL_TUT01_SCENE06_01") --Alright men, now keep it tight! Let's go get our planet back!
+					end
+					--Queue_Speech_Event("MIL_TUT01_SCENE05_04")--Yes sir.
+					
+					BlockOnCommand(block01a)
+					bool_opening_dialog_finished = true
+				else
+					Sleep(5)
+					if not bool_mission_failed and not bool_mission_won then
+						Queue_Talking_Head(pip_col_moore, "MIL_TUT01_SCENE06_01") --Alright men, now keep it tight! Let's go get our planet back!
+					end
+					
+					Sleep(5)
+					bool_opening_dialog_finished = true
 				end
-				Sleep(5)
 				
-				--Create_Thread("Thread_LargeSaucer_Flyover", starting_flyover)
-				-- ***** HINT SYSTEM *****
-				-- Set the scene down here so we're sure of getting the right scene...
-				Set_Hint_System_Visible(true)
-				Add_Independent_Hint(HINT_SYSTEM_HINT_SYSTEM)
-				-- ***** HINT SYSTEM *****
-				if not bool_mission_failed and not bool_mission_won then
-					local block01a = Queue_Talking_Head(pip_col_moore, "MIL_TUT01_SCENE05_06") --Roger, comm. (I'm sure that cost a few billion.)
-				end
-				if not bool_mission_failed and not bool_mission_won then
-					Queue_Talking_Head(pip_col_moore, "MIL_TUT01_SCENE06_01") --Alright men, now keep it tight! Let's go get our planet back!
-				end
-				--Queue_Speech_Event("MIL_TUT01_SCENE05_04")--Yes sir.
 				
-				BlockOnCommand(block01a)
-
-				bool_opening_dialog_finished = true
+				
+				
+				
 				
 			end
 			
@@ -3612,7 +3903,12 @@ function Thread_Dialog_Controller(conversation)
 			end
 			
 			if TestValid(first_tanker) then      
-				Queue_Talking_Head("Mi_marine_pip_head.alo", "MIL_TUT01_SCENE02_27") --Marine (MAR): Target that fuel truck!
+				BlockOnCommand(Queue_Talking_Head("Mi_marine_pip_head.alo", "MIL_TUT01_SCENE02_27")) --Marine (MAR): Target that fuel truck!
+			end
+			Sleep(1)
+			--fix for hint popping during dialog line
+			if Is_Gamepad_Active() and TestValid(first_tanker) then
+				Add_Independent_Hint(92)
 			end
 			
 		elseif conversation == dialog_player_destroys_fueltruck then
@@ -3663,7 +3959,7 @@ function Thread_Dialog_Controller(conversation)
 		
 		elseif conversation == dialog_check_point_charlie_secured then	
 
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_C_COMPLETE"} )--Objective Complete: Help defend the checkpoint.
+			Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT01_OBJECTIVE_C_COMPLETE"} )--Objective Complete: Help defend the checkpoint.
 			Objective_Complete(tut01_objective02a)
 			if not bool_mission_failed and not bool_mission_won then
 				Queue_Talking_Head(pip_marine, "MIL_TUT01_SCENE14_01") --I never thought I'd be so happy to see a colonel! Thank you, sir!
@@ -3708,7 +4004,7 @@ function Thread_Dialog_Controller(conversation)
 			chopper_faction.Lock_Unit_Ability("Military_Apache", "Unit_Ability_Apache_Rocket_Barrage", false, STORY)
 			
 		elseif conversation == dialog_goodbye_choppers then
-			Sleep(3)	
+			Sleep(10)	
 			Create_Thread("Thread_Gallery_FooFighter_Orders")
 			Sleep(3)	
 			if not bool_mission_failed and not bool_mission_won then
@@ -3857,3 +4153,150 @@ end
 function Post_Load_Callback()
 	Movie_Commands_Post_Load_Callback()
 end
+
+
+
+
+
+--[[new context stuff:
+
+check-point charlie encounter
+
+--done
+charlie-fodder (misc aliens)
+
+troop-charlie02 (marine squad)
+troop-charlie03 (flamethrower)
+
+troop-charlie05 (flamethrower)
+troop-charlie06 (hummer)
+troop-charlie07 (hummer)
+troop-charlie08 (hummer)
+
+troop-charlie01 (MIA)
+troop-charlie04 (MIA)
+
+
+mall encounter
+done
+hunt-pack01 (2xgrunts)
+hunt-pack02 (2xgrunts)
+hunt-pack03 (2xgrunts)
+hunt-pack04 (2xgrunts)
+hunt-pack05 (MIA)
+hunt-pack06 (2xgrunts)
+act02-ambient (grays)
+
+--done
+reaper encounter 
+harvest01-civ (civs)
+harvest01 (reapers, grunts)
+
+--done
+Pre-brute encounter
+passguard(grunt)
+passguard-ambient(grays)
+
+
+--done (hopefully)
+Brute Encounter:
+school-brute-01 (gets deleted)
+school-brute-roof
+school-brute-roof02
+
+Capitol lawn:
+capitolguard-ambient (grays)
+capitolguard (reaper, grunt)
+capitolguard02 (last 3 grunts)
+saucer01 (grays)--]]
+
+
+
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	Delete_Saucer_After_Time = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Objective_Text = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Start_Saucer_Encounter = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Thread_Col_Moore_Killed = nil
+	Thread_Foofighter_Flyovers = nil
+	Thread_LargeSaucer_Flyover = nil
+	Thread_Mission_Victorious = nil
+	Thread_Sgt_Woolard_Killed = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

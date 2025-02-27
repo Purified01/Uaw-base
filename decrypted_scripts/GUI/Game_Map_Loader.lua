@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Game_Map_Loader.lua#5 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Game_Map_Loader.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Game_Map_Loader.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Game_Map_Loader.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 74336 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/06/25 18:20:45 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #5 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -225,7 +232,7 @@ function Refresh_UI()
 	for _, filename in ipairs(LoadableMapFiles) do
 		local new_row = Game_Map_Loader.List_Games.Add_Row()
 		Game_Map_Loader.List_Games.Set_Text_Data(GAME_LIST_NAME, new_row, filename)
-		Game_Map_Loader.List_Games.Set_Row_Color(new_row, tonumber(COLOR_CYAN))
+		Game_Map_Loader.List_Games.Set_Row_Color(new_row, tonumber(6))
 	end
 
 	Game_Map_Loader.List_Games.Refresh()
@@ -266,3 +273,32 @@ end
 Interface = {}
 Interface.Is_Showing = Is_Showing
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Prepare_Fadeout = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

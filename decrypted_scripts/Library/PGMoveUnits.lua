@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMoveUnits.lua#6 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[176] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMoveUnits.lua#9 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMoveUnits.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMoveUnits.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 64598 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/03/06 15:03:58 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #6 $
+--          $Revision: #9 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -136,3 +142,34 @@ function Full_Speed_Move(unit_list, target)
 end
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	Hunt = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

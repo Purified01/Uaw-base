@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Ranked_Game_Dialog.lua#40 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[192] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Ranked_Game_Dialog.lua#24 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Ranked_Game_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Ranked_Game_Dialog.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: Brian_Hayes $
+--            $Author: Joe_Howes $
 --
---            $Change: 90603 $
+--            $Change: 96947 $
 --
---          $DateTime: 2008/01/09 11:34:12 $
+--          $DateTime: 2008/04/14 16:25:21 $
 --
---          $Revision: #40 $
+--          $Revision: #24 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +81,7 @@ function GUI_Init()
 	
 	-- Network Message Processors
 	NetworkMessageProcessors = {}
+	NetworkMessageProcessors[MESSAGE_TYPE_PLAYER_PLATFORM]						= NMP_Player_Platform
 	NetworkMessageProcessors[MESSAGE_TYPE_PLAYER_NAME]						= NMP_Player_Name
 	NetworkMessageProcessors[MESSAGE_TYPE_PLAYER_FACTION]					= NMP_Player_Faction
 	--NetworkMessageProcessors[MESSAGE_TYPE_PLAYER_TEAM]						= NMP_Player_Team
@@ -107,38 +116,86 @@ function GUI_Init()
 	Ranked_Game_Dialog.Register_Event_Handler("Closing_All_Displays", nil, On_Closing_All_Displays)
 	Ranked_Game_Dialog.Register_Event_Handler("On_Menu_System_Activated", nil, On_Menu_System_Activated)
 	Ranked_Game_Dialog.Register_Event_Handler("Network_Progress_Bar_Cancelled", nil, On_Back_Clicked)
+	Ranked_Game_Dialog.Register_Event_Handler("On_YesNoOk_Yes_Clicked", nil, On_YesNoOk_Yes_Clicked)
+	Ranked_Game_Dialog.Register_Event_Handler("On_YesNoOk_No_Clicked", nil, On_YesNoOk_No_Clicked)
+	Ranked_Game_Dialog.Register_Event_Handler("On_YesNoOk_Ok_Clicked", nil, On_YesNoOk_Ok_Clicked)
+	
+	PGLobby_Init_Modal_Message(this)
+	PGLobby_Set_Dialog_Is_Hidden(false)
 
 	On_Component_Shown()
 
 end
 
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function On_Button_Alien()
-	this.Panel_Select_Faction.Set_Hidden(true)
+	Hide_Faction_Selector()
 	CustomFaction = PG_FACTION_ALIEN
 	Start_Ranked_Game()
 end
+
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function On_Button_Novus()
-	this.Panel_Select_Faction.Set_Hidden(true)
+	Hide_Faction_Selector()
 	CustomFaction = PG_FACTION_NOVUS
 	Start_Ranked_Game()
 end
+
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function On_Button_Masari()
-	this.Panel_Select_Faction.Set_Hidden(true)
+	Hide_Faction_Selector()
 	CustomFaction = PG_FACTION_MASARI
 	Start_Ranked_Game()
 end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function On_YesNoOk_Yes_Clicked()
+	Close_Dialog()
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function On_YesNoOk_No_Clicked()
+	Close_Dialog()
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function On_YesNoOk_Ok_Clicked()
+	Close_Dialog()
+end
+
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function On_Button_Random()
-	this.Panel_Select_Faction.Set_Hidden(true)
+	Hide_Faction_Selector()
 	CustomFaction = PG_FACTION_ALL
 	Start_Ranked_Game()
 end
 
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function Start_Faction_Select()
 	Update_Progress_Text()
 	JoinState = JOIN_STATE_SELECT_FACTION
-	this.Panel_Select_Faction.Set_Hidden(false)
+	Show_Faction_Selector()
 end
 
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function Get_Match_Mode_Display_String()
 	local message = nil
 	if (QuickMatchMode == MATCH_MODE_RANKED_MATCH) then
@@ -149,26 +206,30 @@ function Get_Match_Mode_Display_String()
 	return message
 end
 
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function Start_Ranked_Game()
 	local message = Get_Match_Mode_Display_String()
 	Update_Progress_Text(message)
 	Reset_Ranked_Game()
 end
 
+------------------------------------------------------------------------
+--
+------------------------------------------------------------------------
 function Start_Quick_Match_Mode(mode)
 	QuickMatchMode = mode
 	PGLobby_Restart_Networking(NETWORK_STATE_INTERNET)
 	Reset_Ranked_Game()
 	StateStartTime = 0
 	MPMapModel = PGLobby_Generate_Map_Selection_Model()	-- List of multiplayer maps.
-	Ranked_Game_Dialog.Start_Modal()
-	Ranked_Game_Dialog.Focus_First()
 	Net.Set_User_Info({ [X_CONTEXT_PRESENCE] = CONTEXT_PRESENCE_LOBBY,  [X_CONTEXT_GAME_MODE] = CONTEXT_GAME_MODE_MULTIPLAYER })
 	CustomFaction = PG_FACTION_ALL
 	if QuickMatchMode == 0 then
 		Start_Faction_Select()
 	else
-		this.Panel_Select_Faction.Set_Hidden(true)
+		Hide_Faction_Selector()
 		Start_Ranked_Game()
 	end
 end
@@ -186,6 +247,8 @@ end
 -- 
 -------------------------------------------------------------------------------
 function On_Component_Shown()
+	Net.MM_Leave()
+	EarlyTerminate = false
 	MedalsProgressRequestTimer = nil
 	ReadyToLaunch = false
 end
@@ -311,7 +374,7 @@ function Search_For_Games()
 		Game_Search_Parameters[X_CONTEXT_GAME_MODE] = CONTEXT_GAME_MODE_MULTIPLAYER
 	end
 
-	PGLobby_Refresh_Available_Games(SESSION_MATCH_QUERY_PUBLIC_QUERY, Game_Search_Parameters, true)
+	PGLobby_Refresh_Available_Games(SESSION_MATCH_QUERY_RANKED_QUERY, Game_Search_Parameters, true)
 end
 
 
@@ -373,7 +436,7 @@ function Close_Dialog()
 	Update_Progress_Text()
 	Ranked_Game_Dialog.End_Modal()
 	Ranked_Game_Dialog.Get_Containing_Component().Set_Hidden(true)
-	this.Get_Containing_Scene().Raise_Event_Immediate("Heavyweight_Child_Scene_Closing", nil, {})
+	this.Get_Containing_Scene().Raise_Event("Heavyweight_Child_Scene_Closing", nil, {"Ranked_Game_Dialog"})
 	
 end
 
@@ -385,12 +448,56 @@ end
 
 function Broadcast_User_Settings()
 
+	Network_Broadcast(MESSAGE_TYPE_PLAYER_PLATFORM, LocalClient.platform)
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_NAME, LocalClient.name)
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_FACTION, tostring(LocalClient.faction))
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_COLOR, tostring(LocalClient.color))
 	-- Network_Broadcast(MESSAGE_TYPE_PLAYER_TEAM, tostring(user_table.team))
 end
 
+
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Hide_Faction_Selector()
+
+	this.Panel_Select_Faction.Set_Hidden(true)
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Show_Faction_Selector()
+
+	this.Panel_Select_Faction.Set_Hidden(false)
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Hide_Progress_Bar()
+
+	Network_Progress_Bar_Active = false
+	Ranked_Game_Dialog.Network_Progress_Bar.Stop()
+	Ranked_Game_Dialog.Network_Progress_Bar.Set_Hidden(true)
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Show_Progress_Bar()
+
+	Network_Progress_Bar_Active = true
+	Ranked_Game_Dialog.Network_Progress_Bar.Start_Modal()
+	Ranked_Game_Dialog.Network_Progress_Bar.Start()
+	Ranked_Game_Dialog.Network_Progress_Bar.Set_Hidden(false)
+	Ranked_Game_Dialog.Network_Progress_Bar.Claim_Focus()
+	
+end
 
 
 -------------------------------------------------------------------------------
@@ -471,7 +578,6 @@ function Network_On_Connection_Status(event)
 				PGLobby_Request_All_Medals_Progress_Stats() 
 				MedalsProgressRequestTimer = Net.Get_Time()
 			end
-			
 		end
 
 	elseif event.status == "session_connect" then
@@ -526,56 +632,10 @@ function Network_On_Connection_Status(event)
 		
 	elseif event.status == "session_disconnect" then
 	
-		-- If the host disconnects, and we are not the host, the session is done and we need to leave.
-		local host_disconnected = (event.common_addr == CurrentlyJoinedSession.common_addr)
-		
-		if ((HostingGame == false) and JoinedGame and host_disconnected) then
-		
-			-- We are a guest and the host left the game.
-			Network_Clear_All_Clients()
-			Reset_Ranked_Game()
-			
-		else
-		
-			if (HostingGame) then
-			
-				-- If there is a countdown in progress, stop it.
-				if (StartGameCountdown ~= -1) then
-					Kill_Game_Countdown()
-					Broadcast_Game_Kill_Countdown()
-				end
-			
-				-- Currently we do not differenitate between public and private slots
-				CurrentlyJoinedSession.player_count = Network_Get_Client_Table_Count()
-			
-				-- Check our player count.
-				if (CurrentlyJoinedSession.player_count < CurrentlyJoinedSession.max_players) then
-					Ranked_Set_Local_Session_Open(true)
-				end
-				Network_Update_Session(CurrentlyJoinedSession)
-				PGLobby_Post_Hosted_Session_Data()
-				
-				-- ** Wipe out this player's presence. **
-				-- If the player has chosen a start position, clear it.
-				local seat = Network_Get_Seat(client)
-				local start_marker_id = PGMO_Get_Start_Marker_ID_From_Seat(seat)
-				if (start_marker_id ~= nil) then
-					Network_Request_Clear_Start_Position(start_marker_id)
-				end
-
-			end
-			
-			-- ** Wipe out this player's presence. **
-			if (GameScriptData.profile_achievements ~= nil) then
-				GameScriptData.profile_achievements[event.common_addr] = nil
-			end
-			if (GameScriptData.profile_achievements ~= nil) then
-				GameScriptData.achievement_stats[event.common_addr] = nil
-			end
-			
-			Network_Remove_Client(event.common_addr)
-			
-		end
+		EarlyTerminate = true
+		Hide_Progress_Bar()
+		PGLobby_Display_Modal_Message("TEXT_GC_OTHER_PLAYER_HAS_LEFT")
+	
 	end
 
 	if (HostingGame) then
@@ -634,6 +694,7 @@ function Do_Host_Game()
 	end
 	session_data.max_players = 2
 	session_data.use_locator = false
+	session_data.quickmatching = true		-- Tells code that we're doing a 1v1 automatch (ranked OR unranked)
 	-- Need to add flag to the session data so we can tell the difference
 	-- between global conquest and ranked games.
 
@@ -654,7 +715,7 @@ function Network_On_Live_Connection_Changed(event)
 		return
 	end
 	
-	DebugMessage("LUA_LOBBY: Live connection changed.")
+	DebugMessage("LUA_1V1_MATCH: Live connection changed.")
 	
 	-- If we are in an internet session and any of the following are true, we
 	-- need to dump to the main menu ASAP.
@@ -666,10 +727,15 @@ function Network_On_Live_Connection_Changed(event)
 		(event.connection_change_id == XONLINE_E_LOGON_CONNECTION_LOST) or
 		(event.connection_change_id == XONLINE_E_LOGON_KICKED_BY_DUPLICATE_LOGON) or
 		(event.connection_change_id == XONLINE_E_LOGON_INVALID_USER)) then
-		DebugMessage("LUA_LOBBY: Live connection has become unrecoverable.  Quitting to main menu.")
+		DebugMessage("LUA_1V1_MATCH: Live connection has become unrecoverable.  Quitting to main menu.")
 		PGCrontab_Schedule(Close_Dialog, 0, 2)
 	end
 					
+	-- On Xbox, silver players cannot play multiplayer games
+	if Is_Xbox() and Net.Requires_Locator_Service() then
+		PGCrontab_Schedule(Close_Dialog, 0, 2)
+	end
+
 end
 
 -------------------------------------------------------------------------------
@@ -689,6 +755,13 @@ function Update_Local_Client()
 
 	-- Common Address
 	Network_Update_Local_Common_Addr(Net.Get_Local_Addr())
+	
+	-- Platform
+	if (Is_Xbox()) then
+		LocalClient.platform = PLATFORM_360
+	else
+		LocalClient.platform = PLATFORM_PC
+	end
 	
 	-- Name
 	if (LocalClient.name == nil) then
@@ -764,23 +837,6 @@ function Get_Preferred_Team()
 	end
 	
 	return team
-		
-end
-
--------------------------------------------------------------------------------
---
--------------------------------------------------------------------------------
-function Get_Preferred_Color()
-
-	local color = Get_Profile_Value(PP_COLOR_INDEX, MP_COLORS[MP_COLORS_MIN])
-	local index = MP_COLOR_INDICES[color]
-	if (color == nil or index == nil) then
-		color = COLOR_BRIGHT_GRAY
-	else
-		color = tonumber(color)
-	end
-	
-	return color
 		
 end
 
@@ -867,6 +923,7 @@ function Set_Host_Game_Settings()
 
 	GameScriptData.GameOptions = GameOptions
 	GameAdvertiseData = game_settings_data
+	GameAdvertiseData[PROPERTY_PG_NAT_TYPE] = Net.Get_NAT_Type_Constant()
 
 	PGLobby_Post_Hosted_Session_Data()
 	
@@ -890,7 +947,7 @@ function Check_Game_Start_Conditions(request_rebroadcast)
 		can_start = false
 		table.insert(messages, Get_Game_Text("TEXT_MULTIPLAYER_WAITING_FOR_SERVER_DATA"))
 		if (request_rebroadcast) then
-			DebugMessage("LUA_GLOBAL_CONQUEST: Medals progress for all players is incomplete.  Re-requesting.")
+			DebugMessage("LUA_1V1_MATCH: Medals progress for all players is incomplete.  Re-requesting.")
 			PGLobby_Request_All_Medals_Progress_Stats()
 		end
 	end
@@ -908,18 +965,26 @@ function Network_On_Message(event)
 	local clear_accepts = false
 	local client = Network_Get_Client(event.common_addr)
 	if (client == nil) then
-		DebugMessage("LUA_NET: ERROR: Recieved a message from an unknown client at address: " .. tostring(event.common_addr))
+		DebugMessage("LUA_1V1_MATCH: ERROR: Recieved a message from an unknown client at address: " .. tostring(event.common_addr))
 		return
 	end
 	
 	local message_processor = NetworkMessageProcessors[event.message_type]
 	if (message_processor == nil) then
-		DebugMessage("LUA_LOBBY:  WARNING: No network message processor registered for event: " .. tostring(event.message_type))
+		DebugMessage("LUA_1V1_MATCH:  WARNING: No network message processor registered for event: " .. tostring(event.message_type))
 		return
 	else
 		message_processor(event, client)
 	end
 	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function NMP_Player_Platform(event, client)
+	client.platform = event.message
+	return true
 end
 
 -------------------------------------------------------------------------------
@@ -936,7 +1001,7 @@ end
 function NMP_Player_Faction(event, client)
 	local faction = event.message
 	client.faction = tonumber(faction)
-	DebugMessage("LUA_NET: I have player " .. tostring(client.name) .. " as faction " .. tostring(client.faction).. "\n")
+	DebugMessage("LUA_1V1_MATCH: I have player " .. tostring(client.name) .. " as faction " .. tostring(client.faction).. "\n")
 	return true
 end
 
@@ -983,7 +1048,7 @@ end
 function NMP_Stats_Registration_Begin(event, client)
 
 	if HostingGame == false then
-		DebugMessage("LUA_LOBBY: Client -- Network_Begin_Stats_Registration.")
+		DebugMessage("LUA_1V1_MATCH: Client -- Network_Begin_Stats_Registration.")
 		PGLobby_Request_Stats_Registration(event.message)
 	else
 		Network_Broadcast(MESSAGE_TYPE_STATS_CLIENT_REGISTERED, "")
@@ -1001,20 +1066,15 @@ function Update_Progress_Text(value)
 	end
 	
 	if Network_Progress_Bar_Active == nil then
-		Network_Progress_Bar_Active = false
-		Ranked_Game_Dialog.Network_Progress_Bar.Set_Hidden(true)
+		Hide_Progress_Bar()
 	end
 
 	if value == nil then
 		if Network_Progress_Bar_Active then
-			Network_Progress_Bar_Active = false
-			Ranked_Game_Dialog.Network_Progress_Bar.Stop()
-			Ranked_Game_Dialog.Network_Progress_Bar.Set_Hidden(true)
+			Hide_Progress_Bar()
 		end
 	elseif Network_Progress_Bar_Active ~= true then
-		Network_Progress_Bar_Active = true
-		Ranked_Game_Dialog.Network_Progress_Bar.Set_Hidden(false)
-		Ranked_Game_Dialog.Network_Progress_Bar.Start()
+		Show_Progress_Bar()
 	end
 
 
@@ -1027,11 +1087,11 @@ end
 -------------------------------------------------------------------------------
 function NMP_Stats_Client_Registered(event, client)
 
-	DebugMessage("LUA_LOBBY: Client [%s] -- client.StatsRegistered = true.", tostring(client.name))
+	DebugMessage("LUA_1V1_MATCH: Client [%s] -- client.StatsRegistered = true.", tostring(client.name))
 	client.StatsRegistered = true
 
 	if HostingGame and Check_Stats_Registration_Status() == true and HostStatsRegistration == false then
-		DebugMessage("LUA_LOBBY: Host -- Network_Begin_Stats_Registration")
+		DebugMessage("LUA_1V1_MATCH: Host -- Network_Begin_Stats_Registration")
 		HostStatsRegistration = true
 		PGLobby_Request_Stats_Registration("0")
 	end
@@ -1058,6 +1118,11 @@ end
 -------------------------------------------------------------------------------
 function NMP_Start_Game(event, client)
 
+	-- Check for early termination.
+	if (EarlyTerminate) then
+		return
+	end
+	
 	Update_Local_Client()
 	GameIsStarting = false
 	Ranked_Game_Dialog.End_Modal()
@@ -1094,9 +1159,14 @@ function NMP_Start_Game(event, client)
 	table.insert(available_factions, PG_FACTION_MASARI)
 
 	local available_colors = {}
-	table.insert(available_colors, MP_DEFAULT_HOST_COLOR)
-	table.insert(available_colors, MP_DEFAULT_GUEST_COLOR)
+	table.insert(available_colors, 7)
+	table.insert(available_colors, 2)
 
+	-- Check for early termination.
+	if (EarlyTerminate) then
+		return
+	end
+	
 	local idx
 	local icount = 1
 	for addr, tclient in pairs(ClientTable) do
@@ -1119,6 +1189,11 @@ function NMP_Start_Game(event, client)
 		icount = icount + 1
 	end
 
+	-- Check for early termination.
+	if (EarlyTerminate) then
+		return
+	end
+	
 	local play_maps = {}
 	for _, name in ipairs(valid_map_list) do
 		for idx, map_info in pairs(MPMapModel) do
@@ -1129,6 +1204,11 @@ function NMP_Start_Game(event, client)
 		end
 	end
 
+	-- Check for early termination.
+	if (EarlyTerminate) then
+		return
+	end
+	
 	idx = Math.floor(Math.mod(MyRandom_Get(), #play_maps)) + 1
 	local map_dao = MPMapModel[play_maps[idx]]		-- MPMapModel is 1-based
 	GameOptions.map_crc = map_dao.map_crc
@@ -1149,6 +1229,11 @@ function NMP_Start_Game(event, client)
 	-- Convert faction IDs to string constants
 	PGLobby_Convert_Faction_IDs_To_Strings()
 
+	-- Check for early termination.
+	if (EarlyTerminate) then
+		return
+	end
+	
 	Update_Progress_Text()
 	Network_On_Start_Game()
 
@@ -1172,6 +1257,8 @@ function NMP_Start_Game(event, client)
 	end
 	GameScoringManager.Set_Is_Ranked_Game(ranked)
 	GameScoringManager.Set_Is_Global_Conquest_Game(false)
+	GameScoringManager.Set_Is_Custom_Multiplayer_Game(false)
+	GameScoringManager.Set_Is_Disconnect_Detected(false)
 	PGLobby_Save_Vanity_Game_Start_Data(ranked)
 	
 	GameHasStarted = true
@@ -1267,4 +1354,112 @@ end
 Interface = {}
 Interface.Start_Quick_Match_Mode = Start_Quick_Match_Mode
 
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Preferred_Faction = nil
+	Get_Preferred_Team = nil
+	Is_Player_Of_Faction = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	PGLobby_Activate_Movies = nil
+	PGLobby_Convert_Faction_Strings_To_IDs = nil
+	PGLobby_Create_Random_Game_Name = nil
+	PGLobby_Display_Custom_Modal_Message = nil
+	PGLobby_Display_NAT_Information = nil
+	PGLobby_Get_Preferred_Color = nil
+	PGLobby_Hide_Modal_Message = nil
+	PGLobby_Is_Game_Joinable = nil
+	PGLobby_Keepalive_Close_Bracket = nil
+	PGLobby_Keepalive_Open_Bracket = nil
+	PGLobby_Lookup_Map_DAO = nil
+	PGLobby_Mouse_Move = nil
+	PGLobby_Passivate_Movies = nil
+	PGLobby_Print_Client_Table = nil
+	PGLobby_Request_All_Required_Backend_Data = nil
+	PGLobby_Request_Global_Conquest_Properties = nil
+	PGLobby_Reset = nil
+	PGLobby_Set_Player_BG_Gradient = nil
+	PGLobby_Set_Player_Solid_Color = nil
+	PGLobby_Set_Tooltip_Model = nil
+	PGLobby_Start_Heartbeat = nil
+	PGLobby_Stop_Heartbeat = nil
+	PGLobby_Update_NAT_Warning_State = nil
+	PGLobby_Update_Player_Count = nil
+	PGLobby_Validate_Client_Medals = nil
+	PGLobby_Validate_Local_Session_Data = nil
+	PGLobby_Validate_NAT_Type = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGOfflineAchievementDefs_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_Local_User_Applied_Medals = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	_TEMP_Make_Hack_Map_Model = nil
+	Kill_Unused_Global_Functions = nil
+end
 

@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGStateMachine.lua#7 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGStateMachine.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGStateMachine.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGStateMachine.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 78036 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/07/23 17:04:56 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #7 $
+--          $Revision: #11 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -146,52 +148,6 @@ end
 
 
 --
--- Since we need a hero scientist to access the research panel, we must make sure we instantiate one at the beginning of 
--- the global game and whenever a new tactical game starts.
---
-function Create_Science_Officers()
-	if Script ~= Get_Game_Mode_Script() then return end
-	
-	--No research in strategic
-	if Get_Game_Mode() == "Strategic" then return end
-	
-	local factions = Find_Player.Get_Playable_Faction_Names()
-	for _, faction_name in pairs(factions) do
-		Create_Officer(faction_name)
-	end
-end
-
-
---
--- If appropriate, create the science officer for each of the players of the specified faction.
---
-function Create_Officer(faction_name)
-	
-	if faction_name == nil then return end
-	local type_name = faction_name.."_Hero_Chief_Scientist_PIP_Only"
-	-- we want to make sure that all the players of this faction have a science officer (so that they can access their
-	-- research tree)
-	if Find_Object_Type(type_name) == nil then return end
-	local players = Find_Player.All(faction_name)
-	local science_guys = Find_All_Objects_Of_Type(type_name)
-	
-	-- if a player already has a science officer, remove it from the list.
-	for _, officer in pairs(science_guys) do
-		local owner = officer.Get_Owner()
-		players = Remove_From_Table(players, owner)
-	end
-	
-	if #players > 0 then 
-		local position = Create_Position() -- creates (0,0,0)
-		local science_type = Find_Object_Type(type_name)
-		for _, player in pairs(players) do
-			Create_Generic_Object(science_type, position, player)	
-		end
-	end
-end
-
-
---
 -- Removes, if possible, the specified object from the given table
 --
 function Remove_From_Table(a_table, object_to_remove)
@@ -240,7 +196,6 @@ function Base_Definitions()
 		PG_Story_Mode_Init()
 	end
 	
-	Create_Thread("Create_Science_Officers")
 end
 
 
@@ -261,3 +216,45 @@ function main()
 	ScriptExit()
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Advance_State = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	Define_State = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Current_State = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Next_State = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Set_Next_State = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

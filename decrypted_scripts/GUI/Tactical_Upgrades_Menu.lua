@@ -1,3 +1,11 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -322,13 +330,13 @@ function Update_Active()
 	
 	if not Are_Any_Controllers_Connected() then
 		if TestValid(Object) then
-			Object.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION)
+			Object.Has_Behavior(39)
 			local is_menu_open = Get_GUI_Variable("IsMenuOpen")
 				
 			if Object.Get_Owner() == Find_Player("local") then 
 				
 				-- the structures under construction only display their health!.
-				if Object.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) == true then
+				if Object.Has_Behavior(39) == true then
 					if is_menu_open == true then 
 						Display_Menu(false)
 					end
@@ -643,28 +651,28 @@ function Update_Menu( cur_time )
 						
 						button.Set_Cost(cost)
 						
-						if construction_type and construction_type.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION)  then
+						if construction_type and construction_type.Has_Behavior(39)  then
 							if button_index == build_index then
 								-- show timer
 								local percent_done = Object.Get_Tactical_Build_Percent_Done( true )
 								button.Set_Clock_Filled(percent_done)
-								button.Set_Enabled(true)
+								button.Set_Button_Enabled(true)
 								upgrading = true
 							else
 								-- disable this button
-								button.Set_Enabled(false)
+								button.Set_Button_Enabled(false)
 								button.Set_Clock_Filled(0)
 							end
 						else
 							if not Ok_To_Upgrade( Object, object_type ) then
-								button.Set_Enabled(false)
+								button.Set_Button_Enabled(false)
 							else			
-								button.Set_Enabled(true)
+								button.Set_Button_Enabled(true)
 								button.Set_Clock_Filled(0)
 							end
 						end
 						
-						if Object.Has_Behavior( BEHAVIOR_POWERED ) and Object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
+						if Object.Has_Behavior( 161 ) and Object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 							button.Set_Low_Power_Display(true)
 							if upgrading then
 								upgrading = false
@@ -674,7 +682,7 @@ function Update_Menu( cur_time )
 						end
 					else 
 						-- just disable this button!
-						button.Set_Enabled(false)
+						button.Set_Button_Enabled(false)
 					end
 					
 					button.Set_Tooltip_Data({'type', {object_type, cost, object_type.Get_Tactical_Build_Time()}})
@@ -715,8 +723,8 @@ function On_Upgrade_Button_Click(event, source)
 	-- if the sell mode is active, then clicking anywhere in this structure will cause it to get sold! (if possible)
 	if Get_GUI_Variable("SellModeActive") == true then 
 		-- We want to sell this structure!
-		if Object.Has_Behavior(BEHAVIOR_TACTICAL_SELL) == true then
-			Send_GUI_Network_Event("Network_Sell_Structure", { Object, Find_Player("local") })
+		if Object.Has_Behavior(40) == true then
+			Send_GUI_Network_Event("Network_Sell_Object", { Object, Find_Player("local") })
 		end
 	elseif TestValid(Object) then
 		-- Process the click as if the corresponding button had been clicked!
@@ -855,8 +863,48 @@ end
 
 function Is_Power_On()
 
-	if Object.Has_Behavior( BEHAVIOR_POWERED ) and Object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
+	if Object.Has_Behavior( 161 ) and Object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 		return false
 	end
 	return true
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

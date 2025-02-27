@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/PGMO_Start_Marker.lua#8 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[192] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/PGMO_Start_Marker.lua#13 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,23 +33,25 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/PGMO_Start_Marker.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/PGMO_Start_Marker.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84598 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/22 13:27:47 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #8 $
+--          $Revision: #13 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
 require("PGBase")
 require("PGDebug")
 require("PGColors")
+
+ScriptPoolCount = 0
 
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -77,10 +87,16 @@ function On_Init()
 	_SeatAssignment = -1
 	_Size = SIZE_STANDARD
 	_VisiblePanel = this.Panel_Standard
-	_SeatColor = COLOR_WHITE
+	_SeatColor = 1
 	
 	_VisiblePanel.Quad_Fill.Set_Hidden(true)
-		
+	
+	if Is_Xbox() or Is_Gamepad_Active() then 
+		this.Register_Event_Handler("Key_Focus_Gained", this, On_Marker_Mouse_On)
+		this.Register_Event_Handler("Key_Focus_Lost", this, On_Marker_Mouse_Off)
+		this.Register_Event_Handler("Controller_A_Button_Up", nil, On_Marker_Clicked)
+	end
+
 end
 
 
@@ -95,9 +111,18 @@ end
 -------------------------------------------------------------------------------
 function On_Marker_Mouse_On() 
 
-	if (_Interactive and (_SeatAssignment == -1)) then
-		_VisiblePanel.Quad_Fill.Set_Hidden(false)
-		Play_SFX_Event("GUI_Main_Menu_Options_Mouse_Over")	
+	if ( _Interactive ) then
+		if (_SeatAssignment == -1) then
+			_VisiblePanel.Quad_Fill.Set_Hidden(false)
+			Play_SFX_Event("GUI_Main_Menu_Options_Mouse_Over")
+		end
+		
+		if Is_Xbox() or Is_Gamepad_Active() then  
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(0, .5, .5, .5, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(1, .5, .5, .5, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(2, .5, .5, .5, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(3, .5, .5, .5, 1)
+		end
 	end
 	this.Get_Containing_Scene().Raise_Event_Immediate("PGMO_Mouse_On_Marker", this, {PGMO_MARKER_TYPE_START})
 	
@@ -110,6 +135,19 @@ function On_Marker_Mouse_Off()
 
 	if (_Interactive and (_SeatAssignment == -1)) then
 		_VisiblePanel.Quad_Fill.Set_Hidden(true)
+	end
+
+	if ( _Interactive ) then
+		if (_SeatAssignment == -1) then
+			_VisiblePanel.Quad_Fill.Set_Hidden(true)
+		end
+		
+		if Is_Xbox() or Is_Gamepad_Active() then  
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(0, 1, 1, 1, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(1, 1, 1, 1, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(2, 1, 1, 1, 1)
+			_VisiblePanel.Quad_Outline.Set_Vertex_Color(3, 1, 1, 1, 1)
+		end
 	end
 	this.Get_Containing_Scene().Raise_Event_Immediate("PGMO_Mouse_Off_Marker", this, {PGMO_MARKER_TYPE_START})
 	
@@ -221,7 +259,7 @@ function Set_Seat_Assignment(value)
 	end
 	
 	if (_SeatAssignment == -1) then
-		Set_Seat_Color(COLOR_WHITE)
+		Set_Seat_Color(1)
 		_VisiblePanel.Quad_Fill.Set_Hidden(true)
 	elseif ((_SeatAssignment > 0) and (_SeatAssignment < 9)) then
 		_VisiblePanel.Quad_Fill.Set_Hidden(false)
@@ -234,22 +272,22 @@ end
 -------------------------------------------------------------------------------
 function Set_Seat_Color(color)
 
-	if _SeatAssignment == -1 then
-		color = COLOR_WHITE
+	if (_SeatAssignment == -1) then
+		color = 1
 	end
 	
 	_SeatColor = color
 
-	local label = MP_COLORS_LABEL_LOOKUP[_SeatColor] 
-	local triple = MP_CHAT_COLOR_TRIPLES[label]
+	local label = ({ [1] = "WHITE", [2] = "RED", [3] = "ORANGE", [4] = "YELLOW", [5] = "GREEN", [6] = "CYAN", [7] = "BLUE", [8] = "PURPLE", [9] = "GRAY", })[_SeatColor] 
+	local triple = ({ YELLOW = { a = 1, b = 0.18, g = 0.87, r = 0.89, }, CYAN = { a = 1, b = 0.88, g = 0.85, r = 0.44, }, RED = { a = 1, b = 0.09, g = 0.09, r = 1, }, BLUE = { a = 1, b = 1, g = 0.59, r = 0.31, }, WHITE = { a = 1, b = 1, g = 1, r = 1, }, PURPLE = { a = 1, b = 0.82, g = 0.44, r = 1, }, ORANGE = { a = 1, b = 0.09, g = 0.58, r = 1, }, GREEN = { a = 1, b = 0.31, g = 1, r = 0.47, }, GRAY = { a = 1, b = 0.12, g = 0.12, r = 0.12, }, })[label]
 	if (triple == nil) then
-		triple = PGCOLOR_WHITE_TRIPLE
+		triple = ({ a = 1, b = 1, g = 1, r = 1, })
 	end
 
-	_VisiblePanel.Quad_Fill.Set_Vertex_Color(0, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	_VisiblePanel.Quad_Fill.Set_Vertex_Color(1, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	_VisiblePanel.Quad_Fill.Set_Vertex_Color(2, triple[PG_R], triple[PG_G], triple[PG_B], 1)
-	_VisiblePanel.Quad_Fill.Set_Vertex_Color(3, triple[PG_R], triple[PG_G], triple[PG_B], 1)
+	_VisiblePanel.Quad_Fill.Set_Vertex_Color(0, triple["r"], triple["g"], triple["b"], 1)
+	_VisiblePanel.Quad_Fill.Set_Vertex_Color(1, triple["r"], triple["g"], triple["b"], 1)
+	_VisiblePanel.Quad_Fill.Set_Vertex_Color(2, triple["r"], triple["g"], triple["b"], 1)
+	_VisiblePanel.Quad_Fill.Set_Vertex_Color(3, triple["r"], triple["g"], triple["b"], 1)
 
 end
 
@@ -287,6 +325,29 @@ function Set_Size_Small()
 	Refresh_UI()
 end
 
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function Set_Outline_Texture(texture)
+	this.Panel_Standard.Quad_Outline.Set_Texture(texture)
+	this.Panel_Small.Quad_Outline.Set_Texture(texture)
+end
+
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function Set_Fill_Texture(texture)
+	this.Panel_Standard.Quad_Fill.Set_Texture(texture)
+	this.Panel_Small.Quad_Fill.Set_Texture(texture)
+end
+
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function Clear_Color()
+	_VisiblePanel.Quad_Fill.Set_Hidden(true)
+end
+
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Interface functions (accessible to other scenes)
@@ -299,5 +360,37 @@ Interface.Set_Seat_Assignment = Set_Seat_Assignment
 Interface.Get_Seat_Assignment = Get_Seat_Assignment
 Interface.Set_Seat_Color = Set_Seat_Color
 Interface.Get_Seat_Color = Get_Seat_Color
+Interface.Clear_Color = Clear_Color
 Interface.Set_Size_Standard = Set_Size_Standard
 Interface.Set_Size_Small = Set_Size_Small
+Interface.Set_Outline_Texture = Set_Outline_Texture
+Interface.Set_Fill_Texture = Set_Fill_Texture
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

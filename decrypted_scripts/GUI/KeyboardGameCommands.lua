@@ -1,3 +1,5 @@
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -377,12 +379,12 @@ KeyboardGameCommands = {
 		},
 
 	["COMMAND_FIND_BUILDER"] = 
-	   {
-		   text_id = "TEXT_UI_TACTICAL_IDLE_BUILDER_BUTTON",
-		   display = true,	
-		   can_be_re_assigned = true,
-		   sort_order = 3
-	   },
+		{
+			text_id = "TEXT_UI_TACTICAL_IDLE_BUILDER_BUTTON",
+			display = true,	
+			can_be_re_assigned = true,
+			sort_order = 3
+		},
 	
 	["COMMAND_STOP"] = 
 		{
@@ -408,6 +410,36 @@ KeyboardGameCommands = {
 			sort_order = 5		
 		},
 	
+	["COMMAND_PATROL"] = 
+		{
+			-- Text ID to describe this command in the menu
+			text_id = "TEXT_KEYBOARD_PATROL",
+			icon_name = "",
+			display = true,	
+			can_be_re_assigned = true,
+			sort_order = 6			
+		},
+	
+	["COMMAND_GUARD"] = 
+		{
+			-- Text ID to describe this command in the menu
+			text_id = "TEXT_GAME_COMMAND_GUARD",
+			icon_name = "",
+			display = true,	
+			can_be_re_assigned = false,
+			sort_order = 7			
+		},
+	
+	["COMMAND_ATTACK_MOVE"] = 
+		{
+			-- Text ID to describe this command in the menu
+			text_id = "TEXT_GAME_COMMAND_ATTACK_MOVE",
+			icon_name = "",
+			display = true,	
+			can_be_re_assigned = false,
+			sort_order = 8			
+		},
+	
 	--[[ *****************************	GROUPING BEGINS!!!!!	*****************************************]]--
 	--[[ 
 		THE FOLLOWING COMMANDS HAVE THEIR DISPLAY FLAG SET TO FALSE SO THAT THEY DON'T GET
@@ -416,26 +448,6 @@ KeyboardGameCommands = {
 		AUTOMATICALLY RE-MAPPED.
 	]]--
 	
-	["COMMAND_GUARD"] = 
-	{
-		-- Text ID to describe this command in the menu
-		text_id = "TEXT_GAME_COMMAND_GUARD",
-		icon_name = "",
-		display = true,	
-		can_be_re_assigned = false,
-		sort_order = 6			
-	},
-	
-	["COMMAND_ATTACK_MOVE"] = 
-	{
-		-- Text ID to describe this command in the menu
-		text_id = "TEXT_GAME_COMMAND_ATTACK_MOVE",
-		icon_name = "",
-		display = true,	
-		can_be_re_assigned = false,
-		sort_order = 7			
-	},
-	
 	["COMMAND_GROUP_0_SELECT"] = 
 		{
 			-- Text ID to describe this command in the menu
@@ -443,7 +455,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_0.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 8		
+			sort_order = 9		
 		},
 
 	["COMMAND_GROUP_1_SELECT"] = 
@@ -453,7 +465,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_1.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 9				
+			sort_order = 10				
 		},
 
 	["COMMAND_GROUP_2_SELECT"] = 
@@ -463,7 +475,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_2.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 10				
+			sort_order = 11				
 		},
 
 	["COMMAND_GROUP_3_SELECT"] = 
@@ -473,7 +485,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_3.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 11				
+			sort_order = 12				
 		},
 
 	["COMMAND_GROUP_4_SELECT"] = 
@@ -483,7 +495,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_4.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 12			
+			sort_order = 13			
 		},
 
 	["COMMAND_GROUP_5_SELECT"] = 
@@ -493,7 +505,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_5.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 13				
+			sort_order = 14				
 		},
 
 	["COMMAND_GROUP_6_SELECT"] = 
@@ -503,7 +515,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_6.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 14				
+			sort_order = 15				
 		},
 
 	["COMMAND_GROUP_7_SELECT"] = 
@@ -513,7 +525,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_7.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 15				
+			sort_order = 16				
 		},
 
 	["COMMAND_GROUP_8_SELECT"] = 
@@ -523,7 +535,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_8.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 16			
+			sort_order = 17			
 		},
 
 	["COMMAND_GROUP_9_SELECT"] = 
@@ -533,7 +545,7 @@ KeyboardGameCommands = {
 			icon_name = "i_icon_ctrl_9.tga",
 			display = true,
 			can_be_re_assigned = false,
-			sort_order = 17				
+			sort_order = 18				
 		},	
 
 	["COMMAND_GROUP_0_ASSIGN"] = 
@@ -543,7 +555,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = false,	
 			can_be_re_assigned = false,
-			sort_order = 18				
+			sort_order = 19				
 		},
 		
 	["COMMAND_GROUP_1_ASSIGN"] = 
@@ -553,7 +565,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 19				
+			sort_order = 20				
 		},	
 
 	["COMMAND_GROUP_2_ASSIGN"] = 
@@ -563,7 +575,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 20				
+			sort_order = 21				
 		},
 
 	["COMMAND_GROUP_3_ASSIGN"] = 
@@ -573,7 +585,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 21				
+			sort_order = 22				
 		},
 
 	["COMMAND_GROUP_4_ASSIGN"] = 
@@ -583,7 +595,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 22				
+			sort_order = 23				
 		},
 
 	["COMMAND_GROUP_5_ASSIGN"] = 
@@ -593,7 +605,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 23				
+			sort_order = 24				
 		},
 
 	["COMMAND_GROUP_6_ASSIGN"] = 
@@ -603,7 +615,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 24				
+			sort_order = 25				
 		},
 
 	["COMMAND_GROUP_7_ASSIGN"] = 
@@ -613,7 +625,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 25				
+			sort_order = 26				
 		},
 
 	["COMMAND_GROUP_8_ASSIGN"] = 
@@ -623,7 +635,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 26				
+			sort_order = 27				
 		},
 
 	["COMMAND_GROUP_9_ASSIGN"] = 
@@ -633,7 +645,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 27				
+			sort_order = 28				
 		},
 
 	["COMMAND_GROUP_0_ADD_SELECT"] = 
@@ -643,7 +655,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 28				
+			sort_order = 29				
 		},
 		
 	["COMMAND_GROUP_1_ADD_SELECT"] = 
@@ -653,7 +665,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 29				
+			sort_order = 30				
 		},
 		
 	["COMMAND_GROUP_2_ADD_SELECT"] = 
@@ -663,7 +675,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 30				
+			sort_order = 31				
 		},
 		
 	["COMMAND_GROUP_3_ADD_SELECT"] = 
@@ -673,7 +685,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 31				
+			sort_order = 32				
 		},
 		
 	["COMMAND_GROUP_4_ADD_SELECT"] = 
@@ -683,7 +695,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 32				
+			sort_order = 33				
 		},
 		
 	["COMMAND_GROUP_5_ADD_SELECT"] = 
@@ -693,7 +705,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 33				
+			sort_order = 34				
 		},
 		
 	["COMMAND_GROUP_6_ADD_SELECT"] = 
@@ -703,7 +715,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 34				
+			sort_order = 35				
 		},
 		
 	["COMMAND_GROUP_7_ADD_SELECT"] = 
@@ -713,7 +725,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 35				
+			sort_order = 36				
 		},
 		
 	["COMMAND_GROUP_8_ADD_SELECT"] = 
@@ -723,7 +735,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 36			
+			sort_order = 37			
 		},
 		
 	["COMMAND_GROUP_9_ADD_SELECT"] = 
@@ -733,7 +745,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 37				
+			sort_order = 38				
 		},
 		
 	["COMMAND_GROUP_0_ADD_ASSIGN"] = 
@@ -743,7 +755,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 38				
+			sort_order = 39				
 		},
 		
 	["COMMAND_GROUP_1_ADD_ASSIGN"] = 
@@ -753,7 +765,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 39				
+			sort_order = 40				
 		},
 		
 	["COMMAND_GROUP_2_ADD_ASSIGN"] = 
@@ -763,7 +775,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 40				
+			sort_order = 41				
 		},
 		
 	["COMMAND_GROUP_3_ADD_ASSIGN"] = 
@@ -773,7 +785,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 41				
+			sort_order = 42				
 		},
 		
 	["COMMAND_GROUP_4_ADD_ASSIGN"] = 
@@ -783,7 +795,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 42				
+			sort_order = 43				
 		},
 		
 	["COMMAND_GROUP_5_ADD_ASSIGN"] = 
@@ -793,7 +805,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 43				
+			sort_order = 44				
 		},
 		
 	["COMMAND_GROUP_6_ADD_ASSIGN"] = 
@@ -803,7 +815,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 44				
+			sort_order = 45				
 		},
 		
 	["COMMAND_GROUP_7_ADD_ASSIGN"] = 
@@ -813,7 +825,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 45				
+			sort_order = 46				
 		},
 		
 	["COMMAND_GROUP_8_ADD_ASSIGN"] = 
@@ -823,7 +835,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 46
+			sort_order = 47
 		},
 		
 	["COMMAND_GROUP_9_ADD_ASSIGN"] = 
@@ -833,7 +845,7 @@ KeyboardGameCommands = {
 			icon_name = "",
 			display = true,	
 			can_be_re_assigned = false,
-			sort_order = 47
+			sort_order = 48
 		},
 		
 	--[[ *****************************	GROUPING ENDS!!!!!	*****************************************]]--
@@ -1618,3 +1630,8 @@ KeyboardGameCommands = {
 		},
 	},
 }
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Kill_Unused_Global_Functions = nil
+end
+

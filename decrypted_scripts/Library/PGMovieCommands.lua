@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMovieCommands.lua#15 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[174] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[117] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMovieCommands.lua#12 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,99 +33,21 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGMovieCommands.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGMovieCommands.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: Mike_Lytle $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84741 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/25 11:09:21 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #15 $
+--          $Revision: #12 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
 require("PGCommands")
-
-function Hero_Movie_Finished_Callback(hero_object)
-
-	for idx, b_obj in pairs (MovieBlockTable) do
-		if b_obj.Hero == hero_object then
-			b_obj.FinishedFlag = true
-			table.remove(MovieBlockTable, idx)
-			return
-		end
-	end
-	
-end
-
-function Stop_Hero_Movie(hero_object)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Stop_Hero_Movie", nil, {hero_object} )
-end
-
-function Start_Hero_Movie(hero_object, movie_file)
-	
-	if not TestValid(hero_object) then
-		MessageBox("Movie player didn't receive a valid hero for %s; playing nothing", movie_file)
-		return
-	end
-
-	-- Make a fake block object if we want to skip hero PIP movies during development
-	if SkipHeroMovies then
-		block_object = {}
-		block_object.IsFinished = 
-			function ()
-				return true
-			end
-		block_object.Result = 
-			function ()
-				return false
-			end
-		return block_object
-	end
-
-	 -- Determine if the speech event has already been added.
-	for _, b_obj in pairs (MovieBlockTable) do
-		if b_obj.Hero == hero_object then
-			return nil
-		end
-	end
-
-	local block_object = {}
-
-	-- Set up a blocking object for movie playing
-	block_object.Hero = hero_object
-	block_object.FinishedFlag = false
-	block_object.ResultValue = true
-	block_object.MovieFile = movie_file
-
-	block_object.IsFinished = 
-		function ()
-			return block_object.FinishedFlag
-		end
-
-	block_object.Result = 
-		function ()
-			return block_object.ResultValue
-		end
-
-	table.insert(MovieBlockTable, block_object)
-	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Start_Hero_Movie", nil, {hero_object, movie_file, Script, "Hero_Movie_Finished_Callback"} )
-	return block_object
-end
-
-function Talking_Head_Finished_Callback(hero_object)
-	for idx, b_obj in pairs (TalkingHeadBlockTable) do
-		if b_obj.SpeechEvent == hero_object then
-			b_obj.FinishedFlag = true
-			table.remove(TalkingHeadBlockTable, idx)
-			return
-		end
-	end
-end
 
 function Queue_Talking_Head(hero_object, speech_event_name, pip_index)
 
@@ -143,56 +73,62 @@ function Queue_Talking_Head(hero_object, speech_event_name, pip_index)
 		hero_object = ""
 	end
 
-	-- Determine if the speech event has already been added.
-	for _, b_obj in pairs (TalkingHeadBlockTable) do
-		if b_obj.SpeechEvent == speech_event_name then
-			return nil
-		end
-	end
-
-	-- Set up a blocking object for movie playing
-	local block_object = {}
-
-	block_object.Hero = hero_object
-	block_object.FinishedFlag = false
-	block_object.ResultValue = true
-	block_object.SpeechEvent = speech_event_name
-	block_object.Pip = pip_index
-
-	block_object.IsFinished = 
-		function ()
-			return block_object.FinishedFlag
-		end
-
-	block_object.Result = 
-		function ()
-			return block_object.ResultValue
-		end
-
-	table.insert(TalkingHeadBlockTable, block_object)
-
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Queue_Talking_Head", nil, {hero_object, speech_event_name, pip_index, Script, "Talking_Head_Finished_Callback", } )
-	return block_object
+	Get_Game_Mode_GUI_Scene().Raise_Event("Queue_Talking_Head", nil, {hero_object, speech_event_name, pip_index})
+	return Queue_Speech_Event(speech_event_name)
 end
 
 function Set_PIP_Model(pip_index, model_name)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_PIP_Model", nil, {pip_index, model_name} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_PIP_Model", nil, {pip_index, model_name} )
 end
 
 function Flush_PIP_Queue()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Flush_PIP_Queue", nil, nil)	
+	--No parameter = cancel all.  This must be called from the game logic thread.
+	Cancel_Queued_Speech_Events()
+	Get_Game_Mode_GUI_Scene().Raise_Event("Flush_PIP_Queue", nil, nil)	
 end
 
 function Movie_Commands_Post_Load_Callback()
 
 	-- Make sure that all the talking heads are re-enabled.
 	for _, b_obj in pairs (TalkingHeadBlockTable) do
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Queue_Talking_Head", nil, {b_obj.Hero, b_obj.SpeechEvent, b_obj.Pip, Script, "Talking_Head_Finished_Callback", } )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Queue_Talking_Head", nil, {b_obj.Hero, b_obj.SpeechEvent, b_obj.Pip} )
  	end
 
-	for _, b_obj in pairs (MovieBlockTable) do
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Start_Hero_Movie", nil, {b_obj.Hero, b_obj.MovieFile, Script, "Hero_Movie_Finished_Callback"} )
- 	end
-
-
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	Movie_Commands_Post_Load_Callback = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

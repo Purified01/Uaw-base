@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/AlienGrunt.lua#1 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[12] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/AlienGrunt.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/AlienGrunt.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/AlienGrunt.lua $
 --
 --    Original Author: Justin Fic
 --
---            $Author: Justin_Ficarrotta $
+--            $Author: Brian_Hayes $
 --
---            $Change: 40864 $
+--            $Change: 92565 $
 --
---          $DateTime: 2006/04/10 18:48:55 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #1 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,3 +82,30 @@ my_behavior.Object_In_Range = Behavior_Object_In_Range
 my_behavior.Service = Behavior_Service
 --my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

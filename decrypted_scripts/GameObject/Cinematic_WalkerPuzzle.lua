@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/Cinematic_WalkerPuzzle.lua#4 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/Cinematic_WalkerPuzzle.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/Cinematic_WalkerPuzzle.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/Cinematic_WalkerPuzzle.lua $
 --
 --    Original Author: Oksana Kubushyna
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 80839 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/14 11:25:03 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #4 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,8 +150,8 @@ local function Behavior_First_Service()
 		Core_Hard_Point.Make_Invulnerable(true)
 		Crown_Hard_Point.Register_Signal_Handler(my_behavior.On_HP_Destroyed, "OBJECT_HEALTH_AT_ZERO")
 		
-		Core_Hard_Point.Enable_Behavior(BEHAVIOR_GUI, false)
-		Crown_Hard_Point.Enable_Behavior(BEHAVIOR_GUI, false)
+		Core_Hard_Point.Enable_Behavior(85, false)
+		Crown_Hard_Point.Enable_Behavior(85, false)
 		
 	end 
 	
@@ -191,7 +197,7 @@ local function Behavior_First_Service()
 --    for name,_ in pairs(DISABLE_GUI_FOR_HP) do
 --       local hp = Find_First_Object(name)
 --       if hp then
---          hp.Enable_Behavior(BEHAVIOR_GUI, false)
+--          hp.Enable_Behavior(85, false)
 --       end
 --    end
 --
@@ -256,11 +262,11 @@ local function Behavior_First_Service()
 	
 			--JSY: Disable GUI behavior by default.  That way our possible call to Enable_Behavior below is not
 			--in danger of undoing somebody else's call to disable (e.g. story script)
-			hp.Enable_Behavior(BEHAVIOR_GUI, false)
+			hp.Enable_Behavior(85, false)
 		
 			-- Assign vulnerability
 			if HP_INITIALLY_VULNERABLE[hp.Get_Type().Get_Name()] then
-				hp.Enable_Behavior(BEHAVIOR_GUI, true)
+				hp.Enable_Behavior(85, true)
 				hp.Make_Invulnerable(false)
 				hp.Set_Cannot_Be_Killed(false)
 			else
@@ -299,7 +305,7 @@ local function Behavior_On_HP_Attached(source, new_obj)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[new_obj.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(BEHAVIOR_GUI, false)
+				parent_hp.Enable_Behavior(85, false)
 				parent_hp.Make_Invulnerable(true)
 				parent_hp.Set_Cannot_Be_Killed(true)
 			end
@@ -337,7 +343,7 @@ local function Behavior_On_HP_Detached(source)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[source.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(BEHAVIOR_GUI, true)
+				parent_hp.Enable_Behavior(85, true)
 			end
 		end 
 	end
@@ -386,7 +392,7 @@ local function Behavior_On_HP_Destroyed(source)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[source.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(BEHAVIOR_GUI, true)
+				parent_hp.Enable_Behavior(85, true)
 				parent_hp.Make_Invulnerable(false)
 				parent_hp.Set_Cannot_Be_Killed(false)
 			end
@@ -475,7 +481,7 @@ function Thread_Walker_Death()
 	Object.Prevent_All_Fire(true)
 	Object.Set_Selectable(false)
 	Object.Set_In_Limbo(true)
-	Object.Enable_Behavior(BEHAVIOR_IDLE, false)
+	Object.Enable_Behavior(7, false)
 
 	Walker_About_To_Die = true
 	
@@ -554,3 +560,32 @@ my_behavior.On_Production_Complete = Behavior_On_Production_Complete
 -- my_behavior.Service = Behavior_Service
 --my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Clamp = nil
+	Common_Puzzle_Clean_Up = nil
+	Common_Puzzle_Init = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Destroy_Walker_Object = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Register_For_Production_Complete_Callback = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

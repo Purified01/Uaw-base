@@ -1,3 +1,15 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -82,6 +94,8 @@ function On_Init()
 	PATCH_STATE_INACTIVE = Declare_Enum()
 	
 	this.Register_Event_Handler("Animation_Finished", this, On_Animation_Finished)
+	
+	DisplayPrepared = false	
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -92,6 +106,13 @@ function On_Animation_Finished()
 end
 
 
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Animation_Finished
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Animation_Finished()
+ 	Hide_Display(true)
+end
+   
 -- ------------------------------------------------------------------------------------------------------------------
 -- Initialize_Name_Insert
 -- ------------------------------------------------------------------------------------------------------------------
@@ -288,10 +309,6 @@ function Setup_Display(tooltip_info)
 	
 	-- Update the description text for this object/type.
 	Set_Description_Text()
-	
-	local f_x, f_y, f_w, f_h = this.Frame.Get_World_Bounds()
-	this.Frame.Set_World_Bounds(f_x, f_y, f_w, CurrentSceneHeight + LowerMarginHeight)
-	this.Stop_Animation()
 end
 
 
@@ -321,6 +338,9 @@ end
 function Update_Object_Tooltip(tooltip_data)
 	-- For objects:
 	-- tooltip_data = name, type
+	if not tooltip_data then
+		return 
+	end
 	
 	CurrentTooltipData = {}
 	CurrentTooltipData.Object = tooltip_data[1]
@@ -365,7 +385,7 @@ function Update_Object_Tooltip(tooltip_data)
 		CurrentTooltipData.AddCategoryPrefix = true
 	end
 	
-	CurrentTooltipData.IsHardPointSocket = (CurrentTooltipData.Type.Has_Behavior(BEHAVIOR_HARD_POINT) and CurrentTooltipData.Type.Has_Behavior(BEHAVIOR_TACTICAL_BUILD_OBJECTS))
+	CurrentTooltipData.IsHardPointSocket = (CurrentTooltipData.Type.Has_Behavior(68) and CurrentTooltipData.Type.Has_Behavior(38))
 	CurrentTooltipData.BuildCost = -1.0
 	CurrentTooltipData.BuildTime = -1.0
 	CurrentTooltipData.WarmUpTime =  -1.0
@@ -544,7 +564,6 @@ function Set_Name()
 	display_text.append(name_txt)
 	Name.Text.Set_Text(display_text)
 	Name.Set_Hidden(false)
-	Resize_Name_Insert()
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -641,9 +660,6 @@ function Set_Cost_Time_Pop_Info()
 	hide = hide and (not pop_cap or pop_cap <= 0)
 	
 	if hide == false then 
-		local bds = Pop.Get_User_Data()	
-		Pop.Set_World_Bounds(bds.x, CurrentSceneHeight, bds.w, bds.h)
-		CurrentSceneHeight = CurrentSceneHeight + bds.h
 		Pop.Set_Hidden(false)
 	else
 		Pop.Set_Hidden(true)
@@ -700,7 +716,6 @@ function Set_Lifetime_Build_Cap()
 			if not text_strg.empty() then 
 				text_strg.append(Create_Wide_String("\n"))
 				LifeBuildCap.Set_Text(text_strg)
-				Resize_Lifetime_Build_Cap_Insert()	
 				LifeBuildCap.Set_Hidden(false)
 			else
 				LifeBuildCap.Set_Hidden(true)
@@ -779,7 +794,6 @@ function Set_Current_Build_Cap()
 			if not text_strg.empty() then 
 				text_strg.append(Create_Wide_String("\n"))
 				CurrBuildCap.Set_Text(text_strg)
-				Resize_Current_Build_Cap_Insert()	
 				CurrBuildCap.Set_Hidden(false)
 			else
 				CurrBuildCap.Set_Hidden(true)
@@ -825,7 +839,6 @@ function Set_Additional_Lock_Info()
 
 	if CurrentTooltipData.AdditionalLockInfo then
 		LockInfo.Set_Text(CurrentTooltipData.AdditionalLockInfo)
-		Resize_Additional_Lock_Info_Insert()
 		LockInfo.Set_Hidden(false)
 	else
 		LockInfo.Set_Hidden(true)
@@ -897,7 +910,6 @@ function Set_Good_Against_Vulnerable_To_Text()
 	if text_strg.empty() == false then 
 		text_strg.append(Create_Wide_String("\n"))
 		GAVT.Text.Set_Text(text_strg)
-		Resize_GAVT_Insert()	
 		GAVT.Set_Hidden(false)
 	else
 		GAVT.Set_Hidden(true)
@@ -938,15 +950,15 @@ function Set_Description_Text()
 	if not CurrentTooltipData.IsAbilityData then
 		if CurrentTooltipData.DescriptionText then
 			text.append(CurrentTooltipData.DescriptionText)
-		else
-			text.append(CurrentTooltipData.Type.Get_Tooltip_Description_Text( CurrentTooltipData.Object))
+		elseif CurrentTooltipData.Type then
+			text.append(CurrentTooltipData.Type.Get_Tooltip_Description_Text( CurrentTooltipData.Object ))
 		end
 	elseif CurrentTooltipData.Ability.DescTextID ~= "" then 
 		text.append(Get_Game_Text(CurrentTooltipData.Ability.DescTextID))
 	end
 	
 	if not text or text.empty() == true then 
-		text.append(Create_Wide_String("The TooltipBehaviorType data for this object has not been set.\n You must specify the tooltip category text id and the description text id.\n\n\n"))
+		--text.append(Create_Wide_String("The TooltipBehaviorType data for this object has not been set.\n You must specify the tooltip category text id and the description text id.\n\n\n"))
 	end
 		
 	if CurrentTooltipData.UpgradesList ~= nil and #CurrentTooltipData.UpgradesList > 0 then 
@@ -988,7 +1000,6 @@ function Set_Description_Text()
 	
 	if text.empty() == false then
 		Desc.Text.Set_Text(text)
-		Resize_Description_Insert()
 		Desc.Set_Hidden(false)
 	else
 		Desc.Set_Hidden(true)	
@@ -1026,17 +1037,58 @@ function Reset_Data()
 	CurrentTooltipMode= nil
 	CurrentTooltipData = nil
 	CurrentSceneHeight = nil
+	DisplayPrepared = false
 end
 
 
 -- ------------------------------------------------------------------------------------------------------------------
--- Display (Interface)
+-- Prepare_Display (Interface)
 -- ------------------------------------------------------------------------------------------------------------------
-function Display(sort_to_front, tooltip_info)
+function Prepare_Display(sort_to_front, tooltip_info)
 	if sort_to_front == nil or tooltip_info == nil then return end
-	this.Set_Hidden(false)
+	if not DisplayPrepared then
+		this.Set_Hidden(true)
+	end
 	this.Set_Sort_To_Front(sort_to_front)
 	Setup_Display(tooltip_info)
+	DisplayPrepared = true
+end
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Finalize_Display (Interface)
+-- ------------------------------------------------------------------------------------------------------------------
+function Finalize_Display()
+
+	if not Initialized or not DisplayPrepared then return end
+	--Show the tooltip and size the elements to fit the text.  Separated
+	--out from Prepare_Display so that we have a chance to measure text
+	--(takes a frame) before doing the resizing
+	this.Set_Hidden(false)
+	Resize_Name_Insert()
+	if not Pop.Get_Hidden() then
+		local bds = Pop.Get_User_Data()	
+		Pop.Set_World_Bounds(bds.x, CurrentSceneHeight, bds.w, bds.h)
+		CurrentSceneHeight = CurrentSceneHeight + bds.h
+	end		
+	if not LifeBuildCap.Get_Hidden() then
+		Resize_Lifetime_Build_Cap_Insert()	
+	end
+	if not CurrBuildCap.Get_Hidden() then
+		Resize_Current_Build_Cap_Insert()
+	end
+	if LockInfo and not LockInfo.Get_Hidden() then
+		Resize_Additional_Lock_Info_Insert()
+	end
+	if not GAVT.Get_Hidden() then
+		Resize_GAVT_Insert()	
+	end
+	if not Desc.Get_Hidden() then
+		Resize_Description_Insert()
+	end
+	
+	local f_x, f_y, f_w, f_h = this.Frame.Get_World_Bounds()
+	this.Frame.Set_World_Bounds(f_x, f_y, f_w, CurrentSceneHeight + LowerMarginHeight)
+	this.Stop_Animation()	
 end
 
 
@@ -1044,6 +1096,7 @@ end
 -- Close (Interface)
 -- ------------------------------------------------------------------------------------------------------------------
 function Close()
+	this.Set_Hidden(true)
 	this.Play_Animation("Close", false)
 	Reset_Data()
 end
@@ -1055,10 +1108,39 @@ function Hide_Display(on_off)
 	this.Set_Hidden(on_off)
 end
 
+
 -- ------------------------------------------------------------------------------------------------------------------
 -- Interface
 -- ------------------------------------------------------------------------------------------------------------------
 Interface = {}
-Interface.Display = Display
+Interface.Prepare_Display = Prepare_Display
+Interface.Finalize_Display = Finalize_Display
 Interface.Close = Close
 Interface.Hide_Display = Hide_Display
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Ability_Key_Mapping_Text = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/DEFCON_Overlay.lua#7 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/DEFCON_Overlay.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/DEFCON_Overlay.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/DEFCON_Overlay.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84335 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/19 16:41:59 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #7 $
+--          $Revision: #8 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -184,3 +192,37 @@ Interface = {}
 Interface.Set_Model = Set_Model
 Interface.Get_Model = Get_Model
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Find_All_Parent_Units = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

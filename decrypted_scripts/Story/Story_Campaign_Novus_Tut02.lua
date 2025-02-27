@@ -1,4 +1,50 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut02.lua#103 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[204] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[150] = true
+LuaGlobalCommandLinks[177] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[139] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[89] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[206] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut02.lua#44 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +71,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut02.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Tut02.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Chris_Rubyor $
+--            $Author: Brian_Hayes $
 --
---            $Change: 88916 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/12/03 18:03:46 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #103 $
+--          $Revision: #44 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,11 +118,11 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 	PGColors_Init_Constants()
---	uea.Enable_Colorization(true, COLOR_GREEN)
---	ueatwo.Enable_Colorization(true, COLOR_DARK_GREEN)
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	hostile.Enable_Colorization(true, COLOR_RED)
+--	uea.Enable_Colorization(true, 5)
+--	ueatwo.Enable_Colorization(true, 21)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	hostile.Enable_Colorization(true, 2)
 
 	pip_moore = "MH_Moore_pip_Head.alo"
 	pip_comm = "mi_comm_officer_pip_head.alo"
@@ -114,14 +160,24 @@ function State_Init(message)
 
 		Fade_Screen_Out(0)
 
-	novus.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
+		novus.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
-			
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+		
+	--if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_TUTORIAL02_NAME")
+		if Is_Gamepad_Active() then
+			--UI_Show_Controller_Context_Display(false)
+			Controller_Set_Tactical_Component_Lock("LEFT_SHOULDER_BUTTON",true)
+		end
+		
 		Create_Thread("Thread_Mission_Start")
 	
 	elseif message == OnUpdate then
@@ -134,7 +190,7 @@ end
 function Thread_Mission_Start()
 	aliens.Allow_Autonomous_AI_Goal_Activation(false)
 
-	UI_Hide_Research_Button()
+	UI_Hide_Research_Button(true)
 	UI_Hide_Sell_Button()
 	UI_Display_Tooltip_Resources(false)
 	UI_Set_Display_Credits_Pop(false)
@@ -152,10 +208,10 @@ function Thread_Mission_Start()
 	Disable_Automatic_Tactical_Mode_Music()
 	Play_Music("Music_On_Edge")
 	
-		hero = Find_Hint("Military_Hero_General_Randal_Moore","part1")
-		if not TestValid(hero) then
-			MessageBox("Story_Campaign_Novus_Tut02 cannot find General Moore'!")
-		end
+	hero = Find_Hint("Military_Hero_General_Randal_Moore","part1")
+	if not TestValid(hero) then
+		MessageBox("Story_Campaign_Novus_Tut02 cannot find General Moore'!")
+	end
 		
 	prox_choppers=Find_Hint("MARKER_GENERIC", "proxchoppers")
 	fort_mcnair=Find_Hint("MARKER_GENERIC", "thefort")
@@ -249,10 +305,10 @@ function Thread_Mission_Start()
 	--ueatwo.Make_Ally(hostile)
 	
 	--set low civ population on large maps (esp single player)
-	Spawn_Civilians_Automatically(true)
-	Set_Desired_Civilian_Population(200)
+	--Spawn_Civilians_Automatically(true)
+	--Set_Desired_Civilian_Population(200)
 	--Make_Civilians_Panic(fort_mcnair, 10000)
-	Create_Thread("Setup_Civilians")
+	--Create_Thread("Setup_Civilians")
 	
 	Setup_Ambushes()
 	Setup_Guerillas()
@@ -296,6 +352,9 @@ function Thread_Mission_Start()
 	units5.Move_To(unitsgoto5)
 	units6.Move_To(unitsgoto6)
 	
+	--jdg 1/21/08 fix for civies now standing around at mission start.
+	Make_Civilians_Panic(mission_start, 100)
+	
 	Create_Thread("Setup_Fuel_Tankers")
 	
 	Fade_Screen_In(1) 
@@ -310,13 +369,15 @@ function Thread_Mission_Start()
 	
 	Sleep(1)
 	
+	
+	
 	--used to skip to novus section of the mission
   if true then
 	
 	-- show mission objective a and wait for it to be triggered
 	Show_Objective_A()
-	--Add_Independent_Hint(HINT_SYSTEM_SCROLLING_02)
-	--Add_Independent_Hint(HINT_SYSTEM_ROTATE_VIEW)
+	--Add_Independent_Hint(78)
+	--Add_Independent_Hint(79)
 
 	Create_Thread("President_Health_Tracker")
 	
@@ -328,7 +389,7 @@ function Thread_Mission_Start()
 				obja_flag.Highlight(false)
 				Set_Objective_Text(tut02_objective_a, "TEXT_SP_MISSION_TUT02_OBJECTIVE_A")
 				Objective_Complete(tut02_objective_a)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_A_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_A_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_a_completed=true;
@@ -352,8 +413,8 @@ function Thread_Mission_Start()
 	Create_Thread("Audio_Woolard_Come_Home")
 	Create_Thread("Spawn_Woolard")
 	Show_Objective_B()
-	--Add_Independent_Hint(HINT_SYSTEM_CONSTRUCTING_UNITS)
-	--Add_Independent_Hint(HINT_SYSTEM_RALLY_POINTS)
+	--Add_Independent_Hint(101)
+	--Add_Independent_Hint(102)
 	
 	while not objective_b_completed do
 		Sleep(1)
@@ -362,7 +423,7 @@ function Thread_Mission_Start()
 				Remove_Radar_Blip("blip_objective_b")
 				Set_Objective_Text(tut02_objective_b, "TEXT_SP_MISSION_TUT02_OBJECTIVE_B")
 				Objective_Complete(tut02_objective_b)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_B_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_B_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				obja_flag.Highlight(false)
@@ -396,7 +457,10 @@ function Thread_Mission_Start()
 			end
 			if not TestValid(motorpool) and not TestValid(barracks) and not TestValid(airfield) then
 				failure_text="TEXT_SP_MISSION_TUT02_OBJECTIVE_C_FAILED"
-				Create_Thread("Thread_Mission_Failed")
+				if mission_failure == false then 
+					mission_failure = true
+					Create_Thread("Thread_Mission_Failed")
+				end
 			end
 		end
 	end
@@ -411,13 +475,16 @@ function Thread_Mission_Start()
 	woolard.Set_Cannot_Be_Killed(true)
 	
 	--MessageBox("Insert Neato Cinematic Here.")
+	
+	--Play the movie *before* the switch so it doesn't get lost
+	--if the faction change is deferred because of threading. 
+   BlockOnCommand(Play_Bink_Movie("Mission_2_Midtro",true))
 	Change_Local_Faction("Novus")
-    Set_Active_Context("Tut02_Story_Campaign_Midtro")
-    BlockOnCommand(Play_Bink_Movie("Mission_2_Midtro",true))
+   Set_Active_Context("Tut02_Story_Campaign_Midtro")
 
 	Set_Active_Context("Tut02_StoryCampaign_Novus")
 
-	UI_Hide_Research_Button()
+	UI_Hide_Research_Button(true)
 	UI_Hide_Sell_Button()
 
 	novus.Make_Ally(civilian)
@@ -464,15 +531,15 @@ function Thread_Mission_Start()
 	
 	UI_Display_Tooltip_Resources(true)
 
-		-- Radar Initialization
-		local radar_filter_id1 = RadarMap.Add_Filter("Radar_Map_Enable", novus)
-		local radar_filter_id2 = RadarMap.Add_Filter("Radar_Map_Allow_Mouse_Input", novus)
-		local radar_filter_id3 = RadarMap.Add_Filter("Radar_Map_Show_Terrain", novus)
-		local radar_filter_id4 = RadarMap.Add_Filter("Radar_Map_Show_FOW", novus)
-		local radar_filter_id5 = RadarMap.Add_Filter("Radar_Map_Show_Owned", novus)
-		local radar_filter_id6 = RadarMap.Add_Filter("Radar_Map_Show_Allied", novus)
-		local radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Enemy", novus)
-		local radar_filter_id8 = RadarMap.Add_Filter("Radar_Map_Show_Neutral", novus)
+	-- Radar Initialization
+	local radar_filter_id1 = RadarMap.Add_Filter("Radar_Map_Enable", novus)
+	local radar_filter_id2 = RadarMap.Add_Filter("Radar_Map_Allow_Mouse_Input", novus)
+	local radar_filter_id3 = RadarMap.Add_Filter("Radar_Map_Show_Terrain", novus)
+	local radar_filter_id4 = RadarMap.Add_Filter("Radar_Map_Show_FOW", novus)
+	local radar_filter_id5 = RadarMap.Add_Filter("Radar_Map_Show_Owned", novus)
+	local radar_filter_id6 = RadarMap.Add_Filter("Radar_Map_Show_Allied", novus)
+	local radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Enemy", novus)
+	local radar_filter_id8 = RadarMap.Add_Filter("Radar_Map_Show_Neutral", novus)
 		
 	Point_Camera_At(mirabel)
 	Lock_Controls(1)
@@ -499,7 +566,7 @@ function Thread_Mission_Start()
 				Remove_Radar_Blip("blip_objective_d")
 				Set_Objective_Text(tut02_objective_d, "TEXT_SP_MISSION_TUT02_OBJECTIVE_D")
 				Objective_Complete(tut02_objective_d)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_D_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_D_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_d_completed=true;
@@ -570,12 +637,12 @@ end
 
 -- adds mission objective for objective A
 function Show_Objective_A()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_A_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_A_ADD"} )
 	Sleep(time_objective_sleep)
 	Add_Radar_Blip(obja_flag, "DEFAULT", "blip_objective_a")
 	tut02_objective_a = Add_Objective("TEXT_SP_MISSION_TUT02_OBJECTIVE_A")
 	obja_flag.Highlight(true)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	if TestValid(president) then president.Highlight_Small(true, -40) end
 end
 
@@ -611,9 +678,9 @@ function Lost_Ones_Bomb_And_Run(grey)
 		BlockOnCommand(grey.Activate_Ability("Lost_One_Plasma_Bomb_Unit_Ability",true, grey.Get_Position()))
 	end
 	Sleep(1)
-	if TestValid(grey) then
-		BlockOnCommand(grey.Activate_Ability("Grey_Phase_Unit_Ability",true))
-	end
+	--if TestValid(grey) then -- jdg slash and burn baby...fixing log errors.
+	--	BlockOnCommand(grey.Activate_Ability("Grey_Phase_Unit_Ability",true))
+	--end
 	if TestValid(grey) then
 		BlockOnCommand(grey.Move_To(bombersgoto))
 	end
@@ -709,7 +776,10 @@ function Activate_Fort()
 	
 	Sleep(1)
 	
-	Add_Independent_Hint(HINT_TUT02_BUILDING_UNITS)
+	--jdg this crashes on the Xbox 8/21/07
+	if not Is_Gamepad_Active() then
+		Add_Independent_Hint(117)
+	end
 
 	Sleep(20)
 	
@@ -796,12 +866,12 @@ end
 -- adds mission objective for objective B
 function Show_Objective_B()
 	--Queue_Talking_Head(hero, "MT01_COL0119_ENG")
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_B_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_B_ADD"} )
 	Sleep(time_objective_sleep)
 	tut02_objective_b = Add_Objective("TEXT_SP_MISSION_TUT02_OBJECTIVE_B")
 	obja_flag.Highlight(true)
 	woolard.Highlight_Small(true, -40)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 end
 
 function Setup_Ambushes()
@@ -878,10 +948,10 @@ end
 
 -- adds mission objective for objective C
 function Show_Objective_C()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, "TEXT_SP_MISSION_TUT02_OBJECTIVE_C_ADD" )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, "TEXT_SP_MISSION_TUT02_OBJECTIVE_C_ADD" )
 	Sleep(time_objective_sleep)
 	tut02_objective_c = Add_Objective("TEXT_SP_MISSION_TUT02_OBJECTIVE_C" )
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, "" )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, "" )
 end
 
 function Ground_Invasion()
@@ -978,10 +1048,10 @@ end
 function Show_Objective_D()
 	--Queue_Talking_Head(hero, "MT01_COL0119_ENG")
 	--tut02_objective_primary = Add_Objective("Mirabel must survive.")
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_D_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_TUT02_OBJECTIVE_D_ADD"} )
 	Sleep(time_objective_sleep)
 	tut02_objective_d = Add_Objective("TEXT_SP_MISSION_TUT02_OBJECTIVE_D")
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 end
 
 function Spawn_Novus()
@@ -1213,17 +1283,56 @@ end
 
 --on hero death, force defeat
 function Death_Hero()
+	Create_Thread("Thread_Death_Hero")
+end
+
+function Thread_Death_Hero()
 	if not military_retreating then 
-		Queue_Talking_Head(pip_comm, "ALL06_SCENE02_02")
+		UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+		local block = Queue_Talking_Head(pip_comm, "ALL06_SCENE02_02")
+		Allow_Speech_Events(false)
+		BlockOnCommand(block)
+		
 		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE"
-		Create_Thread("Thread_Mission_Failed")
+		if mission_failure == false then 
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
+	end
+end
+
+function Death_Woolard()
+	Create_Thread("Thread_Death_Woolard")
+end
+
+function Thread_Death_Woolard()
+	if not military_retreating then
+		UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+		local block = Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE04_13")
+		Allow_Speech_Events(false)
+		BlockOnCommand(block)
+		
+		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_WOOLARD"
+		if mission_failure == false then 
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
 function Death_Mirabel()
 	if novus_appeared then 
 		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
-		Create_Thread("Thread_Mission_Failed")
+		if mission_failure == false then 
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
@@ -1234,27 +1343,39 @@ function Death_Walker()
 	end
 end
 
-function Death_Woolard()
-	if not military_retreating then
-		Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE04_13")
-		failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_WOOLARD"
-		Create_Thread("Thread_Mission_Failed")
+function Death_President()
+	if mission_failure == false then 
+		Create_Thread("Thread_Death_President")
 	end
 end
 
-function Death_President()
+function Thread_Death_President()
 	if not president_escaped then
-		Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE04_14")
+		UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+		local block = Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE04_14")
+		Allow_Speech_Events(false)
+		BlockOnCommand(block)
+		
 		failure_text="TEXT_SP_MISSION_TUT02_OBJECTIVE_A_FAILED"
-		Create_Thread("Thread_Mission_Failed")
+		if mission_failure == false then 
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
+
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
-			
+		--Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+	
 	mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
 	Lock_Controls(1)
@@ -1270,9 +1391,9 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1280,9 +1401,12 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
+
 			
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1297,9 +1421,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1313,6 +1437,11 @@ function Force_Victory(player)
 			Lock_Objects(false)
 			novus.Reset_Story_Locks()
 			
+			--jdg safety reset for x360 controller locks
+			if Is_Gamepad_Active() then
+				Controller_Set_Tactical_Component_Lock("NONE",true)
+			end
+			
 			-- ***** ACHIEVEMENT_AWARD *****
 			--if (Player_Earned_Offline_Achievements()) then
 				--Supply Novus as the player here - the parameter is only used to determine which version of the *_Tactical_Mission_Over
@@ -1322,8 +1451,8 @@ function Force_Victory(player)
 				
 				-- Inform the campaign script of our victory.
 				global_script.Call_Function("Novus_Tactical_Mission_Over", true) -- true == player wins/false == player loses
-				--Quit_Game_Now( winning_player, quit_to_main_menu, destroy_loser_forces, build_temp_command_center, VerticalSliceTriggerVictorySplashFlag)
-				Quit_Game_Now(player, false, true, false)
+				
+				--Rely on the global script to schedule the next campaign, thus triggering a quit.
 			--end
 		else
 			Clear_Hint_Tracking_Map()
@@ -1429,6 +1558,7 @@ end
 function Audio_Reached_Base()
 	if not mission_success and not mission_failure then
 		BlockOnCommand(Queue_Talking_Head(pip_moore, "MIL_TUT02_SCENE07_10"))
+		
 	end
 	if not mission_success and not mission_failure then
 		BlockOnCommand(Queue_Talking_Head(pip_moore, "MIL_TUT02_SCENE07_11"))
@@ -1438,7 +1568,11 @@ function Audio_Reached_Base()
 		BlockOnCommand(Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE06_01"))
 	end
 	if not mission_success and not mission_failure then
-		BlockOnCommand(Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE06_02"))
+		BlockOnCommand(Queue_Talking_Head(pip_comm, "MIL_TUT02_SCENE06_02"))--Comm Officer (COM): All production structures are now operational.
+		--jdg fudge for xbox crash...need to wait til dialog is done before we pop this hint. 8/31/07
+		if Is_Gamepad_Active() then
+			Add_Independent_Hint(117)
+		end
 	end
 	Sleep(1)	
 	if not mission_success and not mission_failure then
@@ -1520,7 +1654,7 @@ function Audio_Dervish_Ability_Ready()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	UI_Hide_Research_Button(true)
 	UI_Hide_Sell_Button()
 	UI_Display_Tooltip_Resources(false)
 	if not objective_a_completed then
@@ -1530,3 +1664,90 @@ function Post_Load_Callback()
 	end
 	Movie_Commands_Post_Load_Callback()
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Foos_Guard_Walker = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Setup_Civilians = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

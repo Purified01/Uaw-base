@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Masari_Master_Build_Order.lua#16 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[113] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Masari_Master_Build_Order.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Masari_Master_Build_Order.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Masari_Master_Build_Order.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87963 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/11/15 17:33:46 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #16 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -82,7 +91,7 @@ function Definitions()
 	}
 
 	STANDARD_INVASION_MOVE = {
-		Options = { DurationMin=140.0, DurationMax=140.0, KillThreadsWhenDone=true },
+		Options = { DurationMin=180.0, DurationMax=180.0, KillThreadsWhenDone=true },
 		BuildOrder =
 		{
 			{ Type="Masari_Foundation",						Count=1, ExitThread=false },
@@ -263,13 +272,17 @@ end
 function Compute_Desire()
 
 	if Target then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -1.0
 	end
 
 	if not Is_Player_Of_Faction(Player, "Masari")  then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -2.0
+	end
+	
+	if Player.Get_Player_Is_Crippled() then
+		return -2.0
 	end
 	
 	return 1.0
@@ -283,6 +296,7 @@ end
 
 
 function On_Activate()
+	ResearchSleepTime = nil
 	Create_Thread("Spawn_Sub_Goals")
 	Create_Thread("Masari_Research_And_Mode")
 end
@@ -307,7 +321,9 @@ function Clear_Research_For(player_script, suite, index)
 			for level = 4, 1, -1 do
 				research_node_data = player_script.Call_Function("Retrieve_Node_Data", suites[s_idx], level)
 				if research_node_data.Completed then
-					Send_GUI_Network_Event("Network_Cancel_Research", {Player, suites[s_idx], level })
+					--Get_Game_Mode_GUI_Scene().Raise_Event("Network_Cancel_Research", nil, {Player, suites[s_idx], level})	
+					--Send_GUI_Network_Event("Network_Cancel_Research", {Player, suites[s_idx], level })
+					player_script.Call_Function("Cancel_Research", {suites[s_idx], level})
 					return false
 				end
 			end
@@ -395,6 +411,13 @@ function Masari_Research_And_Mode()
 	if GameRandom(1,100) < 50 then
 		light_mode = false
 	end
+	
+	-- during an invasion wait for a while
+	while ResearchSleepTime == nil do
+		Sleep(1.0)
+	end
+	
+	Sleep(ResearchSleepTime)
 	
 	while true do
 	
@@ -488,12 +511,14 @@ function Check_For_Invasion()
 		if TestValid( unit ) and unit.Get_Owner() == Player then
 			local type = unit.Get_Type()
 			if TestValid(type) and type.Get_Type_Value("Is_Command_Center") then
+				ResearchSleepTime = 1.0
 				return
 			end
 		end
 		
 	end
 	
+	ResearchSleepTime = 150.0
 	Execute_Build_Order(STANDARD_INVASION_MOVE)
 
 end
@@ -527,4 +552,51 @@ function Check_For_Hi_Cash(light_mode)
 		end
 	end
 	
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
 end

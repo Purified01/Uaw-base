@@ -1,3 +1,16 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[120] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[163] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -77,6 +90,9 @@ function On_Init()
 	
 	POP_CAP_CATEGORY_NONE = Declare_Enum(-1)
 	POP_CAP_CATEGORY_WALKER = Declare_Enum(0)
+	
+	TooltipReadyDelay = -1
+	ExpandedTooltipReadyDelay = -1
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -206,7 +222,7 @@ function Make_Tooltip_For_Type(type_data)
 		return
 	end
 	
-	if object_type.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) then
+	if object_type.Has_Behavior(39) then
 		object_type = object_type.Get_Tactical_Buildable_Constructed_Type()
 		if object_type == nil then 
 			return
@@ -337,23 +353,11 @@ function Make_Tooltip_For_UI(tooltip_data, expanded_tooltip_override)
 end
 
 
-
--- ------------------------------------------------------------------------------------------------------------------
--- On_Tooltip_Dirty 
--- ------------------------------------------------------------------------------------------------------------------
-function On_Tooltip_Dirty(source)
-	local source_id = source.Get_ID()
-	
-	if TestValid(source) then 
-		On_Tooltip_Dirty(source)
-	end
-end
-
 -- ------------------------------------------------------------------------------------------------------------------
 -- On_Tooltip_Dirty - Called when the mouse is over a game object in tactical mode.
 -- ------------------------------------------------------------------------------------------------------------------
 function On_Tooltip_Dirty(object)
-	if (object.Get_ID() == GameObjectID) then
+	if TestValid(object) and (object.Get_ID() == GameObjectID) then
 		TooltipDirty = true
 		if CurrentTooltipInfo then
 			Make_Tooltip_For_Object({object, CurrentTooltipInfo[3], CurrentTooltipInfo[4], CurrentTooltipInfo[5]})
@@ -386,14 +390,19 @@ function Make_Tooltip_For_Object(tooltip_data)
 			end
 			
 			if TestValid(old_object) then 
-				old_object.Unregister_Signal_Handler(On_Tooltip_Dirty)
+				old_object.Unregister_Signal_Handler(On_Tooltip_Dirty, this)
 			end
 		end
 		
 		local is_valid_resource = false
-		if object.Has_Behavior(BEHAVIOR_RESOURCE) then 
+		if object.Has_Behavior(143) then 
 			local player = Find_Player("local")
 			if player and object.Get_Type().Resource_Is_Valid_For_Faction(player) then 
+				
+				--Oksana: no tooltip for objetcs that are supposed to be resources but are all drained out
+				if object.Resource_Get_Resource_Units() <= 0 then
+					return
+				end			
 				is_valid_resource = true
 			end
 		end
@@ -432,7 +441,7 @@ function Make_Tooltip_For_Object(tooltip_data)
 			end
 			
 			local obj_type = object.Get_Type()
-			if object.Has_Behavior(BEHAVIOR_TEAM) then 
+			if object.Has_Behavior(22) then 
 				obj_type = object.Get_Original_Object_Type()
 			end
 			
@@ -491,7 +500,7 @@ function Make_Tooltip_For_Object(tooltip_data)
 			end
 			
 			GameObjectID = object.Get_ID()
-			object.Register_Signal_Handler(On_Tooltip_Dirty, "OBJECT_TOOLTIP_DIRTY")
+			object.Register_Signal_Handler(On_Tooltip_Dirty, "OBJECT_TOOLTIP_DIRTY", this)
 			
 			Make_Tooltip(object_text, object, is_valid_resource)
 			TooltipOwner = object.Get_Owner()
@@ -516,13 +525,12 @@ function Make_Tooltip(w_string_display, object, is_valid_resource)
 	end
 	
 	this.Enable(true)
-	FloatingTooltip.Set_Hidden(false)
 	
 	local append_w_string = Create_Wide_String("")
 	if TestValid(object) then
 
 		local resources = 0
-		if object.Has_Behavior(BEHAVIOR_RESOURCE) == true then
+		if object.Has_Behavior(143) == true then
 			resources = object.Resource_Get_Resource_Units()
 		end
 		if resources > 0 then
@@ -567,11 +575,20 @@ function Make_Tooltip(w_string_display, object, is_valid_resource)
 	-- MLL: Don't display tooltip if no string to show.
 	if w_string_display.empty() then
 		End_Tooltip()
+		return
 	end
 	
 	-- Let us make the text object change its width based on its contents.
 	FloatingTooltip.Text.Set_Text(w_string_display)	
-	Position_Scene()
+	
+	if TooltipDirty then
+		TooltipReadyDelay = 0
+	else
+		--Have to delay the actual display of the tooltip by a frame to make
+		--sure that the text is ready to report its size properly	
+		TooltipReadyDelay = 1
+	end
+	ExpandedTooltipReadyDelay = -1	
 end
 
 
@@ -669,7 +686,7 @@ function End_Tooltip()
 		
 		local object = Get_Object_From_ID(GameObjectID)
 		if TestValid(object) then 
-			object.Unregister_Signal_Handler(On_Tooltip_Dirty)
+			object.Unregister_Signal_Handler(On_Tooltip_Dirty, this)
 		end
 	end
 	
@@ -687,6 +704,9 @@ function End_Tooltip()
 	TooltipDirty = false
 	TooltipOwner = nil
 	CurrentGameCommand = nil
+	
+	TooltipReadyDelay = -1
+	ExpandedTooltipReadyDelay = -1
 end
 
 
@@ -710,6 +730,15 @@ function On_Update()
 		end				
 	end
 	
+	--Have to delay the actual display of the tooltip by a frame to make
+	--sure that the text is ready to report its size properly
+	if TooltipReadyDelay == 0 then
+		FloatingTooltip.Set_Hidden(false)
+		TooltipReadyDelay = -1
+	elseif TooltipReadyDelay > 0 then
+		TooltipReadyDelay = TooltipReadyDelay - 1
+	end
+	
 	Position_Scene()
 	
 	if CurrentTooltipInfo ~= nil and CurrentTooltipInfo[2] and (UITextID or GameObjectID == nil or TooltipOwner == Find_Player("local") or IsCapturableObject) then 
@@ -723,10 +752,18 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Display_Expanded_Tooltip()
 	
-	if TooltipActivationTime == nil or PIPMoviePlaying then return end
-	if TooltipActivationTime + ExpandedTooltipActivationDelay <= GetCurrentTime() then 	
+	if PIPMoviePlaying then return end
+	
+	if ExpandedTooltipReadyDelay == 0 then
+		ExpandedTooltip.Finalize_Display()
+		ExpandedTooltipReadyDelay = -1
+	elseif ExpandedTooltipReadyDelay > 0 then
+		ExpandedTooltipReadyDelay = ExpandedTooltipReadyDelay - 1
+	elseif TooltipActivationTime == nil then
+		return
+	elseif TooltipActivationTime + ExpandedTooltipActivationDelay <= GetCurrentTime() then 	
 		if CurrentTooltipInfo ~= nil then 
-			ExpandedTooltip.Display(SortToFront, CurrentTooltipInfo)
+			ExpandedTooltip.Prepare_Display(SortToFront, CurrentTooltipInfo)
 			if HideFloatyTooltipOnExpandedTooltipDisplay then
 				FloatingTooltip.Set_Hidden(true)
 			end
@@ -734,6 +771,8 @@ function Display_Expanded_Tooltip()
 			TooltipActivationTime = nil
 			-- reset all other flags
 			HideFloatyTooltipOnExpandedTooltipDisplay = false
+			
+			ExpandedTooltipReadyDelay = 1
 		end
 	end
 end
@@ -769,7 +808,7 @@ function Update_Resources()
 	end
 
 	object = Get_Object_From_ID(GameObjectID)
-	if object.Has_Behavior(BEHAVIOR_RESOURCE) then 
+	if object.Has_Behavior(143) then 
 		local player = Find_Player("local")
 		if player and object.Get_Type().Resource_Is_Valid_For_Faction(player) and object.Resource_Get_Resource_Units() > 0 then 
 			return true, object
@@ -819,3 +858,28 @@ Interface.Is_Open = Is_Open
 Interface.Set_Letterbox_Mode = Set_Letterbox_Mode
 Interface.Set_Display_Tooltip_Resources = Set_Display_Tooltip_Resources
 Interface.Set_Pip_Movie_Playing = Set_Pip_Movie_Playing
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Find_All_Parent_Units = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

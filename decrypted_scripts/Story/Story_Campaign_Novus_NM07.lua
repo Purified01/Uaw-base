@@ -1,4 +1,47 @@
- -- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM07.lua#53 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[150] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+ -- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM07.lua#34 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +68,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM07.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM07.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Jeff_Stewart $
+--            $Author: Brian_Hayes $
 --
---            $Change: 85498 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/10/04 15:22:34 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #53 $
+--          $Revision: #34 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,9 +103,30 @@ require("PGBaseDefinitions")
 
 require("SuperweaponsControl")
 
+require("PGStoryMode") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------
 
 function Definitions()
+	-- only service once a second
+	ServiceRate = 1
+	
 	--MessageBox("%s -- definitions", tostring(Script))
 	Define_State("State_Init", State_Init)
 	
@@ -73,11 +137,27 @@ function Definitions()
 	aliens = Find_Player("Alien")
 	alientwo = Find_Player("Alien_ZM06_KamalRex")
 	masari = Find_Player("Masari")
-
+	
+	ass_walker_list = {}
+	hab_walker_list = {}
+	sci_walker_list = {}
+	
+	--jdg breaking jeff's mission
+	assmbly_walker_a = nil
+	assmbly_walker_b = nil
+	bool_assmbly_walker_a_attacked = false
+	bool_assmbly_walker_b_attacked = false
+	habitat_walker_a = nil
+	habitat_walker_b = nil
+	bool_habitat_walker_a_attacked = false
+	bool_habitat_walker_b_attacked = false
+	bool_assembly_walker_at_mark = false
+	bool_habitat_walker_at_mark = false
+	
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	uea.Enable_Colorization(true, COLOR_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	uea.Enable_Colorization(true, 5)
 		
 	pip_moore = "MH_Moore_pip_Head.alo"
 	pip_comm = "mi_comm_officer_pip_head.alo"
@@ -93,6 +173,7 @@ function Definitions()
 	--this allows a win here to be reported to the strategic level lua script
 	global_script = Get_Game_Mode_Script("Strategic")
 	
+	
 end
 
 --***************************************STATES****************************************************************************************************
@@ -103,6 +184,8 @@ function State_Init(message)
 		PGAchievementAward_Init()
 		-- ***** ACHIEVEMENT_AWARD *****
 
+   	novus.Set_Research_Points_Override(6)
+
 		-- ***** HINT SYSTEM *****
 		PGHintSystemDefs_Init()
 		PGHintSystem_Init()
@@ -110,19 +193,41 @@ function State_Init(message)
 		Register_Hint_Context_Scene(scene)			-- Set the scene to which independant hints will be attached.
 		-- ***** HINT SYSTEM *****
 		
+			-- Radar Initialization
+		local radar_filter_id1 = RadarMap.Add_Filter("Radar_Map_Enable", novus)
+		local radar_filter_id2 = RadarMap.Add_Filter("Radar_Map_Allow_Mouse_Input", novus)
+		local radar_filter_id3 = RadarMap.Add_Filter("Radar_Map_Show_Terrain", novus)
+		local radar_filter_id4 = RadarMap.Add_Filter("Radar_Map_Show_FOW", novus)
+		local radar_filter_id5 = RadarMap.Add_Filter("Radar_Map_Show_Owned", novus)
+		local radar_filter_id6 = RadarMap.Add_Filter("Radar_Map_Show_Allied", novus)
+		local radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Enemy", novus)
+		local radar_filter_id8 = RadarMap.Add_Filter("Radar_Map_Show_Neutral", novus)
+		local radar_filter_id9 = RadarMap.Add_Filter("Radar_Map_Is_Grayscale", novus, false, "Bitwise_And")
+	
+
+		
 		--hero_start_pos = Find_Hint("MARKER_INVADER_CREATION_POSITION","nm07")
 		--hero = Create_Generic_Object(Find_Object_Type("Novus_Hero_Mech"), hero_start_pos, novus) 
 		
-	uea.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	alientwo.Allow_AI_Unit_Behavior(false)
+		uea.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
+		alientwo.Allow_AI_Unit_Behavior(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
-			
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
 		Fade_Screen_Out(0)
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM07_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
+		
 		Create_Thread("Thread_Mission_Start")
 	
 	elseif message == OnUpdate then
@@ -139,10 +244,32 @@ function Thread_Mission_Start()
     
 	Set_Active_Context("NM07_StoryCampaign")
 	
+	ass_walker_list=Find_All_Objects_Of_Type("NM07_CUSTOM_ASSEMBLY_WALKER")
+	for i, unit in pairs(ass_walker_list) do
+		if TestValid(unit) then
+			unit.Set_Object_Context_ID("NM07_EndCinematic")
+			--unit.Set_Service_Only_When_Rendered(true)
+		end
+	end
+	hab_walker_list=Find_All_Objects_Of_Type("NM07_CUSTOM_HABITAT_WALKER")
+	for i, unit in pairs(hab_walker_list) do
+		if TestValid(unit) then
+			unit.Set_Object_Context_ID("NM07_EndCinematic")
+			--unit.Set_Service_Only_When_Rendered(true)
+		end
+	end
+	sci_walker_list=Find_All_Objects_Of_Type("NM07_CUSTOM_SCIENCE_WALKER")
+	for i, unit in pairs(sci_walker_list) do
+		if TestValid(unit) then
+			unit.Set_Object_Context_ID("NM07_EndCinematic")
+			--unit.Set_Service_Only_When_Rendered(true)
+		end
+	end
+		
 	Import_Base_From_Global()
 	novus.Reset_Story_Locks()
 	Lock_Objects(true)
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	--UI_Hide_Sell_Button()
 
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED"
@@ -164,6 +291,16 @@ function Thread_Mission_Start()
 	portal = Find_Hint("NM04_NOVUS_PORTAL", "portal")
 	--novusbase7=Find_Hint("MARKER_GENERIC", "novusbase7")
 	
+	--define defeat condifition: hero dies
+	Register_Death_Event(hero, Death_Hero_Mech)
+	Register_Death_Event(vertigo, Death_Hero_Vertigo)
+	Register_Death_Event(founder, Death_Hero_Founder)
+	
+	--jdg 1/25/08 moore set to cannot be killed...eliminating the death callback.
+	--Register_Death_Event(moore, Death_Hero_Moore)
+	
+	Register_Death_Event(portal, Death_Hero_Portal)
+	
 	novusbaseattack=Find_All_Objects_With_Hint("novusbase7")
 	
 	dialogue_radiation=false
@@ -171,14 +308,6 @@ function Thread_Mission_Start()
 	dialogue_troop_a=false
 	dialogue_science_a=false
 	dialogue_science_b=false
-	
-	--define defeat condifition: hero dies
-	Register_Death_Event(hero, Death_Hero_Mech)
-	Register_Death_Event(vertigo, Death_Hero_Vertigo)
-	Register_Death_Event(founder, Death_Hero_Founder)
-	Register_Death_Event(moore, Death_Hero_Moore)
-	
-	Register_Death_Event(portal, Death_Hero_Portal)
 	
 	bldg1=Find_Hint("_WAREHOUSE_06","building1")
 	bldg1.Take_Damage(9999)
@@ -195,25 +324,6 @@ function Thread_Mission_Start()
 	at_formup_e=Find_All_Objects_With_Hint("zrh-form-2")
 	at_formup_f=Find_All_Objects_With_Hint("zrh-form-1")
 	at_formup_time=75
-	
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_ASSEMBLY_WALKER")
-	for i, unit in pairs(assets) do
-		if TestValid(unit) then
-			unit.Set_Service_Only_When_Rendered(true)
-		end
-	end
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_HABITAT_WALKER")
-	for i, unit in pairs(assets) do
-		if TestValid(unit) then
-			unit.Set_Service_Only_When_Rendered(true)
-		end
-	end
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_SCIENCE_WALKER")
-	for i, unit in pairs(assets) do
-		if TestValid(unit) then
-			unit.Set_Service_Only_When_Rendered(true)
-		end
-	end
 	
 	walkers_dead=false
 	
@@ -245,11 +355,16 @@ function Thread_Mission_Start()
 	novus.Make_Ally(civilian)
 	novus.Make_Ally(uea)
 	
-	novus.Give_Money(20000)
+	novus.Give_Money(40000)
+	
+	
+	
+	
 	
 	--set low civ population on large maps (esp single player)
-	Spawn_Civilians_Automatically(true)
-	Set_Desired_Civilian_Population(100)
+	--jdg 1/10/08 slash and burn balance for the 360...goodbye civies 
+	--Spawn_Civilians_Automatically(true)
+	--Set_Desired_Civilian_Population(100)
 	--Make_Civilians_Panic(mapcenter, 10000)
 
 	Disable_Automatic_Tactical_Mode_Music()
@@ -283,10 +398,18 @@ function Thread_Mission_Start()
 	Create_Thread("Setup_Military_Defenders")
 	Create_Thread("Setup_Hierarchy_Guards")
 		
-	invasion_time=30
+		--jdg was 30
+	invasion_time=60
+	
+	
+	
+	
+
 	
 if true then
-	Create_Thread("Alien_Troops_Cycler")
+	--jdg 1/10/08 slash and burn balancing for the 360---removing grunt encounter
+	--Create_Thread("Alien_Troops_Cycler")
+	
 	nov07_objective = Add_Objective("TEXT_SP_MISSION_NVS07_OBJECTIVE")
 	
 	while invasion_time>0 do
@@ -317,7 +440,7 @@ if true then
 				Sleep(1)
 			else
 				Objective_Complete(nov07_objective_a)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_A_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_A_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				Remove_Radar_Blip("blip_objective_a")
@@ -327,6 +450,8 @@ if true then
 		Sleep(1)
 	end
 
+	--jdg let the player get a little breather
+	Sleep(30)
 	walkers_left=2
 	Create_Thread("Setup_Walker_B")
 	Sleep(1)
@@ -344,7 +469,7 @@ if true then
 				Sleep(1)
 			else
 				Objective_Complete(nov07_objective_b)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_B_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_B_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				Remove_Radar_Blip("blip_objective_b")
@@ -358,6 +483,8 @@ end
 
 	Create_Thread("Hierarchy_Guards_Attack")
 	
+	--jdg let the player get a little breather
+	Sleep(30)
 	walkers_left=3
 	Create_Thread("Setup_Walker_C")
 	Sleep(1)
@@ -375,7 +502,7 @@ end
 				Sleep(1)
 			else
 				Objective_Complete(nov07_objective_c)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_C_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_C_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				Remove_Radar_Blip("blip_objective_c")
@@ -642,22 +769,65 @@ end
 
 function Setup_Walker_A()
 	markers=Find_All_Objects_With_Hint("objectivea")
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_ASSEMBLY_WALKER")
 	for i, mark in pairs(markers) do
 		if TestValid(mark) then
 			--walker=Create_Generic_Object("NM07_CUSTOM_ASSEMBLY_WALKER",mark,aliens)
-			walker=assets[i]
-			walker.Set_Service_Only_When_Rendered(false)
+			walker=ass_walker_list[i]
+			walker.Set_Object_Context_ID("NM07_StoryCampaign")
 			walker.Teleport(mark)
 			walker.Get_Script().Call_Function("Register_For_Walker_Death", Script, "Death_Walker_A") 
 			Create_Thread("Thread_Assembly_Walker_Attack",{walker,novusbaseattack[i]})
-			Create_Thread("Thread_Assembly_Walker_Produce",{walker,table.getn(markers)})
+			
+			
+			
 			walker.Add_Reveal_For_Player(novus)
-			walker.Override_Max_Speed(.20)
+			walker.Override_Max_Speed(.10)
 			Add_Radar_Blip(walker, "DEFAULT", "blip_objective_a")
+			
+			
+			
+			--jdg prox event here?
+			local proxflag = novusbaseattack[i]
+			Register_Prox(proxflag, Prox_AssemblyWalker_AtMark, 500, aliens)
+			
+			
 		end
 	end
+	
+	assembly_walker_a = ass_walker_list[1]
+	assembly_walker_b = ass_walker_list[2]
+	assembly_walker_a.Register_Signal_Handler(Callback_AssemblyWalker_A_Attacked, "OBJECT_DAMAGED")
+	assembly_walker_b.Register_Signal_Handler(Callback_AssemblyWalker_B_Attacked, "OBJECT_DAMAGED")
+	
+	--jdg 1/10/08 delaying unit production until walker is actually attacked ... trying to increase performance.
+	while not bool_assmbly_walker_a_attacked and not bool_assmbly_walker_b_attacked and not bool_assembly_walker_at_mark do
+		Sleep(5)
+	end
+	
 	Create_Thread("Thread_Assembly_Walker_Produced_Hunt")
+	
+end
+
+function Prox_AssemblyWalker_AtMark(prox_obj, trigger_obj)
+	if trigger_obj.Get_Owner() == aliens then
+		prox_obj.Cancel_Event_Object_In_Range(Prox_AssemblyWalker_AtMark)
+		bool_assembly_walker_at_mark = true
+	end
+end
+
+
+function Callback_AssemblyWalker_A_Attacked()
+	assembly_walker_a.Unregister_Signal_Handler(Callback_AssemblyWalker_A_Attacked)
+	bool_assmbly_walker_a_attacked = true
+	markers=Find_All_Objects_With_Hint("objectivea")
+	Create_Thread("Thread_Assembly_Walker_Produce",{assembly_walker_a,table.getn(markers)})
+end
+
+function Callback_AssemblyWalker_B_Attacked()
+	assembly_walker_b.Unregister_Signal_Handler(Callback_AssemblyWalker_B_Attacked)
+	bool_assmbly_walker_b_attacked = true
+	markers=Find_All_Objects_With_Hint("objectivea")
+	Create_Thread("Thread_Assembly_Walker_Produce",{assembly_walker_b,table.getn(markers)})
 end
 
 function Death_Walker_A()
@@ -688,24 +858,39 @@ end
 function Thread_Assembly_Walker_Produced_Hunt()
 	while not walkera_alldead do
 		defilers=Find_All_Objects_Of_Type("ALIEN_DEFILER")
-		for i, unit in pairs(defilers) do
-			Hunt(unit, "PrioritiesLikeOneWouldExpectThemToBe", false, true, unit, 300)
+		--for i, unit in pairs(defilers) do
+		--	Hunt(unit, "PrioritiesLikeOneWouldExpectThemToBe", false, false)
 			--unit.Guard_Target(novusbase7)
-		end
-		Sleep(GameRandom(5,7))
+		--end
+		
+		Hunt(defilers, "PrioritiesLikeOneWouldExpectThemToBe", false, false)
+		Sleep(30)
 	end
 end
 
 function Thread_Assembly_Walker_Produce(params)
 	local walker_obj,number = params[1],params[2]
 	local prod_unit=Find_Object_Type("ALIEN_DEFILER")
-	local prod_num=3
+	
+	local prod_num=1
 	local built={}
 	local inqueue={}
 	local queued=0
 	local build=0
 	local pod_type = Find_Object_Type("Alien_Walker_Assembly_HP_Defiler_Assembly_Pod")
 	while TestValid(walker_obj) do
+		
+		local max_allowed_units = 3
+		local list_current_units =  Find_All_Objects_Of_Type("ALIEN_DEFILER")
+		local counter_current_units = table.getn(list_current_units)
+		
+		--jdg 1/10/08 limiting number of units for performance reasons
+		while counter_current_units >= max_allowed_units do 
+			Sleep(2)
+			list_current_units =  Find_All_Objects_Of_Type("ALIEN_DEFILER")
+			counter_current_units = table.getn(list_current_units)
+		end
+		
 		queued=0
 		built=Find_All_Objects_Of_Type(prod_unit)
 		inqueue=walker_obj.Tactical_Enabler_Get_Queued_Objects()
@@ -734,53 +919,108 @@ function Thread_Assembly_Walker_Produce(params)
 			if got_pod then
 				Tactical_Enabler_Begin_Production(walker_obj, prod_unit, 1, aliens)
 			end
-			Sleep(GameRandom(4,5))	
+			Sleep(5)	
 		else 
-			Sleep(GameRandom(30,45))
+			Sleep(60)
 		end
 	end
 end
 
 function Setup_Walker_B()
 	markers=Find_All_Objects_With_Hint("objectiveb")
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_HABITAT_WALKER")
 	for i, mark in pairs(markers) do
 		if TestValid(mark) then
 			--walker=Create_Generic_Object("NM07_CUSTOM_HABITAT_WALKER",mark,aliens)
-			walker=assets[i]
-			walker.Set_Service_Only_When_Rendered(false)
+			walker=hab_walker_list[i]
+			walker.Set_Object_Context_ID("NM07_StoryCampaign")
 			walker.Teleport(mark)
 			walker.Get_Script().Call_Function("Register_For_Walker_Death", Script, "Death_Walker_B") 
 			Create_Thread("Thread_Habitat_Walker_Attack",{walker,novusbaseattack[i]})
-			Create_Thread("Thread_Habitat_Walker_Produce",{walker,table.getn(markers)})
 			walker.Add_Reveal_For_Player(novus)
 			walker.Override_Max_Speed(.20)
 			Add_Radar_Blip(walker, "DEFAULT", "blip_objective_b")
+			
+			
+			--jdg prox event here?
+			local proxflag = novusbaseattack[i]
+			Register_Prox(proxflag, Prox_HabitatWalker_AtMark, 500, aliens)
 		end
 	end
+	
+	habitat_walker_a = hab_walker_list[1]
+	habitat_walker_b = hab_walker_list[2]
+	habitat_walker_a.Register_Signal_Handler(Callback_HabitatWalker_A_Attacked, "OBJECT_DAMAGED")
+	habitat_walker_b.Register_Signal_Handler(Callback_HabitatWalker_B_Attacked, "OBJECT_DAMAGED")
+	
+	--jdg 1/10/08 delaying unit production until walker is actually attacked ... trying to increase performance.
+	while not bool_habitat_walker_a_attacked and not bool_habitat_walker_b_attacked and not bool_habitat_walker_at_mark do
+		Sleep(5)
+	end
+	
 	Create_Thread("Thread_Habitat_Walker_Produced_Hunt")
 end
 
-function Thread_Habitat_Walker_Produced_Hunt()
-	while not walkera_alldead do
-		brutes=Find_All_Objects_Of_Type("ALIEN_BRUTE")
-		for i, unit in pairs(brutes) do
-			Hunt(unit, "PrioritiesLikeOneWouldExpectThemToBe", false, true, unit, 300)
-			--unit.Guard_Target(novusbase7)
-		end
-		Sleep(GameRandom(5,7))
+function Prox_HabitatWalker_AtMark(prox_obj, trigger_obj)
+	if trigger_obj.Get_Owner() == aliens then
+		prox_obj.Cancel_Event_Object_In_Range(Prox_HabitatWalker_AtMark)
+		bool_habitat_walker_at_mark = true
 	end
 end
 
+
+function Callback_HabitatWalker_A_Attacked()
+	habitat_walker_a.Unregister_Signal_Handler(Callback_HabitatWalker_A_Attacked)
+	bool_habitat_walker_a_attacked = true
+	markers=Find_All_Objects_With_Hint("objectiveb")
+	Create_Thread("Thread_Habitat_Walker_Produce",{habitat_walker_a,table.getn(markers)})
+end
+
+function Callback_HabitatWalker_B_Attacked()
+	habitat_walker_b.Unregister_Signal_Handler(Callback_HabitatWalker_B_Attacked)
+	bool_habitat_walker_b_attacked = true
+	markers=Find_All_Objects_With_Hint("objectiveb")
+	Create_Thread("Thread_Habitat_Walker_Produce",{habitat_walker_b,table.getn(markers)})
+end
+
+
+
+function Thread_Habitat_Walker_Produced_Hunt()
+	while not walkera_alldead do
+		brutes=Find_All_Objects_Of_Type("ALIEN_GRUNT")
+		--for i, unit in pairs(brutes) do
+			
+			--unit.Guard_Target(novusbase7)
+		--end
+		
+		Hunt(brutes, "PrioritiesLikeOneWouldExpectThemToBe", false, false)
+		Sleep(30)
+	end
+end
+
+
+--jdg these walkeres do not have brute hardpoints...chanign to produce grunts
 function Thread_Habitat_Walker_Produce(params)
 	local walker_obj,number = params[1],params[2]
-	local prod_unit=Find_Object_Type("ALIEN_BRUTE")
-	local prod_num=9
+	local prod_unit=Find_Object_Type("ALIEN_GRUNT")
+	
+	--jdg 1/10/08 slash and burn balancing...reducing from 9 to 1
+	local prod_num=1
 	local built={}
 	local inqueue={}
 	local queued=0
 	local build=0
 	while TestValid(walker_obj) do
+		local max_allowed_units = 12
+		local list_current_units =  Find_All_Objects_Of_Type("ALIEN_GRUNT")
+		local counter_current_units = table.getn(list_current_units)
+		
+		--jdg 1/10/08 limiting number of units for performance reasons
+		while counter_current_units >= max_allowed_units do 
+			Sleep(2)
+			list_current_units =  Find_All_Objects_Of_Type("ALIEN_GRUNT")
+			counter_current_units = table.getn(list_current_units)
+		end
+		
 		queued=0
 		built=Find_All_Objects_Of_Type(prod_unit)
 		inqueue=walker_obj.Tactical_Enabler_Get_Queued_Objects()
@@ -800,9 +1040,9 @@ function Thread_Habitat_Walker_Produce(params)
 		end
 		if (queued+build)<prod_num then
 			Tactical_Enabler_Begin_Production(walker_obj, prod_unit, 1, aliens)
-			Sleep(GameRandom(4,5))
+			Sleep(5)
 		else
-			Sleep(GameRandom(30,45))
+			Sleep(60)
 		end
 	end
 end
@@ -843,17 +1083,16 @@ end
 
 function Setup_Walker_C()
 	markers=Find_All_Objects_With_Hint("objectivec")
-	assets=Find_All_Objects_Of_Type("NM07_CUSTOM_SCIENCE_WALKER")
 	for i, mark in pairs(markers) do
 		if TestValid(mark) then
 			--walker=Create_Generic_Object("NM07_CUSTOM_SCIENCE_WALKER",mark,aliens)
-			walker=assets[i]
-			walker.Set_Service_Only_When_Rendered(false)
+			walker=sci_walker_list[i]
+			walker.Set_Object_Context_ID("NM07_StoryCampaign")
 			walker.Teleport(mark)
 			walker.Get_Script().Call_Function("Register_For_Walker_Death", Script, "Death_Walker_C") 
 			Create_Thread("Thread_Science_Walker_Attack",{walker,novusbaseattack[i]})
 			walker.Add_Reveal_For_Player(novus)
-			walker.Override_Max_Speed(.15)
+			walker.Override_Max_Speed(.05)
 			Add_Radar_Blip(walker, "DEFAULT", "blip_objective_c")
 		end
 	end
@@ -915,7 +1154,7 @@ function Setup_Military_Defenders()
 end
 
 function Show_Objective_A()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_A_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_A_ADD"} )
 	Sleep(time_objective_sleep)
 	nov07_objective_a = Add_Objective("TEXT_SP_MISSION_NVS07_OBJECTIVE_A")
 		out_string = Get_Game_Text("TEXT_SP_MISSION_NVS07_OBJECTIVE_A")
@@ -927,7 +1166,7 @@ end
 
 -- adds mission objective for objective B
 function Show_Objective_B()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_B_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_B_ADD"} )
 	Sleep(time_objective_sleep)
 	nov07_objective_b = Add_Objective("TEXT_SP_MISSION_NVS07_OBJECTIVE_B")
 		out_string = Get_Game_Text("TEXT_SP_MISSION_NVS07_OBJECTIVE_B")
@@ -939,7 +1178,7 @@ end
 
 -- adds mission objective for objective C
 function Show_Objective_C()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_C_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS07_OBJECTIVE_C_ADD"} )
 	Sleep(time_objective_sleep)
 	nov07_objective_c = Add_Objective("TEXT_SP_MISSION_NVS07_OBJECTIVE_C")
 		out_string = Get_Game_Text("TEXT_SP_MISSION_NVS07_OBJECTIVE_C")
@@ -951,30 +1190,86 @@ end
 
 --on hero death, force defeat
 function Death_Hero_Mech()
-	Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_03")
+	if mission_failure == false then
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero_Mech")
+	end
+end
+
+function Thread_Death_Hero_Mech()
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+	local block = Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_03")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+			
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
+
 	Create_Thread("Thread_Mission_Failed")
+
 end
 
 --on hero death, force defeat
-function Death_Hero_Moore()
-	if TestValid(hero) then
-		Queue_Talking_Head(pip_mirabel, "NVS05_SCENE03_18")
-	end
-	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE"
-	Create_Thread("Thread_Mission_Failed")
-end
+--function Death_Hero_Moore()
+--	Create_Thread("Thread_Death_Hero_Moore")
+--end
+
+--function Thread_Death_Hero_Moore()
+--	if TestValid(hero) then
+--		UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+		-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+		-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+		-- will prevent any future speech events from being queued).
+--		local block = Queue_Talking_Head(pip_mirabel, "NVS05_SCENE03_18")
+--		Allow_Speech_Events(false)
+--		BlockOnCommand(block)
+--	end
+--	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MOORE"
+--	Create_Thread("Thread_Mission_Failed")
+--end
 
 --on hero death, force defeat
 function Death_Hero_Vertigo()
-	Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_05")
+	if not mission_failure == true then
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero_Vertigo")
+	end
+end
+
+function Thread_Death_Hero_Vertigo()
+
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+	local block = Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_05")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+		
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_VERTIGO"
 	Create_Thread("Thread_Mission_Failed")
+
 end
 
 --on hero death, force defeat
 function Death_Hero_Founder()
-	Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_04")
+	if not mission_failure == true then
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero_Founder")
+	end
+end
+
+function Thread_Death_Hero_Founder()
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+	local block = Queue_Talking_Head(pip_novcomm, "ALL06_SCENE02_04")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+	
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_FOUNDER"
 	Create_Thread("Thread_Mission_Failed")
 end
@@ -982,14 +1277,19 @@ end
 --on hero death, force defeat
 function Death_Hero_Portal()
 	failure_text="TEXT_SP_MISSION_NVS07_OBJECTIVE_FAIL"
-	Create_Thread("Thread_Mission_Failed")
+	if mission_failure == false then
+		mission_failure = true
+		Create_Thread("Thread_Mission_Failed")
+	end
 end
 
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		--Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(false)
+	UI_On_Mission_End()
 			
 	mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1002,9 +1302,9 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1012,9 +1312,11 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End()
 			
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1025,9 +1327,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1055,11 +1357,10 @@ function Force_Victory(player)
 			--	Create_Thread("Show_Earned_Achievements_Thread", {Get_Game_Mode_GUI_Scene(), novus})
 			--else
 				
-				-- Inform the campaign script of our victory.
-				global_script.Call_Function("Novus_Tactical_Mission_Over", true) -- true == player wins/false == player loses
-				--Quit_Game_Now( winning_player, quit_to_main_menu, destroy_loser_forces, build_temp_command_center, VerticalSliceTriggerVictorySplashFlag)
-				Quit_Game_Now(player, false, true, false)
-			--end
+			-- Inform the campaign script of our victory.
+			global_script.Call_Function("Novus_Tactical_Mission_Over", true) -- true == player wins/false == player loses
+			
+			--Rely on the global script to schedule the next campaign, thus triggering a quit.
 		else
 			Show_Retry_Dialog()
 		end
@@ -1251,8 +1552,106 @@ function Dialogue_Science_Walkers()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	--UI_Hide_Sell_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Alien_Troops_Cycler = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Force_SW_Cooldown_Complete = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Init_Superweapons_Data = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	SpawnList = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

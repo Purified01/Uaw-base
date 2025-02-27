@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Tactical_Queue_Buy.lua#18 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Tactical_Queue_Buy.lua#19 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Tactical_Queue_Buy.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Tactical_Queue_Buy.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 77952 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/07/23 11:47:23 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #18 $
+--          $Revision: #19 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,9 +80,7 @@ function On_Init()
 		Scene.Register_Event_Handler("Selectable_Icon_Double_Clicked", button, On_Buy_Button_Click)
 		-- JAC - Only used to cancel structure upgrades
 		Scene.Register_Event_Handler("Selectable_Icon_Right_Clicked", button, On_Upgrade_Button_Right_Click)
-		button.Show_Queue_Line(false)
-		button.Show_Queue_Buy_Line(false)
-		
+
 		-- we need this button to have a non-negative tab order so that we can navigate the buy menu with the game controller and/or
 		-- the keyboard!.
 		button.Set_Tab_Order(i)
@@ -113,11 +118,13 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Populate_Buy_Menu(unit_table, structure_powered, enabler)
 
-	if unit_table == nil then
+	if not unit_table then
 		-- Hide unused buttons
 		local temp_button_index = 1
 		while temp_button_index <= table.getn(BuyButtons) do
 			BuyButtons[temp_button_index].Set_Hidden(true)
+			BuyButtons[temp_button_index].Set_Clock_Filled(0.0)
+			BuyButtons[temp_button_index].Set_Button_Enabled(true)
 			temp_button_index = temp_button_index + 1
 		end	
 
@@ -228,7 +235,7 @@ function Populate_Buy_Menu(unit_table, structure_powered, enabler)
 					
 					button.Set_Texture(icon_name)
 					button.Set_Hidden(false)
-					button.Set_Enabled(true)
+					button.Set_Button_Enabled(true)
 					button.Set_Text("")
 					button.Clear_Cost()
 					
@@ -239,7 +246,7 @@ function Populate_Buy_Menu(unit_table, structure_powered, enabler)
 						else
 							button.Set_Clock_Filled(0.0)
 							-- disable the button
-							button.Set_Enabled(false)
+							button.Set_Button_Enabled(false)
 							button.Set_Insufficient_Funds_Display(false)
 						end
 					elseif not enough_credits then 
@@ -339,164 +346,132 @@ function Update_Upgrade_Menu( building, cur_time )
 
 	if not TestValid(building) then
 		-- reset the menu
-		Set_GUI_Variable("NextUpdateUpgradeButtonTime", 0.0)
-		SelectedBuilding = nil
 		return
 	end
 
-	-- we have already added all the possible upgrades for this building so let's not do anything else since the menu is going to be hidden!.
-	if Get_GUI_Variable("FullyUpgraded") == true then return end
-
 	SelectedBuilding = building
-	
 	local buttons_list = BuyButtons
-	local next_upgrade_button_time = Get_GUI_Variable("NextUpdateUpgradeButtonTime")
+	
+	local upgrading = false
+	upgradable_buildings = {}
 
-	-- Just in case On_Init was called before the controller was connected.  In that case NextUpdateUpgradeButton will never be initialized
-	if next_upgrade_button_time == nil then
-		Set_GUI_Variable("NextUpdateUpgradeButtonTime", 0.0)
-		next_upgrade_button_time = 0.0
-	end
-
-	if cur_time == nil then
-		cur_time = next_upgrade_button_time
+	-- show autobuild items (1st parameter false)
+	upgradable_buildings = building.Get_Updated_Buildable_Hardpoints_List()
+	
+	if upgradable_buildings == nil then 
+		return
 	end
 	
-	if cur_time >= next_upgrade_button_time then
-		
-		local upgrading = false
-		upgradable_buildings = {}
+	-- are we building any of these objects?
+	local button_index = LastButtonIndex
+	local build_index = 0
+	local build_time = 0
 
-		-- show autobuild items (1st parameter false)
-		--upgradable_buildings = Object.Get_Tactical_Hardpoint_Upgrades( false, false, true )
-		upgradable_buildings = SelectedBuilding.Get_Updated_Buildable_Hardpoints_List()
-		
-		if upgradable_buildings == nil then 
-			-- nothing so 2x time a second
-			Set_GUI_Variable("NextUpdateUpgradeButtonTime", cur_time + 0.5)
-			return
-		end
-		
-		-- are we building any of these objects?
-		local button_index = LastButtonIndex
-		local build_index = 0
-		local build_time = 0
+	build_time = building.Get_Tactical_Build_Time_Left_Seconds( true )
+	construction_type = building.Get_Building_Object_Type( true )
+	local final_type = nil
+	if construction_type ~= nil then
+		final_type = construction_type.Get_Tactical_Buildable_Constructed_Type()
+	end
+	
+	if final_type then
+		for index, object_type in pairs(upgradable_buildings) do
+			icon_name = object_type.Get_Icon_Name()
+			if icon_name ~= "" then
 
-		build_time = SelectedBuilding.Get_Tactical_Build_Time_Left_Seconds( true )
-		construction_type = SelectedBuilding.Get_Building_Object_Type( true )
-		if construction_type ~= nil then
-			final_type = construction_type.Get_Tactical_Buildable_Constructed_Type()
-		end
-		
-		if final_type then
-			for index, object_type in pairs(upgradable_buildings) do
-				icon_name = object_type.Get_Icon_Name()
-				if icon_name ~= "" then
-
-					if object_type == final_type then
-						build_index = button_index
-						break
-					end
-					
-					button_index = button_index + 1
-					if button_index > table.getn(buttons_list) then
-						break
-					end
+				if object_type == final_type then
+					build_index = button_index
+					break
+				end
+				
+				button_index = button_index + 1
+				if button_index > table.getn(buttons_list) then
+					break
 				end
 			end
 		end
-		
-		local player = Find_Player("local")
-		
-		if player ~= SelectedBuilding.Get_Owner() then
-			--MessageBox("The owner of the structure is not the local player!!!!!.")
-			player = SelectedBuilding.Get_Owner()
-		end
-		
-		local num_existing_upgrades = 0
-		local player_credits = player.Get_Credits()
-		
-		for index, object_type in pairs(upgradable_buildings) do
-			-- we don't want to display types locked from STORY!
-			if player.Is_Object_Type_Locked(object_type, STORY) == false then
-		
-				icon_name = object_type.Get_Icon_Name()
-				if icon_name ~= "" then
-					local button = buttons_list[button_index]
-					button.Set_Texture(icon_name)
-					button.Set_Hidden(false)
-					button.Set_User_Data({object_type, true, BUY_BUTTON_UPGRADE})
+	end
+	
+	local player = Find_Player("local")		
+	if player ~= building.Get_Owner() then
+		player = building.Get_Owner()
+	end
+	
+	local num_existing_upgrades = 0
+	local player_credits = player.Get_Credits()
+	
+	for index, object_type in pairs(upgradable_buildings) do
+		-- we don't want to display types locked from STORY!
+		if player.Is_Object_Type_Locked(object_type, STORY) == false then
+	
+			icon_name = object_type.Get_Icon_Name()
+			if icon_name ~= "" then
+				local button = buttons_list[button_index]
+				button.Set_Texture(icon_name)
+				button.Set_Hidden(false)
+				button.Set_User_Data({object_type, true, BUY_BUTTON_UPGRADE})
+				
+				local cost = -1.0
+				
+				if player.Is_Object_Type_Locked(object_type) == false then 
 					
-					local cost = -1.0
-					
-					if player.Is_Object_Type_Locked(object_type) == false then 
-						
-						-- if the player doesn't have enough money, the cost should be displayed in red.
-						cost = object_type.Get_Tactical_Build_Cost()
-						if player_credits < cost then 
-							button.Set_Insufficient_Funds_Display(true)
-						else
-							button.Set_Insufficient_Funds_Display(false)
-						end
-						
-						button.Set_Cost(cost)
-						
-						if construction_type and construction_type.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION)  then
-							if button_index == build_index then
-								-- show timer
-								local percent_done = Object.Get_Tactical_Build_Percent_Done( true )
-								button.Set_Clock_Filled(percent_done)
-								button.Set_Enabled(true)
-								upgrading = true
-							else
-								-- disable this button
-								button.Set_Enabled(false)
-								button.Set_Clock_Filled(0)
-							end
-						else
-							if not Ok_To_Upgrade( Object, object_type ) then
-								button.Set_Enabled(false)
-							else			
-								button.Set_Enabled(true)
-								button.Set_Clock_Filled(0)
-							end
-						end
-						
-						if SelectedBuilding.Has_Behavior( BEHAVIOR_POWERED ) and SelectedBuilding.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
-							button.Set_Low_Power_Display(true)
-							if upgrading then
-								upgrading = false
-							end
-						else
-							button.Set_Low_Power_Display(false)
-						end
-					else 
-						-- just disable this button!
-						button.Set_Enabled(false)
+					-- if the player doesn't have enough money, the cost should be displayed in red.
+					cost = object_type.Get_Tactical_Build_Cost()
+					if player_credits < cost then 
+						button.Set_Insufficient_Funds_Display(true)
+					else
+						button.Set_Insufficient_Funds_Display(false)
 					end
 					
-					button.Set_Tooltip_Data({'type', {object_type, cost, object_type.Get_Tactical_Build_Time()}})
-
-					button_index = button_index + 1
-					if button_index > table.getn(buttons_list) then
-						break
+					button.Set_Cost(cost)
+					
+					if construction_type and construction_type.Has_Behavior(39)  then
+						if button_index == build_index then
+							-- show timer
+							local percent_done = building.Get_Tactical_Build_Percent_Done( true )
+							button.Set_Clock_Tint({0.0, 1.0, 0.0, 140.0/255.0})
+							button.Set_Clock_Filled(percent_done)
+							button.Set_Button_Enabled(true)
+							upgrading = true
+						else
+							-- disable this button
+							button.Set_Button_Enabled(false)
+							button.Set_Clock_Filled(0)
+						end
+					else
+						if not Ok_To_Upgrade( building, object_type ) then
+							button.Set_Button_Enabled(false)
+						else			
+							button.Set_Button_Enabled(true)
+							button.Set_Clock_Filled(0)
+						end
 					end
-				end				
-			end					
-		end
+					
+					if building.Has_Behavior( 161 ) and building.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
+						button.Set_Low_Power_Display(true)
+						if upgrading then
+							upgrading = false
+						end
+					else
+						button.Set_Low_Power_Display(false)
+					end
+				else 
+					-- just disable this button!
+					button.Set_Button_Enabled(false)
+				end
+				
+				button.Set_Tooltip_Data({'type', {object_type, cost, object_type.Get_Tactical_Build_Time()}})
 
-		LastButtonIndex = button_index
-
-		-- Temporarily setting both update every frame.  The buy menu updates that often and would hide the upgrades otherwise.
-		if upgrading then
-			-- 10x times a second
-			Set_GUI_Variable("NextUpdateUpgradeButtonTime", cur_time + 0.0)
-		else
-			-- 2 x times a second
-			Set_GUI_Variable("NextUpdateUpgradeButtonTime", cur_time + 0.0)
-		end		
+				button_index = button_index + 1
+				if button_index > table.getn(buttons_list) then
+					break
+				end
+			end				
+		end					
 	end
 
+	LastButtonIndex = button_index		
+	return upgrading
 end
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -644,41 +619,70 @@ function Structure_Cancel_Build_Hard_Point(socket_object, type_to_cancel)
 end
 
 
-
+-- ----------------------------------------------------------------------------------------------------------------------
+-- Update_Sell_Menu
+-- ----------------------------------------------------------------------------------------------------------------------
 function Update_Sell_Menu(building)
 
+	if HideSellButton then
+		BuyButtons[LastButtonIndex].Set_Hidden(true)
+		return 
+	end
+	
 	-- This should only happen if the building doesn't have any available upgrades since the upgrade
 	-- menu will set SelectedBuilding with the current building
 	if SelectedBuilding ~= building then
 		SelectedBuilding = building
 	end
 
-	button_index = LastButtonIndex
-	local button = BuyButtons[button_index]
-
-	object_type = SelectedBuilding.Get_Original_Object_Type()
-	if object_type ~= nil then
-		cost = object_type.Get_Tactical_Sell_Credits(SelectedBuilding)
-		if cost > 0 then
-			button.Set_Cost(cost)
-			button.Set_User_Data({object_type, true, BUY_BUTTON_SELL})
-			button.Set_Hidden(false)
-			button.Set_Texture("i_icon_sell.tga")
-			button.Set_Enabled(true)
-			button.Set_Insufficient_Funds_Display(false)
+	-- We can only sell this object if it has TACTICAL_SELL behavior.
+	if SelectedBuilding.Has_Behavior(40) then
+		object_type = SelectedBuilding.Get_Original_Object_Type()
+		if object_type ~= nil then
+			cost = object_type.Get_Tactical_Sell_Credits(SelectedBuilding)
+			if cost > 0 then
+				local button = BuyButtons[LastButtonIndex]
+				button.Set_Cost(cost)
+				button.Set_User_Data({object_type, true, BUY_BUTTON_SELL})
+				button.Set_Hidden(false)
+				button.Set_Texture("i_icon_sell.tga")
+				button.Set_Button_Enabled(true)
+				button.Set_Insufficient_Funds_Display(false)
+				button.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_SELL_BUTTON"}})
+			end
 		end
 	end
 end
 
 
 
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Sell_Button_Click
+-- ------------------------------------------------------------------------------------------------------------------
 function On_Sell_Button_Click()
 	
 	if TestValid(SelectedBuilding) then
 		-- Process the click as if the corresponding button had been clicked!
-		Send_GUI_Network_Event("Network_Sell_Structure", { SelectedBuilding, Find_Player("local") })
+		Send_GUI_Network_Event("Network_Sell_Object", { SelectedBuilding, Find_Player("local") })
 	end
 end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- UI_Hide_Sell_Button
+-- ------------------------------------------------------------------------------------------------------------------
+function UI_Hide_Sell_Button()
+	HideSellButton = true
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- UI_Show_Sell_Button
+-- ------------------------------------------------------------------------------------------------------------------
+function UI_Show_Sell_Button()
+	HideSellButton = false
+end
+
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- ------------------------------------------------------------------------------------------------------------------
@@ -700,3 +704,43 @@ Interface.Stop_Flashing_Unit_Button = Stop_Flashing_Unit_Button
 Interface.Temp_Enable_Build_Item = Temp_Enable_Build_Item
 Interface.Update_Upgrade_Menu = Update_Upgrade_Menu
 Interface.Update_Sell_Menu = Update_Sell_Menu
+Interface.UI_Hide_Sell_Button = UI_Hide_Sell_Button
+Interface.UI_Show_Sell_Button = UI_Show_Sell_Button
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

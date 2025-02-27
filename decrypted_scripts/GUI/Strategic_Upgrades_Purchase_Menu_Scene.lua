@@ -1,3 +1,13 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -83,21 +93,13 @@ function On_Upgrade_Button_Clicked(event, source)
 		return
 	end
 	
-	if not region.Has_Behavior(BEHAVIOR_REGION) or region.Get_Owner() ~= local_player then
+	if not region.Has_Behavior(74) or region.Get_Owner() ~= local_player then
 		MessageBox("The structure %s has an invalid parent object:  %s", tostring(structure), tostring(region))
 		return
 	end
 	
 	local socket_index = Get_GUI_Variable("SocketIndex")
-	success = Global_Begin_Production(local_player, region, build_type, structure, socket_index)
-	
-	-- Play a sound.
-	if success then
-		Play_SFX_Event("GUI_Generic_Button_Select")
-	else
-		Play_SFX_Event("GUI_Generic_Bad_Sound") 
-	end
-	
+	Send_GUI_Network_Event("Network_Global_Begin_Production", { local_player, region, build_type, structure, socket_index })	
 end
 
 function On_Socket_Button_Clicked()
@@ -121,9 +123,8 @@ end
 -- --------------------------------------------------------------------------------------------------------------------------------------------
 function On_Socket_Button_Right_Clicked(event, source)
 	local hard_point = Get_GUI_Variable("HardPoint")
-	local unit_script = hard_point.Get_Script()
-	if TestValid(unit_script) then
-		Cancel_Production_At_Location_Of_Unit(unit_script.Call_Function("Get_Build_Location"), unit_script.Call_Function("Get_Queue_ID"), unit_script.Call_Function("Get_Build_ID"))
+	if TestValid(hard_point) then
+		Send_GUI_Network_Event("Network_Global_Cancel_Production", {hard_point})
 	end
 end
 
@@ -167,13 +168,13 @@ function Setup_Upgrade_Buttons()
 			button.Set_Hidden(false)
 			
 			if type_info[2] then
-				button.Set_Enabled(true)
+				button.Set_Button_Enabled(true)
 				local build_cost = upgrade_type.Get_Type_Value("Build_Cost_Credits")
 				button.Set_Cost(build_cost)
 				button.Set_Insufficient_Funds_Display(build_cost > player_credits)
 				button.Set_Tooltip_Data({"type", {upgrade_type, build_cost, upgrade_type.Get_Type_Value("Build_Time_Seconds")}})	
 			else
-				button.Set_Enabled(false)
+				button.Set_Button_Enabled(false)
 				button.Clear_Cost()
 				
 				local lock_reason = nil
@@ -200,12 +201,8 @@ function Setup_Socket_Button()
 	
 	local type = hard_point.Get_Type()
 	local time_to_completion = 0.0
-	if type == Get_GUI_Variable("InProductionType") then
-		local script = hard_point.Get_Script()
-		if script then
-			type = script.Call_Function("Get_Unit_Type")
-			time_to_completion = script.Call_Function("Get_Completion_Time")
-		end
+	if hard_point.Has_Behavior(166) then
+		time_to_completion = hard_point.Get_Strategic_Build_Completion_Time()
 		local time_in_seconds = time_to_completion * type.Get_Type_Value("Build_Time_Seconds")
 		local tooltip_text = type.Get_Display_Name()
 		tooltip_text.append(Create_Wide_String("\n"))
@@ -213,7 +210,6 @@ function Setup_Socket_Button()
 		this.SocketButton.Set_Tooltip_Data({"custom", tooltip_text})
 	else
 		this.SocketButton.Set_Tooltip_Data({"object", {hard_point}})
-		
 	end
 	
 	this.SocketButton.Set_User_Data(type)
@@ -244,9 +240,6 @@ function Set_Hard_Point(hard_point)
 	Set_GUI_Variable("SocketIndex", hard_point.Get_Strategic_Socket_Index())
 	Set_GUI_Variable("Structure", structure)	
 	
-	local in_production_type = structure.Get_Type().Get_Type_Value("In_Production_Upgrade_Socket_Type")
-	Set_GUI_Variable("InProductionType", in_production_type)	
-	
 	--if hard_point.Get_Type() == in_production_type then
 	--	this.Set_State("Open")
 	--end	
@@ -255,3 +248,41 @@ end
 Interface = {}
 Interface.Close = Close
 Interface.Set_Hard_Point = Set_Hard_Point
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Hint_Text.lua#9 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[109] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Hint_Text.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Hint_Text.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Hint_Text.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 79571 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/02 14:45:56 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #9 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,6 +81,10 @@ function On_Init()
 
 	--Start_Dismissal_Countdown()
 	
+	this.Register_Event_Handler("Resize_Hint_Text_Window", nil, Resize_Text_Window)		
+	
+	--Begin hidden until text is ready to be rendered (may take a couple of frames)
+	this.Set_Hidden(true)
 end
 
 
@@ -185,6 +196,12 @@ function Resize_Text_Window()
 	local bgx, bgy, bgw, bgh = Hint_Text.Frame.Get_World_Bounds()
 	local clsx, clsy, clsw, clsh = Hint_Text.Quad_Close.Get_World_Bounds()
 	
+	if text_width == 0 or text_height == 0 then
+		--Text not ready yet.  Try again later
+		this.Raise_Event("Resize_Hint_Text_Window", nil, nil)
+		return
+	end	
+	
 	-- Width
 	-- Adjust the left side of the background to match the width of the text.
 	local new_bgw = text_width + HINT_BG_GUTTER + HINT_CLOSE_BUTTON_WIDTH
@@ -208,6 +225,8 @@ function Resize_Text_Window()
 	Hint_Text.Frame.Set_World_Bounds(new_bgx, new_bgy, new_bgw, new_bgh)
 	Hint_Text.Quad_Close.Set_World_Bounds(clsx, new_clsy, clsw, clsh)
 	
+	--Hint is now ready for display
+	this.Set_Hidden(false)
 end
 
 
@@ -267,7 +286,9 @@ function Set_Model(hint_id)
 	DataModel = HintSystemMap[HintID]
 	Reset_Text_Window()
 	Refresh_UI()
-	Resize_Text_Window()
+	
+	--Schedule resize of the text window for the next update (text size won't be available until then)
+	this.Raise_Event("Resize_Hint_Text_Window", nil, nil)
 end
 
 -------------------------------------------------------------------------------
@@ -318,3 +339,63 @@ Interface.Set_Scene = Set_Scene
 Interface.Mark_Default_World_Bounds = Mark_Default_World_Bounds
 Interface.Set_Default_Vertical_Position = Set_Default_Vertical_Position
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Commit_Profile_Values = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Prepare_Fadeout = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

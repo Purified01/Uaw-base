@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/Patch_Control.lua#26 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/Patch_Control.lua#19 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/Patch_Control.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/Patch_Control.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Mike_Lytle $
+--            $Author: Nader_Akoury $
 --
---            $Change: 84928 $
+--            $Change: 97253 $
 --
---          $DateTime: 2007/09/27 10:43:15 $
+--          $DateTime: 2008/04/21 16:31:33 $
 --
---          $Revision: #26 $
+--          $Revision: #19 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,7 +138,7 @@ function Increase_Powered_Enablers_Count()
 	if NumberPoweredEnablers >  0 and NumberPoweredEnablers <= 2 then
 	
 		-- we need to update the UI for the local player only!!!!!.
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
 		QueueSize = NumberPoweredEnablers
 		Script.Set_Async_Data("AvaialableQueueSlots", QueueSize)
 	end
@@ -146,7 +156,7 @@ function Decrease_Powered_Enablers_Count()
 	-- do we need to disable any queue slot?
 	if NumberPoweredEnablers <=  1 then 
 		-- we need to update the UI for the local player only!!!!!.
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Update_Patch_Queue_Size", nil, {Player, NumberPoweredEnablers} )
 		QueueSize = NumberPoweredEnablers
 		Script.Set_Async_Data("AvaialableQueueSlots", QueueSize)
 		Update_Active_Patches_Data()
@@ -244,7 +254,7 @@ function Get_Patch_Cooldown_Rate_Multiplier()
 	
 		local modifier = enabler.Get_Attribute_Value("Patch_Cooldown_Time_Modifier")
 		if modifier == -1.0 then 
-			return BIG_FLOAT
+			return 1e+018
 		else
 			return (1.0/(1.0+modifier))		
 		end
@@ -265,6 +275,9 @@ function Can_Build_Patch_Of_Type(p_type)
 	-- First check to see whether the player can produce and afford this guy!.
 	local data = PatchTypeToData[p_type]
 	if data.CanBuild == false then return false end
+
+	-- If we don't have any queue slots available then we can't build patches
+	if QueueSize <= 0 then return false end
 	
 	-- Now, we have to make sure there is no other valid active patch of this type!!!!.
 	return (not Is_There_Active_Patch_Of_Type(p_type))
@@ -290,12 +303,15 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Build_Patch(object_type)
 
+	local object = nil
+	if QueueSize <= 0 then return object end
+
 	if TestValid(object_type) then
 		-- check that we can actually build the patch!
 		if Can_Build_Patch_Of_Type(object_type) == false then return end
 		
 		-- Build the patch
-		local object = Spawn_Unit(object_type, Create_Position(), Player)
+		object = Spawn_Unit(object_type, Create_Position(), Player)
 	
 		if TestValid(object) then
 		
@@ -324,10 +340,13 @@ function Build_Patch(object_type)
 			CooldownPercentLeft = 1.0
 			Script.Set_Async_Data("CooldownPercentLeft", CooldownPercentLeft)
 			Script.Set_Async_Data("CooldownData", CooldownData)
-	
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("On_Patch_Queueing_Complete", nil, {Player})			
+			
+			Get_Game_Mode_GUI_Scene().Raise_Event("On_Patch_Queueing_Complete", nil, {Player})			
 		end		
 	end	
+	
+	return object
+	
 end
 
 
@@ -441,7 +460,7 @@ function Queue_Patch(object)
 	
 	if TestValid(object) then
 		local queue_slots_used = #ActivePatches
-		if queue_slots_used >= QueueSize then
+		if (queue_slots_used >= QueueSize) and (QueueSize > 0) then
 			-- we need to relocate patches!, that is: we must remove the tail, move the head over and add the new patch to the
 			-- front of the queue.
 			local patch_type_to_remove = ActivePatches[QueueSize].Type
@@ -546,4 +565,54 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Reset_Faction_Specific_Controls()
 	Init_Patch_Control()
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Reset_Faction_Specific_Controls = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Faction_Specific_Controls = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

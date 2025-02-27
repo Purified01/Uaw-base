@@ -1,4 +1,10 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Fleet_Scene.lua#6 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[9] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Fleet_Scene.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +31,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Fleet_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Fleet_Scene.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 72769 $
+--            $Change: 92481 $
 --
---          $DateTime: 2007/06/11 11:49:36 $
+--          $DateTime: 2008/02/05 12:16:28 $
 --
---          $Revision: #6 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,4 +82,9 @@ end
 
 function On_Init()
 	On_Update()
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Get_Faction_Icon_Name = nil
+	Kill_Unused_Global_Functions = nil
 end

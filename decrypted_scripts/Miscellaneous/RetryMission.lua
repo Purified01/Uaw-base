@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/RetryMission.lua#7 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[77] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[72] = true
+LuaGlobalCommandLinks[32] = true
+LuaGlobalCommandLinks[130] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/RetryMission.lua#12 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/RetryMission.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/RetryMission.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Mike_Lytle $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90612 $
+--            $Change: 93153 $
 --
---          $DateTime: 2008/01/09 13:10:40 $
+--          $DateTime: 2008/02/12 11:04:35 $
 --
---          $Revision: #7 $
+--          $Revision: #12 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,6 +73,13 @@ end
 
 function Show_Retry_Dialog()
 	--Fade_Screen_Out(1) 
+	
+	-- Maria 01.24.2008
+	-- We need the game to pause because we are out of the tactical game.
+	-- Otherwise we will hear all the action going on behind the blackout screen.
+	Pause_Game(false)
+	
+	--[[
 	local retry_dialog = nil
 	local game_scene = Get_Game_Mode_GUI_Scene()
 	if TestValid(game_scene.RetryDialog) then
@@ -72,6 +90,14 @@ function Show_Retry_Dialog()
 	end
 	retry_dialog.Set_Screen_Position(0.5, 0.5)
 	retry_dialog.Start_Modal(On_Retry_Response)
+	]]--
+	
+	Get_Game_Mode_GUI_Scene().Raise_Event("Show_Retry_Mission_Screen", nil, { "Retry_Dialog", "RetryDialog" })
+end
+
+-- SKY 2/8/07 - different version of function called from load dialog end_modal that doesn't pause
+function Show_Retry_Dialog_From_Load_Dialog()
+	Get_Game_Mode_GUI_Scene().Raise_Event("Show_Retry_Mission_Screen", nil, { "Retry_Dialog", "RetryDialog" })
 end
 
 function Show_Load_Dialog()
@@ -96,7 +122,7 @@ function Show_Load_Dialog()
 	else
 		load_game_dialog.Set_Mode(SAVE_LOAD_MODE_CAMPAIGN)
 	end
-	load_game_dialog.Start_Modal(Show_Retry_Dialog)
+	load_game_dialog.Start_Modal(Show_Retry_Dialog_From_Load_Dialog)
 	load_game_dialog.Display_Dialog()
 end
 
@@ -105,12 +131,17 @@ function On_Retry_Response(dialog, response)
 		Get_Game_Mode_GUI_Scene().RetryDialog.Set_Hidden(true)
 		Show_Load_Dialog()
 	elseif response == "Retry" then
-		local global_script = Get_Game_Mode_Script("Strategic")
-		global_script.Call_Function("Retry_Current_Mission")
-		Find_Player("local").Reset_Story_Locks()
-		Quit_Game_Now(Find_Player("local").Get_Enemy(), false, true, false)		
+		Restart_Tactical_Battle()
 	else
 		--Quit to main menu
 		Quit_Game_Now(Find_Player("local").Get_Enemy(), true, true, false)
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Define_Retry_State = nil
+	On_Retry_Response = nil
+	Retry_Current_Mission = nil
+	Show_Retry_Dialog = nil
+	Kill_Unused_Global_Functions = nil
 end

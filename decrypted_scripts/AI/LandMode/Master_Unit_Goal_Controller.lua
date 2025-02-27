@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Master_Unit_Goal_Controller.lua#14 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Master_Unit_Goal_Controller.lua#15 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/Master_Unit_Goal_Controller.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/Master_Unit_Goal_Controller.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 80479 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/09 17:26:52 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #14 $
+--          $Revision: #15 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,8 +83,8 @@ end
 function Compute_Desire()
 
 	if Target then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -1.0
 	end
 
 	return 1.0
@@ -96,9 +103,49 @@ function On_Activate()
 	-- Launch the thread we use to do all the work.
 	log("Master_Unit_Goal_Controller activated. Master_Controller_Thread created.")
 	Create_Thread("Master_Controller_Thread")
+	Create_Thread("Master_Crippled_Thread")
 end
 
+---------------------- the check for being crippled -----------------
 
+function Master_Crippled_Thread()
+
+	local command_center = nil
+
+	while not Player.Get_Player_Is_Crippled() do
+	
+		if not TestValid(command_center) or command_center.Get_Owner() ~= Player then
+			command_center = nil
+			local ok = false
+			local obj_list = Find_All_Objects_Of_Type( Player, "Small + ~Resource + ~Resource_INST | Stationary + ~Insignificant + ~Bridge + ~Resource + ~Resource_INST" )
+			if obj_list then
+				for _, unit in pairs (obj_list) do
+					if TestValid( unit ) then
+						local unit_type = unit.Get_Type()
+						if TestValid( unit_type ) then
+							if unit_type.Get_Type_Value("Is_Command_Center") then
+								command_center = unit
+								ok = true
+							end
+							if unit_type.Get_Type_Value("Is_Tactical_Base_Builder") then
+								ok = true
+							end
+						end
+					end
+				end
+			end
+			
+			if not ok then
+				Player.Set_Player_Is_Crippled(true)
+				return
+			end
+			
+		end
+		
+		Sleep(10.0)
+	end
+	
+end
 
 ---------------------- Goal-specific Functions ----------------------
 
@@ -172,41 +219,21 @@ function Master_Controller_Thread()
 		end
 	end
 	
+
+	if DESIGNER_CONTROL_OVERRIDE == false then
+		Set_Goal_Balance(1,3,1)
+	end
 	
 	-- Main Controller Loop. If the designers haven't poked in manual priorities for us, then we can autonomously
 	-- decide to alter the balance of the attack/scout/defend goals. If they have poked priorities in, we can't
 	-- modify the goal balance at all.
 	while true do
 
-		-- If we're under designer control we just spin in a Sleep(1) loop.
-		-- Once designer control is relinquished, we run the sequence in the inner loop.
-		-- If designer control is established inside the inner loop, we'll break out of it
-		-- and spin in the outer Sleep(1) loop until relinquished again, unless it was
-		-- established and relinquished within the context of one inner-loop Sleep().
-		if DESIGNER_CONTROL_OVERRIDE == false then
-			while true do
-
-				-- Set up the starting offense/scouting/defense balance.
-				Set_Goal_Balance(1, 3, 1)
-				Sleep(GameRandom(6*60, 10*60))	-- Sleep for 6-10 minutes
-			
-				if DESIGNER_CONTROL_OVERRIDE == false then break end
-				
-				-- After a while, change them up. Favor attacking now that we've scouted, but keep up the scouting.
-				Set_Goal_Balance(1, 3, 1)
-				Sleep(GameRandom(6*60, 10*60))	-- Sleep for 6-10 minutes
-	
-				if DESIGNER_CONTROL_OVERRIDE == false then break end
-				
-				-- And a while after that, enter turtle mode. Player must be doing well against us.
-				Set_Goal_Balance(1, 3, 1)
-				Sleep(GameRandom(6*60, 10*60))	-- Sleep for 6-10 minutes
-	
-				if DESIGNER_CONTROL_OVERRIDE == false then break end
-
-			end
-		end
-	
+		-- KDB removed the set balance stuff
+		-- if is put back in we will have to make sure the goal controllers are still running
+		-- as the they can exit
+		--if DESIGNER_CONTROL_OVERRIDE == false then
+		--end
 	
 		-- Update our view of the game state?
 		
@@ -214,7 +241,7 @@ function Master_Controller_Thread()
 		
 		-- Notify each child controller script of its new maximum concurrent goal count.
 	
-		Sleep(1)
+		Sleep(10.0)
 	end
 
 	log("Master_Controller_Thread is exiting!!")
@@ -344,3 +371,47 @@ function Set_Autonomous_Mode()
 	return true
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	Describe_Target = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	PG_Vector_Add = nil
+	PG_Vector_Multiply_Scalar = nil
+	PG_Vector_Normalize = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

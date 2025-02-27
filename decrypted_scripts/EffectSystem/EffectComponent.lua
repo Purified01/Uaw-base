@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/EffectSystem/EffectComponent.lua#21 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/EffectSystem/EffectComponent.lua#13 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/EffectSystem/EffectComponent.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/EffectSystem/EffectComponent.lua $
 --
 --    Original Author: Bret Ambrose
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 78864 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/07/28 18:41:00 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #21 $
+--          $Revision: #13 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,19 +71,6 @@ function Unapply_Effect_Component( source, target, original_target, unapply_func
 	EffectComponentData[ component_id ] = nil
 	
 end
-
-function Test_Apply_Function( source, target, original_target, component_data )
-	 
-	component_data[ 1 ] = target.Add_Attribute_Modifier( "Is_Phasable", 0 )
-	
-end
-
-function Test_Unapply_Function( source, target, original_target, component_data )
-	
-	target.Remove_Attribute_Modifier( "Is_Phasable", component_data[ 1 ] )
-	 
-end
-
 
 function Alien_Manual_Resource_Harvesting_Apply_Function( source, target, original_target, component_data )
 	 
@@ -388,3 +382,51 @@ end
 
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

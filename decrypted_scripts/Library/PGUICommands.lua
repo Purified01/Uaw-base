@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGUICommands.lua#41 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[163] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGUICommands.lua#24 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,27 +36,28 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGUICommands.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGUICommands.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Maria_Teruel $
+--            $Author: James_Yarrow $
 --
---            $Change: 85111 $
+--            $Change: 93028 $
 --
---          $DateTime: 2007/09/29 12:22:18 $
+--          $DateTime: 2008/02/08 19:46:03 $
 --
---          $Revision: #41 $
+--          $Revision: #24 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
-FLASH_INTERVAL = 0.25
 
 function Start_Flash(gui_object)
 
+	local FLASH_INTERVAL = 0.25
 	--Prepare a generic flash animation if we don't have one yet
 	if flash_anim == nil then
-		local r,g,b,a = gui_object.Get_Tint()
+		local r,g,b,_ = gui_object.Get_Tint()
+		local a = 1.0
 		flash_anim = Create_Animation("Flash")
 		flash_anim.Add_Key_Frame("Tint", 0.0, { r, g, b, a })
 		flash_anim.Add_Key_Frame("Tint", FLASH_INTERVAL, { r, g, b, 0.3 * a })
@@ -106,7 +118,7 @@ function Show_Object_Attached_UI(object, on_off)
 	local local_player = Find_Player("local")
 	local hidden =  Is_Fogged( local_player, object )
 
-	if object.Has_Behavior(BEHAVIOR_TACTICAL_BUILDABLE_BEACON) then
+	if object.Has_Behavior(70) then
 		hidden = (object.Get_Owner() ~= local_player)
 	end	
 
@@ -129,7 +141,7 @@ function Show_Object_Attached_UI(object, on_off)
 				-- the scene hijacks all mouse events.
 				scene.Enable(true)
 				scene.Set_State("active")
-				scene.Raise_Event_Immediate("Reset_Last_Service", nil, {})
+				scene.Raise_Event("Reset_Last_Service", nil, {})
 			else
 				scene.Set_State("inactive")
 				--scene.Enable(false)
@@ -203,54 +215,20 @@ end
 -- Common init and defines for dialog boxes.
 -- ---------------------------------------------------------------------------------------------------------------------------
 function Dialog_Box_Common_Init()
-	DIALOG_RESULT_NONE				= Declare_Enum(0)
-	DIALOG_RESULT_LEFT				= Declare_Enum()
-	DIALOG_RESULT_MIDDLE				= Declare_Enum()
-	DIALOG_RESULT_RIGHT				= Declare_Enum()
-	DIALOG_RESULT_BUTTON_4			= Declare_Enum()
+-- The following 3 lines are required by the lua preprocessor.  1/22/2008 3:14:28 PM -- BMH
+--[[
+
+
+
+
+
+
+
+
+
+
+]]--
 end
-
--- ---------------------------------------------------------------------------------------------------------------------------
--- Create a pool to hold components cloned from one component.
--- ---------------------------------------------------------------------------------------------------------------------------
-function Create_GUI_Pool(parent, clone_this, name_prefix)
-	local pool = {}
-	pool.parent = parent
-	pool.clone_this = clone_this
-	pool.name_prefix = name_prefix
-	pool.top_index = 0
-	pool.unused = {}
-	
-	return pool
-end
-
--- ---------------------------------------------------------------------------------------------------------------------------
--- Destroy a pool.
--- ---------------------------------------------------------------------------------------------------------------------------
-function Destroy_GUI_Pool(pool)
-	for i, component in pairs(pool.unused) do
-		component.Destroy()
-	end
-	pool.unused = nil
-end
-
-
--- ---------------------------------------------------------------------------------------------------------------------------
--- Grab a component from a pool (or clone a new one)
--- Returns: the component, and a bool that if true means it's a new button and if false means it came from the pool.
--- ---------------------------------------------------------------------------------------------------------------------------
-function GUI_Pool_Alloc(pool)
-	-- If possible, grab an unused one.
-	if table.getn(pool.unused) > 0 then
-		return table.remove(pool.unused), false
-	end
-	
-	-- Clone a new one.
-	pool.top_index = pool.top_index + 1
-	local name = string.format("%s%d", pool.name_prefix, pool.top_index)
-	return pool.clone_this.Clone(pool.parent, name), true
-end
-
 
 -- ---------------------------------------------------------------------------------------------------------------------------
 -- Free a component - hides it and puts it back into the pool for re-use.
@@ -343,8 +321,8 @@ end
 -- Disables the source element, can be called from an event handler
 ------------------------------------------------------------------
 function Disable_UI_Element_Event(event, source)
-	if source then
-		DebugMessage("Disabling UI Element %s", source.Get_Fully_Qualified_Name())
+	if source and source.Can_Be_Disabled() then
+	--	DebugMessage("Disabling UI Element %s", source.Get_Fully_Qualified_Name())
 		source.Enable(false)
 	end
 end
@@ -356,7 +334,7 @@ end
 function Enable_UI_Element_Event(event, source)
 	if source then
 		if not source.Is_Enabled() then
-			DebugMessage("Enabling UI Element %s", source.Get_Fully_Qualified_Name())
+		--	DebugMessage("Enabling UI Element %s", source.Get_Fully_Qualified_Name())
 			source.Enable(true)
 		end
 	end
@@ -368,3 +346,130 @@ function Enable_UI_Element_Event(event, source)
 	end
 end
 
+------------------------------------------------------------------
+-- Safe_Set_Hidden
+-- Check for validity before calling set hidden on a control
+------------------------------------------------------------------
+function Safe_Set_Hidden(control, hidden_flag)
+	if TestValid(control) then
+		control.Set_Hidden(hidden_flag)
+	end
+end
+
+------------------------------------------------------------------
+-- Update_SA_Button_Text_Button
+-- Update the special ability tooltip and text
+------------------------------------------------------------------
+function Update_SA_Button_Text_Button(button, selected_objects, buttons_to_flash)
+	if CommandBarEnabled == false then return end
+
+	
+	-- if we have no valid button or the button is hidden, then do nothing.
+	if not button or button.Get_Hidden() == true then return end
+	
+	local user_data = button.Get_User_Data()
+	if user_data then 
+		
+		-- Number of units ready to use this ability *right now*, added count here as hard points are now included
+		local num_ready, count, percent_done, time_left, time_total, at_least_one_expiring
+			= Get_Number_Units_Ready_For_Special_Ability(selected_objects, user_data.ability.unit_ability_name, true)
+		
+		-- MLL: Enable/disable the button when state changes.
+		if time_left == nil then
+			if count > 0 then
+				button.Set_Button_Enabled(true)
+			else
+				button.Set_Button_Enabled(false)
+			end
+		end
+
+		--Make sure we always pass a reasonable value for the time_left parameter or silly LUA will
+		--compact the table down.
+		if not time_left then
+			time_left = 0.0
+		end
+		
+		local tooltip_data = {}
+		tooltip_data[1] = user_data.ability.AbilityOwner
+		tooltip_data[2] = user_data.ability.unit_ability_name
+		if user_data.active and user_data.ability.alt_icon then
+			tooltip_data[3] = user_data.ability.alt_text_id
+			tooltip_data[4] = user_data.ability.alt_tooltip_description_text_id		
+		else
+			tooltip_data[3] = user_data.ability.text_id
+			tooltip_data[4] = user_data.ability.tooltip_description_text_id
+		end	
+		tooltip_data[5] = user_data.ability.tooltip_category_id
+		tooltip_data[6] = time_left
+		tooltip_data[7] = Get_Ability_Key_Mapping_Text(LocalPlayer, user_data.ability.unit_ability_name)
+		tooltip_data[8] = user_data.ability.types_to_spawn
+		
+		
+		button.Set_Tooltip_Data({'ability', tooltip_data})
+
+		local is_toggle = (user_data.ability.action == SPECIALABILITYACTION_TOGGLE ) or
+					(user_data.ability.action == SPECIALABILITYACTION_TARGET_TERRAIN_FORWARD_TOGGLE ) 
+		
+		if not user_data.disable_without_behavior_data and num_ready ~= count and not is_toggle then
+			local wstr_fraction = Get_Game_Text("TEXT_FRACTION")
+			Replace_Token(wstr_fraction, Get_Localized_Formatted_Number(num_ready), 0)
+			Replace_Token(wstr_fraction, Get_Localized_Formatted_Number(count), 1)
+			button.Set_Text(wstr_fraction)
+		else
+			if user_data.disable_without_behavior_data and user_data.disable_without_behavior_data ~= count then
+				local wstr_fraction = Get_Game_Text("TEXT_FRACTION")
+				Replace_Token(wstr_fraction, Get_Localized_Formatted_Number(user_data.disable_without_behavior_data), 0)
+				Replace_Token(wstr_fraction, Get_Localized_Formatted_Number(count), 1)
+				button.Set_Text(wstr_fraction)
+			else
+				button.Set_Text(Get_Localized_Formatted_Number(count))
+			end
+		end
+
+		if user_data.ability.hide_if_health_below then
+		    if Do_Units_Have_Enough_Health(selected_objects, user_data.ability.hide_if_health_below) then
+			button.Set_Button_Enabled(true)
+		    else
+			button.Set_Button_Enabled(false)
+		    end
+		end
+		
+		-- Update the flash state of the button as well!.
+		if buttons_to_flash and buttons_to_flash[user_data.ability.text_id] then
+			button.Start_Flash()
+		else
+			button.Stop_Flash()
+		end
+		
+		-- Recharge clock.
+		if percent_done then
+			button.Set_Clock_Filled(1.0 - percent_done)
+			
+			if at_least_one_expiring then
+				button.Set_Clock_Tint(DefaultAbilityClockTint)
+			else
+				button.Set_Clock_Tint(RechargingAbilityClockTint)
+			end
+
+		else
+			button.Set_Clock_Filled(0.0)
+		end
+	end		
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Spawn_Dialog_Box = nil
+	Update_SA_Button_Text_Button = nil
+	Kill_Unused_Global_Functions = nil
+end

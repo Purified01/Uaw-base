@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Custom_Checkbox.lua#3 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Custom_Checkbox.lua#6 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Custom_Checkbox.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Custom_Checkbox.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84606 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/24 09:21:30 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #3 $
+--          $Revision: #6 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,3 +115,30 @@ Interface = {}
 Interface.Set_Checked = Set_Checked
 Interface.Enable = Enable
 Interface.Is_Checked = Is_Checked
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

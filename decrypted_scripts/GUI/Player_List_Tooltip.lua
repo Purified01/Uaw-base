@@ -1,3 +1,9 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -179,4 +185,12 @@ function Update_Tooltip()
 	if TooltipActive then 
 		Position_Tooltip()
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Init_Tooltip = nil
+	On_Display_Buff_Tooltip = nil
+	On_End_Buff_Tooltip = nil
+	Update_Tooltip = nil
+	Kill_Unused_Global_Functions = nil
 end

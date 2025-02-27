@@ -1,4 +1,45 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM02.lua#98 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[15] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[150] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM02.lua#38 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +66,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM02.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Hierarchy_ZM02.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90583 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/09 09:21:47 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #98 $
+--          $Revision: #38 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,9 +116,9 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 --	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	military.Enable_Colorization(true, COLOR_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	military.Enable_Colorization(true, 5)
 	
 	-- Object Types
 	object_type_military_infantry = Find_Object_Type("Military_Team_Marines")
@@ -265,6 +306,9 @@ function State_Init(message)
 	local credits, credit_total
 	
 	if message == OnEnter then
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		
 		novus.Allow_Autonomous_AI_Goal_Activation(false)
 		masari.Allow_Autonomous_AI_Goal_Activation(false)		
 
@@ -273,17 +317,14 @@ function State_Init(message)
 	   masari.Allow_AI_Unit_Behavior(false)
 
    	Set_Active_Context("ZM02")
-	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
 		
 		_CustomScriptMessage("RickLog.txt", string.format("*********************************************Story_Campaign_Hierarchy_ZM02 START!"))
 
 		Cache_Models()
 		
-		UI_Hide_Research_Button()
+		-- UI_Hide_Research_Button()
 		--UI_Hide_Sell_Button()
+   	aliens.Set_Research_Points_Override(2)
 
 		Fade_Screen_Out(0)
 
@@ -295,10 +336,10 @@ function State_Init(message)
 		aliens.Reset_Story_Locks()
 		aliens.Lock_Unit_Ability("Alien_Hero_Orlok", "Alien_Orlok_Retreat_From_Tactical_Ability", true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Brute_Mutator"),true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Terrain_Conditioner"),true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Foo_Chamber"),true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Arc_Trigger"),true,STORY)
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Range_Enhancer"),true,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Terrain_Conditioner"),true,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Foo_Chamber"),true,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Arc_Trigger"),true,STORY)
+		-- aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Habitat_HP_Range_Enhancer"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Brute"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Assembly"),true,STORY)
@@ -307,9 +348,9 @@ function State_Init(message)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Kamal_Rex"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Nufai"),true,STORY)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Hero_Orlok"),true,STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false,STORY)
-		aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false,STORY)
-		aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Lost_One_Plasma_Bomb_Unit_Ability", false,STORY)
+		-- aliens.Lock_Unit_Ability("Alien_Lost_One", "Grey_Phase_Unit_Ability", false,STORY)
+		-- aliens.Set_Special_Ability_Type_Lock(Find_Object_Type("Alien_Grunt"), "Grunt_Grenade_Attack", false, STORY)
 
 		-- Hint System Initialization
 		PGHintSystemDefs_Init()
@@ -317,7 +358,7 @@ function State_Init(message)
 		Register_Hint_Context_Scene(Get_Game_Mode_GUI_Scene())
 
 		-- Initial Starting Credits
-		credit_total = 10000
+		credit_total = 7000
 		credits = aliens.Get_Credits()
       if credits > credit_total then
          credits = (credits - credit_total) * -1
@@ -663,6 +704,12 @@ function State_Init(message)
 		if table.getn(list_rocket_guards) <= 0 then
 			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find list_rocket_guards!"))
 		end
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_HM02_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 				
 		Create_Thread("Thread_Mission_Introduction")
 		Set_Next_State("State_ZM02_Active")
@@ -1095,7 +1142,7 @@ function Thread_Mission_Introduction()
 		Sleep(time_radar_sleep)
 		nearest_glyph_carver = Find_First_Object("Alien_Glyph_Carver")
 		if TestValid(nearest_glyph_carver) then
-			Add_Attached_Hint(nearest_glyph_carver, HINT_BUILT_ALIEN_GLYPH_CARVER)
+			Add_Attached_Hint(nearest_glyph_carver, 18)
 		end
    	conversation_occuring = false
 	end
@@ -1110,7 +1157,7 @@ function Thread_Mission_Introduction()
 	if not mission_success and not mission_failure then
 		nearest_monolith = Find_First_Object("Alien_Cylinder")
 		if TestValid(nearest_monolith) then
-			Add_Attached_Hint(nearest_monolith, HINT_BUILT_ALIEN_CYLINDER)
+			Add_Attached_Hint(nearest_monolith, 21)
 		end
 		conversation_occuring = true
 		BlockOnCommand(Queue_Talking_Head(pip_orlok, "HIE02_SCENE03_08"))
@@ -1130,7 +1177,7 @@ function Thread_Objective_Build_Reaper_Drone()
    if not built_reaper_drone then 
       if not objective_reaper_drone then
 	      objective_reaper_drone = true
-	      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_04_ADD"} )
+	      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_04_ADD"} )
 	      Sleep(time_objective_sleep)
          if not built_reaper_drone then 
 	         zm02_objective04 = Add_Objective("TEXT_SP_MISSION_HIE02_OBJECTIVE_04")
@@ -1146,7 +1193,7 @@ end
 function Thread_Objective_Build_Detection_Drone()
    if objective_reaper_drone then
       if not mission_success and not mission_failure then
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_04_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_04_COMPLETE"} )
          Objective_Complete(zm02_objective04)
          Sleep(time_objective_sleep)
       end
@@ -1164,7 +1211,7 @@ function Thread_Objective_Build_Detection_Drone()
 			      conversation_occuring = false
 		         Sleep(time_radar_sleep)
                if not built_detection_drone then
-	               Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_05_ADD"} )
+	               Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_05_ADD"} )
 		            Sleep(time_objective_sleep)
 		         end
                if not built_detection_drone then
@@ -1186,7 +1233,7 @@ end
 function Thread_Objective_Build_Spitter_Turret()
    if objective_habitat_walker then
       if not mission_success and not mission_failure then
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_07_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_07_COMPLETE"} )
          Objective_Complete(zm02_objective07)
          Sleep(time_objective_sleep)
       end
@@ -1204,7 +1251,7 @@ function Thread_Objective_Build_Spitter_Turret()
 			      conversation_occuring = false
 		         Sleep(time_radar_sleep)
                if not built_spitter_turret then
-	               Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_06_ADD"} )
+	               Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_06_ADD"} )
    		         Sleep(time_objective_sleep)
 	            end
                if not built_spitter_turret then
@@ -1225,7 +1272,7 @@ end
 function Thread_Objective_Build_Habitat_Walker()
    if objective_detection_drone then
       if not mission_success and not mission_failure then
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_05_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_05_COMPLETE"} )
          Objective_Complete(zm02_objective05)
          Sleep(time_objective_sleep)
       end
@@ -1243,7 +1290,7 @@ function Thread_Objective_Build_Habitat_Walker()
 			      conversation_occuring = false
 		         Sleep(time_radar_sleep)
                if not built_habitat_walker then
-	               Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_07_ADD"} )
+	               Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_07_ADD"} )
 		            Sleep(time_objective_sleep)
 		         end
                if not built_habitat_walker then
@@ -1264,7 +1311,7 @@ end
 function Thread_Objective_Assault_First_Rocket()
    if objective_spitter_turret then
       if not mission_success and not mission_failure then
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_06_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_06_COMPLETE"} )
          Objective_Complete(zm02_objective06)
          Sleep(time_objective_sleep)
       end
@@ -1281,7 +1328,7 @@ function Thread_Objective_Assault_First_Rocket()
 		      conversation_occuring = false
 		      Sleep(time_radar_sleep)
 	      end
-	   	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_01_ADD"} )
+	   	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_01_ADD"} )
 		   Sleep(time_objective_sleep)
    		zm02_objective01 = Add_Objective("TEXT_SP_MISSION_HIE02_OBJECTIVE_01")
    	   Sleep(time_radar_sleep)
@@ -1311,7 +1358,7 @@ function Thread_Fire_First_Rocket()
 
       if not first_objective_active then
       	first_objective_active = true
-      	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_01_ADD"} )
+      	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_01_ADD"} )
 	      Sleep(time_objective_sleep)
          zm02_objective01 = Add_Objective("TEXT_SP_MISSION_HIE02_OBJECTIVE_01")
       	
@@ -1359,7 +1406,7 @@ function Thread_Fire_First_Rocket()
 		
 		Sleep(time_radar_sleep)
 		
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_02_ADD"} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_02_ADD"} )
 	   Sleep(time_objective_sleep)
 		zm02_objective02 = Add_Objective("TEXT_SP_MISSION_HIE02_OBJECTIVE_03")
 		Set_Objective_Text(zm02_objective01, "TEXT_SP_MISSION_HIE02_OBJECTIVE_02")
@@ -1605,6 +1652,14 @@ function Thread_Launch_Rocket_03()
 	   fow_rocket03.Undo_Reveal()
    end
    
+	--jdg 11/14/07 added sfx event to tie back into rumble events ... only playing if control pad is plugged in
+	--this is a specific "rumble" event for the rocket that tips over and explodes
+	if Is_Gamepad_Active() then
+		if TestValid(animrocket03) then
+			animrocket03.Play_SFX_Event("SFX_ZM02_Military_Missile03_Launch_and_Death")
+		end
+	end
+	
 	animrocket03.Play_Animation("Anim_Cinematic", false, 2)
    Sleep(time_rocket_03_explosion)
 	-- SpawnList(type_list, entry_marker, player, allow_ai_usage, delete_after_scenario, add_to_pop_cap)
@@ -1615,11 +1670,16 @@ function Thread_Launch_Rocket_03()
 		animrocket03.Despawn()
 	end
 	if TestValid(rocket_03) then
+		--jdg 11/14/07 added sfx event to tie back into rumble events ... only playing if control pad is plugged in
+		if Is_Gamepad_Active() then
+			rocket_03.Play_SFX_Event("SFX_Military_Missile_Death")
+		end
 	   rocket_03.Despawn()
 	end
+	
    Remove_Radar_Blip("blip_objective03")
    Objective_Complete(zm02_objective02)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_03_COMPLETE"} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_03_COMPLETE"} )
    if rocket02_killed then
 	   Create_Thread("Thread_Mission_Success")
    else
@@ -1634,23 +1694,38 @@ function Thread_Launch_Rocket_02()
    if fow_rocket02 ~= nil then
 	   fow_rocket02.Undo_Reveal()
    end
+	
+	--jdg 11/14/07 added sfx event to tie back into rumble events ... only playing if control pad is plugged in
+	--this is a specific "rumble" event for the rocket that tries to take off then crashes back down.
+	if Is_Gamepad_Active() then
+		if TestValid(animrocket02) then
+			animrocket02.Play_SFX_Event("SFX_ZM02_Military_Missile02_Launch_and_Death")
+		end
+	end
    
 	animrocket02.Play_Animation("Anim_Cinematic", false, 1)
    Sleep(time_rocket_02_explosion)
 	-- SpawnList(type_list, entry_marker, player, allow_ai_usage, delete_after_scenario, add_to_pop_cap)
 	spawn_list = SpawnList(list_single_military_missile_destroyed, rocket02_explode, civilian, false, true, false)
 	rocket_02 = spawn_list[1]
+	
 	Sleep(0.1)
 	if TestValid(animrocket02) then
 		animrocket02.Despawn()
 	end
 	if TestValid(rocket_02) then
-	   rocket_02.Despawn()
+		--jdg 11/14/07 added sfx event to tie back into rumble events ... only playing if control pad is plugged in
+		--this is so I can play a rumble at the death of the missile
+		if Is_Gamepad_Active() then
+			rocket_02.Play_SFX_Event("SFX_Military_Missile_Death")
+		end
+		rocket_02.Despawn()
 	end
+	
 
    Remove_Radar_Blip("blip_objective02")
    Objective_Complete(zm02_objective01)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_02_COMPLETE"} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_HIE02_OBJECTIVE_02_COMPLETE"} )
    if rocket03_killed then
 	   Create_Thread("Thread_Mission_Success")
    else
@@ -2019,7 +2094,7 @@ function Callback_Rocket02_Damaged()
 end
 
 function Callback_Orlok_Killed()
-	if not mission_success then
+	if not mission_success and mission_failure == false then
 		Create_Thread("Thread_Mission_Failed")
 	end
 end
@@ -2032,13 +2107,9 @@ function Callback_Arrival_Site_Damaged()
 end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_failure = true
-   Stop_All_Speech()
-   Flush_PIP_Queue()
 	Letter_Box_In(1)
 	Lock_Controls(1)
 	Suspend_AI(1)
@@ -2047,9 +2118,9 @@ function Thread_Mission_Failed()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,30)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_ORLOK"} )
 	Sleep(time_objective_sleep)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
    Fade_Screen_Out(2)
    Sleep(2)
    Lock_Controls(0)
@@ -2057,14 +2128,10 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Success()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_success = true
 
-   Stop_All_Speech()
-   Flush_PIP_Queue()
    Letter_Box_In(1)
    Lock_Controls(1)
    Suspend_AI(1)
@@ -2073,7 +2140,7 @@ function Thread_Mission_Success()
    Zoom_Camera.Set_Transition_Time(10)
    Zoom_Camera(.3)
    Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
 	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
@@ -2099,7 +2166,99 @@ function Force_Victory(player)
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Callback_Military_Aircraft_Killed = nil
+	Callback_Novus_Corruptor_Killed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

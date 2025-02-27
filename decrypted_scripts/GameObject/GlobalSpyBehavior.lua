@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/GlobalSpyBehavior.lua#14 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/GlobalSpyBehavior.lua#15 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/GlobalSpyBehavior.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/GlobalSpyBehavior.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 81602 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/08/23 14:41:36 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #14 $
+--          $Revision: #15 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +82,8 @@ local function Behavior_Init()
 	SpyLevel = 0
 	SpyLevelMinimum = 0
 	SpyStartCoolTime = 0
+	Script.Set_Async_Data("WeaponType", "Spy")
+	Script.Set_Async_Data("MegaweaponTargetsEnemies", true)
 	
 end
 
@@ -84,7 +95,7 @@ local function Behavior_First_Service()
 
 	-- tell Register_Patch_Builder that we have spy capability
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Global_Megaweapon_Registration", nil, {Object, "Spy"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Registration", nil, {Object, "Spy"} )
 	Raise_Game_Event("Global_Spy_Ready", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type())
 	
 end
@@ -101,7 +112,7 @@ local function Behavior_Service()
 		if SpyCoolDown > 0.0 and tm >= SpyCoolDown then
 			SpyCoolDown	= 0.0
 			-- The spy system is ready again
-			Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Global_Megaweapon_Ready", nil, {Object, "Spy"} )
+			Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Ready", nil, {Object, "Spy"} )
 			Raise_Game_Event("Global_Spy_Ready", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type())
 		end
 		
@@ -119,27 +130,23 @@ local function Behavior_Service()
 			Set_Spy_Level( nil, 0 )	-- cancel spying
 		end
 	end
+	
+	local cd_data = {}
+	cd_data.EndTime = SpyCoolDown
+	cd_data.StartTime = SpyStartCoolTime
+	Script.Set_Async_Data("MegaweaponCooldown", cd_data)	
 end
 
 -- --------------------------------------------------------------------------------------------------------------------
 -- Behavior_Refresh_After_Mode_Switch
 -- --------------------------------------------------------------------------------------------------------------------
 local function Behavior_Refresh_After_Mode_Switch()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Global_Megaweapon_Registration", nil, {Object, "Spy"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Registration", nil, {Object, "Spy"} )
 	if SpyCoolDown > 0 then
 		Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Not_Ready", nil, {Object, "Spy"})	
 	end		
 end
 
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Get_Megaweapon_Cooldown
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Get_Megaweapon_Cooldown()
-	local ret={}
-	ret.EndTime = SpyCoolDown
-	ret.StartTime = SpyStartCoolTime
-	return ret
-end
 
 -- --------------------------------------------------------------------------------------------------------------------------------------------------
 -- Fire_Megaweapon_At_Region
@@ -161,7 +168,7 @@ function Fire_Megaweapon_At_Region( region )
 		end
 	end
 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Global_Megaweapon_Not_Ready", nil, {Object, "Spy"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Not_Ready", nil, {Object, "Spy"} )
 	SpyCoolDown = tm + GlobalSpyCoolDown
 	SpyDoneTime = tm + GlobalSpyTime
 	SpyStartCoolTime 	= tm
@@ -181,13 +188,6 @@ function Fire_Megaweapon_At_Region( region )
 		Raise_Game_Event("Global_Spy_Activated", Object.Get_Owner(), Object.Get_Position(), Object.Get_Type())
 	end
 	
-end
-
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Is_Legal_Megaweapon_Target
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Is_Legal_Megaweapon_Target(region)
-	return Object.Get_Owner() ~= region.Get_Owner()
 end
 
 function Is_Spy_Counter(object)
@@ -265,10 +265,6 @@ function Set_Spy_Level( region, spy_level )
 	end
 end
 
-function Get_Weapon_Type()
-	return "Spy"
-end
-
 function Debug_Force_Complete()
 	SpyCoolDown = 0
 	Get_Game_Mode_GUI_Scene().Raise_Event("Global_Megaweapon_Ready", nil, {Object, "Spy"} )
@@ -289,3 +285,30 @@ my_behavior.Service = Behavior_Service
 my_behavior.Post_Load_Game = Behavior_Post_Load_Game
 my_behavior.Refresh_After_Mode_Switch = Behavior_Refresh_After_Mode_Switch
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

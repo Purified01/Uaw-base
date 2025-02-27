@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Battle_Load_Dialog.lua#28 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[34] = true
+LuaGlobalCommandLinks[116] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Battle_Load_Dialog.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Battle_Load_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Battle_Load_Dialog.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Mike_Lytle $
+--            $Author: Joe_Howes $
 --
---            $Change: 86617 $
+--            $Change: 94892 $
 --
---          $DateTime: 2007/10/24 17:32:25 $
+--          $DateTime: 2008/03/07 16:13:32 $
 --
---          $Revision: #28 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,9 +63,14 @@ function On_Init()
 	Percent_Complete = 0
 	Quit_Button_Enabled = false
 	Battle_Load_Force_Quit = false
-	DialogStartTime = Net.Get_Time()
+	LocalClientFinishedLoadingTime = -1
 	Previous_Percentage = Percent_Complete
 
+	PlatformTextures = { }
+	PlatformTextures[PLATFORM_PC] = "MP_Windows_Icon.tga"
+	PlatformTextures[PLATFORM_360] = "MP_XBox_Icon.tga"
+	
+	Platform_Icons = Find_GUI_Components(this, "Icon_Platform")
 	Names = Find_GUI_Components(this, "Text_Name")
 	Progress_Bars = Find_GUI_Components(this, "Progress_Bar")
 
@@ -65,6 +80,7 @@ function On_Init()
 	Default_Background = this.Background.Get_Texture_Name()
 
 	this.Register_Event_Handler("Button_Clicked", this.StartMissionButton, On_Start_Mission_Button_Clicked)
+	this.Register_Event_Handler("On_Update_Text", nil, On_Update_Text)
 	this.StartMissionButton.Set_Tab_Order(0)
 
 	Hide_General_Components()
@@ -99,6 +115,11 @@ function Init_Faction_Models()
 end
 
 function Hide_Multiplayer_Components()
+
+	-- All platform icons are hidden by default
+	for _, icon in pairs(Platform_Icons) do
+		icon.Set_Hidden(true)
+	end
 
 	-- All names are hidden by default
 	for _, name in pairs(Names) do
@@ -146,7 +167,7 @@ function Play_Button_Select_SFX(event, source)
 	end
 end
 
-function Display_Dialog()
+function Display_Dialog(for_faction_display_name)
 	ModelOverridden = false
 	All_Clients_Loaded = false
 	Broadcast_Complete_Sent = false
@@ -154,12 +175,19 @@ function Display_Dialog()
 
 	Quit_Button_Enabled = false
 	Battle_Load_Force_Quit = false
-	DialogStartTime = Net.Get_Time()
+	LocalClientFinishedLoadingTime = -1
 
 	Percent_Complete = 0
 	Previous_Percentage = Percent_Complete
 
 	Loading_Components_Initialized = false
+
+	Last_Faction_ID = Faction_ID
+	Faction_ID = nil
+
+	if for_faction_display_name then
+		Faction_ID = Get_Faction_Numeric_Form_From_Localized(for_faction_display_name)
+	end
 
 	Init_Components()
 	Init_Clients()
@@ -167,32 +195,39 @@ function Display_Dialog()
 	Refresh_Faction_Background()
 end
 
-function Refresh_Faction_Model(faction_id)
+function Refresh_Faction_Model()
+
+	if Faction_ID ~= nil and Faction_ID == Last_Faction_ID then
+		return
+	end
 
 	if ModelOverridden then return end
 
-	if faction_id == nil then
-		local local_player = Find_Player("local")		
+	if Faction_ID == nil then
 		if Local_Client then
-			faction_id = Local_Client.faction_id
-		elseif local_player then
-			faction_id = Get_Faction_Numeric_Form_From_Localized(local_player.Get_Faction_Display_Name())
+			Faction_ID = Local_Client.faction_id
 		end
 
-		if faction_id == nil then
-			faction_id = PG_FACTION_NOVUS
+		if Faction_ID == nil then
+			Faction_ID = PG_FACTION_NOVUS
 		end
 	end
 
-	local model_list = FactionModels[faction_id]
-	local component = FactionGUIModels[faction_id]
+	-- Hide whatever was displayed previously
+	for _, component in pairs(FactionGUIModels) do
+		component.Set_Model("")
+		component.Set_Hidden(true)
+	end
+
+	local model_list = FactionModels[Faction_ID]
+	local component = FactionGUIModels[Faction_ID]
 
 	-- This can happen if Local_Client.faction_id returns an invalid faction
 	if model_list == nil or component == nil then
-		faction_id = PG_FACTION_NOVUS
+		Faction_ID = PG_FACTION_NOVUS
 
-		model_list = FactionModels[faction_id]
-		component = FactionGUIModels[faction_id]
+		model_list = FactionModels[Faction_ID]
+		component = FactionGUIModels[Faction_ID]
 	end
 
 	local index = GameRandom.Free_Random(1, #model_list)
@@ -203,23 +238,20 @@ function Refresh_Faction_Model(faction_id)
 
 end
 
-function Refresh_Faction_Background(faction_id)
+function Refresh_Faction_Background()
 
 	-- Only do set the background if it was not overridden by a mission
 	-- specific background
 	if Default_Background == this.Background.Get_Texture_Name() then
-		if faction_id == nil then
-			local local_player = Find_Player("local")		
+		if Faction_ID == nil then
 			if Local_Client then
-				faction_id = Local_Client.faction_id
-			elseif local_player then
-				faction_id = Get_Faction_Numeric_Form_From_Localized(local_player.Get_Faction_Display_Name())
+				Faction_ID = Local_Client.faction_id
 			end
 		end
 			
 		local background = Default_Background
-		if faction_id then
-			background = FactionBackgrounds[faction_id]
+		if Faction_ID then
+			background = FactionBackgrounds[Faction_ID]
 		end			
 
 		this.Background.Set_Texture(background)
@@ -258,15 +290,12 @@ function Init_Components()
 			end
 
 			if data_table.Loading_Screen_Faction_ID then
-				Refresh_Faction_Model(data_table.Loading_Screen_Faction_ID)
-				Refresh_Faction_Background(data_table.Loading_Screen_Faction_ID)
+				Faction_ID = data_table.Loading_Screen_Faction_ID
+				Refresh_Faction_Model()
+				Refresh_Faction_Background()
 				ModelOverridden = true
 			end
 
-			-- Reset the data so the next load does not have this screen
-			--data_table.Loading_Screen_Background = nil
-			--data_table.Loading_Screen_Mission_Text = nil
-			--data_table.Loading_Screen_Faction_ID = nil
 			GameScoringManager.Set_Game_Script_Data_Table(data_table)
 		end
 		Loading_Components_Initialized = true
@@ -304,6 +333,8 @@ function Init_Clients()
 				Is_Solo_Game = false
 			end
 			Human_Clients[client] = current_index
+			Platform_Icons[current_index].Set_Hidden(false)
+			Platform_Icons[current_index].Set_Texture(PlatformTextures[client.platform])
 			Names[current_index].Set_Hidden(false)
 			Names[current_index].Set_Text(client.name)
 			Progress_Bars[current_index].Set_Hidden(false)
@@ -355,6 +386,18 @@ function On_Message_Recieved(event)
 			-- TODO: Put a message that says "Dropped" instead of their progress bar
 			Remove_Client(sender)
 		end
+	elseif event.task == "TASK_LIVE_CONNECTION_CHANGED" then
+		if ((event.connection_change_id == XONLINE_S_LOGON_DISCONNECTED) or
+			(event.connection_change_id == XONLINE_E_LOGON_NO_NETWORK_CONNECTION) or
+			(event.connection_change_id == XONLINE_E_LOGON_CANNOT_ACCESS_SERVICE) or 
+			(event.connection_change_id == XONLINE_E_LOGON_UPDATE_REQUIRED) or
+			(event.connection_change_id == XONLINE_E_LOGON_SERVERS_TOO_BUSY) or
+			(event.connection_change_id == XONLINE_E_LOGON_CONNECTION_LOST) or
+			(event.connection_change_id == XONLINE_E_LOGON_KICKED_BY_DUPLICATE_LOGON) or
+			(event.connection_change_id == XONLINE_E_LOGON_INVALID_USER)) then
+			-- If we disconnected, show the quit button as soon as we're done loading.
+			TimeToShowQuitButton = 0
+		end
 	end
 end
 
@@ -395,6 +438,10 @@ function Check_If_All_Clients_Finished_Loading()
 		All_Clients_Loaded = ( Number_Of_Clients == Number_Of_Clients_Finished_Loading )
 		Ready_To_Start = All_Clients_Loaded
 	end
+
+	if LocalClientFinishedLoadingTime < 0 and Percent_Complete == 1 then
+		LocalClientFinishedLoadingTime = Net.Get_Time()
+	end
 end
 
 
@@ -413,8 +460,9 @@ function On_Update()
 	-- Wait for everyone else to finish, then the BatteLoadDialogClass will end the dialog
 	Check_If_All_Clients_Finished_Loading()
 
-	if Is_Solo_Game ~= true and Quit_Button_Enabled ~= true and Percent_Complete == 1 and
-			Net.Get_Time() - DialogStartTime > TimeToShowQuitButton then
+	if Is_Solo_Game ~= true and Quit_Button_Enabled ~= true and
+		Percent_Complete == 1 and LocalClientFinishedLoadingTime > -1 and
+		Net.Get_Time() - LocalClientFinishedLoadingTime > TimeToShowQuitButton then
 		Activate_Quit_Button()
 	end
 
@@ -423,15 +471,133 @@ end
 function Remove_Client(client_to_remove)
 	local index = Human_Clients[client_to_remove]
 	if index ~= nil then
+		Platform_Icons[index].Set_Hidden(true)
 		Names[index].Set_Hidden(true)
 		Progress_Bars[index].Set_Hidden(true)
 		Client_Progress_Bars[client_to_remove.common_addr] = nil
 		Number_Of_Clients = Number_Of_Clients - 1
 		Human_Clients[client_to_remove] = nil
 	end
+	
+	if Number_Of_Clients == 1 then
+		Battle_Load_Force_Quit = true
+	end
 end
 
 function On_Start_Mission_Button_Clicked()
 	Battle_Load_Force_Quit = Quit_Button_Enabled
 	Ready_To_Start = true
+end
+
+function Close_Dialog()
+	GUIDialogComponent.Set_Active(false)
+
+	-- Reset the data so the next load does not have this screen
+	local data_table = GameScoringManager.Get_Game_Script_Data_Table()
+	if data_table ~= nil then
+		data_table.Loading_Screen_Background = nil
+		data_table.Loading_Screen_Mission_Text = nil
+		data_table.Loading_Screen_Faction_ID = nil
+		GameScoringManager.Set_Game_Script_Data_Table(data_table)
+	end
+end
+
+function On_Update_Text(event_name, source, load_text)
+	if load_text then
+		this.Text_Mission_Description.Set_Text(Get_Game_Text(load_text))
+	else
+		this.Text_Mission_Description.Set_Text("")
+	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Heartbeat = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Broadcast_Stats_Registration_Begin = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Client_Table_Count = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	Network_Update_Local_Common_Addr = nil
+	OutputDebug = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Internet_Init = nil
+	PGNetwork_LAN_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

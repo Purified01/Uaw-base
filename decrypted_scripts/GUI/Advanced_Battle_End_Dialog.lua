@@ -1,4 +1,24 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Advanced_Battle_End_Dialog.lua#31 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[33] = true
+LuaGlobalCommandLinks[195] = true
+LuaGlobalCommandLinks[82] = true
+LuaGlobalCommandLinks[77] = true
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[36] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Advanced_Battle_End_Dialog.lua#18 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -25,17 +45,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Advanced_Battle_End_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Advanced_Battle_End_Dialog.lua $
 --
 --    Original Author: Nader Akoury
 --
---            $Author: Nader_Akoury $
+--            $Author: Joe_Howes $
 --
---            $Change: 88091 $
+--            $Change: 96029 $
 --
---          $DateTime: 2007/11/19 14:50:39 $
+--          $DateTime: 2008/03/31 15:47:46 $
 --
---          $Revision: #31 $
+--          $Revision: #18 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,7 +120,7 @@ function On_Init()
 	Results_List.Set_Header_Style("NONE", VOICE_CHAT)
 	Results_List.Set_Header_Style("NONE", PLAYER_NAME)
 	Results_List.Set_Header_Style("NONE", PLAYER_FACTION)
---	Results_List.Enable_Selection_Highlight(false)
+	Results_List.Enable_Selection_Highlight(false)
 
 	Results_List.Set_Column_Width(VOICE_CHAT, 0.05)
 	Results_List.Set_Column_Width(PLAYER_NAME, 0.25)
@@ -112,23 +132,17 @@ function On_Init()
 --	Results_List.Set_Column_Width(PLAYER_RANK, 0.1)
 	Results_List.Refresh()
 
-	this.Register_Event_Handler("List_Box_Scroll_Bar_Changed", Results_List, Play_Option_Select_SFX)
+	this.Register_Event_Handler("List_Selected_Index_Changed", Results_List, Play_Option_Select_SFX)	
 
 	Save_Replay_Dialog = nil
 
 	PGColors_Init()
 	PGNetwork_Init()
 
-	Dialog_For_Multiplayer = Is_Multiplayer_Skirmish()
 	Connected_To_Live = Net.Get_Signin_State() == "online"
 
 	-- Hidden initially until the user highlights a valid row
 	this.Button_Gamer_Card.Set_Hidden(true)
-
-	this.Button_Lobby.Enable(true)
-	if Dialog_For_Multiplayer then
-		this.Button_Lobby.Enable(false)
-	end
 		
 	-- Disable save replay button if this is a loaded save game
 	if Is_Loaded_Save_Game() then
@@ -138,7 +152,6 @@ function On_Init()
 	end
 	
 	Register_Game_Scoring_Commands()
-	Freeze_Multiplayer()
 	CloseHuds = true
 	this.Register_Event_Handler("Closing_All_Displays", nil, Hide_Dialog)
 end
@@ -218,7 +231,7 @@ function Play_End_Battle_Music()
 
 	for _, results in pairs(Winning_Team_List) do
 		if winner_faction == nil then winner_faction = results.faction end
-		if results.player == Find_Player("local") then
+		if results.player ==  LocalPlayer then
 			is_winner = true
 			winner_faction = results.faction
 			break
@@ -228,7 +241,7 @@ function Play_End_Battle_Music()
 	for _, team in pairs(Teams) do
 		for _, results in pairs(team) do
 			if loser_faction == nil then loser_faction = results.faction end
-			if is_winner == false and results.player == Find_Player("local") then
+			if is_winner == false and results.player == LocalPlayer then
 				loser_faction = results.faction
 				break
 			end
@@ -259,6 +272,9 @@ function Play_End_Battle_Music()
 end
 
 function Finalize_Init(is_multiplayer)
+
+	LocalPlayer = Find_Player("local")
+
 	Dialog_Active = true
 	if is_multiplayer ~= nil then
 		Dialog_For_Multiplayer = is_multiplayer
@@ -297,6 +313,7 @@ function Finalize_Init(is_multiplayer)
 	-- Break up the players into teams
 	Teams = {}
 	Winning_Team_List = {}
+	local local_team = nil
 	for idx, results in pairs(ResultsTable) do
 		if results.team == Winning_Team then
 			table.insert(Winning_Team_List, results)
@@ -305,6 +322,9 @@ function Finalize_Init(is_multiplayer)
 				Teams[results.team] = {}
 			end
 			table.insert(Teams[results.team], results)
+		end
+		if results.player ==  LocalPlayer then
+			local_team = results.team
 		end
 	end
 	
@@ -325,6 +345,7 @@ function Finalize_Init(is_multiplayer)
 	end
 
 	RowsByID = {}
+	ClientDetails = {}
 
 	local last_team = nil
 	for _, results in pairs(Winning_Team_List) do
@@ -336,6 +357,8 @@ function Finalize_Init(is_multiplayer)
 			last_team = Add_Player_Results(results, last_team)
 		end
 	end
+	
+	Network_Unprune_Voice_Peers(ClientDetails, local_team)
 
 	-- Make sure the rows get setup properly, so make sure to refresh
 	Results_List.Refresh()
@@ -364,6 +387,7 @@ function Add_Player_Results(results, last_team)
 
 	table.insert(RowsByID, new_row)
 	Results_List.Set_User_Data(new_row, results)
+	ClientDetails[results.common_addr] = results
 
 	Results_List.Set_Text_Data(PLAYER_NAME, new_row, player.Get_Name())
 	Results_List.Set_Texture(PLAYER_FACTION, new_row, Get_Faction_Icon_Name(player))
@@ -429,8 +453,10 @@ function Save_Replay_Clicked()
 end
 
 function Play_Again_Clicked()
-	Hide_Dialog()
-	Setup_Map_Restart()
+	if this.Button_Play_Again.Get_Hidden() == false then
+		Hide_Dialog()
+		Setup_Map_Restart()
+	end
 end
 
 function Players_Clicked()
@@ -456,7 +482,7 @@ function Gamer_Card_Clicked()
 	local results = Results_List.Get_User_Data(row)
 	if results == nil then return end -- Not all rows have results on them
 
-	local xuid = Net.Get_XUID_By_Network_Address(results.common_addr)
+	local xuid = Net.Get_XUID_For_Player(results.player)
 	Net.Show_Gamer_Card_UI(xuid)
 end
 
@@ -513,5 +539,114 @@ function On_Update()
 	end
 end
 
+function Set_Dialog_For_Multiplayer(value)
+
+	Dialog_For_Multiplayer = value
+	this.Button_Lobby.Enable(true)
+	if Dialog_For_Multiplayer then
+		this.Button_Lobby.Enable(false)
+	end
+	
+end
+
 Interface = {}
 Interface.Finalize_Init = Finalize_Init
+Interface.Set_Dialog_For_Multiplayer = Set_Dialog_For_Multiplayer
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Heartbeat = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Broadcast_Stats_Registration_Begin = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	Commit_Profile_Values = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Client_Table_Count = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	Network_Update_Local_Common_Addr = nil
+	OutputDebug = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Internet_Init = nil
+	PGNetwork_LAN_Init = nil
+	PGPlayerProfile_Init = nil
+	Players_Clicked = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Unhide = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

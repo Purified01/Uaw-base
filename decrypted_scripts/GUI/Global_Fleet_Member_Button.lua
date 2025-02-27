@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Fleet_Member_Button.lua#10 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Fleet_Member_Button.lua#13 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Fleet_Member_Button.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Fleet_Member_Button.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84965 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/27 14:57:18 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #10 $
+--          $Revision: #13 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,9 +68,7 @@ function On_Init()
 	this.Register_Event_Handler("Selectable_Icon_Right_Double_Clicked", this.Button, On_Right_Click)
 	this.Register_Event_Handler("Mouse_On", this.Button, On_Mouse_On_Button)
 	this.Register_Event_Handler("Mouse_Off", this.Button, On_Mouse_Off_Button)
-	this.Register_Event_Handler("Key_Focus_Gained", this.Button, On_Focus_On_Button)
-	this.Register_Event_Handler("Key_Focus_Lost", this.Button, On_Focus_Off_Button)
-	
+
 	this.Button.Set_Tab_Order(1)
 end
 
@@ -130,15 +136,7 @@ function On_Click()
 	local current_region = Get_GUI_Variable("CurrentRegion")
 	local hero_fleet = Get_GUI_Variable("HeroFleet")
 
-	if TestValid(hero_fleet) and TestValid(build_type) and TestValid(current_region) then
-		build_started = Global_Begin_Production(Find_Player("local"), current_region, build_type, hero_fleet)
-	end
-	
-	if build_started then
-		Play_SFX_Event("GUI_Generic_Button_Select")
-	else
-		Play_SFX_Event("GUI_Generic_Bad_Sound") 
-	end
+	Send_GUI_Network_Event("Network_Global_Begin_Production", { Find_Player("local"), current_region, build_type, hero_fleet })
 end
 
 function On_Right_Click()
@@ -153,11 +151,7 @@ function On_Right_Click()
 	local under_construction = Get_GUI_Variable("UnderConstruction")
 	for _, unit in pairs(under_construction) do
 		if TestValid(unit) then
-			local completion_time = 0.0
-			local unit_script = unit.Get_Script()
-			if unit_script ~= nil then
-				completion_time = unit_script.Call_Function("Get_Completion_Time")
-			end
+			local completion_time = unit.Get_Strategic_Build_Completion_Time()
 			if completion_time > max_completion_time then
 				best_unit = unit
 				max_completion_time = completion_time
@@ -166,8 +160,7 @@ function On_Right_Click()
 	end
 	
 	if TestValid(best_unit) then
-		local unit_script = best_unit.Get_Script()
-		Cancel_Production_At_Location_Of_Unit(unit_script.Call_Function("Get_Build_Location"), unit_script.Call_Function("Get_Queue_ID"), unit_script.Call_Function("Get_Build_ID"))
+		Send_GUI_Network_Event("Network_Global_Cancel_Production", {best_unit})
 		return
 	end
 	
@@ -184,7 +177,7 @@ function On_Right_Click()
 	end
 	
 	if TestValid(best_unit) then
-		best_unit.Sell()
+		Send_GUI_Network_Event("Network_Sell_Object", {best_unit})
 	else
 		Play_SFX_Event("GUI_Generic_Bad_Sound")
 	end
@@ -198,11 +191,7 @@ function Update_Construction_Progress()
 	local for_removal = {}
 	for _, unit in pairs(under_construction) do
 		if TestValid(unit) then
-			local completion_time = 0.0
-			local unit_script = unit.Get_Script()
-			if unit_script ~= nil then
-				completion_time = unit_script.Call_Function("Get_Completion_Time")
-			end
+			local completion_time = unit.Get_Strategic_Build_Completion_Time()
 			
 			if completion_time > max_completion_time then
 				if max_completion_time == 0.0 or completion_time < 1.0 then
@@ -352,7 +341,7 @@ function Set_New_Build_Enabled(onoff)
 	local has_uc = Get_GUI_Variable("HasUC")
 	
 	local final_button_state = onoff or has_units or has_uc
-	this.Button.Set_Enabled(final_button_state)
+	this.Button.Set_Button_Enabled(final_button_state)
 	if not final_button_state then
 		this.Button.Clear_Cost()
 		this.Button.Set_Text("")
@@ -364,7 +353,7 @@ function Get_New_Build_Enabled()
 end
 
 function Add_Unit(unit)
-	if unit.Get_Type() == Get_GUI_Variable("BuildType") then
+	if not unit.Has_Behavior(166) then
 		local units = Get_GUI_Variable("Units")
 		units[unit] = unit
 		Set_GUI_Variable("Units", units)
@@ -468,3 +457,43 @@ Interface.Get_Enough_Credits = Get_Enough_Credits
 Interface.Get_Enough_Pop = Get_Enough_Pop
 Interface.Generate_Tooltip = Generate_Tooltip
 Interface.Get_Sell_Price = Get_Sell_Price
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	On_Focus_Off_Button = nil
+	On_Focus_On_Button = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Icons.lua#3 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Icons.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Icons.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Icons.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Chris_Brooks $
+--            $Author: Brian_Hayes $
 --
---            $Change: 40315 $
+--            $Change: 92565 $
 --
---          $DateTime: 2006/03/31 16:47:53 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #3 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,4 +66,10 @@ function Get_Faction_Icon_Name(object)
 	else
 		return "i_button_temporary.tga"
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Get_Faction_Icon_Name = nil
+	Get_Fleet_Icon_Name = nil
+	Kill_Unused_Global_Functions = nil
 end

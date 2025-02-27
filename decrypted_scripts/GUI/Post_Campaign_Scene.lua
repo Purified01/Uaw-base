@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Campaign_Scene.lua#6 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Campaign_Scene.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Campaign_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Campaign_Scene.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 86806 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/26 15:24:40 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #6 $
+--          $Revision: #8 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -165,3 +176,29 @@ end
 
 Interface = {}
 Interface.Finalize_Init = Finalize_Init
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

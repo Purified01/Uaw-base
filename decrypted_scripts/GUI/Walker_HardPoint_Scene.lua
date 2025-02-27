@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Walker_HardPoint_Scene.lua#31 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[155] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[123] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Walker_HardPoint_Scene.lua#27 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Walker_HardPoint_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Walker_HardPoint_Scene.lua $
 --
 --    Original Author: James Yarrow
 --
 --            $Author: Maria_Teruel $
 --
---            $Change: 90532 $
+--            $Change: 92709 $
 --
---          $DateTime: 2008/01/08 16:22:26 $
+--          $DateTime: 2008/02/07 11:33:41 $
 --
---          $Revision: #31 $
+--          $Revision: #27 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -94,7 +105,7 @@ function On_Init()
 	this.Register_Event_Handler("Refresh_Sell_Mode", nil, On_Refresh_Sell_Mode)
 	
 	-- Maria 12.13.2007: not all sockets can build objects on them (eg. the cooling nodes of a habitat walker, etc)
-	local can_be_customized = Object.Has_Behavior(BEHAVIOR_TACTICAL_BUILD_OBJECTS)
+	local can_be_customized = Object.Has_Behavior(38)
 	Set_GUI_Variable("CanBeCustomized", can_be_customized)
 	
 	-- Set the clock tint to red
@@ -106,6 +117,7 @@ function On_Init()
 	
 	if can_be_customized then
 		Object.Register_Signal_Handler(On_Hard_Point_Attached, "OBJECT_HARDPOINT_ATTACHED", this)
+		Object.Register_Signal_Handler(On_Owner_Changed, "OBJECT_OWNER_CHANGED", this)		
 		
 		this.Register_Event_Handler("Start_Walker_Customization_Mode", nil, On_Start_Walker_Customization_Mode)	
 		this.Register_Event_Handler("End_Walker_Customization_Mode", nil, On_End_Walker_Customization_Mode)	
@@ -113,7 +125,7 @@ function On_Init()
 		
 		-- Make sure we always enable the GUI behavior of this guy if it is a socket that can build
 		-- HPs.
-		Object.Enable_Behavior(BEHAVIOR_GUI, true)
+		Object.Enable_Behavior(85, true)
 	end
 	
 	-- Set the tooltip data for this reticle.
@@ -137,6 +149,16 @@ function On_Init()
 			On_Hard_Point_Attached(Object, hp)
 		end
 	end	
+end
+
+
+-- -------------------------------------------------------------------------------------------------------------------------------------
+-- On_Owner_Changed
+-- -------------------------------------------------------------------------------------------------------------------------------------
+function On_Owner_Changed()
+	if TestValid(this.ConfigurationMenu) then
+		this.ConfigurationMenu.Owner_Changed()
+	end
 end
 
 -- -------------------------------------------------------------------------------------------------------------------------------------
@@ -419,7 +441,7 @@ function On_HP_Reticle_Right_Clicked(event, source)
 	local owner = Object.Get_Owner()
 	local local_player = Find_Player("local")
 	if owner.Is_Enemy(local_player) then
-		if this.Get_Mouse_Pointer() == POINTER_ATTACK then
+		if this.Get_Mouse_Pointer() == 15 then
 			GUI_Attack_Target_Object_With_Selected_Objects(Get_Valid_Socket_Object())
 		end
 	elseif owner == local_player then 
@@ -460,13 +482,26 @@ function Get_Valid_Socket_Object()
 end
 
 -- -------------------------------------------------------------------------------------------------------------------------------------
+-- Get_Valid_Socket_Object
+-- -------------------------------------------------------------------------------------------------------------------------------------
+function Get_Valid_Socket_Object()
+	if TestValid(Get_GUI_Variable("UnderConstructionObject")) then
+		return Get_GUI_Variable("UnderConstructionObject")
+	elseif TestValid(Get_GUI_Variable("ConstructedObject")) then
+		return Get_GUI_Variable("ConstructedObject")
+	end
+	
+	return Object
+end
+
+-- -------------------------------------------------------------------------------------------------------------------------------------
 -- On_HP_Reticle_Right_Double_Clicked
 -- -------------------------------------------------------------------------------------------------------------------------------------
 function On_HP_Reticle_Right_Double_Clicked(event, source)
 	local owner = Object.Get_Owner()
 	local local_player = Find_Player("local")
 	if owner.Is_Enemy(local_player) then
-		if this.Get_Mouse_Pointer() == POINTER_ATTACK then
+		if this.Get_Mouse_Pointer() == 15 then
 			-- The hierarchy of the sockets is such that whatever is built (or being built) on the socket
 			-- takes damage.  The socket can only be attacked if it is empty.
 			GUI_Attack_Target_Object_With_Selected_Objects(Get_Valid_Socket_Object(), "No_Formup");
@@ -509,7 +544,7 @@ function Possibly_Setup_Hardpoint_For_Configuration()
 	if this.Reticle.Is_Selected() == true then 
 		-- There may be some other reticle selected so let us reset it!.
 		Raise_Event_All_Scenes("HP_Selection_Changed", nil)
-	else -- if not Object.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) then 
+	else -- if not Object.Has_Behavior(39) then 
 		
 		if not Get_GUI_Variable("HighestLevelHPParent") then 
 			Set_GUI_Variable("HighestLevelHPParent", Object.Get_Highest_Level_Hard_Point_Parent())
@@ -551,19 +586,19 @@ function On_Mouse_Over_HP_Reticle(event, source)
 			end
 		end
 		if can_attack then
-			this.Set_Mouse_Pointer(POINTER_ATTACK)
+			this.Set_Mouse_Pointer(15)
 		else
-			this.Set_Mouse_Pointer(POINTER_NORMAL)
+			this.Set_Mouse_Pointer(0)
 		end
 	else
 		if Get_GUI_Variable("SellModeActive") then
 			if valid_socket_object.Can_Object_Be_Sold() then
-				this.Set_Mouse_Pointer(POINTER_TACTICAL_SELL)
+				this.Set_Mouse_Pointer(29)
 			else
-				this.Set_Mouse_Pointer(POINTER_TACTICAL_SELL_INVALID)
+				this.Set_Mouse_Pointer(30)
 			end
 		else
-			this.Set_Mouse_Pointer(POINTER_NORMAL)
+			this.Set_Mouse_Pointer(0)
 		end
 	end
 	this.Reticle.Play_Animation("Zoom_In", false)	
@@ -647,7 +682,7 @@ function On_Hard_Point_Attached(socket, new_hard_point)
 	
 	this.Reticle.Set_Texture(new_hard_point.Get_Type().Get_Icon_Name())
 	
-	if new_hard_point.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) then
+	if new_hard_point.Has_Behavior(39) then
 		-- Set the clock tint to green
 		this.Reticle.Set_Clock_Tint(BuildProgressTint)
 	
@@ -657,7 +692,7 @@ function On_Hard_Point_Attached(socket, new_hard_point)
 		-- Make sure we clear the constructed object spot!.
 		Set_GUI_Variable("ConstructedObject", nil)
 		
-	elseif new_hard_point.Has_Behavior(BEHAVIOR_TACTICAL_SELL) then
+	elseif new_hard_point.Has_Behavior(40) then
 	
 		local parent = Object.Get_Highest_Level_Hard_Point_Parent()
 		if parent ~= nil then 
@@ -734,12 +769,12 @@ function On_Detach_Hard_Point(object_to_detach)
 	-- NOTE: if we are building a HP on top of an existing one we will get the HP attachement signal for the new HP before we get the HP 
 	-- detachement signal for the old one.  Hence, we have to be careful clearing the object pointers here to make sure we don't override any 
 	-- data set by the Attach HP signal.	
-	if object_to_detach.Has_Behavior(BEHAVIOR_TACTICAL_UNDER_CONSTRUCTION) then 
+	if object_to_detach.Has_Behavior(39) then 
 		local existing_uc_object = Get_GUI_Variable("UnderConstructionObject")
 		if TestValid(existing_uc_object) and existing_uc_object == object_to_detach then
 			Set_GUI_Variable("UnderConstructionObject", nil)
 		end
-	elseif object_to_detach.Has_Behavior(BEHAVIOR_TACTICAL_SELL) then
+	elseif object_to_detach.Has_Behavior(40) then
 		local existing_built_object = Get_GUI_Variable("ConstructedObject")
 		if TestValid(existing_built_object) and existing_built_object == object_to_detach then
 			Set_GUI_Variable("ConstructedObject", nil)
@@ -775,9 +810,47 @@ function On_Selection_Changed()
 			end
 		end
 		if can_attack then
-			this.Set_Mouse_Pointer(POINTER_ATTACK)
+			this.Set_Mouse_Pointer(15)
 		else
-			this.Set_Mouse_Pointer(POINTER_NORMAL)
+			this.Set_Mouse_Pointer(0)
 		end
 	end	
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	On_Update_Scene_Data = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

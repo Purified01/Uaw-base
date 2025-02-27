@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/DialogBox.lua#20 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/DialogBox.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/DialogBox.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/DialogBox.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: Nader_Akoury $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84504 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/21 09:55:33 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #20 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -159,7 +166,7 @@ function Dialog_Box_Init(params)
 		Callback = params.callback
 		Target_Script = params.script
 	else
-		GUIDialogComponent.Set_Result(DIALOG_RESULT_NONE)
+		GUIDialogComponent.Set_Result(0)
 	end
 	this.Set_Hidden(false)
 	this.Focus_First()
@@ -185,6 +192,11 @@ end
 
 
 function Dialog_Box_Shutdown()
+	--
+	-- MBL 10.03.2007: Suggested add by James, to get DialogBoxClass::Deactivate() to really make the dialog go away.
+	-- WARNING: Appears to make DialogBoxClass::Deactivate() call itself from within the function. See code for more details.
+	-- 10.08.2007: Also added from integration from main branch
+	--
 	GUIDialogComponent.Set_Active(false)
 end
 
@@ -201,19 +213,19 @@ function Return_Result(result)
 end
 
 function Button1_Clicked(event_name, source)
-	Return_Result(DIALOG_RESULT_LEFT)
+	Return_Result(1)
 end
 
 function Button2_Clicked(event_name, source)
-	Return_Result(DIALOG_RESULT_MIDDLE)
+	Return_Result(2)
 end
 
 function Button3_Clicked(event_name, source)
-	Return_Result(DIALOG_RESULT_RIGHT)
+	Return_Result(3)
 end
 
 function Button4_Clicked(event_name, source)
-	Return_Result(DIALOG_RESULT_BUTTON_4)
+	Return_Result(4)
 end
 
 function On_Update()
@@ -222,3 +234,40 @@ end
 
 Interface = {}
 Interface.Dialog_Box_Init = Dialog_Box_Init
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

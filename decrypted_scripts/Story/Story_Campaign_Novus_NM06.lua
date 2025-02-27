@@ -1,4 +1,50 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM06.lua#53 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[54] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[59] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[100] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[141] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[145] = true
+LuaGlobalCommandLinks[132] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM06.lua#30 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +71,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM06.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM06.lua $
 --
 --    Original Author: Chris Brooks
 --
 --            $Author: Maria_Teruel $
 --
---            $Change: 84781 $
+--            $Change: 95033 $
 --
---          $DateTime: 2007/09/25 14:27:22 $
+--          $DateTime: 2008/03/11 13:06:08 $
 --
---          $Revision: #53 $
+--          $Revision: #30 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,10 +118,10 @@ function Definitions()
 	novus_two = Find_Player("NovusTwo")
 
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	uea.Enable_Colorization(true, COLOR_GREEN)
---	novus_two.Enable_Colorization(true, COLOR_BLUE)
+--	aliens.Enable_Colorization(true, 2)
+--	novus.Enable_Colorization(true, 6)
+--	uea.Enable_Colorization(true, 5)
+--	novus_two.Enable_Colorization(true, 7)
 		
 	pip_moore = "MH_Moore_pip_Head.alo"
 	pip_comm = "mi_comm_officer_pip_head.alo"
@@ -105,6 +151,8 @@ function State_Init(message)
 		PGAchievementAward_Init()
 		-- ***** ACHIEVEMENT_AWARD *****
 
+      novus.Set_Research_Points_Override(0)
+      
 		-- ***** HINT SYSTEM *****
 		PGHintSystemDefs_Init()
 		PGHintSystem_Init()
@@ -122,14 +170,24 @@ function State_Init(message)
 		local radar_filter_id7 = RadarMap.Add_Filter("Radar_Map_Show_Enemy", novus)
 		local radar_filter_id8 = RadarMap.Add_Filter("Radar_Map_Show_Neutral", novus)
 		
-	uea.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	novus_two.Allow_AI_Unit_Behavior(false)
+		uea.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
+		novus_two.Allow_AI_Unit_Behavior(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM06_NAME")
+		if Is_Gamepad_Active() then
+			--UI_Show_Controller_Context_Display(false)
+			UI_Set_Display_Credits_Pop(false)
+		end
 			
 		Create_Thread("Thread_Mission_Start")
 	
@@ -145,7 +203,7 @@ end
 function Thread_Mission_Start()
 	aliens.Allow_Autonomous_AI_Goal_Activation(false)	
 	
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 
 	beamfx=Find_Hint("NM05_BEAM_FX","beamfx")
@@ -199,6 +257,12 @@ function Thread_Mission_Start()
 	power_core_a.Make_Invulnerable(true)
 	power_core_b.Make_Invulnerable(true)
 	power_core_c.Make_Invulnerable(true)
+	
+	--jdg 1/25/08 extra super safety
+	power_core_a.Set_Cannot_Be_Killed(true)
+	power_core_b.Set_Cannot_Be_Killed(true)
+	power_core_c.Set_Cannot_Be_Killed(true)
+
 	power_core_a.Prevent_All_Fire(true)
 	power_core_b.Prevent_All_Fire(true)
 	power_core_c.Prevent_All_Fire(true)
@@ -319,7 +383,7 @@ if true then
 				if TestValid(objective_a_area) then objective_a_area.Despawn() end
 				Set_Objective_Text(nov06_objective_a, "TEXT_SP_MISSION_NVS06_OBJECTIVE_A")
 				Objective_Complete(nov06_objective_a)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_A_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_A_COMPLETE"} )
 				--Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_a_completed=true;
@@ -385,7 +449,7 @@ end
 				end
 				Set_Objective_Text(nov06_objective_b, "TEXT_SP_MISSION_NVS06_OBJECTIVE_B_STATE_2")
 				Objective_Complete(nov06_objective_b)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_B_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_B_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_b_completed=true;
@@ -427,7 +491,7 @@ end
 				Remove_Radar_Blip("blip_objective_c")
 				Set_Objective_Text(nov06_objective_c, "TEXT_SP_MISSION_NVS06_OBJECTIVE_C")
 				Objective_Complete(nov06_objective_c)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_C_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_C_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_c_completed=true;
@@ -580,7 +644,7 @@ end
 -- adds mission objective and radar blip
 function Show_Objective_A()
 	--nov06_objective_primary = Add_Objective("Mirabel must survive.")
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_A_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_A_ADD"} )
 	Sleep(time_radar_sleep)
 	nov06_objective_a = Add_Objective("TEXT_SP_MISSION_NVS06_OBJECTIVE_A")
 	Add_Radar_Blip(objective_a_location, "DEFAULT", "blip_objective_a")
@@ -647,6 +711,11 @@ function Midtro_Cinematic()
 		exp_b.Attach_Particle_Effect("Oil_Tanker_Explosion")
 		exp_c.Attach_Particle_Effect("Oil_Tanker_Explosion")
 	Destroy_Power_Cores()
+	
+	--jdg 11/15/07 this is a 2d rumble event for when the power core gets "Destroyed"
+	--it never actually gets destroyed, so I can't hook in through the death clone.
+	Play_SFX_Event("SFX_NM06_Power_Core_Death_2D_Rumble")
+	
 	if TestValid(hero) then
 		BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS06_SCENE02_04"))
 	end
@@ -690,6 +759,9 @@ function Midtro_Cinematic()
 	
 	infothing.Take_Damage(2000)
 	
+	--jdg 11/15/07 more ambient rumbling for when the little console mirable is standing by blows up.
+	Play_SFX_Event("SFX_NM06_Mirabels_Console_Death_2D_Rumble")
+	
 	midtro_cinematic_done=true;
 end
 
@@ -711,9 +783,11 @@ function Destroy_Power_Cores()
 		power_core_a.Change_Owner(novus)
 		power_core_b.Change_Owner(novus)
 		power_core_c.Change_Owner(novus)
-		Register_Death_Event(power_core_a, Death_Core)
-		Register_Death_Event(power_core_b, Death_Core)
-		Register_Death_Event(power_core_c, Death_Core)
+		
+		--jdg 1/25/08 cores makes as not killable...eliminating the death events.
+		--Register_Death_Event(power_core_a, Death_Core)
+		--Register_Death_Event(power_core_b, Death_Core)
+		--Register_Death_Event(power_core_c, Death_Core)
 		
 		--change weather scenario to do lighting
 		Set_New_Environment(1)
@@ -722,7 +796,7 @@ end
 
 -- adds mission objective and radar blip
 function Show_Objective_B()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_B_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_B_ADD"} )
 	Sleep(time_radar_sleep)
 	nov06_objective_b = Add_Objective("TEXT_SP_MISSION_NVS06_OBJECTIVE_B_STATE_1")
 	Add_Radar_Blip(objective_b_location_a, "DEFAULT", "blip_objective_b_a")
@@ -738,6 +812,7 @@ function Reveal_Constructors()
 		constructors=Find_All_Objects_Of_Type("Novus_Constructor")
 		for i, unit in pairs(constructors) do
 			Add_Radar_Blip(unit, "Default_Beacon_Placement", "temp")
+			unit.Change_Owner(novus)
 			unit.Add_Reveal_For_Player(novus)
 		end
 		Sleep(15)
@@ -781,7 +856,7 @@ end
 
 -- adds mission objective and radar blip
 function Show_Objective_C()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_C_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS06_OBJECTIVE_C_ADD"} )
 	Sleep(time_radar_sleep)
 	nov06_objective_c = Add_Objective("TEXT_SP_MISSION_NVS06_OBJECTIVE_C")
 	Add_Radar_Blip(objective_c_location, "DEFAULT", "blip_objective_c")
@@ -829,10 +904,19 @@ function Thread_Constructors_Tracker()
 	end
 	if not objective_b_completed then
 		if TestValid(hero) then
-			BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS06_SCENE04_25"))
+			UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+			-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+			-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+			-- will prevent any future speech events from being queued).
+			local block = Queue_Talking_Head(pip_mirabel, "NVS06_SCENE04_25")
+			Allow_Speech_Events(false)
+			BlockOnCommand(block)
 		end
 		failure_text="TEXT_SP_MISSION_NVS06_OBJECTIVE_B_FAILED"
-		Create_Thread("Thread_Mission_Failed")
+		if mission_failure == false then
+			mission_failure = true
+			Create_Thread("Thread_Mission_Failed")
+		end
 	end
 end
 
@@ -864,6 +948,10 @@ function Thread_Under_Attack()
 	while not(objective_c_completed) do
 		--Shake_Camera(shake_amount, seconds)
 		Shake_Camera(1, GameRandom(2,4))
+		
+		--jdg 11/15/07 a quick little rumble when the camera shakes.
+		Play_SFX_Event("SFX_NM06_Camera_Shake_2D_Rumble")
+		
 		Sleep(GameRandom(5,15))
 	end
 end
@@ -1043,25 +1131,31 @@ function Death_Wall_11()
 end
 
 function Death_Hero()
-	Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14")
-	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
-	Create_Thread("Thread_Mission_Failed")
-end
-
-function Death_Core()
-	if TestValid(hero) then
-		BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS06_SCENE04_25"))
+	if mission_failure == false then
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero")
 	end
-	failure_text="TEXT_SP_MISSION_NVS06_OBJECTIVE_C_FAILED"
-	Create_Thread("Thread_Mission_Failed")
 end
 
+function Thread_Death_Hero()
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+	local block = Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+	
+	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
+
+	Create_Thread("Thread_Mission_Failed")
+
+end
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
-			
+
+	UI_On_Mission_End()
+	
 	mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
 	Lock_Controls(1)
@@ -1073,9 +1167,9 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1083,9 +1177,11 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+		
+	UI_On_Mission_End()
 			
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1096,9 +1192,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1111,7 +1207,6 @@ end
 -- below are the various functions used in this script
 function Force_Victory(player)
 		if player == novus then
-			Lock_Objects(false)
 			novus.Reset_Story_Locks()
 			
 			-- ***** ACHIEVEMENT_AWARD *****
@@ -1329,8 +1424,99 @@ end
 
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Death_Wall_10 = nil
+	Death_Wall_11 = nil
+	Death_Wall_9 = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Thread_Track_Power_Core_Health = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

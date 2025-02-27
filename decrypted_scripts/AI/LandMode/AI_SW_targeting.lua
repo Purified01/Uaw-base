@@ -1,4 +1,16 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/AI_SW_targeting.lua#16 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[197] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[18] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[163] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/AI_SW_targeting.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +37,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/LandMode/AI_SW_targeting.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/LandMode/AI_SW_targeting.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 86528 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/10/24 11:53:52 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #16 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,17 +61,16 @@ ScriptShouldCRC = true
 
 function Compute_Desire()
 
-
 	if not Is_Player_Of_Faction(Player, "MASARI") and not Is_Player_Of_Faction(Player, "NOVUS") and not Is_Player_Of_Faction(Player, "ALIEN") then
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -2.0
 	end
 
 	-- Only start the goal with the nil object
 	if Target then
 	
-		Goal.Suppress_Goal()
-		return 0.0
+		--Goal.Suppress_Goal()
+		return -1.0
 	end
 
 	
@@ -187,7 +198,9 @@ function Target_And_Fire_SW(sw_object, sw_name)
 		-- if no hard then sleep for a while (most of the time)
 		Sleep(15.0)
 		return	
-		
+	else
+		-- wait a bit
+		Sleep(5.0)
 	end
 	
 
@@ -260,7 +273,7 @@ function Target_And_Fire_SW(sw_object, sw_name)
 					end
 					
 					if temp_count >= 10 then
-						Sleep(0.1)
+						Sleep(0.5)
 						temp_count = 0.0
 					end
 					
@@ -269,7 +282,12 @@ function Target_And_Fire_SW(sw_object, sw_name)
 			
 			if TestValid(best_position) and not best_target.Is_Fogged(Player,true) then
 				-- launch sw !!!
-				Get_Game_Mode_GUI_Scene().Raise_Event("Network_Launch_Superweapon", nil, { weapon_type, best_position, Player })
+				-- Call the player script directly rather than using a GUI event (makes
+				-- sure that the launch takes place in the proper thread)
+				local player_script = Player.Get_Script()
+				if TestValid(player_script) then
+					player_script.Call_Function("Launch_Superweapon", weapon_type, best_position)
+				end
 				TimeWeaponReady = 0.0
 				return
 			end
@@ -299,7 +317,12 @@ function Target_And_Fire_SW(sw_object, sw_name)
 
 		if TestValid(best_target) then
 			-- launch sw !!!
-			Get_Game_Mode_GUI_Scene().Raise_Event("Network_Launch_Superweapon", nil, { weapon_type, best_target.Get_Position(), Player })
+			-- Call the player script directly rather than using a GUI event (makes
+			-- sure that the launch takes place in the proper thread)
+			local player_script = Player.Get_Script()
+			if TestValid(player_script) then
+				player_script.Call_Function("Launch_Superweapon", weapon_type, best_target.Get_Position())
+			end			
 			TimeWeaponReady = 0.0
 		end
 		
@@ -332,4 +355,57 @@ function Score_Position(target_list, position, radius)
 
 	return count
 	
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Describe_Target = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
 end
