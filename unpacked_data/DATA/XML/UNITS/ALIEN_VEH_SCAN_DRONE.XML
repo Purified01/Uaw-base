@@ -998,4 +998,10 @@
       <AssetBank> BANK_ALIEN </AssetBank>
     </X10_Alien_Units>
 
+    <X10_Alien_Units Name="Proto_Scan_Drone">
+      <Variant_Of_Existing_Type> Alien_Scan_Drone </Variant_Of_Existing_Type>
+      <AssetBank> BANK_ALIEN </AssetBank>
+		<Affiliation> Proto </Affiliation>
+    </X10_Alien_Units>
+
 </Alien_Veh_Scan_Drone_XML>

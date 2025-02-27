@@ -37,7 +37,7 @@
 		<!-- MARIA 10.25.2006 ==== DO NOT FORGET TO ADD THE "TacticalBuildableStructure" MASK SO THAT THE STRUCTURE
 		GETS DISPLAYED IN THE LIST OF BUILDABLE STRUCTURES FOR THE UI -->
 		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Alien, Proto, Alien_ZM06_KamalRex </Affiliation>
 		<Victory_Relevant>True</Victory_Relevant>
 
 		<!-- CONFLICT -->
@@ -295,7 +295,7 @@
 		</Attributes>
 
 		<CategoryMask> Large, Stationary, TacticalBuildableStructure, Female </CategoryMask>
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Alien, Proto, Alien_ZM06_KamalRex </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
 		<!-- MOVEMENT -->

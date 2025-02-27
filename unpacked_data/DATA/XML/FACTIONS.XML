@@ -577,7 +577,7 @@
 
 
 
-		<Lua_Script>Alien_Player</Lua_Script>
+		<Lua_Script>Proto_Player</Lua_Script>
 		<Allies />
 		<Enemies>Alien_ZM06_KamalRex, Military, Hostile, Novus, Masari, Civilian, Proto</Enemies>
 
@@ -633,7 +633,8 @@
          The category type is defined in PopCapCategoryType.xml.
       -->
       
-      <Pop_Cap_Categories_Build_Count_Limits> Walker, 3, -1 </Pop_Cap_Categories_Build_Count_Limits>      
+      <Pop_Cap_Categories_Build_Count_Limits> Walker, 3, -1 </Pop_Cap_Categories_Build_Count_Limits> 
+      <!-- <Pop_Cap_Categories_Build_Count_Limits> MiniWalker, 5, -1 </Pop_Cap_Categories_Build_Count_Limits>       -->
 		<Loading_Texture_Name> splash_alien.dds </Loading_Texture_Name>
 
       <!-- Gamepad: Icon for automated control groups containing mind controlled units. -->

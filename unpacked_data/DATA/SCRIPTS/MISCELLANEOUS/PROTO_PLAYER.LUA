@@ -42,7 +42,7 @@ LUA_PREP = true
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
 require("PGStateMachine")
-require("Alien_Packaged_Research_Tree")
+require("Proto_Packaged_Research_Tree")
 require("Player_Common")
 
 function Definitions()
