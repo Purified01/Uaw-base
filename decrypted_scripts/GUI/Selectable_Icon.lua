@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Selectable_Icon.lua#44 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Selectable_Icon.lua#27 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Selectable_Icon.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Selectable_Icon.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90441 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/07 17:22:16 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #44 $
+--          $Revision: #27 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -116,60 +127,8 @@ function Initialize_Selectable_Icon()
 	MouseOverSceneHoverTime = 0.3
 	Set_GUI_Variable("MouseOverSceneTime", nil)
 	-- -----------------------------------------------------	
-	
-	if TestValid(Scene.Group) and TestValid(Scene.Group.FocusQuad) then
-		Scene.Group.FocusQuad.Set_Hidden(true)
-	elseif TestValid(Scene.FocusQuad) then 
-		Scene.FocusQuad.Set_Hidden(true)
-	end
-	
-	this.Register_Event_Handler("Key_Focus_Lost", this, On_Focus_Lost)
-	this.Register_Event_Handler("Key_Focus_Gained", this, On_Focus_Gained)
 end
 
-
-
--- ------------------------------------------------------------------------------------------------------------------
--- Focus_Lost - 
--- ------------------------------------------------------------------------------------------------------------------
-function On_Focus_Lost()
-	if not Is_Controller_Event() then return end
-	Set_Focus(false)
-	this.Get_Containing_Scene().Raise_Event_Immediate("Focus_Lost", this.Get_Containing_Component(), {})
-	-- signal that the mouse is over the icon in case someone needs to process it! (eg. Production Icons!)
-	Raise_Event_All_Parents("Mouse_Off_Selectable_Icon", this.Get_Containing_Component(), this, nil)
-	
-	if this.Is_Animating("Focus_Gained") then
-		this.Stop_Animation()
-	end
-end
-
-
--- ------------------------------------------------------------------------------------------------------------------
--- Focus_Gained - 
--- ------------------------------------------------------------------------------------------------------------------
-function On_Focus_Gained()
-	if not Is_Controller_Event() then return end
-	Set_Focus(true)
-	this.Get_Containing_Scene().Raise_Event_Immediate("Focus_Gained", this.Get_Containing_Component(), {})
-	-- signal that the mouse is over the icon in case someone needs to process it! (eg. Production Icons!)
-	Raise_Event_All_Parents("Mouse_Over_Selectable_Icon", this.Get_Containing_Component(), this, nil)
-	
-	-- enlarge the icon
-	this.Play_Animation("Focus_Gained", false)
-end
-
-
--- ------------------------------------------------------------------------------------------------------------------
--- Set_Focus - Update the focus state for this scene
--- ------------------------------------------------------------------------------------------------------------------
-function Set_Focus(on_off)
-	if TestValid(Scene.Group) and TestValid(Scene.Group.FocusQuad) then 
-		Scene.Group.FocusQuad.Set_Hidden(not on_off)
-	elseif TestValid(Scene.FocusQuad) then
-		Scene.FocusQuad.Set_Hidden(not on_off)
-	end
-end
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- On_State_Change - Called directly by the scene.
@@ -182,89 +141,81 @@ function On_State_Change()
 	end
 	
 	if name == "Unselected" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(false)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, false)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Unselected_Over" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(false)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, false)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Unselected_Clicked" or name == "Unselected_Over_Clicked" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(false)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, false)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Selected" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(false)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, false)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Selected_Over" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(false)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, false)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Selected_Clicked" or name == "Selected_Over_Clicked" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(false)
-		Scene.Group.Disabled.Set_Hidden(true)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, false)
+		Safe_Set_Hidden(Scene.Group.Disabled, true)
+		
+		this.Set_Grayscale(false)
+		
 	elseif name == "Disabled" then
-		Scene.Group.notselected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_notclicked.Set_Hidden(true)
-		Scene.Group.notselected_over_clicked.Set_Hidden(true)
-		Scene.Group.selected_notover_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_notclicked.Set_Hidden(true)
-		Scene.Group.selected_over_clicked.Set_Hidden(true)
-		Scene.Group.Disabled.Set_Hidden(false)
-		if TestValid(Scene.Group.Backdrop) then
-			Scene.Group.Backdrop.Set_Render_Mode(ALPRIM_ALPHA_GRAYSCALE)
-		end
-		Scene.Group.Icon.Set_Render_Mode(ALPRIM_ALPHA_GRAYSCALE)
+		Safe_Set_Hidden(Scene.Group.notselected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.notselected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_notover_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_notclicked, true)
+		Safe_Set_Hidden(Scene.Group.selected_over_clicked, true)
+		Safe_Set_Hidden(Scene.Group.Disabled, false)
+		
+		this.Set_Grayscale(true)		
 	end
 end
 
@@ -591,29 +542,6 @@ end
 
 
 -- ----------------------------------------------------------------------------------------------
--- Show_Queue_Buy_Line
--- ----------------------------------------------------------------------------------------------
-function Show_Queue_Buy_Line(show)
-	if TestValid(Scene.queue_buy_line) then
-		Scene.queue_buy_line.Set_Hidden(not show)
-	elseif TestValid(Scene.Group) and TestValid(Scene.Group.queue_buy_line) then
-		Scene.Group.queue_buy_line.Set_Hidden(not show)
-	end
-end
-
--- ----------------------------------------------------------------------------------------------
--- Show_Queue_Line
--- ----------------------------------------------------------------------------------------------
-function Show_Queue_Line(show)
-	if TestValid(Scene.queue_line) then
-		Scene.queue_line.Set_Hidden(not show)
-	elseif TestValid(Scene.Group) and TestValid(Scene.Group.queue_line) then
-		Scene.Group.queue_line.Set_Hidden(not show)
-	end
-end
-
-
--- ----------------------------------------------------------------------------------------------
 -- Set_Lower_Text
 -- ----------------------------------------------------------------------------------------------
 function Set_Lower_Text(text)
@@ -689,15 +617,27 @@ end
 function Set_Low_Power_Display()
 end
 
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Hide_A_Button_Overlay -- Some buttons (for the controller version) do not process the A button
+-- press, hence, we want to not display the A button overlay to avoid confussion.
+-- ------------------------------------------------------------------------------------------------------------------
+function Hide_A_Button_Overlay()
+	if TestValid(Scene.Group.Gamepad_A_Button) then
+		Scene.Group.Gamepad_A_Button.Set_Hidden(true)
+	end
+end
+
+
 -- ------------------------------------------------------------------------------------------------------------------
 -- Interface functions (accessible to other scenes)
 -- ------------------------------------------------------------------------------------------------------------------
 Interface = {}
 Interface.Set_Texture = Set_Texture
 Interface.Set_Selected = Set_Selected
-Interface.Set_Enabled = Set_Enabled
+Interface.Set_Button_Enabled = Set_Enabled
 Interface.Is_Selected = Is_Selected
-Interface.Is_Enabled = Is_Enabled
+Interface.Is_Button_Enabled = Is_Enabled
 Interface.Set_Clock_Filled = Set_Clock_Filled
 Interface.Get_Clock_Filled = Get_Clock_Filled
 Interface.Set_Text = Set_Text
@@ -710,8 +650,47 @@ Interface.Set_Clockwise = Set_Clockwise
 Interface.Set_Percentage = Set_Percentage
 Interface.Clear_Cost = Clear_Cost 
 Interface.Set_Health = Set_Health
-Interface.Show_Queue_Line = Show_Queue_Line
-Interface.Show_Queue_Buy_Line = Show_Queue_Buy_Line
 Interface.Set_Insufficient_Funds_Display = Set_Insufficient_Funds_Display
 Interface.Set_Low_Power_Display = Set_Low_Power_Display
 Interface.Set_Lower_Text = Set_Lower_Text
+
+-- controller specific
+Interface.Hide_A_Button_Overlay = Hide_A_Button_Overlay
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	Remove_Invalid_Objects = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

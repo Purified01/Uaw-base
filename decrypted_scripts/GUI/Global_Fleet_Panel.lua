@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Fleet_Panel.lua#28 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Fleet_Panel.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Global_Fleet_Panel.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Global_Fleet_Panel.lua $
 --
 --    Original Author: James Yarrow
 --
 --            $Author: Brian_Hayes $
 --
---            $Change: 83516 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/11 19:33:14 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #28 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -222,10 +232,6 @@ end
 function Find_Button_For_Unit(unit)
 	local type_buttons = Get_GUI_Variable("TypeButtons")
 	local unit_type = unit.Get_Type()
-	local unit_script = unit.Get_Script()
-	if unit_script ~= nil and GUI_Does_Object_Have_Lua_Behavior(unit, "UnitInProduction") then
-		unit_type = unit_script.Call_Function("Get_Unit_Type")
-	end
 	
 	for _, button in pairs(type_buttons) do
 		if button.Get_Type() == unit_type then
@@ -291,7 +297,7 @@ function Set_Hero(hero_object)
 		this.HeroName.Set_Text(hero_object.Get_Type().Get_Display_Name())
 		local hero_script = hero_object.Get_Script()
 		if hero_script then
-			this.HeroPortrait.Set_Model(hero_script.Call_Function("Get_Head_Model"))
+			this.HeroPortrait.Set_Model(hero_script.Get_Async_Data("HeadModel"))
 			this.HeroPortrait.Play_Randomized_Animation("notalk")
 		end
 		
@@ -348,3 +354,40 @@ Interface.Close = Close
 Interface.Is_Open = Is_Open
 Interface.Set_Hero = Set_Hero
 Interface.Get_Hero = Get_Hero
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

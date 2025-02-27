@@ -1,4 +1,24 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/global_hud.lua#157 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[119] = true
+LuaGlobalCommandLinks[124] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[188] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[123] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[156] = true
+LuaGlobalCommandLinks[40] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[126] = true
+LuaGlobalCommandLinks[186] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/global_hud.lua#26 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +45,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/global_hud.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/global_hud.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: gary_cox $
+--            $Author: Brian_Kircher $
 --
---            $Change: 85492 $
+--            $Change: 93391 $
 --
---          $DateTime: 2007/10/04 14:32:37 $
+--          $DateTime: 2008/02/14 16:09:21 $
 --
---          $Revision: #157 $
+--          $Revision: #26 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,7 +147,6 @@ function On_Init()
 
 	-- Register to hear when the selected fleet changes, and when a fleet is clicked.
 	this.Register_Event_Handler("Selection_Changed", nil, Selection_Changed)
-	this.Register_Event_Handler("Fleet_Right_Clicked", nil, On_Fleet_Right_Clicked)
 	this.Register_Event_Handler("Minimap_Region_Clicked", this.Minimap, On_Minimap_Region_Clicked)
 	
 	this.Register_Event_Handler("GameplayUI_Mouse_Clicked", nil, GameplayUI_Mouse_Clicked)
@@ -195,9 +214,6 @@ function On_Init()
 	
 	this.Register_Event_Handler("UI_Show_Start_Mission_Button", nil, Show_Start_Mission_Button)
 	this.Register_Event_Handler("UI_Hide_Start_Mission_Button", nil, Hide_Start_Mission_Button)
-	if TestValid(this.StartMissionButton) then
-		this.Register_Event_Handler("Button_Clicked", this.StartMissionButton, Start_Mission_Clicked)
-	end
 	
 	this.Register_Event_Handler("Display_Tooltip", nil, On_Display_Tooltip)	
 	this.Register_Event_Handler("End_Tooltip", nil, End_Tooltip)	
@@ -237,6 +253,12 @@ function On_Init()
 	this.Register_Event_Handler("UI_Set_Display_Credits_Pop", nil,UI_Set_Display_Credits_Pop)
 	
 	this.Register_Event_Handler("Debug_Force_Completion", nil, On_Debug_Force_Complete)	
+	this.Register_Event_Handler("Network_Debug_Force_Complete", nil, Network_Debug_Force_Complete)
+	this.Register_Event_Handler("Show_Game_End_Screen", nil, Show_Gane_End_Screen)	
+	this.Register_Event_Handler("Network_Global_Begin_Production", nil, Network_Begin_Production)
+	this.Register_Event_Handler("Network_Move_Fleet", nil, Network_Move_Fleet)
+	this.Register_Event_Handler("Network_Global_Cancel_Production", nil, Network_Cancel_Production)	
+	this.Register_Event_Handler("Network_Sell_Object", nil, On_Network_Sell_Object)
 end
 
 
@@ -304,7 +326,7 @@ function Selection_Changed()
 		if TestValid(SelectedObject) then
 			local script = SelectedObject.Get_Script()
 			if script then
-				local weapon_type = script.Call_Function("Get_Weapon_Type")
+				local weapon_type = script.Get_Async_Data("WeaponType")
 				if weapon_type then
 					TargetingMegaweapon = SelectedObject
 					TargetingFunction = MegaweaponTargeting[weapon_type]
@@ -326,7 +348,7 @@ function Selection_Changed()
 		return
 	end	
 	
-	ValidMoveRegions = source_region.Find_Regions_Within(SelectedObject.Get_Type().Get_Type_Value("Travel_Range"))	
+	ValidMoveRegions = Regions --source_region.Find_Regions_Within(SelectedObject.Get_Type().Get_Type_Value("Travel_Range"))	
 	LastTravelDestination = nil
 end
 
@@ -357,7 +379,7 @@ end
 -- Network_Start_Research - we need to send a network event so that we do not go out of sync!
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Network_Start_Research(_, _, player, path, index)
-	
+	--This Call_Function should be safe because it occurs in response to a network event
 	local player_script = player.Get_Script()
 	if player_script ~= nil then 
 		player_script.Call_Function("Start_Research", {path, index})
@@ -369,7 +391,7 @@ end
 -- Network_Cancel_Research - we need to send a network event so that we do not go out of sync!
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function Network_Cancel_Research(_, _, player, path, index)
-	
+	--This Call_Function should be safe because it occurs in response to a network event
 	local player_script = player.Get_Script()
 	if player_script ~= nil then 
 		player_script.Call_Function("Cancel_Research", {path, index})
@@ -493,16 +515,43 @@ function Begin_Production(region, unit_type, into_fleet)
 	end
 
 	-- If ok so far, try to build.
-	success = success and Global_Begin_Production(Find_Player("local"), region, unit_type, into_fleet)
-	
-	-- Play a sound.
 	if success then
-		Play_SFX_Event("GUI_Generic_Button_Select")
-	else
-		Play_SFX_Event("GUI_Generic_Bad_Sound") 
+		Send_GUI_Network_Event("Network_Global_Begin_Production", { Find_Player("local"), region, unit_type, into_fleet })
 	end
 end
 
+function Network_Begin_Production(_, _, player, region, type, dest, socket)
+	local success = Global_Begin_Production(player, region, type, dest, socket)
+	
+	if LocalPlayer == player then
+		if success then
+			Play_SFX_Event("GUI_Generic_Button_Select")
+		else
+			Play_SFX_Event("GUI_Generic_Bad_Sound") 
+		end
+	end
+end
+
+function Network_Cancel_Production(_, _, object)
+	local success = Cancel_Production_At_Location_Of_Unit(object)
+	
+	if LocalPlayer == object.Get_Owner() then
+		if success then 
+			Play_SFX_Event("GUI_Generic_Button_Select")
+		else
+			Play_SFX_Event("GUI_Generic_Bad_Sound") 
+		end	
+	end
+end 
+
+-- -----------------------------------------------------------------------------------------------------------------
+-- On_Network_Sell_Object
+-- -----------------------------------------------------------------------------------------------------------------
+function On_Network_Sell_Object(event, source, object, player)
+	if TestValid(object) then 
+		object.Sell()	
+	end
+end
 
 -- ------------------------------------------------------------------------------------------------------------------------------------
 --
@@ -517,57 +566,22 @@ function Move_Fleet(fleet, region, into_fleet)
 		return
 	end
 
-	-- Fire an event for the scenario script that research has completed.
-	local game_mode_script = Get_Game_Mode_Script()
-	if game_mode_script then 
-		local ret = game_mode_script.Call_Function("On_Fleet_Move_Begin", fleet, region, into_fleet)
-		if ret == false then
-			Play_SFX_Event("GUI_Generic_Bad_Sound") 
-			return
-		end
-	end
-	
-	-- Maria 05.03.2006
-	-- Cancel all the units in production that are coming to this fleet!.
-	Raise_Event_Immediate_All_Scenes("On_Move_Fleet", { fleet, fleet.Get_Parent_Object() })
+	Send_GUI_Network_Event("Network_Move_Fleet", { fleet, region, into_fleet })
+end
 
-	
+function Network_Move_Fleet(_, _, fleet, region, into_fleet)
 	local success = fleet.Move_Fleet_To_Region(region, into_fleet)
-	if success then
-		Play_SFX_Event("GUI_Generic_Button_Select")
-		
-		-- Deselect the fleet.
-		Set_Selected_Objects({})
-	else
-		Play_SFX_Event("GUI_Generic_Bad_Sound") 
-	end
-end
-
-
--- ------------------------------------------------------------------------------------------------------------------------------------
--- Someone right-clicked a fleet
--- ------------------------------------------------------------------------------------------------------------------------------------
-function On_Fleet_Right_Clicked(_, _, fleet_id)
-	if not TestValid(SelectedObject) then
-		return
-	end
-
-	if not fleet_id then
-		return
-	end
-	
-	local fleet = Get_Object_From_ID(fleet_id)
-	local region = fleet.Get_Parent_Object()
-	
-	if SelectedObject.Get_Type().Is_Hero() then
-		local hero_fleet = SelectedObject.Get_Parent_Object()
-		
-		if TestValid(hero_fleet) and hero_fleet ~= fleet and hero_fleet.Has_Behavior(BEHAVIOR_FLEET) then
-			Move_Fleet(hero_fleet, region)
+	if fleet.Get_Owner() == LocalPlayer then
+		if success then
+			Play_SFX_Event("GUI_Generic_Button_Select")
+			
+			-- Deselect the fleet.
+			Set_Selected_Objects({})
+		else
+			Play_SFX_Event("GUI_Generic_Bad_Sound") 
 		end
 	end
 end
-
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- On_Comm_Officer_Clicked
@@ -591,11 +605,15 @@ end
 function On_Left_Clicked_Region(region)
 	if TestValid(TargetingMegaweapon) then
 		local script = TargetingMegaweapon.Get_Script()
-		if script and script.Call_Function("Is_Legal_Megaweapon_Target", region) then
-			Fire_Megaweapon_At_Region( region )
-			TargetingMegaweapon = nil
+		if script then
+			local target_enemies = script.Get_Async_Data("MegaweaponTargetsEnemies")
+			if (target_enemies and LocalPlayer.Is_Enemy(region.Get_Owner())) or
+				(not target_enemies and LocalPlayer.Is_Ally(region.Get_Owner())) then
+				Fire_Megaweapon_At_Region( region )
+				TargetingMegaweapon = nil
+				Set_Selected_Objects({})
+			end
 		end
-		Set_Selected_Objects({})
 	elseif region.Get_Owner() == LocalPlayer then
 		local command_center = region.Get_Command_Center()
 		if TestValid(command_center) then
@@ -612,7 +630,7 @@ end
 
 function On_Left_Clicked_Command_Center(cc_object)
 	Point_Camera_At(CursorOverObject)
-	if cc_object.Has_Behavior(BEHAVIOR_SELECTABLE) then
+	if cc_object.Has_Behavior(2) then
 		if cc_object ~= SelectedObject then
 			Set_Selected_Objects({cc_object})	
 			local region = cc_object.Get_Region_In()
@@ -638,21 +656,9 @@ function On_Right_Clicked_Region(region)
 	if SelectedObject.Get_Type().Is_Hero() then
 		local hero_fleet = SelectedObject.Get_Parent_Object()
 		
-		if TestValid(hero_fleet) and hero_fleet ~= fleet and hero_fleet.Has_Behavior(BEHAVIOR_FLEET) then
+		if TestValid(hero_fleet) and hero_fleet ~= fleet and hero_fleet.Has_Behavior(4) then
 			Move_Fleet(hero_fleet, region)
 		end
-	end
-end
-
-
--- ------------------------------------------------------------------------------------------------------------------------------------
---
--- ------------------------------------------------------------------------------------------------------------------------------------
-function Get_Was_Mouse_Clicked(button)
-	if Get_Input_Scene() == this then
-		return wasmouseclicked
-	else
-		return Get_Input_Scene().Call_Function("Get_Was_...")
 	end
 end
 
@@ -664,25 +670,25 @@ function GameplayUI_Mouse_Clicked(event_name, source, button, clicked_and_releas
 	if clicked_and_release_same_gameobject and TestValid(CursorOverObject) then
 		local close_upgrade_menu = true
 		if button == 1 then
-			if CursorOverObject.Has_Behavior(BEHAVIOR_REGION) then
+			if CursorOverObject.Has_Behavior(74) then
 				On_Left_Clicked_Region(CursorOverObject)
-			elseif CursorOverObject.Has_Behavior(BEHAVIOR_REGION_LABEL) or  CursorOverObject.Get_Type().Is_Dummy_Global_Icon() == true then
+			elseif CursorOverObject.Has_Behavior(116) or  CursorOverObject.Get_Type().Is_Dummy_Global_Icon() == true then
 				-- We are clicking on an object over the region label (or the region label itself!). Thus, get the parent object and 
 				-- process the click according to it!.
 				local parent_object = CursorOverObject.Get_Parent_Object()
 				if parent_object ~= nil then
-					if parent_object.Has_Behavior(BEHAVIOR_REGION) then
+					if parent_object.Has_Behavior(74) then
 						-- clicked region label itself.
 						On_Left_Clicked_Region(parent_object)
 						
-					elseif parent_object.Has_Behavior(BEHAVIOR_GROUND_STRUCTURE) then
+					elseif parent_object.Has_Behavior(99) then
 						if parent_object.Get_Owner() == LocalPlayer and not TargetingMegaweapon then
 							On_Left_Clicked_Command_Center(parent_object)
 						else
 							--Treat clicks on enemy command centers as a click on the region
 							On_Left_Clicked_Region(parent_object.Get_Region_In())
 						end		
-					elseif parent_object.Has_Behavior(BEHAVIOR_HARD_POINT) then
+					elseif parent_object.Has_Behavior(68) then
 					
 						local upgrade_scene = CursorOverObject.Get_GUI_Scenes()[1]
 						if upgrade_scene.Get_Current_State_Name() == "Closed" then
@@ -693,7 +699,7 @@ function GameplayUI_Mouse_Clicked(event_name, source, button, clicked_and_releas
 							upgrade_scene.Set_State("Closed")
 						end						
 						
-					elseif parent_object.Has_Behavior(BEHAVIOR_FLEET) then
+					elseif parent_object.Has_Behavior(4) then
 						if TargetingMegaweapon then
 							On_Left_Clicked_Region(parent_object.Get_Parent_Object())
 						else
@@ -761,7 +767,7 @@ function On_Update()
 	
 	Update_Enemy_Megaweapons_Data()
 	
-	CloseHuds = Is_Tree_Scene_Open()
+	CloseHuds = Is_Tree_Scene_Open() or (TestValid(this.full_screen_movie) and this.full_screen_movie.Has_Movie())
 end
 
 function Update_Day_Counter()
@@ -788,7 +794,10 @@ function Update_Mouse_Over()
 		if TestValid(CursorOverObject) then
 			local script = TargetingMegaweapon.Get_Script()
 			if script then 
-				legal_target = script.Call_Function("Is_Legal_Megaweapon_Target", CursorOverObject.Get_Region_In())
+				local region = CursorOverObject.Get_Region_In()
+				local target_enemies = script.Get_Async_Data("MegaweaponTargetsEnemies")
+				legal_target = (target_enemies and LocalPlayer.Is_Enemy(region.Get_Owner())) or
+									(not target_enemies and LocalPlayer.Is_Ally(region.Get_Owner()))
 			end
 		end
 		TargetingFunction(true, legal_target)
@@ -825,7 +834,7 @@ function Determine_Tooltip_Object(cursor_over_object)
 	if cursor_over_object.Get_Type().Get_Type_Value("Is_Dummy_Global_Icon") then
 		local parent = cursor_over_object.Get_Parent_Object()
 		if TestValid(parent) then
-			if parent.Has_Behavior(BEHAVIOR_FLEET) then
+			if parent.Has_Behavior(4) then
 				return parent.Get_Fleet_Hero()
 			else
 				return parent
@@ -988,7 +997,7 @@ function Update_Travel_Preview()
 		end
 	end
 	
-	local regions_passed_through = Show_Travel_Preview(icon_object, target_region)
+	local regions_passed_through = Show_Travel_Preview(icon_object, target_region, SelectedObject.Get_Type().Get_Type_Value("Travel_Range"))
 	local tooltip_text = nil
 	if not is_valid_region then
 		tooltip_text = Get_Game_Text("TEXT_REGION_UNREACHABLE")
@@ -1155,7 +1164,7 @@ function On_Global_Icon_Drag_Begin(event, source, object)
 	local source_fleet = object.Get_Parent_Object()
 	local source_hero = source_fleet.Get_Fleet_Hero()
 	local source_region = source_fleet.Get_Parent_Object()
-	ValidMoveRegions = source_region.Find_Regions_Within(source_hero.Get_Type().Get_Type_Value("Travel_Range"))
+	ValidMoveRegions = Regions --source_region.Find_Regions_Within(source_hero.Get_Type().Get_Type_Value("Travel_Range"))
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1181,7 +1190,7 @@ function Register_Global_Megaweapon(_, _, object, weapon_type)
 				MegaweaponButtons[weapon_type].Set_Texture(object.Get_Type().Get_Icon_Name())
 			end
 	
-			object.Register_Signal_Handler(Global_Megaweapon_Delete_Pending, "OBJECT_DELETE_PENDING")
+			object.Register_Signal_Handler(Global_Megaweapon_Delete_Pending, "OBJECT_DELETE_PENDING", this)
 	
 			if MegaweaponOwners[weapon_type][player] == nil then
 				MegaweaponOwners[weapon_type][player] = {}
@@ -1211,7 +1220,7 @@ function Global_Megaweapon_Delete_Pending(object)
 		local weapon_script = object.Get_Script()
 		local weapon_type = nil
 		if weapon_script then
-			weapon_type = weapon_script.Call_Function("Get_Weapon_Type")
+			weapon_type = weapon_script.Get_Async_Data("WeaponType")
 		end
 		if player ~= nil and weapon_type ~= nil then
 			if MegaweaponOwners[weapon_type][player] ~= nil and MegaweaponOwners[weapon_type][player][object] ~= nil then
@@ -1307,6 +1316,7 @@ end
 -- JSY 3/16/2007 - Adapted from Keith's spy stuff so that we can support all types of megaweapons with one set of functions
 -- ------------------------------------------------------------------------------------------------------------------
 function Fire_Megaweapon_At_Region_Event(_, _, weapon_object, weapon_target)
+	--This Call_Function should be safe because it occurs in response to a network event
 	if weapon_object ~= nil and weapon_target ~= nil then
 		local script = weapon_object.Get_Script()
 		if script ~= nil then
@@ -1439,7 +1449,7 @@ function Make_Tooltip_For_Megaweapon_Button(weapon_type)
 		
 	local script = weapon_object.Get_Script()
 	if script ~= nil then
-		local megaweapon_cooldown_data = script.Call_Function("Get_Megaweapon_Cooldown")
+		local megaweapon_cooldown_data = script.Get_Async_Data("MegaweaponCooldown")
 		if megaweapon_cooldown_data.EndTime > 0.0 then
 			time_remaining = megaweapon_cooldown_data.EndTime - GetCurrentTime()
 			if time_remaining <= 0.0 then
@@ -1567,7 +1577,7 @@ function Get_Current_Player_Megaweapon_Percent_Ready(weapon_type)
 				if TestValid(megaweapon_object) then
 					local script = megaweapon_object.Get_Script()
 					if script ~= nil then
-						local megaweapon_cooldown_data = script.Call_Function("Get_Megaweapon_Cooldown")
+						local megaweapon_cooldown_data = script.Get_Async_Data("MegaweaponCooldown")
 						if megaweapon_cooldown_data.EndTime > 0.0 then
 							local total_time = megaweapon_cooldown_data.EndTime - megaweapon_cooldown_data.StartTime
 							local dif = GetCurrentTime() - megaweapon_cooldown_data.StartTime
@@ -1630,13 +1640,6 @@ function Hide_Start_Mission_Button()
 end
 
 -- ----------------------------------------------------------------------------------------------------------------
--- Start_Mission_Clicked
--- ----------------------------------------------------------------------------------------------------------------
-function Start_Mission_Clicked()
-	Get_Game_Mode_Script().Call_Function("Request_Start_Mission")
-end
-
--- ----------------------------------------------------------------------------------------------------------------
 -- On_Display_Tooltip
 -- ----------------------------------------------------------------------------------------------------------------
 function On_Display_Tooltip(_, _, tooltip_data)
@@ -1684,7 +1687,7 @@ function On_Minimap_Region_Clicked(_, _, region)
 	if SelectedObject.Get_Type().Is_Hero() then
 		local hero_fleet = SelectedObject.Get_Parent_Object()
 		
-		if TestValid(hero_fleet) and hero_fleet.Has_Behavior(BEHAVIOR_FLEET) then
+		if TestValid(hero_fleet) and hero_fleet.Has_Behavior(4) then
 			Move_Fleet(hero_fleet, region)
 		end
 	end
@@ -1711,7 +1714,8 @@ function Subtitles_On_Speech_Event_Done(_, _)
 	end
 end
 
-function On_Debug_Force_Complete()
+function Network_Debug_Force_Complete()
+	--This Call_Function should be safe because it occurs in response to a network event
 	local weapon = Get_First_Megaweapon("Offensive")
 	if TestValid(weapon) then
 		weapon.Get_Script().Call_Function("Debug_Force_Complete")
@@ -1728,6 +1732,10 @@ function On_Debug_Force_Complete()
 	end	
 end
 
+function On_Debug_Force_Complete()
+	Send_GUI_Network_Event("Network_Debug_Force_Complete", nil)
+end
+
 -- ------------------------------------------------------------------------------------------------------------------
 -- Set_Pip_Movie_Playing
 -- ------------------------------------------------------------------------------------------------------------------
@@ -1739,3 +1747,102 @@ function Set_Pip_Movie_Playing(on_off)
 	PipMoviePlaying = on_off
 	this.Tooltip.Set_Pip_Movie_Playing(on_off)
 end
+
+function Show_Gane_End_Screen(_, _, scene_name, winner, to_main_menu, destroy_loser, build_temp_cc, game_end)
+	local quit_params = {}
+	quit_params.Winner = winner
+	quit_params.DestroyLoser = destroy_loser
+	quit_params.ToMainMenu = to_main_menu
+	quit_params.BuildTempCC = build_temp_cc
+	quit_params.GameEndTime = game_end
+	
+	local post_game_ui = this[scene_name]
+	if not TestValid(post_game_ui) then
+		post_game_ui = this.Create_Embedded_Scene(scene_name, scene_name)
+	end
+	post_game_ui.Set_Bounds(0.0, 0.0, 1.0, 1.0)
+	post_game_ui.Set_Hidden(false)
+	post_game_ui.Bring_To_Front()
+	post_game_ui.Set_User_Data(quit_params)
+	if post_game_ui.Finalize_Init() then
+		post_game_ui.Start_Modal(Really_Quit)
+	else
+		_Quit_Game_Now(winner, to_main_menu, destroy_loser, build_temp_cc)
+	end	
+end
+
+function Really_Quit(post_game_ui)
+	local quit_params = post_game_ui.Get_User_Data()
+	_Quit_Game_Now(quit_params.Winner, quit_params.ToMainMenu, quit_params.DestroyLoser, quit_params.BuildTempCC)
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Activate_Superweapon_By_Index = nil
+	Begin_Production = nil
+	BlockOnCommand = nil
+	Build_Command_Center = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Commit_Profile_Values = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Find_Hero_Button = nil
+	GUI_Cancel_Talking_Head = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Clicked_Object = nil
+	On_Mouse_Off_Hero_Button = nil
+	On_Mouse_Over_Hero_Button = nil
+	On_Released_Object = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Post_Load_Game = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Toggle_Mode = nil
+	Update_Hero_Icons_Tooltip_Data = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

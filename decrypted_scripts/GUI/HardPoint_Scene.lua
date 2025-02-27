@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/HardPoint_Scene.lua#17 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[155] = true
+LuaGlobalCommandLinks[163] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/HardPoint_Scene.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +34,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/HardPoint_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/HardPoint_Scene.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Hayes $
 --
---            $Change: 75962 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/07/09 16:19:20 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #17 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,11 +160,11 @@ function On_Mouse_On(event, source)
 	
 	Start_Flash(Scene.ReticleQuad)
 	
-	if not Object.Has_Behavior(BEHAVIOR_HARD_POINT) then 
+	if not Object.Has_Behavior(68) then 
 		return
 	end
 	
-	if Object.Has_Behavior(BEHAVIOR_TACTICAL_SELL) then 
+	if Object.Has_Behavior(40) then 
 		-- we want to display its tooltip info!
 		local tooltip_data = {'object', {Object}}
 		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Display_Tooltip", nil, {tooltip_data})
@@ -169,11 +178,50 @@ end
 function On_Mouse_Off(event, source)
 	Stop_Flash(Scene.ReticleQuad)
 	
-	if not Object.Has_Behavior(BEHAVIOR_HARD_POINT) then 
+	if not Object.Has_Behavior(68) then 
 		return
 	end
 	
-	if Object.Has_Behavior(BEHAVIOR_TACTICAL_SELL) then 
+	if Object.Has_Behavior(40) then 
 		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("End_Tooltip", nil, {})
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

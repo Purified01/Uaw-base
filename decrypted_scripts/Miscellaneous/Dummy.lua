@@ -1,4 +1,19 @@
--- $Id$
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[76] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/Dummy.lua#9 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +40,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File$
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/Dummy.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author$
+--            $Author: Brian_Hayes $
 --
---            $Change$
+--            $Change: 92565 $
 --
---          $DateTime$
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision$
+--          $Revision: #9 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,145 +59,10 @@ require("PGAchievementAward")
 require("PGOfflineAchievementDefs")
 require("PGOnlineAchievementDefs")
 require("PGPlayerProfile")
-require("PGMoveUnits")
-require("PGSpawnUnits")
-
-ServiceRate = 1
-
-function member_test()
-	MessageBox(string.format("%s", tostring(Thread.Is_Thread_Active(Thread.Get_Current_ID()))))
-	-- MessageBox(string.format("%s: %s", tostring(Thread.Get_Name(Thread.Get_Current_ID())), tostring(Thread.Is_Thread_Active(Thread.Get_Current_ID()))))
-	-- Thread.Is_Thread_Active(Thread.Get_Current_ID(), "blah", Thread.Get_Name(Thread.Get_Current_ID()))
-end
-
-function _create_test()
-	while true do
-		Sleep(2)
-		marker = Find_First_Object("_TREE_MAPLE_02")
-		new_unit = Spawn_Unit(Find_Object_Type("Alien_Walker_Habitat"), marker, Find_Player("Alien"))
-		Sleep(5)
-		new_unit.Despawn()
-	end
-end
-
-function create_test()
-	Create_Thread("_create_test")
-	
-end
 
 function gal()
 	-- Spawn_Unit(Find_Object_Type("Smuggler_Team_E"), Find_First_Object("Sullust"), Find_Player("Empire"))
 	Find_First_Object("Generic_Smuggler_E").Get_Parent_Object().Activate_Ability()
-end
-
-function mtest()
-	--marker = Find_First_Object("MARKER_GENERIC")
-	--new_unit = Spawn_Unit(Find_Object_Type("Alien_Walker_Science"), marker, Find_Player("Alien"))
-	Create_Thread("mthread")
-end
-
-function mthread()
-	Drop_In_Spawn_Unit("Alien_Walker_Habitat", "Alien_Walker_Habitat_Glyph", Find_First_Object("_TREE_MAPLE_02"), Find_Player("Alien"))
-	
-end
-
-
-function mattack()
-	Formation_Attack(ar, av)
-end
-
-function dummy_thread()
-	while true do
-		Sleep(0.1)
-	end
-end
-
-function sleep_thread()
-	second_count = 0
-	while true do
-		if second_count == 10 then break end
-		Sleep(1)
-		second_count = second_count + 1
-	end
-	MessageBox("Sleep Done!")
-end
-
-function sleep_test()
-	Create_Thread("sleep_thread")
-	--Create_Thread("test_bad_func")
-	--Create_Thread("test_bad_func")
-	--Create_Thread("test_bad_func")
-end
-
-function thread_test()
-	for i=1, 50 do
-		Create_Thread("dummy_thread")
-	end
-end
-
-function profile_test()
-	Create_Thread("profile_test2")
-end
-
-function profile_test2()
-	while true do
-		test_bad_func()
-		test_good_func()
-		Sleep(0.1)
-	end
-end
-
-function profile_test3()
-	test_bad_func()
-	test_good_func()
-end
-
-function test_good_func()
-end
-
-function test_bad_func()
-	tval = 10
-	for idx = 1, 1000 do
-		tval = tval * 2.45
-		tval = tval / 2.45
-		tval = tval * 2.45
-		tval = tval / 2.45
-		tval = tval * 2.45
-		tval = tval / 2.45
-		tval = tval * 2.45
-		tval = tval / 2.45
-		tval = tval * 2.45
-		tval = tval / 2.45
-		tval = tval * 2.45
-		tval = tval / 2.45
-	end
-end
-
-function test_civ()
-	civ = Find_First_Object("American_Civilian_Urban_01_Script")
-	-- Spawn_Unit(Find_Object_Type("American_Civilian_Urban_01_Wartime_Spawned"), Find_First_Object("American_Civilian_Urban_01_Script"), Find_Player("Civilian"))
-	-- American_Civilian_Urban_01_Wartime_Spawned
-	Make_Civilians_Panic(civ, 500)
-end
-
-function test_con(arg)
-	walker = Find_First_Object("Alien_Walker_Habitat")
-	walker.Set_Object_Context_ID(arg)
-end
-
-function Walker_Inv(onoff)
-	walker = Find_First_Object("Alien_Walker_Habitat")
-	walker.Get_Script().Call_Function("Walker_Set_Invulnerable", onoff)
-end
-
-
-function Walker_Death(source)
-	MessageBox("Walker: %s is dead!", tostring(source))
-end
-
-function test_reg()
-	walker = Find_First_Object("Alien_Walker_Habitat")
-	walker.Get_Script().Call_Function("Register_For_Walker_Death", Script, "Walker_Death")
 end
 
 function mov()
@@ -359,3 +239,74 @@ function Award_All_Medals(value)
 
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Award_All_Medals = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Create_Medal_Effect = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Do_It = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Kill_Em = nil
+	Kill_Em3 = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Offline_Ach = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Test_Threads = nil
+	Update_Offline_Achievement = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	gal = nil
+	mov = nil
+	move = nil
+	one = nil
+	ref = nil
+	stest = nil
+	two = nil
+	Kill_Unused_Global_Functions = nil
+end

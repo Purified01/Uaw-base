@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -46,9 +53,11 @@ function Init_Radial_Menu_Scene(object)
 	local build_buttons = Find_GUI_Components(Scene, "BuildOption")
 	Set_GUI_Variable("BuildOptionButtons", build_buttons)
 	
-	for _, button in pairs(build_buttons) do
+	MENU_OPTIONS_TAB_ORDER = Declare_Enum(0)
+	for index, button in pairs(build_buttons) do
 		button.Set_Hidden(true)
 		button.Enable(false)
+		button.Set_Tab_Order(MENU_OPTIONS_TAB_ORDER + index)
 		this.Register_Event_Handler("Selectable_Icon_Clicked", button, On_Build_Option_Button_Clicked)
 	end
 	
@@ -71,21 +80,29 @@ function Initialize_Build_Options()
 	Set_GUI_Variable("BuildPadContents", socket.Get_Build_Pad_Contents())
 	
 	local build_options = {}
+	local index_to_type_map = {}
+	local indeces = {}
 	local upgrades_list = socket.Get_Tactical_Hardpoint_Upgrades(true, false, true)
-	
-	-- we want to place the locked objects at the end of the list.
-	local locked_list = {}
-	local player = Get_GUI_Variable("Player")
+
+	-- Populate the list based in the order they elements are given in xml.
 	for _, hp_type in pairs(upgrades_list) do
-		if player.Is_Object_Type_Locked(hp_type) == true then 
-			table.insert(locked_list, hp_type)
-		else
-			table.insert(build_options, hp_type)
+		local queue_index = hp_type.Get_Type_Value("Tactical_UI_Build_Queue_Order")
+		
+		if index_to_type_map[queue_index] == nil then 
+			index_to_type_map[queue_index]  = {}
+			table.insert(indeces, queue_index)
 		end
+		table.insert(index_to_type_map[queue_index], hp_type)
 	end
 	
-	for _, hp_type in pairs(locked_list) do
-		table.insert(build_options, hp_type)
+	-- Sort the indeces in increasing order.
+	table.sort(indeces)
+	
+	for i, q_idx in ipairs(indeces) do
+		local types_list = index_to_type_map[q_idx]
+		for _, hp_type in pairs(types_list) do
+			table.insert(build_options, hp_type)
+		end
 	end
 	
 	Set_GUI_Variable("BuildOptions", build_options)
@@ -115,7 +132,7 @@ function On_Build_Option_Button_Clicked(event, source)
 		
 		-- Now we close the radial menu.
 		Close()
-	
+		
 		-- Reset ALL the reticles
 		Raise_Event_Immediate_All_Scenes("HP_Selection_Changed", nil)		
 	else
@@ -167,6 +184,7 @@ function Display_Menu()
 	if not TestValid(Get_GUI_Variable("SocketObject")) then
 		return
 	end
+	
 	Setup_Scene()
 end
 
@@ -230,10 +248,10 @@ function Setup_Scene()
 					button.Set_Insufficient_Funds_Display(build_cost > player_credits)
 					
 					if type_enabled then
-						button.Set_Enabled(true)
+						button.Set_Button_Enabled(true)
 						button.Set_Cost(build_cost)
 					else
-						button.Set_Enabled(false)					
+						button.Set_Button_Enabled(false)					
 					end
 
 					if build_pad_contents_type == buildable_type then 
@@ -273,7 +291,7 @@ function Reset_Buttons()
 	for _, button in pairs(build_option_buttons) do
 		button.Set_Hidden(true)
 		button.Enable(false)
-		button.Set_Enabled(true)		
+		button.Set_Button_Enabled(true)		
 		button.Set_Selected(false)	
 		button.Clear_Cost()
 	end
@@ -312,16 +330,36 @@ function Enable_Menu(on_off)
 			local button_data = button.Get_User_Data()
 			if button_data then 
 				local type_enabled = button_data[2]
-				button.Set_Enabled(type_enabled)
+				button.Set_Button_Enabled(type_enabled)
 			end
 		end		
 	else	
 		for _, button in pairs(build_option_buttons) do
-			button.Set_Enabled(false)
+			button.Set_Button_Enabled(false)
 		end		
 	end	
 end
 
+-- -----------------------------------------------------------------------------------------------------
+-- Set_Focus
+-- -----------------------------------------------------------------------------------------------------
+function Set_Focus()
+	this.Focus_First()
+end
+
+-- -----------------------------------------------------------------------------------------------------
+-- Owner_Changed
+-- -----------------------------------------------------------------------------------------------------
+function Owner_Changed()
+	local socket_object = Get_GUI_Variable("SocketObject")
+	if TestValid(socket_object) then
+		Set_GUI_Variable("Player", socket_object.Get_Owner())
+		if Get_GUI_Variable("Displaying") then 
+			-- Upate the menu for the type locks may have changed.
+			Setup_Scene()
+		end
+	end	
+end
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Interface functions (accessible to other scenes)
@@ -334,3 +372,44 @@ Interface.Is_Menu_Open = Is_Menu_Open
 Interface.Is_Menu_Enabled = Is_Menu_Enabled
 Interface.Display_Menu = Display_Menu
 Interface.Enable_Menu = Enable_Menu
+Interface.Set_Focus = Set_Focus
+Interface.Owner_Changed = Owner_Changed
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Deselect_Buttons = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

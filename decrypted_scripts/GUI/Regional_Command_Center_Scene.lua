@@ -1,3 +1,14 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -59,7 +70,6 @@ function On_Init()
 	     button.Set_Tab_Order(Declare_Enum())
 	end
 
-	this.Register_Event_Handler("Command_Center_Under_Construction", nil, On_Command_Center_Under_Construction)
 	this.Register_Event_Handler("Faction_Changed", nil, On_Faction_Changed)
 	
 	if TestValid(Object) then 
@@ -105,21 +115,8 @@ end
 -- One of the buttons to build a command center was clicked
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------
 function On_Build_Button_Clicked(event_name, source)
-
 	local cc_type = source.Get_User_Data()
-	
-	local success = Object.Start_Command_Center_Construction(cc_type, Find_Player("local"))
-	if success == true then
-		this.CommandCenterIcon.Set_Texture(cc_type.Get_Icon_Name())
-		this.CommandCenterIcon.Set_Clock_Filled(0.0)
-		
-		this.Menu.Set_Hidden(true)
-		this.Set_Sort_To_Front(false)
-		
-		-- Alert all other regions that a command center has started building so that they can update ther list
-		-- of available command centers.
-		Raise_Event_All_Scenes("Command_Center_Under_Construction", {cc_type})
-	end
+	Send_GUI_Network_Event("Network_Global_Begin_Production", {Find_Player("local"), Object, cc_type})
 end
 
 
@@ -136,21 +133,10 @@ end
 function Reset_Scene()
 	this.CommandCenterIcon.Set_Texture("i_button_uea_cc_region_build.tga")
 	this.CommandCenterIcon.Set_Clock_Filled(0.0)
-	this.CommandCenterIcon.Set_Clockwise(false)
+--	this.CommandCenterIcon.Set_Clockwise(false)
 	this.Menu.Set_Hidden(true)
 	this.UpgradesGroup.Set_Hidden(true)
 end
-
--- -----------------------------------------------------------------------------------------------------------------------------------------------------
--- On_Command_Center_Under_Construction
--- -----------------------------------------------------------------------------------------------------------------------------------------------------
-function On_Command_Center_Under_Construction(event, source, cc_type)
-	if this.Menu.Get_Hidden() == false and not Object.Can_Build_Command_Center(cc_type, Find_Player("local")) then
-		-- update the list!
-		Update_Command_Center_List()
-	end
-end
-
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------
 -- Show command centers to build at this region (if we are allowed to build any)
@@ -227,7 +213,7 @@ function Update_Command_Center_List()
 		if cc_type and cc_type.Get_Type_Value("Is_Strategic_Buildable_Type") and button then 
 			button.Set_Hidden(false)
 			-- Reset button state
-			button.Set_Enabled(true)
+			button.Set_Button_Enabled(true)
 			button.Clear_Cost()
 			button.Set_Insufficient_Funds_Display(false)
 			
@@ -237,7 +223,7 @@ function Update_Command_Center_List()
 			
 			if can_produce == false then 
 				-- disable the button
-				button.Set_Enabled(can_produce)				
+				button.Set_Button_Enabled(can_produce)				
 			elseif not enough_credits then 
 				-- the button should display a redish border and the cost should be displayed in red.
 				button.Set_Insufficient_Funds_Display(true)
@@ -266,7 +252,7 @@ end
 -- On_Request_Cancel_Command_Center_Construction
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------
 function On_Request_Cancel_Command_Center_Construction(event, source)
-	Object.Cancel_Command_Center_Construction()
+	Send_GUI_Network_Event("Network_Global_Cancel_Production", {Object})
 end
 
 
@@ -436,4 +422,44 @@ function On_Spy_Level_Changed()
 		this.Set_State("Sleeping")
 		Hide_Upgrade_Panel(true)
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Faction_Icon_Name = nil
+	Get_Fleet_Icon_Name = nil
+	Init_Mouse_Buttons = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Mouse_Buttons = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

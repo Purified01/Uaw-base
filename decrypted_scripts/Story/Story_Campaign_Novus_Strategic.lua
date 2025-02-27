@@ -1,4 +1,36 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Strategic.lua#110 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[177] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[199] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[180] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[60] = true
+LuaGlobalCommandLinks[62] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[131] = true
+LuaGlobalCommandLinks[81] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[179] = true
+LuaGlobalCommandLinks[183] = true
+LuaGlobalCommandLinks[125] = true
+LuaGlobalCommandLinks[43] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Strategic.lua#44 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +57,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_Strategic.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_Strategic.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Joe_Howes $
 --
---            $Change: 90267 $
+--            $Change: 95773 $
 --
---          $DateTime: 2008/01/03 16:44:06 $
+--          $DateTime: 2008/03/26 11:57:26 $
 --
---          $Revision: #110 $
+--          $Revision: #44 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,6 +79,7 @@ require("RetryMission")
 require("PGColors")
 require("PGPlayerProfile")
 require("PGFactions")
+require("PGCampaigns")
 
 -- DON'T REMOVE! Needed for objectives to function properly, even when they are 
 -- called from other scripts. (The data is stored here.)
@@ -74,7 +107,6 @@ function Definitions()
 	Define_State("State_Start_NM06", State_Start_NM06) -- sixth Novus -- ZRH interior
 	Define_State("State_Start_NM06_Dialogue", State_Start_NM06_Dialogue) -- sixth Novus -- ZRH interior
 	Define_State("State_Start_NM07", State_Start_NM07) -- Seventh Novus -- NM01 map ... near the pyramids
-	Define_State("State_Novus_Campaign_Over", State_Novus_Campaign_Over) -- goto ZRH campaign -- right now just exits to main menu
 	
 	Define_Retry_State()
 	
@@ -86,12 +118,13 @@ function Definitions()
 	masari = Find_Player("Masari")
 
 	PGFactions_Init()
+	PGCampaigns_Init()
 	PGColors_Init_Constants()
 	PGPlayerProfile_Init_Constants()
-	aliens.Enable_Colorization(true, COLOR_RED)
-	novus.Enable_Colorization(true, COLOR_CYAN)
-	uea.Enable_Colorization(true, COLOR_GREEN)
-	masari.Enable_Colorization(true, COLOR_DARK_GREEN)
+	aliens.Enable_Colorization(true, 2)
+	novus.Enable_Colorization(true, 6)
+	uea.Enable_Colorization(true, 5)
+	masari.Enable_Colorization(true, 21)
 	
 	--define pip heads for global dialogue	
 	--tutorial/military
@@ -142,11 +175,15 @@ function State_Init(message)
 		Register_Game_Scoring_Commands()
 
 		local data_table = GameScoringManager.Get_Game_Script_Data_Table()
-		if data_table == nil or data_table.Debug_Start_Mission == nil then
+		-- Maria 11.07.2007
+		-- Changing this name since we are going to have similar functionality (to the Debug Load Mission)
+		-- for loading missions in the Gamepad Version.
+		if data_table == nil or data_table.Start_Mission == nil then
 			Set_Next_State("State_Start_NM01_Dialogue")
+			
 		else
-			Set_Next_State(tostring(data_table.Debug_Start_Mission))
-			data_table.Debug_Start_Mission = nil
+			Set_Next_State(tostring(data_table.Start_Mission))
+			data_table.Start_Mission = nil
 			GameScoringManager.Set_Game_Script_Data_Table(data_table)
 		end
 		--Set_Next_State("State_Start_NM01_Dialogue")
@@ -167,6 +204,9 @@ function State_Init(message)
 		current_global_story_dialogue_id_sub_b=nil
 		
 		Pause_Sun(true)
+
+		Set_Profile_Value(PP_LAST_PLAYED_CAMPAIGN, PG_CAMPAIGN_NOVUS)
+		Commit_Profile_Values()
 	end
 end
 
@@ -186,6 +226,15 @@ function State_Start_Tut01(message)
 		UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MILITARY)
 		UI_Set_Loading_Screen_Background("splash_military.tga")
 		UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_TUT01_LOAD_SCREEN_TEXT")
+		
+		-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+		--player is Military vs Hierarchy -- redundant scripts...this now launches from Story_Campaign_Tutorial_Strategic.lua
+		uea.Set_Is_AI_Required(false)
+		aliens.Set_Is_AI_Required(true) 
+		novus.Set_Is_AI_Required(false)
+		masari.Set_Is_AI_Required(false)
+		
+		
 		Force_Land_Invasion(region, aliens, uea, false)
 	end
 end
@@ -207,6 +256,14 @@ function State_Start_Tut02(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MILITARY)
 			UI_Set_Loading_Screen_Background("splash_military.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_TUT02_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Military then Novus  vs Hierarchy -- redundant scripts...this now launches from Story_Campaign_Tutorial_Strategic.lua
+			uea.Set_Is_AI_Required(false)
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(false) 
+			masari.Set_Is_AI_Required(false)
+			
 			Force_Land_Invasion(region, aliens, uea, false)
 		end
 	end
@@ -214,6 +271,7 @@ end
 
 function State_Start_NM01_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -376,6 +434,17 @@ function State_Start_NM01(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS01_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy with some Military presence
+			novus.Set_Is_AI_Required(false)
+			masari.Set_Is_AI_Required(false)
+			-- dme ... 12/18/07 ... Turning off the military and alien asset banks as it's being called directly in the map bank now. 
+			aliens.Set_Is_AI_Required(false) 
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_01)
+			Commit_Profile_Values()
 			Force_Land_Invasion(Find_First_Object("Region15"), aliens, novus, false)
 		end
 		
@@ -394,6 +463,7 @@ end
 
 function State_Start_NM02_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -559,6 +629,16 @@ function State_Start_NM02(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS02_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy with some Military presence
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(false) 
+			masari.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_02)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, nil, novus, false)
 		end
 	
@@ -570,6 +650,7 @@ end
 
 function State_Start_NM03_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -722,6 +803,16 @@ function State_Start_NM03(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS03_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy 
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(true) 
+			masari.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_03)
+			Commit_Profile_Values()
 			Force_Land_Invasion(Find_First_Object("Region8"), nil, novus, false)
 		end
 
@@ -733,6 +824,7 @@ end
 
 function State_Start_NM04_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -878,6 +970,16 @@ function State_Start_NM04(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS04_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy with some Military presence
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(true) 
+			masari.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_04)
+			Commit_Profile_Values()
 			Force_Land_Invasion(Find_First_Object("Region7"), aliens, novus, false)
 		end
 	
@@ -886,6 +988,7 @@ end
 
 function State_Start_NM05_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -1044,6 +1147,16 @@ function State_Start_NM05(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS05_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy with some Military presence
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(true) 
+			masari.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_05)
+			Commit_Profile_Values()
 			Force_Land_Invasion(Find_First_Object("Region21"), aliens, novus, false)
 		end
 	end
@@ -1056,6 +1169,7 @@ end
 
 function State_Start_NM06_Dialogue(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Allow_Speech_Events(true)
 		
 		JumpToNextMission=false
@@ -1163,6 +1277,16 @@ function State_Start_NM06(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS06_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy
+			novus.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(false) 
+			masari.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_06)
+			Commit_Profile_Values()
 			Force_Land_Invasion(Find_First_Object("Region30"), aliens, novus, false)
 		end
 	end
@@ -1195,25 +1319,19 @@ function State_Start_NM07(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
 			UI_Set_Loading_Screen_Background("splash_novus.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS07_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Novus  vs Hierarchy with some Military presence
+			novus.Set_Is_AI_Required(false)
+			masari.Set_Is_AI_Required(false)
+			-- dme ... 12/18/07 ... Turning off the military and alien asset banks as it's being called directly in the map bank now. 
+			aliens.Set_Is_AI_Required(false) 
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_07)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, aliens, novus, false)
 		end
-	end
-end
-
---detects the win of NM07 and then exits to main menu
-function State_Novus_Campaign_Over(message)
-	if message == OnEnter then
-		_CustomScriptMessage("JoeLog.txt", string.format("*************State_Novus_Campaign_Over"))
-		--MessageBox("You Won! Thanks for playing\nNow returning you to the Main Menu...")
-		Set_Profile_Value(PP_CAMPAIGN_NOVUS_COMPLETED, true)
-		
-			-- Oksana: Notify achievements
-		GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Novus")
-
-		
-		--Quit_Game_Now(novus, true, true, false)
-		Register_Campaign_Commands()
-		CampaignManager.Start_Campaign("Hierarchy_Story_Campaign", true)
 	end
 end
 
@@ -1223,10 +1341,11 @@ function State_Tutorial_Campaign_Over(message)
 		_CustomScriptMessage("JoeLog.txt", string.format("*************State_Tutorial_Campaign_Over"))
 		--MessageBox("You Won! Thanks for playing\nNow returning you to the Main Menu...")
 		Set_Profile_Value(PP_CAMPAIGN_TUTORIAL_COMPLETED, true)
+		Commit_Profile_Values()
 		
 		--Quit_Game_Now(novus, true, true, false)
 		Register_Campaign_Commands()
-		CampaignManager.Start_Campaign("NOVUS_Story_Campaign", true)
+		CampaignManager.Start_Campaign("NOVUS_Story_Campaign")
 	end
 end
 
@@ -1333,65 +1452,155 @@ end
 --***************************************FUNCTIONS****************************************************************************************************
 -- This is the "global" win/lose function triggered in the Novus "TACTICAL" mission scripts 
 function Novus_Tactical_Mission_Over(victorious)
+	--local completed_mission = 0
 	if CurrentState == "State_Start_Tut01" then 
 		if victorious then
 			tutorial01_successful = true
 			Set_Next_State("State_Start_Tut02")
-			
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MILITARY)
+			UI_Set_Loading_Screen_Background("splash_military.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_TUT02_LOAD_SCREEN_TEXT")
+			--completed_mission = 1
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(1, "N")
 		end
 	elseif CurrentState == "State_Start_Tut02" then
 		if victorious then
 			tutorial02_successful = true
 			Set_Next_State("State_Tutorial_Campaign_Over")
-			Set_Profile_Value(PP_CAMPAIGN_TUTORIAL_COMPLETED, true)
-			
+			Set_Profile_Value(PP_CAMPAIGN_TUTORIAL_COMPLETED, true)			
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MILITARY)
+			UI_Set_Loading_Screen_Background("splash_military.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_TUT02_LOAD_SCREEN_TEXT")
+			--completed_mission = 2
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(2, "N")
 		end
 	elseif CurrentState == "State_Start_NM01" then 
 		if victorious then
 			NM01_successful = true
-			Set_Next_State("State_Start_NM02_Dialogue")
+			
+			Set_Profile_Value(PP_NOVUS_MISSION_01_AVAILABLE, true)
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_02_AVAILABLE, true)
+			
+ 			Set_Next_State("State_Start_NM02_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 3
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(3, "N")
 		end
 	elseif CurrentState == "State_Start_NM02" then 
 		if victorious then
 			NM02_successful = true
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_03_AVAILABLE, true)
 			Set_Next_State("State_Start_NM03_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 4
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(4, "N")
 		end
 	elseif CurrentState == "State_Start_NM03" then 
 		if victorious then
 			NM03_successful = true
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_04_AVAILABLE, true)
+			
 			Set_Next_State("State_Start_NM04_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 5
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(5, "N")
 		end
 	elseif CurrentState == "State_Start_NM04" then 
 		if victorious then
 			NM04_successful = true
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_05_AVAILABLE, true)
 			Set_Next_State("State_Start_NM05_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 6
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(6, "N")
 		end
 	elseif CurrentState == "State_Start_NM05" then 
 		if victorious then
 			NM05_successful = true
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_06_AVAILABLE, true)
 			Set_Next_State("State_Start_NM06_Dialogue")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 7
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(7, "N")
 		end
 	elseif CurrentState == "State_Start_NM06" then 
 		if victorious then
 			NM06_successful = true
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_NOVUS_MISSION_07_AVAILABLE, true)
 			Set_Next_State("State_Start_NM07")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_NOVUS)
+			UI_Set_Loading_Screen_Background("splash_novus.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_NVS07_LOAD_SCREEN_TEXT")
+			--completed_mission = 8
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(8, "N")
 		end
 	elseif CurrentState == "State_Start_NM07" then 
 		if victorious then
 			NM07_successful = true
-			Set_Next_State("State_Novus_Campaign_Over")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_ALIEN)
+			UI_Set_Loading_Screen_Background("Splash_Alien.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_HIE01_LOAD_SCREEN_TEXT")
+			
+			-- Handle campaign completion immediately: it's more efficient
+			-- than doing a quit out to global and a state pump
+			Set_Profile_Value(PP_CAMPAIGN_NOVUS_COMPLETED, true)
+			
+			-- Oksana: Notify achievements
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(9, "N")
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Novus")
+			
+			Register_Campaign_Commands()
+			CampaignManager.Start_Campaign("Hierarchy_Story_Campaign")			
+			--completed_mission = 9
 		end
 	end
+	
+	-- Notify the achievement system, i applicable
+ 	--[[if completed_mission > 0 then
+		GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(completed_mission, "N")
+  	end--]]
+	
+	Commit_Profile_Values()
 	
 	if not victorious then
 		Retry_Current_Mission()
 	end
 	
 	--changing this bool forces campaign back on track if player had skipped to a specific mission
-	bool_user_chose_mission = false
-	
-	
+	bool_user_chose_mission = false	
 end
+
 
 function Force_Victory(player)
 	-- Quit_Game_Now(winning_player, quit_to_main_menu, destroy_loser_forces, build_temporary_command_center, VerticalSliceTriggerVictorySplashFlag)
@@ -1513,4 +1722,83 @@ function NM07()
 	objective_triggering_info = Add_Objective("You have chosen to play: NM07\nMove your hero to any enemy territory to trigger the mission.")
 end
 
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Next_State = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	Objective_Complete = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PGHintSystem_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Hint_Context_Scene = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Set_Objective_Text = nil
+	Show_Object_Attached_UI = nil
+	Show_Retry_Dialog = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_On_Mission_End = nil
+	UI_On_Mission_Start = nil
+	UI_Pre_Mission_End = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
 

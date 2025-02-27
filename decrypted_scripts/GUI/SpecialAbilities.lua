@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/SpecialAbilities.lua#232 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[187] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/SpecialAbilities.lua#32 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/SpecialAbilities.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/SpecialAbilities.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Mike_Lytle $
+--            $Author: Brian_Hayes $
 --
---            $Change: 89085 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/12/05 11:48:37 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #232 $
+--          $Revision: #32 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -464,7 +471,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				action=SPECIALABILITYACTION_TARGET_OBJECT,    
 				max_range=2000.0,
 				icon="i_icon_n_sa_upload.tga", 
-				hide_with_behavior = BEHAVIOR_DATA_MATRIX,  
+				hide_with_behavior = 147,  
 				
 				-- TOOLTIP RELATED DATA
 				text_id = "TEXT_ABILITY_NOVUS_UPLOAD",
@@ -481,7 +488,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
 				max_range=2000.0,
 				icon="i_icon_n_sa_download.tga", 
-				hide_without_behavior = BEHAVIOR_DATA_MATRIX,  
+				hide_without_behavior = 147,  
 				
 				-- TOOLTIP RELATED DATA
 				text_id = "TEXT_ABILITY_NOVUS_DOWNLOAD",
@@ -1246,7 +1253,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				-- changing this one from hide_without_behavior to disable_without_behavior since
 				-- this ability doesn't have a load counterpart.  Hence, we want to show the button
 				-- but disabled.
-				disable_without_behavior = BEHAVIOR_DATA_MATRIX,  
+				disable_without_behavior = 147,  
 				
 				-- TOOLTIP RELATED DATA
 				text_id = "TEXT_ABILITY_MASARI_UNLOAD",
@@ -1469,6 +1476,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 	if init_key_mappings then
 		Init_Abilities_Key_Mappings()
 	end	
+	
 end
 
 
@@ -1714,3 +1722,10 @@ function Init_Masari_Abilities_Key_Mappings()
 		["Inquisitor_Destabilize_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_21", 1) 
 	}		
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Get_Ability_Key_Mapping_Text = nil
+	Initialize_Special_Abilities = nil
+	Kill_Unused_Global_Functions = nil
+end
+

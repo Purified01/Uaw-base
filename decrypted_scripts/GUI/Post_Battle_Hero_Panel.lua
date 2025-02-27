@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Battle_Hero_Panel.lua#6 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[208] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Battle_Hero_Panel.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Battle_Hero_Panel.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Battle_Hero_Panel.lua $
 --
 --    Original Author: James Yarrow
 --
 --            $Author: James_Yarrow $
 --
---            $Change: 83716 $
+--            $Change: 94057 $
 --
---          $DateTime: 2007/09/13 14:25:24 $
+--          $DateTime: 2008/02/26 14:18:49 $
 --
---          $Revision: #6 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,7 +109,7 @@ function Update_Type_Buttons()
 			button.Set_User_Data(unit_type)
 			button.Set_Texture(unit_type.Get_Icon_Name())
 			button.Set_Text(Get_Localized_Formatted_Number(type_count))
-			button.Set_Enabled(true)
+			button.Set_Button_Enabled(true)
 			button.Set_Hidden(type_count == 0)
 		end
 	end	
@@ -142,7 +152,11 @@ function Set_Hero(hero_object)
 		this.HeroName.Set_Text(hero_object.Get_Type().Get_Display_Name())
 		local hero_script = hero_object.Get_Script()
 		if hero_script then
-			this.HeroPortrait.Set_Model(hero_script.Call_Function("Get_Head_Model"))
+			local hero_model = hero_script.Get_Async_Data("HeadModel")
+			if not hero_model and Is_Non_Render_Thread_Save_Game() then
+				hero_model = hero_script.Call_Function("Get_Head_Model")
+			end
+			this.HeroPortrait.Set_Model(hero_model)
 			this.HeroPortrait.Play_Randomized_Animation("notalk")
 		end
 		
@@ -178,3 +192,41 @@ Interface = {}
 Interface.Set_Hero = Set_Hero
 Interface.Get_Fleet = Get_Fleet
 Interface.Refresh = Refresh
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Find_Button_For_Unit = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

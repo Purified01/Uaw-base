@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/MatterEngineControl.lua#7 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/MatterEngineControl.lua#8 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Miscellaneous/MatterEngineControl.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Miscellaneous/MatterEngineControl.lua $
 --
 --    Original Author: Keith Brors
 --
---            $Author: Mike_Lytle $
+--            $Author: James_Yarrow $
 --
---            $Change: 85762 $
+--            $Change: 94166 $
 --
---          $DateTime: 2007/10/08 18:53:03 $
+--          $DateTime: 2008/02/27 14:56:33 $
 --
---          $Revision: #7 $
+--          $Revision: #8 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -138,6 +140,7 @@ end
 -- Pre_Save_Callback
 -- -------------------------------------------------------------------------------------------------------------------------
 function Pre_Save_Callback()
+	Base_Pre_Save_Callback()
 	Script.Set_Async_Data("MatterEngineOwners", nil)
 end
 
@@ -153,3 +156,52 @@ function Post_Load_Callback()
 	Script.Set_Async_Data("MatterEngineOwners", MatterEngineOwners)
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Init_Matter_Engine_Control = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

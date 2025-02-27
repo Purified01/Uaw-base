@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Objectives.lua#17 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[33] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[208] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Objectives.lua#12 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +33,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Objectives.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Objectives.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Evan_Pipho $
+--            $Author: James_Yarrow $
 --
---            $Change: 89236 $
+--            $Change: 94057 $
 --
---          $DateTime: 2007/12/06 16:03:41 $
+--          $DateTime: 2008/02/26 14:18:49 $
 --
---          $Revision: #17 $
+--          $Revision: #12 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -115,19 +123,32 @@ function On_Init()
 	Show()
 	FlashingText = {}
 	Scene.Frame.Set_Hidden(true)
+	
+	this.Register_Event_Handler("Objectives_Changed", nil, On_Objectives_Changed)
+	this.Register_Event_Handler("Suspend_Objectives", nil, On_Suspend_Objectives)
 end
 
 
+
+-- ---------------------------------------------------------------------------------------------------------------------------
+-- On_Suspend_Objectives
+-- ---------------------------------------------------------------------------------------------------------------------------
+function On_Suspend_Objectives(_, _, on_off)
+	-- flush the queue of text.
+	if on_off then
+		FlashingText = {}
+		Hide()
+	end	
+end
 
 -- ---------------------------------------------------------------------------------------------------------------------------
 -- On_First_Service
 -- ---------------------------------------------------------------------------------------------------------------------------
 function On_First_Service()
 	On_Objectives_Changed()
-	if (Is_Multiplayer_Skirmish() or Is_Single_Player_Skirmish()) ~= true then
+	if not Is_Multiplayer_Skirmish() and Is_Non_Render_Thread_Save_Game() then
 		Add_Objectives_Listener(Script, "On_Objectives_Changed")
-	end
-	
+	end	
 	Scene.Set_State("Running")
 end
 
@@ -314,3 +335,53 @@ end
 
 Interface = {}
 Interface.Toggle = Toggle
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	Objective_Complete = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Objective_Text = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

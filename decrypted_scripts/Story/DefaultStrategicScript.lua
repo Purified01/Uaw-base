@@ -1,4 +1,32 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultStrategicScript.lua#47 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[197] = true
+LuaGlobalCommandLinks[170] = true
+LuaGlobalCommandLinks[133] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[131] = true
+LuaGlobalCommandLinks[185] = true
+LuaGlobalCommandLinks[126] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[23] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultStrategicScript.lua#28 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +53,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultStrategicScript.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultStrategicScript.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90587 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/09 09:43:09 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #47 $
+--          $Revision: #28 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,8 +99,9 @@ end
 
 function State_Init(message)
 	if message == OnEnter then
+		Close_Battle_Load_Dialog()
 		Script.Set_Async_Data("IsScenarioCampaign", true)
-		AllRegions = Find_Objects_With_Behavior(BEHAVIOR_REGION)
+		AllRegions = Find_Objects_With_Behavior(74)
 		Init_AI_Command_Center_Types()
 		Init_AI_Unit_Tables()
 		Init_AI_Player_Table()
@@ -101,9 +130,8 @@ function Victory_Monitor()
 			if player then
 				if Has_Won(player) then
 					for _, other_player in pairs(RealPlayers) do
-						if other_player ~= winner then
+						if other_player ~= player then
 							Create_Thread("Elimination_Sequence", other_player)
-							break
 						end
 					end
 					return
@@ -171,7 +199,7 @@ function Elimination_Sequence(player)
 	local all_objects = Find_All_Objects_Of_Type(player)
 	for _, object in pairs(all_objects) do
 		if TestValid(object) then
-			if object.Has_Behavior(BEHAVIOR_REGION) then
+			if object.Has_Behavior(74) then
 				table.insert(explode_regions, object)
 			elseif not TestValid(object.Get_Region_In()) then
 				object.Despawn()
@@ -204,6 +232,7 @@ function Elimination_Sequence(player)
 		Create_Thread.Kill(VictoryThreadID)	
 		Quit_Game_Now(AIPlayerTable[1], true, false, false, false, true)
 	elseif #AIPlayerTable == 0 then
+		Register_Game_Scoring_Commands()
 		GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Scenario")
 		Quit_Game_Now(Find_Player("local"), true, false, false, false, true)
 		Create_Thread.Kill(VictoryThreadID)	
@@ -214,7 +243,7 @@ end
 function Has_Region_Or_Hero(player)
 	local all_objects = Find_All_Objects_Of_Type(player)
 	for _, object in pairs(all_objects) do
-		if object.Has_Behavior(BEHAVIOR_REGION) then
+		if object.Has_Behavior(74) then
 			return true
 		end
 		
@@ -253,6 +282,13 @@ function Has_Lost(player)
 end
 
 function On_Sub_Mode_Ended(location, winner, loser)
+	Close_Battle_Load_Dialog()
+	
+	--The sub mode will have called UI_On_Mission_End.  We need
+	--to reset any global state changes that makes - in particular
+	--we should be allowing speech events
+	UI_On_Mission_Start()
+
 	--Check whether the game is over
 	if Has_Won(winner) then
 		for _, other_player in pairs(RealPlayers) do
@@ -307,6 +343,22 @@ function On_Land_Invasion()
 		--AI vs AI battle.  It will be resolved quietly by code.
 		return	
 	end
+
+	-- Clear the Is_AI_Required flag on all players
+	local num = 0
+	local player = Find_Player(num)
+	while (player) do
+		player.Set_Is_AI_Required(false)
+		num = num + 1
+		player = Find_Player(num)
+	end
+
+	-- Set the Is_AI_Required flag on the AI player
+	if is_defender then
+		InvasionInfo.Invader.Set_Is_AI_Required(true)
+	else
+		InvasionInfo.Location.Get_Owner().Set_Is_AI_Required(true)
+	end
 	
 	BattlePending = true
  	Create_Thread("Pending_Battle_Thread", InvasionInfo.Location)
@@ -321,8 +373,8 @@ function Pending_Battle_Thread(location)
 	Lock_Controls(1)	
 	
  	message = Replace_Token(message, InvasionInfo.Location.Get_Type().Get_Display_Name(), 0)
- 	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {message} )
- 	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("End_Tooltip", nil, nil)
+ 	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {message} )
+ 	Get_Game_Mode_GUI_Scene().Raise_Event("End_Tooltip", nil, nil)
 
 	local old_yaw, old_pitch = Point_Camera_At.Set_Transition_Time(0.5, 0.5)
 	old_zoom = Zoom_Camera.Set_Transition_Time(3.0)
@@ -372,7 +424,7 @@ function State_Idle(message)
 			NextActionTime = Determine_Next_Action_Time()
 		end
 	elseif message == OnUpdate then
-		if not RunningEliminationSequence and not PendingBattle and (GetCurrentTime() >= NextActionTime or RequestedAction) then
+		if not RunningEliminationSequence and not BattlePending and (GetCurrentTime() >= NextActionTime or RequestedAction) then
 			Set_Next_State("State_Prepare_Action")
 		end
 	end
@@ -652,7 +704,7 @@ function Determine_Command_Center_Type(player)
 				
 	--Don't build more research buildings than we need for full research
 	if cc_count[research_cc_type] >= MAX_RESEARCH_BUILDINGS then
-		cc_count[research_cc_type] = BIG_FLOAT
+		cc_count[research_cc_type] = 1e+018
 	end
 	
 	--At some point production buildings become less desirable
@@ -721,7 +773,7 @@ function On_Region_Production_Finished(region)
 end
 
 function Move_Hero_To_Region(hero, region)
-	if RunningEliminationSequence or PendingBattle then
+	if RunningEliminationSequence or BattlePending then
 		return false
 	end
 
@@ -1252,7 +1304,7 @@ function Get_Hit_And_Run_Target()
 		elseif Is_Megaweapon_Defense(object_type) then
 			--Next favorite target are megaweapon countermeasures
 			all_targets.Insert(object.Get_Region_In(), 2.0)
-		elseif object.Has_Behavior(BEHAVIOR_HARD_POINT) and not object_type.Get_Type_Value("HP_Is_Immune_To_Damage") then
+		elseif object.Has_Behavior(68) and not object_type.Get_Type_Value("HP_Is_Immune_To_Damage") then
 			--Fallback targets are any strategic upgrade.  Be sure not to attack unkillable empty sockets
 			local structure = object.Get_Highest_Level_Hard_Point_Parent()
 			if TestValid(structure) and not Is_Headquarters(human_player, structure.Get_Type()) then
@@ -1356,7 +1408,7 @@ function Fire_Megaweapon(ai_player)
 	for _, megaweapon in pairs(all_megaweapons) do
 		local weapon_script = megaweapon.Get_Script()
 		if weapon_script then
-			local cooldown_data = weapon_script.Call_Function("Get_Megaweapon_Cooldown")
+			local cooldown_data = weapon_script.Get_Async_Data("MegaweaponCooldown")
 			if cooldown_data.EndTime <= 0 then
 				--This weapon is ready!  Hold on to the script
 				weapon_to_fire = weapon_script
@@ -1406,7 +1458,7 @@ function Use_Spy(ai_player)
 	for _, spy in pairs(all_spies) do
 		local spy_script = spy.Get_Script()
 		if spy_script then
-			local cooldown_data = spy_script.Call_Function("Get_Megaweapon_Cooldown")
+			local cooldown_data = spy_script.Get_Async_Data("MegaweaponCooldown")
 			if cooldown_data.EndTime <= 0 then
 				--This weapon is ready!  Hold on to the script
 				spy_to_use = spy_script
@@ -1783,3 +1835,85 @@ function Post_Load_Callback()
 	--Make sure that we can still call Game Scoring commands after a load
 	Register_Game_Scoring_Commands()
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Commit_Profile_Values = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Next_State = nil
+	Has_Region_Or_Hero = nil
+	Is_Megaweapon = nil
+	Is_Scenario_Campaign = nil
+	Max = nil
+	Min = nil
+	Movie_Commands_Post_Load_Callback = nil
+	Notify_Attached_Hint_Created = nil
+	Objective_Complete = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	OutputDebug = nil
+	PGHintSystem_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Hint_Context_Scene = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Set_Objective_Text = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	SpawnList = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_On_Mission_End = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGOnlineAchievementDefs.lua#34 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[193] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGOnlineAchievementDefs.lua#21 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGOnlineAchievementDefs.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGOnlineAchievementDefs.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Jonathan_Burgess $
 --
---            $Change: 84713 $
+--            $Change: 92931 $
 --
---          $DateTime: 2007/09/24 17:27:51 $
+--          $DateTime: 2008/02/08 14:52:05 $
 --
---          $Revision: #34 $
+--          $Revision: #21 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,42 +71,6 @@ function Init_Online_Achievements()
 	OnlineAchievementStart			= 1
 	OnlineAchievementEnd			= 26
 	
-	--[[ JOE DELETE::::  This legacy block is from the old disk-driven dev system.
-	-- ** IDs **
-	OnlineAchievementStart			= Declare_Enum(1)
-	-- Shared
-	LEADERSHIP_ID					= OnlineAchievementStart
-	PROTECTOR_ID					= Declare_Enum()
-	RESEARCHER_ID					= Declare_Enum()
-	ALLIANCE_ID						= Declare_Enum()
-	RAW_POWER_ID					= Declare_Enum()
-	-- Novus
-	NANITE_MASTERY_ID				= Declare_Enum()
-	HERO_MASTERY_ID					= Declare_Enum()
-	WEAPON_MASTERY_ID				= Declare_Enum()
-	FLIGHT_MASTERY_ID				= Declare_Enum()
-	SIGNAL_MASTERY_ID				= Declare_Enum()
-	ROBOTIC_MASTERY_ID				= Declare_Enum()
-	SCIENCE_MASTERY_ID				= Declare_Enum()
-	-- Hierarchy
-	BOVINE_DEFENDER_ID				= Declare_Enum()
-	ASSAULT_SPECIALIST_ID			= Declare_Enum()
-	MUTAGEN_SPECIALIST_ID			= Declare_Enum()
-	QUANTUM_SPECIALIST_ID			= Declare_Enum()
-	SOCKET_EMBLEM_ID				= Declare_Enum()
-	INSIGNIA_OF_CORRUPTION_ID		= Declare_Enum()
-	KAMALS_BLESSING_ID				= Declare_Enum()
-	-- Masari
-	KINETIC_SEER_ID					= Declare_Enum()
-	TIME_MANIPULATOR_ID				= Declare_Enum()
-	DARK_STRATEGIST_ID				= Declare_Enum()
-	LIGHTBRINGER_ID					= Declare_Enum()
-	MODULAR_PROFICIENCY_ID			= Declare_Enum()
-	MASARI_PROTECTUS_ID				= Declare_Enum()
-	GIFT_OF_THE_ARCHITECT_ID		= Declare_Enum()
-	OnlineAchievementEnd			= GIFT_OF_THE_ARCHITECT_ID
-	--]]
-	
 	-- Non-achievement medals
 	-- These medals are awarded to all players automatically.  They are not reflected on GFWLive.
 	ACHIEVEMENT_MP_LEADERSHIP					= Declare_Enum(10100) 
@@ -111,6 +82,42 @@ function Init_Online_Achievements()
 	NonAchievementMedalsEnd 					= ACHIEVEMENT_MP_RAW_POWER
 	TOTAL_MEDALS_PER_FACTION					= 7		-- 7 per faction
 	TOTAL_FACTION_MEDALS_COUNT					= 21	-- ...times 3 factions
+	
+	-- Create lookups of all medals in the game for validation.
+	UNBOUND_MEDALS = {}		-- Medals not bound to any achievements.
+	UNBOUND_MEDALS[ACHIEVEMENT_MP_LEADERSHIP] = true
+	UNBOUND_MEDALS[ACHIEVEMENT_MP_PROTECTOR] 	= true
+	UNBOUND_MEDALS[ACHIEVEMENT_MP_RESEARCHER] = true
+	UNBOUND_MEDALS[ACHIEVEMENT_MP_ALLIANCE] 	= true
+	UNBOUND_MEDALS[ACHIEVEMENT_MP_RAW_POWER] 	= true
+	
+	BOUND_MEDALS = {}			-- Medals which are bound to achievements.
+	-- ASSUMPTION: If one of the bound IDs has been mapped into script, they all have been.
+	-- Otherwise none have been.
+	if (ACHIEVEMENT_MP_BUILDING_THE_NETWORK ~= nil) then
+		BOUND_MEDALS[ACHIEVEMENT_MP_BUILDING_THE_NETWORK]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_UNDER_NOVUS_CONTROL]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_CANT_STOP_NOVUS]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_WHIRLING_DERVISH]				= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_THE_POWER_MUST_FLOW]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_PURE_OHMAGE]						= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_RESEARCH_IS_KEY]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_CLOAKING_IS_GOOD]				= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_TIME_MEANS_NOTHING]				= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_DARK_MATTER_FTW]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_BLINDED_BY_THE_LIGHT]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_UNLIMITED_POWER]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_MASARI_GLOBAL_INFLUENCE]		= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_GIFTS_ARE_NICE]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_THE_SACRED_COW]					= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_PEACE_THROUGH_POWER]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_MUTATION_IS_GOOD]				= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_TECHNOLOGICAL_TERROR]			= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_CUSTOMIZATION_MADE_EASY]		= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_MY_WISH_IS_YOUR_COMMAND]		= true
+		BOUND_MEDALS[ACHIEVEMENT_MP_HIERARCHY_DOMINATION]			= true
+	end
+	
 
 	-- ** Online Achievement Map **
 	Register_Net_Commands() -- need to make sure Net is defined
@@ -488,7 +495,7 @@ function _PG_Create_Base_Online_Achievement_Map()
 		"Achievement_Gift_Of_The_Architect")   
 	map[achievement.Id] = achievement
 
-	Set_Achievement_Map_Type(map, ONLINE_ACHIEVEMENT)
+	Set_Achievement_Map_Type(map, 2)
 
 	return map
 
@@ -556,6 +563,89 @@ end
 -------------------------------------------------------------------------------
 function Get_Local_User_Applied_Medals()
 
+	if ( Is_Gamepad_Active() ) then
+		local profile_value = nil
+
+		local novus_medals = {}
+		novus_medals[1] = {}
+		novus_medals[1][1] = "Quad_Buff0_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_0, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			novus_medals[1][2] = profile_value
+		end
+
+		novus_medals[2] = {}
+		novus_medals[2][1] = "Quad_Buff1_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_1, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			novus_medals[2][2] = profile_value
+		end
+
+		novus_medals[3] = {}
+		novus_medals[3][1] = "Quad_Buff2_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_2, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			novus_medals[3][2] = profile_value
+		end
+
+
+		local alien_medals = {}
+		alien_medals[1] = {}
+		alien_medals[1][1] = "Quad_Buff0_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_0, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			alien_medals[1][2] = profile_value
+		end
+
+		alien_medals[2] = {}
+		alien_medals[2][1] = "Quad_Buff1_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_1, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			alien_medals[2][2] = profile_value
+		end
+
+		alien_medals[3] = {}
+		alien_medals[3][1] = "Quad_Buff2_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_2, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			alien_medals[3][2] = profile_value
+		end
+
+
+		local masari_medals = {}
+		masari_medals[1] = {}
+		masari_medals[1][1] = "Quad_Buff0_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_0, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			masari_medals[1][2] = profile_value
+		end
+
+		masari_medals[2] = {}
+		masari_medals[2][1] = "Quad_Buff1_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_1, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			masari_medals[2][2] = profile_value
+		end
+
+		masari_medals[3] = {}
+		masari_medals[3][1] = "Quad_Buff2_Texture"
+		profile_value = Get_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_2, -1)
+		if (Validate_Applied_Medal(profile_value)) then
+			masari_medals[3][2] = profile_value
+		end
+
+
+		local applied_medals = {}
+		applied_medals[PG_FACTION_ALL] = {}
+		applied_medals[PG_FACTION_NOVUS] = novus_medals
+		applied_medals[PG_FACTION_ALIEN] = alien_medals
+		applied_medals[PG_FACTION_MASARI] = masari_medals
+
+		return applied_medals
+	end
+
+
+
 	-- The model stored in the registry is a map keyed by gamertag whose values
 	-- are maps keyed by faction whose values are iarrays.  Confusing?
 	local default_model = Create_Default_Applied_Medals_Table() 
@@ -571,9 +661,72 @@ function Get_Local_User_Applied_Medals()
 end
 
 -------------------------------------------------------------------------------
+-- Makes sure that the medal data we're getting back from the profile store
+-- is good.
+-------------------------------------------------------------------------------
+function Validate_Applied_Medal(medal_id)
+	return ((UNBOUND_MEDALS[medal_id] ~= nil) or (BOUND_MEDALS[medal_id] ~= nil))
+end
+
+-------------------------------------------------------------------------------
 --
 -------------------------------------------------------------------------------
 function Set_Local_User_Applied_Medals(applied_medals)
+	
+	if ( Is_Gamepad_Active() ) then
+
+		if ( ( applied_medals[PG_FACTION_NOVUS][1] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_0, applied_medals[PG_FACTION_NOVUS][1][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_0, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_NOVUS][2] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_1, applied_medals[PG_FACTION_NOVUS][2][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_1, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_NOVUS][3] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_2, applied_medals[PG_FACTION_NOVUS][3][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_NOVUS_2, 0)
+		end
+		
+		if ( ( applied_medals[PG_FACTION_ALIEN][1] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_0, applied_medals[PG_FACTION_ALIEN][1][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_0, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_ALIEN][2] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_1, applied_medals[PG_FACTION_ALIEN][2][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_1, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_ALIEN][3] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_2, applied_medals[PG_FACTION_ALIEN][3][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_ALIEN_2, 0)
+		end
+		
+		if ( ( applied_medals[PG_FACTION_MASARI][1] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_0, applied_medals[PG_FACTION_MASARI][1][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_0, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_MASARI][2] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_1, applied_medals[PG_FACTION_MASARI][2][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_1, 0)
+		end
+		if ( ( applied_medals[PG_FACTION_MASARI][3] ) ) then
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_2, applied_medals[PG_FACTION_MASARI][3][2])
+		else
+			Set_Profile_Value(PP_APPLIED_LIVE_MEDALS_MASARI_2, 0)
+		end
+		
+		Commit_Profile_Values()
+		return
+	end
+	
 
 	-- The model stored in the registry is a map keyed by gamertag whose values
 	-- are maps keyed by faction whose values are iarrays.  Confusing?
@@ -586,3 +739,37 @@ function Set_Local_User_Applied_Medals(applied_medals)
 end
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

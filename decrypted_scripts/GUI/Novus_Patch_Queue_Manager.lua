@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[187] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -31,7 +38,6 @@
 --          Date: 2007/05/21
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
-
 require("PGBase")
 require("PGUICommands")
 
@@ -331,7 +337,7 @@ function Reset_Button_At_Index(index)
 	button.Set_Texture("i_icon_n_patch_empty_slot.tga")
 	button.Set_Clock_Filled(0.0)
 	button.Set_Hidden(true)
-	button.Set_Enabled(true)
+	button.Set_Button_Enabled(true)
 	button.Set_User_Data(nil)
 end
 
@@ -466,7 +472,7 @@ function  Update_Queue_Buttons()
 				patch_active_state = PATCH_STATE_INACTIVE
 			end
 
-			button.Set_Enabled(patch_active_state == PATCH_STATE_ACTIVE)
+			button.Set_Button_Enabled(patch_active_state == PATCH_STATE_ACTIVE)
 			
 			local tooltip_data = {}
 			-- floating tooltip data
@@ -550,4 +556,49 @@ end
 function Is_Faction_Specific_Menu_Open()
 	if not TestValid(PatchMenu) then return false end
 	return PatchMenu.Is_Menu_Open()
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	Controller_Display_Specific_UI = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Init_Patch_Queue_Manager = nil
+	Is_Faction_Specific_Menu_Open = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Toggle_Faction_Specific_Menu = nil
+	Update_Faction_Specific_Tooltip_Data = nil
+	Update_Patch_Queue_Manager = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

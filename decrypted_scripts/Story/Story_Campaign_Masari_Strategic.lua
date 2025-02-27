@@ -1,4 +1,34 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_Strategic.lua#63 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[170] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[199] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[131] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[185] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[126] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[183] = true
+LuaGlobalCommandLinks[125] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_Strategic.lua#36 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +55,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_Strategic.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_Strategic.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Jeff_Stewart $
+--            $Author: Joe_Howes $
 --
---            $Change: 87743 $
+--            $Change: 95773 $
 --
---          $DateTime: 2007/11/12 17:04:14 $
+--          $DateTime: 2008/03/26 11:57:26 $
 --
---          $Revision: #63 $
+--          $Revision: #36 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,6 +78,7 @@ require("RetryMission")
 require("PGColors")
 require("PGPlayerProfile")
 require("PGFactions")
+require("PGCampaigns")
 
 -- DON'T REMOVE! Needed for objectives to function properly, even when they are 
 -- called from other scripts. (The data is stored here.)
@@ -75,10 +106,11 @@ function Definitions()
 	masari = Find_Player("Masari")
 	
 	PGFactions_Init()
+	PGCampaigns_Init()
 --	PGColors_Init_Constants()
 	PGPlayerProfile_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	masari.Enable_Colorization(true, COLOR_DARK_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	masari.Enable_Colorization(true, 21)
 	
 	Define_Retry_State()
 	
@@ -127,6 +159,8 @@ function Definitions()
 	--used in skip-mission cheats
 	bool_user_chose_mission = false
 	
+	bool_dialogue_goto_finale_played = false
+	
 	MAX_PLAYERS = 7
 end
 
@@ -152,11 +186,15 @@ function State_Init(message)
 		Register_Game_Scoring_Commands()
 
 		local data_table = GameScoringManager.Get_Game_Script_Data_Table()
-		if data_table == nil or data_table.Debug_Start_Mission == nil then
+		
+		-- Maria 11.07.2007
+		-- Changing this name since we are going to have similar functionality (to the Debug Load Mission)
+		-- for loading missions in the Gamepad Version.
+		if data_table == nil or data_table.Start_Mission == nil then
 			Set_Next_State("State_Start_MM01")
 		else
-			Set_Next_State(tostring(data_table.Debug_Start_Mission))
-			data_table.Debug_Start_Mission = nil
+			Set_Next_State(tostring(data_table.Start_Mission))
+			data_table.Start_Mission = nil
 			GameScoringManager.Set_Game_Script_Data_Table(data_table)
 		end
 		
@@ -164,6 +202,8 @@ function State_Init(message)
 		--objective_skipping_info = Add_Objective("To skip to a specific mission via console commands: \n1. Type 'attach Story_Campaign_Masari_Strategic'\n2. Type 'lua' then which mission to start, eg. 'lua MM01()'")
 		
 		Pause_Sun(false)
+		Set_Profile_Value(PP_LAST_PLAYED_CAMPAIGN, PG_CAMPAIGN_MASARI)
+		Commit_Profile_Values()
 
   		PGHintSystemDefs_Init()
 		PGHintSystem_Init()
@@ -192,7 +232,11 @@ function Thread_Track_Final_Defense_HP()
 	while TestValid(final_defense) do
 		Sleep(1)
 	end
-	current_global_story_dialogue_id=Create_Thread("Dialogue_Goto_Finale")
+	
+	if bool_dialogue_goto_finale_played == false then
+		bool_dialogue_goto_finale_played = true
+		current_global_story_dialogue_id=Create_Thread("Dialogue_Goto_Finale")
+	end
 	sabotaged_aliens=true;
 	play_generic_win=false
 	picked_dialogue_set=true
@@ -215,6 +259,16 @@ function State_Start_MM01(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
 			UI_Set_Loading_Screen_Background("splash_masari.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS01_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Masari  vs Hierarchy 
+			masari.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(true) 
+			novus.Set_Is_AI_Required(false)
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_01)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, aliens, masari, false)
 		end
 		
@@ -223,7 +277,8 @@ end
 
 function State_Start_Global(message)
 	if message == OnEnter then
-		Allow_Speech_Events(true)
+		Close_Battle_Load_Dialog()
+		UI_On_Mission_Start()
 		
 		Fade_Screen_Out(0)
 		_CustomScriptMessage("JoeLog.txt", string.format("*************State_Start_Global"))
@@ -240,16 +295,27 @@ function State_Start_Global(message)
 		--to the final battle
 		masari.Lock_Object_Type(Find_Object_Type("Masari_Megaweapon"), true, STORY)
 		
+		--Revert to standard global research rules
+		masari.Set_Research_Points_Override(-1)
+		
 		if bool_user_chose_mission ~= true then
 			--Force_Land_Invasion(region, charos.Get_Parent_Object(), masari, false)
 		end
 		current_global_story_dialogue_id=Create_Thread("Dialogue_Global_Intro",region)
 		missions_played=2
+
+		Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_02)
+		Commit_Profile_Values()
 		
 		start_forces={"MASARI_DISCIPLE","MASARI_DISCIPLE","MASARI_DISCIPLE","MASARI_DISCIPLE","MASARI_DISCIPLE","MASARI_DISCIPLE"}
 		Strategic_SpawnList(start_forces, masari, charos.Get_Parent_Object())
 		
 	elseif message == OnUpdate then
+		if not move_hint_shown and current_global_story_dialogue_id == nil then
+			Add_Independent_Hint(133)
+			move_hint_shown = true
+		end
+	
 		if not econ_built then
 			obj_structure = Find_All_Objects_Of_Type("Masari_Element_Magnet")
 			if table.getn(obj_structure)>0 then
@@ -261,7 +327,7 @@ function State_Start_Global(message)
 			obj_structure = Find_All_Objects_Of_Type("Masari_Will_Processor")
 			if table.getn(obj_structure)>0 then
 				current_global_story_dialogue_id=Create_Thread("Dialogue_Built_Tech")
-				Add_Independent_Hint(HINT_MM02_RESEARCH_ADD)
+				Add_Independent_Hint(134)
 				tech_built = true
 			end
 		end
@@ -276,63 +342,18 @@ function State_Start_Global(message)
 		--Handle user request to skip straight to the next mission.
 		if EscToStartState then
 				Stop_All_Speech()
+				Flush_PIP_Queue()
 				EscToStartState = false
 				
 				if not (current_global_story_dialogue_id == nil) then
 					Thread.Kill(current_global_story_dialogue_id)
+					current_global_story_dialogue_id = nil
 				end
 				
 				--Point_Camera_At.Set_Transition_Time(1,1)
 				--Point_Camera_At(Find_First_Object("Masari_Hero_Charos"))
 				
 				Lock_Controls(0)
-		end
-		
-		if missions_played>last_missions_played then
-			last_missions_played=missions_played
-			if missions_played==2 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS02_LOAD_SCREEN_TEXT")
-				Add_Independent_Hint(HINT_MM02_MOVING_UNITS)
-			end
-			if missions_played==3 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS03_LOAD_SCREEN_TEXT")
-				Add_Independent_Hint(HINT_MM02_HOW_TO_BUILD_STRUCTURES)
-				Add_Independent_Hint(HINT_MM02_HOW_TO_BUILD_UNITS)
-			end
-			if missions_played==4 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS04_LOAD_SCREEN_TEXT")
-			end
-			if missions_played==5 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS05_LOAD_SCREEN_TEXT")
-			end
-			if missions_played==6 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS06_LOAD_SCREEN_TEXT")
-			end
-			if missions_played==7 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS07_LOAD_SCREEN_TEXT")
-			end
-			if missions_played==8 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS08_LOAD_SCREEN_TEXT")
-			end
-			if missions_played==9 then 
-				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
-				UI_Set_Loading_Screen_Background("splash_masari.tga")
-				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS09_LOAD_SCREEN_TEXT")
-			end
 		end
 	end
 end
@@ -356,6 +377,17 @@ function State_Start_MM07(message)
 			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
 			UI_Set_Loading_Screen_Background("splash_masari.tga")
 			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS10_LOAD_SCREEN_TEXT")
+			
+			-- jdg ... 10/01/07 ... asset bank stuff per Jason 
+			--player is Masari  vs Hierarchy with both Novus and Military also present
+			masari.Set_Is_AI_Required(false)
+			aliens.Set_Is_AI_Required(false) 
+			novus.Set_Is_AI_Required(false)
+			-- JAC 12/10/07 - Turned off so that assets could be loaded through asset bank
+			uea.Set_Is_AI_Required(false)
+			
+			Set_Profile_Value(PP_LAST_PLAYED_MISSION, PG_CAMPAIGN_MISSION_03)
+			Commit_Profile_Values()
 			Force_Land_Invasion(region, aliens, masari, false)
 		end
 	end
@@ -368,12 +400,13 @@ function State_Masari_Campaign_Over(message)
 	if message == OnEnter then
 		_CustomScriptMessage("JoeLog.txt", string.format("*************State_Masari_Campaign_Over"))
 		Set_Profile_Value(PP_CAMPAIGN_MASARI_COMPLETED, true)
+		Commit_Profile_Values()
 		
 		-- Oksana: Notify achievements
 		GameScoringManager.Notify_Achievement_System_Of_Campaign_Completion("Masari")
 
-
-		Quit_Game_Now(masari, true, true, false)
+		--Quit_Game_Now( winner, to_main_menu, destroy_loser, build_temp_cc, show_splash, show_post_game_ui, display_credits)
+		Quit_Game_Now(masari, true, true, false, false, false, true)
 	end
 end
 
@@ -419,9 +452,54 @@ function On_Land_Invasion()
 			return	
 		end
 		
+		-- SKY 2.12.08 - moved from Start_State_Global (OnUpdate message)
+		if missions_played>last_missions_played then
+			last_missions_played=missions_played
+			if missions_played==2 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS02_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==3 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS03_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==4 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS04_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==5 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS05_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==6 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS06_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==7 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS07_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==8 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS08_LOAD_SCREEN_TEXT")
+			end
+			if missions_played==9 then 
+				UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+				UI_Set_Loading_Screen_Background("splash_masari.tga")
+				UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS09_LOAD_SCREEN_TEXT")
+			end
+		end
+		
 		message = Replace_Token(message, InvasionInfo.Location.Get_Type().Get_Display_Name(), 0)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {message} )
- 		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("End_Tooltip", nil, nil)
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {message} )
+ 		Get_Game_Mode_GUI_Scene().Raise_Event("End_Tooltip", nil, nil)
 		Lock_Controls(1)
 		Create_Thread("Pending_Battle_Thread", InvasionInfo.Location)
 		
@@ -468,23 +546,59 @@ end
 --***************************************FUNCTIONS****************************************************************************************************
 -- This is the "global" win/lose function triggered in the Masari "TACTICAL" mission scripts 
 function Masari_Tactical_Mission_Over(victorious)
+	--local completed_mission = 0
 	if CurrentState == "State_Start_MM01" then 
 		if victorious then
 			MM01_successful = true
+			
+			-- Since this is the completion of the first mission, we have to mark this one
+ 			-- as available too.  The proceeding ones will be marked as the previous one gets
+ 			-- completed.
+ 			Set_Profile_Value(PP_MASARI_MISSION_01_AVAILABLE, true)
+ 			
+ 			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_MASARI_GLOBAL_MISSION_AVAILABLE, true)
+			
 			Set_Next_State("State_Start_Global")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+			UI_Set_Loading_Screen_Background("splash_masari.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 1
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(16, "M")
 		end
 	elseif CurrentState == "State_Start_Global" then 
 		if sabotaged_aliens and begin_finale then
 			MMGL_successful = true
 			--MessageBox("Does this even run?")
+			
+			-- Mark the next mission as available
+ 			Set_Profile_Value(PP_MASARI_MISSION_07_AVAILABLE, true)
 			Set_Next_State("State_Start_MM07")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+			UI_Set_Loading_Screen_Background("splash_masari.tga")
+			UI_Set_Loading_Screen_Mission_Text("TEXT_SP_MISSION_MAS10_LOAD_SCREEN_TEXT")
 		end
 	elseif CurrentState == "State_Start_MM07" then 
 		if victorious then
 			MM07_successful = true
 			Set_Next_State("State_Masari_Campaign_Over")
+
+			UI_Set_Loading_Screen_Faction_ID(PG_FACTION_MASARI)
+			UI_Set_Loading_Screen_Background("splash_masari.tga")
+			UI_Set_Loading_Screen_Mission_Text()
+			--completed_mission = 2
+			GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(17, "M")
 		end
 	end
+	
+	-- Notify the achievement system, i applicable
+ 	--[[if completed_mission > 0 then
+		GameScoringManager.Notify_Achievement_System_Of_Campaign_Mission_Completion(completed_mission, "M")
+  	end--]]
+	
+	Commit_Profile_Values()
 	
 	if not victorious then
 		Retry_Current_Mission()
@@ -499,6 +613,13 @@ end
 
 --***************************************Global Functions****************************************************************************************************
 function On_Sub_Mode_Ended(location, winner, loser)
+
+	Close_Battle_Load_Dialog()
+
+	--The sub mode will have called UI_On_Mission_End.  We need
+	--to reset any global state changes that makes - in particular
+	--we should be allowing speech events
+	UI_On_Mission_Start()
 
 	Fade_Screen_In(0)		
 
@@ -524,6 +645,11 @@ function On_Sub_Mode_Ended(location, winner, loser)
 		end
 	else
 		missions_played=missions_played+1
+		if missions_played==3 then 
+			Add_Independent_Hint(131)
+			Add_Independent_Hint(132)		
+		end
+		
 		play_generic_win=true
 		
 		picked_dialogue_set=false
@@ -532,7 +658,10 @@ function On_Sub_Mode_Ended(location, winner, loser)
 			if not sabotaged_aliens then
 				alien_hq_region = Find_First_Object("Region35")
 				if location==alien_hq_region then
-					current_global_story_dialogue_id=Create_Thread("Dialogue_Goto_Finale")
+					if bool_dialogue_goto_finale_played == false then
+						bool_dialogue_goto_finale_played = true
+						current_global_story_dialogue_id=Create_Thread("Dialogue_Goto_Finale")
+					end
 					sabotaged_aliens=true;
 					play_generic_win=false
 					picked_dialogue_set=true
@@ -937,6 +1066,9 @@ function Dialogue_Goto_Finale()
 		Set_PIP_Model (3, nil)
 	current_global_story_dialogue_id=nil
 	Point_Camera_At.Set_Transition_Time(g_old_yaw,g_old_pitch)
+	
+	-- Maria 02.05.2008 - Mark the next mission as available.
+	Set_Profile_Value(PP_MASARI_MISSION_07_AVAILABLE, true)
 	Set_Next_State("State_Start_MM07")
 end
 
@@ -949,5 +1081,82 @@ function Post_Load_Callback()
 	--Make sure that we can still call Game Scoring commands after a load
 	Register_Game_Scoring_Commands()
 	Movie_Commands_Post_Load_Callback()
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Next_State = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	Objective_Complete = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Remove_From_Table = nil
+	Remove_Invalid_Objects = nil
+	Reset_Objectives = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Set_Objective_Text = nil
+	Show_Object_Attached_UI = nil
+	Show_Retry_Dialog = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	SpawnList = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_On_Mission_End = nil
+	UI_Pre_Mission_End = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end
 

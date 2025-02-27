@@ -1,4 +1,13 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAIBuildOrder.lua#11 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAIBuildOrder.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,21 +34,22 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGAIBuildOrder.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGAIBuildOrder.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90485 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/08 11:38:53 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #11 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
 require("PGLogging")
+require("PGFindAll")
 
 
 ---------------------- Script Globals ----------------------
@@ -106,7 +116,7 @@ function Maintain_Unit_Count(unit_type_name, unit_count, exit_thread_when_count_
 	local subgoal_name = "Generic_Sub_Goal_Build_Unit"
 	if TestValid(unit_type.Get_Type_Value("Tactical_Buildable_Beacon_Type")) then
 		subgoal_name = "Generic_Sub_Goal_Build_Structure"
-	elseif unit_type.Has_Behavior(BEHAVIOR_HARD_POINT, "Land") then
+	elseif unit_type.Has_Behavior(68, "Land") then
 		subgoal_name = "Generic_Sub_Goal_Build_Hard_Point"
 	end
 	
@@ -322,10 +332,12 @@ function Execute_Build_Order(build_order)
 	-- This phase of the build order is complete. Kill off all other threads if appropriate.
 	-- (This will kill all the unit maintenance threads we just spawned.)
 	if build_order.Options.KillThreadsWhenDone then
+		local threads_left = {}
 		log("Current build order options define KillThreadsWhenDone = true, killing spawned threads!")
 		for _,id in pairs(spawned_threads) do
 			if ThreadStatus[id] ~= nil then
 				ThreadStatus[id].ShouldDie = true
+				table.insert(threads_left,id)
 				log("Told Thread to die thread ID:%d", id)
 			else
 				Thread.Kill(id)
@@ -333,6 +345,32 @@ function Execute_Build_Order(build_order)
 			end
 		end
 	end
-
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

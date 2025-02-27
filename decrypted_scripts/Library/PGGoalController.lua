@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGGoalController.lua#3 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGGoalController.lua#7 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGGoalController.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGGoalController.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84877 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/26 14:44:48 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #3 $
+--          $Revision: #7 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,3 +146,11 @@ function Clean_Active_Subgoal_Table()
 end
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Record_New_Active_Subgoal = nil
+	Target_Is_Already_Used = nil
+	Wait_For_Any_Subgoal = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

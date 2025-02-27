@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[178] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -169,7 +176,7 @@ end
 function Toggle_Faction_Specific_Menu()
 	if TestValid(FactionSpecificMenuButton) then 
 		-- make sure the button is in a valid state.
-		if not FactionSpecificMenuButton.Get_Hidden() and FactionSpecificMenuButton.Is_Enabled() then 
+		if not FactionSpecificMenuButton.Get_Hidden() and FactionSpecificMenuButton.Is_Button_Enabled() then 
 			this.Raise_Event_Immediate("Selectable_Icon_Clicked", FactionSpecificMenuButton, {})
 		end	
 	elseif Toggle_Faction_Specific_Menu then 
@@ -340,4 +347,42 @@ function Find_Builder(is_double_key_press)
 	else
 		Point_Camera_At_Next_Builder()
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Superweapon_By_Index = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Last_Tactical_Parent = nil
+	Init_Keyboard_Mappings_Handler = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

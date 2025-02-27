@@ -1,4 +1,41 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_MM01.lua#58 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[53] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[63] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_MM01.lua#33 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +62,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_MM01.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_MM01.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Jeff_Stewart $
+--            $Author: Brian_Hayes $
 --
---            $Change: 87139 $
+--            $Change: 94190 $
 --
---          $DateTime: 2007/11/01 13:14:41 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #58 $
+--          $Revision: #33 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +88,7 @@ require("PGHintSystem")
 require("Story_Campaign_Hint_System")
 require("RetryMission")
 require("PGColors")
+require("PGFindAll")
 
 -- DON'T REMOVE! Needed for objectives to function properly, even when they are 
 -- called from other scripts. (The data is stored here.)
@@ -60,6 +98,9 @@ require("PGObjectives")
 ---------------------------------------------------------------------------------------------------
 
 function Definitions()
+	-- only service once a second
+	ServiceRate = 1
+	
 	--MessageBox("%s -- definitions", tostring(Script))
 	Define_State("State_Init", State_Init)
 	Define_State("State_MM01_Act01", State_MM01_Act01)
@@ -79,9 +120,9 @@ function Definitions()
 	masari = Find_Player("Masari")
 	
 --	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	masari.Enable_Colorization(true, COLOR_DARK_GREEN)
---	military.Enable_Colorization(true, COLOR_GREEN)
+--	aliens.Enable_Colorization(true, 2)
+--	masari.Enable_Colorization(true, 21)
+--	military.Enable_Colorization(true, 5)
 	
 	-- Pip Heads
 	pip_zessus = "ZH_Zessus_pip_head.alo"
@@ -161,17 +202,18 @@ function Definitions()
       "NM06_Custom_Assembly_Walker"
    }	
 	
+	--jdg 1/11/08 slash and burn balancing for the 360...foos are really expensive...reducing
 	list_spawn_alien_saucers = {
 	   "Alien_Foo_Core",
 	   "Alien_Foo_Core",
 	   "Alien_Foo_Core",
 	   "Alien_Foo_Core",
-	   "Alien_Foo_Core",
-	   "Alien_Foo_Core",
-	   "Alien_Foo_Core",
-	   "Alien_Foo_Core",
-	   "Alien_Foo_Core",
-	   "Alien_Foo_Core"
+	   --"Alien_Foo_Core",
+	   --"Alien_Foo_Core",
+	   --"Alien_Foo_Core",
+	  -- "Alien_Foo_Core",
+	  -- "Alien_Foo_Core",
+	  -- "Alien_Foo_Core"
 	}
 	
 	list_alien_base_defenders = {
@@ -179,15 +221,16 @@ function Definitions()
 	   "Alien_Grunt",
 	   "Alien_Grunt",
 	   "Alien_Brute",
-	   "Alien_Brute",
+	   --"Alien_Brute",
 	   "Alien_Recon_Tank",
 	   "Alien_Recon_Tank",
 	   "Alien_Defiler",
-	   "Alien_Defiler"
+	   --"Alien_Defiler"
 	}
 	
+	--jdg 1/11/08 changing col moore to general moore.
 	list_single_military_hero_moore = {
-	   "Military_Hero_Randal_Moore"
+	   "Military_Hero_General_Randal_Moore"
 	}
 	
 	list_single_military_marines = {
@@ -226,12 +269,18 @@ function Definitions()
 	time_delay_saucer_strikes = 45
 	time_saucer_announcement_delay = 10
 	time_delay_grunt_assault = 120
-	time_move_reaper_drone = 0.25
+	
+	--jdg 360 slash and burn balancing
+	--time_move_reaper_drone = 0.25
+	time_move_reaper_drone = 15
 	
 	time_move_alien_grunts = 30
 	time_spawn_alien_grunts = 10
 	total_alien_grunts = 0
-	maximum_alien_grunts = 12
+	
+	--jdg 360 slash and burn balancing
+	--maximum_alien_grunts = 12
+	maximum_alien_grunts = 6
 	grunt_team_list_in_use = false
 	grunt_team_size = 3
 	
@@ -292,18 +341,23 @@ function State_Init(message)
    local list_comm_terminals, terminal
 
 	if message == OnEnter then
-
-	military.Allow_AI_Unit_Behavior(false)
-	novus.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+		
+		military.Allow_AI_Unit_Behavior(false)
+		novus.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		
+		--jdg 10/31/07 attemp to stop AI from researching
+		military.Allow_Autonomous_AI_Goal_Activation(false)
+		novus.Allow_Autonomous_AI_Goal_Activation(false)
+		aliens.Allow_Autonomous_AI_Goal_Activation(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
 		
 		Cache_Models()
 
-		UI_Hide_Research_Button()
+		-- UI_Hide_Research_Button()
+   	masari.Set_Research_Points_Override(1)		
 		UI_Hide_Sell_Button()
 		
 	   -- Object and Ability Locks
@@ -408,6 +462,15 @@ function State_Init(message)
 		if not TestValid(marker_act02_hunt_center) then
 			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find marker_act02_hunt_center!"))
 		end
+		
+		--jdg 1/11/08 breaking the alien base guards into two seperate spawn locations
+		marker_act02_hunt_center_2 = Find_Hint("MARKER_GENERIC_GREEN","act02-hunt-center-2")
+		if not TestValid(marker_act02_hunt_center_2) then
+			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find marker_act02_hunt_center_2!"))
+		end
+		
+		
+		
 		marker_act02_grunt_assault = Find_Hint("MARKER_GENERIC_GREEN","act02-grunt-assault")
 		if not TestValid(marker_act02_grunt_assault) then
 			_CustomScriptMessage("RickLog.txt", string.format("ERROR - Cannot find marker_act02_grunt_assault!"))
@@ -551,6 +614,12 @@ function State_Init(message)
 		   end
 		end
 		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_MM01_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
+		
 		Set_Next_State("State_MM01_Act01")
 	end
 end
@@ -567,7 +636,7 @@ function State_MM01_Act01(message)
 	   hero.Add_Attribute_Modifier("Universal_Damage_Modifier", -.68)	   
 
 		-- Initial Starting Credits
-		credit_total = 1000
+		credit_total = 700
 		credits = masari.Get_Credits()
       if credits > credit_total then
          credits = (credits - credit_total) * -1
@@ -811,7 +880,7 @@ function Thread_Intro_Conversation()
 	BlockOnCommand(Queue_Talking_Head(pip_disciple, "MAS01_SCENE02_04"))
 	BlockOnCommand(Queue_Talking_Head(pip_zessus, "MAS01_SCENE02_05"))
    
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_01_NEW"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_01_NEW"} )
    Sleep(time_objective_sleep)
    mm01_objective01 = Add_Objective("TEXT_SP_MISSION_MAS01_OBJECTIVE_01")
    Sleep(time_radar_sleep)
@@ -820,8 +889,8 @@ function Thread_Intro_Conversation()
 	marker_act01_fow02_ground_highlight = Create_Generic_Object(Find_Object_Type("Highlight_Area"), marker_act01_fow02, neutral)
   	
    Sleep(time_radar_sleep)
-   -- Add_Independent_Hint(HINT_MM01_MODES)
-   Add_Attached_GUI_Hint(PG_GUI_HINT_ELEMENTAL_MODE_ICON, false, HINT_MM01_MODES)
+   -- Add_Independent_Hint(124)
+   Add_Attached_GUI_Hint(PG_GUI_HINT_ELEMENTAL_MODE_ICON, false, 124)
 end
 
 function Thread_Construct_Grunts()
@@ -848,7 +917,7 @@ function Thread_Act02_Conversation()
 
    -- Objectives
    Objective_Complete(mm01_objective01)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_01_COMPLETE"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_01_COMPLETE"} )
 
    -- Masari Foundation and Matter Engines
    if TestValid(masari_foundation) then
@@ -911,7 +980,7 @@ function Thread_Act02_Conversation()
 
    -- Objectives
    if not rescue_objective_given then
-	   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_02_NEW"} )
+	   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_02_NEW"} )
       Sleep(time_objective_sleep)
       mm01_objective02 = Add_Objective("TEXT_SP_MISSION_MAS01_OBJECTIVE_02")
    end
@@ -944,7 +1013,7 @@ function Thread_Act02_Conversation()
 	Sleep(time_objective_sleep)
 	
 	if TestValid(act01_architect) then
-	   Add_Attached_Hint(act01_architect, HINT_BUILT_MASARI_ARCHITECT)
+	   Add_Attached_Hint(act01_architect, 66)
 	end
 
    Sleep(time_objective_sleep)
@@ -952,9 +1021,27 @@ function Thread_Act02_Conversation()
   	-- Alien Base Defenders
   	-- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
   	spawn_list = SpawnList(list_alien_base_defenders, marker_act02_hunt_center, aliens, false, true, false)
-  	Hunt(spawn_list, "AntiDefault", true, true, marker_act02_hunt_center, distance_alien_base_defense)
-  	spawn_list = SpawnList(list_alien_base_defenders, marker_act02_hunt_center, aliens, false, true, false)
-  	Hunt(spawn_list, "AntiDefault", true, true, marker_act02_hunt_center, distance_alien_base_defense)
+	
+	for i, unit in pairs(spawn_list) do
+		if TestValid(unit) then
+			unit.Set_Service_Only_When_Rendered(true)
+			unit.Guard_Target(unit.Get_Position())
+		end
+	end
+	
+  	--Hunt(spawn_list, "AntiDefault", true, true, marker_act02_hunt_center, distance_alien_base_defense)
+	
+	--jdg 1/11/08 slash and burn balancing for 360 performance reasons
+  	spawn_list = SpawnList(list_alien_base_defenders, marker_act02_hunt_center_2, aliens, false, true, false)
+	
+	for i, unit in pairs(spawn_list) do
+		if TestValid(unit) then
+			unit.Set_Service_Only_When_Rendered(true)
+			unit.Guard_Target(unit.Get_Position())
+		end
+	end
+	
+  	--Hunt(spawn_list, "AntiDefault", true, true, marker_act02_hunt_center_2, distance_alien_base_defense)
 
    Sleep(time_objective_sleep)
 
@@ -966,6 +1053,8 @@ function Thread_Act02_Conversation()
       moore.Prevent_All_Fire(true)
       moore.Prevent_Opportunity_Fire(true)
       moore.Teleport_And_Face(marker_act03_moore)
+		
+		moore.Set_Service_Only_When_Rendered(true)
    end
    for i, marker in pairs(marker_list_act03_marines) do
       spawn_list = SpawnList(list_single_military_marines, marker, military, false, true, false)
@@ -975,6 +1064,8 @@ function Thread_Act02_Conversation()
          unit.Prevent_All_Fire(true)
          unit.Prevent_Opportunity_Fire(true)
          table.insert(list_act03_marines, unit)
+			
+			unit.Set_Service_Only_When_Rendered(true)
       end
    end
 
@@ -988,6 +1079,8 @@ function Thread_Act02_Conversation()
          unit.Prevent_All_Fire(true)
          unit.Prevent_Opportunity_Fire(true)
          table.insert(list_act03_marines, unit)
+			
+			unit.Set_Service_Only_When_Rendered(true)
       end
    end      
 	
@@ -1016,7 +1109,7 @@ function Thread_Act04_Conversation()
    local spawn_list, unit, walker
    
    Objective_Complete(mm01_objective08)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_08_COMPLETE"} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_08_COMPLETE"} )
    Remove_Radar_Blip("blip_objective08")
 	while conversation_occuring do
 		Sleep(1)
@@ -1045,7 +1138,10 @@ function Thread_Act04_Conversation()
 	if TestValid(walker) then
      	walker.Get_Script().Call_Function("Register_For_Walker_Death", Script, "Callback_Act04_Assembly_Walker_Killed") 
      	-- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
-     	Hunt(spawn_list, "AntiDefault", true, false, marker_act04_marine_hunt, distance_act04_hunt)
+     	--Hunt(spawn_list, "AntiDefault", true, false, marker_act04_marine_hunt, distance_act04_hunt)
+		
+		--jdg changing walker script from hunt to move-to per Ricky D
+		walker.Move_To(marker_act04_marine_hunt.Get_Position())
 	end 
 	spawn_list = SpawnList(list_spawn_alien_saucers, marker_act04_walker, aliens, false, true, false)
   	Hunt(spawn_list, "AntiDefault", true, false, marker_act04_marine_hunt, distance_act04_hunt)
@@ -1074,7 +1170,7 @@ function Thread_Act04_Conversation()
 	
 	Sleep(time_radar_sleep)
    if not mission_success and not mission_failure then
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_09_NEW"} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_09_NEW"} )
 	   Sleep(time_objective_sleep)
       mm01_objective09 = Add_Objective("TEXT_SP_MISSION_MAS01_OBJECTIVE_09")
    end
@@ -1269,13 +1365,13 @@ end
 function Thread_Complete_Matter_Engine_Objective(obj)
    if not mission_success and not mission_failure then
       Objective_Complete(mm01_objective02)
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_02_COMPLETE"} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_02_COMPLETE"} )
       Sleep(time_objective_sleep)
       if not mission_success and not mission_failure and not knowledge_vault_built and not rescue_objective_given then
   	      BlockOnCommand(Queue_Talking_Head(pip_zessus, "MAS01_SCENE06_06"))
   	   end
       if not mission_success and not mission_failure and not knowledge_vault_built and not rescue_objective_given then
-   	   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_03_NEW"} )
+   	   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_03_NEW"} )
   	      Sleep(time_objective_sleep)
   	   end
       if not mission_success and not mission_failure and not knowledge_vault_built and not rescue_objective_given then
@@ -1288,10 +1384,10 @@ function Thread_Complete_Knowledge_Vault_Objective(obj)
    if mm01_objective03 ~= nil then
    	if not mission_success and not mission_failure then
          Objective_Complete(mm01_objective03)
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_03_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_03_COMPLETE"} )
          Sleep(time_objective_sleep)
       	if not mission_success and not mission_failure and not adepts_lab_built and not rescue_objective_given then
-	         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_04_NEW"} )
+	         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_04_NEW"} )
 	  	      Sleep(time_objective_sleep)
 	  	   end
       	if not mission_success and not mission_failure and not adepts_lab_built and not rescue_objective_given then
@@ -1320,7 +1416,7 @@ function Thread_Complete_Adepts_Lab_Objective()
    if mm01_objective04 ~= nil then
 	   if not mission_success and not mission_failure then
          Objective_Complete(mm01_objective04)
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_04_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_04_COMPLETE"} )
 	      while conversation_occuring do
 		      Sleep(1)
 	      end
@@ -1330,7 +1426,7 @@ function Thread_Complete_Adepts_Lab_Objective()
      	      conversation_occuring = false
      	   end
    	   if not mission_success and not mission_failure and not guardian_built and not rescue_objective_given then
-            Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_05_NEW_ALT"} )
+            Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_05_NEW_ALT"} )
 	  	      Sleep(time_objective_sleep)
 	  	   end
    	   if not mission_success and not mission_failure and not guardian_built and not rescue_objective_given then
@@ -1351,7 +1447,7 @@ function Thread_Complete_Guardian_Objective()
    if mm01_objective05 ~= nil then
 	   if not mission_success and not mission_failure then
          Objective_Complete(mm01_objective05)
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_05_COMPLETE_ALT"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_05_COMPLETE_ALT"} )
          Sleep(time_objective_sleep)
 	      while conversation_occuring do
 		      Sleep(1)
@@ -1362,7 +1458,7 @@ function Thread_Complete_Guardian_Objective()
 	         conversation_occuring = false
 	      end
    	   if not mission_success and not mission_failure and not flight_machina_built and not rescue_objective_given then
-	         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_06_NEW"} )
+	         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_06_NEW"} )
 	  	      Sleep(time_objective_sleep)
 	  	   end
    	   if not mission_success and not mission_failure and not flight_machina_built and not rescue_objective_given then
@@ -1383,7 +1479,7 @@ function Thread_Complete_Flight_Machina_Objective()
    if mm01_objective06 ~= nil then
 	   if not mission_success and not mission_failure then
          Objective_Complete(mm01_objective06)
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_06_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_06_COMPLETE"} )
          Sleep(time_objective_sleep)
 	      while conversation_occuring do
 		      Sleep(1)
@@ -1394,7 +1490,7 @@ function Thread_Complete_Flight_Machina_Objective()
 	         conversation_occuring = false
 	      end
    	   if not mission_success and not mission_failure and not matter_sifter_built and not rescue_objective_given then
-	         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_07_NEW"} )
+	         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_07_NEW"} )
 	         Sleep(time_objective_sleep)
 	      end
    	   if not mission_success and not mission_failure and not matter_sifter_built and not rescue_objective_given then
@@ -1415,7 +1511,7 @@ function Thread_Complete_Matter_Sifter_Objective()
    if mm01_objective07 ~= nil then
   	   if not mission_success and not mission_failure then
          Objective_Complete(mm01_objective07)
-         Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_07_COMPLETE"} )
+         Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_07_COMPLETE"} )
          Sleep(time_objective_sleep)
       end
    end
@@ -1437,7 +1533,7 @@ function Thread_Give_Rescue_Objective()
       conversation_occuring = false
    end
    if not mission_success and not mission_failure then
-      Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_08_NEW"} )
+      Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_08_NEW"} )
          Sleep(time_objective_sleep)
       mm01_objective08 = Add_Objective("TEXT_SP_MISSION_MAS01_OBJECTIVE_08")
 	   Add_Radar_Blip(marker_act03_fow01, "DEFAULT", "blip_objective08")
@@ -1546,7 +1642,10 @@ function Thread_Move_Alien_Grunts()
 		
 		if table.getn(list_attack_grunts) >= grunt_team_size then
 			while grunt_team_list_in_use do
-				Sleep(0.1)
+				--jdg trying to optimize here
+				--Sleep(0.1)
+				
+				Sleep(5)
 			end
 			if TestListValid(list_attack_grunts) then
            	-- Hunt(object_or_table, [priorities, allow_wander, respect_fog, constraint_center, constraint_radius])
@@ -1613,7 +1712,7 @@ function Thread_Prox_Act01_Zessus02(prox_obj)
    local i, unit, spawn_list, object
    
    prox_act01_guards02_active = false
-   Sleep(0.2)
+   Sleep(1)
    if not prox_act01_guards02_active then
    	if TestValid(pen_act01_disciples) then
         	prox_obj.Cancel_Event_Object_In_Range(Prox_Act01_Guards02)
@@ -1684,7 +1783,7 @@ function Thread_Prox_Act01_Zessus01(prox_obj)
   	   BlockOnCommand(Queue_Talking_Head(pip_disciple, "MAS01_SCENE04_05"))
    end
    prox_act01_guards01_active = false
-   Sleep(0.2)
+   Sleep(1)
    if not prox_act01_guards01_active then
    	if TestValid(pen_act01_gate) and act01_first_gate_opened then
         	prox_obj.Cancel_Event_Object_In_Range(Prox_Act01_Guards01)
@@ -1720,7 +1819,7 @@ end
 
 function Thread_Mission_End_Conversation()
    Objective_Complete(mm01_objective09)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_09_COMPLETE"} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS01_OBJECTIVE_09_COMPLETE"} )
    if TestValid(hero) then
       hero.Make_Invulnerable(true)
    end
@@ -1740,13 +1839,9 @@ function Thread_Mission_End_Conversation()
 end
 
 function Thread_Mission_Failed(mission_failed_text)
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_failure = true
-   Stop_All_Speech()
-   Flush_PIP_Queue()
 	Letter_Box_In(1)
 	Lock_Controls(1)
 	Suspend_AI(1)
@@ -1755,9 +1850,9 @@ function Thread_Mission_Failed(mission_failed_text)
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,30)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {mission_failed_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {mission_failed_text} )
 	Sleep(time_objective_sleep)
-   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
    Fade_Screen_Out(2)
    Sleep(2)
    Lock_Controls(0)
@@ -1765,13 +1860,9 @@ function Thread_Mission_Failed(mission_failed_text)
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+	UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	mission_success = true
-   Stop_All_Speech()
-   Flush_PIP_Queue()
    Letter_Box_In(1)
    Lock_Controls(1)
    Suspend_AI(1)
@@ -1780,9 +1871,9 @@ function Thread_Mission_Complete()
    Zoom_Camera.Set_Transition_Time(10)
    Zoom_Camera(.3)
    Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1827,7 +1918,7 @@ function Cache_Models()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	if show_sell_button then
 		UI_Show_Sell_Button()
 	else
@@ -1835,3 +1926,95 @@ function Post_Load_Callback()
 	end
 	Movie_Commands_Post_Load_Callback()
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Objective_Text = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

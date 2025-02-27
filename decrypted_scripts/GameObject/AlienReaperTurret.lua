@@ -1,4 +1,12 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/AlienReaperTurret.lua#47 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[18] = true
+LuaGlobalCommandLinks[51] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/AlienReaperTurret.lua#21 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, LLC
@@ -23,23 +31,22 @@
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/AlienReaperTurret.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/AlienReaperTurret.lua $
 --
 --    Original Author: 
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 84788 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/25 15:05:17 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #47 $
+--          $Revision: #21 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --/** @file */
 
 require("PGBehaviors")
-require("PGUICommands")
 
 local my_behavior = {
 	Name = _REQUIREDNAME
@@ -139,7 +146,10 @@ function Unlock_From_Target( clear )
 		resource_drone_target_score = -1.0
 	else
 		-- Release previous target if we had a target.  
-		Set_Reserved( false )
+		
+		--Set_Reserved( false )
+		resource_drone_target.Resource_Set_Reserved_For_Harvesting(OwningPlayer,false)
+
 	end
 	
 	if clear == nil or clear then
@@ -249,7 +259,7 @@ function Score_Unit(unit)
 		return 0.0
 	end
 
-	if unit.Has_Behavior( BEHAVIOR_BRIDGE ) then
+	if unit.Has_Behavior( 86 ) then
 		return 0.0
 	end
 	
@@ -283,8 +293,13 @@ function Score_Unit(unit)
 	-- We don't really need more units to harvest us if we already have one.
 	-- Apply a small score penalty if we've already directed a unit to harvest us.
 	local concurrency_score = 1.0
-	test_reserved = Get_Reserved( unit )
-	if test_reserved == nil or test_reserved[OwningPlayer.Get_ID()].Used then
+	
+	-- (gth) 1-17-2008 changed Resource_Get_Reserved_For_Harvesting implementation
+	-- test_reserved = Get_Reserved( unit )
+	-- if test_reserved == nil or test_reserved[OwningPlayer.Get_ID()].Used then
+	--	concurrency_score = 0.85
+	-- end
+	if unit.Resource_Get_Reserved_For_Harvesting(OwningPlayer) then
 		concurrency_score = 0.85
 	end
 		
@@ -366,9 +381,10 @@ function Harvest_Resources()
 		
 		-- Claim this unit (if not a combat target)
 		if not CombatTarget then
-			test_reserved = Get_Reserved( resource_drone_target )
-			test_reserved[OwningPlayer.Get_ID()].Used = true
-			resource_drone_target.Resource_Set_Reserved_For_Harvesting(test_reserved)
+			--test_reserved = Get_Reserved( resource_drone_target )
+			--test_reserved[OwningPlayer.Get_ID()].Used = true
+			--resource_drone_target.Resource_Set_Reserved_For_Harvesting(test_reserved)
+			resource_drone_target.Resource_Set_Reserved_For_Harvesting(OwningPlayer,true)
 		end
 	
 		-- stop as we have a new target
@@ -438,59 +454,6 @@ function Harvest_Resources()
 end
 
   
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Get_Reserved()
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Get_Reserved( my_resource )
-	if TestValid( my_resource ) and not CombatTarget then
-	
-		local reserved
-		local changed = false
-		local pid = OwningPlayer.Get_ID()
-
-		reserved = my_resource.Resource_Get_Reserved_For_Harvesting()
-		
-		if reserved == nil then
-			reserved = {}
-			changed = true
-		end
-		if reserved[pid] == nil then
-			reserved[pid] = {}
-			reserved[pid].Used = false
-			changed = true
-		end
-		
-		if changed then
-			my_resource.Resource_Set_Reserved_For_Harvesting(reserved)
-		end
-		
-		return reserved
-		
-	end
-	
-	return nil
-	
-end
-
--- --------------------------------------------------------------------------------------------------------------------------------------------------
--- Set_Reserved()
--- --------------------------------------------------------------------------------------------------------------------------------------------------
-function Set_Reserved( on_off )
-	if TestValid( resource_drone_target ) and not CombatTarget then
-	
-		local reserved
-		
-		reserved = Get_Reserved( resource_drone_target )
-		
-		if reserved ~= nil then
-
-			reserved[OwningPlayer.Get_ID()].Used = on_off
-			resource_drone_target.Resource_Set_Reserved_For_Harvesting(reserved)
-			
-		end
-	end
-end
-
 
 -- --------------------------------------------------------------------------------------------------------------------------------------------------
 -- Zero Health handler
@@ -513,3 +476,30 @@ my_behavior.Is_Valid_Resource = Is_Valid_Resource
 my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 my_behavior.Service = Behavior_Service
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Calc_Score = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGStoryMode.lua#8 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGStoryMode.lua#10 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGStoryMode.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGStoryMode.lua $
 --
 --    Original Author: Brian Hayes
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 68909 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/04/26 11:52:14 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #8 $
+--          $Revision: #10 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -154,42 +156,86 @@ end
 -- UnitPoolDef[Find_Object_Type("Alien_Defiler") = 2
 -- etc.
 --
-function Maintain_Unit_Pool(player, unit_pool_def)
-	if not Lib_UnitPoolDef then
-		Lib_UnitPoolDef = {}
-	end
-	
-	if not Lib_MaintainUnitPoolThreads then
-		Lib_MaintainUnitPoolThreads = {}
-	end
-	
-	Lib_UnitPoolDef[player] = unit_pool_def
-	if Lib_MaintainUnitPoolThreads[player] then
-		Create_Thread.Kill(Lib_MaintainUnitPoolThreads[player])
-	end
-	Lib_MaintainUnitPoolThreads[player] = Create_Thread("Maintain_Unit_Pool_Internal", player)
-end
 
-function Maintain_Unit_Pool_Internal(player)
-	local unit_pool_def = Lib_UnitPoolDef[player]
-	
-	while true do
-		for unit_type, desired_count in pairs(unit_pool_def) do
-			local current_and_under_construction_units = PG_Find_All_Objects_Of_Type(unit_type.Get_Name(), player)
-			local num_instances_in_build_queues = PG_Count_Num_Instances_In_Build_Queues(unit_type, player)
-			local existing_count = #current_and_under_construction_units + num_instances_in_build_queues
-			
-			if existing_count < desired_count then
-				if TestValid(unit_type.Get_Type_Value("Tactical_Buildable_Beacon_Type")) then
-					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Structure", nil, { unit_type, desired_count - existing_count })
-				elseif unit_type.Has_Behavior(BEHAVIOR_HARD_POINT, "Land") then
-					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Hard_Point", nil, { unit_type, desired_count - existing_count })
-				else
-					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Unit", nil, { unit_type, desired_count - existing_count })
-				end
-			end
-						
-			Sleep(3)
-		end
-	end
+-- This isn't being used...snip...  1/23/2008 3:26:00 PM -- BMH
+-- function Maintain_Unit_Pool(player, unit_pool_def)
+-- 	if not Lib_UnitPoolDef then
+-- 		Lib_UnitPoolDef = {}
+-- 	end
+--
+-- 	if not Lib_MaintainUnitPoolThreads then
+-- 		Lib_MaintainUnitPoolThreads = {}
+-- 	end
+--
+-- 	Lib_UnitPoolDef[player] = unit_pool_def
+-- 	if Lib_MaintainUnitPoolThreads[player] then
+-- 		Create_Thread.Kill(Lib_MaintainUnitPoolThreads[player])
+-- 	end
+-- 	Lib_MaintainUnitPoolThreads[player] = Create_Thread("Maintain_Unit_Pool_Internal", player)
+-- end
+--
+-- function Maintain_Unit_Pool_Internal(player)
+-- 	local unit_pool_def = Lib_UnitPoolDef[player]
+--
+-- 	while true do
+-- 		for unit_type, desired_count in pairs(unit_pool_def) do
+-- 			local current_and_under_construction_units = PG_Find_All_Objects_Of_Type(unit_type.Get_Name(), player)
+-- 			local num_instances_in_build_queues = PG_Count_Num_Instances_In_Build_Queues(unit_type, player)
+-- 			local existing_count = #current_and_under_construction_units + num_instances_in_build_queues
+--
+-- 			if existing_count < desired_count then
+-- 				if TestValid(unit_type.Get_Type_Value("Tactical_Buildable_Beacon_Type")) then
+-- 					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Structure", nil, { unit_type, desired_count - existing_count })
+-- 				elseif unit_type.Has_Behavior(68, "Land") then
+-- 					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Hard_Point", nil, { unit_type, desired_count - existing_count })
+-- 				else
+-- 					player.Activate_AI_Goal("Generic_Sub_Goal_Build_Unit", nil, { unit_type, desired_count - existing_count })
+-- 				end
+-- 			end
+--
+-- 			Sleep(3)
+-- 		end
+-- 	end
+-- end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Last_Tactical_Parent = nil
+	Maintain_Base = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Story_AI_Request_Build_Hard_Point = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

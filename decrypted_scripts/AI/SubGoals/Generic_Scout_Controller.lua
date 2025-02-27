@@ -1,4 +1,17 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Scout_Controller.lua#20 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[197] = true
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[167] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[162] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[172] = true
+LuaGlobalCommandLinks[133] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Scout_Controller.lua#15 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +38,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/AI/SubGoals/Generic_Scout_Controller.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/AI/SubGoals/Generic_Scout_Controller.lua $
 --
 --    Original Author: Andre Arsenault
 --
---            $Author: Keith_Brors $
+--            $Author: Brian_Hayes $
 --
---            $Change: 83822 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/09/14 12:04:18 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #20 $
+--          $Revision: #15 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,6 +82,10 @@ end
 -- It spawns sub-goals (of the Generic_Scout script type) to actually
 -- execute its specific scouting plans.
 function Compute_Desire()
+
+	if Player.Get_Player_Is_Crippled() then
+		return 0.0
+	end
 
 	-- If we were created as a sub-goal of the Master_Unit_Goal_Controller
 	-- then that's ok.
@@ -138,7 +155,7 @@ function Scout_The_Map()
 	local last_analysis_time = 0
 	local min_time_between_analysis_runs = 71
 	local last_subgoal_creation_time = 0
-	local min_time_between_subgoal_creations = 23
+	local min_time_between_subgoal_creations = 20.0
 	
 	local already_known_locations = {}
 
@@ -156,7 +173,7 @@ function Scout_The_Map()
 				Sleep(90.0-GetCurrentTime())
 			end
 		end
-	
+
 		-- Is it time to update our view of the map?
 		current_time = GetCurrentTime()
 		if ( last_analysis_time == 0) or (current_time - last_analysis_time > min_time_between_analysis_runs) then
@@ -188,11 +205,13 @@ function Scout_The_Map()
 				else
 					log("Failed to create a new scouting sub-goal.")
 				end
+			else
+				log("Too many scout sub-goals to start a new one.")
 			end
 		end
 		
 		-- Wait at least one second before looping.
-		Sleep(1)
+		Sleep(5)
 	end
 
 	log("Scout_The_Map thread is exiting!!")
@@ -321,7 +340,7 @@ function Analyze_Map()
 
 	-- Find all allied base structures. We want to scout areas of the map
 	-- away from these objects.
-	local base_structures = Find_Objects_With_Behavior(BEHAVIOR_GROUND_STRUCTURE, Player)
+	local base_structures = Find_Objects_With_Behavior(99, Player)
 	if base_structures then
 		--log("Base Structures:")
 		--table.foreach(base_structures, show_table)
@@ -564,3 +583,44 @@ function Repel_Position_From_Given_Locations(position, locations)
 	return final_position
 end
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Burn_All_Objects = nil
+	Calculate_Task_Force_Speed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Find_Builder_Hard_Point = nil
+	Get_Distance_Based_Unit_Score = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Record_New_Active_Subgoal = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	Suppress_Nearby_Goals = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Use_Ability_If_Able = nil
+	Verify_Resource_Object = nil
+	Wait_For_Any_Subgoal = nil
+	show_table = nil
+	Kill_Unused_Global_Functions = nil
+end

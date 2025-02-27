@@ -1,3 +1,12 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[124] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -183,7 +192,7 @@ function Setup_Queue(building, flash_all_building_button)
 	BuildingButton.Set_User_Data(building)
 	
 	local player = Find_Player("local")
-	if building.Has_Behavior( BEHAVIOR_POWERED ) and building.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
+	if building.Has_Behavior( 161 ) and building.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 		BuildingButton.Set_Low_Power_Display(true)
 	else
 		BuildingButton.Set_Low_Power_Display(false)
@@ -303,3 +312,42 @@ Interface.Set_Building_Button_Selected = Set_Building_Button_Selected
 Interface.Set_Building_Button_Focus = Set_Building_Button_Focus
 Interface.Reset_Queue_Building = Reset_Queue_Building
 Interface.Hotkey_Activate_Queue = Hotkey_Activate_Queue
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

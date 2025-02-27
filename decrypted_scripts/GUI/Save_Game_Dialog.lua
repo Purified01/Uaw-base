@@ -1,3 +1,17 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[33] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[77] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[207] = true
+LuaGlobalCommandLinks[118] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
 require("PGBase")
 require("PGUICommands")
 
@@ -95,7 +109,7 @@ function On_Init()
 
 	Default_Save_Game_Name = Create_Wide_String()
 	Default_Save_Game_Seperator = Create_Wide_String(" - ")
-	SaveGameEditBox.Set_Text_Limit(35) -- MLL: Clamp the text so that it won't get cut off in the Load_Game_Dialog.
+	SaveGameEditBox.Set_Text_Limit(50) -- MLL: Clamp the text so that it won't get cut off in the Load_Game_Dialog.
 
 	DontDisplayDialog = false
 	Overwrite = false
@@ -146,7 +160,6 @@ function Display_Dialog()
 	end
 
 
-
 	Display_Save_Games()
 
 	SaveGameEditBox.Set_Text(Get_Default_Save_Game_Name())
@@ -162,16 +175,18 @@ end
 
 function Get_Default_Save_Game_Name()
 	local player = Find_Player("local")
-	local level = Get_Current_Map_Name()
+	local map = Get_Current_Map_Name()
+	local level = Get_Level_Name()
 	local seperator = Default_Save_Game_Seperator
 
 	if level then
+		-- MLL: The level name has the faction baked in.
 		Default_Save_Game_Name.assign(level)
-		if Is_Xbox() then
-			Default_Save_Game_Name.append(seperator).append(Get_Localized_Formatted_Number.Get_Current_Date_Time())
-		end
 	else
 		Default_Save_Game_Name.assign(player.Get_Faction_Display_Name())
+		if map then
+			Default_Save_Game_Name.append(seperator).append(map)
+		end
 	end
 
 	--[[
@@ -184,6 +199,9 @@ function Get_Default_Save_Game_Name()
 end
 
 function Hide_Dialog()
+	if Is_Spawned_From_Battle_End then
+		this.End_Modal()
+	end
 	GUI_Dialog_Raise_Parent()
 end
 
@@ -200,7 +218,7 @@ function Display_Save_Games()
 			local new_row = SavesList.Add_Row()
 			SavesList.Set_Text_Data(SAVE_GAME, new_row, Get_Game_Text("TEXT_EMPTY_SLOT"))
 			SavesList.Set_Selected_Row_Index(0)
-  		end
+		end
 	elseif Mode == SAVE_LOAD_MODE_REPLAY then
 		Highlighted_Replay = Create_Wide_String()
 		local new_row = SavesList.Add_Row()
@@ -226,6 +244,12 @@ function Display_Save_Games()
 end
 
 function Save_Clicked(event_name, source)
+	-- TODO - Support case where there are no save slots available
+	if not Is_Replay_Mode() and SaveLoadManager.Is_Game_List_Full() and Highlighted_Slot == Empty_Slot then
+		Spawn_Dialog_Box(Max_Saves_Dialog_Params)
+		return
+	end
+
 	if not Is_Replay_Mode() then
 		local description = SaveGameEditBox.Get_Text()
 		if Is_Multiplayer_Skirmish() or Need_To_Overwrite() then
@@ -245,15 +269,6 @@ function Save_Clicked(event_name, source)
 				Save_Current(true)
 			end
 		end
-	end
-end
-
-function Delete_Clicked(event_name, source)
-	if not Is_Replay_Mode() and Highlighted_Slot ~= -1 and Highlighted_Slot ~= Empty_Slot then 
-		Spawn_Dialog_Box(Delete_Dialog_Params, "SimpleDialogBox")
-	elseif Mode == SAVE_LOAD_MODE_REPLAY and Highlighted_Index > 0 and
-		not Highlighted_Replay.empty() and Highlighted_Replay.compare(DEFAULT_AUTO_RECORD_NAME) ~= 0 then
-		Spawn_Dialog_Box(Delete_Dialog_Params, "SimpleDialogBox")
 	end
 end
 
@@ -282,8 +297,17 @@ function Need_To_Overwrite()
 	return false
 end
 
+function Delete_Clicked(event_name, source)
+	if not Is_Replay_Mode() and Highlighted_Slot ~= -1 and Highlighted_Slot ~= Empty_Slot then 
+		Spawn_Dialog_Box(Delete_Dialog_Params, "SimpleDialogBox")
+	elseif Mode == SAVE_LOAD_MODE_REPLAY and Highlighted_Index > 0 and
+		not Highlighted_Replay.empty() and Highlighted_Replay.compare(DEFAULT_AUTO_RECORD_NAME) ~= 0 then
+		Spawn_Dialog_Box(Delete_Dialog_Params, "SimpleDialogBox")
+	end
+end
+
 function Delete_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		if not Is_Replay_Mode() then
 			SaveLoadManager.Delete(Highlighted_Slot)
 		elseif Mode == SAVE_LOAD_MODE_REPLAY then
@@ -295,7 +319,7 @@ function Delete_Confirm_Callback(button)
 end
 
 function Save_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		if not Is_Replay_Mode() and Is_Multiplayer_Skirmish() then
 			SaveLoadManager.Send_Save_Game_Event(Save_Slot, SaveDescription)
 		else
@@ -328,7 +352,7 @@ function Save_Current(confirmed)
 
 		if Highlighted_Index ~= -1 then
 			SaveDescription = description
-            
+
 			if not Dialog_Box_Opened then
 				Save_Slot = Highlighted_Slot
 			end
@@ -424,7 +448,7 @@ function On_Update()
 			SaveGameEditBox.Set_Text(Highlighted_Replay)
 		end
 	end
-	
+
 	-- Needed for Xbox version
 	SaveLoadManager.Update()
 	-- On the Xbox, the user may change the storage device so the save list will also change
@@ -460,3 +484,39 @@ Interface.Set_Mode = Set_Mode
 Interface.Display_Dialog = Display_Dialog
 Interface.Spawned_From_Battle_End = Spawned_From_Battle_End
 Interface.Hide_Dialog = Hide_Dialog
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

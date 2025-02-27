@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/NovusInputStation.lua#12 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/NovusInputStation.lua#11 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GameObject/NovusInputStation.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GameObject/NovusInputStation.lua $
 --
 --    Original Author: Eric Yiskis
 --
---            $Author: Maria_Teruel $
+--            $Author: Brian_Kircher $
 --
---            $Change: 74706 $
+--            $Change: 93391 $
 --
---          $DateTime: 2007/06/28 10:31:08 $
+--          $DateTime: 2008/02/14 16:09:21 $
 --
---          $Revision: #12 $
+--          $Revision: #11 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,7 +112,7 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function Station_Object_Has_Power( object )
 	if TestValid( object ) then
-		if object.Has_Behavior( BEHAVIOR_POWERED ) then
+		if object.Has_Behavior( 161 ) then
 			if object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 				return false
 			end
@@ -129,8 +136,10 @@ function Novus_Input_Station_Launch_Drone(sleep_time)
 
 	new_drone = Create_Generic_Object( ref_type, spawn_position, Object.Get_Owner(), false )
 
-	new_drone.Get_Script().Set_Variable("resource_drone_depot",Object)
-	new_drone.Get_Script().Set_Variable("resource_drone_search_radius",resource_depot_collection_radius)
+--	new_drone.Get_Script().Set_Variable("resource_drone_depot",Object)
+--	new_drone.Get_Script().Set_Variable("resource_drone_search_radius",resource_depot_collection_radius)
+	new_drone.Set_Depot(Object)
+	new_drone.Set_Drone_Search_Radius(resource_depot_collection_radius)
 	table.insert(drone_list,new_drone)
 	
 	if  drone_count < resource_depot_active_drones then
@@ -147,7 +156,7 @@ function Destroy_Attached_Drones()
 
 	-- If the depot is destroyed, destroy all the drones
 	for _, kill_drone in pairs(drone_list) do
-		if TestValid(kill_drone) then
+		if TestValid(kill_drone) and kill_drone.Get_Script() then
 			kill_drone.Get_Script().Call_Function("Novus_Input_Station_Destroyed", Object)
 		end
 	end
@@ -219,3 +228,30 @@ my_behavior.First_Service = Behavior_First_Service
 my_behavior.Health_At_Zero = Behavior_Health_At_Zero
 
 Register_Behavior(my_behavior)
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Switch_Sides = nil
+	Declare_Enum = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Novus_Collector_Destroyed = nil
+	OutputDebug = nil
+	Remove_Invalid_Objects = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

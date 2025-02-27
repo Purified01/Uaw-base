@@ -1,4 +1,6 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Input_Scene.lua#4 $
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Input_Scene.lua#5 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +27,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Input_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Input_Scene.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Chris_Brooks $
+--            $Author: Brian_Hayes $
 --
---            $Change: 39525 $
+--            $Change: 92565 $
 --
---          $DateTime: 2006/03/16 15:35:52 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #4 $
+--          $Revision: #5 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,4 +76,10 @@ end
 
 function Mouse_Non_Client_Right_Up()
 
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Mouse_Non_Client_Left_Down = nil
+	Mouse_Non_Client_Right_Down = nil
+	Kill_Unused_Global_Functions = nil
 end

@@ -1,4 +1,15 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Gui/HeroIcons.lua#66 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[98] = true
+LuaGlobalCommandLinks[124] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Gui/HeroIcons.lua#29 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +36,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Gui/HeroIcons.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Gui/HeroIcons.lua $
 --
 --    Original Author: Brian Hayes
 --
 --            $Author: James_Yarrow $
 --
---            $Change: 81475 $
+--            $Change: 94057 $
 --
---          $DateTime: 2007/08/23 11:26:24 $
+--          $DateTime: 2008/02/26 14:18:49 $
 --
---          $Revision: #66 $
+--          $Revision: #29 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -311,7 +322,7 @@ function Hero_Icon_Create(event, source, object, priority, texture, head_model)
 		HeroTable[object].IsDummy = true	
 	else
 		HeroTable[object].TooltipData = {'object', {object, }}
-		HeroTable[object].IsDummy = object.Has_Behavior(BEHAVIOR_GHOST)
+		HeroTable[object].IsDummy = object.Has_Behavior(160)
 	end
 	
 	Update_Hero_Icons()
@@ -372,7 +383,7 @@ function Update_Hero_Icons(selected_objects)
 	for hero, data in pairs(HeroTable) do
 		if TestValid(hero) == false then
 			table.insert(delete_list, hero)
-		elseif hero.Get_Owner() ~= Find_Player("local") then 
+		elseif hero.Get_Owner() ~= LocalPlayer then 
 			table.insert(delete_list, hero)
 		end
 	end
@@ -388,9 +399,8 @@ function Update_Hero_Icons(selected_objects)
 
 	local old_hero_button_map = HeroObjectToButtonMap
 	HeroObjectToButtonMap = {}
-	local local_player = Find_Player("local")
 	for hero, data in pairs(HeroTable) do
-		if hero.Get_Owner() == local_player and hero.Is_In_Active_Context() then
+		if hero.Get_Owner() == LocalPlayer and hero.Is_In_Active_Context() then
 			local button
 			local is_scientist = hero.Get_Script().Get_Async_Data("IS_SCIENTIST")
 			
@@ -518,13 +528,19 @@ function GUI_Queue_Talking_Head(_, _, object_or_model, speech_event, pip_index, 
 		return
 	end
 	
-	Queue_Speech_Event(speech_event)
+	--The calling script now queues the speech event for thread safety
 	QueuedTalkingHeads[speech_event] = {}
 	QueuedTalkingHeads[speech_event].ObjectOrModel = object_or_model	
 	QueuedTalkingHeads[speech_event].HeadModel = head_model
 	QueuedTalkingHeads[speech_event].PIPIndex = pip_index
-	QueuedTalkingHeads[speech_event].CallbackScript = callback_script
-	QueuedTalkingHeads[speech_event].CallbackFunction = callback_function
+	
+	if callback_script and callback_function then
+		--...but we still need to account for old versions of game logic
+		--scripts that don't have this behavior
+		Queue_Speech_Event(speech_event)
+		QueuedTalkingHeads[speech_event].CallbackScript = callback_script
+		QueuedTalkingHeads[speech_event].CallbackFunction = callback_function
+	end
 end
 
 
@@ -600,8 +616,9 @@ function PIP_On_Speech_Event_Done(_, _, speech_event_name)
 				PIPWindowBackdrops[talking_head_data.PIPIndex].Set_Tint(1.0, 1.0, 1.0, 0.5)					
 			end			
 		end
-			
+		
 		--Inform the script that originally queued the talking head that it's done.
+		--Note that only PIPs queued from old save games should have these values set
 		if talking_head_data.CallbackScript and talking_head_data.CallbackFunction then
 			talking_head_data.CallbackScript.Call_Function(talking_head_data.CallbackFunction, speech_event_name)
 		end
@@ -646,15 +663,25 @@ end
 -- GUI_Flush_PIP_Queue
 -- --------------------------------------------------------------------------------------------------------------------------------------------------
 function GUI_Flush_PIP_Queue()
-	for event_name, _ in pairs(QueuedTalkingHeads) do
-		Cancel_Queued_Speech_Events(event_name)
-	end
 	QueuedTalkingHeads = {}
 	for i, window in pairs(PIPWindows) do
 		if not PIPManuallyOpened[i] then
 			window.Set_Hidden(true)
 			PIPWindowBackdrops[i].Set_Hidden(true)
 		end
+	end
+	
+	-- Also suspend the subtitles.
+	local subtitle_object = nil
+	if IsLetterboxMode or not this.FadeQuad.Get_Hidden() then
+		subtitle_object = this.CinematicSubtitle
+	else
+		subtitle_object = this.Subtitle	
+	end
+	
+	if TestValid(subtitle_object) then
+		subtitle_object.Set_Text("")
+		subtitle_object.Set_Hidden(true)
 	end
 end
 
@@ -667,4 +694,58 @@ function Post_Load_Game()
 	if this.Research_Tree.Get_Research_Progress() > 0.0 then
 		IsResearching = true
 	end
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Find_Hero_Button = nil
+	GUI_Cancel_Talking_Head = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Hero_Icons_Init = nil
+	Max = nil
+	Min = nil
+	On_Mouse_Off_Hero_Button = nil
+	On_Mouse_Over_Hero_Button = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Post_Load_Game = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Hero_Icons_Tooltip_Data = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

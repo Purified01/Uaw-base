@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Yes_No_Ok_Dialog.lua#11 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Yes_No_Ok_Dialog.lua#13 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Yes_No_Ok_Dialog.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Yes_No_Ok_Dialog.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90377 $
+--            $Change: 92565 $
 --
---          $DateTime: 2008/01/07 11:47:13 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #11 $
+--          $Revision: #13 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -134,6 +141,7 @@ function On_Yes_Clicked(event_name, source)
 		
 	end
 
+		
 end
 
 -------------------------------------------------------------------------------
@@ -156,6 +164,7 @@ function On_No_Clicked(event_name, source)
 		
 	end
 	
+	
 end
 
 -------------------------------------------------------------------------------
@@ -177,6 +186,7 @@ function On_Ok_Clicked(event_name, source)
 		Yes_No_Ok_Dialog.Get_Containing_Scene().Raise_Event_Immediate("On_YesNoOk_Ok_Clicked", nil, {})
 		
 	end
+	
 	
 end
 
@@ -369,3 +379,32 @@ Interface.Set_User_Data = Set_User_Data
 Interface.Get_User_Data = Get_User_Data
 Interface.Get_Checkbox_State = Get_Checkbox_State
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Prepare_Fadeout = nil
+	Remove_Invalid_Objects = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

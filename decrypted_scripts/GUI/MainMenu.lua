@@ -1,4 +1,21 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/MainMenu.lua#163 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[192] = true
+LuaGlobalCommandLinks[6] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[77] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[84] = true
+LuaGlobalCommandLinks[79] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[70] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/MainMenu.lua#38 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +42,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/MainMenu.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/MainMenu.lua $
 --
 --    Original Author: Justin Fic
 --
 --            $Author: Nader_Akoury $
 --
---            $Change: 89746 $
+--            $Change: 96950 $
 --
---          $DateTime: 2007/12/14 14:46:47 $
+--          $DateTime: 2008/04/14 17:15:42 $
 --
---          $Revision: #163 $
+--          $Revision: #38 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -184,7 +201,7 @@ function On_Init()
 	end
 	
 	-- Back buttons attached to xbox "B" key
-	Mainmenu.Register_Event_Handler("Controller_Button_As_Back", nil, Controller_Key_As_Back)
+	Mainmenu.Register_Event_Handler("Controller_B_Button_Up", nil, Controller_Key_As_Back)
 	
 	--Mainmenu.Menu_Buttons.Multiplayer_Buttons.Button_Internet.Enable(false)
 
@@ -250,7 +267,7 @@ function On_Init()
 	Mainmenu.Menu_Buttons.Tutorial_Buttons.Button_Tutorial_Back.Set_Tab_Order(Declare_Enum())
 
 	-- Options Menu
-	Mainmenu.Menu_Buttons.Option_Buttons.Button_Audio_Options.Set_Tab_Order(Declare_Enum(0))
+	Mainmenu.Menu_Buttons.Option_Buttons.Button_Audio_Options.Set_Tab_Order(Declare_Enum())
 	Mainmenu.Menu_Buttons.Option_Buttons.Button_Video_Options.Set_Tab_Order(Declare_Enum())
 	Mainmenu.Menu_Buttons.Option_Buttons.Button_Network_Options.Set_Tab_Order(Declare_Enum())
 	Mainmenu.Menu_Buttons.Option_Buttons.Button_Gamepad.Set_Tab_Order(Declare_Enum())
@@ -287,7 +304,7 @@ function On_Init()
 
 	-- Init our generic message box
 	Init_Message_Box()
-					
+
 	LiveLogonState = 2
 	NextTabOrder = Declare_Enum()
 
@@ -302,6 +319,8 @@ function On_Init()
 	
 	this.Register_Event_Handler("Movie_Finished", this.FullScreenMovieGroup.Movie, Stop_Full_Screen_Movie)
 	this.Register_Event_Handler("Closing_All_Displays", nil, Stop_Full_Screen_Movie)
+	this.Register_Event_Handler("Credits_Done", nil, On_Credits_Done)
+	this.Register_Event_Handler("On_Menu_System_Activated", nil, On_Menu_System_Activated)
 	
 	-- The game will no longer crash in the case where the Live dialog is not embedded,
 	-- and by postponing it we improve load time to the main menu
@@ -761,19 +780,19 @@ function Main_Menu_Mod_Button_Clicked(event_name, source)
 end
 
 function On_Beta_Splash_Notification_Clicked(event)
-	if event == DIALOG_RESULT_LEFT then
+	if event == 1 then
 		Net.Unregister_Event_Handler(On_Network_Event)
 		Net.Shutdown()
 		Quit_App_Now()
-	elseif event == DIALOG_RESULT_MIDDLE then
+	elseif event == 2 then
 		Net.Launch_URL("http://www.sega.com/games/title/universeatwar/uaw_betatest_feedback.php")
 		Net.Unregister_Event_Handler(On_Network_Event)
 		Net.Shutdown()
-	elseif event == DIALOG_RESULT_RIGHT then
+	elseif event == 3 then
 		Net.Launch_URL("http://www.gamestop.com/product.asp?product%5Fid=646975")
 		Net.Unregister_Event_Handler(On_Network_Event)
 		Net.Shutdown()
-	elseif event == DIALOG_RESULT_BUTTON_4 then
+	elseif event == 4 then
 		Net.Launch_URL("http://www.amazon.com/Universe-At-War-Earth-Assault/dp/B000R2WI0G/ref=pd_bbs_sr_1/105-4555601-6077255?ie=UTF8&s=videogames&qid=1185985796&sr=8-1")
 		Net.Unregister_Event_Handler(On_Network_Event)
 		Net.Shutdown()
@@ -799,6 +818,11 @@ function Main_Menu_Debug_Button_Clicked(event_name, source)
 	if not GOLD_BUILD and not BETA_BUILD then
 		Mainmenu.Menu_Buttons.Main_Menu_Buttons.Set_Hidden(true)
 		Mainmenu.Menu_Buttons.Debug_Buttons.Set_Hidden(false)
+
+		--
+		-- MBL 09.07.2007: Had to add this to get debug menu working from main menu after the big integration
+		--
+		Mainmenu.Menu_Buttons.Debug_Buttons.Button_Debug_Load_Map.Set_Key_Focus()
 	end
 end
 
@@ -807,28 +831,34 @@ end
 -- Campaign Menu Button Events
 ---------------------------------------
 
+-- -----------------------------------------------------------------------------------------------------------------------------
+-- Campaign_Continue_Button_Clicked
+-- -----------------------------------------------------------------------------------------------------------------------------
 function Campaign_Continue_Button_Clicked(event_name, source)
 	SaveLoadManager.Auto_Load()
 end
 
+-- -----------------------------------------------------------------------------------------------------------------------------.
+-- Campaign_Tutorial_Button_Clicked
+-- -----------------------------------------------------------------------------------------------------------------------------
 function Campaign_Tutorial_Button_Clicked(event_name, source)
 	-- TODO: Launch campaign difficulty dialog
-	CampaignManager.Start_Campaign("Tutorial_Story_Campaign", Difficulty_Normal) -- default to easy for now
+	CampaignManager.Start_Campaign("Tutorial_Story_Campaign") -- use default difficulty from profile
 end
 
 function Campaign_Novus_Button_Clicked(event_name, source)
 	-- TODO: Launch campaign difficulty dialog
-	CampaignManager.Start_Campaign("NOVUS_Story_Campaign", Difficulty_Normal) -- default to easy for now
+	CampaignManager.Start_Campaign("NOVUS_Story_Campaign") -- use default difficulty from profile
 end
 
 function Campaign_Hierarchy_Button_Clicked(event_name, source)
 	-- TODO: Launch campaign difficulty dialog
-	CampaignManager.Start_Campaign("Hierarchy_Story_Campaign", Difficulty_Normal) -- default to easy for now
+	CampaignManager.Start_Campaign("Hierarchy_Story_Campaign") -- use default difficulty from profile
 end
 
 function Campaign_Masari_Button_Clicked(event_name, source)
 	-- TODO: Launch campaign difficulty dialog
-	CampaignManager.Start_Campaign("MASARI_Story_Campaign", Difficulty_Normal) -- default to easy for now
+	CampaignManager.Start_Campaign("MASARI_Story_Campaign") -- use default difficulty from profile
 end
 
 function Campaign_Scenario_Button_Clicked(event_name, source)
@@ -869,18 +899,14 @@ function Skirmish_New_Game_Button_Clicked(event_name, source)
 	Main_Menu_Passivate_Movies()
 	if not TestValid(Mainmenu.Skirmish_Setup_Dialog) then
 		local handle
-		-- The Xbox team wants the old dialog back for now
-		if Is_Xbox() then
-			handle = Create_Embedded_Scene("Skirmish_Battle_Setup", Mainmenu, "Skirmish_Setup_Dialog")
-		else
-			handle = Create_Embedded_Scene("Skirmish_Setup_Dialog", Mainmenu, "Skirmish_Setup_Dialog")
-		end
+		handle = Create_Embedded_Scene("Skirmish_Setup_Dialog", Mainmenu, "Skirmish_Setup_Dialog")
 		this.Skirmish_Setup_Dialog.Set_Tab_Order(NextTabOrder)
 		NextTabOrder = NextTabOrder + 1				
 	else
 		Mainmenu.Skirmish_Setup_Dialog.Set_Hidden(false)
 	end
 	Mainmenu.Skirmish_Setup_Dialog.Start_Modal()
+	Main_Menu_Passivate_Movies()
 end
 
 function Skirmish_Load_Game_Button_Clicked(event_name, source)
@@ -1060,7 +1086,8 @@ function Multiplayer_Conquer_The_World_Button_Clicked(event_name, source)
 		Mainmenu.Network_Progress_Bar.Set_Hidden(false)
 	end
 
-	Mainmenu.Network_Progress_Bar.Start()
+	-- load the global conquest asset bank now
+	Mainmenu.Network_Progress_Bar.Start({"Bank_Global_Conquest", "Bank_Map_Preview"})
 	Mainmenu.Network_Progress_Bar.Set_Message(Get_Game_Text("TEXT_MESSAGE_CONNECT_TO_NETWORK"))
 	Mainmenu.Network_Progress_Bar.Hide_Cancel_Button()
 	PGCrontab_Schedule(Start_Global_Conquest_Lobby, 0, 1)
@@ -1193,6 +1220,7 @@ end
 -- Leaderboard button clicked.
 -------------------------------------------------------------------------------
 function Multiplayer_Leaderboards_Button_Clicked()
+	Main_Menu_Passivate_Movies()
 	if not TestValid(Mainmenu.Leaderboard_Dialog) then
 		local handle = Create_Embedded_Scene("Leaderboard_Dialog", Mainmenu, "Leaderboard_Dialog")
 	else
@@ -1310,6 +1338,7 @@ function Start_Ranked_Game()
 		Mainmenu.Ranked_Game_Dialog.Set_Hidden(false)
 	end
 
+	Mainmenu.Ranked_Game_Dialog.Start_Modal()
 	Mainmenu.Ranked_Game_Dialog.Start_Quick_Match_Mode(QuickMatchMode)
 	Mainmenu.Network_Progress_Bar.Stop()
 	Mainmenu.Network_Progress_Bar.Set_Hidden(true)
@@ -1379,14 +1408,26 @@ end
 --
 -------------------------------------------------------------------------------
 function Start_Global_Conquest_Lobby()
-	Mainmenu.Network_Progress_Bar.Set_Message("Connected.  Preparing Global Conquest...")
+	--Mainmenu.Network_Progress_Bar.Set_Message("Connected.  Preparing Global Conquest...")
 	DebugMessage("LUA_LOBBY: Starting global conquest lobby...")
+	
+	-- if we haven't finished loading the asset bank, just reschedule again
+	if not Mainmenu.Network_Progress_Bar.Is_Done() then
+		PGCrontab_Schedule(Start_Global_Conquest_Lobby, 0, 1)
+		return
+	end
+	
 	Main_Menu_Passivate_Movies()
 	if not TestValid(Mainmenu.Global_Conquest_Lobby) then
 		local handle = Create_Embedded_Scene("Global_Conquest_Lobby", Mainmenu, "Global_Conquest_Lobby")
 			this.Global_Conquest_Lobby.Set_Tab_Order(NextTabOrder)
 			NextTabOrder = NextTabOrder + 1			
 	else
+		-- need to rebuild the graphics of the conquest lobby since there is no loading on demand for the XBOX
+		-- the models in the asset bank had not been loaded when Rebuild_Graphics() was originally called
+		-- so do it now to set the models (since the asset bank has been loaded by now)
+		-- still happens for PC, but is trivial
+		Mainmenu.Global_Conquest_Lobby.Rebuild_Graphics()
 		Mainmenu.Global_Conquest_Lobby.Set_Hidden(false)
 	end
 	Mainmenu.Network_Progress_Bar.Stop()
@@ -1448,7 +1489,7 @@ end
 function Tutorial_Button_Training_Clicked(event_name, source)
 	-- MLL: Disable the auto save for the interactive tutorial.
 	SaveLoadManager.Disable_Auto_Save()
-	CampaignManager.Start_Campaign("TUTORIAL_NEW_Story_Campaign", Difficulty_Easy) -- default to easy for now
+	CampaignManager.Start_Campaign("TUTORIAL_NEW_Story_Campaign") -- use default difficulty from profile
 end
 
 function Tutorial_Button_1_Clicked(event_name, source)
@@ -1586,7 +1627,12 @@ function Options_Game_Button_Clicked(event_name, source)
 end
 
 function Options_Credits_Button_Clicked(event_name, source)
+	Main_Menu_Passivate_Movies()
 	Roll_Credits()
+end
+
+function On_Credits_Done()
+	Main_Menu_Activate_Movies()	
 end
 
 function Options_Trailer_Button_Clicked()
@@ -1635,7 +1681,7 @@ function Debug_Start_AI_Skirmish()
 	ClientTable[1].name = Create_Wide_String("LocalPlayer")
 	ClientTable[1].common_addr = Net.Get_Local_Addr()
 	ClientTable[1].faction = "Novus"
-	ClientTable[1].color = COLOR_BRIGHT_BLUE
+	ClientTable[1].color = 15
 	ClientTable[1].is_ai = false
 	ClientTable[1].team = 1
 	LocalClient = ClientTable[1]
@@ -1645,7 +1691,7 @@ function Debug_Start_AI_Skirmish()
 	ClientTable[2].name = Create_Wide_String("AIPlayer")
 	ClientTable[2].common_addr = "AIPlayer1"
 	ClientTable[2].faction = "Alien"
-	ClientTable[2].color = COLOR_RED
+	ClientTable[2].color = 2
 	ClientTable[2].is_ai = true
 	ClientTable[2].ai_difficulty = 1
 	ClientTable[2].team = 2
@@ -1675,20 +1721,25 @@ function Debug_Start_AI_Skirmish()
 end
 
 function Set_State_Restart_Map()
+	DebugMessage("LUA_MAIN_MENU: Set_State_Restart_Map().")
+	Mainmenu.Skirmish_Setup_Dialog.Set_Restarting_Map(true)
 	if Save_Restart_Map_Data() then
 		this.Set_State("restart_map")
 	end
 end
 
 function On_Enter_State_Restart_Map()
+	DebugMessage("LUA_MAIN_MENU: Entering restart map state.")
 	this.Set_State("default")
 end
 
 function On_Exit_State_Restart_Map()
+	DebugMessage("LUA_MAIN_MENU: Exiting restart map state.")
 	Restart_Map()
 end
 
 function Save_Restart_Map_Data()
+	DebugMessage("LUA_MAIN_MENU: Saving restart map data.")
 	Register_Game_Scoring_Commands()
 	
 	-- Grab the client table	
@@ -1709,6 +1760,9 @@ end
 
 
 function Restart_Map()
+
+	DebugMessage("LUA_MAIN_MENU: ---> RESTARTING MAP <---")
+	
 	local itable = {}
 	for _, client in pairs(RestartClientTable) do
 		table.insert(itable, client)
@@ -1732,8 +1786,10 @@ function Restart_Map()
 	
 	RestartClientTable = nil
 	RestartGameScriptData = nil
+	Mainmenu.Skirmish_Setup_Dialog.Set_Restarting_Map(false)
+
 	RestartLocalClientTable = nil
-	
+
 	Mainmenu.Skirmish_Setup_Dialog.On_Play_Again_Restart()
 end
 
@@ -1779,7 +1835,9 @@ end
 -------------------------------------------------------------------------------
 function Main_Menu_Activate_Movies()
 
-	Mainmenu.Movie_1.Play()
+	if TestValid(Mainmenu.Movie_1) then 
+		Mainmenu.Movie_1.Play()
+	end
 	
 end
 
@@ -1788,7 +1846,9 @@ end
 -------------------------------------------------------------------------------
 function Main_Menu_Passivate_Movies()
 
-	Mainmenu.Movie_1.Stop()
+	if TestValid(Mainmenu.Movie_1) then 
+		Mainmenu.Movie_1.Stop()
+	end
 	
 end
 
@@ -1833,12 +1893,119 @@ function Is_Valid_Achievement_Signin_State()
 	return false
 end
 
-
-
-
-
-
-
-
-
+-------------------------------------------------------------------------------
+--
+-------------------------------------------------------------------------------
+function On_Menu_System_Activated()
+	-- This auto enables/disables the various buttons on the campaign screen
+	-- so when we return to the main menu from a campaign, the buttons should
+	-- be in the proper state
+	Enable_Campaign_Buttons()
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Heartbeat = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Broadcast_Stats_Registration_Begin = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Debug_Start_AI_Skirmish = nil
+	DesignerMessage = nil
+	Disable_UI_Element_Event = nil
+	Embed_Heavyweight_Scenes = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Client_Table_Count = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	Network_Update_Local_Common_Addr = nil
+	On_Legal_Stuff_Done = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Internet_Init = nil
+	PGNetwork_LAN_Init = nil
+	PGOfflineAchievementDefs_Init = nil
+	PGPlayerProfile_Init = nil
+	Play_Alien_Steam = nil
+	Play_Click = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Set_Local_User_Applied_Medals = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Skip_To_Campaign_Dialog = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Tutorial_Button_15_Clicked = nil
+	Tutorial_Button_16_Clicked = nil
+	Tutorial_Button_1_Clicked = nil
+	Tutorial_Button_2_Clicked = nil
+	Tutorial_Button_3_Clicked = nil
+	Tutorial_Button_4_Clicked = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Achievement_Definition = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
 

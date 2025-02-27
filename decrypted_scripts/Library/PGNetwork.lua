@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGNetwork.lua#108 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[197] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[8] = true
+LuaGlobalCommandLinks[75] = true
+LuaGlobalCommandLinks[128] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGNetwork.lua#41 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,21 +35,22 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGNetwork.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGNetwork.lua $
 --
 --    Original Author: Joe Howes
 --
---            $Author: Nader_Akoury $
+--            $Author: Joe_Howes $
 --
---            $Change: 90228 $
+--            $Change: 97873 $
 --
---          $DateTime: 2008/01/02 17:37:40 $
+--          $DateTime: 2008/05/01 13:53:02 $
 --
---          $Revision: #108 $
+--          $Revision: #41 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
 require("PGBase")
+require("PGUICommands")
 require("PGVictoryConditionDefs")
 require("PGFactions")
 require("PGColors")
@@ -114,6 +125,7 @@ function PGNetwork_Init_Constants()
 	MESSAGE_TYPE_CLIENT_HAS_MAP								= Declare_Enum()	-- 44
 	MESSAGE_TYPE_UPDATE_SESSION								= Declare_Enum()	-- 45
 	MESSAGE_TYPE_DOWNLOAD_PROGRESS							= Declare_Enum()	-- 46
+	MESSAGE_TYPE_PLAYER_PLATFORM								= Declare_Enum()	-- 47
 
 	AI_EASY_INDEX = 0
 	AI_MEDIUM_INDEX = 1
@@ -127,11 +139,18 @@ function PGNetwork_Init_Constants()
 	CONNECTION_TYPE_INTERNET = "CONNECTION_TYPE_INTERNET"
 	CONNECTION_TYPE_LAN = "CONNECTION_TYPE_LAN"
 	
-	MAX_TEAMS = 8
+	if ( Is_Gamepad_Active() ) then
+		MAX_TEAMS = 4
+		
+		MAP_MAX_PLAYER_COUNT = 4
+		VIEW_PLAYER_INFO_CLUSTER_COUNT = 4		-- Create 4 player info cluster buckets.
+	else
+		MAX_TEAMS = 8
 
-	MAP_MAX_PLAYER_COUNT = 8
-	VIEW_PLAYER_INFO_CLUSTER_COUNT = 8		-- Create 8 player info cluster buckets.
-	
+		MAP_MAX_PLAYER_COUNT = 8
+		VIEW_PLAYER_INFO_CLUSTER_COUNT = 8		-- Create 8 player info cluster buckets.
+	end
+
 	Init_Victory_Condition_Constants()
 	PGColors_Init()
 	PGFactions_Init()
@@ -645,6 +664,10 @@ function Network_Calculate_Initial_Max_Player_Count()
 		MapPlayerLimit = MAP_MAX_PLAYER_COUNT
 	else
 		MapPlayerLimit = PGLobby_Get_Map_Player_Count(GameOptions.map_crc)
+		--MapPlayerLimit = PGLobby_Get_Map_Player_Count(GameOptions.map_index)
+		if ( MapPlayerLimit > MAP_MAX_PLAYER_COUNT ) then
+			MapPlayerLimit = MAP_MAX_PLAYER_COUNT 
+		end
 	end
 
 	MaxPlayerCount = MapPlayerLimit - Network_Get_AI_Player_Count()
@@ -677,7 +700,8 @@ function Network_Remove_Client(common_addr)
 	
 	local disconnector = ClientTable[common_addr]
 	ClientTable[common_addr] = nil
-	if common_addr ~= LocalClient.common_addr then
+	if TestValid(common_addr) and
+		 common_addr ~= LocalClient.common_addr then
 		Net.Voice_Remove_Peer(common_addr)
 	end
 	
@@ -686,6 +710,56 @@ function Network_Remove_Client(common_addr)
 	
 end
 
+-------------------------------------------------------------------------------
+-- Enforce team-only chat.
+-- NOTE:  All we're currently expecting of the client_table is that it is a 
+-- map of maps with a common_addr field and a team field.
+-------------------------------------------------------------------------------
+function Network_Prune_Voice_Peers(client_table, local_team)
+
+	if (client_table == nil) then
+		client_table = ClientTable
+	end
+	
+	if (local_team == nil) then
+		local_team = LocalClient.team
+	end
+
+	for _, client in pairs(client_table) do
+		if ((client.is_ai == nil) or (client.is_ai == false)) then
+			if (client.team ~= local_team) then
+				Net.Voice_Remove_Peer(client.common_addr)
+			end
+		end
+	end
+	
+end
+
+-------------------------------------------------------------------------------
+-- Unenforce team-only chat.
+-- NOTE:  All we're currently expecting of the client_table is that it is a 
+-- map of maps with a common_addr field and a team field.
+-------------------------------------------------------------------------------
+function Network_Unprune_Voice_Peers(client_table, local_team)
+
+	if (client_table == nil) then
+		client_table = ClientTable
+	end
+
+	if (local_team == nil) then
+		local_team = LocalClient.team
+	end
+
+	for _, client in pairs(client_table) do
+		if ((client.is_ai == nil) or (client.is_ai == false)) then
+			if (client.team ~= local_team) then
+				Net.Voice_Add_Peer(client.common_addr)
+			end
+		end
+	end
+	
+end
+	
 -------------------------------------------------------------------------------
 -- Only the host may call this function.
 -------------------------------------------------------------------------------
@@ -698,7 +772,7 @@ function Network_Send_Recommended_Settings(client)
 	local dao = {}
 	dao.common_addr = client.common_addr
 	dao.team = _PGNet_Get_Unused_Team(client)
-	dao.color = _PGNet_Get_Unused_Color(client)
+	dao.colors = _PGNet_Get_Unused_Colors(client)
 	Network_Broadcast(MESSAGE_TYPE_HOST_RECOMMENDED_SETTINGS, dao)
 	
 end
@@ -1026,6 +1100,7 @@ function Send_User_Settings_Aggregated(user_table, send_to)
 	
 	local dao = {}
 	dao.name = user_table.name
+	dao.platform = user_table.platform
 	dao.faction = user_table.faction
 	dao.color = user_table.color
 	dao.team = user_table.team
@@ -1049,6 +1124,7 @@ function Send_User_Settings_Segregated(user_table, send_to)
 	DebugMessage("LUA_NET:  **** Broadcasting User Settings SEGREGATED ****")
 	
 	-- Mandatory!!  If any of these settings are nil we have a problem
+	Network_Broadcast(MESSAGE_TYPE_PLAYER_PLATFORM, user_table.platform, send_to)
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_NAME, user_table.name, send_to)
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_FACTION, tostring(user_table.faction), send_to)
 	Network_Broadcast(MESSAGE_TYPE_PLAYER_COLOR, tostring(user_table.color), send_to)
@@ -1336,18 +1412,20 @@ end
 -- Generic game join.
 -------------------------------------------------------------------------------
 function Network_Join_Game(session)
+	local result = false
 	if (ConnectionType == CONNECTION_TYPE_INTERNET) then
 		if (session[X_CONTEXT_GAME_TYPE] == nil) then
 			Net.Set_User_Info( { [X_CONTEXT_GAME_TYPE] = X_CONTEXT_GAME_TYPE_STANDARD } )
 		else
 			Net.Set_User_Info( { [X_CONTEXT_GAME_TYPE] = session[X_CONTEXT_GAME_TYPE] } )
 		end
-		Net.MM_Join(session.common_addr, session.security_id, session.security_key, session.host_port)
+		result = Net.MM_Join(session.common_addr, session.security_id, session.security_key, session.host_port)
 	elseif (ConnectionType == CONNECTION_TYPE_LAN) then
-		Net.LAN_Join(session.common_addr, session.security_id, session.security_key, session.host_port)
+		result = Net.LAN_Join(session.common_addr, session.security_id, session.security_key, session.host_port)
 	else
 		DebugMessage("LUA_NET: ERROR: Unknown connection type in Network_Join_Game()")
 	end
+	return result
 end
 
 -------------------------------------------------------------------------------
@@ -1476,9 +1554,14 @@ function Generate_AI_Player()
 	ai.common_addr = Get_Next_AI_Common_Addr()
 	ai.is_ai = true
 	ai.faction = PG_FACTION_NOVUS
-	ai.color = COLOR_GRAY
+	ai.color = 9
 	ai.team = 1
-	ai.ai_difficulty = AI_DIFFICULTIES[AI_MEDIUM_INDEX]
+	ai.ai_difficulty = Get_Difficulty()
+	if not ai.ai_difficulty then
+		ai.ai_difficulty = AI_DIFFICULTIES[AI_MEDIUM_INDEX]
+	end
+	-- AI are always considered accepting
+	ai.AcceptsGameSettings = true
 	ai.name = Network_Get_AI_Name(ai.ai_difficulty)
 
 	return ai
@@ -1577,7 +1660,7 @@ function Generate_Reserved_Player(id)
 	local reserved = {}
 	reserved.common_addr = Get_Next_Reserved_Common_Addr()
 	reserved.name = Create_Wide_String("Reserved " .. id)
-	reserved.color = COLOR_GRAY
+	reserved.color = 9
 
 	return reserved
 
@@ -1674,7 +1757,7 @@ function Set_All_Client_Accepts(value)
 	
 	for _, client in pairs(ClientTable) do
 	
-		if (client.AcceptsGameSettings ~= value) then
+		if (not client.is_ai and client.AcceptsGameSettings ~= value) then
 			client.AcceptsGameSettings = value
 			Network_Broadcast(message, client.common_addr)
 		end
@@ -1704,6 +1787,23 @@ function Check_Accept_Status()
 		end
 	end
 	return true
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function Check_Guest_Accept_Status(host_common_addr)
+
+	-- The host is always considered accepting, so we skip the host.
+	for _, client in pairs(ClientTable) do
+		if (client.common_addr ~= host_common_addr) then
+			if ((client.AcceptsGameSettings == nil) or (client.AcceptsGameSettings == false)) then
+				return false
+			end
+		end
+	end
+	return true
+	
 end
 
 -------------------------------------------------------------------------------
@@ -1759,7 +1859,9 @@ function Network_Get_Local_Username()
 		(signin_state == "non-live") then
 		-- Set the chat name from the current XLive profile.
 		username = Net.Get_User_Name()
-		Set_Profile_Value(PP_LAST_CHAT_NAME, tostring(username))
+		if ( not Is_Gamepad_Active() ) then
+			Set_Profile_Value(PP_LAST_CHAT_NAME, tostring(username))
+		end
 	end
 	if (username == nil or tostring(username) == "") then
 		DebugMessage("LUA_LOBBY:  Unable to determine local username.  Using default player name.")
@@ -1806,7 +1908,7 @@ end
 -------------------------------------------------------------------------------
 -- 
 -------------------------------------------------------------------------------
-function _PGNet_Get_Unused_Color(target_client)
+function _PGNet_Get_Client_Color_Tally(target_client)
 
 	local tally = {}
 	
@@ -1827,15 +1929,154 @@ function _PGNet_Get_Unused_Color(target_client)
 		
 	end
 	
-	for _, color in pairs(MP_COLORS) do
+	return tally
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function _PGNet_Get_Unused_Color(target_client)
+
+	local tally = _PGNet_Get_Client_Color_Tally(target_client)
+	
+	for _, color in pairs(({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })) do
 		if (tally[color] == nil) then
 			return color
 		end
 	end
 	
-	return MP_COLORS[MP_COLORS_MIN] 	-- Default to the first chat color
+	return ({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })[0] 	-- Default to the first chat color
 
 end
 
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function _PGNet_Get_Unused_Colors(target_client)
 
+	local tally = _PGNet_Get_Client_Color_Tally(target_client)
+	local unused_colors = {}
+	
+	for _, color in pairs(({ [1] = 7, [2] = 3, [3] = 4, [4] = 5, [5] = 6, [6] = 8, [7] = 2, [0] = 9, })) do
+		if (tally[color] == nil) then
+			table.insert(unused_colors, color)
+		end
+	end
+	
+	return unused_colors
+	
+end
+
+-------------------------------------------------------------------------------
+-- 
+-------------------------------------------------------------------------------
+function PGNet_Is_Color_Used(color)
+
+	-- Which colors are taken?
+	for _, client in pairs(ClientTable) do
+		if ((client.color == color) and (client.common_addr ~= LocalClient.common_addr)) then
+			return true
+		end
+	end
+	
+	return false
+	
+end
+
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Are_Chat_Names_Unique = nil
+	BlockOnCommand = nil
+	Broadcast_AI_Game_Settings_Accept = nil
+	Broadcast_Game_Kill_Countdown = nil
+	Broadcast_Game_Settings = nil
+	Broadcast_Game_Settings_Accept = nil
+	Broadcast_Game_Start_Countdown = nil
+	Broadcast_Heartbeat = nil
+	Broadcast_Host_Disconnected = nil
+	Broadcast_IArray_In_Chunks = nil
+	Broadcast_Multiplayer_Winner = nil
+	Broadcast_Stats_Registration_Begin = nil
+	Check_Accept_Status = nil
+	Check_Color_Is_Taken = nil
+	Check_Guest_Accept_Status = nil
+	Check_Stats_Registration_Status = nil
+	Check_Unique_Colors = nil
+	Check_Unique_Teams = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Chat_Color_Index = nil
+	Get_Client_Table_Count = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Localized_Faction_Name = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	Network_Add_AI_Player = nil
+	Network_Add_Reserved_Players = nil
+	Network_Assign_Host_Seat = nil
+	Network_Broadcast_Reset_Start_Positions = nil
+	Network_Calculate_Initial_Max_Player_Count = nil
+	Network_Clear_All_Clients = nil
+	Network_Do_Seat_Assignment = nil
+	Network_Edit_AI_Player = nil
+	Network_Get_Client_By_ID = nil
+	Network_Get_Client_From_Seat = nil
+	Network_Get_Client_Table_Count = nil
+	Network_Get_Local_Username = nil
+	Network_Get_Seat = nil
+	Network_Kick_All_AI_Players = nil
+	Network_Kick_All_Reserved_Players = nil
+	Network_Kick_Player = nil
+	Network_Refuse_Player = nil
+	Network_Request_Clear_Start_Position = nil
+	Network_Request_Start_Position = nil
+	Network_Reseat_Guests = nil
+	Network_Send_Recommended_Settings = nil
+	Network_Update_Local_Common_Addr = nil
+	OutputDebug = nil
+	PGNetwork_Clear_Start_Positions = nil
+	PGNetwork_Init = nil
+	PGNetwork_Internet_Init = nil
+	PGNetwork_LAN_Init = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Send_User_Settings = nil
+	Set_All_AI_Accepts = nil
+	Set_All_Client_Accepts = nil
+	Set_Client_Table = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Clients_With_Player_IDs = nil
+	Update_SA_Button_Text_Button = nil
+	Validate_Player_Uniqueness = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
 

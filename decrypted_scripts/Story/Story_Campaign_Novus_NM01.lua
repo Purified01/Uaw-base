@@ -1,4 +1,45 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM01.lua#80 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[145] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[141] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[175] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[63] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM01.lua#34 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +66,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Novus_NM01.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Novus_NM01.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Dan_Etter $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90967 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/14 15:45:22 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #80 $
+--          $Revision: #34 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,10 +117,10 @@ function Definitions()
 	novus_two=Find_Player("NovusTwo")
 
 	PGColors_Init_Constants()
---	aliens.Enable_Colorization(true, COLOR_RED)
---	uea.Enable_Colorization(true, COLOR_GREEN)
---	novus.Enable_Colorization(true, COLOR_CYAN)
---	novus_two.Enable_Colorization(true, COLOR_BLUE)
+--	aliens.Enable_Colorization(true, 2)
+--	uea.Enable_Colorization(true, 5)
+--	novus.Enable_Colorization(true, 6)
+--	novus_two.Enable_Colorization(true, 7)
 
 	pip_moore = "MH_Moore_pip_Head.alo"
 	pip_comm = "mi_comm_officer_pip_head.alo"
@@ -111,6 +152,9 @@ function State_Init(message)
 		PGAchievementAward_Init()
 		-- ***** ACHIEVEMENT_AWARD *****
 
+      -- RAD: Showing research button in this mission.
+      novus.Set_Research_Points_Override(0)
+
 		-- ***** HINT SYSTEM *****
 		PGHintSystemDefs_Init()
 		PGHintSystem_Init()
@@ -120,14 +164,23 @@ function State_Init(message)
 
 		Fade_Screen_Out(0)
 
-	uea.Allow_AI_Unit_Behavior(false)
-	aliens.Allow_AI_Unit_Behavior(false)
-	masari.Allow_AI_Unit_Behavior(false)
-	novus_two.Allow_AI_Unit_Behavior(false)
+		uea.Allow_AI_Unit_Behavior(false)
+		aliens.Allow_AI_Unit_Behavior(false)
+		masari.Allow_AI_Unit_Behavior(false)
+		novus_two.Allow_AI_Unit_Behavior(false)
 	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
+		--Stop_All_Speech()
+		--Flush_PIP_Queue()
+		--Allow_Speech_Events(true)
+		
+		UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+
+		
+		--stuff for if player is using a controller...turn off various UI stuff
+		Set_Level_Name("TEXT_GAMEPAD_NM01_NAME")
+		--if Is_Gamepad_Active() then
+		--	UI_Show_Controller_Context_Display(false)
+		--end
 			
 		Create_Thread("Thread_Mission_Start")
 	
@@ -142,7 +195,7 @@ function Thread_Mission_Start()
 
 	aliens.Allow_Autonomous_AI_Goal_Activation(false)
 
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 
 	failure_text="TEXT_SP_MISSION_MISSION_FAILED"
@@ -250,14 +303,27 @@ function Thread_Mission_Start()
 	
 	Create_Thread("Maintain_Constructors")
 	
-if true  then
+if true then --jdg: set this to false to start mission from the power router objective
 	
 	Show_Objective_A()
-	Add_Independent_Hint(HINT_NM01_BUILDING_STRUCTURES)
-	Add_Independent_Hint(HINT_NM01_POWER_NETWORK)
 
-	UI_Start_Flash_Queue_Buttons("NOVUS_SIGNAL_TOWER")
+	Add_Independent_Hint(118) --You now have Constructors, which build structures. Click on the Constructor itself, or use the build tab on the bottom bar to access structure building options.
+
+	--jdg 10/15/07 X360 tweak passs...
+	--adding a filter to only play this hint if player does NOT have a controller plugged in
+	--for 360, I'm delaying this hint until player builds a structure that actually requires power
+	if not Is_Gamepad_Active() then
+		Add_Independent_Hint(119)--Novus structures must be powered. When building a new structure, watch for the "no power" symbol while placing it.
+		UI_Start_Flash_Queue_Buttons("NOVUS_SIGNAL_TOWER")--jdg: Jeff's original call....360 button gets flashed in the Show_Objective_A() function
+	end
+
 	Create_Thread("Highlight_Constructors")
+	
+	if Is_Gamepad_Active() then
+		Create_Thread("JDG_Monitor_For_SignalTower_UnderConstruction")
+		--jdg all this does is monitor for when player has started building his first tower...then it pops a hint regarding
+		--using multiple constructors.
+	end
 
 	while not(objective_a_completed) do
 		Sleep(1)
@@ -266,7 +332,7 @@ if true  then
 				Create_Thread("Audio_Objective_Done")
 				Set_Objective_Text(nov01_objective_a, "TEXT_SP_MISSION_NVS01_OBJECTIVE_A")
 				Objective_Complete(nov01_objective_a)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_A_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_A_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_a_completed=true;
@@ -281,9 +347,21 @@ if true  then
 	Create_Thread("Audio_Objective_B_Sub")
 	Sleep(1)
 	Show_Objective_B_Sub()
-	--Add_Independent_Hint(HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS)
-	UI_Start_Flash_Queue_Buttons("NOVUS_INPUT_STATION")
+	--Add_Independent_Hint(109)
+	
+	--jdg 10/16 adding filter to only play this hint if on PC
+	--moving the 360 flash-button call into Show_Objective_B_Sub()
+	if not Is_Gamepad_Active() then
+		UI_Start_Flash_Queue_Buttons("NOVUS_INPUT_STATION")--jdg: Jeff's original call 
+	end
 	Create_Thread("Highlight_Constructors")
+	
+	--jdg 10/15/07 X360 tweak passs...
+	--this hint was delayed until here...player now asked to build  a structure that actually requires power
+	if Is_Gamepad_Active() then
+		_CustomScriptMessage("JoeLog.txt", string.format("Add_Independent_Hint(HINT_NM01_POWER_NETWORK)"))
+		Add_Independent_Hint(119)--Novus structures must be powered. When building a new structure, watch for the "no power" symbol while placing it.
+	end
 	
 	while not(objective_bsub_completed) do
 		Sleep(1)
@@ -308,7 +386,7 @@ if true  then
 				Sleep(time_radar_sleep)
 				Set_Objective_Text(nov01_objective_bsub, "TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB")
 				Objective_Complete(nov01_objective_bsub)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_bsub_completed=true;
@@ -323,8 +401,14 @@ if true  then
 	Create_Thread("Audio_Objective_B")
 	Sleep(1)
 	Show_Objective_B()
-	--Add_Independent_Hint(HINT_SYSTEM_RESOURCES)
-	UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY")
+	--Add_Independent_Hint(103)
+	
+	--jdg 10/16 adding filter to only play this hint on PC
+	--moving 360 button flash call to Show_Objective_B()
+	if not Is_Gamepad_Active() then
+		UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY")--jdg: Jeff's original call.
+	end
+	
 	Create_Thread("Highlight_Constructors")
 	
 	while not(objective_b_completed) do
@@ -354,7 +438,7 @@ if true  then
 					Sleep(time_radar_sleep)
 					Set_Objective_Text(nov01_objective_b, "TEXT_SP_MISSION_NVS01_OBJECTIVE_B")
 					Objective_Complete(nov01_objective_b)
-					Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_B_COMPLETE"} )
+					Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_B_COMPLETE"} )
 					Sleep(time_objective_sleep)
 					--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 					objective_b_completed=true;
@@ -366,8 +450,8 @@ if true  then
 
 	Sleep(1)
 	Show_Objective_C()
-	--Add_Independent_Hint(HINT_SYSTEM_CONSTRUCTING_UNITS)
-	UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY", "NOVUS_ROBOTIC_INFANTRY")
+	--Add_Independent_Hint(101)
+	UI_Start_Flash_Queue_Buttons("NOVUS_ROBOTIC_ASSEMBLY", "NOVUS_ROBOTIC_INFANTRY")--jdg should work on the 360, please verify.
 	Create_Thread("Track_Building_Robots")
 	Create_Thread("Aliens_Attack_Resources")
 	
@@ -379,7 +463,7 @@ if true  then
 				Sleep(time_radar_sleep)
 				Set_Objective_Text(nov01_objective_c, "TEXT_SP_MISSION_NVS01_OBJECTIVE_C")
 				Objective_Complete(nov01_objective_c)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_C_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_C_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_c_completed=true;
@@ -403,17 +487,35 @@ end
 	novus.Lock_Object_Type(Find_Object_Type("NOVUS_ROBOTIC_ASSEMBLY"),false,STORY)
 	novus.Lock_Object_Type(Find_Object_Type("NOVUS_POWER_ROUTER"),false,STORY)
 	Lock_Objects(true)
-	UI_Start_Flash_Queue_Buttons("NOVUS_POWER_ROUTER")
+	
+	--jdg 10/16 adding 360 button flash call 
+	if not Is_Gamepad_Active() then
+		UI_Start_Flash_Queue_Buttons("NOVUS_POWER_ROUTER")--jdg: Jeff's original call.
+	else
+		UI_Start_Flash_Construct_Building("NOVUS_POWER_ROUTER")--jdg: 360 call
+	end
 	
 	while not(objective_csub_completed) do
 		Sleep(1)
 		if not mission_success and not mission_failure then
 			if power_built then
-				BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE06_10"))
+				BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE06_10"))--The power is back on!
+				
+				--jdg 10/16/07 pointing camera at the grav bomb before popping the hint...360 only
+				if Is_Gamepad_Active() then
+					Point_Camera_At(super)
+					Transition_To_Tactical_Camera(2)
+					Add_Independent_Hint(27)
+					Sleep(1)
+					Add_Independent_Hint(150)
+					_CustomScriptMessage("JoeLog.txt", string.format("FIRST HINT_SYSTEM_X360_SUPERWEAPONS_BUTTON_LOCATION"))
+				end
+				
+				
 				Sleep(time_radar_sleep)
 				Set_Objective_Text(nov01_objective_csub, "TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB")
 				Objective_Complete(nov01_objective_csub)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB_COMPLETE"} )
 				Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_csub_completed=true;
@@ -424,7 +526,7 @@ end
 	Create_Thread("Activate_Super")
 	Sleep(1)
 	Create_Thread("Aliens_Attack_Base")
-	UI_Start_Flash_Superweapon("NM01_GRAVITY_BOMB")
+	UI_Start_Flash_Superweapon("NM01_GRAVITY_BOMB")--jdg hopefully works
 	
 	while not(objective_d_completed) do
 		Sleep(1)
@@ -432,7 +534,7 @@ end
 			if 	alien_forces_defeated==2 then
 				Set_Objective_Text(nov01_objective_d, "TEXT_SP_MISSION_NVS01_OBJECTIVE_D")
 				Objective_Complete(nov01_objective_d)
-				Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_D_COMPLETE"} )
+				Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_D_COMPLETE"} )
 				--Sleep(time_objective_sleep)
 				--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 				objective_d_completed=true;
@@ -443,6 +545,7 @@ end
 		if not TestValid(command) then
 			failure_text="TEXT_SP_MISSION_NVS01_OBJECTIVE_D_FAIL"
 			if mission_failure == false then
+				mission_failure = true
 				Create_Thread("Thread_Mission_Failed")
 			end
 		end
@@ -705,7 +808,13 @@ end
 function Show_Objective_A()
 	buildtower_area=Create_Generic_Object(Find_Object_Type("Highlight_Area"), buildtower, neutral)
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_A_ADD"} )
+	--jdg 10/16 adding 360 button flash call 
+	if Is_Gamepad_Active() then
+		UI_Start_Flash_Construct_Building("NOVUS_SIGNAL_TOWER")
+	end
+	
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_A_ADD"} )
+	
 	Sleep(time_objective_sleep)
 	nov01_objective_a = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_A")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -810,7 +919,13 @@ function Show_Objective_B_Sub()
 	buildinput1_area=Create_Generic_Object(Find_Object_Type("Highlight_Area"), buildinput1, neutral)
 	buildinput2_area=Create_Generic_Object(Find_Object_Type("Highlight_Area"), buildinput2, neutral)
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB_ADD"} )
+	--jdg flashing build buttons on 360 here
+	--jdg 10/16 adding 360 button flash call 
+	if Is_Gamepad_Active() then
+		UI_Start_Flash_Construct_Building("NOVUS_INPUT_STATION")
+	end
+	
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB_ADD"} )
 	Sleep(time_objective_sleep)
 	nov01_objective_bsub = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_BSUB_STATE_1")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -842,7 +957,12 @@ end
 
 -- adds mission objective for objective B
 function Show_Objective_B()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_B_ADD"} )
+	--jdg 360 button flash call
+	if Is_Gamepad_Active() then
+		UI_Start_Flash_Construct_Building("NOVUS_ROBOTIC_ASSEMBLY")--jdg: 360 call
+	end
+
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_B_ADD"} )
 	Sleep(time_objective_sleep)
 	nov01_objective_b = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_B_STATE_1")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -850,7 +970,7 @@ end
 
 -- adds mission objective for objective C
 function Show_Objective_C()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_C_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_C_ADD"} )
 	Sleep(time_objective_sleep)
 	nov01_objective_c = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_C")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -884,8 +1004,8 @@ function Aliens_Attack_Resources()
 	Add_Radar_Blip(alienattack1, "DEFAULT", "blip_objective_c")
 	--alienattack1.Highlight(true, -50)
 	Register_Prox(alienattack1, Prox_Used_Flow_A, 250, novus)
-	--Add_Independent_Hint(HINT_SYSTEM_SHARED_ABILITIES)
-	--Add_Independent_Hint(HINT_SYSTEM_SHARED_TARGETING)
+	--Add_Independent_Hint(94)
+	--Add_Independent_Hint(95)
 
 	times=0
 	aliens_left=1
@@ -940,7 +1060,7 @@ function Aliens_Attack_Resources()
 	--alienattack2.Highlight(true, -50)
 	Add_Radar_Blip(alienattack2, "DEFAULT", "blip_objective_c")
 	Register_Prox(alienattack2, Prox_Used_Flow_B, 250, novus)
-	--Add_Independent_Hint(HINT_SYSTEM_RADAR_MOVEMENT)
+	--Add_Independent_Hint(97)
 	
 	aliens_left=1
 	while aliens_left>0 do
@@ -1014,7 +1134,14 @@ function Track_Building_Robots()
 	
 	Sleep(1)
 	robot=Find_First_Object("NOVUS_ROBOTIC_INFANTRY")
-	Add_Independent_Hint(HINT_NM01_FLOW)
+	
+	--jdg 10/15/07 X360 tweak passs...
+	--this hint pops during a dialog line...not pretty on the 360...squelching unitl after the dialog
+	--actually moving to recycle with the founders dialog line regarding flow
+	if not Is_Gamepad_Active() then
+		Add_Independent_Hint(120)
+	end
+	
 	Create_Thread("Audio_Demonstrate_Flow")
 end
 
@@ -1068,7 +1195,7 @@ function Show_Objective_C_Sub()
 		end
 	end
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB_ADD"} )
 	Sleep(time_objective_sleep)
 	nov01_objective_csub = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_CSUB")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
@@ -1114,15 +1241,18 @@ end
 
 -- adds mission objective for objective C
 function Show_Objective_D()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_D_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_NVS01_OBJECTIVE_D_ADD"} )
 	Sleep(time_objective_sleep)
 	nov01_objective_d = Add_Objective("TEXT_SP_MISSION_NVS01_OBJECTIVE_D")
 	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
 end
 
 function Activate_Super()
-	Add_Attached_GUI_Hint(PG_GUI_HINT_SUPERWEAPON_BUTTON, "NM01_GRAVITY_BOMB_VARIANT", HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR)
-
+	--jdg wrapper to only do this if not playing with a controller
+	if not Is_Gamepad_Active() then
+		Add_Attached_GUI_Hint(PG_GUI_HINT_SUPERWEAPON_BUTTON, "NM01_GRAVITY_BOMB_VARIANT", 27)
+	end
+		
 	if not objective_d_completed and not mission_success and not mission_failure then
 		BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE01_31"))
 	end
@@ -1131,6 +1261,9 @@ function Activate_Super()
 	end
 	Add_Radar_Blip(super, "DEFAULT", "blip_objective_d")
 	super.Change_Owner(novus)
+	
+	
+	
 	if not objective_d_completed and not mission_success and not mission_failure then
 		BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE01_39"))
 	end
@@ -1226,9 +1359,17 @@ function Aliens_Attack_Base()
 		end
 		if not mission_success and not mission_failure then
 			if story_dialogue_last and TestValid(hero) then
-				BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE01_44"))
+				BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE01_44"))-- Now!  Use the Gravity Bomb!
 			end
 		end
+		
+		--jdg 10/16/07 this hint is 360 specific...just letting the player know where the superweapon button is...
+		if Is_Gamepad_Active() then
+			Sleep(1)
+			_CustomScriptMessage("JoeLog.txt", string.format("SECOND HINT_SYSTEM_X360_SUPERWEAPONS_BUTTON_LOCATION"))
+			Add_Independent_Hint(150)
+		end
+		
 	best_time = player_script.Call_Function("SW_Get_Cooldown_Time", "NM01_GRAVITY_BOMB_VARIANT" )
 		superweapon_ready=true
 		UI_Start_Flash_Superweapon("NM01_GRAVITY_BOMB_VARIANT")
@@ -1320,22 +1461,31 @@ end
 --jdg 12/05/07 fix for a SEGA bug where Mirabel's death would not end mission...
 --had to remove/move the blockoncommand'ing of the talking heads.
 function Death_Hero()
-	Create_Thread("Thread_Death_Hero")
-end
-
-function Thread_Death_Hero()
-	BlockOnCommand(Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14"))
-	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
 	if mission_failure == false then
-		Create_Thread("Thread_Mission_Failed")
+		mission_failure = true
+		Create_Thread("Thread_Death_Hero")
 	end
 end
 
-function Thread_Mission_Failed()
+function Thread_Death_Hero()
+	UI_Pre_Mission_End() -- this does Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Suspend_Hint_System
+	-- Whenever we go into BlockOnCommand we run the risk of having other threads add speech events, so we have to make
+	-- sure to queue the pip head first and ONLY then dis-allow other speech events (this will queue the event we want but
+	-- will prevent any future speech events from being queued).
+	local block = Queue_Talking_Head(pip_novcomm, "NVS01_SCENE06_14")
+	Allow_Speech_Events(false)
+	BlockOnCommand(block)
+	
+	failure_text="TEXT_SP_MISSION_MISSION_FAILED_HERO_DEAD_MIRABEL"
+	Create_Thread("Thread_Mission_Failed")
+end
 
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+function Thread_Mission_Failed()
+	--Reset_Objectives() -- Oksana: reset objectives so we don't accidentally grant objective AFTER we lost!
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+	UI_On_Mission_End()
 			
 	mission_failure = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
@@ -1348,9 +1498,9 @@ function Thread_Mission_Failed()
 	Rotate_Camera_By(180,30)
 	-- the variable  failure_text  is set at the start of mission to contain the default string "TEXT_SP_MISSION_MISSION_FAILED"
 	-- upon mission failure of an objective, or hero death, replace the string  failure_text  with the appropriate xls tag 
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1358,10 +1508,12 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
-			
+	--Stop_All_Speech()
+	--Flush_PIP_Queue()
+	--Allow_Speech_Events(false)
+
+	UI_On_Mission_End()
+	
 	mission_success = true --this flag is what I check to make sure no game logic continues when the mission is over
 	Letter_Box_In(1)
 	Lock_Controls(1)
@@ -1371,9 +1523,9 @@ function Thread_Mission_Complete()
 	Zoom_Camera.Set_Transition_Time(10)
 	Zoom_Camera(.3)
 	Rotate_Camera_By(180,90)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 	Sleep(time_objective_sleep)
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 	Fade_Screen_Out(2)
 	Sleep(2)
 	Lock_Controls(0)
@@ -1604,8 +1756,15 @@ function Audio_Demonstrate_Flow()
 		--	BlockOnCommand(Queue_Talking_Head(pip_mirabel, "NVS01_SCENE01_17"))
 		--end
 		if not mission_success and not mission_failure then
-			BlockOnCommand(Queue_Talking_Head(pip_founder, "NVS01_SCENE06_20"))
+			BlockOnCommand(Queue_Talking_Head(pip_founder, "NVS01_SCENE06_20")) --Mirabel, this will be a good test of our ability to flow along the conduit network. Use the towers to rapidly relocate your forces anywhere along the grid. It's our advantage over the Hierarchy.
 		end
+		
+		--jdg 10/16/07 this hint has been squelched on the 360 version and moved til here...
+		if Is_Gamepad_Active() then
+			Sleep(1)
+			Add_Independent_Hint(120)
+		end
+		
 		Sleep(reminder_wait_time)
 	end
 end
@@ -1635,10 +1794,114 @@ function Audio_Objective_Done()
 end
 
 function Post_Load_Callback()
-	UI_Hide_Research_Button()
+	-- UI_Hide_Research_Button()
 	UI_Hide_Sell_Button()
 	Movie_Commands_Post_Load_Callback()
 end
 
+function JDG_Monitor_For_SignalTower_UnderConstruction()
+	local monitor_obj = Find_First_Object("Novus_Signal_Tower_Construction")
+	
+	while not TestValid(monitor_obj) do
+		Sleep(1)
+		monitor_obj = Find_First_Object("Novus_Signal_Tower_Construction")
+	end
+	
+	--Ding! Player has started building the signal tower...pop the hint regarding using multiple constructors...
+	--double check if controller is still plugged in
+	if Is_Gamepad_Active() then
+		Sleep(1) -- aesthetics
+		Add_Independent_Hint(109)
+	end
 
+end
+
+
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Guard = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	OutputDebug = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Achievements_Thread = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Thread_Habitat_Walker_Produced_Hunt = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
 

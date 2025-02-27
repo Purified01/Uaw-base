@@ -1,4 +1,14 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Battle_Scene.lua#17 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[148] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Battle_Scene.lua#14 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +35,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Post_Battle_Scene.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Post_Battle_Scene.lua $
 --
 --    Original Author: James Yarrow
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 88035 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/11/16 16:31:41 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #17 $
+--          $Revision: #14 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -126,7 +136,7 @@ function On_Init()
  			--local scene = Get_Game_Mode_GUI_Scene()
  			Register_Hint_Context_Scene(this)			-- Set the scene to which independant hints will be attached.
  			
- 			Add_Independent_Hint(HINT_MM02_UNIT_MANAGEMENT)
+ 			Add_Independent_Hint(130)
  		end
  	end
 end
@@ -164,10 +174,9 @@ function Update_Type_Buttons()
 	--queue_index = buildable_units[i][5]
 	buildable_units = Sort_Array_Of_Maps(buildable_units, 5)	
 	
-	--Start at 2 to skip the hero
 	local fleet_total_units = StandingFleet.Get_Contained_Object_Count()
 	local types_table = {}
-	for unit_index = 2, fleet_total_units do
+	for unit_index = 1, fleet_total_units do
 		local unit = StandingFleet.Get_Fleet_Unit_At_Index(unit_index)	
 		if TestValid(unit) then
 			local unit_type = unit.Get_Type()
@@ -194,9 +203,9 @@ function Update_Type_Buttons()
 			button.Set_User_Data(unit_type)
 			button.Set_Texture(unit_type.Get_Icon_Name())
 			button.Set_Text(tostring(type_count))
-			button.Set_Enabled(true)
+			button.Set_Button_Enabled(true)
 			button.Set_Hidden(type_count == 0)
-			--button.Set_Enabled(type_count > 0)
+			--button.Set_Button_Enabled(type_count > 0)
 		end
 	end
 end
@@ -223,7 +232,7 @@ function On_Drop(_, dropped_on, dragged_data, dragged_ui)
 	local transfer_type = dragged_ui.Get_User_Data()
 	if TestValid(source_fleet) and TestValid(dest_fleet) then
 		local transfer_unit = Find_Unit_Of_Type_To_Tramsfer(transfer_type, source_fleet, dest_fleet)
-		if not dest_fleet.Dispatch_Units(transfer_unit) then
+		if not dest_fleet.Dispatch_Units(transfer_unit, false) then
 			Play_Pop_Cap_Full_SFX()
 			dropped_on.Stop_Animation()
 			dropped_on.Play_Animation("No_Pop_Available", false)
@@ -291,3 +300,59 @@ Interface.Finalize_Init = Finalize_Init
 
 
 	
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	Commit_Profile_Values = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Set_Achievement_Map_Type = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end

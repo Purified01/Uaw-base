@@ -1,4 +1,19 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Superweapons.lua#28 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[194] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[129] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[9] = true
+LuaGlobalCommandLinks[187] = true
+LuaGlobalCommandLinks[160] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Superweapons.lua#13 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +40,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/Superweapons.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/Superweapons.lua $
 --
 --    Original Author: Chris_Brooks
 --
---            $Author: James_Yarrow $
+--            $Author: Brian_Hayes $
 --
---            $Change: 83504 $
+--            $Change: 92481 $
 --
---          $DateTime: 2007/09/11 17:59:06 $
+--          $DateTime: 2008/02/05 12:16:28 $
 --
---          $Revision: #28 $
+--          $Revision: #13 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +66,13 @@ function Superweapons_Init()
 	MAX_NUM_PLAYERS = 7
 	MAX_NUM_SW_PER_PLAYER = 2
 	WeaponTypeNameToButton = {}
-	SuperweaponButtons = Find_GUI_Components(this.CommandBar, "SuperweaponButton")
+	
+	if TestValid(this.CommandBar.SWButtons) then 
+		SuperweaponButtons = Find_GUI_Components(this.CommandBar.SWButtons, "SuperweaponButton")
+	else
+		SuperweaponButtons = Find_GUI_Components(this.CommandBar, "SuperweaponButton")
+	end
+	
 	Register_Game_Scoring_Commands()
 
 	RedTint = {1.0, 0.0, 0.0, 120.0/255.0}
@@ -212,7 +233,7 @@ function Update_Local_SW_Data()
 			end
 			
 			-- Is this weapon enabled?
-			button.Set_Enabled(is_enabled)
+			button.Set_Button_Enabled(is_enabled)
 			
 			-- two way referencing for ease of access
 			button.Set_User_Data(weapon_type_name)
@@ -403,3 +424,8 @@ function GUI_Can_Fire_Superweapon(weapon_type_name)
 end
 
 
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Superweapons_Init = nil
+	Kill_Unused_Global_Functions = nil
+end

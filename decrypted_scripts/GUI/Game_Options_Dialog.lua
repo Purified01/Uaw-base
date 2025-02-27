@@ -1,3 +1,22 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[33] = true
+LuaGlobalCommandLinks[201] = true
+LuaGlobalCommandLinks[209] = true
+LuaGlobalCommandLinks[32] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[127] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[31] = true
+LuaGlobalCommandLinks[195] = true
+LuaGlobalCommandLinks[193] = true
+LuaGlobalCommandLinks[98] = true
+LuaGlobalCommandLinks[30] = true
+LuaGlobalCommandLinks[47] = true
+LUA_PREP = true
+
 require("PGBase")
 require("PGUICommands")
 
@@ -11,13 +30,14 @@ function On_Init()
 	this.Register_Event_Handler("Button_Clicked", this.Controls.ResumeGameButton, Hide_Dialog)
 	this.Register_Event_Handler("Button_Clicked", this.Controls.ForfeitGameButton, Forfeit_Game_Clicked)
 	this.Register_Event_Handler("Component_Unhidden", this, Display_Dialog)
+	this.Register_Event_Handler("Controller_B_Button_User_Event", nil, Hide_Dialog)
 
-	this.Controls.SaveGameButton.Set_Tab_Order(Declare_Enum(0))
+	this.Controls.ResumeGameButton.Set_Tab_Order(Declare_Enum(0))
+	this.Controls.SaveGameButton.Set_Tab_Order(Declare_Enum())
 	this.Controls.LoadGameButton.Set_Tab_Order(Declare_Enum())
 	this.Controls.OptionsButton.Set_Tab_Order(Declare_Enum())
 	this.Controls.ForfeitGameButton.Set_Tab_Order(Declare_Enum())
 	this.Controls.QuitGameButton.Set_Tab_Order(Declare_Enum())
-	this.Controls.ResumeGameButton.Set_Tab_Order(Declare_Enum())
 
 	Dialog_Box_Common_Init()
 	Forfeit_Callback_Params = {}
@@ -25,13 +45,14 @@ function On_Init()
 	Forfeit_Callback_Params.spawned_from_script = true
 	Forfeit_Callback_Params.callback = "Forfeit_Confirm_Callback"
 	Forfeit_Callback_Params.caption = Get_Game_Text("TEXT_GAME_DIALOG_FORFEIT_BATTLE")
-	if not Is_Multiplayer_Skirmish() then
+	if not Is_Multiplayer_Skirmish() and not Is_Scenario() then
 		Forfeit_Callback_Params.user_string_1 = Get_Game_Text("TEXT_WARNING_PROGRESS_LOST")
 	end
 	Forfeit_Callback_Params.left_button = Get_Game_Text("TEXT_BUTTON_YES")
 	Forfeit_Callback_Params.right_button = Get_Game_Text("TEXT_BUTTON_NO")
 	
 	Display_Dialog()
+
 end
 
 ------------------------------------------------------------------------
@@ -40,6 +61,9 @@ end
 function Play_Mouse_Over_Button_SFX(event, source)
 	if source and source.Is_Enabled() == true then 
 		Play_SFX_Event("GUI_Main_Menu_Mouse_Over")
+	end
+	if Is_Gamepad_Active() then
+		this.Focus_First()
 	end
 end
 
@@ -74,7 +98,7 @@ function Load_Game_Clicked(event_name, source)
 end
 
 function Options_Clicked(event_name, source)
-	Spawn_Dialog("Options_Dialog", true)
+	handle = Spawn_Dialog("Options_Dialog", true)
 end
 
 function Quit_Game_Clicked(event_name, source)
@@ -86,15 +110,21 @@ function Forfeit_Game_Clicked()
 end
 
 function Forfeit_Confirm_Callback(button)
-	if button == DIALOG_RESULT_LEFT then
+	if button == 1 then
 		Send_GUI_Network_Event("Network_Forfeit_Game", { Find_Player("local") })
 		Hide_Dialog()
 	end
 end
 
 function Display_Dialog()
+
 	this.Controls.QuitGameButton.Enable(true)
 
+	if handle ~= nil then
+		handle.Set_Hidden(true)
+		handle = nil
+	end
+	
 	if Is_Letter_Box_On() or Is_Multiplayer_Skirmish() or Is_Cinematic_Playing() then
 		this.Controls.LoadGameButton.Enable(false)
 		this.Controls.SaveGameButton.Enable(false)
@@ -103,7 +133,16 @@ function Display_Dialog()
 		this.Controls.SaveGameButton.Enable(true)
 	end
 
+	if TestValid(this.Text_Paused) then
+		if Is_Multiplayer_Or_Replay() then
+			this.Text_Paused.Set_Hidden(true)
+		else
+			this.Text_Paused.Set_Hidden(false)
+		end
+	end
+
 	local forfeit_enabled = true
+	
 	local local_player = Find_Player("local")	
 	if Is_Letter_Box_On() or Is_Cinematic_Playing() or Get_Game_Mode() == "Strategic" or local_player.Is_Observer() or Is_Replay() then
 		forfeit_enabled = false
@@ -139,18 +178,56 @@ function Display_Dialog()
 	end
 
 
-	if Mouse_Pointer.Is_Enabled() == false then
+	if Mouse_Pointer.Is_Enabled() == false and Is_Gamepad_Active() == false then
 		Mouse_Pointer.Enable(true)
 	end
-
+	
+	this.Controls.ResumeGameButton.Set_Key_Focus()
 	this.Focus_First()
 end
 
 function Hide_Dialog(event_name, source)
+	this.Controls.ResumeGameButton.Set_Key_Focus()
+	this.Focus_First()
 	if Is_Cinematic_Playing() then
 		Mouse_Pointer.Enable(false)
 	end
-	this.Set_Hidden(true)
-	this.Get_Containing_Scene().Raise_Event_Immediate("Request_Hide", nil, nil)
-	this.End_Modal()
+	this.Get_Containing_Scene().Raise_Event("Request_Hide", nil, nil)
+end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
 end

@@ -1,4 +1,43 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_MM07.lua#32 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[21] = true
+LuaGlobalCommandLinks[12] = true
+LuaGlobalCommandLinks[92] = true
+LuaGlobalCommandLinks[83] = true
+LuaGlobalCommandLinks[56] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[29] = true
+LuaGlobalCommandLinks[64] = true
+LuaGlobalCommandLinks[48] = true
+LuaGlobalCommandLinks[46] = true
+LuaGlobalCommandLinks[86] = true
+LuaGlobalCommandLinks[55] = true
+LuaGlobalCommandLinks[28] = true
+LuaGlobalCommandLinks[58] = true
+LuaGlobalCommandLinks[69] = true
+LuaGlobalCommandLinks[38] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[44] = true
+LuaGlobalCommandLinks[22] = true
+LuaGlobalCommandLinks[61] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[90] = true
+LuaGlobalCommandLinks[113] = true
+LuaGlobalCommandLinks[165] = true
+LuaGlobalCommandLinks[173] = true
+LuaGlobalCommandLinks[52] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[93] = true
+LuaGlobalCommandLinks[39] = true
+LuaGlobalCommandLinks[94] = true
+LuaGlobalCommandLinks[43] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[206] = true
+LuaGlobalCommandLinks[63] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_MM07.lua#27 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +64,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/Story_Campaign_Masari_MM07.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/Story_Campaign_Masari_MM07.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Keith_Brors $
+--            $Author: Nader_Akoury $
 --
---            $Change: 90607 $
+--            $Change: 96950 $
 --
---          $DateTime: 2008/01/09 11:56:44 $
+--          $DateTime: 2008/04/14 17:15:42 $
 --
---          $Revision: #32 $
+--          $Revision: #27 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,6 +115,7 @@ function Definitions()
 	bool_testing_mutant_routine = false
 	bool_make_purifier_not_killable = false
 	bool_make_player_heroes_invulnerable = false
+	bool_reduced_scope = true
 	
 	-- Pip Heads
 	pip_altea = "ZH_Altea_Pip_head.alo"
@@ -102,16 +142,16 @@ function Definitions()
 	object_type_alien_walker_assembly = Find_Object_Type("Alien_Walker_Assembly")
 	object_type_alien_walker_habitat = Find_Object_Type("Alien_Walker_Habitat")
 	object_type_alien_defiler_hardpoint = Find_Object_Type("Alien_Walker_Assembly_HP_Defiler_Assembly_Pod")
-	object_type_alien_phasetank_hardpoint = Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod")
+	--object_type_alien_phasetank_hardpoint = Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod")
 	object_type_alien_lostone_hardpoint = Find_Object_Type("Alien_Walker_Habitat_HP_Lost_One_Mutator")
 	object_type_alien_brute_hardpoint = Find_Object_Type("Alien_Walker_Habitat_HP_Brute_Mutator")
 	object_type_alien_grunt = Find_Object_Type("ALIEN_GRUNT")
 	object_type_alien_lostone = Find_Object_Type("ALIEN_LOST_ONE")
 	object_type_alien_brute = Find_Object_Type("ALIEN_BRUTE")
 	object_type_alien_defiler = Find_Object_Type("ALIEN_DEFILER")
-	object_type_alien_recontank = Find_Object_Type("ALIEN_RECON_TANK")
+	--object_type_alien_recontank = Find_Object_Type("ALIEN_RECON_TANK")
 	object_type_alien_foo = Find_Object_Type("ALIEN_FOO_CORE")
-	object_type_alien_cylinder = Find_Object_Type("ALIEN_CYLINDER")
+	--object_type_alien_cylinder = Find_Object_Type("ALIEN_CYLINDER")
 
 	object_type_novus_robotic_assembly = Find_Object_Type("NOVUS_ROBOTIC_ASSEMBLY")
 	object_type_novus_robotic_assembly_upgrade = Find_Object_Type("Novus_Robotic_Assembly_Instance_Generator")
@@ -119,8 +159,8 @@ function Definitions()
 	object_type_novus_vehicle_assembly_upgrade = Find_Object_Type("Novus_Vehicle_Assembly_Inversion")
 	object_type_novus_aircraft_assembly = Find_Object_Type("NOVUS_AIRCRAFT_ASSEMBLY")
 	object_type_novus_aircraft_assembly_upgrade = Find_Object_Type("Novus_Aircraft_Assembly_Scramjet")
-	object_type_novus_science_lab = Find_Object_Type("NOVUS_SCIENCE_LAB")
-	object_type_novus_emp_superweapon = Find_Object_Type("NOVUS_SUPERWEAPON_EMP")
+	--object_type_novus_science_lab = Find_Object_Type("NOVUS_SCIENCE_LAB")
+	--object_type_novus_emp_superweapon = Find_Object_Type("NOVUS_SUPERWEAPON_EMP")
 	object_type_novus_reflex_trooper = Find_Object_Type("NOVUS_REFLEX_TROOPER")
 	object_type_novus_robotic_infantry = Find_Object_Type("NOVUS_ROBOTIC_INFANTRY")
 	object_type_novus_antimatter_tank = Find_Object_Type("NOVUS_ANTIMATTER_TANK")
@@ -158,12 +198,12 @@ function Definitions()
 		"American_Civilian_Urban_03_Map_Loiterer",
 		"American_Civilian_Urban_04_Map_Loiterer", 
 		"American_Civilian_Urban_05_Map_Loiterer",
-		"American_Civilian_Urban_06_Map_Loiterer",
-		"American_Civilian_Urban_07_Map_Loiterer",
-		"American_Civilian_Urban_08_Map_Loiterer",
-		"American_Civilian_Urban_09_Map_Loiterer",
-		"American_Civilian_Urban_10_Map_Loiterer",
-		"American_Civilian_Urban_11_Map_Loiterer"
+		--"American_Civilian_Urban_06_Map_Loiterer",
+		--"American_Civilian_Urban_07_Map_Loiterer",
+		--"American_Civilian_Urban_08_Map_Loiterer",
+		--"American_Civilian_Urban_09_Map_Loiterer",
+		--"American_Civilian_Urban_10_Map_Loiterer",
+		--"American_Civilian_Urban_11_Map_Loiterer"
 	}
 	
 	list_novus_builder_team = {
@@ -228,23 +268,23 @@ function Definitions()
 	--INFANTRY:
 	counter_current_reflex_troopers = 0
 	counter_max_allowed_reflex_troopers = 2
-	counter_current_robotic_infantry = 0
-	counter_max_allowed_robotic_infantry = 2
+	--counter_current_robotic_infantry = 0
+	--counter_max_allowed_robotic_infantry = 2
 	
 	bool_novusbase_infanftry_team_list_in_use = false
 	list_novusbase_infantry_team = {}
-	novusbase_infantry_team_size = 3
+	novusbase_infantry_team_size = 2
 	
 	--VEHICLES:
 	counter_current_antimatter_tanks = 0
 	counter_max_allowed_antimatter_tanks = 1
 	counter_current_field_inverters = 0
 	counter_max_allowed_field_inverters = 1
-	counter_current_variants = 0
-	counter_max_allowed_variants = 1
+	--counter_current_variants = 0
+	--counter_max_allowed_variants = 1
 	
 	bool_novus_building_antimatter_tanks = false
-	bool_novus_building_variants = false
+	--bool_novus_building_variants = false
 	bool_novus_building_field_inverters = false
 	
 	bool_novusbase_vehicle_team_list_in_use = false
@@ -252,8 +292,8 @@ function Definitions()
 	novusbase_vehicle_team_size = 2
 	
 	--AIRCRAFT:
-	counter_current_novus_corruptors = 0
-	counter_max_allowed_novus_corruptors = 2
+	--counter_current_novus_corruptors = 0
+	--counter_max_allowed_novus_corruptors = 2
 	counter_current_dervish_jets = 0
 	counter_max_allowed_dervish_jets = 1
 	
@@ -284,11 +324,11 @@ function Definitions()
 	--VEHICLES:
 	counter_current_defilers = 0
 	counter_max_allowed_defilers = 2
-	counter_current_recontanks = 0
-	counter_max_allowed_recontanks = 2
+	--counter_current_recontanks = 0
+	--counter_max_allowed_recontanks = 2
 	
 	bool_aliens_building_defilers= false
-	bool_aliens_building_recontanks = false
+	--bool_aliens_building_recontanks = false
 	
 	--AIRCRAFT:
 	counter_current_cylinders = 0
@@ -319,16 +359,15 @@ end
 -- below are all the various states that this script will go through
 
 function State_Init(message)
-   local credits, i, unit, uea_strikeforce, novus_strikeforce
+   local i, unit, uea_strikeforce, novus_strikeforce
    
 	if message == OnEnter then
+	
+	UI_On_Mission_Start()  -- this resets the state of several UI systems, namely: Unsuspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(true), Unsuspend_Hint_System
+	
 	uea.Allow_AI_Unit_Behavior(false)
 	novus.Allow_AI_Unit_Behavior(false)
 	aliens.Allow_AI_Unit_Behavior(false)
-	
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(true)
 		
 		_CustomScriptMessage("JoeLog.txt", string.format("\n\n\n\n\n\n\n\n\n\nStory_Campaign_Novus_MM07 START!"))
 		--this following OutputDebug puts a message in the logfile that lets me determine where mission relevent info starts...mainly using to determine what assets need
@@ -350,10 +389,10 @@ function State_Init(message)
 
       -- Faction Colors
 --	   PGColors_Init_Constants()
---	   masari.Enable_Colorization(true, COLOR_DARK_GREEN)
---	   novus.Enable_Colorization(true, COLOR_CYAN)
---	   uea.Enable_Colorization(true, COLOR_GREEN)
---	   aliens.Enable_Colorization(true, COLOR_RED)
+--	   masari.Enable_Colorization(true, 21)
+--	   novus.Enable_Colorization(true, 6)
+--	   uea.Enable_Colorization(true, 5)
+--	   aliens.Enable_Colorization(true, 2)
 				
 		-- Hint System Definition
 		PGHintSystemDefs_Init()
@@ -362,12 +401,20 @@ function State_Init(message)
 		Register_Hint_Context_Scene(scene)			-- Set the scene to which independant hints will be attached.
 
       -- Resources      
-	   credits = masari.Get_Credits()
-	   credits = 1000 - credits
-	   if credits > 0 then
-		   masari.Give_Money(credits)
-	   end
+		-- Initial Starting Credits
+		local credit_total = 700
+		local credits = masari.Get_Credits()
+      if credits > credit_total then
+         credits = (credits - credit_total) * -1
+         masari.Give_Money(credits)
+      elseif credits < credit_total then
+         credits = credit_total - credits
+         masari.Give_Money(credits)
+      end
    	aliens.Give_Money(50000)
+
+      -- RAD: Adding research point override.
+   	masari.Set_Research_Points_Override(6)		
 
       -- Locks	
 		novus.Reset_Story_Locks()
@@ -635,7 +682,9 @@ function State_Init(message)
 		   end
 	   end
 			
-		Set_Next_State("State_MM07_Act01")      
+		Set_Next_State("State_MM07_Act01") 
+		Set_Level_Name("TEXT_GAMEPAD_MM07_NAME")
+
 	end
 end
 
@@ -710,14 +759,14 @@ function Thread_State_MM07_Act01()
 	
    --TEXT_SP_MISSION_MAS07_OBJECTIVE_01: Atlatea, Zessus and Charos must survive.
    --TEXT_SP_MISSION_MAS07_OBJECTIVE_02: Destroy the Hierarchy Purifier.
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_01_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_01_ADD"} )
 	mas07_objective01 = Add_Objective("TEXT_SP_MISSION_MAS07_OBJECTIVE_01")--Atlatea, Zessus and Charos must survive.
 	
 	while bool_opening_dialog_finished == false do
 		Sleep(1)
 	end
 	
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_02_ADD"} )
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_02_ADD"} )
 	Sleep(time_objective_sleep)
 	mas07_objective02 = Add_Objective("TEXT_SP_MISSION_MAS07_OBJECTIVE_02")--Destroy the Hierarchy Purifier.
 	
@@ -835,7 +884,7 @@ function Thread_Add_KamalRex_Objective() --TEXT_SP_MISSION_MAS07_OBJECTIVE_03: D
 	   
       kamal_rex.Register_Signal_Handler(Callback_Kamal_Rex_Damaged, "OBJECT_DAMAGED")
 	   kamal_rex.Register_Signal_Handler(Callback_KamalRex_Destroyed, "OBJECT_HEALTH_AT_ZERO")
-	   Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_03_ADD"} )
+	   Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_03_ADD"} )
 	   Sleep(time_objective_sleep)
 	   mas07_objective03 = Add_Objective("TEXT_SP_MISSION_MAS07_OBJECTIVE_03")--Defeat Kamal Rex.
    	
@@ -888,6 +937,13 @@ function Thread_Novus_Sets_Up_Base()
 				
 				-- SpawnList(type_list, entry_marker, player, allow_ai_usage, delete_after_scenario, add_to_pop_cap)
 				novus_buildteam = SpawnList(list_novus_builder_team, spawnflag_novus_buildteam.Get_Position(), novus, true, true, true)
+
+				for i,novus_builder in pairs(novus_buildteam) do
+					if TestValid(novus_builder) then
+						novus_builder.Add_Attribute_Modifier("Can_Be_Teleported", 0)
+					end
+				end
+		
 				novus.Allow_Autonomous_AI_Goal_Activation(false)
 				Maintain_Base(novus, "MM07_Novus_Base")
 					
@@ -1020,7 +1076,7 @@ function Thread_GenMoore_Retreats()
 end
 
 function Thread_Add_Protect_Novus_Objective()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_04_ADD"} )--New objective: Protect Mirabel and General Moore while Novus sets up its base.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_04_ADD"} )--New objective: Protect Mirabel and General Moore while Novus sets up its base.
 	Sleep(time_objective_sleep)
 	mas07_objective04 = Add_Objective("TEXT_SP_MISSION_MAS07_OBJECTIVE_04")--Protect Mirabel and General Moore while Novus sets up its base.
 	
@@ -1050,14 +1106,14 @@ function Thread_Aliens_Attack_NovusBase()
 	aliens.Make_Enemy(novus)
 	
 	if TestValid(alien_team02_habitat_walker) then
-		alien_team02_habitat_walker.Override_Max_Speed(.6)
+		alien_team02_habitat_walker.Override_Max_Speed(.8)
 		Hunt(alien_team02_habitat_walker, "MM07_Walker_Priorities", true, false, marker_novus_base, 300)
 	end
 	
 	Sleep(45)
 	
 	if TestValid(alien_team02_assembly_walker) then
-		alien_team02_assembly_walker.Override_Max_Speed(.6)
+		alien_team02_assembly_walker.Override_Max_Speed(.8)
 		Hunt(alien_team02_assembly_walker, "MM07_Walker_Priorities", true, false, marker_novus_base, 300)
 	end
 		
@@ -1145,7 +1201,7 @@ function Callback_Purifier_Destroyed()
 end
 
 function Thread_Purifier_Destroyed()
-	Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_02_COMPLETE"})--Objective complete: Destroy the Hierarchy Purifier.
+	Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {"TEXT_SP_MISSION_MAS07_OBJECTIVE_02_COMPLETE"})--Objective complete: Destroy the Hierarchy Purifier.
 	Sleep(2)
 	Objective_Complete(mas07_objective02)
 end
@@ -1370,19 +1426,21 @@ function Lock_Out_Stuff(bool)
 	novus.Lock_Unit_Ability("Novus_Hero_Mech", "Novus_Mech_Retreat_From_Tactical_Ability", bool, STORY)
 		
 	if bool == true then
-		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"),false,STORY) 
+	--jdg radiation walker removed a while back
+		--aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"),false,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Arc_Trigger"),false,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"),false,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Foo_Chamber"),false,STORY) 
 		
-		masari.Lock_Effect("Masari_Seer_Cloaking_Effect", false, STORY)
-		masari.Lock_Generator("DMAStructureRegenGenerator", false, STORY)
+		--jdg 1/7/08 dannybot bug regarding getting abilities for free...player can now research in this mission...turning off
+		--masari.Lock_Effect("Masari_Seer_Cloaking_Effect", false, STORY)
+		--masari.Lock_Generator("DMAStructureRegenGenerator", false, STORY)
 		
-		masari.Lock_Unit_Ability("Masari_Architect", "Masari_Rebuild_Unit_Ability", false, STORY)
-		masari.Lock_Unit_Ability("Masari_Peacebringer", "Masari_Peacebringer_Disintegrate_Unit_Ability", false, STORY)
-		masari.Lock_Unit_Ability("Masari_Figment", "Masary_Figment_Deploy_Mine_Ability", false, STORY)
-		masari.Lock_Unit_Ability("Masari_Seeker", "Inquisitor_Destabilize_Unit_Ability", false, STORY)
-		masari.Lock_Unit_Ability("Masari_Enforcer", "Masari_Enforcer_Fire_Vortex_Ability", false, STORY)
+		--masari.Lock_Unit_Ability("Masari_Architect", "Masari_Rebuild_Unit_Ability", false, STORY)
+		--masari.Lock_Unit_Ability("Masari_Peacebringer", "Masari_Peacebringer_Disintegrate_Unit_Ability", false, STORY)
+		--masari.Lock_Unit_Ability("Masari_Figment", "Masary_Figment_Deploy_Mine_Ability", false, STORY)
+		--masari.Lock_Unit_Ability("Masari_Seeker", "Inquisitor_Destabilize_Unit_Ability", false, STORY)
+		--masari.Lock_Unit_Ability("Masari_Enforcer", "Masari_Enforcer_Fire_Vortex_Ability", false, STORY)
 		
 	else
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"),true,STORY) 
@@ -1390,14 +1448,14 @@ function Lock_Out_Stuff(bool)
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"),true,STORY) 
 		aliens.Lock_Object_Type(Find_Object_Type("Alien_Walker_Science_HP_Foo_Chamber"),true,STORY) 
 		
-		masari.Lock_Effect("Masari_Seer_Cloaking_Effect", true, STORY)
-		masari.Lock_Generator("DMAStructureRegenGenerator", true, STORY)
+		--masari.Lock_Effect("Masari_Seer_Cloaking_Effect", true, STORY)
+		--masari.Lock_Generator("DMAStructureRegenGenerator", true, STORY)
 		
-		masari.Lock_Unit_Ability("Masari_Architect", "Masari_Rebuild_Unit_Ability", true, STORY)
-		masari.Lock_Unit_Ability("Masari_Peacebringer", "Masari_Peacebringer_Disintegrate_Unit_Ability", true, STORY)
-		masari.Lock_Unit_Ability("Masari_Figment", "Masary_Figment_Deploy_Mine_Ability", true, STORY)
-		masari.Lock_Unit_Ability("Masari_Seeker", "Inquisitor_Destabilize_Unit_Ability", true, STORY)
-		masari.Lock_Unit_Ability("Masari_Enforcer", "Masari_Enforcer_Fire_Vortex_Ability", true, STORY)
+		--masari.Lock_Unit_Ability("Masari_Architect", "Masari_Rebuild_Unit_Ability", true, STORY)
+		--masari.Lock_Unit_Ability("Masari_Peacebringer", "Masari_Peacebringer_Disintegrate_Unit_Ability", true, STORY)
+		--masari.Lock_Unit_Ability("Masari_Figment", "Masary_Figment_Deploy_Mine_Ability", true, STORY)
+		--masari.Lock_Unit_Ability("Masari_Seeker", "Inquisitor_Destabilize_Unit_Ability", true, STORY)
+		--masari.Lock_Unit_Ability("Masari_Enforcer", "Masari_Enforcer_Fire_Vortex_Ability", true, STORY)
 	end
 
 end
@@ -1406,9 +1464,7 @@ end
 --***************************************WIN/LOSS STUFF****************************************************************************************************
 
 function Thread_Mission_Failed()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	if bool_mission_success ~= true then
 		bool_mission_failure = true
@@ -1422,9 +1478,9 @@ function Thread_Mission_Failed()
       Zoom_Camera(.3)
       Rotate_Camera_By(180,30)
 		
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {failure_text} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {failure_text} )
 		Sleep(5)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 		
 		Fade_Screen_Out(2)
       Sleep(2)
@@ -1435,9 +1491,7 @@ function Thread_Mission_Failed()
 end
 
 function Thread_Mission_Complete()
-		Stop_All_Speech()
-		Flush_PIP_Queue()
-		Allow_Speech_Events(false)
+		UI_On_Mission_End() -- this call takes care of: Suspend_Objectives, Stop_All_Speech, Flush_PIP_Queue, Allow_Speech_Events(false), Suspend_Hint_System
 		
 	if bool_mission_failure ~= true then
 		bool_mission_success = true
@@ -1455,9 +1509,9 @@ function Thread_Mission_Complete()
       Zoom_Camera(.3)
       Rotate_Camera_By(180,90)
 
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Announcement_Text", nil, {"TEXT_SP_MISSION_MISSION_VICTORY"} )
 		Sleep(5)
-		Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Minor_Announcement_Text", nil, {""} )
+		Get_Game_Mode_GUI_Scene().Raise_Event("Set_Minor_Announcement_Text", nil, {""} )
 		Fade_Screen_Out(2)
       Sleep(2)
       Lock_Controls(0)
@@ -1482,7 +1536,7 @@ function Force_Victory(player)
 		-- Inform the campaign script of our victory.
 		global_script.Call_Function("Masari_Tactical_Mission_Over", true) -- true == player wins
 		--Quit_Game_Now( winning_player, quit_to_main_menu, destroy_loser_forces, build_temp_command_center, VerticalSliceTriggerVictorySplashFlag)
-		Quit_Game_Now(player, false, true, false)
+		Quit_Game_Now(player, true, true, false)
 	else
       Show_Retry_Dialog()
 	end
@@ -1620,7 +1674,7 @@ function Thread_New_AssemblyWalker_Orders(walker_de_assembly)
 	Story_AI_Request_Build_Hard_Point(aliens, Find_Object_Type("Alien_Walker_Assembly_HP_Face_Cap_Armor_Crown"), walker_de_assembly)
 	Sleep(3)
 	Story_AI_Request_Build_Hard_Point(aliens, Find_Object_Type("Alien_Walker_Assembly_HP_Defiler_Assembly_Pod"), walker_de_assembly)
-	Story_AI_Request_Build_Hard_Point(aliens, Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"), walker_de_assembly)
+	--Story_AI_Request_Build_Hard_Point(aliens, Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"), walker_de_assembly)
 	Story_AI_Request_Build_Hard_Point(aliens, Find_Object_Type("Alien_Walker_Assembly_HP_Plasma_Cannon"), walker_de_assembly, 4)
 	
 	counter_new_assembly_walkers = counter_new_assembly_walkers + 1
@@ -1673,24 +1727,24 @@ function Story_On_Construction_Complete(obj, constructor)
 			Create_Thread("Thread_Novus_Base_Build_Aircraft")
 			Create_Thread("Thread_AttackWith_Novusbase_Aircraft_Team")
 			Create_Thread("Thread_Main_Novus_Attack_Controller")
-		elseif obj_type == object_type_novus_science_lab then
-			novus_science_lab = obj
-			if TestValid(novus_science_lab) then
-				_CustomScriptMessage("JoeLog.txt", string.format("novus_science_lab detected and defined"))
-			end
-		elseif obj_type == object_type_novus_emp_superweapon then
-			novus_emp_superweapon = obj
-			if TestValid(novus_emp_superweapon) then
-				_CustomScriptMessage("JoeLog.txt", string.format("novus_emp_superweapon detected and defined"))
-			end
+		--elseif obj_type == object_type_novus_science_lab then
+			--novus_science_lab = obj
+			--if TestValid(novus_science_lab) then
+			--	_CustomScriptMessage("JoeLog.txt", string.format("novus_science_lab detected and defined"))
+			--end
+		--elseif obj_type == object_type_novus_emp_superweapon then
+			--novus_emp_superweapon = obj
+			--if TestValid(novus_emp_superweapon) then
+			--	_CustomScriptMessage("JoeLog.txt", string.format("novus_emp_superweapon detected and defined"))
+			--end
 			
 		--unit production callbacks
 		--NOVUS INFANTRY
-		elseif obj_type == object_type_novus_robotic_infantry then
-			Create_Thread("Thread_Move_Novusbase_Infantry_Staging_Units", obj)
-			counter_current_robotic_infantry = counter_current_robotic_infantry + 1
-			obj.Register_Signal_Handler(Callback_Novusbase_Robotic_Infantry_Killed, "OBJECT_HEALTH_AT_ZERO")
-			bool_novus_building_robotic_infantry = false
+		--elseif obj_type == object_type_novus_robotic_infantry then
+			--Create_Thread("Thread_Move_Novusbase_Infantry_Staging_Units", obj)
+			--counter_current_robotic_infantry = counter_current_robotic_infantry + 1
+			--obj.Register_Signal_Handler(Callback_Novusbase_Robotic_Infantry_Killed, "OBJECT_HEALTH_AT_ZERO")
+			--bool_novus_building_robotic_infantry = false
 		elseif obj_type == object_type_novus_reflex_trooper then
 			Create_Thread("Thread_Move_Novusbase_Infantry_Staging_Units", obj)
 			counter_current_reflex_troopers = counter_current_reflex_troopers + 1
@@ -1729,11 +1783,11 @@ function Story_On_Construction_Complete(obj, constructor)
 				bool_novus_building_field_inverters = false
 			end
 
-		elseif obj_type == object_type_novus_variant then
-			Create_Thread("Thread_Move_Novusbase_Vehicle_Staging_Units", obj)
-			counter_current_variants = counter_current_variants + 1
-			obj.Register_Signal_Handler(Callback_Novusbase_Variant_Killed, "OBJECT_HEALTH_AT_ZERO")
-			bool_novus_building_variants = false
+		--elseif obj_type == object_type_novus_variant then
+			--Create_Thread("Thread_Move_Novusbase_Vehicle_Staging_Units", obj)
+			--counter_current_variants = counter_current_variants + 1
+			--obj.Register_Signal_Handler(Callback_Novusbase_Variant_Killed, "OBJECT_HEALTH_AT_ZERO")
+			--bool_novus_building_variants = false
 			
 	--NOVUS AIRCRAFT
 		elseif obj_type == object_type_novus_dervish_jet then
@@ -1741,11 +1795,11 @@ function Story_On_Construction_Complete(obj, constructor)
 			counter_current_dervish_jets = counter_current_dervish_jets + 1
 			obj.Register_Signal_Handler(Callback_Novusbase_Dervish_Jet_Killed, "OBJECT_HEALTH_AT_ZERO")
 			bool_novus_building_dervish_jets = false
-		elseif obj_type == object_type_novus_corruptor then
-			Create_Thread("Thread_Move_Novusbase_Aircraft_Staging_Units", obj)
-			counter_current_novus_corruptors = counter_current_novus_corruptors + 1
-			obj.Register_Signal_Handler(Callback_Novusbase_Corruptor_Killed, "OBJECT_HEALTH_AT_ZERO")
-			bool_novus_building_corruptors = false 
+		--elseif obj_type == object_type_novus_corruptor then
+			--Create_Thread("Thread_Move_Novusbase_Aircraft_Staging_Units", obj)
+			--counter_current_novus_corruptors = counter_current_novus_corruptors + 1
+			--obj.Register_Signal_Handler(Callback_Novusbase_Corruptor_Killed, "OBJECT_HEALTH_AT_ZERO")
+			--bool_novus_building_corruptors = false 
 			
 	--ALIEN STRUCTURES
 		elseif obj_type == object_type_alien_walker_assembly then 	
@@ -1824,27 +1878,27 @@ function Story_On_Construction_Complete(obj, constructor)
 				counter_current_defilers = counter_current_defilers + 1
 				obj.Register_Signal_Handler(Callback_Alien_Defiler_Killed, "OBJECT_HEALTH_AT_ZERO")
 			end
-		elseif obj_type == object_type_alien_recontank then--only from team01 assembly walker
-			if bool_starting_walkers_dead == true then
-				_CustomScriptMessage("JoeLog.txt", string.format("bool_starting_walkers_dead: object_type_alien_recontank built"))
-				obj.Prevent_AI_Usage(true)
-				obj.Register_Signal_Handler(Callback_HunterPhaseTank_Killed, "OBJECT_HEALTH_AT_ZERO")
-				Hunt(obj, "AntiDefault", true, false)
-			else
-				obj.Prevent_AI_Usage(true)
-				Create_Thread("Thread_Move_Alienbase_Team01_Staging_Units", obj)
-				bool_aliens_building_recontanks = false
-				counter_current_recontanks = counter_current_recontanks + 1
-				obj.Register_Signal_Handler(Callback_Alien_ReconTank_Killed, "OBJECT_HEALTH_AT_ZERO")
-			end
+		--elseif obj_type == object_type_alien_recontank then--only from team01 assembly walker
+		--	if bool_starting_walkers_dead == true then
+		--		_CustomScriptMessage("JoeLog.txt", string.format("bool_starting_walkers_dead: object_type_alien_recontank built"))
+		--		obj.Prevent_AI_Usage(true)
+		--		obj.Register_Signal_Handler(Callback_HunterPhaseTank_Killed, "OBJECT_HEALTH_AT_ZERO")
+		--		Hunt(obj, "AntiDefault", true, false)
+		--	else
+		--		obj.Prevent_AI_Usage(true)
+		--		Create_Thread("Thread_Move_Alienbase_Team01_Staging_Units", obj)
+		--		bool_aliens_building_recontanks = false
+		--		counter_current_recontanks = counter_current_recontanks + 1
+		--		obj.Register_Signal_Handler(Callback_Alien_ReconTank_Killed, "OBJECT_HEALTH_AT_ZERO")
+		--	end
 		
 		
 	--ALIEN AIRCRAFT		
-		elseif obj_type == object_type_alien_cylinder then
-			obj.Prevent_AI_Usage(true)
-			bool_aliens_building_cylinders= false
-			counter_current_cylinders = counter_current_cylinders + 1
-			obj.Register_Signal_Handler(Callback_Alien_Cylinder_Killed, "OBJECT_HEALTH_AT_ZERO")
+		--elseif obj_type == object_type_alien_cylinder then
+			--obj.Prevent_AI_Usage(true)
+			--bool_aliens_building_cylinders= false
+			--counter_current_cylinders = counter_current_cylinders + 1
+			--obj.Register_Signal_Handler(Callback_Alien_Cylinder_Killed, "OBJECT_HEALTH_AT_ZERO")
 		elseif obj_type == object_type_alien_foo then
 			obj.Prevent_AI_Usage(true)
 			if constructor == alien_team01_assembly_walker then
@@ -1864,12 +1918,12 @@ function Story_On_Construction_Complete(obj, constructor)
 					Tactical_Enabler_Begin_Production(new_assembly_walker, object_type_alien_defiler, 1, aliens)
 				end
 			end
-		elseif obj_type == object_type_alien_phasetank_hardpoint then
-			if bool_starting_walkers_dead == true then
-				if TestValid(new_assembly_walker) then
-					Tactical_Enabler_Begin_Production(new_assembly_walker, object_type_alien_recontank, 1, aliens)
-				end
-			end
+		--elseif obj_type == object_type_alien_phasetank_hardpoint then
+			--if bool_starting_walkers_dead == true then
+			--	if TestValid(new_assembly_walker) then
+			--		Tactical_Enabler_Begin_Production(new_assembly_walker, object_type_alien_recontank, 1, aliens)
+			--	end
+			--end
 		elseif obj_type == object_type_alien_lostone_hardpoint then
 			if bool_starting_walkers_dead == true then
 				if TestValid(new_habitat_walker) then
@@ -1913,11 +1967,11 @@ function Callback_HunterDefiler_Killed()
 	end
 end
 
-function Callback_HunterPhaseTank_Killed()
-	if TestValid(new_assembly_walker) then
-		Tactical_Enabler_Begin_Production(new_assembly_walker, object_type_alien_recontank, 1, aliens)
-	end
-end
+--function Callback_HunterPhaseTank_Killed()
+--	if TestValid(new_assembly_walker) then
+--		Tactical_Enabler_Begin_Production(new_assembly_walker, object_type_alien_recontank, 1, aliens)
+--	end
+--end
 
 function Thread_Novusbase_Gives_Inverter_Gift(inverter)
 	if not TestValid(inverter) then
@@ -1947,21 +2001,21 @@ end
 function Thread_Novus_Base_Build_Infantry()
 	while not bool_mission_failure and not bool_mission_success do
 		Sleep(5)
-		if counter_current_robotic_infantry < counter_max_allowed_robotic_infantry then
-			while bool_novus_building_robotic_infantry == true do
-				Sleep(1)
-			end
-			if counter_current_robotic_infantry < counter_max_allowed_robotic_infantry then
-				if TestValid(novus_robotic_assembly) then
-					if novus_robotic_assembly.Get_Hull() > 0 then
-						Tactical_Enabler_Begin_Production(novus_robotic_assembly, object_type_novus_robotic_infantry, 1, novus)
-						bool_novus_building_robotic_infantry = true
-					end
-				else
-					break -- structure no longer exists...kill this thread
-				end
-			end
-		end
+		--if counter_current_robotic_infantry < counter_max_allowed_robotic_infantry then
+		--	while bool_novus_building_robotic_infantry == true do
+		--		Sleep(1)
+		--	end
+		--	if counter_current_robotic_infantry < counter_max_allowed_robotic_infantry then
+		--		if TestValid(novus_robotic_assembly) then
+		--			if novus_robotic_assembly.Get_Hull() > 0 then
+		--				Tactical_Enabler_Begin_Production(novus_robotic_assembly, object_type_novus_robotic_infantry, 1, novus)
+		--				bool_novus_building_robotic_infantry = true
+		--			end
+		--		else
+		--			break -- structure no longer exists...kill this thread
+		--		end
+		--	end
+		--end
 		
 		if counter_current_reflex_troopers < counter_max_allowed_robotic_infantry then
 			while bool_novus_building_reflex_trooper == true do
@@ -2024,21 +2078,21 @@ function Thread_Novus_Base_Build_Vehicles()
 			end
 		end
 		
-		if counter_current_variants < counter_max_allowed_variants then
-			while bool_novus_building_amplifier_tanks == true do
-				Sleep(1)
-			end
-			if counter_current_variants < counter_max_allowed_variants then
-				if TestValid(novus_vehicle_assembly) then
-					if novus_vehicle_assembly.Get_Hull() > 0 then
-						Tactical_Enabler_Begin_Production(novus_vehicle_assembly, object_type_novus_variant, 1, novus)
-						bool_novus_building_variants = true
-					end
-				else
-					break -- structure no longer exists...kill this thread
-				end
-			end
-		end
+		--if counter_current_variants < counter_max_allowed_variants then
+		--	while bool_novus_building_amplifier_tanks == true do
+		--		Sleep(1)
+		--	end
+		--	if counter_current_variants < counter_max_allowed_variants then
+		--		if TestValid(novus_vehicle_assembly) then
+		--			if novus_vehicle_assembly.Get_Hull() > 0 then
+		--				Tactical_Enabler_Begin_Production(novus_vehicle_assembly, object_type_novus_variant, 1, novus)
+		--				bool_novus_building_variants = true
+		--			end
+		--		else
+		--			break -- structure no longer exists...kill this thread
+		--		end
+		--	end
+		--end
 		
 		if counter_current_field_inverters < counter_max_allowed_field_inverters then
 			while bool_novus_building_field_inverters == true do
@@ -2102,21 +2156,21 @@ function Thread_Novus_Base_Build_Aircraft()
 			end
 		end
 		
-		if counter_current_novus_corruptors < counter_max_allowed_novus_corruptors then
-			while bool_novus_building_corruptors == true do
-				Sleep(1)
-			end
-			if counter_current_novus_corruptors < counter_max_allowed_novus_corruptors then
-				if TestValid(novus_aircraft_assembly) then
-					if novus_aircraft_assembly.Get_Hull() > 0 then
-						Tactical_Enabler_Begin_Production(novus_aircraft_assembly, object_type_novus_corruptor, 1, novus)
-						bool_novus_building_corruptors = true 
-					end
-				else
-					break -- structure no longer exists...kill this thread
-				end
-			end
-		end
+		--if counter_current_novus_corruptors < counter_max_allowed_novus_corruptors then
+		--	while bool_novus_building_corruptors == true do
+		--		Sleep(1)
+		--	end
+		--	if counter_current_novus_corruptors < counter_max_allowed_novus_corruptors then
+		--		if TestValid(novus_aircraft_assembly) then
+		--			if novus_aircraft_assembly.Get_Hull() > 0 then
+		--				Tactical_Enabler_Begin_Production(novus_aircraft_assembly, object_type_novus_corruptor, 1, novus)
+		--				bool_novus_building_corruptors = true 
+		--			end
+		--		else
+		--			break -- structure no longer exists...kill this thread
+		--		end
+		--	end
+		--end
 	end
 end
 
@@ -2210,9 +2264,9 @@ function Thread_Main_Novus_Attack_Controller()
 	end
 end
 
-function Callback_Novusbase_Robotic_Infantry_Killed()
-	counter_current_robotic_infantry = counter_current_robotic_infantry - 1
-end
+--function Callback_Novusbase_Robotic_Infantry_Killed()
+--	counter_current_robotic_infantry = counter_current_robotic_infantry - 1
+--end
 
 function Callback_Novusbase_Reflex_Trooper_Killed()
 	counter_current_reflex_troopers = counter_current_reflex_troopers - 1
@@ -2226,17 +2280,17 @@ function Callback_Novusbase_FieldInverter_Killed()
 	counter_current_field_inverters = counter_current_field_inverters - 1
 end
 
-function Callback_Novusbase_Variant_Killed()
-	counter_current_variants = counter_current_variants - 1
-end
+--function Callback_Novusbase_Variant_Killed()
+--	counter_current_variants = counter_current_variants - 1
+--end
 
 function Callback_Novusbase_Dervish_Jet_Killed()
 	counter_current_dervish_jets = counter_current_dervish_jets - 1
 end
 
-function Callback_Novusbase_Corruptor_Killed()
-	counter_current_novus_corruptors = counter_current_novus_corruptors - 1
-end
+--function Callback_Novusbase_Corruptor_Killed()
+--	counter_current_novus_corruptors = counter_current_novus_corruptors - 1
+--end
 
 --**********************************************************************************************
 --**********ALIEN TEAM CREATION STUFF****************************************************
@@ -2324,17 +2378,17 @@ function Thread_Alien_Base_Build_Vehicles()
 		end
 		
 		--RECON TANKS
-		if counter_current_recontanks < counter_max_allowed_recontanks then 
-			while bool_aliens_building_recontanks == true do
-				Sleep(1)
-			end
-			if counter_current_recontanks < counter_max_allowed_recontanks then
-				if TestValid(alien_team01_assembly_walker) then
-					Tactical_Enabler_Begin_Production(alien_team01_assembly_walker, object_type_alien_recontank, 1, aliens)
-					bool_aliens_building_recontanks = true
-				end
-			end
-		end
+		--if counter_current_recontanks < counter_max_allowed_recontanks then 
+		--	while bool_aliens_building_recontanks == true do
+		--		Sleep(1)
+		--	end
+		--	if counter_current_recontanks < counter_max_allowed_recontanks then
+		--		if TestValid(alien_team01_assembly_walker) then
+		--			Tactical_Enabler_Begin_Production(alien_team01_assembly_walker, object_type_alien_recontank, 1, aliens)
+		--			bool_aliens_building_recontanks = true
+		--		end
+		--	end
+		--end
 		
 		--FOOS
 		if counter_current_foos < counter_max_allowed_foos then
@@ -2474,9 +2528,9 @@ function Callback_Alien_ReconTank_Killed()
 	counter_current_recontanks = counter_current_recontanks - 1
 end
 
-function Callback_Alien_Cylinder_Killed()
-	counter_current_cylinders = counter_current_cylinders - 1
-end
+--function Callback_Alien_Cylinder_Killed()
+--	counter_current_cylinders = counter_current_cylinders - 1
+--end
 
 function Callback_Alien_Foo_Killed()
 	counter_current_foos = counter_current_foos - 1
@@ -2498,3 +2552,99 @@ end
 function Post_Load_Callback()
 	Movie_Commands_Post_Load_Callback()
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	Activate_Independent_Hint = nil
+	Advance_State = nil
+	Burn_All_Objects = nil
+	Callback_Alien_ReconTank_Killed = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	Clear_Hint_Tracking_Map = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	Define_Retry_State = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Drop_In_Spawn_Unit = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Formation_Attack = nil
+	Formation_Attack_Move = nil
+	Formation_Move = nil
+	Full_Speed_Move = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Chat_Color_Index = nil
+	Get_Current_State = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Next_State = nil
+	Get_Player_By_Faction = nil
+	Max = nil
+	Min = nil
+	Notify_Attached_Hint_Created = nil
+	On_Remove_Xbox_Controller_Hint = nil
+	On_Retry_Response = nil
+	PGAchievementAward_Init = nil
+	PGColors_Init = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Remove_From_Table = nil
+	Reset_Objectives = nil
+	Retry_Current_Mission = nil
+	Safe_Set_Hidden = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Objective_Text = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	Story_AI_Request_Build_Units = nil
+	Story_AI_Set_Aggressive_Mode = nil
+	Story_AI_Set_Autonomous_Mode = nil
+	Story_AI_Set_Defensive_Mode = nil
+	Story_AI_Set_Scouting_Mode = nil
+	Strategic_SpawnList = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	UI_Close_All_Displays = nil
+	UI_Enable_For_Object = nil
+	UI_Pre_Mission_End = nil
+	UI_Set_Loading_Screen_Background = nil
+	UI_Set_Loading_Screen_Faction_ID = nil
+	UI_Set_Loading_Screen_Mission_Text = nil
+	UI_Set_Region_Color = nil
+	UI_Start_Flash_Button_For_Unit = nil
+	UI_Stop_Flash_Button_For_Unit = nil
+	UI_Update_Selection_Abilities = nil
+	Update_Offline_Achievement = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

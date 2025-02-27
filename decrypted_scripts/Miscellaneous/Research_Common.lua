@@ -1,3 +1,24 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[116] = true
+LuaGlobalCommandLinks[201] = true
+LuaGlobalCommandLinks[14] = true
+LuaGlobalCommandLinks[159] = true
+LuaGlobalCommandLinks[51] = true
+LuaGlobalCommandLinks[19] = true
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[98] = true
+LuaGlobalCommandLinks[114] = true
+LuaGlobalCommandLinks[115] = true
+LuaGlobalCommandLinks[148] = true
+LuaGlobalCommandLinks[117] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[103] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
  --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -66,6 +87,8 @@ function Init_Research_Common(tactical_only_game)
 	BlockedResearch["A"] = false
 	BlockedResearch["B"] = false
 	BlockedResearch["C"] = false
+	
+	Create_Science_Officer()
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -245,6 +268,9 @@ function Retrieve_Branch_Data(branch, out_table)
 			lock_gens = suite.LocksGenerators
 		end
 		
+		local gamepad_display_x_overlay = Get_Gamepad_Display_X_Overlay(suite)
+		local gamepad_display_a_overlay = Get_Gamepad_Display_A_Overlay(suite)
+
 		local entry = 
 		{
 			suite.Path,
@@ -277,7 +303,12 @@ function Retrieve_Branch_Data(branch, out_table)
 			research_time,
 			suite_texture,
 			suite_name,
-			research_cost
+			research_cost,
+			
+			-- Maria 02.05.2008
+			-- Needed to properly update the button when the gamepad is active.
+			gamepad_display_x_overlay,
+			gamepad_display_a_overlay
 		}
 		
 		--EMP 7/24/07
@@ -294,6 +325,50 @@ function Retrieve_Branch_Data(branch, out_table)
 	end	
 	
 	return out_table
+end
+
+-- -----------------------------------------
+-- Maria 02.05.2008
+-- Get_Gamepad_Display_X_Overlay
+-- -----------------------------------------
+function Get_Gamepad_Display_X_Overlay(node)
+	if not node then 
+		return false
+	end
+	
+	if node.Completed then
+		-- Research can be undone only it the suite is the top most suite on its path.
+		if node.Index ~= NUMBER_OF_SUITES_PER_PATH then	
+			local nxt_suite_idx = node.Index + 1
+			suite_name = "Suite"..nxt_suite_idx
+			local nxt_node = PathToBranchMap[node.Path][suite_name]
+			
+			if not nxt_node or nxt_node.Completed == true or nxt_node.StartResearchTime ~= -1 then
+				-- we cannot undo the research for the specified node!.
+				return false
+			end
+		end		
+	elseif node.StartResearchTime == -1 then
+		-- we cannot undo the research for the specified node!.
+		return false
+	end
+	-- Go ahead we can undo the research for this node.
+	return true
+end
+
+-- -----------------------------------------
+-- Maria 02.05.2008
+-- Get_Gamepad_Display_A_Overlay
+-- -----------------------------------------
+function Get_Gamepad_Display_A_Overlay(node)
+	if not node then 
+		return false
+	end
+	
+	if not node.Completed and node.StartResearchTime == -1 then
+		return true
+	end
+	return false
 end
 
 -- -----------------------------------------
@@ -582,6 +657,7 @@ function Cancel_Research(node_info)
 		local dir_table = PathToBranchMap[path]
 		local suite_name = "Suite"..node_index
 		local node = dir_table[suite_name]
+		local game_mode_scene = Get_Game_Mode_GUI_Scene()
 		
 		-- NOTE: there are 2 different cases to consider
 		-- CASE 1: The player wants to cancel research under way
@@ -622,7 +698,10 @@ function Cancel_Research(node_info)
 					table.remove(SuitesBeingResearched, idx)
 					found_suite = true
 				end	
-				Raise_Game_Event("Research_Cancel", Player, nil, nil)				
+				Raise_Game_Event("Research_Cancel", Player, nil, nil)		
+				if game_mode_scene then
+					game_mode_scene.Raise_Event("Research_Canceled", nil, {Player}) --EMP 7/24/07
+				end		
 			end
 			
 			if not found_suite then
@@ -636,10 +715,10 @@ function Cancel_Research(node_info)
 		
 		Update_Nodes_State()
 		
-		local game_mode_scene = Get_Game_Mode_GUI_Scene()
 		if game_mode_scene then
-			game_mode_scene.Raise_Event_Immediate("Update_Tree_Scenes", nil, {Player})
-			game_mode_scene.Raise_Event("Research_Canceled", nil, {Player}) --EMP 7/24/07
+			game_mode_scene.Raise_Event("Update_Tree_Scenes", nil, {Player})
+			--JSY: GUI cancel event moved to above so it's not sent when removing
+			--a completed node.
 		end	
 	end
 end
@@ -650,6 +729,7 @@ end
 function Start_Research(node_info)
 	-- node_info[1] = path, node_info[2] = node index
 
+	local node_icon
 	if node_info ~= nil  then
 		
 		local path = node_info[1]
@@ -702,6 +782,7 @@ function Start_Research(node_info)
 			-- We are in the clear, go ahead and start the research for this node.
 			node.StartResearchTime = GetCurrentTime.Frame()
 			table.insert(SuitesBeingResearched, node)
+			node_icon = node.TextureMap[1]
 			
 			if not IsDEFCONMode then
 				-- Notify the player that research is underway.
@@ -713,7 +794,7 @@ function Start_Research(node_info)
 		end
 		
 		Update_Nodes_State()
-		Get_Game_Mode_GUI_Scene().Raise_Event("Research_Started", nil, {Player} )  --EMP 7/24/07
+		Get_Game_Mode_GUI_Scene().Raise_Event("Research_Started", nil, {Player, node_icon} )  --EMP 7/24/07
 	end
 end
 
@@ -835,6 +916,12 @@ function Research_Complete(suite_being_researched_idx)
 		-- Oksana: notify player of completed research
 		if not IsDEFCONMode then 
 			Raise_Game_Event("Research_Completed", Player)		
+		end
+
+		-- If there is a scenario script
+		game_mode_script = Get_Game_Mode_Script()
+		if game_mode_script and not Is_Multiplayer_Or_Replay() then
+			game_mode_script.Call_Function("Game_Mode_Research_Is_Complete",Player,suite.Path,suite.Index)
 		end
 
 		--Oksana: notify achievement system
@@ -967,6 +1054,12 @@ function Update_Nodes_State()
 	elseif IsDEFCONMode and research_points > MAX_RESEARCH_POINTS_DEFCON then
 		research_points = MAX_RESEARCH_POINTS_DEFCON
 	end
+
+	-- KDB override for research points is here
+	local research_override = Player.Get_Research_Points_Override()
+	if research_override >= 0.0 then
+		research_points = research_override 
+	end
 	
 	if research_points > active_and_completed_research_count then
 		-- If there's a whole tier enabled waiting for the player to choose which suite to start research on, then do nothing
@@ -1030,7 +1123,11 @@ function Update_Nodes_State()
 	local CachedPointsDataForGUI = {}
 	CachedPointsDataForGUI[0] = active_and_completed_research_count
 	CachedPointsDataForGUI[1] = research_points
-	CachedPointsDataForGUI[2] = MAX_RESEARCH_POINTS
+	if research_override >= 0.0 then
+		CachedPointsDataForGUI[2] = research_override
+	else
+		CachedPointsDataForGUI[2] = MAX_RESEARCH_POINTS
+	end
 	
 	Script.Set_Async_Data("CachedBranchTexturesForGUI", CachedBranchTexturesForGUI)
 	Script.Set_Async_Data("CachedTreeDataForGUI", CachedTreeDataForGUI)
@@ -1038,7 +1135,7 @@ function Update_Nodes_State()
 	
 	local game_mode_scene = Get_Game_Mode_GUI_Scene()
 	if game_mode_scene then
-		game_mode_scene.Raise_Event_Immediate("Update_Tree_Scenes", nil, {Player})
+		game_mode_scene.Raise_Event("Update_Tree_Scenes", nil, {Player})
 	end	
 end
 
@@ -1055,7 +1152,7 @@ function Block_Research_Branch( group, on_off_group, refresh )
 		
 		local game_mode_scene = Get_Game_Mode_GUI_Scene()
 		if game_mode_scene then
-			game_mode_scene.Raise_Event_Immediate("Update_Tree_Scenes", nil, {Player})
+			game_mode_scene.Raise_Event("Update_Tree_Scenes", nil, {Player})
 		end
 		
 	end
@@ -1184,6 +1281,7 @@ end
 -- Pre_Save_Callback
 -- -------------------------------------------------------------------------------------------------------------------------
 function Pre_Save_Callback()
+	Base_Pre_Save_Callback()
 	Script.Set_Async_Data("CachedTreeDataForGUI", nil)
 end
 
@@ -1205,3 +1303,82 @@ function Post_Load_Callback()
 	Init_Type_To_Tree_Location_Map()
 	Update_Nodes_State()
 end
+
+-- -------------------------------------------------------------------------------------------------------------------------
+-- Create_Science_Officer
+-- -------------------------------------------------------------------------------------------------------------------------
+function Create_Science_Officer()
+	
+	if Get_Game_Mode() == "Strategic" then
+		return
+	end
+	
+	local faction_name = Player.Get_Faction_Name()
+	if faction_name == nil then return end
+	local type_name = faction_name.."_Hero_Chief_Scientist_PIP_Only"
+
+	local science_type = Find_Object_Type(type_name)
+	if science_type == nil then return end
+	
+	local science_guys = Find_All_Objects_Of_Type(type_name, Player)
+	if science_guys and #science_guys > 0 then return end
+	
+	local position = Create_Position() -- creates (0,0,0)
+	local officer = Create_Generic_Object(science_type, position, Player)	
+	
+	-- Maria 12.19.2007: Per Bug #2721 (SEGA DB) the player is unable to research
+	-- during Novus Mission 7.  The research button is displayed and enabled but clicking 
+	-- on it displays a disabled research tree.  This problem is caused by the fact that designers
+	-- are disabling research but the UI_Hide_Research_Button() command fails because it cannot find the 
+	-- player's science officer!.  This is so because before issuing that command they change the active
+	-- context and the science guy gets left behind.  Hence, since the science guy is always required 
+	-- let's put this guy in the base context so we make sure that he's always around!!!!.
+	officer.Set_Object_Context_ID(255)			
+end
+
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Init_Research_Common = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Research_Complete = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Offline_Achievement = nil
+	Update_Research_Progress = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

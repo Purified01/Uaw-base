@@ -1,3 +1,12 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[1] = true
+LuaGlobalCommandLinks[109] = true
+LuaGlobalCommandLinks[20] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -54,7 +63,7 @@ function Init_Superweapons_Data()
 	WeaponTypeToWeaponStateTable = {}
 	Script.Set_Async_Data("WeaponTypeToWeaponStateTable", WeaponTypeToWeaponStateTable)
 	SWTimerUpdateTime = GetCurrentTime()
-	-- each weapon has it's own timer
+	-- each weapon has its own timer
 	SuperweaponTimers = {}
 end
 
@@ -107,10 +116,33 @@ function On_Superweapon_Enabler_Created(enabler, superweapon_type_name)
 	table.insert( SuperweaponEnablers, {Object = enabler, WeaponTypeName = superweapon_type_name, CanFire = false, AnimPlaying = nil} )
 	enabler.Register_Signal_Handler(On_Enabler_Destroyed, "OBJECT_HEALTH_AT_ZERO")
 	enabler.Register_Signal_Handler(On_Enabler_Destroyed, "OBJECT_SOLD")
+	enabler.Register_Signal_Handler(On_Enabler_Switch_Type, "OBJECT_SWITCH_TYPE")
 	
 	Raise_Game_Event("Super_Weapon_Built", Player, enabler.Get_Position(), Find_Object_Type(superweapon_type_name) )
 	
+	Update_Superweapons_Data()
 	return true
+end
+
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- On_Enabler_Destroyed
+-- ------------------------------------------------------------------------------------------------------------------
+function On_Enabler_Switch_Type(enabler)
+	if not TestValid(enabler) then 
+		return
+	end
+	
+	Remove_SW_Enabler(enabler)
+	local enabler_type = enabler.Get_Type()
+	if new_enabler_type then
+		enabler_type = new_enabler_type
+	end
+	
+	local sw_owner_list = enabler.Get_Script().Get_Async_Data("SWOwnerList")
+	if sw_owner_list and sw_owner_list[enabler_type] then
+		On_Superweapon_Enabler_Created(enabler, sw_owner_list[enabler_type])
+	end
 end
 
 
@@ -185,6 +217,8 @@ function Remove_SW_Enabler(enabler)
 --		MessageBox("The dying enabler was not found in the list... weird")
 		return
 	end
+	
+	Update_Superweapons_Data()
 end
 
 
@@ -201,6 +235,7 @@ function Update_Superweapons_Data()
 	
 	-- we need to store data that may be used by the UI (if we are the local player)
 	WeaponTypeToWeaponStateTable = {}
+	
 	local progress_value = 0
 	local button_index = 1
 	for weapon_type_name, count in pairs(WeaponTypeNameToCount) do
@@ -228,11 +263,49 @@ function Update_Superweapons_Data()
 		end
 		
 		WeaponTypeToWeaponStateTable[weapon_type_name] = {present, enabled, progress_data, count, num_can_fire, enabler, cooldown}
-	
 	end
+	
 	Script.Set_Async_Data("WeaponTypeToWeaponStateTable", WeaponTypeToWeaponStateTable)
+	
+	Update_SW_Enabler_Ability_Data()
 end
 
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- Update_SW_Enabler_Ability_Data
+-- ------------------------------------------------------------------------------------------------------------------
+function Update_SW_Enabler_Ability_Data()
+	SWEnablerToSWStateMap = {}
+	if SuperweaponEnablers then
+		for index, enabler_data in pairs(SuperweaponEnablers) do
+			local enabler = enabler_data.Object
+			if TestValid(enabler) then
+				
+				if not SWEnablerToSWStateMap[enabler] then	
+					SWEnablerToSWStateMap[enabler]  = {}
+				end
+				
+				-- now get the cooldown timer (if applicable)
+				local progress = 0.0
+				if SuperweaponTimers[enabler] ~= nil and SuperweaponTimers[enabler].CoolDown > 0.0 then
+					local activation = SuperweaponTimers[enabler].StartTime
+					progress = 1.0 - (SuperweaponTimers[enabler].Progress/SuperweaponTimers[enabler].CoolDown)
+				
+					if progress > 1.0 then
+						progress = 1.0
+					elseif progress < 0.0 then
+						progress = 0.0
+					end
+				end
+			
+				local enabled, num_can_fire = Can_Fire_Superweapon(enabler_data.WeaponTypeName, enabler)
+				SWEnablerToSWStateMap[enabler] = {enabler_data.WeaponTypeName, enabled, num_can_fire, progress}
+			end
+		end
+	end
+	
+	Script.Set_Async_Data("SWEnablerToSWStateMap", SWEnablerToSWStateMap)	
+end
 
 
 -- ------------------------------------------------------------------------------------------------------------------
@@ -253,7 +326,7 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 function SW_Object_Has_Power( object )
 	if TestValid( object ) then
-		if object.Has_Behavior( BEHAVIOR_POWERED ) then
+		if object.Has_Behavior( 161 ) then
 			if object.Get_Attribute_Integer_Value( "Is_Powered" ) == 0 then
 				return false
 			end
@@ -266,7 +339,7 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 -- Can_Fire_Superweapon
 -- ------------------------------------------------------------------------------------------------------------------
-function Can_Fire_Superweapon(weapon_type_name)
+function Can_Fire_Superweapon(weapon_type_name, firing_enabler)
 
 	--First, check if we have resources to fre this weapon
 	local resource_requirements = WeaponTypeNameToResourceRequirements[weapon_type_name]
@@ -292,7 +365,7 @@ function Can_Fire_Superweapon(weapon_type_name)
 		
 		if enabler_data.WeaponTypeName == weapon_type_name then 
 			
-			if enabler_data.Object ~= nil then
+			if TestValid(enabler_data.Object) and ( not TestValid(firing_enabler) or firing_enabler == enabler_data.Object )then
 				-- Maria 10.29.2007: (Bug entry) When Super Weapons are EMP’d, and are ready to fire, the button to activate 
 				-- the super should grey out until the EMP effect has worn off
 				if enabler_data.Object.Get_Attribute_Value("EMP_Stun_Effect") < 1.0 then
@@ -340,7 +413,7 @@ function Can_Fire_Superweapon(weapon_type_name)
 	if not can_fire then
 		return cooldown_prevents_fire, count
 	end	
-			
+	
 	return true, count
 end
 
@@ -469,18 +542,24 @@ function Force_SW_Cooldown_Complete()
 	for index=table.getn(SuperweaponTimers), 1, -1 do
 		local weapon = SuperweaponTimers[index]
 		if TestValid(weapon) then
-			SW_Play_Anim(weapon, hold_anim_name, true, 0.0)
-			SuperweaponTimers[weapon].CoolDown = 0.0
-			SuperweaponTimers[weapon].Index = 0
-			-- remove this activation record from the list
-			table.remove(SuperweaponTimers, index)
+		
+			-- oksana: don't update animations or timers while there is no power.
+			-- KDB added stun effect from emp to stop timers
+			if SW_Object_Has_Power(weapon) and weapon.Get_Attribute_Value("EMP_Stun_Effect") < 1.0 then
+			
+				SW_Play_Anim(weapon, hold_anim_name, true, 0.0)
+				SuperweaponTimers[weapon].CoolDown = 0.0
+				SuperweaponTimers[weapon].Index = 0
+				-- remove this activation record from the list
+				table.remove(SuperweaponTimers, index)
 
-			for i=table.getn(SuperweaponTimers), 1, -1 do
-				local weap = SuperweaponTimers[i]
-				if weap ~= nil then
-					SuperweaponTimers[weap].Index = i		
-				end			
-			end		
+				for i=table.getn(SuperweaponTimers), 1, -1 do
+					local weap = SuperweaponTimers[i]
+					if weap ~= nil then
+						SuperweaponTimers[weap].Index = i		
+					end			
+				end	
+			end	
 		end
 	end	
 end
@@ -501,20 +580,20 @@ end
 -- ------------------------------------------------------------------------------------------------------------------
 -- Launch_Superweapon - 
 -- ------------------------------------------------------------------------------------------------------------------
-function Launch_Superweapon(weapon_type, position)
+function Launch_Superweapon(weapon_type, position, firing_enabler)
 
 	if weapon_type == nil then return end
 	
 	local weapon_type_name = weapon_type.Get_Name()
 	if weapon_type_name == nil then return end
 	
-	local enabled, number_ready = Can_Fire_Superweapon(weapon_type_name)
+	local enabled, number_ready = Can_Fire_Superweapon(weapon_type_name, firing_enabler)
 	if enabled and number_ready > 0 then 
 	
 		-- Fix: must start cooldown BEFORE we spawn the object, otherwise we may 
 		-- accidentaly fry ourselves and never be able to fire again
 		local cool_down = WeaponTypeNameToCooldownTime[weapon_type_name]
-		Set_Superweapon_Cooldown_Time( nil, weapon_type_name, cool_down, true )
+		Set_Superweapon_Cooldown_Time( firing_enabler, weapon_type_name, cool_down, true )
 	
 		local sw_object = Spawn_Unit(weapon_type, position, Player, false, false)	-- 5th param is do not place as company
 		if TestValid(sw_object) then
@@ -703,3 +782,54 @@ function SW_Get_Enabler_Data( sw_object )
 	end
 	return nil
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Burn_All_Objects = nil
+	Cancel_Timer = nil
+	Carve_Glyph = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dialog_Box_Common_Init = nil
+	Dirty_Floor = nil
+	Disable_UI_Element_Event = nil
+	Enable_UI_Element_Event = nil
+	Find_All_Parent_Units = nil
+	Force_SW_Cooldown_Complete = nil
+	GUI_Dialog_Raise_Parent = nil
+	GUI_Does_Object_Have_Lua_Behavior = nil
+	GUI_Pool_Free = nil
+	Get_GUI_Variable = nil
+	Get_Last_Tactical_Parent = nil
+	Init_Superweapons_Data = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PG_Count_Num_Instances_In_Build_Queues = nil
+	Process_Tactical_Mission_Over = nil
+	Raise_Event_All_Parents = nil
+	Raise_Event_Immediate_All_Parents = nil
+	Register_Death_Event = nil
+	Register_Prox = nil
+	Register_Timer = nil
+	Remove_Invalid_Objects = nil
+	Safe_Set_Hidden = nil
+	Show_Object_Attached_UI = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	Spawn_Dialog_Box = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_SA_Button_Text_Button = nil
+	Use_Ability_If_Able = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

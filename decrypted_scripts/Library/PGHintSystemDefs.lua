@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGHintSystemDefs.lua#33 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[8] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGHintSystemDefs.lua#27 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Library/PGHintSystemDefs.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Library/PGHintSystemDefs.lua $
 --
 --    Original Author: Joe Howes
 --
 --            $Author: Joe_Gernert $
 --
---            $Change: 76950 $
+--            $Change: 93279 $
 --
---          $DateTime: 2007/07/17 12:06:54 $
+--          $DateTime: 2008/02/13 15:32:26 $
 --
---          $Revision: #33 $
+--          $Revision: #27 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,170 +67,192 @@ function Init_Hints()
 
 	-- ** Offline Achievement Map **
 	HintSystemMap = {}
+	HintSystemStart								= 1
 
-	-- ** IDs **
-	TEST_HINT_ONE_ID								= Declare_Enum(1)
-	HintSystemStart								= TEST_HINT_ONE_ID
+-- The following 3 lines are required by the lua preprocessor.  1/22/2008 3:14:28 PM -- BMH
+--[[
 
-	TEST_HINT_TWO_ID								= Declare_Enum()
-	TEST_HINT_THREE_ID							= Declare_Enum()
-	TEST_HINT_FOUR_ID								= Declare_Enum()
 
-	HINT_BUILT_ALIEN_ARRIVAL_SITE				= Declare_Enum()
-	HINT_BUILT_ALIEN_GRAVITIC_MANIPULATOR	= Declare_Enum()
-	HINT_BUILT_ALIEN_SCAN_DRONE				= Declare_Enum()
-	HINT_BUILT_ALIEN_MASS_DROP					= Declare_Enum()
-	HINT_BUILT_ALIEN_RADIATION_SPITTER		= Declare_Enum()
-	HINT_BUILT_ALIEN_RELOCATOR					= Declare_Enum()
-	HINT_BUILT_ALIEN_WALKER_HABITAT			= Declare_Enum()
-	HINT_BUILT_ALIEN_WALKER_ASSEMBLY			= Declare_Enum()
-	HINT_BUILT_ALIEN_WALKER_SCIENCE			= Declare_Enum()
-	
-	HINT_BUILT_ALIEN_HERO_KAMAL_REX			= Declare_Enum()
-	HINT_BUILT_ALIEN_HERO_NUFAI				= Declare_Enum()
-	HINT_BUILT_ALIEN_HERO_ORLOK				= Declare_Enum()
-	HINT_BUILT_ALIEN_BRUTE						= Declare_Enum()
-	HINT_BUILT_ALIEN_GLYPH_CARVER				= Declare_Enum()
-	HINT_BUILT_ALIEN_GRUNT						= Declare_Enum()
-	HINT_BUILT_ALIEN_SCIENCE_TEAM				= Declare_Enum()
-	HINT_BUILT_ALIEN_CYLINDER					= Declare_Enum()
-	HINT_BUILT_ALIEN_DEFILER					= Declare_Enum()
-	HINT_BUILT_ALIEN_SAUCER						= Declare_Enum()
-	HINT_BUILT_ALIEN_REAPER_TURRET			= Declare_Enum()
-	HINT_BUILT_ALIEN_TANK						= Declare_Enum()
-	
-	HINT_BUILT_NOVUS_AIRCRAFT_ASSEMBLY		= Declare_Enum()
-	HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR	= Declare_Enum()
-	HINT_BUILT_NOVUS_INPUT_STATION			= Declare_Enum()
-	HINT_BUILT_NOVUS_POWER_NEXUS				= Declare_Enum()
-	HINT_BUILT_NOVUS_REDIRECTION_TURRET		= Declare_Enum()
-	HINT_BUILT_NOVUS_COMMAND_CORE				= Declare_Enum()
-	HINT_BUILT_NOVUS_ROBOTIC_ASSEMBLY		= Declare_Enum()
-	HINT_BUILT_NOVUS_SCIENCE_LAB				= Declare_Enum()
-	HINT_BUILT_NOVUS_SIGNAL_TOWER				= Declare_Enum()
-	HINT_BUILT_NOVUS_EMP_SUPERWEAPON			= Declare_Enum()
-	HINT_BUILT_NOVUS_VEHICLE_ASSEMBLY		= Declare_Enum()
-		
-	HINT_BUILT_NOVUS_HERO_FOUNDER				= Declare_Enum()
-	HINT_BUILT_NOVUS_HERO_MECH					= Declare_Enum()
-	HINT_BUILT_NOVUS_HERO_VERTIGO				= Declare_Enum()
-	HINT_BUILT_NOVUS_REFLEX_TROOPER			= Declare_Enum()
-	HINT_BUILT_NOVUS_ROBOTIC_INFANTRY		= Declare_Enum()
-	HINT_BUILT_NOVUS_VARIANT					= Declare_Enum()
-	HINT_BUILT_NOVUS_AMPLIFIER					= Declare_Enum()
-	HINT_BUILT_NOVUS_ANTIMATTER_TANK			= Declare_Enum()
-	HINT_BUILT_NOVUS_CONSTRUCTOR				= Declare_Enum()
-	HINT_BUILT_NOVUS_DERVISH_JET				= Declare_Enum()
-	HINT_BUILT_NOVUS_FIELD_INVERTER			= Declare_Enum()
-	HINT_BUILT_NOVUS_CORRUPTOR             = Declare_Enum()
-	HINT_BUILT_NOVUS_HACKER                = Declare_Enum()
-	
-	HINT_BUILT_MASARI_AIR_INSPIRATION		= Declare_Enum()
-	HINT_BUILT_MASARI_ELEMENTAL_COLLECTOR	= Declare_Enum()
-	HINT_BUILT_MASARI_ELEMENTAL_CONTROLLER	= Declare_Enum()
-	HINT_BUILT_MASARI_FOUNDATION				= Declare_Enum()
-	HINT_BUILT_MASARI_GROUND_INSPIRATION	= Declare_Enum()
-	HINT_BUILT_MASARI_GUARDIAN					= Declare_Enum()
-	HINT_BUILT_MASARI_INFANTRY_INSPIRATION	= Declare_Enum()
-	HINT_BUILT_MASARI_NEOPHYTES_LAB			= Declare_Enum()
-	HINT_BUILT_MASARI_NATURAL_INTERPRETER	= Declare_Enum()
-	HINT_BUILT_MASARI_SKY_GUARDIAN			= Declare_Enum()
-	
-	HINT_BUILT_MASARI_FIGMENT					= Declare_Enum()
-	HINT_BUILT_MASARI_SEEKER					= Declare_Enum()
-	HINT_BUILT_MASARI_SKYLORD					= Declare_Enum()
-	HINT_BUILT_MASARI_HERO_ALATEA				= Declare_Enum()
-	HINT_BUILT_MASARI_HERO_CHAROS				= Declare_Enum()
-	HINT_BUILT_MASARI_HERO_ZESSUS				= Declare_Enum()
-	HINT_BUILT_MASARI_ARCHITECT				= Declare_Enum()
-	HINT_BUILT_MASARI_AVENGER					= Declare_Enum()
-	HINT_BUILT_MASARI_DISCIPLE					= Declare_Enum()
-	HINT_BUILT_MASARI_SEER						= Declare_Enum()
-	HINT_BUILT_MASARI_ENFORCER					= Declare_Enum()
-	HINT_BUILT_MASARI_PEACEBRINGER			= Declare_Enum()
-	HINT_BUILT_MASARI_SENTRY					= Declare_Enum()
 
-	HINT_SYSTEM_HINT_SYSTEM						= Declare_Enum()
-	HINT_SYSTEM_OBJECTIVES		= Declare_Enum()
-	HINT_SYSTEM_HEROES							= Declare_Enum()
-	HINT_SYSTEM_SELECTING_HEROES				= Declare_Enum()
-	HINT_SYSTEM_SCROLLING						= Declare_Enum()
-	HINT_SYSTEM_SCROLLING_02					= Declare_Enum()
-	HINT_SYSTEM_ROTATE_VIEW						= Declare_Enum()
-	HINT_SYSTEM_ZOOMING							= Declare_Enum()
-	HINT_SYSTEM_RESET_VIEW						= Declare_Enum()
-	HINT_SYSTEM_UNIT_SELECTION					= Declare_Enum()
-	HINT_SYSTEM_MOVING							= Declare_Enum()
-	HINT_SYSTEM_FORCE_MARCH						= Declare_Enum()
-	HINT_SYSTEM_ATTACKING						= Declare_Enum()
-	HINT_SYSTEM_MULTIPLE_UNITS					= Declare_Enum()
-	HINT_SYSTEM_SIMILAR_UNITS					= Declare_Enum()
-	HINT_SYSTEM_ATTACKING_MULTIPLE			= Declare_Enum()
-	HINT_SYSTEM_FORCE_FIRE						= Declare_Enum()
-	HINT_SYSTEM_CONTROL_GROUPS					= Declare_Enum()
-	HINT_SYSTEM_VIEWING_GROUPS					= Declare_Enum()
-	HINT_SYSTEM_ABILITIES						= Declare_Enum()
-	HINT_SYSTEM_UNTARGETED_ABILITIES			= Declare_Enum()
-	HINT_SYSTEM_SHARED_ABILITIES				= Declare_Enum()
-	HINT_SYSTEM_SHARED_TARGETING				= Declare_Enum()
-	HINT_SYSTEM_RADAR								= Declare_Enum()
-	HINT_SYSTEM_RADAR_MOVEMENT					= Declare_Enum()
-	HINT_SYSTEM_GARRISONING						= Declare_Enum()
-	HINT_SYSTEM_EXITING							= Declare_Enum()
-	HINT_SYSTEM_CAPTURING						= Declare_Enum()
-	HINT_SYSTEM_CONSTRUCTING_UNITS			= Declare_Enum()
-	HINT_SYSTEM_RALLY_POINTS					= Declare_Enum()
-	HINT_SYSTEM_RESOURCES						= Declare_Enum()
-	HINT_SYSTEM_CONSTRUCTING_BUILDINGS		= Declare_Enum()
-	HINT_SYSTEM_CONSTRUCTION					= Declare_Enum()
-	HINT_SYSTEM_ROTATING							= Declare_Enum()
-	HINT_SYSTEM_DEPENDENCIES					= Declare_Enum()
-	HINT_SYSTEM_NOVUS_POWER						= Declare_Enum()
-	HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS = Declare_Enum()
-	HINT_SYSTEM_NOVUS_PATCHES					= Declare_Enum()
-	
-	HINT_TUT01_REINFORCEMENTS_HERE			= Declare_Enum()
 
-	HINT_HM01_ORLOK_SIEGE_ABILITY				= Declare_Enum()
-	HINT_HM01_WALKER_HARDPOINTS				= Declare_Enum()
 
-	HINT_HM02_COWS									= Declare_Enum()
-	HINT_HM02_WALL									= Declare_Enum()
-	HINT_HM02_VIRUS								= Declare_Enum()
-	
-	HINT_TUT02_BUILDING_UNITS					= Declare_Enum()
-	
-	HINT_NM01_BUILDING_STRUCTURES				= Declare_Enum()
-	HINT_NM01_POWER_NETWORK						= Declare_Enum()
-	HINT_NM01_FLOW									= Declare_Enum()
-	
-	HINT_NM02_VERTIGO_UPLOAD					= Declare_Enum()
-	HINT_NM02_VERTIGO_DOWNLOAD					= Declare_Enum()
-	
-	HINT_NM05_PATCHES								= Declare_Enum()
-	
-	HINT_MM01_MODES                        = Declare_Enum()
 
-	HINT_NM02_HACKER_FIREWALL                        = Declare_Enum()
-	HINT_NM03_VIRUS_EXPLOIT                        = Declare_Enum()
-	
-	HINT_MM02_ARCHITECTS                        = Declare_Enum()
-	HINT_MM02_TRANSPORTS                        = Declare_Enum()
-	HINT_MM02_RESEARCH                        = Declare_Enum()
-	HINT_MM02_UNIT_MANAGEMENT                        = Declare_Enum()
-	HINT_MM02_HOW_TO_BUILD_STRUCTURES                        = Declare_Enum()
-	HINT_MM02_HOW_TO_BUILD_UNITS                        = Declare_Enum()
-	HINT_MM02_MOVING_UNITS                        = Declare_Enum()
-	HINT_MM02_RESEARCH_ADD                        = Declare_Enum()
-	
-	HINT_NM04_CAPTURING							= Declare_Enum()
-	HINT_NM04_FIELDINVERTERS			= Declare_Enum()
-	HINT_NM04_REPAIRING				= Declare_Enum()
-	
-	HINT_MM02_MISSION_COMPLETE                        = Declare_Enum()
-	
-	HINT_SYSTEM_END								= Declare_Enum()
-	HintSystemEnd									= HINT_SYSTEM_END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]--
+	HintSystemEnd									= 151
 
 
 -- **********************
@@ -236,813 +265,1356 @@ function Init_Hints()
 
 	-- TEST_HINT_ONE
 	hint = {}
-	hint.Id = TEST_HINT_ONE_ID
+	hint.Id = 1
 	hint.Text = Create_Wide_String("Test Hint One Text.")
-	HintSystemMap[TEST_HINT_ONE_ID] = hint
+	HintSystemMap[1] = hint
 
 	-- TEST_HINT_TWO
 	hint = {}
-	hint.Id = TEST_HINT_TWO_ID
+	hint.Id = 2
 	hint.Text = Create_Wide_String("Test Hint Two Text.\nA\nA\nA\nA\nA\nA\nA\nA\nA\nA\nThis is a really long line so that we can test the width of these here hints.   Isn't it nice they resize now??")
-	HintSystemMap[TEST_HINT_TWO_ID] = hint
+	HintSystemMap[2] = hint
 
 	-- TEST_HINT_THREE
 	hint = {}
-	hint.Id = TEST_HINT_THREE_ID
+	hint.Id = 3
 	hint.Text = Create_Wide_String("Test Hint Three Text.")
-	HintSystemMap[TEST_HINT_THREE_ID] = hint
+	HintSystemMap[3] = hint
 
 	-- TEST_HINT_FOUR
 	hint = {}
-	hint.Id = TEST_HINT_FOUR_ID
+	hint.Id = 4
 	hint.Text = Create_Wide_String("Test Hint Four Text.")
-	HintSystemMap[TEST_HINT_FOUR_ID] = hint
+	HintSystemMap[4] = hint
 
 
 -- Alien Construction Hints
 
-	-- HINT_BUILT_ALIEN_ARRIVAL_SITE
+	-- 5
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_ARRIVAL_SITE
+	hint.Id = 5
    hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_ARRIVAL_SITE")
-	HintSystemMap[HINT_BUILT_ALIEN_ARRIVAL_SITE] = hint
+	HintSystemMap[5] = hint
 
-	-- HINT_BUILT_ALIEN_GRAVITIC_MANIPULATOR
+	-- 6
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_GRAVITIC_MANIPULATOR
+	hint.Id = 6
    hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_GRAVITIC_MANIPULATOR")
-	HintSystemMap[HINT_BUILT_ALIEN_GRAVITIC_MANIPULATOR] = hint
+	HintSystemMap[6] = hint
 
-	-- HINT_BUILT_ALIEN_SCAN_DRONE
+	-- 7
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_SCAN_DRONE
+	hint.Id = 7
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_SCAN_DRONE")
-	HintSystemMap[HINT_BUILT_ALIEN_SCAN_DRONE] = hint
+	HintSystemMap[7] = hint
 
-	-- HINT_BUILT_ALIEN_MASS_DROP
+	-- 8
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_MASS_DROP
+	hint.Id = 8
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_MASS_DROP")
-	HintSystemMap[HINT_BUILT_ALIEN_MASS_DROP] = hint
+	HintSystemMap[8] = hint
 
-	-- HINT_BUILT_ALIEN_RADIATION_SPITTER
+	-- 9
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_RADIATION_SPITTER
+	hint.Id = 9
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_RADIATION_SPITTER")
-	HintSystemMap[HINT_BUILT_ALIEN_RADIATION_SPITTER] = hint
+	HintSystemMap[9] = hint
 
-	-- HINT_BUILT_ALIEN_RELOCATOR
+	-- 10
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_RELOCATOR
+	hint.Id = 10
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_RELOCATOR")
-	HintSystemMap[HINT_BUILT_ALIEN_RELOCATOR] = hint
+	HintSystemMap[10] = hint
 
-	-- HINT_BUILT_ALIEN_WALKER_HABITAT
+	-- 11
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_WALKER_HABITAT
+	hint.Id = 11
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_WALKER_HABITAT")
-	HintSystemMap[HINT_BUILT_ALIEN_WALKER_HABITAT] = hint
+	HintSystemMap[11] = hint
 
-	-- HINT_BUILT_ALIEN_WALKER_ASSEMBLY
+	-- 12
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_WALKER_ASSEMBLY
+	hint.Id = 12
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_WALKER_ASSEMBLY")
-	HintSystemMap[HINT_BUILT_ALIEN_WALKER_ASSEMBLY] = hint
+	HintSystemMap[12] = hint
 
-	-- HINT_BUILT_ALIEN_WALKER_SCIENCE
+	-- 13
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_WALKER_SCIENCE
+	hint.Id = 13
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_WALKER_SCIENCE")
-	HintSystemMap[HINT_BUILT_ALIEN_WALKER_SCIENCE] = hint
+	HintSystemMap[13] = hint
 
-	-- HINT_BUILT_ALIEN_HERO_KAMAL_REX
+	-- 14
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_HERO_KAMAL_REX
+	hint.Id = 14
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_HERO_KAMAL_REX")
-	HintSystemMap[HINT_BUILT_ALIEN_HERO_KAMAL_REX] = hint
+	HintSystemMap[14] = hint
 
-	-- HINT_BUILT_ALIEN_HERO_NUFAI
+	-- 15
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_HERO_NUFAI
+	hint.Id = 15
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_HERO_NUFAI")
-	HintSystemMap[HINT_BUILT_ALIEN_HERO_NUFAI] = hint
+	HintSystemMap[15] = hint
 
-	-- HINT_BUILT_ALIEN_HERO_ORLOK
+	-- 16
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_HERO_ORLOK
+	hint.Id = 16
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_HERO_ORLOK")
-	HintSystemMap[HINT_BUILT_ALIEN_HERO_ORLOK] = hint
+	HintSystemMap[16] = hint
 
-	-- HINT_BUILT_ALIEN_BRUTE
+	-- 17
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_BRUTE
+	hint.Id = 17
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_BRUTE")
-	HintSystemMap[HINT_BUILT_ALIEN_BRUTE] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_2D.tga"
+	imagelist[2] = "Gamepad_HintImage_2E.tga"
+	imagelist[3] = "Gamepad_HintImage_2F.tga"
+	hint.Images = imagelist
+	HintSystemMap[17] = hint
+	
 
-	-- HINT_BUILT_ALIEN_GLYPH_CARVER
+
+	-- 18
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_GLYPH_CARVER
+	hint.Id = 18
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_GLYPH_CARVER")
-	HintSystemMap[HINT_BUILT_ALIEN_GLYPH_CARVER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_3D.tga"
+	imagelist[2] = "Gamepad_HintImage_3E.tga"
+	imagelist[3] = "Gamepad_HintImage_3F.tga"
+	hint.Images = imagelist
+	HintSystemMap[18] = hint
 
-	-- HINT_BUILT_ALIEN_GRUNT
+	-- 19
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_GRUNT
+	hint.Id = 19
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_GRUNT")
-	HintSystemMap[HINT_BUILT_ALIEN_GRUNT] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_4D.tga"
+	imagelist[2] = "Gamepad_HintImage_4E.tga"
+	imagelist[3] = "Gamepad_HintImage_4F.tga"
+	hint.Images = imagelist
+	HintSystemMap[19] = hint
 
-	-- HINT_BUILT_ALIEN_SCIENCE_TEAM
+	-- 20
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_SCIENCE_TEAM
+	hint.Id = 20
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_SCIENCE_TEAM")
-	HintSystemMap[HINT_BUILT_ALIEN_SCIENCE_TEAM] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_5D.tga"
+	imagelist[2] = "Gamepad_HintImage_5E.tga"
+	imagelist[3] = "Gamepad_HintImage_5F.tga"
+	hint.Images = imagelist
+	HintSystemMap[20] = hint
 
-	-- HINT_BUILT_ALIEN_CYLINDER
+	-- 21
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_CYLINDER
+	hint.Id = 21
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_CYLINDER")
-	HintSystemMap[HINT_BUILT_ALIEN_CYLINDER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_6D.tga"
+	imagelist[2] = "Gamepad_HintImage_6E.tga"
+	imagelist[3] = "Gamepad_HintImage_6F.tga"
+	hint.Images = imagelist
+	HintSystemMap[21] = hint
 
-	-- HINT_BUILT_ALIEN_DEFILER
+	-- 22
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_DEFILER
+	hint.Id = 22
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_DEFILER")
-	HintSystemMap[HINT_BUILT_ALIEN_DEFILER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_7D.tga"
+	imagelist[2] = "Gamepad_HintImage_7E.tga"
+	imagelist[3] = "Gamepad_HintImage_7F.tga"
+	hint.Images = imagelist
+	HintSystemMap[22] = hint
 
-	-- HINT_BUILT_ALIEN_SAUCER
+	-- 23
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_SAUCER
+	hint.Id = 23
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_SAUCER")
-	HintSystemMap[HINT_BUILT_ALIEN_SAUCER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_8D.tga"
+	imagelist[2] = "Gamepad_HintImage_8E.tga"
+	imagelist[3] = "Gamepad_HintImage_8F.tga"
+	hint.Images = imagelist
+	HintSystemMap[23] = hint
 
-	-- HINT_BUILT_ALIEN_REAPER_TURRET
+	-- 24
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_REAPER_TURRET
+	hint.Id = 24
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_REAPER_TURRET")
-	HintSystemMap[HINT_BUILT_ALIEN_REAPER_TURRET] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_9D.tga"
+	imagelist[2] = "Gamepad_HintImage_9E.tga"
+	imagelist[3] = "Gamepad_HintImage_9F.tga"
+	hint.Images = imagelist
+	HintSystemMap[24] = hint
 
-	-- HINT_BUILT_ALIEN_TANK
+	-- 25
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_ALIEN_TANK
+	hint.Id = 25
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_ALIEN_TANK")
-	HintSystemMap[HINT_BUILT_ALIEN_TANK] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_10D.tga"
+	imagelist[2] = "Gamepad_HintImage_10E.tga"
+	imagelist[3] = "Gamepad_HintImage_10F.tga"
+	hint.Images = imagelist
+	HintSystemMap[25] = hint
 
 
 -- Novus Construction Hints
 
-	-- HINT_BUILT_NOVUS_AIRCRAFT_ASSEMBLY
+	-- 26
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_AIRCRAFT_ASSEMBLY
+	hint.Id = 26
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_AIRCRAFT_ASSEMBLY")
-	HintSystemMap[HINT_BUILT_NOVUS_AIRCRAFT_ASSEMBLY] = hint
+	HintSystemMap[26] = hint
 
-	-- HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR
+	-- 27
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR
+	hint.Id = 27
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR")
-	HintSystemMap[HINT_BUILT_NOVUS_BLACK_HOLE_GENERATOR] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_11D.tga"
+	imagelist[2] = "Gamepad_HintImage_11E.tga"
+	imagelist[3] = "Gamepad_HintImage_11F.tga"
+	hint.Images = imagelist
+	HintSystemMap[27] = hint
 
-	-- HINT_BUILT_NOVUS_INPUT_STATION
+	-- 28
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_INPUT_STATION
+	hint.Id = 28
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_INPUT_STATION")
-	HintSystemMap[HINT_BUILT_NOVUS_INPUT_STATION] = hint
+	HintSystemMap[28] = hint
 
-	-- HINT_BUILT_NOVUS_POWER_NEXUS
+	-- 29
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_POWER_NEXUS
+	hint.Id = 29
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_POWER_NEXUS")
-	HintSystemMap[HINT_BUILT_NOVUS_POWER_NEXUS] = hint
+	HintSystemMap[29] = hint
 
-	-- HINT_BUILT_NOVUS_REDIRECTION_TURRET
+	-- 30
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_REDIRECTION_TURRET
+	hint.Id = 30
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_REDIRECTION_TURRET")
-	HintSystemMap[HINT_BUILT_NOVUS_REDIRECTION_TURRET] = hint
+	HintSystemMap[30] = hint
 
-	-- HINT_BUILT_NOVUS_COMMAND_CORE
+	-- 31
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_COMMAND_CORE
+	hint.Id = 31
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_COMMAND_CORE")
-	HintSystemMap[HINT_BUILT_NOVUS_COMMAND_CORE] = hint
+	HintSystemMap[31] = hint
 
-	-- HINT_BUILT_NOVUS_ROBOTIC_ASSEMBLY
+	-- 32
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_ROBOTIC_ASSEMBLY
+	hint.Id = 32
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_ROBOTIC_ASSEMBLY")
-	HintSystemMap[HINT_BUILT_NOVUS_ROBOTIC_ASSEMBLY] = hint
+	HintSystemMap[32] = hint
 
-	-- HINT_BUILT_NOVUS_SCIENCE_LAB
+	-- 33
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_SCIENCE_LAB
+	hint.Id = 33
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_SCIENCE_LAB")
-	HintSystemMap[HINT_BUILT_NOVUS_SCIENCE_LAB] = hint
+	HintSystemMap[33] = hint
 
-	-- HINT_BUILT_NOVUS_SIGNAL_TOWER
+	-- 34
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_SIGNAL_TOWER
+	hint.Id = 34
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_SIGNAL_TOWER")
-	HintSystemMap[HINT_BUILT_NOVUS_SIGNAL_TOWER] = hint
+	HintSystemMap[34] = hint
 
-	-- HINT_BUILT_NOVUS_EMP_SUPERWEAPON
+	-- 35
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_EMP_SUPERWEAPON
+	hint.Id = 35
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_EMP_SUPERWEAPON")
-	HintSystemMap[HINT_BUILT_NOVUS_EMP_SUPERWEAPON] = hint
+	HintSystemMap[35] = hint
 
-	-- HINT_BUILT_NOVUS_VEHICLE_ASSEMBLY
+	-- 36
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_VEHICLE_ASSEMBLY
+	hint.Id = 36
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_VEHICLE_ASSEMBLY")
-	HintSystemMap[HINT_BUILT_NOVUS_VEHICLE_ASSEMBLY] = hint
+	HintSystemMap[36] = hint
 
-	-- HINT_BUILT_NOVUS_HERO_FOUNDER
+	-- 37
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_HERO_FOUNDER
+	hint.Id = 37
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_HERO_FOUNDER")
-	HintSystemMap[HINT_BUILT_NOVUS_HERO_FOUNDER] = hint
+	HintSystemMap[37] = hint
 		
-	-- HINT_BUILT_NOVUS_HERO_MECH
+	-- 38
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_HERO_MECH
+	hint.Id = 38
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_HERO_MECH")
-	HintSystemMap[HINT_BUILT_NOVUS_HERO_MECH] = hint
+	HintSystemMap[38] = hint
 
-	-- HINT_BUILT_NOVUS_HERO_VERTIGO
+	-- 39
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_HERO_VERTIGO
+	hint.Id = 39
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_HERO_VERTIGO")
-	HintSystemMap[HINT_BUILT_NOVUS_HERO_VERTIGO] = hint
+	HintSystemMap[39] = hint
 
-	-- HINT_BUILT_NOVUS_REFLEX_TROOPER
+	-- 40
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_REFLEX_TROOPER
+	hint.Id = 40
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_REFLEX_TROOPER")
-	HintSystemMap[HINT_BUILT_NOVUS_REFLEX_TROOPER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_12D.tga"
+	imagelist[2] = "Gamepad_HintImage_12E.tga"
+	imagelist[3] = "Gamepad_HintImage_12F.tga"
+	hint.Images = imagelist
+	HintSystemMap[40] = hint
 
-	-- HINT_BUILT_NOVUS_ROBOTIC_INFANTRY
+	-- 41
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_ROBOTIC_INFANTRY
+	hint.Id = 41
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_ROBOTIC_INFANTRY")
-	HintSystemMap[HINT_BUILT_NOVUS_ROBOTIC_INFANTRY] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_13D.tga"
+	imagelist[2] = "Gamepad_HintImage_13E.tga"
+	imagelist[3] = "Gamepad_HintImage_13F.tga"
+	hint.Images = imagelist
+	HintSystemMap[41] = hint
 
-	-- HINT_BUILT_NOVUS_VARIANT
+	-- 42
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_VARIANT
+	hint.Id = 42
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_VARIANT")
-	HintSystemMap[HINT_BUILT_NOVUS_VARIANT] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_14D.tga"
+	imagelist[2] = "Gamepad_HintImage_14E.tga"
+	imagelist[3] = "Gamepad_HintImage_14F.tga"
+	hint.Images = imagelist
+	HintSystemMap[42] = hint
 
-	-- HINT_BUILT_NOVUS_AMPLIFIER
+	-- 43
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_AMPLIFIER
+	hint.Id = 43
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_AMPLIFIER")
-	HintSystemMap[HINT_BUILT_NOVUS_AMPLIFIER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_15D.tga"
+	imagelist[2] = "Gamepad_HintImage_15E.tga"
+	imagelist[3] = "Gamepad_HintImage_15F.tga"
+	hint.Images = imagelist
+	HintSystemMap[43] = hint
 
-	-- HINT_BUILT_NOVUS_ANTIMATTER_TANK
+	-- 44
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_ANTIMATTER_TANK
+	hint.Id = 44
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_ANTIMATTER_TANK")
-	HintSystemMap[HINT_BUILT_NOVUS_ANTIMATTER_TANK] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_16D.tga"
+	imagelist[2] = "Gamepad_HintImage_16E.tga"
+	imagelist[3] = "Gamepad_HintImage_16F.tga"
+	hint.Images = imagelist
+	HintSystemMap[44] = hint
 
-	-- HINT_BUILT_NOVUS_CONSTRUCTOR
+	-- 45
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_CONSTRUCTOR
+	hint.Id = 45
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_CONSTRUCTOR")
-	HintSystemMap[HINT_BUILT_NOVUS_CONSTRUCTOR] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_17D.tga"
+	imagelist[2] = "Gamepad_HintImage_17E.tga"
+	imagelist[3] = "Gamepad_HintImage_17F.tga"
+	hint.Images = imagelist
+	HintSystemMap[45] = hint
 
-	-- HINT_BUILT_NOVUS_DERVISH_JET
+	-- 46
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_DERVISH_JET
+	hint.Id = 46
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_DERVISH_JET")
-	HintSystemMap[HINT_BUILT_NOVUS_DERVISH_JET] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_18D.tga"
+	imagelist[2] = "Gamepad_HintImage_18E.tga"
+	imagelist[3] = "Gamepad_HintImage_18F.tga"
+	hint.Images = imagelist
+	HintSystemMap[46] = hint
 
-	-- HINT_BUILT_NOVUS_FIELD_INVERTER
+	-- 47
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_FIELD_INVERTER
+	hint.Id = 47
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_FIELD_INVERTER")
-	HintSystemMap[HINT_BUILT_NOVUS_FIELD_INVERTER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_19D.tga"
+	imagelist[2] = "Gamepad_HintImage_19E.tga"
+	imagelist[3] = "Gamepad_HintImage_19F.tga"
+	hint.Images = imagelist
+	HintSystemMap[47] = hint
 
-	-- HINT_BUILT_NOVUS_CORRUPTOR
+	-- 48
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_CORRUPTOR
+	hint.Id = 48
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_CORRUPTOR")
-	HintSystemMap[HINT_BUILT_NOVUS_CORRUPTOR] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_20D.tga"
+	imagelist[2] = "Gamepad_HintImage_20E.tga"
+	imagelist[3] = "Gamepad_HintImage_20F.tga"
+	hint.Images = imagelist
+	HintSystemMap[48] = hint
 
-	-- HINT_BUILT_NOVUS_HACKER
+	-- 49
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_NOVUS_HACKER
+	hint.Id = 49
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_HACKER")
-	HintSystemMap[HINT_BUILT_NOVUS_HACKER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_21D.tga"
+	imagelist[2] = "Gamepad_HintImage_21E.tga"
+	imagelist[3] = "Gamepad_HintImage_21F.tga"
+	hint.Images = imagelist
+	HintSystemMap[49] = hint
 
 
 	-- Masari Construction Hints
 	
-	-- HINT_BUILT_MASARI_AIR_INSPIRATION
+	-- 50
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_AIR_INSPIRATION
+	hint.Id = 50
    hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_AIR_INSPIRATION")
-	HintSystemMap[HINT_BUILT_MASARI_AIR_INSPIRATION] = hint
+	HintSystemMap[50] = hint
 
-	-- HINT_BUILT_MASARI_ELEMENTAL_COLLECTOR
+	-- 51
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_ELEMENTAL_COLLECTOR
+	hint.Id = 51
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_ELEMENTAL_COLLECTOR")
-	HintSystemMap[HINT_BUILT_MASARI_ELEMENTAL_COLLECTOR] = hint
+	HintSystemMap[51] = hint
 
-	-- HINT_BUILT_MASARI_ELEMENTAL_CONTROLLER
+	-- 52
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_ELEMENTAL_CONTROLLER
+	hint.Id = 52
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_ELEMENTAL_CONTROLLER")
-	HintSystemMap[HINT_BUILT_MASARI_ELEMENTAL_CONTROLLER] = hint
+	HintSystemMap[52] = hint
 
-	-- HINT_BUILT_MASARI_FOUNDATION
+	-- 53
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_FOUNDATION
+	hint.Id = 53
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_FOUNDATION")
-	HintSystemMap[HINT_BUILT_MASARI_FOUNDATION] = hint
+	HintSystemMap[53] = hint
 
-	-- HINT_BUILT_MASARI_GROUND_INSPIRATION
+	-- 54
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_GROUND_INSPIRATION
+	hint.Id = 54
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_GROUND_INSPIRATION")
-	HintSystemMap[HINT_BUILT_MASARI_GROUND_INSPIRATION] = hint
+	HintSystemMap[54] = hint
 
-	-- HINT_BUILT_MASARI_GUARDIAN
+	-- 55
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_GUARDIAN
+	hint.Id = 55
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_GUARDIAN")
-	HintSystemMap[HINT_BUILT_MASARI_GUARDIAN] = hint
+	HintSystemMap[55] = hint
 
-	-- HINT_BUILT_MASARI_INFANTRY_INSPIRATION
+	-- 56
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_INFANTRY_INSPIRATION
+	hint.Id = 56
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_INFANTRY_INSPIRATION")
-	HintSystemMap[HINT_BUILT_MASARI_INFANTRY_INSPIRATION] = hint
+	HintSystemMap[56] = hint
 
-	-- HINT_BUILT_MASARI_NEOPHYTES_LAB
+	-- 57
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_NEOPHYTES_LAB
+	hint.Id = 57
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_NEOPHYTES_LAB")
-	HintSystemMap[HINT_BUILT_MASARI_NEOPHYTES_LAB] = hint
+	HintSystemMap[57] = hint
 
-	-- HINT_BUILT_MASARI_NATURAL_INTERPRETER
+	-- 58
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_NATURAL_INTERPRETER
+	hint.Id = 58
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_NATURAL_INTERPRETER")
-	HintSystemMap[HINT_BUILT_MASARI_NATURAL_INTERPRETER] = hint
+	HintSystemMap[58] = hint
 
-	-- HINT_BUILT_MASARI_SKY_GUARDIAN
+	-- 59
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_SKY_GUARDIAN
+	hint.Id = 59
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_SKY_GUARDIAN")
-	HintSystemMap[HINT_BUILT_MASARI_SKY_GUARDIAN] = hint
+	HintSystemMap[59] = hint
 
-	-- HINT_BUILT_MASARI_FIGMENT
+	-- 60
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_FIGMENT
+	hint.Id = 60
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_FIGMENT")
-	HintSystemMap[HINT_BUILT_MASARI_FIGMENT] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_22D.tga"
+	imagelist[2] = "Gamepad_HintImage_22E.tga"
+	imagelist[3] = "Gamepad_HintImage_22F.tga"
+	hint.Images = imagelist
+	HintSystemMap[60] = hint
 
-	-- HINT_BUILT_MASARI_SEEKER
+	-- 61
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_SEEKER
+	hint.Id = 61
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_SEEKER")
-	HintSystemMap[HINT_BUILT_MASARI_SEEKER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_23D.tga"
+	imagelist[2] = "Gamepad_HintImage_23E.tga"
+	imagelist[3] = "Gamepad_HintImage_23F.tga"
+	hint.Images = imagelist
+	HintSystemMap[61] = hint
 
-	-- HINT_BUILT_MASARI_SKYLORD
+	-- 62
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_SKYLORD
+	hint.Id = 62
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_SKYLORD")
-	HintSystemMap[HINT_BUILT_MASARI_SKYLORD] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_24D.tga"
+	imagelist[2] = "Gamepad_HintImage_24E.tga"
+	imagelist[3] = "Gamepad_HintImage_24F.tga"
+	hint.Images = imagelist
+	HintSystemMap[62] = hint
 
-	-- HINT_BUILT_MASARI_HERO_ALATEA
+	-- 63
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_HERO_ALATEA
+	hint.Id = 63
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_HERO_ALATEA")
-	HintSystemMap[HINT_BUILT_MASARI_HERO_ALATEA] = hint
+	HintSystemMap[63] = hint
 
-	-- HINT_BUILT_MASARI_HERO_CHAROS
+	-- 64
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_HERO_CHAROS
+	hint.Id = 64
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_HERO_CHAROS")
-	HintSystemMap[HINT_BUILT_MASARI_HERO_CHAROS] = hint
+	HintSystemMap[64] = hint
 
-	-- HINT_BUILT_MASARI_HERO_ZESSUS
+	-- 65
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_HERO_ZESSUS
+	hint.Id = 65
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_HERO_ZESSUS")
-	HintSystemMap[HINT_BUILT_MASARI_HERO_ZESSUS] = hint
+	HintSystemMap[65] = hint
 
-	-- HINT_BUILT_MASARI_ARCHITECT
+	-- 66
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_ARCHITECT
+	hint.Id = 66
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_ARCHITECT")
-	HintSystemMap[HINT_BUILT_MASARI_ARCHITECT] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_25D.tga"
+	imagelist[2] = "Gamepad_HintImage_25E.tga"
+	imagelist[3] = "Gamepad_HintImage_25F.tga"
+	hint.Images = imagelist
+	HintSystemMap[66] = hint
 
-	-- HINT_BUILT_MASARI_DISCIPLE
+	-- 68
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_DISCIPLE
+	hint.Id = 68
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_DISCIPLE")
-	HintSystemMap[HINT_BUILT_MASARI_DISCIPLE] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_26D.tga"
+	imagelist[2] = "Gamepad_HintImage_26E.tga"
+	imagelist[3] = "Gamepad_HintImage_26F.tga"
+	hint.Images = imagelist
+	HintSystemMap[68] = hint
 
-	-- HINT_BUILT_MASARI_SEER
+	-- 69
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_SEER
+	hint.Id = 69
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_SEER")
-	HintSystemMap[HINT_BUILT_MASARI_SEER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_27D.tga"
+	imagelist[2] = "Gamepad_HintImage_27E.tga"
+	imagelist[3] = "Gamepad_HintImage_27F.tga"
+	hint.Images = imagelist
+	HintSystemMap[69] = hint
 
-	-- HINT_BUILT_MASARI_ENFORCER
+	-- 70
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_ENFORCER
+	hint.Id = 70
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_ENFORCER")
-	HintSystemMap[HINT_BUILT_MASARI_ENFORCER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_28D.tga"
+	imagelist[2] = "Gamepad_HintImage_28E.tga"
+	imagelist[3] = "Gamepad_HintImage_28F.tga"
+	hint.Images = imagelist
+	HintSystemMap[70] = hint
 
-	-- HINT_BUILT_MASARI_PEACEBRINGER
+	-- 71
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_PEACEBRINGER
+	hint.Id = 71
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_PEACEBRINGER")
-	HintSystemMap[HINT_BUILT_MASARI_PEACEBRINGER] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_29D.tga"
+	imagelist[2] = "Gamepad_HintImage_29E.tga"
+	imagelist[3] = "Gamepad_HintImage_29F.tga"
+	hint.Images = imagelist
+	HintSystemMap[71] = hint
 
-	-- HINT_BUILT_MASARI_SENTRY
+	-- 72
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_BUILT_MASARI_SENTRY
+	hint.Id = 72
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_MASARI_SENTRY")
-	HintSystemMap[HINT_BUILT_MASARI_SENTRY] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_30D.tga"
+	imagelist[2] = "Gamepad_HintImage_30E.tga"
+	imagelist[3] = "Gamepad_HintImage_30F.tga"
+	hint.Images = imagelist
+	HintSystemMap[72] = hint
 
 
 	-- Basic Hint System Hints
-
+	-- jdg 8.10.07 added image stuff for 360 hints
 	hint = {}
-	hint.Id = HINT_SYSTEM_HINT_SYSTEM
+	hint.Id = 73
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_HINT_SYSTEM")
-	HintSystemMap[HINT_SYSTEM_HINT_SYSTEM] = hint
+	hint.Num_Images = 7
+	imagelist = {}
+	imagelist[1] = "Gamepad_Hint_Test01.tga"
+	imagelist[2] = "Gamepad_Hint_Test02.tga"
+	imagelist[3] = "Gamepad_Hint_Test03.tga"
+	imagelist[4] = "Gamepad_Hint_Test04.tga"
+	imagelist[5] = "Gamepad_Hint_Test05.tga"
+	imagelist[6] = "Gamepad_Hint_Test06.tga"
+	imagelist[7] = "Gamepad_Hint_Test07.tga"
+	hint.Images = imagelist
+	--end of new section
+	HintSystemMap[73] = hint
+
 	
 	hint = {}
-	hint.Id = HINT_SYSTEM_OBJECTIVES
+	hint.Id = 74
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_OBJECTIVES")
-	HintSystemMap[HINT_SYSTEM_OBJECTIVES] = hint
+	HintSystemMap[74] = hint
 	
 	hint = {}
-	hint.Id = HINT_SYSTEM_HEROES
+	hint.Id = 75
    hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_HEROES")
-	HintSystemMap[HINT_SYSTEM_HEROES] = hint
+	hint.Num_Images = 1
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_03.tga" 
+	hint.Images = imagelist
+	HintSystemMap[75] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SELECTING_HEROES
+	hint.Id = 76
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SELECTING_HEROES")
-	HintSystemMap[HINT_SYSTEM_SELECTING_HEROES] = hint
+	HintSystemMap[76] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SCROLLING
+	hint.Id = 77
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SCROLLING")
-	HintSystemMap[HINT_SYSTEM_SCROLLING] = hint
+	HintSystemMap[77] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SCROLLING_02
+	hint.Id = 78
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SCROLLING_02")
-	HintSystemMap[HINT_SYSTEM_SCROLLING_02] = hint
+	HintSystemMap[78] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_ROTATE_VIEW
+	hint.Id = 79
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ROTATE_VIEW")
-	HintSystemMap[HINT_SYSTEM_ROTATE_VIEW] = hint
+	HintSystemMap[79] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_ZOOMING
+	hint.Id = 80
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ZOOMING")
-	HintSystemMap[HINT_SYSTEM_ZOOMING] = hint
+	HintSystemMap[80] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_RESET_VIEW
+	hint.Id = 81
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_RESET_VIEW")
-	HintSystemMap[HINT_SYSTEM_RESET_VIEW] = hint
+	HintSystemMap[81] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_UNIT_SELECTION
+	hint.Id = 82
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_UNIT_SELECTION")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_SYSTEM_UNIT_SELECTION] = hint
+	hint.Num_Images = 2
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_31D.tga"
+	imagelist[2] = "Gamepad_HintImage_31E.tga"
+	hint.Images = imagelist
+	HintSystemMap[82] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_MOVING
+	hint.Id = 83
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_MOVING")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_SYSTEM_MOVING] = hint
+	hint.Num_Images = 2
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_32D.tga"
+	imagelist[2] = "Gamepad_HintImage_32E.tga"
+	hint.Images = imagelist
+	HintSystemMap[83] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_FORCE_MARCH
+	hint.Id = 84
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_FORCE_MARCH")
-	HintSystemMap[HINT_SYSTEM_FORCE_MARCH] = hint
+	HintSystemMap[84] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_ATTACKING
+	hint.Id = 85
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ATTACKING")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_SYSTEM_ATTACKING] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_33D.tga"
+	imagelist[2] = "Gamepad_HintImage_33E.tga"
+	imagelist[3] = "Gamepad_HintImage_33F.tga"
+	hint.Images = imagelist
+	HintSystemMap[85] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_MULTIPLE_UNITS
+	hint.Id = 86
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_MULTIPLE_UNITS")
-	HintSystemMap[HINT_SYSTEM_MULTIPLE_UNITS] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_34D.tga"
+	imagelist[2] = "Gamepad_HintImage_34E.tga"
+	imagelist[3] = "Gamepad_HintImage_34F.tga"
+	hint.Images = imagelist
+	HintSystemMap[86] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SIMILAR_UNITS
+	hint.Id = 87
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SIMILAR_UNITS")
-	HintSystemMap[HINT_SYSTEM_SIMILAR_UNITS] = hint
+	HintSystemMap[87] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_ATTACKING_MULTIPLE
+	hint.Id = 88
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ATTACKING_MULTIPLE")
-	HintSystemMap[HINT_SYSTEM_ATTACKING_MULTIPLE] = hint
+	HintSystemMap[88] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_FORCE_FIRE
+	hint.Id = 89
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_FORCE_FIRE")
-	HintSystemMap[HINT_SYSTEM_FORCE_FIRE] = hint
+	HintSystemMap[89] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_CONTROL_GROUPS
+	hint.Id = 90
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CONTROL_GROUPS")
-	HintSystemMap[HINT_SYSTEM_CONTROL_GROUPS] = hint
+	HintSystemMap[90] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_VIEWING_GROUPS
+	hint.Id = 91
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_VIEWING_GROUPS")
-	HintSystemMap[HINT_SYSTEM_VIEWING_GROUPS] = hint
+	HintSystemMap[91] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_ABILITIES
+	hint.Id = 92
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ABILITIES")
-	HintSystemMap[HINT_SYSTEM_ABILITIES] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_35D.tga"
+	imagelist[2] = "Gamepad_HintImage_35E.tga"
+	imagelist[3] = "Gamepad_HintImage_35F.tga"
+	hint.Images = imagelist
+	HintSystemMap[92] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_UNTARGETED_ABILITIES
+	hint.Id = 93
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_UNTARGETED_ABILITIES")
-	HintSystemMap[HINT_SYSTEM_UNTARGETED_ABILITIES] = hint
+	HintSystemMap[93] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SHARED_ABILITIES
+	hint.Id = 94
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SHARED_ABILITIES")
-	HintSystemMap[HINT_SYSTEM_SHARED_ABILITIES] = hint
+	HintSystemMap[94] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_SHARED_TARGETING
+	hint.Id = 95
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_SHARED_TARGETING")
-	HintSystemMap[HINT_SYSTEM_SHARED_TARGETING] = hint
+	HintSystemMap[95] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_RADAR
+	hint.Id = 96
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_RADAR")
-	HintSystemMap[HINT_SYSTEM_RADAR] = hint
+	HintSystemMap[96] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_RADAR_MOVEMENT
+	hint.Id = 97
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_RADAR_MOVEMENT")
-	HintSystemMap[HINT_SYSTEM_RADAR_MOVEMENT] = hint
+	HintSystemMap[97] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_GARRISONING
+	hint.Id = 98
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_GARRISONING")
-	HintSystemMap[HINT_SYSTEM_GARRISONING] = hint
+	HintSystemMap[98] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_EXITING
+	hint.Id = 99
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_EXITING")
-	HintSystemMap[HINT_SYSTEM_EXITING] = hint
+	HintSystemMap[99] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_CAPTURING
+	hint.Id = 100
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CAPTURING")
-	HintSystemMap[HINT_SYSTEM_CAPTURING] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_36D.tga"
+	imagelist[2] = "Gamepad_HintImage_36E.tga"
+	imagelist[3] = "Gamepad_HintImage_36F.tga"
+	hint.Images = imagelist
+	HintSystemMap[100] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_CONSTRUCTING_UNITS
+	hint.Id = 101
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CONSTRUCTING_UNITS")
-	HintSystemMap[HINT_SYSTEM_CONSTRUCTING_UNITS] = hint
+	HintSystemMap[101] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_RALLY_POINTS
+	hint.Id = 102
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_RALLY_POINTS")
-	HintSystemMap[HINT_SYSTEM_RALLY_POINTS] = hint
+	HintSystemMap[102] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_RESOURCES
+	hint.Id = 103
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_RESOURCES")
-	HintSystemMap[HINT_SYSTEM_RESOURCES] = hint
+	HintSystemMap[103] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_CONSTRUCTING_BUILDINGS
+	hint.Id = 104
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CONSTRUCTING_BUILDINGS")
-	HintSystemMap[HINT_SYSTEM_CONSTRUCTING_BUILDINGS] = hint
+	HintSystemMap[104] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_CONSTRUCTION
+	hint.Id = 105
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CONSTRUCTION")
-	HintSystemMap[HINT_SYSTEM_CONSTRUCTION] = hint
+	HintSystemMap[105] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_ROTATING
+	hint.Id = 106
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_ROTATING")
-	HintSystemMap[HINT_SYSTEM_ROTATING] = hint
+	HintSystemMap[106] = hint
 
 	hint = {}
-	hint.Id = HINT_SYSTEM_DEPENDENCIES
+	hint.Id = 107
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_DEPENDENCIES")
-	HintSystemMap[HINT_SYSTEM_DEPENDENCIES] = hint
+	HintSystemMap[107] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_NOVUS_POWER
+	hint.Id = 108
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_NOVUS_POWER")
-	HintSystemMap[HINT_SYSTEM_DEPENDENCIES] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_37D.tga"
+	imagelist[2] = "Gamepad_HintImage_37E.tga"
+	imagelist[3] = "Gamepad_HintImage_37F.tga"
+	hint.Images = imagelist
+	HintSystemMap[107] = hint
 
+	-- jdg 10/13/07 this was a hint that was deleted from the PC build...adding back in for 360 version.
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS
-	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS")
-	HintSystemMap[HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS] = hint
-
+	hint.Id = 109
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_NOVUS_MULTIPLE_CONSTRUCTORS")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_66D.tga"
+	imagelist[2] = "Gamepad_HintImage_66E.tga"
+	imagelist[3] = "Gamepad_HintImage_66F.tga"
+	hint.Images = imagelist
+	HintSystemMap[109] = hint
+	
+	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_SYSTEM_NOVUS_PATCHES
+	hint.Id = 110
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_NOVUS_PATCHES")
-	HintSystemMap[HINT_SYSTEM_NOVUS_PATCHES] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_38D.tga"
+	imagelist[2] = "Gamepad_HintImage_38E.tga"
+	imagelist[3] = "Gamepad_HintImage_38F.tga"
+	hint.Images = imagelist
+	HintSystemMap[110] = hint
 
 
    -- Tutorial 01 Specific Hints
 
    hint = {}
-	hint.Id = HINT_TUT01_REINFORCEMENTS_HERE
+	hint.Id = 111
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_TUT01_REINFORCEMENTS_HERE")
-	HintSystemMap[HINT_TUT01_REINFORCEMENTS_HERE] = hint
+	HintSystemMap[111] = hint
 
 
 	-- Hierarchy 01 Specific Hints
 	
 	hint = {}
-	hint.Id = HINT_HM01_ORLOK_SIEGE_ABILITY
+	hint.Id = 112
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_HM01_ORLOK_SIEGE_ABILITY")
-	HintSystemMap[HINT_HM01_ORLOK_SIEGE_ABILITY] = hint
+	HintSystemMap[112] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_HM01_WALKER_HARDPOINTS
+	hint.Id = 113
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_HM01_WALKER_HARDPOINTS")
-	HintSystemMap[HINT_HM01_WALKER_HARDPOINTS] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_39D.tga"
+	imagelist[2] = "Gamepad_HintImage_39E.tga"
+	imagelist[3] = "Gamepad_HintImage_39F.tga"
+	hint.Images = imagelist
+	HintSystemMap[113] = hint
 
 
 	-- Hierarchy 02 Specific Hints
 	
 	hint = {}
-	hint.Id = HINT_HM02_COWS
+	hint.Id = 114
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_HM02_COWS")
-	HintSystemMap[HINT_HM02_COWS] = hint
+	HintSystemMap[114] = hint
 	
 	hint = {}
-	hint.Id = HINT_HM02_WALL
+	hint.Id = 115
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_HM02_WALL")
-	HintSystemMap[HINT_HM02_WALL] = hint
+	HintSystemMap[115] = hint
 		
 	hint = {}
-	hint.Id = HINT_HM02_VIRUS
+	hint.Id = 116
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_HM02_VIRUS")
-	HintSystemMap[HINT_HM02_VIRUS] = hint
+	HintSystemMap[116] = hint
 
 	-- Tutorial 02 Specific Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_TUT02_BUILDING_UNITS
+	hint.Id = 117
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_TUT02_BUILDING_UNITS")
-	HintSystemMap[HINT_TUT02_BUILDING_UNITS] = hint
+	hint.Num_Images = 2
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_40D.tga"
+	imagelist[2] = "Gamepad_HintImage_40E.tga"
+	hint.Images = imagelist
+	HintSystemMap[117] = hint
 
 	-- Novus 01 Specific Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM01_BUILDING_STRUCTURES
+	hint.Id = 118
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM01_BUILDING_STRUCTURES")
-	HintSystemMap[HINT_NM01_BUILDING_STRUCTURES] = hint
+	hint.Num_Images = 2
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_41D.tga"
+	imagelist[2] = "Gamepad_HintImage_41E.tga"
+	hint.Images = imagelist
+	HintSystemMap[118] = hint
 	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM01_POWER_NETWORK
+	hint.Id = 119
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM01_POWER_NETWORK")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM01_POWER_NETWORK] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_42D.tga"
+	imagelist[2] = "Gamepad_HintImage_42E.tga"
+	imagelist[3] = "Gamepad_HintImage_42F.tga"
+	hint.Images = imagelist
+	HintSystemMap[119] = hint
 	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM01_FLOW
+	hint.Id = 120
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM01_FLOW_ALT")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM01_FLOW] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_43D.tga"
+	imagelist[2] = "Gamepad_HintImage_43E.tga"
+	imagelist[3] = "Gamepad_HintImage_43F.tga"
+	hint.Images = imagelist
+	HintSystemMap[120] = hint
 	
 	-- Novus 02 Specific Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM02_VERTIGO_UPLOAD
+	hint.Id = 121
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM02_VERTIGO_UPLOAD")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM02_VERTIGO_UPLOAD] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_44D.tga"
+	imagelist[2] = "Gamepad_HintImage_44E.tga"
+	imagelist[3] = "Gamepad_HintImage_44F.tga"
+	hint.Images = imagelist
+	HintSystemMap[121] = hint
 	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM02_VERTIGO_DOWNLOAD
+	hint.Id = 122
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM02_VERTIGO_DOWNLOAD")
-	HintSystemMap[HINT_NM02_VERTIGO_DOWNLOAD] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_45D.tga"
+	imagelist[2] = "Gamepad_HintImage_45E.tga"
+	imagelist[3] = "Gamepad_HintImage_45F.tga"
+	hint.Images = imagelist
+	HintSystemMap[122] = hint
 	
 	-- Novus 05 Specific Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_NM05_PATCHES
+	hint.Id = 123
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM05_PATCHES")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM05_PATCHES] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_46D.tga"
+	imagelist[2] = "Gamepad_HintImage_46E.tga"
+	imagelist[3] = "Gamepad_HintImage_46F.tga"
+	hint.Images = imagelist
+	HintSystemMap[123] = hint
 	
 	-- Masari 01 Specific Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_MM01_MODES
+	hint.Id = 124
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM01_MASARI_MODES")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_MM01_MODES] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_47D.tga"
+	imagelist[2] = "Gamepad_HintImage_47E.tga"
+	imagelist[3] = "Gamepad_HintImage_47F.tga"
+	hint.Images = imagelist
+	HintSystemMap[124] = hint
 
 	-- Novus 02 Specific Hints
 	
 	hint = {}
-	hint.Id = HINT_NM02_HACKER_FIREWALL
+	hint.Id = 125
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM02_HACKER_FIREWALL")
-	HintSystemMap[HINT_NM02_HACKER_FIREWALL] = hint
+	HintSystemMap[125] = hint
 
 	-- Novus 03 Specific Hints
 	
 	hint = {}
-	hint.Id = HINT_NM03_VIRUS_EXPLOIT
+	hint.Id = 126
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM03_VIRUS_EXPLOIT")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM03_VIRUS_EXPLOIT] = hint
+	HintSystemMap[126] = hint
 	
 	-- Masari Global Hints
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_MM02_ARCHITECTS
+	hint.Id = 127
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_ARCHITECTS")
-	HintSystemMap[HINT_MM02_ARCHITECTS] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_48D.tga"
+	imagelist[2] = "Gamepad_HintImage_48E.tga"
+	imagelist[3] = "Gamepad_HintImage_48F.tga"
+	hint.Images = imagelist
+	HintSystemMap[127] = hint
 
 	hint = {}
-	hint.Id = HINT_MM02_TRANSPORTS
+	hint.Id = 128
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_TRANSPORTS")
-	HintSystemMap[HINT_MM02_TRANSPORTS] = hint
+	HintSystemMap[128] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_MM02_RESEARCH
+	hint.Id = 129
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_RESEARCH")
-	HintSystemMap[HINT_MM02_RESEARCH] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_49D.tga"
+	imagelist[2] = "Gamepad_HintImage_49E.tga"
+	imagelist[3] = "Gamepad_HintImage_49F.tga"
+	hint.Images = imagelist
+	HintSystemMap[129] = hint
 
+	-- jdg new hint images added 12/20/07
+	-- jdg new hint images removed  1/21/08
 	hint = {}
-	hint.Id = HINT_MM02_UNIT_MANAGEMENT
+	hint.Id = 130
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_UNIT_MANAGEMENT")
-	HintSystemMap[HINT_MM02_UNIT_MANAGEMENT] = hint
+	HintSystemMap[130] = hint
 
 	hint = {}
-	hint.Id = HINT_MM02_HOW_TO_BUILD_STRUCTURES
+	hint.Id = 131
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_HOW_TO_BUILD_STRUCTURES")
-	HintSystemMap[HINT_MM02_HOW_TO_BUILD_STRUCTURES] = hint
+	HintSystemMap[131] = hint
 
 	hint = {}
-	hint.Id = HINT_MM02_HOW_TO_BUILD_UNITS
+	hint.Id = 132
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_HOW_TO_BUILD_UNITS")
-	HintSystemMap[HINT_MM02_HOW_TO_BUILD_UNITS] = hint
+	HintSystemMap[132] = hint
 
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_MM02_MOVING_UNITS
+	hint.Id = 133
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_MOVING_UNITS")
-	HintSystemMap[HINT_MM02_MOVING_UNITS] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_51D.tga"
+	imagelist[2] = "Gamepad_HintImage_51E.tga"
+	imagelist[3] = "Gamepad_HintImage_51F.tga"
+	hint.Images = imagelist
+	HintSystemMap[133] = hint
 
 	hint = {}
-	hint.Id = HINT_MM02_RESEARCH_ADD
+	hint.Id = 134
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_RESEARCH_ADD")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_MM02_RESEARCH_ADD] = hint
+	HintSystemMap[134] = hint
 	
 		-- Novus 04 Specific Hints
 	hint = {}
-	hint.Id = HINT_NM04_CAPTURING
+	hint.Id = 135
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_SYSTEM_CAPTURING")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM04_CAPTURING] = hint
+	HintSystemMap[135] = hint
 	
 	
 	hint = {}
-	hint.Id = HINT_NM04_FIELDINVERTERS
+	hint.Id = 136
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_BUILT_NOVUS_FIELD_INVERTER")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM04_FIELDINVERTERS] = hint
+	HintSystemMap[136] = hint
 	
 	
 	hint = {}
-	hint.Id = HINT_NM04_REPAIRING
+	hint.Id = 137
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_NM04_REPAIRING")
 	hint.IgnoreTracking = true
-	HintSystemMap[HINT_NM04_REPAIRING] = hint
+	HintSystemMap[137] = hint
 	
-	
+	-- jdg new hint images added 12/20/07
 	hint = {}
-	hint.Id = HINT_MM02_MISSION_COMPLETE
+	hint.Id = 138
 	hint.Text = Get_Game_Text("TEXT_SP_HINT_MM02_MISSION_COMPLETE")
-	HintSystemMap[HINT_MM02_MISSION_COMPLETE] = hint
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_52D.tga"
+	imagelist[2] = "Gamepad_HintImage_52E.tga"
+	imagelist[3] = "Gamepad_HintImage_52F.tga"
+	hint.Images = imagelist
+	HintSystemMap[138] = hint
+	
+	-- 360 only hint regarding the d-pad
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 139
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_D_PAD")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_55D.tga"
+	imagelist[2] = "Gamepad_HintImage_55E.tga"
+	imagelist[3] = "Gamepad_HintImage_55F.tga"
+	hint.Images = imagelist
+	HintSystemMap[139] = hint
+	
+	--jdg more 360 only hints
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 140
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_EXPANDED_RADAR")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_56D.tga"
+	imagelist[2] = "Gamepad_HintImage_56E.tga"
+	imagelist[3] = "Gamepad_HintImage_56F.tga"
+	hint.Images = imagelist
+	HintSystemMap[140] = hint
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 141
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_OPENING_SPECIAL_ABILITIES")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_57D.tga"
+	imagelist[2] = "Gamepad_HintImage_57E.tga"
+	imagelist[3] = "Gamepad_HintImage_57F.tga"
+	hint.Images = imagelist
+	HintSystemMap[141] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 142
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_OPENING_COMMAND_BAR")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_58D.tga"
+	imagelist[2] = "Gamepad_HintImage_58E.tga"
+	imagelist[3] = "Gamepad_HintImage_58F.tga"
+	hint.Images = imagelist
+	HintSystemMap[142] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 143
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_OPENING_CONSTRUCTION_MENU")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_59D.tga"
+	imagelist[2] = "Gamepad_HintImage_59E.tga"
+	imagelist[3] = "Gamepad_HintImage_59F.tga"
+	hint.Images = imagelist
+	HintSystemMap[143] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 144
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_BUILDING_ROBOTS")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_60D.tga"
+	imagelist[2] = "Gamepad_HintImage_60E.tga"
+	imagelist[3] = "Gamepad_HintImage_60F.tga"
+	hint.Images = imagelist
+	HintSystemMap[144] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 145
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_PAINT_SELECT")
+	hint.Num_Images = 3
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_61D.tga"
+	imagelist[2] = "Gamepad_HintImage_61E.tga"
+	imagelist[3] = "Gamepad_HintImage_61F.tga"
+	hint.Images = imagelist
+	HintSystemMap[145] = hint
+
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 146
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_OPENING_RESEARCH_TREE")
+	hint.Num_Images = 2
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_62D.tga"
+	imagelist[2] = "Gamepad_HintImage_62E.tga"
+	hint.Images = imagelist
+	HintSystemMap[146] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 147
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_360TUT_NOW_TEACHING_GROUPS")
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_63D.tga"
+	imagelist[2] = "Gamepad_HintImage_63E.tga"
+	imagelist[3] = "Gamepad_HintImage_63F.tga"
+	hint.Images = imagelist
+	HintSystemMap[147] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 148
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_360TUT_GROUPTOOL_TYPE_GROUPS")
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_64D.tga"
+	imagelist[2] = "Gamepad_HintImage_64E.tga"
+	imagelist[3] = "Gamepad_HintImage_64F.tga"
+	hint.Images = imagelist
+	HintSystemMap[148] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 149
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_360TUT_GROUPTOOL_CAMERA_CENTER_REMINDER")
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_65D.tga"
+	imagelist[2] = "Gamepad_HintImage_65E.tga"
+	imagelist[3] = "Gamepad_HintImage_65F.tga"
+	hint.Images = imagelist
+	HintSystemMap[149] = hint	
+	
+	-- jdg new hint images added 12/20/07
+	hint = {}
+	hint.Id = 150
+	hint.Text = Get_Game_Text("GAMEPAD_TEXT_SP_HINT_SYSTEM_X360_SUPERWEAPONS_BUTTON_LOCATION")
+	hint.IgnoreTracking = true
+	imagelist = {}
+	imagelist[1] = "Gamepad_HintImage_67D.tga"
+	imagelist[2] = "Gamepad_HintImage_67E.tga"
+	imagelist[3] = "Gamepad_HintImage_67F.tga"
+	hint.Images = imagelist
+	HintSystemMap[150] = hint	
+	
 	
 
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	Create_Base_Boolean_Achievement_Definition = nil
+	Create_Base_Increment_Achievement_Definition = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGHintSystemDefs_Init = nil
+	Remove_Invalid_Objects = nil
+	Set_Achievement_Map_Type = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessage = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+
