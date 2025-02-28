@@ -882,7 +882,7 @@
 
 		<Lua_Script>Masari_Player</Lua_Script>
 		<Allies />
-		<Enemies>Hostile, Alien, Military, Novus</Enemies>
+		<Enemies>Hostile, Alien, Military, Novus, Masari2</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Masari_Land</Selection_Blob_Material_Name>
 		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>
