@@ -7,5 +7,6 @@
 	<File>Campaigns_Global.xml</File>
 	<File>Campaigns_Tutorial.xml</File>
 	<File>Campaigns_Special_Edition.xml</File>
+	<File>Campaigns_Custom.xml</File>
 
 </Campaign_Files>
