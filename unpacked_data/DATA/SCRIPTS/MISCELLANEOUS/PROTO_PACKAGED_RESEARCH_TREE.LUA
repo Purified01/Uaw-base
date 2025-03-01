@@ -132,7 +132,7 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksTypes =
 				{
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Hero_Orlok"), 
+							ObjectType=Find_Object_Type("Proto_Hero_Orlok"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HERO_ORLOK",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_HERO_ORLOK", 
 							IconName="i_icon_a_research_hero_orlok.tga" 
@@ -439,7 +439,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Hero_Nufai"), 
+							ObjectType=Find_Object_Type("Proto_Hero_Nufai"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HERO_NUFAI",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_HERO_NUFAI", 
 							IconName="i_icon_a_research_hero_nufai.tga" 
@@ -802,7 +802,7 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksTypes = 
 				{ 
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Hero_Kamal_Rex"), 
+							ObjectType=Find_Object_Type("Proto_Hero_Kamal_Rex"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HERO_KAMAL_REX",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_HERO_KAMAL_REX", 
 							IconName="i_icon_a_research_hero_kamal_rex.tga" 

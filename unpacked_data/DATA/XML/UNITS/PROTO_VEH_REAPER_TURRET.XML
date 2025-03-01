@@ -10,7 +10,7 @@
 		<!-- ART -->
 		<!-- Will use alien repear art when it has correct animations -->
 		<Land_Model_Name>AB_Reaper_Turret.ALO</Land_Model_Name>
-		<Scale_Factor>1.2</Scale_Factor>
+		<Scale_Factor>0.8</Scale_Factor>
 		<Loop_Idle_Anim_00>No</Loop_Idle_Anim_00>
 		<SurfaceFX_Name>Generic_Footprint</SurfaceFX_Name>
 		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
