@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Alien_Walker_Habitat_XML>
+<Proto_Walker_Habitat_XML>
 
 	<!-- **************************************************************************************** -->
 	<!-- *** UNIT(S) **************************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat.alo </Land_Model_Name>
@@ -39,7 +39,7 @@
 		<Selection_Blob_Material_Name>Selection_Alien_Land_Large</Selection_Blob_Material_Name>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> Huge, Piloted, CanAttack </CategoryMask>
 		<Ranking_In_Category> 5 </Ranking_In_Category>
 		<Importance> 0.9 </Importance>
@@ -110,7 +110,7 @@
 		<Tactical_Health> 999999 </Tactical_Health>
 		<Land_Damage_Thresholds> 1, 0.66, 0.33 </Land_Damage_Thresholds>
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
-		<Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Blob </Projectile_Types>
+		<Projectile_Types> Proj_Proto_Walker_Habitat_Plasma_Blob </Projectile_Types>
 		<Projectile_Fire_Pulse_Count> 4 </Projectile_Fire_Pulse_Count>
 		<Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
@@ -186,8 +186,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_Glyph </Tactical_Under_Construction_Object_Type>
-			<Tactical_Buildable_Beacon_Type> Alien_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_Glyph </Tactical_Under_Construction_Object_Type>
+			<Tactical_Buildable_Beacon_Type> Proto_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -304,7 +304,7 @@
 		<BehaviorType Name="DeathFXBehaviorType">
 			<Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 			<Specific_Death_Anim_Index> 0 </Specific_Death_Anim_Index>
-			<Death_Clone> Damage_Default, Alien_Walker_Habitat_Death_Clone </Death_Clone>
+			<Death_Clone> Damage_Default, Proto_Walker_Habitat_Death_Clone </Death_Clone>
 		</BehaviorType>
 
 		<BehaviorType Name="RadarMapBehaviorType">
@@ -314,8 +314,8 @@
 		<BehaviorType Name="TacticalEnablerBehaviorType">
 			<Tactical_Enabler_Bones> ROOT </Tactical_Enabler_Bones>
 			<Tactical_Enabler_Flyout_Distances> 70.0 </Tactical_Enabler_Flyout_Distances>
-			<Tactical_Enabler_Spawner_Hardpoint> Alien_Walker_Habitat_Crown </Tactical_Enabler_Spawner_Hardpoint>
-			<Tactical_Enabler_Receiver_Hardpoint> Alien_Walker_Habitat_Crown </Tactical_Enabler_Receiver_Hardpoint>
+			<Tactical_Enabler_Spawner_Hardpoint> Proto_Walker_Habitat_Crown </Tactical_Enabler_Spawner_Hardpoint>
+			<Tactical_Enabler_Receiver_Hardpoint> Proto_Walker_Habitat_Crown </Tactical_Enabler_Receiver_Hardpoint>
       </BehaviorType>
 
       <BehaviorType Name="TacticalUnderConstructionBehaviorType">
@@ -329,7 +329,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> WalkerPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
+			<Lua_Land_Behaviors> WalkerProtoPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 
 				GenericVehicle = {}
@@ -463,51 +463,51 @@
             we want to make sure the list of hp's contains the body hard points first (in order) and the leg hard points following. -->
 		<!-- HARDPOINTS -->
 		<Attached_Hard_Points>
-         Alien_Walker_Habitat_Crown, HP_Body
-         Alien_Walker_Habitat_LEG_HP00, HardPoint_Attach_00
-         Alien_Walker_Habitat_LEG_HP01, HardPoint_Attach_01
-         Alien_Walker_Habitat_LEG_HP02, HardPoint_Attach_02
-         Alien_Walker_Habitat_LEG_HP03, HardPoint_Attach_03
-         Alien_Walker_Habitat_Core, HP_Body
+         Proto_Walker_Habitat_Crown, HP_Body
+         Proto_Walker_Habitat_LEG_HP00, HardPoint_Attach_00
+         Proto_Walker_Habitat_LEG_HP01, HardPoint_Attach_01
+         Proto_Walker_Habitat_LEG_HP02, HardPoint_Attach_02
+         Proto_Walker_Habitat_LEG_HP03, HardPoint_Attach_03
+         Proto_Walker_Habitat_Core, HP_Body
       </Attached_Hard_Points>
 
 		<Create_Children_Data SubObjectList="Yes">
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Foot_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 0 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Foot_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 1 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Foot_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 2 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Foot_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 3 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Air_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Air_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Walker_Habitat_Tall_Vehicle_Proxy </Type>
+				<Type> Proto_Walker_Habitat_Tall_Vehicle_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			</Create_Child_Data>
@@ -522,7 +522,7 @@
 	<!-- **** DEATH CLONES ********************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Death_Clone">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Death_Clone">
 
 		<Land_Model_Name> AB_Habitat_Destoyed_Hulk.ALO </Land_Model_Name>
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
@@ -635,7 +635,7 @@
 	<!-- **** ASSOCIATED OBJECTS **************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Foot_Proxy">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Foot_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -662,7 +662,7 @@
 		<LandBehavior> FOOT_OBSTACLE, FOOT_IK </LandBehavior>
 	</X10_Alien_Walkers>
 
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Air_Proxy">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Air_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -694,7 +694,7 @@
 
 	</X10_Alien_Walkers>
 
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Tall_Vehicle_Proxy">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Tall_Vehicle_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -730,7 +730,7 @@
 	<!-- **** HARDPOINTS ************************************************************************ -->
 	<!-- **************************************************************************************** -->
 
-	<HardPoint Name="Alien_Walker_Habitat_Crown">
+	<HardPoint Name="Proto_Walker_Habitat_Crown">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown.alo </Land_Model_Name>
@@ -743,7 +743,7 @@
 
 		<!-- ATTRIBUTES -->
 
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -756,7 +756,7 @@
 		<Land_Damage_Thresholds> 1, 0.5, 0.3 </Land_Damage_Thresholds>
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
 		<Land_Damage_SFX> null,SFX_GENERIC_DETONATION, null </Land_Damage_SFX>
-		<Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Blob </Projectile_Types>
+		<Projectile_Types> Proj_Proto_Walker_Habitat_Plasma_Blob </Projectile_Types>
 		<Projectile_Fire_Pulse_Count> 4 </Projectile_Fire_Pulse_Count>
 		<Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
@@ -800,14 +800,14 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Crown_Damaged </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Crown_Damaged </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 		</BehaviorType>
 
 		<BehaviorType Name="TeleportSpawnBehaviorType">
 			<Teleport_Spawn_Duration_In_Secs> .10 </Teleport_Spawn_Duration_In_Secs>
-			<Teleport_Spawn_Particle_Effect> Alien_Walker_Barracks_Spawn_Unit_Effect </Teleport_Spawn_Particle_Effect>
+			<Teleport_Spawn_Particle_Effect> Proto_Walker_Barracks_Spawn_Unit_Effect </Teleport_Spawn_Particle_Effect>
 			<Teleport_Spawn_Muzzle_Particle_Effect />
 			<Teleport_Spawn_Lightning_Effect_Name> Teleport_Spawn_Beam </Teleport_Spawn_Lightning_Effect_Name>
 			<Teleport_Spawn_Source_Bone_Name> MuzzleA </Teleport_Spawn_Source_Bone_Name>
@@ -851,16 +851,16 @@
 
 		<!-- Turret Hard Points -->
 		<Attached_Hard_Points>
-         Alien_Walker_Habitat_Back_HP00, HP_Body
-         Alien_Walker_Habitat_Back_HP01, HP_Body
-         Alien_Walker_Habitat_Back_HP02, HP_Body
-         Alien_Walker_Habitat_Back_HP03, HP_Body
-         Alien_Walker_Habitat_Cap, HP_Body
+         Proto_Walker_Habitat_Back_HP00, HP_Body
+         Proto_Walker_Habitat_Back_HP01, HP_Body
+         Proto_Walker_Habitat_Back_HP02, HP_Body
+         Proto_Walker_Habitat_Back_HP03, HP_Body
+         Proto_Walker_Habitat_Cap, HP_Body
       </Attached_Hard_Points>
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Crown_Damaged">
+	<HardPoint Name="Proto_Walker_Habitat_Crown_Damaged">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Damaged.alo </Land_Model_Name>
@@ -872,7 +872,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -934,7 +934,7 @@
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Core">
+	<HardPoint Name="Proto_Walker_Habitat_Core">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Core.alo </Land_Model_Name>
@@ -946,7 +946,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1006,7 +1006,7 @@
 	</BehaviorType>
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cap">
+	<HardPoint Name="Proto_Walker_Habitat_Cap">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cap_HP.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -1017,7 +1017,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1067,7 +1067,7 @@
 	</HardPoint>
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_Body_Socket">
+	<HardPoint Name="Proto_Walker_Habitat_Body_Socket">
 		<Land_Model_Name> AB_Habitat_Back_HP00.alo </Land_Model_Name>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
@@ -1101,9 +1101,9 @@
 	</HardPoint>
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_BACK_HP00">
+	<HardPoint Name="Proto_Walker_Habitat_BACK_HP00">
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_BACK_HP1 </Text_ID>
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_HP00.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -1114,7 +1114,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1149,7 +1149,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Back_Damaged_HP00 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Back_Damaged_HP00 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 
@@ -1191,8 +1191,8 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_BACK_HP01">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_BACK_HP01">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_BACK_HP2 </Text_ID>
 
 		<!-- ART -->
@@ -1205,7 +1205,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1240,7 +1240,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Back_Damaged_HP01 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Back_Damaged_HP01 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 
@@ -1271,8 +1271,8 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_BACK_HP02">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_BACK_HP02">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_BACK_HP3 </Text_ID>
 
 		<!-- ART -->
@@ -1285,7 +1285,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1320,7 +1320,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Back_Damaged_HP02 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Back_Damaged_HP02 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 
@@ -1350,8 +1350,8 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_BACK_HP03">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_BACK_HP03">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_BACK_HP4 </Text_ID>
 
 		<!-- ART -->
@@ -1364,7 +1364,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -1399,7 +1399,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Back_Damaged_HP03 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Back_Damaged_HP03 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 
@@ -1430,7 +1430,7 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_HP00">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_HP00">
 
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_COOLING_HP1 </Text_ID>
 
@@ -1446,7 +1446,7 @@
 		<Icon_Name> i_icon_a_walker_hp_habitat_coolant_node.tga </Icon_Name>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
     <Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -1475,7 +1475,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Cooling_Damaged_HP00 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Cooling_Damaged_HP00 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 		</BehaviorType>
@@ -1522,7 +1522,7 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_HP01">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_HP01">
 
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_COOLING_HP2 </Text_ID>
 
@@ -1537,7 +1537,7 @@
 		<Icon_Name> i_icon_a_walker_hp_habitat_coolant_node.tga </Icon_Name>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 		<Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -1566,7 +1566,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Cooling_Damaged_HP01 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Cooling_Damaged_HP01 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 		</BehaviorType>
@@ -1613,7 +1613,7 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_HP02">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_HP02">
 
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_COOLING_HP3 </Text_ID>
 
@@ -1628,7 +1628,7 @@
 		<Icon_Name> i_icon_a_walker_hp_habitat_coolant_node.tga </Icon_Name>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 		<Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -1657,7 +1657,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Cooling_Damaged_HP02 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Cooling_Damaged_HP02 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 		</BehaviorType>
@@ -1705,7 +1705,7 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_HP03">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_HP03">
 
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_COOLING_HP4 </Text_ID>
 
@@ -1720,7 +1720,7 @@
 		<Icon_Name> i_icon_a_walker_hp_habitat_coolant_node.tga </Icon_Name>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 		<Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -1749,7 +1749,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Cooling_Damaged_HP03 </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Cooling_Damaged_HP03 </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Multi_Destruction_Destroys_Parent />
 			<!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
 		</BehaviorType>
@@ -1797,7 +1797,7 @@
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Leg">
+	<HardPoint Name="Proto_Walker_Habitat_Leg">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Leg.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -1810,7 +1810,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 		<Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -1842,7 +1842,7 @@
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-			<HP_Replacement_Object_Type_When_Destroyed> Alien_Walker_Habitat_Leg_Damage </HP_Replacement_Object_Type_When_Destroyed>
+			<HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Habitat_Leg_Damage </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Protected_By_Hardpoint_Above> true </HP_Protected_By_Hardpoint_Above>
 		</BehaviorType>
 
@@ -1927,7 +1927,7 @@
 	</HardPoint>
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_Leg_Damage">
+	<HardPoint Name="Proto_Walker_Habitat_Leg_Damage">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Leg_Damaged.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -1938,7 +1938,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -2003,24 +2003,24 @@
 	</HardPoint>
 
 	<!-- Maria 06.23.2006 - Needed for identification in the UI (Blueprint) -->
-	<HardPoint Name="Alien_Walker_Habitat_LEG_HP00">
+	<HardPoint Name="Proto_Walker_Habitat_LEG_HP00">
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_LEG_1 </Text_ID>
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Leg</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Leg</Variant_Of_Existing_Type>
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_LEG_HP01">
+	<HardPoint Name="Proto_Walker_Habitat_LEG_HP01">
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_LEG_2 </Text_ID>
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Leg</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Leg</Variant_Of_Existing_Type>
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_LEG_HP02">
+	<HardPoint Name="Proto_Walker_Habitat_LEG_HP02">
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_LEG_3 </Text_ID>
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Leg</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Leg</Variant_Of_Existing_Type>
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_LEG_HP03">
+	<HardPoint Name="Proto_Walker_Habitat_LEG_HP03">
 		<Text_ID> TEXT_UNIT_WALKER_HABITAT_LEG_4 </Text_ID>
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Leg</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Leg</Variant_Of_Existing_Type>
 	</HardPoint>
 
 
@@ -2034,7 +2034,7 @@
 	
 	<!-- Generic Under_Construction hardpoint -->
 
-	<HardPoint Name="Alien_Walker_Habitat_HP_Generic_Under_Construction">
+	<HardPoint Name="Proto_Walker_Habitat_HP_Generic_Under_Construction">
 		<!-- ART -->
 		<Scale_Factor> 0.80 </Scale_Factor>
 		<!-- _00, _01, _02, etc. is automatically attached -->
@@ -2044,7 +2044,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -2127,7 +2127,7 @@
 
 
 	<!-- Generic Upgrade hardpoint -->
-	<HardPoint Name="Alien_Walker_Habitat_Generic_Upgrade_Hardpoint">
+	<HardPoint Name="Proto_Walker_Habitat_Generic_Upgrade_Hardpoint">
 		<!-- ART -->
 		<Scale_Factor> 0.80 </Scale_Factor>
 		<!-- _00, _01, _02, etc. is automatically attached -->
@@ -2137,7 +2137,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint </CategoryMask>
 		<Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
@@ -2234,225 +2234,12 @@
 
 	
 	<!-- ********************************************************************************************* -->
-	<!-- ****** LOST ONE Pod																					  ****** -->
-	<!-- ********************************************************************************************* -->
-
-	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Lost_One_Mutator">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
-
-		<!-- don't want to point back to generic as this will mess up novus cascade -->
-		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_LOST_ONE_MUTATOR </Text_ID>
-
-		<!--CONFLICT-->
-		<Tactical_Health> 400 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_Habitatwalker_LostOneAssemblyPod.alo </Land_Model_Name>
-		<Scale_Factor> 0.80 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
-		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-		<Behavior>
-			SELECTABLE,
-			HARD_POINT
-		</Behavior>
-
-		<LandBehavior>
-			DAMAGE_TRACKING,
-			EFFECT_REGISTRY,
-			ATTRIBUTE_DIRECTORY,
-			TACTICAL_SELL
-		</LandBehavior>
-
-		<BehaviorType Name="HardPointBehaviorType">
-			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Lost_One_Mutator_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>
-
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_pod_lost_one.tga</Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LOST_ONE_MUTATOR </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-	
-	<!-- Lost One Mutator Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Lost_One_Mutator_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_LOST_ONE_MUTATOR </Text_ID>
-
-		<!--CONFLICT-->
-		<Tactical_Health> 400 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name> ABHP_Habitatwalker_LostOneAssemblyPod.alo </Land_Model_Name>
-		<Scale_Factor> 0.80 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_pod_lost_one.tga </Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LOST_ONE_MUTATOR </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Lost_One_Mutator </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-
-
-	<!-- ********************************************************************************************* -->
-	<!-- ****** BRUTE Pod																						  ****** -->
-	<!-- ********************************************************************************************* -->
-
-	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Brute_Mutator">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
-
-		<!-- don't want to point back to generic as this will mess up novus cascade -->
-		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_BRUTE_MUTATOR </Text_ID>
-
-		<!--CONFLICT-->
-		<Tactical_Health> 400 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
-		<Scale_Factor> 0.80 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
-		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-		<Behavior>
-			SELECTABLE,
-			HARD_POINT
-		</Behavior>
-
-		<LandBehavior>
-			DAMAGE_TRACKING,
-			EFFECT_REGISTRY,
-			ATTRIBUTE_DIRECTORY,
-			TACTICAL_SELL
-		</LandBehavior>
-
-		<BehaviorType Name="HardPointBehaviorType">
-			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Brute_Mutator_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>
-
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_pod_brute.tga</Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_BRUTE_MUTATOR </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-	
-	<!-- Brute Mutator Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Brute_Mutator_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_BRUTE_MUTATOR </Text_ID>
-
-		<!--CONFLICT-->
-		<Tactical_Health> 400 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
-		<Scale_Factor> 0.80 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_pod_brute.tga </Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_BRUTE_MUTATOR </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Brute_Mutator </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 650 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 650 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-
-	<!-- ********************************************************************************************* -->
 	<!-- Armor Hardpoint -->
 	<!-- ********************************************************************************************* -->
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Armor_Crown">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Armor_Crown">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2485,7 +2272,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
@@ -2494,7 +2281,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Armor_Crown_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Armor_Crown_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2515,8 +2302,8 @@
 	</HardPoint>
 
 	<!-- Armor Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Armor_Crown_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Armor_Crown_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
@@ -2540,11 +2327,11 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Armor_Crown </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Armor_Crown </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
@@ -2560,134 +2347,12 @@
 
 
 	<!-- ********************************************************************************************* -->
-	<!-- Material_Optimizer Upgrade Hardpoint Leg -->
-	<!-- ********************************************************************************************* -->
-
-	<HardPoint Name="Alien_Walker_Habitat_HP_Material_Optimizer">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
-
-		<!-- don't want to point back to generic as this will mess up novus cascade -->
-		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_MATERIAL_OPTIMIZER </Text_ID>
-
-		<!-- CONFLICT -->
-		<Tactical_Health> 250 </Tactical_Health>
-		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_MatOptmzr.alo</Land_Model_Name>
-		<Scale_Factor> 0.70 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
-		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-		<Behavior>
-			SELECTABLE,
-			HARD_POINT
-		</Behavior>
-
-		<LandBehavior>
-         DAMAGE_TRACKING,
-         EFFECT_REGISTRY,
-         EFFECT_GENERATOR,
-         ATTRIBUTE_DIRECTORY,
-         TACTICAL_SELL
-		</LandBehavior>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
-		<BehaviorType Name="HardPointBehaviorType">
-			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Material_Optimizer_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-		</BehaviorType>
-
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_Material_Optimizer.tga</Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MATERIAL_OPTIMIZER </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-		<Effect_Generator_Data SubObjectList="Yes">
-
-			<Effect_Generator Name="MaterialOptimizerEffect">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Starts_Active> true </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> WalkerMaterialOptimizerEffect </Effect_Name>
-               <Duration>-1</Duration>
-					<Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-			</Effect_Generator>
-
-		</Effect_Generator_Data>
-
-	</HardPoint>
-
-	<!-- Material_Optimizer Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Material_Optimizer_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_MATERIAL_OPTIMIZER </Text_ID>
-
-		<!-- CONFLICT -->
-		<Tactical_Health> 250 </Tactical_Health>
-		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
-		<Scale_Factor> 0.60 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_Material_Optimizer.tga </Icon_Name>
-		</BehaviorType>
-
-		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MATERIAL_OPTIMIZER </Tooltip_Description_Text_ID>
-			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Material_Optimizer </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
-		</BehaviorType>
-
-		<!-- Maria 08.09.2006  We want this object to be buildable -->
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
-		</BehaviorType>
-
-	</HardPoint>
-
-
-	<!-- ********************************************************************************************* -->
 	<!-- Heat_Sink Hardpoint -->
 	<!-- ********************************************************************************************* -->
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Heat_Sink">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Heat_Sink">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2727,7 +2392,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Heat_Sink_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Heat_Sink_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2763,8 +2428,8 @@
 
 	
 	<!-- Heatsink Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Heat_Sink_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Heat_Sink_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
@@ -2789,7 +2454,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Heat_Sink </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Heat_Sink </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign>700</Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
@@ -2808,8 +2473,8 @@
 	<!-- ********************************************************************************************* -->
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Terrain_Conditioner">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Terrain_Conditioner">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2852,7 +2517,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Terrain_Conditioner_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Terrain_Conditioner_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2909,7 +2574,7 @@
 				<Applicable_Unit_Categories>Piloted, Huge, HardPoint, DummyTarget</Applicable_Unit_Categories>
 				<Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
 				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
-				<Projectile_Type> Proj_Terrain_Conditioner </Projectile_Type>
+				<Projectile_Type> Proto_Proj_Terrain_Conditioner </Projectile_Type>
 				<Is_Looping_Attack> False </Is_Looping_Attack>
 				<Projectile_Spawn_Bone_Name> Muzzle_B </Projectile_Spawn_Bone_Name>
 				<Face_Target_Before_Firing> false </Face_Target_Before_Firing>
@@ -2927,8 +2592,8 @@
 
 	
 	<!-- Terrain_Conditioner Under Construction -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Terrain_Conditioner_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Terrain_Conditioner_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_TERRAIN_CONDITIONER </Text_ID>
@@ -2949,7 +2614,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Terrain_Conditioner </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Terrain_Conditioner </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
@@ -2976,8 +2641,8 @@
 	<!-- ********************************************************************************************* -->
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Armor_Leg">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Armor_Leg">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -3010,7 +2675,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor_Leg </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
@@ -3019,7 +2684,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Armor_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Armor_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -3040,8 +2705,8 @@
    </HardPoint>
 
 
-   <HardPoint Name="Alien_Walker_Habitat_HP_Armor_Leg_Under_Construction">
-      <Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+   <HardPoint Name="Proto_Walker_Habitat_HP_Armor_Leg_Under_Construction">
+      <Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
       <!-- ART -->
       <Land_Model_Name> ABHP_Habitat_Armor_Leg.alo.alo </Land_Model_Name>
@@ -3059,11 +2724,11 @@
       </BehaviorType>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
+         <Armor_Type> Armor_Proto_Walker_Hardpoint_Armor_Leg </Armor_Type>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Armor_Leg </Tactical_Buildable_Constructed>
+         <Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Armor_Leg </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 17 </Tactical_Build_Time_Seconds>
@@ -3082,8 +2747,8 @@
    <!-- Foo_Chamber Upgrade Hardpoint -->
    <!-- ********************************************************************************************* -->
 
-   <HardPoint Name="Alien_Walker_Habitat_HP_Foo_Chamber">
-      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+   <HardPoint Name="Proto_Walker_Habitat_HP_Foo_Chamber">
+      <Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
       <!-- don't want to point back to generic as this will mess up novus cascade -->
       <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -3116,7 +2781,7 @@
          FOO_CORE
       </LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -3124,7 +2789,7 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-         <Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -3143,7 +2808,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="FooCoreBehaviorType">
-			<Foo_Core_Fighter_Type_Name>Alien_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
+			<Foo_Core_Fighter_Type_Name>Proto_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
 			<Foo_Core_Time_Before_Respawning_Foo_Fighter> 5.0 </Foo_Core_Time_Before_Respawning_Foo_Fighter>
 			<Foo_Core_Attack_Range> 0.0 </Foo_Core_Attack_Range>
 			<Foo_Core_Heal_Range> 200.0 </Foo_Core_Heal_Range>
@@ -3155,8 +2820,8 @@
 
 	
 	<!-- Foo_Chamber Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Foo_Chamber_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Foo_Chamber_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
@@ -3180,7 +2845,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Foo_Chamber </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Foo_Chamber </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
@@ -3194,134 +2859,13 @@
 	</HardPoint>
 
 
-	<!-- ********************************************************************************************* -->
-	<!-- Teleport_Accelerator_Leg Upgrade Hardpoint -->
-	<!-- ********************************************************************************************* -->
-
-	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Teleport_Accelerator_Leg">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
-
-		<!-- don't want to point back to generic as this will mess up novus cascade -->
-		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
-
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
-
-		<!-- CONFLICT -->
-		<Tactical_Health> 375 </Tactical_Health>
-		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_Habitat_Teleport_Leg.alo</Land_Model_Name>
-		<Scale_Factor> 0.8 </Scale_Factor>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-		<!-- BEHAVIORS -->
-		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
-		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
-		<Behavior>
-			SELECTABLE,
-			HARD_POINT
-		</Behavior>
-
-		<LandBehavior>
-         EFFECT_REGISTRY,
-         EFFECT_GENERATOR,
-         ATTRIBUTE_DIRECTORY,
-         TACTICAL_SELL
-		</LandBehavior>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
-		<BehaviorType Name="HardPointBehaviorType">
-			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
-      </BehaviorType>
-
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_a_walker_hp_Teleport_Accelerator.tga</Icon_Name>
-      </BehaviorType>
-
-      <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_TELEPORT_ACCELERATOR </Tooltip_Description_Text_ID>
-         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
-      </BehaviorType>
-
-      <!-- Maria 08.09.2006  We want this object to be buildable -->
-      <BehaviorType Name="ProductionBehaviorType">
-         <Is_Research_Tech_Tree_Lockable> true </Is_Research_Tech_Tree_Lockable>
-      </BehaviorType>
-
-      <Effect_Generator_Data SubObjectList="Yes">
-         <Effect_Generator Name="Habitat_Build_Faster_Generator">
-            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-            <Starts_Active> true </Starts_Active>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> WalkerBuildFasterEffect </Effect_Name>
-               <Duration> -1.0 </Duration>
-               <Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>
-      </Effect_Generator_Data>
-
-   </HardPoint>
-
-
-   <!-- Teleport_Accelerator_Leg Under Construction  -->
-   <HardPoint Name="Alien_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction">
-      <Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-
-      <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
-
-      <!-- CONFLICT -->
-      <Tactical_Health> 375 </Tactical_Health>
-      <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
-
-      <!-- ART -->
-      <Land_Model_Name> ABHP_Habitat_Teleport_Leg.alo </Land_Model_Name>
-      <AssetBank> BANK_ALIEN </AssetBank>
-
-      <!-- BEHAVIORS -->
-      <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_a_walker_hp_Teleport_Accelerator.tga </Icon_Name>
-      </BehaviorType>
-
-      <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_TELEPORT_ACCELERATOR </Tooltip_Description_Text_ID>
-         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
-      </BehaviorType>
-
-      <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 13 </Tactical_Build_Time_Seconds>
-      </BehaviorType>
-
-      <!-- Maria 08.09.2006  We want this object to be buildable -->
-      <BehaviorType Name="ProductionBehaviorType">
-         <Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
-      </BehaviorType>
-
-   </HardPoint>
-
-
    <!-- ********************************************************************************************* -->
    <!-- Plasma Cannon -->
    <!-- ********************************************************************************************* -->
 
 
-   <HardPoint Name="Alien_Walker_Habitat_HP_Plasma_Cannon">
-      <Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+   <HardPoint Name="Proto_Walker_Habitat_HP_Plasma_Cannon">
+      <Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
       <!-- don't want to point back to generic as this will mess up novus cascade -->
       <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -3370,7 +2914,7 @@
          <Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
          <Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
 
-         <Projectile_Types> Proj_Alien_Walker_Habitat_Plasma_Cannon </Projectile_Types>
+         <Projectile_Types> Proj_Proto_Walker_Habitat_Plasma_Cannon </Projectile_Types>
          <Projectile_Fire_Pulse_Count> 1 </Projectile_Fire_Pulse_Count>
          <Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
          <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
@@ -3392,7 +2936,7 @@
          <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
       </BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -3410,7 +2954,7 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-         <Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Plasma_Cannon_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Plasma_Cannon_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -3423,8 +2967,8 @@
 
 	
 	<!-- PlasmaCannon Under Construction -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Plasma_Cannon_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Plasma_Cannon_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
@@ -3449,7 +2993,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Plasma_Cannon </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Plasma_Cannon </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 22 </Tactical_Build_Time_Seconds>
@@ -3468,8 +3012,8 @@
 	<!-- ************************************************************************************************* -->
 
 	
-	<HardPoint Name="Alien_Walker_Habitat_HP_Arc_Trigger">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Arc_Trigger">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -3509,7 +3053,7 @@
 			<Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -3548,7 +3092,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Arc_Trigger_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Arc_Trigger_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -3567,7 +3111,7 @@
 				<Activation_Max_Range> 280.0 </Activation_Max_Range>
 				<Applicable_Unit_Categories> Flying </Applicable_Unit_Categories>
 
-				<Damage_Type> Damage_Alien_Walker_HP_Lightning </Damage_Type>
+				<Damage_Type> Damage_Proto_Walker_HP_Lightning </Damage_Type>
 				<Damage_Amount> 0.0 </Damage_Amount>
 				<Damage_Percentage> 0.114 </Damage_Percentage>
 				<Damage_Interval_In_Secs> 1.0 </Damage_Interval_In_Secs>
@@ -3607,8 +3151,8 @@
 
 	<!-- ==================		Arc Trigger Under Construction		==================================== -->
 
-	<HardPoint Name="Alien_Walker_Habitat_HP_Arc_Trigger_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Arc_Trigger_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_ARC_TRIGGER </Text_ID>
@@ -3634,7 +3178,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Arc_Trigger </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Arc_Trigger </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
@@ -3652,8 +3196,8 @@
 	<!-- Range_Enhancer Upgrade Hardpoint -->
 	<!-- ********************************************************************************************* -->
 
-	<HardPoint Name="Alien_Walker_Habitat_HP_Range_Enhancer">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Range_Enhancer">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -3692,7 +3236,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Alien_Walker_Habitat_HP_Range_Enhancer_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Walker_Habitat_HP_Range_Enhancer_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 4 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -3732,8 +3276,8 @@
 
 	
 	<!-- Range_Enhancer Under Construction  -->
-	<HardPoint Name="Alien_Walker_Habitat_HP_Range_Enhancer_Under_Construction">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Walker_Habitat_HP_Range_Enhancer_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
@@ -3757,7 +3301,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_HP_Range_Enhancer </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Range_Enhancer </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
@@ -3773,19 +3317,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
 	<!-- **************************************************************************************** -->
 	<!-- *** DEATH CLONE(S)********************************************************************** -->
 	<!-- **************************************************************************************** -->
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP00">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP00">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP00.alo </Land_Model_Name>
@@ -3797,7 +3332,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -3847,12 +3382,12 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Cooling_HP00, HP_Body
+			Proto_Walker_Habitat_Cooling_HP00, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP00_Empty">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP00_Empty">
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP00.alo </Land_Model_Name>
@@ -3864,7 +3399,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- MOVEMENT -->
 		<!-- CONFLICT -->
@@ -3914,7 +3449,7 @@
 		-->
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP01">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP01">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP01.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -3925,7 +3460,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -3975,12 +3510,12 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Cooling_HP01, HP_Body
+			Proto_Walker_Habitat_Cooling_HP01, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP01_Empty">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP01_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP01.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -3991,7 +3526,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- MOVEMENT -->
 		<!-- CONFLICT -->
@@ -4041,7 +3576,7 @@
 		-->
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP02">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP02">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP02.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4052,7 +3587,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4102,12 +3637,12 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Cooling_HP02, HP_Body
+			Proto_Walker_Habitat_Cooling_HP02, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP02_Empty">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP02_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP02.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4118,7 +3653,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4167,7 +3702,7 @@
 		-->
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP03">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP03">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP03.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4178,7 +3713,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4211,12 +3746,12 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Cooling_HP03, HP_Body
+			Proto_Walker_Habitat_Cooling_HP03, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Back_Damaged_HP03_Empty">
+	<HardPoint Name="Proto_Walker_Habitat_Back_Damaged_HP03_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP03.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4227,7 +3762,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4259,7 +3794,7 @@
 
 	</HardPoint>
 
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_Damaged_HP00">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_Damaged_HP00">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP00.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4270,7 +3805,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4303,13 +3838,13 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Back_Damaged_HP00_Empty, HP_Body
+			Proto_Walker_Habitat_Back_Damaged_HP00_Empty, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_Damaged_HP01">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_Damaged_HP01">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP01.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4320,7 +3855,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4353,14 +3888,14 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Back_Damaged_HP01_Empty, HP_Body
+			Proto_Walker_Habitat_Back_Damaged_HP01_Empty, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_Damaged_HP02">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_Damaged_HP02">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP02.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4371,7 +3906,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4404,14 +3939,14 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Back_Damaged_HP02_Empty, HP_Body
+			Proto_Walker_Habitat_Back_Damaged_HP02_Empty, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
 
 	
 	
-	<HardPoint Name="Alien_Walker_Habitat_Cooling_Damaged_HP03">
+	<HardPoint Name="Proto_Walker_Habitat_Cooling_Damaged_HP03">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP03.alo </Land_Model_Name>
 		<Scale_Factor> 0.80 </Scale_Factor>
@@ -4422,7 +3957,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> false </Is_Attackable>
@@ -4455,7 +3990,7 @@
 		<!-- HARDPOINTS -->
 		<!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
 		<Attached_Hard_Points>
-			Alien_Walker_Habitat_Back_Damaged_HP03_Empty, HP_Body
+			Proto_Walker_Habitat_Back_Damaged_HP03_Empty, HP_Body
 		</Attached_Hard_Points>
 
 	</HardPoint>
@@ -4468,7 +4003,7 @@
 
 
 
-	<Projectile Name="Proj_Terrain_Conditioner">
+	<Projectile Name="Proto_Proj_Terrain_Conditioner">
 
 		<!-- ART -->
 		<Land_Model_Name>p_alien_plasma_projectile.alo</Land_Model_Name>
@@ -4543,7 +4078,7 @@
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Medium, CanAttack, Insignificant, Stationary </CategoryMask>
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
 		<!-- CONFLICT -->
@@ -4769,7 +4304,7 @@
 
 
 
-	<Projectile Name="Proj_Alien_Walker_Habitat_Plasma_Blob">
+	<Projectile Name="Proj_Proto_Walker_Habitat_Plasma_Blob">
 		<!-- ART -->
 		<Scale_Factor> 0.85 </Scale_Factor>
 		<Land_Model_Name> AB_alien_plasma_projectile_big.alo </Land_Model_Name>
@@ -4898,7 +4433,7 @@
 
 
 
-	<Projectile Name="Proj_Alien_Walker_Habitat_Plasma_Cannon">
+	<Projectile Name="Proj_Proto_Walker_Habitat_Plasma_Cannon">
 		<!-- ART -->
 		<Scale_Factor> 0.85 </Scale_Factor>
      <!-- Particle upgraded please see Nick with comments-->
@@ -5037,7 +4572,7 @@
 
 
 	<!-- Crop circle that will act as "walker under construction" object -->
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Glyph">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Glyph">
 		<!-- ART -->
 		<Text_ID> TEXT_UNIT_ALIEN_WALKER_HABITAT_GLYPH </Text_ID>
 		<Land_Model_Name> WO_Glyph_Habitat.alo </Land_Model_Name>
@@ -5052,7 +4587,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
 		<Space_Layer> LandDynamic </Space_Layer>
 		<Victory_Relevant> No </Victory_Relevant>
@@ -5143,8 +4678,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Beacon_Type> Alien_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
-			<Tactical_Buildable_Constructed> ALIEN_WALKER_Habitat </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Beacon_Type> Proto_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat </Tactical_Buildable_Constructed>
 			<Constructed_Object_Placement_Delay_Sec> 0 </Constructed_Object_Placement_Delay_Sec>
 			<Constructed_Object_Placement_Anim> Anim_FlyLandDrop </Constructed_Object_Placement_Anim>
 			<!-- <Destroy_Building_Object_On_Frame> 40 </Destroy_Building_Object_On_Frame> -->
@@ -5199,7 +4734,7 @@
 
 
 	<!-- Oksana: beacon for building the glyph. You'll need a builder unit to build from beacon -->
-	<X10_Alien_Walkers Name="Alien_Walker_Habitat_Glyph_Beacon">
+	<X10_Alien_Walkers Name="Proto_Walker_Habitat_Glyph_Beacon">
 		<!-- ART -->
 		<!-- STUB FOR ELIE -->
 		<Land_Model_Name>AB_Habitat_Radiation_Artillery_Projectile.alo</Land_Model_Name>
@@ -5254,7 +4789,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Walker_Habitat_Glyph </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_Glyph </Tactical_Buildable_Constructed>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -5800,89 +5335,4 @@
 	</X10_Alien_Walkers>
 
 
-	<!-- **************************************************************************************** -->
-	<!-- *** TEMPORARY VARIANTS ***************************************************************** -->
-	<!-- **************************************************************************************** -->
-	<!-- Tech item used by original implementation of research.  This is needed for a demo workaround until the research system
-		is updated to latest design.  SCC 5/2/06 -->
-
-	<X10_Alien_Walkers Name="ALIEN_TECH_DROP_1">
-		<!-- ART -->
-		<Land_Model_Name> WO_NA_hay03.alo </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
-		<AssetBank> BANK_ALIEN </AssetBank>
-		<!-- INTERFACE -->
-		<Text_ID> TEXT_NONE </Text_ID>
-		<GUI_Scene_Name> TechObjectRetrieval_Scene </GUI_Scene_Name>
-		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
-		<!-- ATTRIBUTES -->
-		<!-- BEHAVIORS -->
-		<LandBehavior> GUI </LandBehavior>
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> TechPowerUp </Lua_Land_Behaviors>
-			<Lua_Script_Data> TECH_POWERUP_RETRIEVAL_RANGE = 20 </Lua_Script_Data>
-		</BehaviorType>
-	</X10_Alien_Walkers>
-
-	<!-- ===================================================================================================
-	== MARIA 11.02.2006 - This variant allows us to define walkers with specific hard point configurations
-	====================================================================================================== -->
-	<X10_Alien_Walkers Name="Customized_Alien_Walker_Habitat">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat</Variant_Of_Existing_Type>
-
-		<!-- Maria 12.04.2006 we do not want this to show up in the build menu so we must override the 
-			Is_Buildable_By_Constructor flag. -->
-		<BehaviorType Name="GroundStructureBehaviorType">
-			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
-		</BehaviorType>
-
-		<BehaviorType Name="ProductionBehaviorType">
-			<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> WalkerPuzzle, CustomizedWalker </Lua_Land_Behaviors>
-			<Lua_Script_Data>
-				<!-- ================================================================================= -->
-				<!-- ===================   CUSTOMIZED WALKER SCRIPT DATA - BEGIN  ==================== -->
-				<!-- ================================================================================= -->
-				<!-- MARIA 11.02.2006 - In order to set this table up you need to specify	
-				the following information:												
-							- Walker socket to build the hard point on.	THIS MUST ALWAYS BE IN CAPS!!!!!!!				
-							- Hard Point to build.										
-							
-				NOTE: Make sure you refer to HPSocketTypeBuildDependencies.xml specify hard points that 
-				are valid to a given socket (otherwise, nothing will be built).							
-				Example: 
-						If you want the Alien_Walker_Habitat_HP_Brute_Enabler built on the socket
-				        Alien_Walker_Habitat_BACK_HP00, the entry should read:
-				        
-				        HARD_POINT_CONFIGURATION_TABLE.ALIEN_WALKER_HABITAT_BACK_HP00 = "Alien_Walker_Habitat_HP_Brute_Enabler"				
-				
-				Finally, in order to create your own customized walker, I recommend
-				you derive your walker from this type and then set up your own HARD_POHARD_POINT_CONFIGURATION_TABLE.If
-				you have any problems or questions please let me know! =D 
-			-->
-
-				HARD_POINT_CONFIGURATION_TABLE = {}		<!-- ********  DO NOT FORGET THIS LINE ********** -->
-
-				<!-- =========   CUSTOMIZED WALKER SCRIPT DATA - BEGIN  =============== -->
-				<!-- ================================================================== -->
-			</Lua_Script_Data>
-		</BehaviorType>
-
-		<BehaviorType Name="BuildableObjectBehaviorType">
-			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Customized_Alien_Walker_Habitat_Glyph </Tactical_Under_Construction_Object_Type>
-			<Tactical_Buildable_Beacon_Type> Alien_Walker_Habitat_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
-		</BehaviorType>
-
-	</X10_Alien_Walkers>
-
-
-	<X10_Alien_Walkers Name="Customized_Alien_Walker_Habitat_Glyph">
-		<Variant_Of_Existing_Type>Alien_Walker_Habitat_Glyph</Variant_Of_Existing_Type>
-		<CategoryMask> Large, Stationary </CategoryMask>
-	</X10_Alien_Walkers>
-
-</Alien_Walker_Habitat_XML>
+</Proto_Walker_Habitat_XML>
