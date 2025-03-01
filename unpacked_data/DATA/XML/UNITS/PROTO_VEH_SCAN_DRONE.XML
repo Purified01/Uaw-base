@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Alien_Veh_Scan_Drone_XML>
+<Proto_Veh_Scan_Drone_XML>
 
 <!-- **************************************************************************************** -->	
 <!-- *** UNIT(S) **************************************************************************** -->	
 <!-- **************************************************************************************** -->	
 
-	<X10_Alien_Units Name="Alien_Scan_Drone">
+	<X10_Alien_Units Name="Proto_Scan_Drone">
 
 		<!-- ART -->
 		<Land_Model_Name>AB_Info_Conduit.ALO</Land_Model_Name>
@@ -28,7 +28,7 @@
 		
 		<!-- ATTRIBUTES -->
         <LOD_Bias>6.0</LOD_Bias>
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<Victory_Relevant> True </Victory_Relevant>
 		<Weather_Category>Infantry</Weather_Category>
 		<CategoryMask> Large, Piloted, RadiationHelps </CategoryMask>
@@ -132,8 +132,8 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Under_Construction_Object_Type> Alien_Scan_Drone_Construction </Tactical_Under_Construction_Object_Type>
-			<Tactical_Buildable_Beacon_Type> Alien_Scan_Drone_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Scan_Drone_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Buildable_Beacon_Type> Proto_Scan_Drone_Beacon </Tactical_Buildable_Beacon_Type>
 		</BehaviorType>
 
       <BehaviorType Name="TacticalUnderConstructionBehaviorType">
@@ -465,21 +465,21 @@
 		<Create_Children_Data SubObjectList="Yes">
 
 			<Create_Child_Data>
-				<Type> Alien_Veh_Scan_Drone_Foot_Proxy </Type>
+				<Type> Proto_Veh_Scan_Drone_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 0 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Veh_Scan_Drone_Foot_Proxy </Type>
+				<Type> Proto_Veh_Scan_Drone_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 1 </Argument>
 			</Create_Child_Data>
 
 			<Create_Child_Data>
-				<Type> Alien_Veh_Scan_Drone_Foot_Proxy </Type>
+				<Type> Proto_Veh_Scan_Drone_Foot_Proxy </Type>
 				<Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 				<Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 				<Argument> WhichFoot, 2 </Argument>
@@ -489,7 +489,7 @@
 
 	</X10_Alien_Units>
 
-	<X10_Alien_Units Name="Alien_Veh_Scan_Drone_Foot_Proxy">
+	<X10_Alien_Units Name="Proto_Veh_Scan_Drone_Foot_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 2 </Scale_Factor>
@@ -513,7 +513,7 @@
 <!-- *** CONSTRUCTION VERSION *************************************************************** -->	
 <!-- **************************************************************************************** -->	
 
-	<X10_Alien_Units Name="Alien_Scan_Drone_Construction">
+	<X10_Alien_Units Name="Proto_Scan_Drone_Construction">
 
 		<!-- ART -->
 		<Land_Model_Name> WO_Glyph_Scan.alo </Land_Model_Name>
@@ -536,7 +536,7 @@
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> TacticalBuildableStructure, Large, Stationary, Female </CategoryMask>
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
 		<Attributes SubObjectList="Yes">
@@ -599,8 +599,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Scan_Drone </Tactical_Buildable_Constructed>
-			<Tactical_Buildable_Beacon_Type> Alien_Scan_Drone_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Buildable_Constructed> Proto_Scan_Drone </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Beacon_Type> Proto_Scan_Drone_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Build_Cost_Multiplayer> 1400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 1400 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
@@ -680,7 +680,7 @@
 	<!-- *** BEACON ***************************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X10_Alien_Units Name="Alien_Scan_Drone_Beacon">
+	<X10_Alien_Units Name="Proto_Scan_Drone_Beacon">
 
 		<!-- ART -->
 		<!-- STUB FOR ELIE -->
@@ -732,7 +732,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Alien_Scan_Drone_Construction </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Scan_Drone_Construction </Tactical_Buildable_Constructed>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -999,4 +999,4 @@
     </X10_Alien_Units>
 
 
-</Alien_Veh_Scan_Drone_XML>
+</Proto_Veh_Scan_Drone_XML>

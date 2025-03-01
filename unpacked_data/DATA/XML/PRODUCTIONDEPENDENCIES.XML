@@ -3715,6 +3715,42 @@
 	</Dependency>
 
 	<Dependency>
+		<Built_Object> Proto_Cylinder </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Superweapon_Reaper_Turret </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Scan_Drone </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Superweapon_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Hero_Kamal_Rex </Built_Object>
 
 		<!-- Strategic requirements -->
