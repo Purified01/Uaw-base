@@ -579,7 +579,7 @@
 
 		<Lua_Script>Proto_Player</Lua_Script>
 		<Allies />
-		<Enemies>Alien_ZM06_KamalRex, Military, Hostile, Novus, Masari, Civilian, Proto</Enemies>
+		<Enemies>Alien_ZM06_KamalRex, Military, Hostile, Novus, Masari, Civilian, Alien</Enemies>
 
 		<Selection_Blob_Material_Name>Selection_Alien_Land</Selection_Blob_Material_Name>
 		<Selection_Blob_RGBA> 119, 255, 78, 255 </Selection_Blob_RGBA>

@@ -976,5 +976,10 @@
 		
 	</X10_Alien_Heroes>
 
+	<X10_Alien_Heroes Name="Proto_Hero_Kamal_Rex">
+		<Variant_Of_Existing_Type>Alien_Hero_Kamal_Rex</Variant_Of_Existing_Type>
+      	<AssetBank> BANK_ALIEN </AssetBank>
+		<Affiliation> Proto </Affiliation>
+	</X10_Alien_Heroes>
 
 </Alien_HERO_Kamal_Rex_XML>

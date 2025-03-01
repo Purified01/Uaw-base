@@ -3686,6 +3686,70 @@
 		<Tactical_Builder> Alien_Hierarchy_Core </Tactical_Builder>
 	</Dependency>
 
+<!-- ***********************************************************************
+******** PROTO BUILD ORDER DEPENDENCIES ********************************
+**************************************************************************-->
+
+	<Dependency>
+		<Built_Object> Proto_Arrival_Site </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Glyph_Carver </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Hero_Kamal_Rex </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Hero_Nufai </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
+	</Dependency>
+	
+	<!-- HERO: Orlok -->
+	<Dependency>
+		<Built_Object> Proto_Hero_Orlok </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
+	</Dependency>
 
 	<!-- ***********************************************************************
 ******** NOVUS BUILD ORDER DEPENDENCIES ************************************

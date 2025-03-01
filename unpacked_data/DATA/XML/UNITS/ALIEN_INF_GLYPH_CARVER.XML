@@ -558,8 +558,8 @@
       <Variant_Of_Existing_Type> Alien_Glyph_Carver </Variant_Of_Existing_Type>
       <AssetBank> BANK_ALIEN </AssetBank>
 		<Affiliation> Proto </Affiliation>
-		<Scale_Factor>1.5</Scale_Factor>
-		<Tactical_Health> 500 </Tactical_Health>
+		<Scale_Factor>1.2</Scale_Factor>
+		<Tactical_Health> 375 </Tactical_Health>
     </X10_Alien_Units>
 
 </Alien_INF_Glyph_Carver_XML>
