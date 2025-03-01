@@ -76,6 +76,7 @@
 	<File> Units/Military_Veh_Dragoon.xml </File>
 	<File> Units/Military_Veh_Hummer.xml </File>
 	<File> Units/Military_Veh_Artillery.xml </File>
+	<File> Units/Military_Hero_Chief_Scientist.xml</File>
 
 	<File> Units/Novus_Air_Retreat_Transport.xml </File>
 	<File> Units/Novus_Air_Collector.xml </File>
@@ -122,6 +123,7 @@
 	<File> Units/MASARI_VEH_Sentry.xml </File>
 	<File> Units/MASARI_AIR_Retreat_Transport.xml </File>
 
+	<File> Units/PROTO_HERO_CHIEF_SCIENTIST.xml </File>
 
 	<File> ALIEN_Base_Global_Icon.xml </File>
 	<File> NOVUS_Base_Global_Icon.xml </File>
