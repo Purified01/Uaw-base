@@ -58,19 +58,20 @@ function PGFactions_Init()
 	PG_FACTION_NEUTRAL	= Declare_Enum()
 	
 	PG_SELECTABLE_FACTION_MIN = PG_FACTION_NOVUS
-	PG_SELECTABLE_FACTION_MAX = PG_FACTION_PROTO
+	PG_SELECTABLE_FACTION_MAX = PG_FACTION_MILITARY
 	
 	-- String form factions for networking
 	PG_FACTION_NOVUS_STRING = "Novus"
 	PG_FACTION_ALIEN_STRING = "Alien"
 	PG_FACTION_MASARI_STRING = "Masari"
+	PG_FACTION_MILITARY_STRING = "Military"
 	PG_FACTION_PROTO_STRING = "Proto"
 	PGFactionStringLookup = {}
 	PGFactionStringLookup[PG_FACTION_NOVUS] = PG_FACTION_NOVUS_STRING
 	PGFactionStringLookup[PG_FACTION_ALIEN] = PG_FACTION_ALIEN_STRING
 	PGFactionStringLookup[PG_FACTION_MASARI] = PG_FACTION_MASARI_STRING
 	PGFactionStringLookup[PG_FACTION_PROTO] = PG_FACTION_PROTO_STRING
-	
+	PGFactionStringLookup[PG_FACTION_MILITARY] = PG_FACTION_MILITARY_STRING
 
 	-- Localized wide strings for user display.
 	PGFactionLocalizedLookup = {}
@@ -87,6 +88,7 @@ function PGFactions_Init()
 	PGFactionTextures[PG_FACTION_NOVUS] = "i_logo_novus.tga"
 	PGFactionTextures[PG_FACTION_ALIEN] = "i_logo_aliens.tga"
 	PGFactionTextures[PG_FACTION_MASARI] = "i_logo_masari.tga"
+	PGFactionTextures[PG_FACTION_MILITARY] = "i_logo_military.tga"
 	PGFactionTextures[PG_FACTION_PROTO] = "i_icon_proto.tga"
 		
 		
@@ -95,6 +97,7 @@ function PGFactions_Init()
 	PGFactionNameToFactionTexture["NOVUS"]		= PGFactionTextures[PG_FACTION_NOVUS]
 	PGFactionNameToFactionTexture["ALIEN"]		= PGFactionTextures[PG_FACTION_ALIEN]
 	PGFactionNameToFactionTexture["MASARI"]	= PGFactionTextures[PG_FACTION_MASARI]
+	PGFactionNameToFactionTexture["MILITARY"]	= PGFactionTextures[PG_FACTION_MILITARY]
 	PGFactionNameToFactionTexture["PROTO"]		= PGFactionTextures[PG_FACTION_ALIEN]
 
 	-- Starting Cash

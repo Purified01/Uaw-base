@@ -100,7 +100,7 @@ function Define_Starting_Forces()
 		},
 		["PROTO"] = {
 			"ALIEN_ARRIVAL_SITE",
-			"PROTO_GLYPH_CARVER",
+			"PROTO_GLYPH_CARVER"
 		},
 		["NOVUS"] = {
 			"NOVUS_REMOTE_TERMINAL",
