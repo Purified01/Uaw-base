@@ -229,7 +229,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_icon_ab_barracks.tga </Icon_Name>
+			<Icon_Name> i_icon_ab_mini_barracks.tga </Icon_Name>
 			<!-- Maria 07.07.2006 - what type is this building? air, infantry, vehicle, or nil. This is used
 				 to update the queue UI in tactical mode! -->
 			<Building_Queue_Type>Infantry</Building_Queue_Type>
@@ -938,7 +938,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Core.alo </Land_Model_Name>
-		<Scale_Factor> 0.55 </Scale_Factor>
+		<Scale_Factor> 0.37 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -2248,7 +2248,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_MatOptmzr.alo</Land_Model_Name>
-		<Scale_Factor> 0.30 </Scale_Factor>
+		<Scale_Factor> 0.40 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2323,7 +2323,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
-		<Scale_Factor> 0.30 </Scale_Factor>
+		<Scale_Factor> 0.40 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2828,7 +2828,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_AssemblyWalker_TerrainConditioner.alo</Land_Model_Name>
-		<Scale_Factor> 0.35 </Scale_Factor>
+		<Scale_Factor> 0.3 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2940,7 +2940,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_AssemblyWalker_TerrainConditioner.alo </Land_Model_Name>
-		<Scale_Factor> 0.35 </Scale_Factor>
+		<Scale_Factor> 0.3 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!--CONFLICT-->

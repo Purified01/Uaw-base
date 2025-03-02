@@ -229,7 +229,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_icon_ab_barracks.tga </Icon_Name>
+			<Icon_Name> i_icon_ab_glow_barracks.tga </Icon_Name>
 			<Building_Queue_Type>NonProduction</Building_Queue_Type>
 		</BehaviorType>
 
