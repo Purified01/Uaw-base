@@ -20,7 +20,7 @@
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Large, Stationary, Insignificant </CategoryMask>
-		<Affiliation> Neutral, Masari, Novus, Alien, Military </Affiliation>
+		<Affiliation> Neutral, Masari, Novus, Alien, Military, Proto </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 		<Should_Always_Colorize> true </Should_Always_Colorize>
 		

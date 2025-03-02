@@ -26,7 +26,7 @@
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Neutral, Masari, Novus, Alien, Military </Affiliation>
+		<Affiliation> Neutral, Masari, Novus, Alien, Military, Proto </Affiliation>
 		<CategoryMask> Large, Stationary, Insignificant</CategoryMask>
 		<Victory_Relevant>no</Victory_Relevant>
 

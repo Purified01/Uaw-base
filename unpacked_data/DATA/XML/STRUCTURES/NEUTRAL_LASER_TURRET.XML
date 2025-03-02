@@ -29,7 +29,7 @@
     <Select_As_Non_Structure>True</Select_As_Non_Structure> <!-- Please see SCC before adjusting-->
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Neutral, Military, Novus, Alien, Masari </Affiliation>
+		<Affiliation> Neutral, Military, Novus, Alien, Masari, Proto </Affiliation>
 		<CategoryMask> Medium, Stationary, CanAttack </CategoryMask>
 		<Victory_Relevant>no</Victory_Relevant>
 		<Should_Always_Colorize> true </Should_Always_Colorize>
