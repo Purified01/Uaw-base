@@ -656,5 +656,19 @@
 
 	</Projectile>
 
+	<X10_Alien_Units Name="Proto_Lost_One">
+		<Variant_Of_Existing_Type> Alien_Lost_One </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+
+      <Projectile_Types>Proj_Proto_Lost_One_Laser</Projectile_Types>
+      <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
+      <Projectile_Fire_Pulse_Delay_Seconds>.3</Projectile_Fire_Pulse_Delay_Seconds>
+      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
+	</X10_Alien_Units>
+
+	<Projectile Name="Proj_Proto_Lost_One_Laser">
+		<Variant_Of_Existing_Type> Proj_Lost_One_Laser </Variant_Of_Existing_Type>
+	</Projectile>
 
 </Alien_INF_Lost_One_XML>

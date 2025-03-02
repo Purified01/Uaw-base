@@ -85,13 +85,13 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksSpecialAbilities = 
 				{
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Grunt"), 
+							ObjectType=Find_Object_Type("Proto_Grunt"), 
 							AbilityName="Grunt_Grenade_Attack", 
 							TitleTextID="TEXT_ALIEN_RESEARCH_TITLE_GRUNT_GRENADE",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_GRUNT_GRENADE",
 							IconName="i_icon_a_research_grunt_grenade.tga" 
 						},
-					[2] = { ObjectType=Find_Object_Type("Alien_Lost_One"), AbilityName="Lost_One_Plasma_Bomb_Ability", DescriptionTextID=nil, IconName=nil },
+					[2] = { ObjectType=Find_Object_Type("Proto_Lost_One"), AbilityName="Lost_One_Plasma_Bomb_Ability", DescriptionTextID=nil, IconName=nil },
 				},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
@@ -151,7 +151,7 @@ function Init_Research_Tree(tactical_only_game)
 				{
 				
 					[1] = { 
-								TypeName = "Alien_Brute", 
+								TypeName = "Proto_Brute", 
 								AbilityName="Brute_Death_From_Above", 
 								TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_DEATH_FROM_ABOVE",
 								DescriptionTextID="TEXT_ALIEN_RESEARCH_BRUTE_DEATH_FROM_ABOVE", 
@@ -446,7 +446,7 @@ function Init_Research_Tree(tactical_only_game)
 						},
 					-- Walker socket option:  Terrain Conditioner
 					[2] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Habitat_HP_Brute_Mutator"), 
+							ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Brute_Mutator"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_BRUTE_MUTATOR",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_BRUTE_MUTATOR", 
 							IconName="i_icon_a_walker_hp_pod_brute.tga" 

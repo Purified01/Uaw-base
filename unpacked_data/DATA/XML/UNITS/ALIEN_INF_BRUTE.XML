@@ -695,5 +695,10 @@
 
 	</Projectile>
 
+	<X10_Alien_Units Name="Proto_Brute">
+		<Variant_Of_Existing_Type> Alien_Brute </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+	</X10_Alien_Units>
 
 </Alien_INF_Brute_XML>

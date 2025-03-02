@@ -3799,6 +3799,48 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
+
+	<!-- UNIT: Alien Grunt -->
+	<Dependency>
+		<Built_Object> Proto_Grunt </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
+	</Dependency>
+
+
+	<!-- UNIT: Alien Lost One -->
+	<Dependency>
+		<Built_Object> Proto_Lost_One </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
+	</Dependency>
+
+	<!-- UNIT: Alien Brute -->
+	<Dependency>
+		<Built_Object> Proto_Brute </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat_HP_Brute_Mutator </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
+	</Dependency>
+
+
 	<!-- HARDPOINTS: Habitat Walker -->
 
 	<Dependency>
