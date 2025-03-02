@@ -131,6 +131,7 @@
 	<File> Units/PROTO_Veh_Scan_Drone.xml </File>
 	<File> Units/PROTO_Walker_Habitat.xml </File>
 	<File> Units/PROTO_Mini_Walker_Habitat.xml </File>
+	<File> Units/PROTO_Walker_Assembly.xml </File>
 
 
 	<File> ALIEN_Base_Global_Icon.xml </File>
