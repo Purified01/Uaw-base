@@ -3787,6 +3787,17 @@
 		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
 	</Dependency>
 
+	<Dependency>
+		<Built_Object> Proto_Walker_Habitat </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Scan_Drone, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
 
 	<!-- HARDPOINTS: Habitat Walker -->
 

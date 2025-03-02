@@ -59,7 +59,7 @@
 		</Attributes>
 
 		<!-- MOVEMENT -->
-		<UnitCollisionClass> Vehicle </UnitCollisionClass>
+		<UnitCollisionClass> Tall Vehicle </UnitCollisionClass>
 		<Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
 		<MovementClass> LargeWalker </MovementClass>
 		<OccupationStyle> 1x1 </OccupationStyle>
@@ -357,7 +357,7 @@
 	            IF YOU HAVE ANY QUESTIONS PLEASE LET ME KNOW!.  THANKS.
          -->
          <Categorized_Pop_Cap_Value> 1 </Categorized_Pop_Cap_Value>
-         <Pop_Cap_Category_Type> Walker </Pop_Cap_Category_Type>
+         <Pop_Cap_Category_Type> MiniWalker </Pop_Cap_Category_Type>
 			<!--12-->
 		</BehaviorType>
 
@@ -4158,6 +4158,7 @@
 		<!-- ART -->
 		<Land_Model_Name> p_alien_gun_projectile.ALO </Land_Model_Name>
 		<AssetBank> BANK_ALIEN </AssetBank>
+		<Scale_Factor>0.55</Scale_Factor>
 
 		<!-- INTERFACE -->
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>

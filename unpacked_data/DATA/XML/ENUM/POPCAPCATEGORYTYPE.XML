@@ -9,4 +9,5 @@
    convert our pop cap tracking system so that this new approach is used for all types.
    -->
    <Walker> 0 </Walker> 
+   <MiniWalker> 1 </MiniWalker> 
 </EnumDefinition>
