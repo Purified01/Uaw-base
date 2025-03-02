@@ -124,6 +124,8 @@
 	<File> Units/MASARI_AIR_Retreat_Transport.xml </File>
 
 	<File> Structures/Proto_Arrival_Site.xml </File>
+	<File> Structures/Proto_Radiation_Spitter.xml </File>
+	<File> Structures/Proto_Gravitic_Manipulator.xml </File>
 	<File> Units/PROTO_HERO_CHIEF_SCIENTIST.xml </File>
 	<File> Units/PROTO_Veh_Reaper_Turret.xml </File>
 	<File> Units/PROTO_Veh_Scan_Drone.xml </File>
