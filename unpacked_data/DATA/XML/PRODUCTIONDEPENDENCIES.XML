@@ -3791,8 +3791,8 @@
 		<Built_Object> Proto_Walker_Habitat </Built_Object>
 
 		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Proto_Scan_Drone, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>

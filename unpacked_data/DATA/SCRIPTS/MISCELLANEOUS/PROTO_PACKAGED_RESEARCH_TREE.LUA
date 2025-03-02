@@ -61,12 +61,12 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes =  {  
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Range_Enhancer"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Habitat_HP_Range_Enhancer"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_WALKER_HP_RANGE_ENHANCER",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_RANGE_ENHANCER", 
 							IconName="i_icon_a_walker_hp_Range_Enhancer.tga" 
 						},
-					[2] = { ObjectType=Find_Object_Type("Proto_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[2] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[3] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 										
 					--[2] = { ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Jump_Module"), DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_JUMP_MODULE", IconName="i_icon_a_research_upgrade_assembly_hp_jump_module.tga" },
@@ -453,6 +453,12 @@ function Init_Research_Tree(tactical_only_game)
 						},
 					[3] = { 
 							ObjectType=Find_Object_Type("Proto_Walker_Habitat_HP_Terrain_Conditioner"), 
+							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_TERRAIN_CONDITIONER",
+							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_TERRAIN_CONDITIONER", 
+							IconName="i_icon_a_research_walker_hp_terrain_conditioner.tga" 
+						},
+					[4] = { 
+							ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Terrain_Conditioner"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_TERRAIN_CONDITIONER",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_TERRAIN_CONDITIONER", 
 							IconName="i_icon_a_research_walker_hp_terrain_conditioner.tga" 
