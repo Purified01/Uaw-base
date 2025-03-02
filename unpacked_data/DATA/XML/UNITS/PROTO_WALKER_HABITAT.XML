@@ -2808,7 +2808,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="FooCoreBehaviorType">
-			<Foo_Core_Fighter_Type_Name>Proto_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
+			<Foo_Core_Fighter_Type_Name>Alien_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
 			<Foo_Core_Time_Before_Respawning_Foo_Fighter> 5.0 </Foo_Core_Time_Before_Respawning_Foo_Fighter>
 			<Foo_Core_Attack_Range> 0.0 </Foo_Core_Attack_Range>
 			<Foo_Core_Heal_Range> 200.0 </Foo_Core_Heal_Range>

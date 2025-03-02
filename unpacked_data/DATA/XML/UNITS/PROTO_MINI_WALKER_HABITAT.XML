@@ -16,7 +16,7 @@
 		<Supreme_Cinematic_Importance> false </Supreme_Cinematic_Importance>
 		<Attack_Animation_Is_Overlay> yes </Attack_Animation_Is_Overlay>
 		<Projectile_Appearance_Delay_Frames> 2,1 </Projectile_Appearance_Delay_Frames>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<!-- DEBUG: Temp scale change for scale test - change back once models resized -->
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -59,7 +59,7 @@
 		</Attributes>
 
 		<!-- MOVEMENT -->
-		<UnitCollisionClass> Giant Vehicle </UnitCollisionClass>
+		<UnitCollisionClass> Vehicle </UnitCollisionClass>
 		<Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
 		<MovementClass> LargeWalker </MovementClass>
 		<OccupationStyle> 1x1 </OccupationStyle>
@@ -70,10 +70,10 @@
 		<Custom_Hard_YExtent> 115.0 </Custom_Hard_YExtent>
 		<Movement_Animation_Speed> .625 </Movement_Animation_Speed>
 		<Rotation_Animation_Speed> 0.45 </Rotation_Animation_Speed>
-		<Max_Speed> 0.25 </Max_Speed>
+		<Max_Speed> 0.4 </Max_Speed>
 		<Min_Speed> 0.1 </Min_Speed>
-		<Max_Rate_Of_Turn> .6 </Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn> .5 </Stopped_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> .8 </Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn> .6 </Stopped_Rate_Of_Turn>
 		<Strafe_Animation_Speed> .625 </Strafe_Animation_Speed>
 		<Backpedal_Animation_Speed> .625 </Backpedal_Animation_Speed>
 		<Strafe_Max_Speed_Coefficient> 1 </Strafe_Max_Speed_Coefficient>
@@ -84,7 +84,7 @@
 		<Walk_Transition> true </Walk_Transition>
 		<Close_Enough_Angle_For_Move_Start> 11.25 </Close_Enough_Angle_For_Move_Start>
 		<Planted_Foot_Height_Minimum> 0.0 </Planted_Foot_Height_Minimum>
-		<Planted_Foot_Height_Maximum> 20.0 </Planted_Foot_Height_Maximum>
+		<Planted_Foot_Height_Maximum> 14.0 </Planted_Foot_Height_Maximum>
 		<Start_Walk_Blend_Time> 1.0 </Start_Walk_Blend_Time>
 		<Moving_Vs_Moving_Look_Ahead_Time> 7.0 </Moving_Vs_Moving_Look_Ahead_Time>
 		<Should_Move_At_Water_Level> false </Should_Move_At_Water_Level>
@@ -325,11 +325,11 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="LuaScriptBehaviorType">
-			<Lua_Land_Behaviors> WalkerProtoPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
+			<Lua_Land_Behaviors> WalkerMiniProtoPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 
 				GenericVehicle = {}
@@ -527,7 +527,7 @@
 		<Land_Model_Name> AB_Habitat_Destoyed_Hulk.ALO </Land_Model_Name>
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		<AssetBank> BANK_ALIEN </AssetBank>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Resource </CategoryMask>
@@ -638,7 +638,7 @@
 	<X10_Alien_Walkers Name="Proto_Mini_Walker_Habitat_Foot_Proxy">
 
 		<!-- ART -->
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Is_Decoration> No </Is_Decoration>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -665,7 +665,7 @@
 	<X10_Alien_Walkers Name="Proto_Mini_Walker_Habitat_Air_Proxy">
 
 		<!-- ART -->
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Is_Decoration> No </Is_Decoration>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -697,7 +697,7 @@
 	<X10_Alien_Walkers Name="Proto_Mini_Walker_Habitat_Tall_Vehicle_Proxy">
 
 		<!-- ART -->
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Is_Decoration> No </Is_Decoration>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -734,7 +734,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -843,7 +843,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<!-- HARDPOINTS -->
@@ -864,7 +864,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Damaged.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -923,7 +923,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -938,7 +938,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Core.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -992,7 +992,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1009,7 +1009,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Cap">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cap_HP.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1062,7 +1062,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 	</HardPoint>
 
@@ -1106,7 +1106,7 @@
 		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Body_Socket</Variant_Of_Existing_Type>
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_HP00.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1123,7 +1123,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.1 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1165,7 +1165,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -1197,7 +1197,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_HP01.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1214,7 +1214,7 @@
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1255,7 +1255,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -1277,7 +1277,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_HP02.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1294,7 +1294,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.1 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1335,7 +1335,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -1356,7 +1356,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_HP03.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1373,7 +1373,7 @@
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 400 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1414,7 +1414,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
@@ -1436,7 +1436,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_HP00.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
     
@@ -1456,7 +1456,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1505,7 +1505,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1528,7 +1528,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_HP01.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1547,7 +1547,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1596,7 +1596,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1619,7 +1619,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_HP02.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1638,7 +1638,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1687,7 +1687,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1711,7 +1711,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_HP03.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1730,7 +1730,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00 </Target_Bones>
-		<Tactical_Health> 750 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1779,7 +1779,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1800,7 +1800,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Leg">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Leg.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1820,7 +1820,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Target_Bones> Target_00, Target_01, Target_02, Target_03, </Target_Bones>
-		<Tactical_Health> 350 </Tactical_Health>
+		<Tactical_Health> 250 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1866,7 +1866,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -1930,7 +1930,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Leg_Damage">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Leg_Damaged.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1974,7 +1974,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -2036,7 +2036,7 @@
 
 	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction">
 		<!-- ART -->
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<!-- _00, _01, _02, etc. is automatically attached -->
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -2108,7 +2108,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalUnderConstructionBehaviorType">
@@ -2129,7 +2129,7 @@
 	<!-- Generic Upgrade hardpoint -->
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint">
 		<!-- ART -->
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<!-- _00, _01, _02, etc. is automatically attached -->
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -2147,7 +2147,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 5.0 </Ranged_Target_Z_Adjust>
 		
-		<Tactical_Health> 1500 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2217,7 +2217,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SelectableBehaviorType">
@@ -2229,32 +2229,27 @@
 		
 	</HardPoint>
 
-
-
-
-	
 	<!-- ********************************************************************************************* -->
-	<!-- Armor Hardpoint -->
+	<!-- Material_Optimizer Upgrade Hardpoint Leg -->
 	<!-- ********************************************************************************************* -->
 
-	
-	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Armor_Crown">
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Material_Optimizer">
 		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
 		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
-
-		<!-- ART -->
-		<Land_Model_Name>ABHP_Habitat_Armor_Side.alo</Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
-		<AssetBank> BANK_ALIEN </AssetBank>
+		<Text_ID> TEXT_ALIEN_HP_MATERIAL_OPTIMIZER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 1000 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+		<Tactical_Health> 150 </Tactical_Health>
+		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_MatOptmzr.alo</Land_Model_Name>
+		<Scale_Factor> 0.30 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2267,13 +2262,254 @@
 		<LandBehavior>
          DAMAGE_TRACKING,
          EFFECT_REGISTRY,
+         EFFECT_GENERATOR,
          ATTRIBUTE_DIRECTORY,
          TACTICAL_SELL
 		</LandBehavior>
-
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Material_Optimizer_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_Material_Optimizer.tga</Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MATERIAL_OPTIMIZER </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes">
+
+			<Effect_Generator Name="MaterialOptimizerEffect">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> WalkerMaterialOptimizerEffect </Effect_Name>
+               <Duration>-1</Duration>
+					<Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+
+		</Effect_Generator_Data>
+
+	</HardPoint>
+
+	<!-- Material_Optimizer Under Construction  -->
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Material_Optimizer_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_MATERIAL_OPTIMIZER </Text_ID>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 150 </Tactical_Health>
+		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
+		<Scale_Factor> 0.30 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_Material_Optimizer.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_MATERIAL_OPTIMIZER </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Material_Optimizer </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+	</HardPoint>
+
+
+	<!-- ********************************************************************************************* -->
+	<!-- Teleport_Accelerator_Leg Upgrade Hardpoint -->
+	<!-- ********************************************************************************************* -->
+
+	
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+		<!-- don't want to point back to generic as this will mess up novus cascade -->
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 150 </Tactical_Health>
+		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Habitat_Teleport_Leg.alo</Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior>
+			SELECTABLE,
+			HARD_POINT
+		</Behavior>
+
+		<LandBehavior>
+         EFFECT_REGISTRY,
+         EFFECT_GENERATOR,
+         ATTRIBUTE_DIRECTORY,
+         TACTICAL_SELL
+		</LandBehavior>
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_Teleport_Accelerator.tga</Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_TELEPORT_ACCELERATOR </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> true </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <Effect_Generator_Data SubObjectList="Yes">
+         <Effect_Generator Name="Habitat_Build_Faster_Generator">
+            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+            <Starts_Active> true </Starts_Active>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> WalkerBuildFasterEffect </Effect_Name>
+               <Duration> -1.0 </Duration>
+               <Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
+            </Effect_Generator_Entry>
+         </Effect_Generator>
+      </Effect_Generator_Data>
+
+   </HardPoint>
+
+
+   <!-- Teleport_Accelerator_Leg Under Construction  -->
+   <HardPoint Name="Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction">
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 150 </Tactical_Health>
+      <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+      <!-- ART -->
+      <Land_Model_Name> ABHP_Habitat_Teleport_Leg.alo </Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- BEHAVIORS -->
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_Teleport_Accelerator.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_TELEPORT_ACCELERATOR </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 13 </Tactical_Build_Time_Seconds>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+   </HardPoint>
+   
+
+	
+	<!-- ********************************************************************************************* -->
+	<!-- ****** LOST ONE Pod																					  ****** -->
+	<!-- ********************************************************************************************* -->
+
+	
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+		<!-- don't want to point back to generic as this will mess up novus cascade -->
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_LOST_ONE_MUTATOR </Text_ID>
+
+		<!--CONFLICT-->
+		<Tactical_Health> 400 </Tactical_Health>
+		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Habitatwalker_LostOneAssemblyPod.alo </Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior>
+			SELECTABLE,
+			HARD_POINT
+		</Behavior>
+
+		<LandBehavior>
+			DAMAGE_TRACKING,
+			EFFECT_REGISTRY,
+			ATTRIBUTE_DIRECTORY,
+			TACTICAL_SELL
+		</LandBehavior>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2281,16 +2517,16 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Armor_Crown_Under_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_armor.tga </Icon_Name>
+			<Icon_Name>i_icon_a_walker_hp_pod_lost_one.tga</Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_ARMOR_CROWN </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LOST_ONE_MUTATOR </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
 		</BehaviorType>
 
@@ -2301,40 +2537,38 @@
 
 	</HardPoint>
 
-	<!-- Armor Under Construction  -->
-	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Armor_Crown_Under_Construction">
+	
+	<!-- Lost One Mutator Under Construction  -->
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator_Under_Construction">
 		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_ARMOR_CROWN </Text_ID>
+		<Text_ID> TEXT_ALIEN_HP_LOST_ONE_MUTATOR </Text_ID>
 
-		<!-- CONFLICT -->
-		<Tactical_Health> 1000 </Tactical_Health>
+		<!--CONFLICT-->
+		<Tactical_Health> 400 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
-		<Land_Model_Name> ABHP_Habitat_Armor_Side.alo </Land_Model_Name>
+		<Land_Model_Name> ABHP_Habitatwalker_LostOneAssemblyPod.alo </Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>i_icon_a_walker_hp_armor.tga </Icon_Name>
+			<Icon_Name>i_icon_a_walker_hp_pod_lost_one.tga </Icon_Name>
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_ARMOR_CROWN </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LOST_ONE_MUTATOR </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
 		</BehaviorType>
 
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Armor </Armor_Type>
-		</BehaviorType>
-
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Armor_Crown </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2344,6 +2578,112 @@
 
 	</HardPoint>
 
+
+
+	<!-- ********************************************************************************************* -->
+	<!-- ****** BRUTE Pod																						  ****** -->
+	<!-- ********************************************************************************************* -->
+
+	
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Brute_Mutator">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+		<!-- don't want to point back to generic as this will mess up novus cascade -->
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_BRUTE_MUTATOR </Text_ID>
+
+		<!--CONFLICT-->
+		<Tactical_Health> 400 </Tactical_Health>
+		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior>
+			SELECTABLE,
+			HARD_POINT
+		</Behavior>
+
+		<LandBehavior>
+			DAMAGE_TRACKING,
+			EFFECT_REGISTRY,
+			ATTRIBUTE_DIRECTORY,
+			TACTICAL_SELL
+		</LandBehavior>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Brute_Mutator_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_pod_brute.tga</Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_BRUTE_MUTATOR </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+	</HardPoint>
+
+	
+	<!-- Brute Mutator Under Construction  -->
+	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Brute_Mutator_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_BRUTE_MUTATOR </Text_ID>
+
+		<!--CONFLICT-->
+		<Tactical_Health> 400 </Tactical_Health>
+		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
+		<Scale_Factor> 0.55 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_pod_brute.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_BRUTE_MUTATOR </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Brute_Mutator </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 650 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 650 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 18 </Tactical_Build_Time_Seconds>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+	</HardPoint>
 
 
 	<!-- ********************************************************************************************* -->
@@ -2361,12 +2701,12 @@
 		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 350 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_Heat_Sink.alo</Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2436,7 +2776,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_Heat_Sink.alo </Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
@@ -2455,9 +2795,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Heat_Sink </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign>700</Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign>300</Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2483,12 +2823,12 @@
 		<Text_ID> TEXT_ALIEN_HP_TERRAIN_CONDITIONER </Text_ID>
 
 		<!--CONFLICT-->
-		<Tactical_Health> 1100 </Tactical_Health>
+		<Tactical_Health> 600 </Tactical_Health>
 		<CategoryMask> CanAttack, HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_AssemblyWalker_TerrainConditioner.alo</Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2525,7 +2865,7 @@
 			<Targeting_Priority_Set> Alien_Assembly_Walker_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 280.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 			<Muzzle_Bone_Name> muzzleA </Muzzle_Bone_Name>
 		</BehaviorType>
 
@@ -2566,7 +2906,7 @@
 			<Generic_Attack_Ability Name="Radiation_Artillery_Cannon_Attack_Ability">
 				<Activation_Chance>1.0</Activation_Chance>
 				<Activation_Min_Range>0.0</Activation_Min_Range>
-				<Activation_Max_Range>280.0</Activation_Max_Range>
+				<Activation_Max_Range>200.0</Activation_Max_Range>
 
             <Attack_Animation>Anim_Build</Attack_Animation>
 				<Animation_Duration_Override>4.0</Animation_Duration_Override>
@@ -2600,11 +2940,11 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_AssemblyWalker_TerrainConditioner.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!--CONFLICT-->
-		<Tactical_Health> 1200 </Tactical_Health>
+		<Tactical_Health> 800 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -2615,9 +2955,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Terrain_Conditioner </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 28 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 500 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 500 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
@@ -2652,13 +2992,13 @@
       <Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 350 </Tactical_Health>
+      <Tactical_Health> 150 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
       <Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 
       <!-- ART -->
       <Land_Model_Name>ABHP_FOO_Chamber.alo</Land_Model_Name>
-      <Scale_Factor> 0.40 </Scale_Factor>
+      <Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- BEHAVIORS -->
@@ -2703,12 +3043,12 @@
 		</BehaviorType>
 
 		<BehaviorType Name="FooCoreBehaviorType">
-			<Foo_Core_Fighter_Type_Name>Proto_Mini_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
+			<Foo_Core_Fighter_Type_Name>Alien_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
 			<Foo_Core_Time_Before_Respawning_Foo_Fighter> 5.0 </Foo_Core_Time_Before_Respawning_Foo_Fighter>
 			<Foo_Core_Attack_Range> 0.0 </Foo_Core_Attack_Range>
 			<Foo_Core_Heal_Range> 200.0 </Foo_Core_Heal_Range>
 			<Foo_Core_Heal_Self_Only> True </Foo_Core_Heal_Self_Only>
-			<Foo_Core_Max_Fighters> 3 </Foo_Core_Max_Fighters>
+			<Foo_Core_Max_Fighters> 1 </Foo_Core_Max_Fighters>
 		</BehaviorType>
 
 	</HardPoint>
@@ -2722,7 +3062,7 @@
 		<Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 350 </Tactical_Health>
+		<Tactical_Health> 100 </Tactical_Health>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
 		<!-- ART -->
@@ -2741,8 +3081,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Foo_Chamber </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
@@ -2769,12 +3109,12 @@
 		<Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_RangeEnhancer.alo</Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2846,7 +3186,7 @@
 		<Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- ART -->
@@ -2865,9 +3205,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Range_Enhancer </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2887,7 +3227,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP00.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -2918,7 +3258,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -2954,7 +3294,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP00.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -2986,7 +3326,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3015,7 +3355,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP01">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP01.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3046,7 +3386,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3081,7 +3421,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP01_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP01.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3113,7 +3453,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3142,7 +3482,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP02">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP02.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3173,7 +3513,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3208,7 +3548,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP02_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP02.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3239,7 +3579,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3268,7 +3608,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP03">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP03.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3299,7 +3639,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3317,7 +3657,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Back_Damaged_HP03_Empty">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Back_Damaged_HP03.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3348,7 +3688,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3360,7 +3700,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Cooling_Damaged_HP00">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP00.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3391,7 +3731,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3410,7 +3750,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Cooling_Damaged_HP01">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP01.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3441,7 +3781,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3461,7 +3801,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Cooling_Damaged_HP02">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP02.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3492,7 +3832,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -3512,7 +3852,7 @@
 	<HardPoint Name="Proto_Mini_Walker_Habitat_Cooling_Damaged_HP03">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Cooling_Damaged_HP03.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -3543,7 +3883,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -4008,7 +4348,7 @@
 		<Text_ID> TEXT_UNIT_ALIEN_WALKER_HABITAT_GLYPH </Text_ID>
 		<Land_Model_Name> WO_Glyph_Habitat.alo </Land_Model_Name>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-		<Scale_Factor> 1.1 </Scale_Factor>
+		<Scale_Factor> 0.6 </Scale_Factor>
 		<Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4114,11 +4454,11 @@
 			<Constructed_Object_Placement_Delay_Sec> 0 </Constructed_Object_Placement_Delay_Sec>
 			<Constructed_Object_Placement_Anim> Anim_FlyLandDrop </Constructed_Object_Placement_Anim>
 			<!-- <Destroy_Building_Object_On_Frame> 40 </Destroy_Building_Object_On_Frame> -->
-			<Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 27 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 1400 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 1400 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 22 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-			<Required_Pre_Build_Time_In_Secs> 38 </Required_Pre_Build_Time_In_Secs>
+			<Required_Pre_Build_Time_In_Secs> 28 </Required_Pre_Build_Time_In_Secs>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -4250,7 +4590,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_Fin_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Fin.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4286,7 +4626,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4324,7 +4664,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_Head_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Head.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4360,7 +4700,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4398,7 +4738,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_L_Pipe_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_L-Pipe.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4434,7 +4774,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4472,7 +4812,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_R_Pipe_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_R-Pipe_H.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4508,7 +4848,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4546,7 +4886,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_Rubble1_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Rubble1.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4582,7 +4922,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4620,7 +4960,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_Rubble2_Death_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Rubble2.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4656,7 +4996,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -4694,7 +5034,7 @@
 	<X10_Alien_Walkers Name="AB_Habitat_Crown_Fin_Rubble3_Chunk">
 		<!-- ART -->
 		<Land_Model_Name> AB_Habitat_Crown_Rubble3.ALO </Land_Model_Name>
-		<Scale_Factor> .80 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
 		<Remove_Upon_Death> true </Remove_Upon_Death>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
@@ -4730,7 +5070,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 99 </Crush_Defense>
-			<Crush_Power> 65 </Crush_Power>
+			<Crush_Power> 35 </Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
