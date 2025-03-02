@@ -1532,6 +1532,7 @@
       -->
       
       <Pop_Cap_Categories_Build_Count_Limits> Walker, 3, -1 </Pop_Cap_Categories_Build_Count_Limits> 
+      <Pop_Cap_Categories_Build_Count_Limits> MiniWalker, 5, -1 </Pop_Cap_Categories_Build_Count_Limits> 
       <!-- <Pop_Cap_Categories_Build_Count_Limits> MiniWalker, 5, -1 </Pop_Cap_Categories_Build_Count_Limits>       -->
 		<Loading_Texture_Name> splash_alien.dds </Loading_Texture_Name>
 

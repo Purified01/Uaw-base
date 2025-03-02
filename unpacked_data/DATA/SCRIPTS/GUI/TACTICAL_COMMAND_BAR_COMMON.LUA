@@ -157,6 +157,7 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	ConstructorTypeToFlash = {}
 	last_time = nil
 	LastWalkerPop = nil
+	LastMiniWalkerPop = nil
 	
 	
 	DefaultAbilityClockTint = {0.0, 1.0, 0.0, 0.43137254} -- alpha = 110/255
@@ -566,6 +567,10 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
  		this.WalkerPopText.Set_Hidden(not DisplayCreditsPop)
 	end
 
+	if TestValid(this.MiniWalkerPopText) then
+		this.MiniWalkerPopText.Set_Hidden(not DisplayCreditsPop)
+   end
+   
 	-- This is for designer's use!
 	this.Register_Event_Handler("UI_Set_Display_Credits_Pop", nil,UI_Set_Display_Credits_Pop)
 	
@@ -587,6 +592,12 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 		this.WalkerPopQuad.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY", false, "TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY_DESCRIPTION", true}})	
 	end
 	
+	if TestValid(this.MiniWalkerPopQuad) then
+		this.Register_Event_Handler("Mouse_On", this.MiniWalkerPopQuad, On_Mouse_Over_Credits_Pop_Cap_Display)
+		this.Register_Event_Handler("Mouse_Off", this.MiniWalkerPopQuad,On_Mouse_Off_Credits_Pop_Cap_Display)
+		this.MiniWalkerPopQuad.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY", false, "TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY_DESCRIPTION", true}})	
+	end
+
 	CreditsPopCapDisplayMouseOverStartTime = nil
 	CreditsPopCapDisplayMouseOverComponent = nil
 	-- --------------------------------------------------------------------------------------------------------
@@ -652,6 +663,9 @@ function UI_Set_Display_Credits_Pop(_, _, on_off)
 	Scene.RMIcon.Set_Hidden(not DisplayCreditsPop)
 	if TestValid(this.WalkerPopText) then
 		this.WalkerPopText.Set_Hidden(not DisplayCreditsPop)
+	end
+	if TestValid(this.MiniWalkerPopText) then
+		this.MiniWalkerPopText.Set_Hidden(not DisplayCreditsPop)
 	end
 	
 	if on_off then
@@ -3360,10 +3374,31 @@ function Update_Credits_Display()
 				LastWalkerPop = pop_cap_info.WalkerUsed
 			end			
 		end		
+		
+		if pop_cap_info.WalkerTotal and TestValid(this.MiniWalkerPopText) then
+			if this.MiniWalkerPopText.Get_Hidden() and DisplayCreditsPop then
+				this.MiniWalkerPopText.Set_Hidden(false)
+			end
+		
+			if not LastMiniWalkerPop or LastMiniWalkerPop ~= pop_cap_info.WalkerUsed then
+				local wstr_pop_cap = Get_Game_Text("TEXT_FRACTION")
+				Replace_Token(wstr_pop_cap, Get_Localized_Formatted_Number(pop_cap_info.MiniWalkerUsed), 0)
+				Replace_Token(wstr_pop_cap, Get_Localized_Formatted_Number(pop_cap_info.MiniWalkerTotal), 1)
+
+				local text = {}
+				for i,v in pairs(pop_cap_info) do 
+					text[#text+1] = i
+					text[#text+1] = v
+				end
+				this.DEBUG.Set_Text(table.concat(text,"\n"))
+
+				LastMiniWalkerPop = pop_cap_info.WalkerUsed
+			end			
+		end		
+		
 	end
 	return credits_changed -- did the amount of tactical money change?
 end
-
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Update_Mouse_Over
