@@ -2485,7 +2485,7 @@
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
       </BehaviorType>
 
       <!-- BEHAVIORS -->
@@ -2528,7 +2528,7 @@
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
