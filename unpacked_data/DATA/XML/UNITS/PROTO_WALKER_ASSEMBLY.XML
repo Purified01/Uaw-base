@@ -227,7 +227,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ab_assembly_walker.tga </Icon_Name>
+         <Icon_Name> i_icon_ab_glow_assembly_walker.tga </Icon_Name>
 
          <!-- Maria 07.07.2006 - what type is this building? air, infantry, vehicle, or nil. This is used
 				 to update the queue UI in tactical mode! -->

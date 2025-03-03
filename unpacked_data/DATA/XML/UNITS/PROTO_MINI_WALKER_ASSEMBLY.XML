@@ -227,7 +227,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ab_assembly_walker.tga </Icon_Name>
+         <Icon_Name> i_icon_ab_mini_assembly_walker.tga </Icon_Name>
 
          <!-- Maria 07.07.2006 - what type is this building? air, infantry, vehicle, or nil. This is used
 				 to update the queue UI in tactical mode! -->
@@ -2732,7 +2732,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_a_research_walker_hp_aggressor.tga</Icon_Name>
+         <Icon_Name>i_icon_a_walker_hp_pod_aggressor.tga</Icon_Name>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
@@ -2911,7 +2911,7 @@
 	<!-- ********************************************************************************************* -->
 
 	
-	<HardPoint Name="Proto_Mini_Walker_AssemblyHP_Teleport_Accelerator_Leg">
+	<HardPoint Name="Proto_Mini_Walker_Assembly_HP_Teleport_Accelerator_Leg">
 		<Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
