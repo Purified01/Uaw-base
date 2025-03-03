@@ -2248,7 +2248,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_MatOptmzr.alo</Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2323,7 +2323,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->

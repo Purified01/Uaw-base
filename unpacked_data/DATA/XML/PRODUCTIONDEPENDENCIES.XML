@@ -4368,6 +4368,18 @@
 	</Dependency>
 	
 	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
 
 		<!-- Strategic requirements -->
@@ -4380,7 +4392,7 @@
 	</Dependency>	
 
 	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
+		<Built_Object> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -4389,7 +4401,7 @@
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
+	</Dependency>	
 
 	<Dependency>
 		<Built_Object> Proto_Mini_Walker_Assembly_HP_Face_Cap_Armor_Crown </Built_Object>
@@ -4412,7 +4424,7 @@
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
 	</Dependency>
 
 	<Dependency>

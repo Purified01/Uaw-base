@@ -58,7 +58,7 @@
          <Tactical_Sell_Time_Seconds> 10.0 </Tactical_Sell_Time_Seconds>
       </Attributes>
 
-      <UnitCollisionClass> Giant Vehicle </UnitCollisionClass>
+      <UnitCollisionClass> Tall Vehicle </UnitCollisionClass>
       <Locomotor_Has_Animation_Priority> yes </Locomotor_Has_Animation_Priority>
       <MovementClass> LargeWalker </MovementClass>
       <OccupationStyle> 1x1 </OccupationStyle>
@@ -70,8 +70,8 @@
       <Rotation_Animation_Speed> 0.45 </Rotation_Animation_Speed>
       <Max_Speed> 0.4 </Max_Speed>
       <Min_Speed> 0.1 </Min_Speed>
-      <Max_Rate_Of_Turn> .6 </Max_Rate_Of_Turn>
-      <Stopped_Rate_Of_Turn> .5 </Stopped_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> .8 </Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn> .6 </Stopped_Rate_Of_Turn>
       <Strafe_Animation_Speed> .625 </Strafe_Animation_Speed>
       <Backpedal_Animation_Speed> .625 </Backpedal_Animation_Speed>
       <Strafe_Max_Speed_Coefficient> 1 </Strafe_Max_Speed_Coefficient>
@@ -82,7 +82,7 @@
       <Walk_Transition> true </Walk_Transition>
       <Close_Enough_Angle_For_Move_Start> 11.25 </Close_Enough_Angle_For_Move_Start>
       <Planted_Foot_Height_Minimum> 0.0 </Planted_Foot_Height_Minimum>
-      <Planted_Foot_Height_Maximum> 15.0 </Planted_Foot_Height_Maximum>
+      <Planted_Foot_Height_Maximum> 12.0 </Planted_Foot_Height_Maximum>
       <Start_Walk_Blend_Time> 1.0 </Start_Walk_Blend_Time>
       <Moving_Vs_Moving_Look_Ahead_Time> 7.0 </Moving_Vs_Moving_Look_Ahead_Time>
       <Should_Move_At_Water_Level> false </Should_Move_At_Water_Level>
@@ -945,7 +945,7 @@
       <Target_Bones> Target_00, Target_01, Target_02, Target_03 </Target_Bones>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 600 </Tactical_Health>
+      <Tactical_Health> 400 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1154,7 +1154,7 @@
       <Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
       <Target_Bones>  Target_00, Target_01, Target_02</Target_Bones>
 
-      <Tactical_Health> 450 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1297,7 +1297,7 @@
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
       <Is_Deleted_By_Tornado>False</Is_Deleted_By_Tornado>
 
-      <Tactical_Health> 350 </Tactical_Health>
+      <Tactical_Health> 250 </Tactical_Health>
 
       <!-- CONFLICT -->
       <Is_Attackable> true </Is_Attackable>
@@ -1444,7 +1444,7 @@
       <Target_Bones>  </Target_Bones>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 350 </Tactical_Health>
+      <Tactical_Health> 250 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1584,7 +1584,7 @@
       <Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
       <Target_Bones> Target_00, Target_01,Target_02,Target_03,Target_04 </Target_Bones>
 
-      <Tactical_Health> 400 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1778,7 +1778,7 @@
       <Target_Bones> Target_00, Target_01, Target_02, Target_03 </Target_Bones>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 400 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1962,7 +1962,7 @@
       <Only_Moves_In_Tornado>true</Only_Moves_In_Tornado>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 400 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2203,7 +2203,7 @@
       <Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
       <Ranged_Target_Z_Adjust> 5.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1500 </Tactical_Health>
+      <Tactical_Health> 500 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2315,7 +2315,7 @@
       <Target_Bones> </Target_Bones>
       <Ranged_Target_Z_Adjust> 5.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1500 </Tactical_Health>
+      <Tactical_Health> 500 </Tactical_Health>
 
       <Land_Damage_Thresholds>1, 0.75, 0.50, 0.25</Land_Damage_Thresholds>
       <Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -2409,7 +2409,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1200 </Tactical_Health>
+      <Tactical_Health> 700 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2438,14 +2438,14 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1200 </Tactical_Health>
+      <Tactical_Health> 700 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Face_Cap_Armor_Crown </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
@@ -2803,7 +2803,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_MatOptmzr.alo</Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2878,7 +2878,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_MatOptmzr.alo </Land_Model_Name>
-		<Scale_Factor> 0.40 </Scale_Factor>
+		<Scale_Factor> 0.55 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->

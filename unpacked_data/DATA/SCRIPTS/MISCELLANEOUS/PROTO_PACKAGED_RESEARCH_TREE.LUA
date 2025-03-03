@@ -67,7 +67,8 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_a_walker_hp_Range_Enhancer.tga" 
 						},
 					[2] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
-					[3] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[3] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[4] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 										
 					--[2] = { ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Jump_Module"), DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_JUMP_MODULE", IconName="i_icon_a_research_upgrade_assembly_hp_jump_module.tga" },
 				},
@@ -138,7 +139,7 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_a_research_hero_orlok.tga" 
 							},
 					[2] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod"), 
+							ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_AGGRESSOR_POD",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_AGGRESSOR_POD", 
 							IconName="i_icon_a_research_walker_hp_aggressor.tga" 
@@ -751,13 +752,13 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksUnitAbilities = {
 				
 					[1] = {  
-							TypeName = "Alien_Lost_One", 
+							TypeName = "Proto_Lost_One", 
 							AbilityName="Grey_Phase_Unit_Ability", 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_PHASE_MODULE",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_PHASE_MODULE", 
 							IconName="i_icon_a_sa_phase_self.tga" 
 						},
-					[2] = {  TypeName = "Alien_Cylinder", AbilityName="Monolith_Phase_Unit_Ability", DescriptionTextID=nil, IconName=nil },
+					[2] = {  TypeName = "Proto_Cylinder", AbilityName="Monolith_Phase_Unit_Ability", DescriptionTextID=nil, IconName=nil },
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -815,7 +816,7 @@ function Init_Research_Tree(tactical_only_game)
 						},
 					-- Walker socket option:  Phase Tank Assembly Pod
 					[2] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"), 
+							ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_PHASE_TANK",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_PHASE_TANK", 
 							IconName="i_icon_a_walker_hp_pod_phase_tank.tga" 
