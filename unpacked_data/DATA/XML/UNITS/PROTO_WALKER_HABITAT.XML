@@ -2270,7 +2270,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
@@ -2325,7 +2325,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -2673,7 +2673,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Armor_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="HardPointBehaviorType">
@@ -2722,7 +2722,7 @@
       </BehaviorType>
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Proto_Walker_Hardpoint_Armor_Leg </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker_Hardpoint_Armor_Leg </Armor_Type>
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
@@ -2779,7 +2779,7 @@
          FOO_CORE
       </LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2934,7 +2934,7 @@
          <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
       </BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -3051,7 +3051,7 @@
 			<Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>

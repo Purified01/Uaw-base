@@ -2469,7 +2469,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ABHP_Assemblywalker_DefilerAssemblyPod.alo</Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
@@ -2531,7 +2531,7 @@
 
       <!-- ART -->
       <Land_Model_Name> ABHP_Assemblywalker_DefilerAssemblyPod.alo </Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2578,7 +2578,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ABHP_Assemblywalker_PhaseAssemblyPod.alo </Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2640,7 +2640,7 @@
 
       <!-- ART -->
       <Land_Model_Name> ABHP_Assemblywalker_PhaseAssemblyPod.alo </Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2686,7 +2686,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2748,7 +2748,7 @@
 
       <!-- ART -->
       <Land_Model_Name> ABHP_Habitatwalker_BruteAssemblyPod.alo </Land_Model_Name>
-      <Scale_Factor> 0.9 </Scale_Factor>	  	  
+      <Scale_Factor> 0.55 </Scale_Factor>	  	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2788,8 +2788,8 @@
 	<!-- Material_Optimizer Upgrade Hardpoint Leg -->
 	<!-- ********************************************************************************************* -->
 
-	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Material_Optimizer">
-		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Assembly_HP_Material_Optimizer">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2822,7 +2822,7 @@
          TACTICAL_SELL
 		</LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2830,7 +2830,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Material_Optimizer_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Assembly_HP_Material_Optimizer_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2866,8 +2866,8 @@
 	</HardPoint>
 
 	<!-- Material_Optimizer Under Construction  -->
-	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Material_Optimizer_Under_Construction">
-		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Assembly_HP_Material_Optimizer_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_MATERIAL_OPTIMIZER </Text_ID>
@@ -2892,7 +2892,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Material_Optimizer </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Material_Optimizer </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
@@ -2911,8 +2911,8 @@
 	<!-- ********************************************************************************************* -->
 
 	
-	<HardPoint Name="Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg">
-		<Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_AssemblyHP_Teleport_Accelerator_Leg">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2944,7 +2944,7 @@
          TACTICAL_SELL
 		</LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2952,7 +2952,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Assembly_HP_Teleport_Accelerator_Leg_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
@@ -2971,7 +2971,7 @@
       </BehaviorType>
 
       <Effect_Generator_Data SubObjectList="Yes">
-         <Effect_Generator Name="Habitat_Build_Faster_Generator">
+         <Effect_Generator Name="Assembly_Build_Faster_Generator">
             <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
             <Is_Independent_Generator> true </Is_Independent_Generator>
             <Starts_Active> true </Starts_Active>
@@ -2988,8 +2988,8 @@
 
 
    <!-- Teleport_Accelerator_Leg Under Construction  -->
-   <HardPoint Name="Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg_Under_Construction">
-      <Variant_Of_Existing_Type>Proto_Mini_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+   <HardPoint Name="Proto_Mini_Walker_Assembly_HP_Teleport_Accelerator_Leg_Under_Construction">
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
       <!-- INTERFACE -->
       <Text_ID> TEXT_ALIEN_HP_TELEPORT_ACCELERATOR_LEG </Text_ID>
@@ -3013,7 +3013,7 @@
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Constructed> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
+         <Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Teleport_Accelerator_Leg </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
          <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 13 </Tactical_Build_Time_Seconds>
@@ -3046,7 +3046,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 700 </Tactical_Health>
+      <Tactical_Health> 400 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -3128,7 +3128,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 700 </Tactical_Health>
+      <Tactical_Health> 400 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -3143,8 +3143,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Heat_Sink </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign>700</Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign>300</Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
@@ -3179,7 +3179,7 @@
       <Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 350 </Tactical_Health>
+      <Tactical_Health> 250 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
       <Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 
@@ -3236,7 +3236,7 @@
          <Foo_Core_Attack_Range> 0.0 </Foo_Core_Attack_Range>
          <Foo_Core_Heal_Range> 200.0 </Foo_Core_Heal_Range>
          <Foo_Core_Heal_Self_Only> True </Foo_Core_Heal_Self_Only>
-         <Foo_Core_Max_Fighters> 3 </Foo_Core_Max_Fighters>
+         <Foo_Core_Max_Fighters> 2 </Foo_Core_Max_Fighters>
       </BehaviorType>
 
    </HardPoint>
@@ -3253,7 +3253,7 @@
       <Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 350 </Tactical_Health>
+      <Tactical_Health> 250 </Tactical_Health>
       <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -3264,8 +3264,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Foo_Chamber </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
@@ -3302,7 +3302,7 @@
       <Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 700 </Tactical_Health>
+      <Tactical_Health> 400 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- BEHAVIORS -->
@@ -3380,7 +3380,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 700 </Tactical_Health>
+      <Tactical_Health> 400 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- INTERFACE -->
@@ -3394,8 +3394,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Proto_Mini_Walker_Assembly_HP_Range_Enhancer </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 

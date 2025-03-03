@@ -2267,7 +2267,7 @@
          TACTICAL_SELL
 		</LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2389,7 +2389,7 @@
          TACTICAL_SELL
 		</LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
@@ -2780,7 +2780,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 400 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -3016,7 +3016,7 @@
          FOO_CORE
       </LandBehavior>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Proto_Mini_Walker_Hardpoint_Leg </Armor_Type>
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
 		</BehaviorType>
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
