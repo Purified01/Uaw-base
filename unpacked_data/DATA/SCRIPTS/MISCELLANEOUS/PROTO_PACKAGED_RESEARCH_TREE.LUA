@@ -226,7 +226,7 @@ function Init_Research_Tree(tactical_only_game)
 				{
 
 					[1] = { 	
-							ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Mass_Driver"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Assembly_HP_Mass_Driver"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_MASS_DRIVER",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_MASS_DRIVER", 
 							IconName="i_icon_a_walker_hp_Mass_Driver.tga" 
@@ -288,7 +288,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Scarn_Beam"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Assembly_HP_Scarn_Beam"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_SCARN_BEAM",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_SCARN_BEAM", 
 							IconName="i_icon_a_research_walker_hp_scarn_beam.tga" 

@@ -323,7 +323,7 @@
       </BehaviorType>
 
       <BehaviorType Name="LuaScriptBehaviorType">
-         <Lua_Land_Behaviors> AssemblyPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
+         <Lua_Land_Behaviors> AssemblyProtoPuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
          <Lua_Script_Data>
             GenericVehicle = {}
             GenericVehicle.SearchRange = 325.0
@@ -4814,7 +4814,7 @@
       </BehaviorType>
 
       <BehaviorType Name="LuaScriptBehaviorType">
-         <Lua_Land_Behaviors> AssemblyPuzzle, CustomizedWalker </Lua_Land_Behaviors>
+         <Lua_Land_Behaviors> AssemblyProtoPuzzle, CustomizedWalker </Lua_Land_Behaviors>
          <Lua_Script_Data>
             <!-- ================================================================================= -->
             <!-- ===================   CUSTOMIZED WALKER SCRIPT DATA - BEGIN  ==================== -->

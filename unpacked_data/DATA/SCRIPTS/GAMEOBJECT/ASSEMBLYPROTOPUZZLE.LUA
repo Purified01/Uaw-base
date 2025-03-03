@@ -247,11 +247,11 @@ local function Behavior_First_Service()
 		
 			--JSY: Disable GUI behavior by default.  That way our possible call to Enable_Behavior below is not
 			--in danger of undoing somebody else's call to disable (e.g. story script)
-			hp.Enable_Behavior(85, false)		
+			hp.Enable_Behavior(BEHAVIOR_GUI, false)		
 		
 			-- Assign vulnerability
 			if HP_INITIALLY_VULNERABLE[hp.Get_Type().Get_Name()] then
-				hp.Enable_Behavior(85, true)
+				hp.Enable_Behavior(BEHAVIOR_GUI, true)
 				hp.Make_Invulnerable(false)
 				hp.Set_Cannot_Be_Killed(false)
 			else
@@ -299,7 +299,7 @@ local function Behavior_On_HP_Attached(source, new_obj)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[new_obj.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(85, false)
+				parent_hp.Enable_Behavior(BEHAVIOR_GUI, false)
 				parent_hp.Make_Invulnerable(true)
 				parent_hp.Set_Cannot_Be_Killed(true)
 			end
@@ -390,7 +390,7 @@ local function Behavior_On_HP_Destroyed(source)
 					local hp = Object.Find_All_Hard_Points_Of_Type(type)
 					if hp and TestValid(hp[1]) then
 						hp = hp[1]
-						hp.Enable_Behavior(85, true)
+						hp.Enable_Behavior(BEHAVIOR_GUI, true)
 						hp.Make_Invulnerable(false)
 						hp.Set_Cannot_Be_Killed(false)					
 					else
@@ -408,7 +408,7 @@ local function Behavior_On_HP_Destroyed(source)
 			elseif CORE_DESTRUCTION_MONITOR.cap[hp_name] then 
 				-- the cap is down so let's reveal the core's UI
 				CORE_DESTRUCTION_MONITOR.cap[hp_name] = nil	
-				Core_Hard_Point.Enable_Behavior(85, true)			
+				Core_Hard_Point.Enable_Behavior(BEHAVIOR_GUI, true)			
 				CORE_DESTRUCTION_MONITOR.core_revealed = true
 			end
 			
@@ -426,7 +426,7 @@ local function Behavior_On_HP_Destroyed(source)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[hp_type] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(85, true)
+				parent_hp.Enable_Behavior(BEHAVIOR_GUI, true)
 				parent_hp.Make_Invulnerable(false)
 				parent_hp.Set_Cannot_Be_Killed(false)
 			end
@@ -446,7 +446,7 @@ local function Behavior_On_HP_Detached(source)
 	if parent_hp then	
 		if HP_BUILDABLE_HARD_POINTS[source.Get_Type()] then
 			if parent_hp and parent_hp ~= Object then
-				parent_hp.Enable_Behavior(85, true)
+				parent_hp.Enable_Behavior(BEHAVIOR_GUI, true)
 			end
 		end 
 	end
@@ -499,7 +499,7 @@ function Thread_Walker_Death()
 	Object.Prevent_All_Fire(true)
 	Object.Set_Selectable(false)
 	Object.Set_In_Limbo(true)
-	Object.Enable_Behavior(7, false)
+	Object.Enable_Behavior(BEHAVIOR_IDLE, false)
 
 	Walker_About_To_Die = true
 
