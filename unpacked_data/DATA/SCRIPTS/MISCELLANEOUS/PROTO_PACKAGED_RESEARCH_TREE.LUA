@@ -69,7 +69,7 @@ function Init_Research_Tree(tactical_only_game)
 					[2] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[3] = { ObjectType=Find_Object_Type("Proto_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[3] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
-					[4] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[4] = { ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 										
 					--[2] = { ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Jump_Module"), DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_JUMP_MODULE", IconName="i_icon_a_research_upgrade_assembly_hp_jump_module.tga" },
 				},
@@ -235,7 +235,7 @@ function Init_Research_Tree(tactical_only_game)
 							},
 				
 					[2] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Scanning_Node"),
+							ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Scanning_Node"),
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_SCANNING_RELAY",
 							DescriptionTextID="TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_SCANNING_RELAY",
 							IconName="i_icon_a_walker_hp_scanning_relay.tga"
@@ -642,7 +642,7 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksTypes =
 				{
 					[1] = { 
-						ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"), 
+						ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Radiation_Wake"), 
 						TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_RADIATION_CASCADE",
 						DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_RADIATION_CASCADE", 
 						IconName="i_icon_a_research_walker_hp_radiation_cascade.tga" 
@@ -742,7 +742,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of types that will be unlocked when research of this suite is completed!
 				UnlocksTypes = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Habitat_HP_Shield_Node"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Habitat_HP_Shield_Node"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_FIREWALL_BUBBLE",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_SCIENCE_HP_FIREWALL_BUBBLE", 
 							IconName="i_icon_a_research_walker_hp_firewall.tga" 
@@ -965,19 +965,19 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksTypes = {
 					-- Walker socket option:  dark matter
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Dark_Matter_Vent"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Dark_Matter_Vent"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_DARK_MATTER",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_DARK_MATTER", 
 							IconName="i_icon_a_research_walker_hp_dark_matter_vent.tga" 
 						},					
 					[2] = {
-							ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Mind_Magnet"), 
+							ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Mind_Magnet"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_CONTROL_MAGNETS",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_CONTROL_MAGNETS", 
 							IconName="i_icon_a_walker_hp_control_magnet.tga"
 						},
 
-					[3] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_AI_Magnet"), DescriptionTextID=nil, IconName=nil },
+					[3] = { ObjectType=Find_Object_Type("Proto_Walker_Science_HP_AI_Magnet"), DescriptionTextID=nil, IconName=nil },
 
 				},
 				
