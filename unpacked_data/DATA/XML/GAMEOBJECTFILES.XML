@@ -126,6 +126,7 @@
 	<File> Structures/Proto_Arrival_Site.xml </File>
 	<File> Structures/Proto_Radiation_Spitter.xml </File>
 	<File> Structures/Proto_Gravitic_Manipulator.xml </File>
+	<File> Structures/PROTO_Superweapon_Purifier.xml </File>
 	<File> Units/PROTO_HERO_CHIEF_SCIENTIST.xml </File>
 	<File> Units/PROTO_Veh_Reaper_Turret.xml </File>
 	<File> Units/PROTO_Veh_Scan_Drone.xml </File>

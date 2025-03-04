@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
-<Alien_Superweapon_Purifier_XML>
+<Proto_Superweapon_Purifier_XML>
 
   <!-- **************************************************************************************** -->
   <!-- *** STRUCTURE ************************************************************************** -->
   <!-- **************************************************************************************** -->
 
-  <X10_Alien_Structures Name="Alien_Superweapon_Purifier">
+  <X10_Alien_Structures Name="Proto_Superweapon_Purifier">
 
     <!-- ART -->
     <Land_Model_Name>AB_purifier.alo</Land_Model_Name>
+      <GUI_Override_Model_Name>AB_Purifier_DC.alo</GUI_Override_Model_Name>
     <Scale_Factor>1.2</Scale_Factor>
     <Multisample_FOW_Check>Yes</Multisample_FOW_Check>
     <Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
@@ -19,7 +20,7 @@
 
     <!-- ATTRIBUTES -->
     <CategoryMask> Large, Stationary </CategoryMask>
-    <Affiliation>Alien</Affiliation>
+    <Affiliation> Proto </Affiliation>
     <Victory_Relevant> True </Victory_Relevant>
 		<Shot_Type> Circle </Shot_Type>
 		<Space_Layer> LandGiant </Space_Layer>
@@ -103,14 +104,14 @@
 	  <BehaviorType Name="TacticalEnablerBehaviorType">
 		  <Tactical_Enabler_Bones> ROOT </Tactical_Enabler_Bones>
 		  <Tactical_Enabler_Flyout_Distances> 70.0 </Tactical_Enabler_Flyout_Distances>
-		  <Tactical_Enabler_Spawner_Hardpoint> Alien_Walker_Purifier_Superweapon_HP </Tactical_Enabler_Spawner_Hardpoint>
-		  <Tactical_Enabler_Receiver_Hardpoint> Alien_Walker_Purifier_Superweapon_HP </Tactical_Enabler_Receiver_Hardpoint>
+		  <Tactical_Enabler_Spawner_Hardpoint> Proto_Walker_Purifier_Superweapon_HP </Tactical_Enabler_Spawner_Hardpoint>
+		  <Tactical_Enabler_Receiver_Hardpoint> Proto_Walker_Purifier_Superweapon_HP </Tactical_Enabler_Receiver_Hardpoint>
 	  </BehaviorType>
 
 		
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Under_Construction_Object_Type> Alien_Superweapon_Purifier_Construction </Tactical_Under_Construction_Object_Type>
-         <Tactical_Buildable_Beacon_Type> Alien_Superweapon_Purifier_Beacon </Tactical_Buildable_Beacon_Type>
+         <Tactical_Under_Construction_Object_Type> Proto_Superweapon_Purifier_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_Buildable_Beacon_Type> Proto_Superweapon_Purifier_Beacon </Tactical_Buildable_Beacon_Type>
       </BehaviorType>
 
 	  <BehaviorType Name="GameEventSourceBehaviorType">
@@ -136,7 +137,7 @@
     <BehaviorType Name="DeathFXBehaviorType">
 		 <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
 		 <Specific_Death_Anim_Index> 0 </Specific_Death_Anim_Index>
-		 <Death_Clone> Damage_Default, Alien_Walker_Purifier_Death_Clone </Death_Clone>
+		 <Death_Clone> Damage_Default, Proto_Walker_Purifier_Death_Clone </Death_Clone>
 		 <Death_Fade_Time> 3 </Death_Fade_Time>
 	 </BehaviorType>
 
@@ -166,7 +167,7 @@
          <Lua_Script_Data>
             <!-- PLEASE USE CAPS!!!! -->
             SWOwnerList = {}
-            SWOwnerList[Find_Object_Type("Alien_Superweapon_Purifier")]="ALIEN_SUPERWEAPON_MASS_DROP_WEAPON"
+            SWOwnerList[Find_Object_Type("Proto_Superweapon_Purifier")]="ALIEN_SUPERWEAPON_MASS_DROP_WEAPON"
          </Lua_Script_Data>
       </BehaviorType>
 
@@ -261,7 +262,7 @@
       <Create_Children_Data SubObjectList="Yes">
 
          <Create_Child_Data>
-            <Type> Alien_Superweapon_Purifier_Air_Proxy </Type>
+            <Type> Proto_Superweapon_Purifier_Air_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
          </Create_Child_Data>
@@ -270,40 +271,40 @@
 	  
 	  <!-- HARDPOINTS -->
 	  <Attached_Hard_Points>
-		  Alien_Walker_Purifier_Superweapon_HP, HP_Body
+		  Proto_Walker_Purifier_Superweapon_HP, HP_Body
 		</Attached_Hard_Points>
 
 		  <Create_Children_Data SubObjectList="Yes">
 		  <Create_Child_Data>
-			  <Type> Alien_Walker_Purifier_Foot_Proxy </Type>
+			  <Type> Proto_Walker_Purifier_Foot_Proxy </Type>
 			  <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 			  <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			  <Argument> WhichFoot, 0 </Argument>
 		  </Create_Child_Data>
 
 		  <Create_Child_Data>
-			  <Type> Alien_Walker_Purifier_Foot_Proxy </Type>
+			  <Type> Proto_Walker_Purifier_Foot_Proxy </Type>
 			  <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 			  <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			  <Argument> WhichFoot, 1 </Argument>
 		  </Create_Child_Data>
 
 		  <Create_Child_Data>
-			  <Type> Alien_Walker_Purifier_Foot_Proxy </Type>
+			  <Type> Proto_Walker_Purifier_Foot_Proxy </Type>
 			  <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 			  <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			  <Argument> WhichFoot, 2 </Argument>
 		  </Create_Child_Data>
 
 		  <Create_Child_Data>
-			  <Type> Alien_Walker_Purifier_Foot_Proxy </Type>
+			  <Type> Proto_Walker_Purifier_Foot_Proxy </Type>
 			  <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 			  <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 			  <Argument> WhichFoot, 3 </Argument>
 		  </Create_Child_Data>
 
 		  <Create_Child_Data>
-			  <Type> Alien_Walker_Purifier_Air_Proxy </Type>
+			  <Type> Proto_Walker_Purifier_Foot_Proxy </Type>
 			  <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
 			  <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
 		  </Create_Child_Data>
@@ -314,7 +315,7 @@
 
 	
 
-   <X10_Alien_Structures Name="Alien_Superweapon_Purifier_Air_Proxy">
+   <X10_Alien_Structures Name="Proto_Superweapon_Purifier_Air_Proxy">
 
       <!-- ART -->
       <Scale_Factor> 1.1 </Scale_Factor>
@@ -346,7 +347,7 @@
 	<!-- **************************************************************************************** -->
 
 	
-	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Death_Clone">
+	<X10_Alien_Walkers Name="Proto_Walker_Purifier_Death_Clone">
 
 		<Land_Model_Name> AB_Purifier_DC.ALO </Land_Model_Name>
 		<Scale_Factor> 1.0 </Scale_Factor>
@@ -411,7 +412,7 @@
   <!-- **************************************************************************************** -->
 
 
-	<HardPoint Name="Alien_Walker_Purifier_Superweapon_HP">
+	<HardPoint Name="Proto_Walker_Purifier_Superweapon_HP">
 
 		<!-- ART -->
 		<Scale_Factor> 1.0 </Scale_Factor>
@@ -425,7 +426,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Proto </Affiliation>
 		<CategoryMask> HardPoint </CategoryMask>
 
 		<!-- CONFLICT -->
@@ -548,7 +549,7 @@
    <!-- **************************************************************************************** -->
 
 
-   <X10_Alien_Superweapon_Objects Name="Alien_Superweapon_Purifier_Construction">
+   <X10_Alien_Superweapon_Objects Name="Proto_Superweapon_Purifier_Construction">
 
       <!-- ART -->
       <Land_Model_Name>WO_Glyph_Superweapon.alo</Land_Model_Name>
@@ -575,7 +576,7 @@
       </Attributes>
 
       <CategoryMask> Large, Stationary, TacticalBuildableStructure, Female  </CategoryMask>
-      <Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
+      <Affiliation> Proto </Affiliation>
       <Victory_Relevant> No </Victory_Relevant>
 
       <!-- MOVEMENT -->
@@ -629,13 +630,13 @@
 
 
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Beacon_Type> Alien_Superweapon_Purifier_Beacon </Tactical_Buildable_Beacon_Type>
-         <Tactical_Buildable_Constructed> Alien_Superweapon_Purifier </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 100 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 100 </Tactical_Build_Cost_Multiplayer>
-         <Tactical_Build_Time_Seconds> 5 </Tactical_Build_Time_Seconds>
+         <Tactical_Buildable_Beacon_Type> Proto_Superweapon_Purifier_Beacon </Tactical_Buildable_Beacon_Type>
+         <Tactical_Buildable_Constructed> Proto_Superweapon_Purifier </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 3000 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 3000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 50 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 11 </Tactical_UI_Build_Queue_Order>
-         <Required_Pre_Build_Time_In_Secs> 5 </Required_Pre_Build_Time_In_Secs>
+         <Required_Pre_Build_Time_In_Secs> 50 </Required_Pre_Build_Time_In_Secs>
       </BehaviorType>
 
       <BehaviorType Name="TacticalSellBehaviorType">
@@ -720,7 +721,7 @@
    <!-- *** BEACON ***************************************************************************** -->
    <!-- **************************************************************************************** -->
 
-   <X10_Alien_Superweapon_Objects Name="Alien_Superweapon_Purifier_Beacon">
+   <X10_Alien_Superweapon_Objects Name="Proto_Superweapon_Purifier_Beacon">
 
       <!-- ART -->
       <!-- STUB FOR ELIE -->
@@ -782,7 +783,7 @@
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Constructed> Alien_Superweapon_Purifier_Construction </Tactical_Buildable_Constructed>
+         <Tactical_Buildable_Constructed> Proto_Superweapon_Purifier_Construction </Tactical_Buildable_Constructed>
       </BehaviorType>
 
       <BehaviorType Name="TacticalSellBehaviorType">
@@ -816,7 +817,7 @@
 	<!-- **** ASSOCIATED OBJECTS **************************************************************** -->
 	<!-- **************************************************************************************** -->
 
-	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Foot_Proxy">
+	<X10_Alien_Walkers Name="Proto_Walker_Purifier_Foot_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 1.0 </Scale_Factor>
@@ -843,7 +844,7 @@
 		<LandBehavior> FOOT_OBSTACLE, FOOT_IK </LandBehavior>
 	</X10_Alien_Walkers>
 
-	<X10_Alien_Walkers Name="Alien_Walker_Purifier_Air_Proxy">
+	<X10_Alien_Walkers Name="Proto_Walker_Purifier_Air_Proxy">
 
 		<!-- ART -->
 		<Scale_Factor> 1.0 </Scale_Factor>
@@ -874,7 +875,7 @@
 
 	</X10_Alien_Walkers>
 
-	<X10_Alien_Structures Name="Alien_Superweapon_Purifier_Explosion">
+	<X10_Alien_Structures Name="Proto_Superweapon_Purifier_Explosion">
 		<Behavior>PARTICLE </Behavior>
 
 		<!-- ART -->
@@ -889,7 +890,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>		
 	</X10_Alien_Structures>
 
-	<X10_Alien_Structures Name="Alien_Superweapon_Purifier_Explosion_Fail">
+	<X10_Alien_Structures Name="Proto_Superweapon_Purifier_Explosion_Fail">
 		<Behavior>PARTICLE </Behavior>
 
 		<!-- ART -->
@@ -905,4 +906,4 @@
 	</X10_Alien_Structures>	
 	
   
-</Alien_Superweapon_Purifier_XML>
+</Proto_Superweapon_Purifier_XML>

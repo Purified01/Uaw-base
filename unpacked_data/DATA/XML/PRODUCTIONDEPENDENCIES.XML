@@ -3825,6 +3825,18 @@
 	</Dependency>  
 
 
+	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
+	<Dependency>
+		<Built_Object> Proto_Superweapon_Purifier </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Walker_Science, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
 
 
 <!--************************************************************************
