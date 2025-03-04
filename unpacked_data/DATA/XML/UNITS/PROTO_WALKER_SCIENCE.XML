@@ -241,7 +241,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ab_science_walker.tga </Icon_Name>
+         <Icon_Name> i_icon_ab_glow_science_walker.tga </Icon_Name>
       </BehaviorType>
 
 	<BehaviorType Name="TooltipBehaviorType">

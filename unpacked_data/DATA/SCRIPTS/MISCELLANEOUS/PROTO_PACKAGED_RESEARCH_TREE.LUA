@@ -68,8 +68,9 @@ function Init_Research_Tree(tactical_only_game)
 						},
 					[2] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[3] = { ObjectType=Find_Object_Type("Proto_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
-					[3] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
-					[4] = { ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[4] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[5] = { ObjectType=Find_Object_Type("Proto_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[6] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 										
 					--[2] = { ObjectType=Find_Object_Type("Alien_Walker_Assembly_HP_Jump_Module"), DescriptionTextID="TEXT_ALIEN_RESEARCH_ASSEMBLY_HP_JUMP_MODULE", IconName="i_icon_a_research_upgrade_assembly_hp_jump_module.tga" },
 				},

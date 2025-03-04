@@ -15,7 +15,7 @@
       <Supreme_Cinematic_Importance> false </Supreme_Cinematic_Importance>
       <Attack_Animation_Is_Overlay> yes </Attack_Animation_Is_Overlay>
       <Projectile_Appearance_Delay_Frames> 2,1 </Projectile_Appearance_Delay_Frames>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <!-- Temp scale change for scale test - change back once models resized -->
       <Has_Looping_Turn_Animations> yes </Has_Looping_Turn_Animations>
       <AssetBank> BANK_ALIEN </AssetBank>
@@ -64,10 +64,10 @@
 		<Custom_Hard_YExtent> 45.0 </Custom_Hard_YExtent>
 		<Movement_Animation_Speed> .777 </Movement_Animation_Speed>
 		<Rotation_Animation_Speed> 0.75 </Rotation_Animation_Speed>
-		<Max_Speed> 0.28 </Max_Speed>
+		<Max_Speed> 0.4 </Max_Speed>
 		<Min_Speed> .1 </Min_Speed>
-		<Max_Rate_Of_Turn> 1.0 </Max_Rate_Of_Turn>
-		<Stopped_Rate_Of_Turn> .75 </Stopped_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 1.2 </Max_Rate_Of_Turn>
+		<Stopped_Rate_Of_Turn> .85 </Stopped_Rate_Of_Turn>
 		<Strafe_Animation_Speed> .777 </Strafe_Animation_Speed>
 		<Backpedal_Animation_Speed> .777 </Backpedal_Animation_Speed>
 		<Strafe_Max_Speed_Coefficient> 1 </Strafe_Max_Speed_Coefficient>
@@ -79,7 +79,7 @@
 		<Walker_Leg_Count> 3 </Walker_Leg_Count>
 		<Close_Enough_Angle_For_Move_Start> 11.25 </Close_Enough_Angle_For_Move_Start>
 		<Planted_Foot_Height_Minimum> 0.0 </Planted_Foot_Height_Minimum>
-		<Planted_Foot_Height_Maximum> 7.0 </Planted_Foot_Height_Maximum>
+		<Planted_Foot_Height_Maximum> 5.0 </Planted_Foot_Height_Maximum>
 		<Start_Walk_Blend_Time> 1.0 </Start_Walk_Blend_Time>
 		<Moving_Vs_Moving_Look_Ahead_Time> 7.0 </Moving_Vs_Moving_Look_Ahead_Time>
 		<Should_Move_At_Water_Level> false </Should_Move_At_Water_Level>
@@ -241,7 +241,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name> i_icon_ab_science_walker.tga </Icon_Name>
+         <Icon_Name> i_icon_ab_mini_science_walker.tga </Icon_Name>
       </BehaviorType>
 
 	<BehaviorType Name="TooltipBehaviorType">
@@ -332,7 +332,7 @@
       </BehaviorType>
       
       <BehaviorType Name="LuaScriptBehaviorType">
-         <Lua_Land_Behaviors> WalkerProtoSciencePuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
+         <Lua_Land_Behaviors> WalkerMiniProtoSciencePuzzle,Generic_Vehicle_Unit_Behavior,Defensive_AI_Unit_Behavior </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				GenericVehicle = {}
 				GenericVehicle.SearchRange = 325.0
@@ -356,24 +356,6 @@
          Proto_Mini_Walker_Science_Leg_HP02, HP_Leg_02
       </Attached_Hard_Points>
 
-		<Abilities SubObjectList="Yes">
-
-			<Effect_Generator_Ability Name="Alien_Radiation_Cascade_Special_Ability">
-				<Activation_Min_Range>100.0</Activation_Min_Range>
-				<Activation_Max_Range>500.0</Activation_Max_Range>
-				<Effect_Generator_Name>ScienceRadiationCascadeGenerator</Effect_Generator_Name>
-				<Activation_Style>USER_INPUT</Activation_Style>
-            
-            <!-- We don't want the walker to re-orient itself, but rather to fire instantly  - OKsana-->
-				<Face_Target> no </Face_Target>
-				<!-- Had to add required attribute here due to AI firing weapon -->
-				<Special_Ability_Required_Attribute> Cascade_Hard_Points </Special_Ability_Required_Attribute>
-            <Special_Ability_Required_Attribute_Value> 3.0 </Special_Ability_Required_Attribute_Value>
-
-
-         </Effect_Generator_Ability>
-
-		</Abilities>
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
@@ -644,7 +626,7 @@
    <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Foot_Proxy">
 
       <!-- ART -->
-		<Scale_Factor> 1.0 </Scale_Factor>
+		<Scale_Factor> 0.7 </Scale_Factor>
       <Is_Decoration> No </Is_Decoration>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -673,7 +655,7 @@
    <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Air_Proxy">
 
       <!-- ART -->
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Is_Decoration> No </Is_Decoration>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -703,7 +685,7 @@
    <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Tall_Vehicle_Proxy">
 
       <!-- ART -->
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Is_Decoration> No </Is_Decoration>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -738,7 +720,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -881,7 +863,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -950,7 +932,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Core.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -973,7 +955,7 @@
       <Target_Bones> Target_00, Target_01, Target_02, Target_03  </Target_Bones>
 		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 		
-      <Tactical_Health> 800 </Tactical_Health>  <!-- Core health Use for balance -->
+      <Tactical_Health> 500 </Tactical_Health>  <!-- Core health Use for balance -->
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1058,7 +1040,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1077,7 +1059,7 @@
       <Target_Bones> Target_00,Target_01,Target_02,Target_03,Target_04,Target_05 </Target_Bones>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 500 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1183,7 +1165,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn_Damaged.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1281,7 +1263,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Leg.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1300,7 +1282,7 @@
 		<Target_Bones> Target_00, Target_01, Target_02, Target_03, Target_04, Target_05 </Target_Bones>
       <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 500 </Tactical_Health>
+      <Tactical_Health> 300 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <Behavior>
@@ -1425,7 +1407,7 @@
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Leg_Damaged.alo </Land_Model_Name>
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1634,7 +1616,7 @@
       <Text_ID> TEXT_UNIT_ALIEN_WALKER_SCIENCE_GLYPH </Text_ID>
       <Land_Model_Name> WO_Glyph_Science.alo </Land_Model_Name>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
-      <Scale_Factor> 1.1 </Scale_Factor>
+      <Scale_Factor> 0.65 </Scale_Factor>
       <Loop_Idle_Anim_00> No </Loop_Idle_Anim_00>
       <Constructed_Object_Placement_Delay_Sec> 2.2 </Constructed_Object_Placement_Delay_Sec>
       <Constructed_Object_Placement_Anim> Anim_FlyLandDrop </Constructed_Object_Placement_Anim>
@@ -2227,7 +2209,7 @@
    <HardPoint Name="Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint">
 
       <!-- ART -->
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
       <!-- INTERFACE -->
@@ -2244,7 +2226,7 @@
       <Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 3.0 </Ranged_Target_Z_Adjust>
 
-      <Tactical_Health> 1000 </Tactical_Health>
+      <Tactical_Health> 500 </Tactical_Health>
 
 	   <Land_Damage_Thresholds>1, 0.75, 0.50, 0.25</Land_Damage_Thresholds>
 	   <Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -2337,7 +2319,7 @@
    <HardPoint Name="Proto_Mini_Walker_Science_HP_Generic_Under_Construction">
 
       <!-- ART -->
-      <Scale_Factor> 1.0 </Scale_Factor>
+      <Scale_Factor> 0.7 </Scale_Factor>
       <!-- _00, _01, _02, etc. is automatically attached -->
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 
@@ -2354,7 +2336,7 @@
 		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 5.0 </Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 1000 </Tactical_Health>
+		<Tactical_Health> 500 </Tactical_Health>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -2551,7 +2533,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_Foo_Chamber.alo</Land_Model_Name>
-		<Scale_Factor> 0.5 </Scale_Factor>
+		<Scale_Factor> 0.4 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
@@ -2621,7 +2603,7 @@
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_Foo_Chamber.alo </Land_Model_Name>
-		<Scale_Factor> 0.5 </Scale_Factor>
+		<Scale_Factor> 0.4 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
@@ -2797,7 +2779,7 @@
       </BehaviorType>
 
       <BehaviorType Name="LuaScriptBehaviorType">
-         <Lua_Land_Behaviors> WalkerProtoSciencePuzzle, CustomizedWalker </Lua_Land_Behaviors>
+         <Lua_Land_Behaviors> WalkerMiniProtoSciencePuzzle, CustomizedWalker </Lua_Land_Behaviors>
          <Lua_Script_Data>
             <!-- ================================================================================= -->
             <!-- ===================   CUSTOMIZED WALKER SCRIPT DATA - BEGIN  ==================== -->

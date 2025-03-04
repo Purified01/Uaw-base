@@ -3970,6 +3970,18 @@
 	</Dependency>
 
 	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Science </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Walker_Science </Built_Object>
 
 		<!-- Strategic requirements -->
@@ -4751,6 +4763,43 @@
 		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
 	</Dependency>
 
+	<!-- HARDPOINTS: Science Mini Walker -->
+
+	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Science_HP_Heat_Sink </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Science_HP_Foo_Chamber </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Science_HP_Range_Enhancer </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
+	</Dependency>
 
 
 	<!-- ***********************************************************************

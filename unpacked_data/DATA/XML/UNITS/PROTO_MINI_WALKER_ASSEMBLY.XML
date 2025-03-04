@@ -2402,7 +2402,7 @@
    <!-- ********************************************************************************************* -->
 
    <HardPoint Name="Proto_Mini_Walker_Assembly_HP_Face_Cap_Armor_Crown">
-      <Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_HP_Armor_Crown</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
       <!-- ART -->
       <Land_Model_Name>ABHP_AssemblyWalker_Armor_FaceCap.alo</Land_Model_Name>
@@ -2422,6 +2422,10 @@
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
       </BehaviorType>
 
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_armor.tga </Icon_Name>
+      </BehaviorType>
+
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_ARMOR_FACE </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
@@ -2431,7 +2435,7 @@
 
    <!-- FACE CAP Armor Under Construction  -->
    <HardPoint Name="Proto_Mini_Walker_Assembly_HP_Face_Cap_Armor_Crown_Under_Construction">
-      <Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_HP_Armor_Crown_Under_Construction</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
       <!-- ART -->
       <Land_Model_Name> ABHP_AssemblyWalker_Armor_FaceCap.alo </Land_Model_Name>
@@ -2448,6 +2452,10 @@
          <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_armor.tga </Icon_Name>
+      </BehaviorType>
+      
       <BehaviorType Name="TooltipBehaviorType">
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_ARMOR_FACE</Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>

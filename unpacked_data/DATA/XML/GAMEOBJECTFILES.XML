@@ -134,6 +134,7 @@
 	<File> Units/PROTO_Walker_Assembly.xml </File>
 	<File> Units/PROTO_Mini_Walker_Assembly.xml </File>
 	<File> Units/PROTO_Walker_Science.xml </File>
+	<File> Units/PROTO_Mini_Walker_Science.xml </File>
 
 
 	<File> ALIEN_Base_Global_Icon.xml </File>
