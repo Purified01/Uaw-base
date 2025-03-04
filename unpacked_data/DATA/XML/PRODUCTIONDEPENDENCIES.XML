@@ -3961,6 +3961,58 @@
 		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
 	</Dependency>
 
+	<!-- UNIT: Alien Recon Tank -->
+	<Dependency>
+		<Built_Object> Proto_Recon_Tank </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
+	</Dependency>
+	
+	<!-- UNIT: Alien Saucer -->
+	<Dependency>
+		<Built_Object> Proto_Foo_Core </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
+	</Dependency>
+
+	<!-- UNIT: Alien Defiler -->
+	<Dependency>
+		<Built_Object> Proto_Defiler </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Defiler_Assembly_Pod </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
+	</Dependency>
+
+	<!-- UNIT: Alien Aggressor -->
+
+	<Dependency>
+		<Built_Object> Proto_Heavy_Gunship </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
+  	</Dependency>
 
 	<!-- HARDPOINTS: Habitat Walker -->
 

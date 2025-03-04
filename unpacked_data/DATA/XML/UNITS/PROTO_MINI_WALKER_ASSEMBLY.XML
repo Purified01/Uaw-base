@@ -2686,7 +2686,7 @@
 
       <!-- ART -->
       <Land_Model_Name>ABHP_Habitatwalker_BruteAssemblyPod.alo</Land_Model_Name>
-      <Scale_Factor> 0.55 </Scale_Factor>	  
+      <Scale_Factor> 0.75 </Scale_Factor>	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2748,7 +2748,7 @@
 
       <!-- ART -->
       <Land_Model_Name> ABHP_Habitatwalker_BruteAssemblyPod.alo </Land_Model_Name>
-      <Scale_Factor> 0.55 </Scale_Factor>	  	  
+      <Scale_Factor> 0.75 </Scale_Factor>	  	  
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -2772,7 +2772,7 @@
       </BehaviorType>
 
       <BehaviorType Name="EncyclopediaBehaviorType">
-         <Icon_Name>i_icon_a_research_walker_hp_aggressor.tga</Icon_Name>
+         <Icon_Name>i_icon_a_walker_hp_pod_aggressor.tga</Icon_Name>
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">

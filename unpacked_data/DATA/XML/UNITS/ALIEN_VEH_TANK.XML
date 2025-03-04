@@ -709,4 +709,22 @@
 
 	</Projectile>
 	
+	
+	<X10_Alien_Units Name="Proto_Recon_Tank">
+      <Variant_Of_Existing_Type> Alien_Recon_Tank </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+
+		<Tactical_Health> 420 </Tactical_Health>
+		<Projectile_Types>Proj_Proto_Tank_Missile_Ground</Projectile_Types>
+		<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
+		<Projectile_Fire_Pulse_Count>5</Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds>0.3</Projectile_Fire_Pulse_Delay_Seconds>
+	</X10_Alien_Units>
+
+	<Projectile Name="Proj_Proto_Tank_Missile_Ground">
+      <Variant_Of_Existing_Type> Proj_Alien_Tank_Missile_Ground </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+	</Projectile>
 </Alien_VEH_Tank_XML>

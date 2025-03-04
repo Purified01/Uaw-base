@@ -792,8 +792,26 @@
 	</X10_Alien_Units>
 
 	
+	<X10_Alien_Units Name="Proto_Foo_Core">
+      <Variant_Of_Existing_Type> Alien_Foo_Core </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+         
+		<BehaviorType Name="FooCoreBehaviorType">
+			<Foo_Core_Fighter_Type_Name>Proto_Foo_Fighter</Foo_Core_Fighter_Type_Name>
+			<Foo_Core_Time_Before_Respawning_Foo_Fighter> 4.0 </Foo_Core_Time_Before_Respawning_Foo_Fighter>
+			<Foo_Core_Attack_Range> 200.0 </Foo_Core_Attack_Range>
+			<Foo_Core_Heal_Range> 200.0 </Foo_Core_Heal_Range>
+			<Foo_Core_Heal_Category_Restrictions> Organic </Foo_Core_Heal_Category_Restrictions>
+		</BehaviorType>
+	</X10_Alien_Units>
 	
 	
+	<X10_Alien_Units Name="Proto_Foo_Fighter">
+      <Variant_Of_Existing_Type> Alien_Foo_Fighter </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+	</X10_Alien_Units>
 	
 	
 </Alien_Foo_Fighter_XML>

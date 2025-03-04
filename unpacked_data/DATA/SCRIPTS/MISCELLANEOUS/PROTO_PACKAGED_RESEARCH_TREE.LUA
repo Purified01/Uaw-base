@@ -67,6 +67,7 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_a_walker_hp_Range_Enhancer.tga" 
 						},
 					[2] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Habitat_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
+					[3] = { ObjectType=Find_Object_Type("Proto_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[3] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Assembly_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 					[4] = { ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Range_Enhancer"), DescriptionTextID=nil, IconName=nil },
 										
@@ -309,7 +310,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
 				UnlocksSpecialAbilities = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
+							ObjectType=Find_Object_Type("Proto_Heavy_Gunship"), 
 							AbilityName="Aggressor_Vehicle_Attack", 
 							TitleTextID="TEXT_ALIEN_RESEARCH_TITLE_SMART_PLASMA",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_SMART_PLASMA",
@@ -880,7 +881,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
 				UnlocksSpecialAbilities = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
+							ObjectType=Find_Object_Type("Proto_Heavy_Gunship"), 
 							AbilityName="Aggressor_Aircraft_Attack_Quantum", 
 							TitleTextID=nil,
 							DescriptionTextID=nil,
@@ -891,7 +892,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {
 					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
+							ObjectType=Find_Object_Type("Proto_Heavy_Gunship"), 
 							AbilityName="Aggressor_Aircraft_Attack", 
 							TitleTextID=nil,
 							DescriptionTextID=nil,

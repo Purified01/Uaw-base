@@ -1240,4 +1240,9 @@
 
 	</Projectile>	
 
+	<X10_Alien_Units Name="Proto_Heavy_Gunship">
+      <Variant_Of_Existing_Type> ALIEN_Heavy_Gunship </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+	</X10_Alien_Units>
 </ALIEN_Air_Gunship_XML>
