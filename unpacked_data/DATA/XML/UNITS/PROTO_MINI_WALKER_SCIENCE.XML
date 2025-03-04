@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Proto_Walker_Science_XML>
+<Proto_Mini_Walker_Science_XML>
 
    <!-- **************************************************************************************** -->
    <!-- *** UNIT(S) **************************************************************************** -->
    <!-- **************************************************************************************** -->
 
-   <X10_Proto_Walkers Name="Proto_Walker_Science">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science.alo </Land_Model_Name>
@@ -109,7 +109,7 @@
 		<Land_Damage_Thresholds> 1, 0.66, 0.33 </Land_Damage_Thresholds>
 		<Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
 
-		<Projectile_Types> Proj_Proto_Walker_Science_Plasma_Blob </Projectile_Types>
+		<Projectile_Types> Proj_Proto_Mini_Walker_Science_Plasma_Blob </Projectile_Types>
 		<Projectile_Fire_Pulse_Count> 3 </Projectile_Fire_Pulse_Count>
 		<Projectile_Fire_Pulse_Delay_Seconds> 2.0 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 5.0 </Projectile_Fire_Recharge_Seconds>
@@ -178,8 +178,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Walker_Science_Glyph </Tactical_Under_Construction_Object_Type>
-			<Tactical_Buildable_Beacon_Type> Proto_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Science_Glyph </Tactical_Under_Construction_Object_Type>
+			<Tactical_Buildable_Beacon_Type> Proto_Mini_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -289,7 +289,7 @@
       <BehaviorType Name="DeathFXBehaviorType">
          <Specific_Death_Anim_Type> DIE </Specific_Death_Anim_Type>
          <Specific_Death_Anim_Index> 0 </Specific_Death_Anim_Index>
-         <Death_Clone> Damage_Default, Proto_Walker_Science_Death_Clone </Death_Clone>
+         <Death_Clone> Damage_Default, Proto_Mini_Walker_Science_Death_Clone </Death_Clone>
 			<On_Death_Spawn_Object_Type> Science_Walker_On_Death_Explosion </On_Death_Spawn_Object_Type>
 		</BehaviorType>
 
@@ -350,10 +350,10 @@
 
       <!-- HARD POINTS -->
       <Attached_Hard_Points>
-         Proto_Walker_Science_Crown, HP_Attach
-         Proto_Walker_Science_Leg_HP00, HP_Leg_00
-         Proto_Walker_Science_Leg_HP01, HP_Leg_01
-         Proto_Walker_Science_Leg_HP02, HP_Leg_02
+         Proto_Mini_Walker_Science_Crown, HP_Attach
+         Proto_Mini_Walker_Science_Leg_HP00, HP_Leg_00
+         Proto_Mini_Walker_Science_Leg_HP01, HP_Leg_01
+         Proto_Mini_Walker_Science_Leg_HP02, HP_Leg_02
       </Attached_Hard_Points>
 
 		<Abilities SubObjectList="Yes">
@@ -442,41 +442,41 @@
 		<Create_Children_Data SubObjectList="Yes">
 
          <Create_Child_Data>
-            <Type> Proto_Walker_Science_Foot_Proxy </Type>
+            <Type> Proto_Mini_Walker_Science_Foot_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
             <Argument> WhichFoot, 0 </Argument>
          </Create_Child_Data>
 
          <Create_Child_Data>
-            <Type> Proto_Walker_Science_Foot_Proxy </Type>
+            <Type> Proto_Mini_Walker_Science_Foot_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
             <Argument> WhichFoot, 1 </Argument>
          </Create_Child_Data>
 
          <Create_Child_Data>
-            <Type> Proto_Walker_Science_Foot_Proxy </Type>
+            <Type> Proto_Mini_Walker_Science_Foot_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
             <Argument> WhichFoot, 2 </Argument>
          </Create_Child_Data>
 
          <Create_Child_Data>
-            <Type> Proto_Walker_Science_Air_Proxy </Type>
+            <Type> Proto_Mini_Walker_Science_Air_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
          </Create_Child_Data>
 
          <Create_Child_Data>
-            <Type> Proto_Walker_Science_Tall_Vehicle_Proxy </Type>
+            <Type> Proto_Mini_Walker_Science_Tall_Vehicle_Proxy </Type>
             <Creation_Trigger> OnParentBehaviorFirstService </Creation_Trigger>
             <Destruction_Trigger> OnParentBehaviorRemove </Destruction_Trigger>
          </Create_Child_Data>
 			
       </Create_Children_Data>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 	<!--=================================================================================================
 	== [03/08/2007] - KDB
@@ -583,7 +583,7 @@
    <!-- **** DEATH CLONES ********************************************************************** -->
    <!-- **************************************************************************************** -->
 
-	<X10_Proto_Walkers Name="Proto_Walker_Science_Death_Clone">
+	<X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Death_Clone">
 		<Land_Model_Name> AB_Science_destroyed_hulk.alo </Land_Model_Name>
       <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
       <AssetBank> BANK_ALIEN </AssetBank>
@@ -634,14 +634,14 @@
 		</BehaviorType>	
       
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 
    <!-- **************************************************************************************** -->
    <!-- **** ASSOCIATED OBJECTS **************************************************************** -->
    <!-- **************************************************************************************** -->
 
-   <X10_Proto_Walkers Name="Proto_Walker_Science_Foot_Proxy">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Foot_Proxy">
 
       <!-- ART -->
 		<Scale_Factor> 1.0 </Scale_Factor>
@@ -668,9 +668,9 @@
       <!-- BEHAVIORS -->
       <LandBehavior> FOOT_OBSTACLE, FOOT_IK </LandBehavior>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="Proto_Walker_Science_Air_Proxy">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Air_Proxy">
 
       <!-- ART -->
       <Scale_Factor> 1.0 </Scale_Factor>
@@ -698,9 +698,9 @@
       <!-- BEHAVIORS -->
       <LandBehavior> FOLLOW_PARENT, SLAVE_TO_PARENT_LOCOMOTOR </LandBehavior>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="Proto_Walker_Science_Tall_Vehicle_Proxy">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Tall_Vehicle_Proxy">
 
       <!-- ART -->
       <Scale_Factor> 1.0 </Scale_Factor>
@@ -728,13 +728,13 @@
       <!-- BEHAVIORS -->
       <LandBehavior> FOLLOW_PARENT, SLAVE_TO_PARENT_LOCOMOTOR </LandBehavior>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
    <!-- **************************************************************************************** -->
    <!-- **** HARDPOINTS ************************************************************************ -->
    <!-- **************************************************************************************** -->
 
-   <HardPoint Name="Proto_Walker_Science_Crown">
+   <HardPoint Name="Proto_Mini_Walker_Science_Crown">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
@@ -762,7 +762,7 @@
       <Land_Damage_Alternates> 0, 1, 2 </Land_Damage_Alternates>
       <Land_Damage_SFX> null,SFX_GENERIC_DETONATION, null </Land_Damage_SFX>
 
-      <Projectile_Types> Proj_Proto_Walker_Science_Laser </Projectile_Types>
+      <Projectile_Types> Proj_Proto_Mini_Walker_Science_Laser </Projectile_Types>
       <Projectile_Fire_Pulse_Count> 3 </Projectile_Fire_Pulse_Count>
       <Projectile_Fire_Pulse_Delay_Seconds> 1.5 </Projectile_Fire_Pulse_Delay_Seconds>
       <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
@@ -800,7 +800,7 @@
 
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Science_Crown_Damaged </HP_Replacement_Object_Type_When_Destroyed>
+         <HP_Replacement_Object_Type_When_Destroyed> Proto_Mini_Walker_Science_Crown_Damaged </HP_Replacement_Object_Type_When_Destroyed>
          <HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
          <!-- Destroying all attached hard points with this flag will trigger parent object to be destroyed -->
       </BehaviorType>
@@ -843,10 +843,10 @@
       <!-- If an object has a list of <Attached_Hard_Points>, it also needs a <Behavior> HARD_POINT_MANAGER -->
       <!-- Turret Hard Points -->
       <Attached_Hard_Points>
-         Proto_Walker_Science_Core, HP_Attach_Core
-         Proto_Walker_Science_Horn_HP00, HP_Attach_horn_00
-         Proto_Walker_Science_Horn_HP01, HP_Attach_horn_01
-         Proto_Walker_Science_Horn_HP02, HP_Attach_horn_02
+         Proto_Mini_Walker_Science_Core, HP_Attach_Core
+         Proto_Mini_Walker_Science_Horn_HP00, HP_Attach_horn_00
+         Proto_Mini_Walker_Science_Horn_HP01, HP_Attach_horn_01
+         Proto_Mini_Walker_Science_Horn_HP02, HP_Attach_horn_02
       </Attached_Hard_Points>
 
       <!-- EFFECT GENERATORS -->
@@ -877,7 +877,7 @@
 
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Crown_Damaged">
+   <HardPoint Name="Proto_Mini_Walker_Science_Crown_Damaged">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Crown.alo </Land_Model_Name>
@@ -944,7 +944,7 @@
 
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Core">
+   <HardPoint Name="Proto_Mini_Walker_Science_Core">
 
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_CORE </Text_ID>
 
@@ -1000,7 +1000,7 @@
          <!-- Maria 09.27.2006 - The core shield is re-generated by the HORNS attached to the crown.  The amount
 			of shield points each horn adds to the shield is given by the field <Modifier_Value> in the definition of
 			AlienScienceShieldRechargeEffect (refer to Effects.xml).  The refresh rate is given by the field 
-			<Modal_Refresh_Frequency> in the definition of Proto_Walker_Science_Horn's effect generator -->
+			<Modal_Refresh_Frequency> in the definition of Proto_Mini_Walker_Science_Horn's effect generator -->
          <Shield_Points> 1200 </Shield_Points>
          <!-- the refresh rate will be determined by the number of existing shield generators -->
          <!-- Non-upgraded shield wil stop only projectiles that do shield_damage -->
@@ -1054,7 +1054,7 @@
 		
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Horn">
+   <HardPoint Name="Proto_Mini_Walker_Science_Horn">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn.alo </Land_Model_Name>
@@ -1104,7 +1104,7 @@
 
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Science_Horn_Damaged </HP_Replacement_Object_Type_When_Destroyed>
+         <HP_Replacement_Object_Type_When_Destroyed> Proto_Mini_Walker_Science_Horn_Damaged </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Protected_By_Hardpoint_Above> true </HP_Protected_By_Hardpoint_Above>
 		</BehaviorType>
 
@@ -1179,7 +1179,7 @@
    <!-- ====================================================================================
 	========================		HORN DAMAGED VERSION		=============================
 	===================================================================================== -->
-   <HardPoint Name="Proto_Walker_Science_Horn_Damaged">
+   <HardPoint Name="Proto_Mini_Walker_Science_Horn_Damaged">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Horn_Damaged.alo </Land_Model_Name>
@@ -1247,27 +1247,27 @@
    <!-- ====================================================================================
 	===========================			HORNS		=========================================
 	===================================================================================== -->
-   <HardPoint Name="Proto_Walker_Science_Horn_HP00">
+   <HardPoint Name="Proto_Mini_Walker_Science_Horn_HP00">
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_HORN_HP1 </Text_ID>
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Horn</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Horn</Variant_Of_Existing_Type>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Primary_Turret_Bone_Override_Name>Turret_01</HP_Primary_Turret_Bone_Override_Name>
 		</BehaviorType>
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Horn_HP01">
+   <HardPoint Name="Proto_Mini_Walker_Science_Horn_HP01">
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_HORN_HP2 </Text_ID>
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Horn</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Horn</Variant_Of_Existing_Type>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Primary_Turret_Bone_Override_Name>Turret_02</HP_Primary_Turret_Bone_Override_Name>
 		</BehaviorType>
 	</HardPoint>
 
-	<HardPoint Name="Proto_Walker_Science_Horn_HP02">
+	<HardPoint Name="Proto_Mini_Walker_Science_Horn_HP02">
 		<Text_ID> TEXT_UNIT_WALKER_SCIENCE_HORN_HP3 </Text_ID>
-		<Variant_Of_Existing_Type>Proto_Walker_Science_Horn</Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Horn</Variant_Of_Existing_Type>
 
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Primary_Turret_Bone_Override_Name>Turret_03</HP_Primary_Turret_Bone_Override_Name>
@@ -1277,7 +1277,7 @@
 
 
    <!-- ================================================================================== -->
-   <HardPoint Name="Proto_Walker_Science_Leg">
+   <HardPoint Name="Proto_Mini_Walker_Science_Leg">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Leg.alo </Land_Model_Name>
@@ -1320,7 +1320,7 @@
 
       <BehaviorType Name="HardPointBehaviorType">
          <HP_Type> HARD_POINT_DUMMY_ART </HP_Type>
-         <HP_Replacement_Object_Type_When_Destroyed> Proto_Walker_Science_Leg_Damaged </HP_Replacement_Object_Type_When_Destroyed>
+         <HP_Replacement_Object_Type_When_Destroyed> Proto_Mini_Walker_Science_Leg_Damaged </HP_Replacement_Object_Type_When_Destroyed>
 			<HP_Protected_By_Hardpoint_Above> true </HP_Protected_By_Hardpoint_Above>
 		</BehaviorType>
 
@@ -1401,19 +1401,19 @@
    <!-- ====================================================================================
 	===========================			LEGS		=========================================
 	===================================================================================== -->
-   <HardPoint Name="Proto_Walker_Science_Leg_HP00">
+   <HardPoint Name="Proto_Mini_Walker_Science_Leg_HP00">
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_LEG_1 </Text_ID>
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Leg</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Leg</Variant_Of_Existing_Type>
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Leg_HP01">
+   <HardPoint Name="Proto_Mini_Walker_Science_Leg_HP01">
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_LEG_2 </Text_ID>
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Leg</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Leg</Variant_Of_Existing_Type>
    </HardPoint>
 
-   <HardPoint Name="Proto_Walker_Science_Leg_HP02">
+   <HardPoint Name="Proto_Mini_Walker_Science_Leg_HP02">
       <Text_ID> TEXT_UNIT_WALKER_SCIENCE_LEG_3 </Text_ID>
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Leg</Variant_Of_Existing_Type>
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Leg</Variant_Of_Existing_Type>
    </HardPoint>
 
 
@@ -1421,7 +1421,7 @@
    <!-- ====================================================================================
 	========================		LEG DAMAGED VERSION		=================================
 	===================================================================================== -->
-   <HardPoint Name="Proto_Walker_Science_Leg_Damaged">
+   <HardPoint Name="Proto_Mini_Walker_Science_Leg_Damaged">
 
       <!-- ART -->
       <Land_Model_Name> AB_Science_Leg_Damaged.alo </Land_Model_Name>
@@ -1481,11 +1481,11 @@
    <!-- *** PROJECTILES ************************************************************************ -->
    <!-- **************************************************************************************** -->
 
-   <Projectile Name="Proj_Proto_Walker_Science_Laser">
+   <Projectile Name="Proj_Proto_Mini_Walker_Science_Laser">
 
       <!-- ART -->
       <!--<Land_Model_Name> p_ab_barracks_electr02.alo </Land_Model_Name>-->
-      <Scale_Factor> 0.85 </Scale_Factor>
+      <Scale_Factor> 0.45 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
@@ -1514,7 +1514,7 @@
          <Projectile_Rocket_Straight_Distance> 500 </Projectile_Rocket_Straight_Distance>
          <Projectile_Max_Flight_Distance> 800.0 </Projectile_Max_Flight_Distance>
          <Projectile_Max_Scan_Range> 900.0 </Projectile_Max_Scan_Range>
-         <Projectile_Damage> 60.0 </Projectile_Damage>
+         <Projectile_Damage> 30.0 </Projectile_Damage>
          <Projectile_SFXEvent_Detonate> SFX_Alien_Detonation_4 </Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Does_Shield_Damage> No </Projectile_Does_Shield_Damage>
@@ -1526,7 +1526,7 @@
          <Projectile_Absorbed_By_Shields_Particle> Alien_Science_Laser </Projectile_Absorbed_By_Shields_Particle>
 
          <Projectile_Causes_Blackening> true </Projectile_Causes_Blackening>
-         <Terrain_Damage_Radius> 100.0 </Terrain_Damage_Radius>
+         <Terrain_Damage_Radius> 60.0 </Terrain_Damage_Radius>
          <Projectile_Attach_Lightning_Effect> Science_Walker_Beam_norm </Projectile_Attach_Lightning_Effect>
 
          <Can_Be_Redirected>False</Can_Be_Redirected>
@@ -1535,10 +1535,10 @@
 
    </Projectile>
 
-   <Projectile Name="Proj_Proto_Walker_Science_Plasma_Blob">
+   <Projectile Name="Proj_Proto_Mini_Walker_Science_Plasma_Blob">
 
       <!-- ART -->
-      <Scale_Factor> 0.85 </Scale_Factor>
+      <Scale_Factor> 0.45 </Scale_Factor>
       <Land_Model_Name> p_alien_plasma_projectile_big.alo </Land_Model_Name>
       <AssetBank> BANK_ALIEN </AssetBank>
 
@@ -1579,7 +1579,7 @@
          <Projectile_Rocket_Curve_Offset> 0 </Projectile_Rocket_Curve_Offset>
          <Projectile_Target_Point_On_Terrain> Yes </Projectile_Target_Point_On_Terrain>
          <Projectile_Max_Flight_Distance> 5000.0 </Projectile_Max_Flight_Distance>
-         <Projectile_Damage> 50.0 </Projectile_Damage>
+         <Projectile_Damage> 30.0 </Projectile_Damage>
          <Projectile_Does_Shield_Damage> No </Projectile_Does_Shield_Damage>
          <Projectile_Does_Hitpoint_Damage> Yes </Projectile_Does_Hitpoint_Damage>
          <Projectile_Object_Detonation_Particle> Plasma_Blob_Hit </Projectile_Object_Detonation_Particle>
@@ -1591,13 +1591,13 @@
          <Projectile_SFXEvent_Detonate> SFX_Alien_Plasma_Detonation_1 </Projectile_SFXEvent_Detonate>
          <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
          <Projectile_Causes_Blackening> false </Projectile_Causes_Blackening>
-         <Terrain_Damage_Radius> 50.0 </Terrain_Damage_Radius>
+         <Terrain_Damage_Radius> 40.0 </Terrain_Damage_Radius>
       </BehaviorType>
 
    </Projectile>
 
    <!-- Oksana - special object that will manage radiation that the walker spits -->
-   <X10_Proto_Walkers Name="Unit_Proto_Walker_Science_Radiation_Manager">
+   <X10_Proto_Mini_Walkers Name="Unit_Proto_Mini_Walker_Science_Radiation_Manager">
 
       <!-- INTERFACE -->
       <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
@@ -1615,7 +1615,7 @@
       <Radiation_Target_Categories> ~Flying </Radiation_Target_Categories>
 
       <Radiation_Decal_Particle_Effect> Radiation_Decal_Particle_Effect </Radiation_Decal_Particle_Effect>
-      <!--<Radiation_Decal_Name> Proto_Walker_Radiation_Splat </Radiation_Decal_Name>-->
+      <!--<Radiation_Decal_Name> Proto_Mini_Walker_Radiation_Splat </Radiation_Decal_Name>-->
       <Radiation_Node_Duration_In_Secs> 15.0 </Radiation_Node_Duration_In_Secs>
       <Radiation_Node_Radius>20</Radiation_Node_Radius>
 
@@ -1623,12 +1623,12 @@
          <SFXEvent_Fire> SFX_Alien_Radiation_Fire </SFXEvent_Fire>
       </BehaviorType>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 	
 	
    <!-- Crop circle that will act as "walker under construction" object -->
-   <X10_Proto_Walkers Name="Proto_Walker_Science_Glyph">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Glyph">
 
       <!-- ART -->
       <Text_ID> TEXT_UNIT_ALIEN_WALKER_SCIENCE_GLYPH </Text_ID>
@@ -1704,10 +1704,10 @@
       </BehaviorType>
 
       <BehaviorType Name="BuildableObjectBehaviorType">
-         <Tactical_Buildable_Beacon_Type> Proto_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
-         <Tactical_Buildable_Constructed> Proto_Walker_Science </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 2400 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 2400 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Buildable_Beacon_Type> Proto_Mini_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+         <Tactical_Buildable_Constructed> Proto_Mini_Walker_Science </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 2000 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 2000 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 30 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
 			<Required_Pre_Build_Time_In_Secs> 45 </Required_Pre_Build_Time_In_Secs>
@@ -1785,12 +1785,12 @@
 		  
      </Effect_Generator_Data>
 		
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 	
 	
    <!-- Oksana: beacon for building the glyph. You'll need a builder unit to build from beacon -->
-   <X10_Proto_Walkers Name="Proto_Walker_Science_Glyph_Beacon">
+   <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Glyph_Beacon">
 
       <!-- ART -->
       <!-- STUB FOR ELIE -->
@@ -1847,7 +1847,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Walker_Science_Glyph </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Science_Glyph </Tactical_Buildable_Constructed>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -1866,7 +1866,7 @@
 
 		</Effect_Generator_Data>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 	
 
@@ -1874,7 +1874,7 @@
    <!-- *** CHUNKS ***************************************************************************** -->
    <!-- **************************************************************************************** -->
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_Fin_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_Fin_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_Fin.ALO </Land_Model_Name>
@@ -1921,9 +1921,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_Head_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_Head_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_Head.ALO </Land_Model_Name>
@@ -1970,9 +1970,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_L_Pipe_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_L_Pipe_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_L-Pipe.ALO </Land_Model_Name>
@@ -2019,9 +2019,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_R_Pipe_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_R_Pipe_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_R-Pipe_H.ALO </Land_Model_Name>
@@ -2068,9 +2068,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_Rubble1_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_Rubble1_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_Rubble1.ALO </Land_Model_Name>
@@ -2117,9 +2117,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_Rubble2_Death_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_Rubble2_Death_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_Rubble2.ALO </Land_Model_Name>
@@ -2166,9 +2166,9 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-   <X10_Proto_Walkers Name="AB_Science_Crown_Fin_Rubble3_Chunk">
+   <X10_Proto_Mini_Walkers Name="AB_Science_Crown_Fin_Rubble3_Chunk">
 
       <!-- ART -->
       <Land_Model_Name> AB_Habitat_Crown_Rubble3.ALO </Land_Model_Name>
@@ -2215,7 +2215,7 @@
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 
 	
@@ -2224,7 +2224,7 @@
    <!-- **************************************************************************************** -->
 
    <!-- Generic Upgrade hardpoint -->
-   <HardPoint Name="Proto_Walker_Science_Generic_Upgrade_Hardpoint">
+   <HardPoint Name="Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint">
 
       <!-- ART -->
       <Scale_Factor> 1.0 </Scale_Factor>
@@ -2334,7 +2334,7 @@
    </HardPoint>
 
    <!-- Generic Under_Construction hardpoint -->
-   <HardPoint Name="Proto_Walker_Science_HP_Generic_Under_Construction">
+   <HardPoint Name="Proto_Mini_Walker_Science_HP_Generic_Under_Construction">
 
       <!-- ART -->
       <Scale_Factor> 1.0 </Scale_Factor>
@@ -2416,8 +2416,8 @@
 	<!-- ****** HEAT SINK HARD POINT																				  ****** -->
 	<!-- ********************************************************************************************* -->
 
-	<HardPoint Name="Proto_Walker_Science_HP_Heat_Sink">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Heat_Sink">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2426,13 +2426,13 @@
 		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_Heat_Sink.alo</Land_Model_Name>
-		<Scale_Factor> 0.6 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2460,7 +2460,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Walker_Science_HP_Heat_Sink_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Science_HP_Heat_Sink_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2499,17 +2499,17 @@
 	</HardPoint>
 
 	<!-- Heatsink Under Construction  -->
-	<HardPoint Name="Proto_Walker_Science_HP_Heat_Sink_Under_Construction">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Heat_Sink_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 		<Text_ID> TEXT_ALIEN_HP_HEAT_SINK </Text_ID>
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_Heat_Sink.alo </Land_Model_Name>
-		<Scale_Factor> 0.6 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 		<Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 
@@ -2524,10 +2524,10 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Walker_Science_HP_Heat_Sink </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Science_HP_Heat_Sink </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2543,22 +2543,22 @@
 	<!-- ****** FOO CHAMBER HARD POINT																			  ****** -->
 	<!-- ********************************************************************************************* -->
 
-	<HardPoint Name="Proto_Walker_Science_HP_Foo_Chamber">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Foo_Chamber">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_Foo_Chamber.alo</Land_Model_Name>
-		<Scale_Factor> 0.6 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 350 </Tactical_Health>
+		<Tactical_Health> 200 </Tactical_Health>
 		<Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
@@ -2585,7 +2585,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Walker_Science_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Science_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -2605,23 +2605,23 @@
 		</BehaviorType>
 
 		<BehaviorType Name="FooCoreBehaviorType">
-			<Foo_Core_Fighter_Type_Name>Proto_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
+			<Foo_Core_Fighter_Type_Name>Proto_Mini_Walker_Foo_Fighter</Foo_Core_Fighter_Type_Name>
 			<Foo_Core_Time_Before_Respawning_Foo_Fighter> 5.0 </Foo_Core_Time_Before_Respawning_Foo_Fighter>
 			<Foo_Core_Attack_Range> 0.0 </Foo_Core_Attack_Range>
 			<Foo_Core_Heal_Range> 100.0 </Foo_Core_Heal_Range>
 			<Foo_Core_Heal_Self_Only> True </Foo_Core_Heal_Self_Only>
-			<Foo_Core_Max_Fighters> 3 </Foo_Core_Max_Fighters>
+			<Foo_Core_Max_Fighters> 2 </Foo_Core_Max_Fighters>
 		</BehaviorType>
 
 	</HardPoint>
 
 	<!-- Foo_Chamber Under Construction  -->
-	<HardPoint Name="Proto_Walker_Science_HP_Foo_Chamber_Under_Construction">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Foo_Chamber_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- ART -->
 		<Land_Model_Name> ABHP_Foo_Chamber.alo </Land_Model_Name>
-		<Scale_Factor> 0.6 </Scale_Factor>
+		<Scale_Factor> 0.5 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
@@ -2636,10 +2636,10 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Walker_Science_HP_Foo_Chamber </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 400 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 400 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Science_HP_Foo_Chamber </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 12 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<BehaviorType Name="EncyclopediaBehaviorType">
@@ -2658,8 +2658,8 @@
 	<!-- ****** RANGE ENHANCER HARD POINT																		  ****** -->
 	<!-- ********************************************************************************************* -->
 
-	<HardPoint Name="Proto_Walker_Science_HP_Range_Enhancer">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Range_Enhancer">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
 		<!-- don't want to point back to generic as this will mess up novus cascade -->
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
@@ -2668,13 +2668,13 @@
 		<Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 
 		<!-- ART -->
 		<Land_Model_Name>ABHP_RangeEnhancer.alo</Land_Model_Name>
-		<Scale_Factor> 0.50 </Scale_Factor>
+		<Scale_Factor> 0.40 </Scale_Factor>
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2701,7 +2701,7 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-			<Tactical_Under_Construction_Object_Type> Proto_Walker_Science_HP_Range_Enhancer_Under_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Science_HP_Range_Enhancer_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -2739,20 +2739,20 @@
 	</HardPoint>
 
 	<!-- Range_Enhancer Under Construction  -->
-	<HardPoint Name="Proto_Walker_Science_HP_Range_Enhancer_Under_Construction">
-		<Variant_Of_Existing_Type>Proto_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Range_Enhancer_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
 		<Text_ID> TEXT_ALIEN_HP_RANGE_ENHANCER </Text_ID>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 700 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
 		<Ranged_Target_Z_Adjust> 2.0 </Ranged_Target_Z_Adjust>
 		
 		<!-- ART -->
 		<Land_Model_Name> ABHP_RangeEnhancer.alo </Land_Model_Name>
-		<Scale_Factor> 0.50 </Scale_Factor>
+		<Scale_Factor> 0.40 </Scale_Factor>
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- BEHAVIORS -->
@@ -2766,10 +2766,10 @@
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
-			<Tactical_Buildable_Constructed> Proto_Walker_Science_HP_Range_Enhancer </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Science_HP_Range_Enhancer </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 300 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 300 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 16 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -2783,8 +2783,8 @@
    <!-- ===================================================================================================
 	== MARIA 11.02.2006 - This variant allows us to define walkers with specific hard point configurations
 	====================================================================================================== -->
-   <X10_Proto_Walkers Name="Customized_Proto_Walker_Science">
-      <Variant_Of_Existing_Type>Proto_Walker_Science</Variant_Of_Existing_Type>
+   <X10_Proto_Mini_Walkers Name="Customized_Proto_Mini_Walker_Science">
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science</Variant_Of_Existing_Type>
 
       <BehaviorType Name="ProductionBehaviorType">
          <Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
@@ -2810,10 +2810,10 @@
 				NOTE: Make sure you refer to HPSocketTypeBuildDependencies.xml specify hard points that 
 				are valid to a given socket (otherwise, nothing will be built).							
 				Example: 
-						If you want the Proto_Walker_Science_HP_EM_Field_Generator built on the socket
-				        Proto_Walker_Science_HornShell_L00, the entry should read:
+						If you want the Proto_Mini_Walker_Science_HP_EM_Field_Generator built on the socket
+				        Proto_Mini_Walker_Science_HornShell_L00, the entry should read:
 				        
-				        HARD_POINT_CONFIGURATION_TABLE.ALIEN_WALKER_SCIENCE_HORNSHELL_L00 = "Proto_Walker_Science_HP_EM_Field_Generator"				
+				        HARD_POINT_CONFIGURATION_TABLE.ALIEN_WALKER_SCIENCE_HORNSHELL_L00 = "Proto_Mini_Walker_Science_HP_EM_Field_Generator"				
 				
 				Finally, in order to create your own customized walker, I recommend
 				you derive your walker from this type and then set up your own HARD_POHARD_POINT_CONFIGURATION_TABLE.If
@@ -2829,15 +2829,15 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
-         <Tactical_Under_Construction_Object_Type> Customized_Proto_Walker_Science_Glyph </Tactical_Under_Construction_Object_Type>
-         <Tactical_Buildable_Beacon_Type> Proto_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
+         <Tactical_Under_Construction_Object_Type> Customized_Proto_Mini_Walker_Science_Glyph </Tactical_Under_Construction_Object_Type>
+         <Tactical_Buildable_Beacon_Type> Proto_Mini_Walker_Science_Glyph_Beacon </Tactical_Buildable_Beacon_Type>
       </BehaviorType>
 
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
 
-   <X10_Proto_Walkers Name="Customized_Proto_Walker_Science_Glyph">
-      <Variant_Of_Existing_Type>Proto_Walker_Science_Glyph</Variant_Of_Existing_Type>
+   <X10_Proto_Mini_Walkers Name="Customized_Proto_Mini_Walker_Science_Glyph">
+      <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Glyph</Variant_Of_Existing_Type>
 		<CategoryMask> Large, Stationary </CategoryMask>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -2847,6 +2847,6 @@
 		<BehaviorType Name="GroundStructureBehaviorType">
 			<Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
 		</BehaviorType>
-   </X10_Proto_Walkers>
+   </X10_Proto_Mini_Walkers>
 
-</Proto_Walker_Science_XML>
+</Proto_Mini_Walker_Science_XML>
