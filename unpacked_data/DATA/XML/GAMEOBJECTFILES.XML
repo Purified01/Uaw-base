@@ -129,6 +129,7 @@
 	<File> Structures/PROTO_Superweapon_Purifier.xml </File>
 	<File> Units/PROTO_HERO_CHIEF_SCIENTIST.xml </File>
 	<File> Units/PROTO_Veh_Reaper_Turret.xml </File>
+	<File> Units/PROTO_Veh_Reaper_Guard_Turret.xml </File>
 	<File> Units/PROTO_Veh_Scan_Drone.xml </File>
 	<File> Units/PROTO_Walker_Habitat.xml </File>
 	<File> Units/PROTO_Mini_Walker_Habitat.xml </File>

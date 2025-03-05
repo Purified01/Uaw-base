@@ -3727,7 +3727,7 @@
 	</Dependency>
 
 	<Dependency>
-		<Built_Object> Proto_Superweapon_Reaper_Turret </Built_Object>
+		<Built_Object> Proto_Reaper_Turret </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
@@ -3739,6 +3739,18 @@
 	</Dependency>
 
 	<Dependency>
+		<Built_Object> Proto_Reaper_Guard_Turret </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Scan_Drone </Built_Object>
 
 		<!-- Strategic requirements -->
@@ -3746,7 +3758,7 @@
 		<Strategic_Builder> Null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Superweapon_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3917,7 +3929,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Superweapon_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3953,7 +3965,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat, Proto_Superweapon_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat, Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -3977,7 +3989,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Superweapon_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -4013,7 +4025,7 @@
 		<Strategic_Builder> Null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Superweapon_Reaper_Turret, Proto_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
