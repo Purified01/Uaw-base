@@ -454,7 +454,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1000 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>	

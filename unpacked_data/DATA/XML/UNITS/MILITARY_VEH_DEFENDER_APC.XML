@@ -299,7 +299,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 15 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
