@@ -174,7 +174,7 @@
 			<Build_Time_Seconds> 5 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
-      <Build_Limit_Current_Per_Player>7</Build_Limit_Current_Per_Player>
+      <Build_Limit_Current_Per_Player>5</Build_Limit_Current_Per_Player>
 		</BehaviorType>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
@@ -289,8 +289,8 @@
 			<Lua_Land_Behaviors> AlienReaperTurret </Lua_Land_Behaviors>
 			<Lua_Script_Data>
 				ResourceFaction = "Alien"
-				resource_drone_search_radius = 200.0
-				resource_drone_harvest_distance = 100.0
+				resource_drone_search_radius = 400.0
+				resource_drone_harvest_distance = 300.0
 			</Lua_Script_Data>
 		</BehaviorType>
 		
@@ -369,7 +369,7 @@
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
 				<Effect_Generator_Name> AlienHarvestResourceGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Resource </Applicable_Unit_Categories>
+				<Applicable_Unit_Categories> Resource, Resource_INST </Applicable_Unit_Categories>
 
 				<Can_Target_Allies>yes</Can_Target_Allies>
 				<Can_Target_Enemies>Yes</Can_Target_Enemies>
@@ -378,34 +378,6 @@
 				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
 
 			</Effect_Generator_Ability>
-
-			<Effect_Generator_Ability Name="Reaper_Harvest_Instant_Resource_Special_Ability">
-				<Activation_Min_Range> 0 </Activation_Min_Range>
-				<Activation_Max_Range> 100 </Activation_Max_Range>
-				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
-
-				<!-- Oksana:this ability does not channel. Once activated, it cannot be cancelled. 
-					  It cannot drop target mid-way, or it will appear as a visual glitch. -->
-				<!-- <Max_Channel_Range> 125.0 </Max_Channel_Range> -->
-
-				<!-- We should let Targeting do the turret thing - Oksana -->
-				<!-- Turret_Points_At_Target> true </Turret_Points_At_Target -->
-
-				<Effect_Generator_Name> AlienHarvestInstantResourceGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Resource_INST </Applicable_Unit_Categories>
-
-				<Can_Target_Allies>yes</Can_Target_Allies>
-				<Can_Target_Enemies>Yes</Can_Target_Enemies>
-				<Can_Target_Neutral>Yes</Can_Target_Neutral>
-
-				<Point_Turret_At_Target>Yes </Point_Turret_At_Target>
-
-				<!-- For this one, we don't want to interrupt it once started. -->
-				<!-- If we do, we may end up with a unit dangling above ground. -->
-				<Deactivate_On_User_Attack_Order>No</Deactivate_On_User_Attack_Order>
-				<Deactivate_On_User_Move_Order>No</Deactivate_On_User_Move_Order>
-			</Effect_Generator_Ability>
-
 
 
 			<Effect_Generator_Ability Name="Reaper_Toggle_Auto_Harvest_Special_Ability">
@@ -875,14 +847,6 @@
 				<Recharge_Seconds>0.3</Recharge_Seconds>
 			</Unit_Ability>
 
-			<!-- this ability is activated by attack order on an INSTANT resource unit -->
-			<Unit_Ability Name="Reaper_Harvest_Instant_Resource_Ability ">
-				<Type>EFFECT_GENERATOR</Type>
-				<Effect_Generator_Name> AlienHarvestInstantResourceGenerator </Effect_Generator_Name>
-				<GUI_Activated_Ability_Name> Reaper_Harvest_Instant_Resource_Special_Ability  </GUI_Activated_Ability_Name>
-				<Is_Modal>Yes</Is_Modal>
-				<Recharge_Seconds>0.5</Recharge_Seconds>
-			</Unit_Ability>
 
 			<!-- this is a user-activated toggle ability for auto-collect -->
 			<Unit_Ability Name="Reaper_Auto_Gather_Resources">
