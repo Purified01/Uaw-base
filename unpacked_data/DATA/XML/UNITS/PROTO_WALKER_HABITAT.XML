@@ -3109,7 +3109,7 @@
 				<Activation_Max_Range> 280.0 </Activation_Max_Range>
 				<Applicable_Unit_Categories> Flying </Applicable_Unit_Categories>
 
-				<Damage_Type> Damage_Proto_Walker_HP_Lightning </Damage_Type>
+				<Damage_Type> Damage_Alien_Walker_HP_Lightning </Damage_Type>
 				<Damage_Amount> 0.0 </Damage_Amount>
 				<Damage_Percentage> 0.114 </Damage_Percentage>
 				<Damage_Interval_In_Secs> 1.0 </Damage_Interval_In_Secs>

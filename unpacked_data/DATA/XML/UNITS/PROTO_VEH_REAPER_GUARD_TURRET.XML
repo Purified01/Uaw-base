@@ -91,7 +91,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust>30.0</Ranged_Target_Z_Adjust>
-		<Land_FOW_Reveal_Range> 180.0</Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 250.0</Land_FOW_Reveal_Range>
 
 		<Tactical_Health> 2000 </Tactical_Health>
 
@@ -149,6 +149,7 @@
 			GUI,
 			RADAR_MAP_VISIBLE,
 			GIANT_WALK_LOCOMOTOR,
+			HARD_POINT_MANAGER,
 			FORMATION,
 			IDLE,
 			REVEAL,
@@ -176,6 +177,10 @@
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
       <Build_Limit_Current_Per_Player>2</Build_Limit_Current_Per_Player>
 		</BehaviorType>
+
+		<Attached_Hard_Points>
+         Proto_Guard_Turret_HP, HP_Attach
+      </Attached_Hard_Points>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Under_Construction_Object_Type> Proto_Reaper_Guard_Turret_Construction </Tactical_Under_Construction_Object_Type>
@@ -914,6 +919,114 @@
 	</X10_Alien_Units>
 	
 	
+	<HardPoint Name="Proto_Guard_Turret_HP">
+	
+      <Land_Model_Name> ABHP_Science_Arc_Trigger.alo </Land_Model_Name>
+      <Scale_Factor> 3.0 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- INTERFACE -->
+		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Affiliation> Proto </Affiliation>
+		<CategoryMask> HardPoint </CategoryMask>
+		<Victory_Relevant> No </Victory_Relevant>
+
+      <Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+
+		<!-- CONFLICT -->
+		<Is_Attackable> False </Is_Attackable>
+		<Collidable_By_Projectile_Living> True </Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
+		<Target_Bones> </Target_Bones>
+		<HP_Is_Immune_To_Damage>Yes</HP_Is_Immune_To_Damage>
+		<Ranged_Target_Z_Adjust>0.5</Ranged_Target_Z_Adjust>
+
+		<Tactical_Health> 999 </Tactical_Health>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior> HARD_POINT </Behavior>
+
+		<LandBehavior>
+			DAMAGE_TRACKING,
+			TURRET,
+			TARGETING,
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
+			ATTRIBUTE_DIRECTORY,
+			ABILITY_COUNTDOWN
+		</LandBehavior>
+
+		<Attributes SubObjectList="Yes">
+			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+		</Attributes>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Masari_Vehicle_Light </Armor_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+			<HP_Single_Destruction_Destroys_Parent> No </HP_Single_Destruction_Destroys_Parent>
+			<HP_Parent_Takes_Damage>true</HP_Parent_Takes_Damage>
+			<!-- Whatever damage is inflicted to this hard point gets passed down to its parent as well. -->
+		</BehaviorType>
+
+      <BehaviorType Name="WeaponBehaviorType">
+         <Targeting_Priority_Set> Alien_Assembly_Walker_With_Air_Spike_Target_Priority </Targeting_Priority_Set>
+         <Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
+         <Can_Attack_Without_Weapon_Behavior> Yes </Can_Attack_Without_Weapon_Behavior>
+      </BehaviorType>
+
+      <Abilities SubObjectList="Yes">
+
+         <Lightning_Attack_Ability Name="Proto_Guard_Lightning">
+            <Activation_Style> Special_Attack </Activation_Style>
+
+            <Activation_Chance> 1.0 </Activation_Chance>
+            <Activation_Min_Range> 0.0 </Activation_Min_Range>
+            <Activation_Max_Range> 270.0 </Activation_Max_Range>
+            <Applicable_Unit_Categories> All </Applicable_Unit_Categories>
+       		 <Excluded_Unit_Categories> Resource, Resource_INST, Stationary, Huge </Excluded_Unit_Categories>
+
+            <Damage_Type> Damage_Alien_Walker_HP_Lightning </Damage_Type>
+            <Damage_Amount> 0.0 </Damage_Amount>
+            <Damage_Percentage> 0.124 </Damage_Percentage>
+            <Damage_Interval_In_Secs> 1.0 </Damage_Interval_In_Secs>
+
+            <!-- match Target_Light_Effect_Duration -->
+            <Ability_Duration_Time_In_Secs> 2.3893 </Ability_Duration_Time_In_Secs>
+            <Ability_Cooldown_Time_In_Secs> 4.0 </Ability_Cooldown_Time_In_Secs>
+            <!-- it's fast for demo purposes to show a contrast in anti-air effectiveness -->
+
+            <Start_Lightning_Frame_Number> 0 </Start_Lightning_Frame_Number>
+            <Lightning_Effect_Name> Arc_Trigger_Lightning </Lightning_Effect_Name>
+            <Lightning_Source_Bone_Name> MuzzleA_00 </Lightning_Source_Bone_Name>
+            <Lightning_Target_Bone_Names> B_PELVIS, ROOT </Lightning_Target_Bone_Names>
+
+            <Lightning_Max_Targets> 1 </Lightning_Max_Targets>
+            <Lightning_Targets_Radius> 0.0 </Lightning_Targets_Radius>
+
+            <SFXEvent_Activate> SFX_Alien_Lightning_Fire </SFXEvent_Activate>
+            <SFXEvent_Target_Affected />
+
+            <Target_Particle_Effect />
+
+            <Target_Particle_Bone_Name> ROOT </Target_Particle_Bone_Name>
+            <Target_Light_Effect_Type> Linear_Pulse </Target_Light_Effect_Type>
+            <Target_Light_Effect_Color> 0.3, 0.3, 0.8 </Target_Light_Effect_Color>
+            <Target_Light_Effect_Color2 />
+            <Target_Light_Effect_Duration> 2.3893 </Target_Light_Effect_Duration>
+            <Target_Light_Effect_Pulse_Count> 40 </Target_Light_Effect_Pulse_Count>
+
+         </Lightning_Attack_Ability>
+
+      </Abilities>
+	</HardPoint>
 	
 	
 	<!-- **************************************************************************************** -->
