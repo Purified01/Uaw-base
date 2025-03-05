@@ -234,7 +234,7 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name> i_icon_ab_reaper_drone.tga </Icon_Name>
+			<Icon_Name> i_icon_ab_sm_reaper_drone.tga </Icon_Name>
 		</BehaviorType>
 		
 		<BehaviorType Name="TooltipBehaviorType">
