@@ -717,7 +717,7 @@
 				<Is_Independent_Generator> Yes </Is_Independent_Generator>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> AlienHarvestResourcesEffect </Effect_Name>
+					<Effect_Name> ProtoHarvestResourcesEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 					<Deactivate_Parent_If_Idle>Yes</Deactivate_Parent_If_Idle>
