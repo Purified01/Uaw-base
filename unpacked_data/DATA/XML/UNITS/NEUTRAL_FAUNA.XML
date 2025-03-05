@@ -43,7 +43,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -116,7 +116,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -179,7 +179,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
