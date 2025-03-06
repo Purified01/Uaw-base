@@ -1689,4 +1689,295 @@ KeyboardGameCommands = {
 			sort_order = 29			
 		},						
 	},
+
+
+
+
+-- ********************************************************************************************************
+-- 				PROTO
+-- ********************************************************************************************************
+["PROTO"] = 
+{
+
+-- ----------------------------------------------------------------
+-- FACTION SPECIFIC INTERFACE COMMANDS
+-- ----------------------------------------------------------------
+	["COMMAND_ACTIVATE_FACTION_SPECIFIC_QUEUE"] = 
+		{
+			-- Text ID to describe this command in the menu
+			text_id = "TEXT_GAME_COMMAND_ACTIVATE_WALKER_CUSTOMIZATION_MODE",
+			icon_name = "i_icon_a_blueprint.tga",
+			display = true,	
+			can_be_re_assigned = true,
+			sort_order = 0		
+		},
+		
+-- ----------------------------------------------------------------
+-- COMMANDS USED TO ACTIVATE SUPERWEAPONS
+-- ----------------------------------------------------------------
+	["COMMAND_ACTIVATE_SUPERWEAPON_1"] =
+		{
+			sw_type_name = "ALIEN_SUPERWEAPON_MASS_DROP_WEAPON", -- PLEASE IF YOU CHANGE THIS MAKE SURE THE NAME IS IN CAPS!!!!
+			text_id = "TEXT_GAME_COMMAND_ACTIVATE_ALIEN_SW_MASS_DROP",
+			icon_name = "",
+			display = true,	
+			can_be_re_assigned = true,
+			sort_order = 2
+		},
+
+-- ----------------------------------------------------------------
+-- COMMANDS USED TO ACTIVATE UNIT ABILITIES
+-- ----------------------------------------------------------------
+	["COMMAND_LAND_ABILITY_1"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Kamal_Rex_Abduction_Unit_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_KAMAL_REX",
+			sort_order = 9		
+		},
+	
+	["COMMAND_LAND_ABILITY_2"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Kamal_Rex_Force_Wall_Unit_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_KAMAL_REX",
+			sort_order = 10		
+		},
+		
+	["COMMAND_LAND_ABILITY_3"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Kamal_Rex_Retreat_From_Tactical_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_KAMAL_REX",
+			sort_order = 11		
+		},
+		
+	["COMMAND_LAND_ABILITY_4"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Orlok_Switch_To_Siege_Mode",
+			object_text_id = "TEXT_ALIEN_HERO_ORLOK",
+			sort_order = 3		
+		},
+		
+	["COMMAND_LAND_ABILITY_5"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Orlok_Switch_To_Endure_Mode",
+			object_text_id = "TEXT_ALIEN_HERO_ORLOK",
+			sort_order = 4		
+		},
+		
+	["COMMAND_LAND_ABILITY_6"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Orlok_Retreat_From_Tactical_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_ORLOK",
+			sort_order = 5		
+		},
+		
+	["COMMAND_LAND_ABILITY_7"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Nufai_Paranoia_Field_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_NUFAI",
+			sort_order = 6		
+		},
+		
+	["COMMAND_LAND_ABILITY_8"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Nufai_Tendrils_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_NUFAI",
+			sort_order = 7		
+		},
+		
+	["COMMAND_LAND_ABILITY_9"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Nufai_Retreat_From_Tactical_Ability",
+			object_text_id = "TEXT_ALIEN_HERO_NUFAI",
+			sort_order = 8		
+		},
+		
+	["COMMAND_LAND_ABILITY_10"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Reaper_Auto_Gather_Resources",
+			object_text_id = "TEXT_ALIEN_REAPER_TURRET",
+			sort_order = 13		
+		},
+		
+	["COMMAND_LAND_ABILITY_11"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Tank_Phase_Unit_Ability",
+			object_text_id = "TEXT_ALIEN_TANK",
+			sort_order = 21		
+		},
+		
+	["COMMAND_LAND_ABILITY_12"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Unit_Ability_Foo_Core_Heal_Attack_Toggle",
+			object_text_id = "TEXT_ALIEN_SAUCER",
+			sort_order = 16		
+		},
+		
+	["COMMAND_LAND_ABILITY_13"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Brute_Leap_Ability",
+			object_text_id = "TEXT_ALIEN_BRUTE",
+			sort_order = 24		
+		},
+		
+	["COMMAND_LAND_ABILITY_14"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Brute_Death_From_Above",
+			object_text_id = "TEXT_ALIEN_BRUTE",
+			sort_order = 25		
+		},
+		
+	["COMMAND_LAND_ABILITY_15"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Brute_Tackle_Ability",
+			object_text_id = "TEXT_ALIEN_BRUTE",
+			sort_order = 26		
+		},
+		
+	["COMMAND_LAND_ABILITY_16"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Grunt_Capture",
+			object_text_id = "TEXT_ALIEN_GRUNT",
+			sort_order = 14		
+		},
+		
+	["COMMAND_LAND_ABILITY_17"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Scan_Drone_Scan_Pulse",
+			object_text_id = "TEXT_ALIEN_SCAN_DRONE",
+			sort_order = 28		
+		},
+		
+	["COMMAND_LAND_ABILITY_18"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Defiler_Radiation_Bleed",
+			object_text_id = "TEXT_ALIEN_DEFILER",
+			sort_order = 19	
+		},
+		
+	["COMMAND_LAND_ABILITY_19"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Defiler_Radiation_Charge",
+			object_text_id = "TEXT_ALIEN_DEFILER",
+			sort_order = 20		
+		},
+		
+	["COMMAND_LAND_ABILITY_20"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Radiation_Artillery_Cannon_Attack",
+			object_text_id = "TEXT_UNIT_GIANT_HABITAT_SPIDER",
+			sort_order = 17		
+		},
+		
+	["COMMAND_LAND_ABILITY_21"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Assembly_Scarn_Beam",
+			object_text_id = "TEXT_UNIT_GIANT_ASSEMBLY_SPIDER",
+			sort_order = 18			
+		},
+		
+	["COMMAND_LAND_ABILITY_22"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Radiation_Cascade_Unit_Ability",
+			object_text_id = "TEXT_UNIT_GIANT_SCIENCE_SPIDER",
+			sort_order = 1						
+		},
+		
+	["COMMAND_LAND_ABILITY_23"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Walker_Science_Dark_Matter_Vent",
+			object_text_id = "TEXT_UNIT_GIANT_SCIENCE_SPIDER",
+			sort_order = 27						
+		},
+		
+	["COMMAND_LAND_ABILITY_24"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Alien_Tactical_Build_Structure_Ability",
+			object_text_id = "TEXT_ALIEN_GLYPH_CARVER",
+			sort_order = 12			
+		},
+		
+	["COMMAND_LAND_ABILITY_25"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Lost_One_Plasma_Bomb_Unit_Ability",
+			object_text_id = "TEXT_UNIT_ALIEN_LOST_ONE",
+			sort_order = 22			
+		},
+		
+	["COMMAND_LAND_ABILITY_26"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Grey_Phase_Unit_Ability",
+			object_text_id = "TEXT_UNIT_ALIEN_LOST_ONE",
+			sort_order = 23			
+		},
+		
+	["COMMAND_LAND_ABILITY_27"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Monolith_Phase_Unit_Ability",
+			object_text_id = "TEXT_ALIEN_CYLINDER",
+			sort_order = 15				
+		},
+		
+	["COMMAND_LAND_ABILITY_28"] = 
+		{
+			display = true,	
+			can_be_re_assigned = true,
+			unit_ability_name = "Aggressor_Grenade_Attack_Ability",
+			object_text_id = "TEXT_UNIT_ALIEN_AGGRESSOR",
+			sort_order = 29			
+		},						
+	},
 }

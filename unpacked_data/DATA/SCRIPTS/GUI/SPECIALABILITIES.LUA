@@ -53,6 +53,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 	ALIEN_FACTION_ID = Declare_Enum(0)
 	NOVUS_FACTION_ID = Declare_Enum()
 	MASARI_FACTION_ID = Declare_Enum()
+	PROTO_FACTION_ID = Declare_Enum()
 	
 	SpecialAbilities = 
 	{
@@ -1663,6 +1664,8 @@ function Init_Abilities_Key_Mappings()
 		Init_Alien_Abilities_Key_Mappings()
 	elseif  faction_id == NOVUS_FACTION_ID then
 		Init_Novus_Abilities_Key_Mappings()
+	elseif  faction_id == PROTO_FACTION_ID then
+		Init_Proto_Abilities_Key_Mappings()
 	elseif faction_id == MASARI_FACTION_ID then
 		Init_Masari_Abilities_Key_Mappings()
 	end	
@@ -1676,6 +1679,8 @@ function Get_Player_Faction_ID(player)
 		return ALIEN_FACTION_ID
 	elseif Is_Player_Of_Faction(player, "NOVUS") then
 		return NOVUS_FACTION_ID	
+	elseif Is_Player_Of_Faction(player, "PROTO") then
+		return PROTO_FACTION_ID	
 	elseif Is_Player_Of_Faction(player, "MASARI") then
 		return MASARI_FACTION_ID
 	end	
@@ -1890,4 +1895,82 @@ function Init_Masari_Abilities_Key_Mappings()
 		["Unit_Ability_Phosphor_Shot"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_24", 1), 		
 		["Unit_Ability_Zeal"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_22", 1), 				
 	}		
+end
+
+-- ----------------------------------------------------------------
+-- Init_Alien_Abilities_Key_Mappings
+-- ----------------------------------------------------------------
+function Init_Proto_Abilities_Key_Mappings()
+	SANameToKeyMappingList[PROTO_FACTION_ID] = 	
+	{
+		----------------------------------------
+		-- Universal Special Abilities
+		----------------------------------------
+		["Alien_Unload_Transport_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_GENERIC_LAND_ABILITY_1", 1),
+		
+		-- Kamal Re'x abilities			
+		["Kamal_Rex_Abduction_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_1", 1),
+		["Kamal_Rex_Force_Wall_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_2", 1),				
+		["Kamal_Rex_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_3", 1),
+		
+		-- Alien Orlok Hero
+		["Alien_Orlok_Switch_To_Siege_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_4", 1),	
+		["Alien_Orlok_Switch_To_Endure_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_5", 1),	
+		["Alien_Orlok_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_6", 1),	
+		
+		-- Alien hero Nufai
+		["Alien_Nufai_Paranoia_Field_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_7", 1),	
+		["Alien_Nufai_Tendrils_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_8", 1),	
+		["Alien_Nufai_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_9", 1),	
+		
+		-- Alien reaper turret abilities
+		["Reaper_Auto_Gather_Resources"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_10", 1),	
+		
+		-- Phase Tank personal phasing.
+		["Tank_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_11", 1),					
+		
+		-- Foo Core/Foo Fighter abilities
+		["Unit_Ability_Foo_Core_Heal_Attack_Toggle"] =  Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_12", 1),	
+		["Alien_Ship_Toggle_Fire_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_28", 1),			
+		
+		-- Brute abilities
+		["Brute_Leap_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_13", 1),	 
+		["Brute_Death_From_Above"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_14", 1),	 
+		["Brute_Tackle_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_15", 1),	 
+		
+		-- Alien Grunt abilities KDB 01-25-2007
+		["Grunt_Capture"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_16", 1),	
+			
+		-- Alien scan drone abilities KDB 02-07-2007
+		["Scan_Drone_Scan_Pulse"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_17", 1),		
+			
+		-- Alien detection array abilities KDB 07-10-2007 (this is a capturable structure and therefore needs to have art available from all factions)
+		--["Detection_Array_Scan_Pulse_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_23", 1)		
+		
+		-- Alien Defiler KDB 08-08-2006
+		["Defiler_Radiation_Bleed"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_18", 1),	
+		["Defiler_Radiation_Charge"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_19", 1),	
+		
+		-- Artillery cannon
+		["Radiation_Artillery_Cannon_Attack"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_20", 1),	
+		
+		["Assembly_Scarn_Beam"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_21", 1),	
+
+		-- Walker science HP abilities
+		-- Alien radiation wave
+		["Alien_Radiation_Cascade_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_22", 1),		
+		["Alien_Walker_Science_Dark_Matter_Vent"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_23", 1),	
+		
+		-- Alien Glyph Carver ability
+		["Alien_Tactical_Build_Structure_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_24", 1),	
+		
+		-- ALIEN Lost Ones plasma bomb.
+		["Lost_One_Plasma_Bomb_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_25", 1),	
+		["Grey_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_26", 1),	
+		
+		-- ALIEN Monolith personal phasing.
+		["Monolith_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_27", 1),	
+		
+		["Aggressor_Grenade_Attack_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_29", 1)			
+	}
 end
