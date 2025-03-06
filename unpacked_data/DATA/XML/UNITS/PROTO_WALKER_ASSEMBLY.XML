@@ -3330,6 +3330,161 @@
    </HardPoint>
 
 
+   <!-- ********************************************************************************************* -->
+   <!-- *****  Laser Cannon																							***** -->
+   <!-- ********************************************************************************************* -->
+
+   <HardPoint Name="Proto_Walker_Assembly_HP_Laser_Cannon">
+      <Variant_Of_Existing_Type>Proto_Walker_Assembly_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+      <!-- don't want to point back to generic as this will mess up novus cascade -->
+      <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+      <!-- ART -->
+      <Land_Model_Name>ABHP_Habitat_Plasma_cannon.alo</Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+      <Scale_Factor> 0.9 </Scale_Factor>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Select_Box_Scale>75</Select_Box_Scale>
+      <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
+      <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
+      <Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
+
+      <!-- CONFLICT -->
+      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Tactical_Health> 850 </Tactical_Health>
+      <CategoryMask> CanAttack, HardPoint, LegSocketHP </CategoryMask>
+
+
+      <!-- BEHAVIORS -->
+      <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+      <!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+      <Behavior>
+         SELECTABLE,
+         HARD_POINT
+      </Behavior>
+
+      <LandBehavior>
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         ABILITY_COUNTDOWN,
+         TACTICAL_SELL,
+         TARGETING,
+         WEAPON,
+         IDLE,
+         TURRET
+         <!-- Maria 12.14.2007: We will only allow the socket to have a GUI scene which will get updated based on the contents
+           of the socket. Thus, the hard points and their under construction versions won't need the GUI behavior nor the 
+           GUIBehaviorType data.
+         -->
+         <!-- ,GUI -->
+      </LandBehavior>
+
+      <BehaviorType Name="WeaponBehaviorType">
+         <Muzzle_Bone_Name> MuzzleA </Muzzle_Bone_Name>
+         <Targeting_Priority_Set> Alien_Science_Walker_With_Air_Spike_Target_Priority </Targeting_Priority_Set>
+         <Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
+         <Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
+         <Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
+         <Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
+
+         <Projectile_Types> Proj_Proto_Walker_Assembly_Laser_Cannon </Projectile_Types>
+         <Projectile_Fire_Pulse_Count> 1 </Projectile_Fire_Pulse_Count>
+         <Projectile_Fire_Pulse_Delay_Seconds> 0.5 </Projectile_Fire_Pulse_Delay_Seconds>
+         <Projectile_Fire_Recharge_Seconds> 4.0 </Projectile_Fire_Recharge_Seconds>
+      </BehaviorType>
+
+      <BehaviorType Name="TurretBehaviorType">
+         <Turret_Targets_Ground_Vehicles> 1 </Turret_Targets_Ground_Vehicles>
+         <Turret_Targets_Ground_Infantry> 4 </Turret_Targets_Ground_Infantry>
+         <Turret_Targets_Air_Vehicles> 2 </Turret_Targets_Air_Vehicles>
+         <Turret_Targets_Anything_Else> 3 </Turret_Targets_Anything_Else>
+         <Turret_Rotate_Extent_Degrees> 360 </Turret_Rotate_Extent_Degrees>
+         <Turret_Elevate_Extent_Degrees> 180 </Turret_Elevate_Extent_Degrees>
+         <Turret_Bone_Name> Turret_00 </Turret_Bone_Name>
+         <Barrel_Bone_Name> B_Barrel </Barrel_Bone_Name>
+         <Turret_Rotate_Speed> 5.0 </Turret_Rotate_Speed>
+         <Apply_Z_Turret_Rotate_To_Axis> 2 </Apply_Z_Turret_Rotate_To_Axis>
+         <Apply_Y_Turret_Rotate_To_Axis> 1 </Apply_Y_Turret_Rotate_To_Axis>
+         <Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
+         <Air_Vehicle_Turret_Target> No </Air_Vehicle_Turret_Target>
+      </BehaviorType>
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
+		</BehaviorType>
+      <BehaviorType Name="HardPointBehaviorType">
+         <HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_irradiator.tga </Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+         <Tactical_Under_Construction_Object_Type> Proto_Walker_Assembly_HP_Laser_Cannon_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 5 </Tactical_UI_Build_Queue_Order>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+      <BehaviorType Name="SFXBehaviorType">
+         <SFXEvent_Fire> SFX_Alien_Walker_Fire </SFXEvent_Fire>
+         <Death_SFXEvent_Start_Die> SFX_Alien_HP_Weapon_1_Death </Death_SFXEvent_Start_Die>
+      </BehaviorType>
+
+   </HardPoint>
+
+   <!-- PlasmaCannon Under Construction -->
+   <HardPoint Name="Proto_Walker_Assembly_HP_Laser_Cannon_Under_Construction">
+      <Variant_Of_Existing_Type>Proto_Walker_Assembly_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Scale_Factor> 0.9 </Scale_Factor>
+
+      <!-- ART -->
+      <Land_Model_Name> ABHP_Habitat_Plasma_cannon.alo </Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- CONFLICT -->
+      <Tactical_Health> 850 </Tactical_Health>
+      <CategoryMask> HardPoint, LegSocketHP </CategoryMask>
+
+      <!-- BEHAVIORS -->
+      <BehaviorType Name="EncyclopediaBehaviorType">
+         <Icon_Name>i_icon_a_walker_hp_irradiator.tga</Icon_Name>
+      </BehaviorType>
+
+      <BehaviorType Name="TooltipBehaviorType">
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
+         <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
+      </BehaviorType>
+
+      <BehaviorType Name="BuildableObjectBehaviorType">
+         <Tactical_Buildable_Constructed> Proto_Walker_Assembly_HP_Laser_Cannon </Tactical_Buildable_Constructed>
+         <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Time_Seconds> 26 </Tactical_Build_Time_Seconds>
+      </BehaviorType>
+
+      <!-- Maria 08.09.2006  We want this object to be buildable -->
+      <BehaviorType Name="ProductionBehaviorType">
+         <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+      </BehaviorType>
+
+   </HardPoint>
+
 
    <!-- ********************************************************************************************* -->
    <!-- *****  Plasma Cannon																							***** -->
@@ -3860,6 +4015,93 @@
 
    </Projectile>
 
+   <Projectile Name="Proj_Proto_Walker_Assembly_Laser_Cannon">
+
+      <!-- ART -->
+      <!--<Land_Model_Name> p_ab_barracks_electr02.alo </Land_Model_Name>-->
+      <Scale_Factor> 0.75 </Scale_Factor>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+      <!-- INTERFACE -->
+      <Text_ID> TEXT_NONE </Text_ID>
+      <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+
+      <!-- ATTRIBUTES -->
+      <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+
+      <!-- MOVEMENT -->
+      <Max_Speed> 200 </Max_Speed>
+      <Max_Rate_Of_Turn> 0 </Max_Rate_Of_Turn>
+
+      <!-- CONFLICT -->
+      <AI_Combat_Power> 1 </AI_Combat_Power>
+
+      <!-- BEHAVIORS -->
+      <Behavior> PROJECTILE, HIDE_WHEN_FOGGED </Behavior>
+
+      <BehaviorType Name="ArmorAndDamageBehaviorType">
+         <Damage_Type> DAMAGE_ALIEN_WALKER_HP_PLASMA </Damage_Type>
+      </BehaviorType>
+
+      <BehaviorType Name="ProjectileBehaviorType">
+         <Projectile_Category> laser </Projectile_Category>
+         <Projectile_Rocket_Straight_Distance> 500 </Projectile_Rocket_Straight_Distance>
+         <Projectile_Max_Flight_Distance> 800.0 </Projectile_Max_Flight_Distance>
+         <Projectile_Max_Scan_Range> 900.0 </Projectile_Max_Scan_Range>
+         <Projectile_Damage> 45.0 </Projectile_Damage>
+         <Projectile_SFXEvent_Detonate> SFX_Alien_Detonation_4 </Projectile_SFXEvent_Detonate>
+         <Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Alien_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
+         <Projectile_Does_Shield_Damage> No </Projectile_Does_Shield_Damage>
+         <Projectile_Does_Hitpoint_Damage> Yes </Projectile_Does_Hitpoint_Damage>
+
+         <Projectile_Object_Detonation_Particle> Alien_Science_Laser </Projectile_Object_Detonation_Particle>
+         <Projectile_Ground_Detonation_Particle> Alien_Science_Laser </Projectile_Ground_Detonation_Particle>
+         <Projectile_Lifetime_Detonation_Particle> Alien_Science_Laser </Projectile_Lifetime_Detonation_Particle>
+         <Projectile_Absorbed_By_Shields_Particle> Alien_Science_Laser </Projectile_Absorbed_By_Shields_Particle>
+
+         <Projectile_Causes_Blackening> true </Projectile_Causes_Blackening>
+         <Terrain_Damage_Radius> 100.0 </Terrain_Damage_Radius>
+         <Projectile_Attach_Lightning_Effect> Science_Walker_Beam_norm </Projectile_Attach_Lightning_Effect>
+
+         <Can_Be_Redirected>False</Can_Be_Redirected>
+
+      </BehaviorType>
+
+      <Effect_Generator_Data SubObjectList="Yes">
+
+         <!-- radiation from plasma blob  -->
+         <Effect_Generator Name="AssemblyPlasmaBlobImpactGenerator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> ProtoRadiatedShotsImpactEffect </Effect_Name>
+               <Duration> 3.0 </Duration>
+               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+               <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+               <Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+               <Target_Filter_Categories> ~RadiationHelps </Target_Filter_Categories>
+               <Target_Filter_C> Is_Enemy  </Target_Filter_C>
+               <Remove_On_Death> false </Remove_On_Death>
+               <Linked_Effect_Names> AlienRadiatedShotsVisualEffect </Linked_Effect_Names>
+            </Effect_Generator_Entry>
+
+            <Effect_Generator_Entry Name="Entry2">
+               <Effect_Name> AlienGammaRadiatedShotsImpactEffect </Effect_Name>
+               <Duration> 3.0 </Duration>
+               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+               <Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
+               <Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
+               <Target_Filter_Categories> ~RadiationHelps </Target_Filter_Categories>
+               <Target_Filter_C> Is_Enemy  </Target_Filter_C>
+               <Remove_On_Death> false </Remove_On_Death>
+               <Linked_Effect_Names> AlienGammaRadiatedShotsVisualEffect </Linked_Effect_Names>
+            </Effect_Generator_Entry>
+
+         </Effect_Generator>
+
+      </Effect_Generator_Data>
+
+   </Projectile>
 
    <Projectile Name="Proj_Proto_Walker_Assembly_Plasma_Blob">
 

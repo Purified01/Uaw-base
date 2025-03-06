@@ -616,6 +616,9 @@ function Init_Research_Tree(tactical_only_game)
 					-- Walker Habitat's terrain conditioner HP
 					[14] = { EffectName="AlienWalkerTerrainConditionerEffect", DescriptionTextID=nil, IconName=nil },
 					[15] = { EffectName="AlienWalkerTerrainConditionerSelfEffect", DescriptionTextID=nil, IconName=nil },
+					[16] = { 
+						EffectName="ProtoRadiatedShotsImpactEffect",  DescriptionTextID=nil, IconName=nil
+					}
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE

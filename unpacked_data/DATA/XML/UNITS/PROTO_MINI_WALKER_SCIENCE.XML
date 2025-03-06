@@ -2409,7 +2409,7 @@
 
 		<!-- CONFLICT -->
 		<Tactical_Health> 600 </Tactical_Health>
-		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+		<CategoryMask> CanAttack, HardPoint, BodySocketHP </CategoryMask>
 		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
 
 		<!-- ART -->

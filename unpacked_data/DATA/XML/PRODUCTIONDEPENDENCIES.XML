@@ -4502,6 +4502,29 @@
 		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
 	</Dependency>
 
+	<Dependency>
+		<Built_Object> Proto_Walker_Assembly_HP_Laser_Cannon </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Science </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Proto_Walker_Assembly_HP_Laser_Cannon </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Walker_Science </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
+	</Dependency>
 
 	<!-- HARDPOINTS: Mini Assembly Walker -->
 
