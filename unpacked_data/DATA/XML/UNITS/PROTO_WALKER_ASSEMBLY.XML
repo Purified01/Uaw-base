@@ -3353,7 +3353,7 @@
       <Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
 
       <!-- CONFLICT -->
-      <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+      <Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
       <Tactical_Health> 850 </Tactical_Health>
       <CategoryMask> CanAttack, HardPoint, LegSocketHP </CategoryMask>
 
@@ -3473,8 +3473,8 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed> Proto_Walker_Assembly_HP_Laser_Cannon </Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Campaign> 1100 </Tactical_Build_Cost_Campaign>
+         <Tactical_Build_Cost_Multiplayer> 1100 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Time_Seconds> 26 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
