@@ -4249,6 +4249,18 @@
 	</Dependency>
 	
 	<Dependency>
+		<Built_Object> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Body </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Walker_Habitat </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Mini_Walker_Habitat_HP_Heat_Sink </Built_Object>
 
 		<!-- Strategic requirements -->
@@ -4292,7 +4304,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
 		<Tactical_Builder> Proto_Mini_Walker_Habitat_Leg </Tactical_Builder>
 	</Dependency>
 
@@ -4759,7 +4771,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
 		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
 	</Dependency>
 
@@ -4822,7 +4834,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
 		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
 	</Dependency>
 

@@ -611,6 +611,17 @@
 		</Effect_Component>
 	</Effect>
 
+	<Effect Name="WalkerSideBuildFasterEffect">
+		<Effect_Class> IncreaseBuildSpeed </Effect_Class>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Duration> -1.0 </Duration>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
+			<!-- +12% build speed -->
+			<Modifier_Value> 0.3 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
 
 
 	<!--*************************************************************************************************
