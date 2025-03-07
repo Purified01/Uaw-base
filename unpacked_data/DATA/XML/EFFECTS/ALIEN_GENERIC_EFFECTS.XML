@@ -376,30 +376,6 @@
 		</Effect_Component>
 
 	</Effect>
-	
-	<Effect Name="VehicleVolatileReactorGammaDamageEffectDefiler">
-
-		<Duration> 24.0 </Duration>
-		<Effect_Class> DefilerRadiation </Effect_Class>
-		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
-
-		<Effect_Component Type="DamageOverTime">
-			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
-			<Amount_Per_Second> 12.0 </Amount_Per_Second>
-			<Percentage_Per_Second>0</Percentage_Per_Second>
-		</Effect_Component>
-
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> Gamma_Radiation_Harmful_Glow </Particle_System_Type>
-		</Effect_Component>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Create_Radiation_Mutant </Attribute>
-			<Modifier_Value> 0.2 </Modifier_Value>
-		</Effect_Component>
-
-	</Effect>	
 
 	
 	<Effect Name="WalkerVolatileReactorExplosionVisualEffect">
