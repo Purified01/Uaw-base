@@ -741,6 +741,10 @@
 	</X10_Alien_Heroes>
 
 
+	<X10_Alien_Heroes Name="Proto_Hero_Orlok_Siege_Mode">
+		<Variant_Of_Existing_Type>Alien_Hero_Orlok_Siege_Mode</Variant_Of_Existing_Type>
+	</X10_Alien_Heroes>
+
 
 
 
@@ -783,6 +787,10 @@
 		
    </X10_Alien_Heroes>
 
+
+	<X10_Alien_Heroes Name="Proto_Hero_Orlok_Endure_Mode">
+		<Variant_Of_Existing_Type>Alien_Hero_Orlok_Endure_Mode</Variant_Of_Existing_Type>
+   </X10_Alien_Heroes>
 
 
 
@@ -1214,6 +1222,33 @@
 		<Variant_Of_Existing_Type>Alien_Hero_Orlok</Variant_Of_Existing_Type>
       	<AssetBank> BANK_ALIEN </AssetBank>
 		<Affiliation> Proto </Affiliation>
+
+		<BehaviorType Name="TypeSwitchBehaviorType">
+
+			<!-- Assault to Siege -->
+			<Type_Switch_Pre_Activate_Anim>Proto_Hero_Orlok, Proto_Hero_Orlok_Siege_Mode,	Special_Action_D 	</Type_Switch_Pre_Activate_Anim>
+			<!-- Assault to Endure -->
+         <Type_Switch_Pre_Activate_Anim>Proto_Hero_Orlok,  Proto_Hero_Orlok_Endure_Mode, Special_Action_D 	</Type_Switch_Pre_Activate_Anim>
+         <!-- Siege to Assault -->
+			<Type_Switch_Pre_Activate_Anim>Proto_Hero_Orlok_Siege_Mode,    Proto_Hero_Orlok,	            Special_Action_D 	</Type_Switch_Pre_Activate_Anim>
+			<!-- Endure to Assault -->
+         <Type_Switch_Pre_Activate_Anim>Proto_Hero_Orlok_Endure_Mode,   Proto_Hero_Orlok, 	         Special_Action_D 	</Type_Switch_Pre_Activate_Anim>
+
+         
+         
+         <!-- List of types this object can switch to - This is mainly needed to inforce build limits and must be
+					only added to the base type used for production dependencies purposes -->
+			<Type_Switch_Types> Proto_Hero_Orlok_Siege_Mode, Proto_Hero_Orlok_Endure_Mode </Type_Switch_Types>
+         
+         <Primary_Type> Proto_Hero_Orlok </Primary_Type>
+
+         <Keep_Hardpoints_On_Switch> No </Keep_Hardpoints_On_Switch>
+                 
+         <Pre_Switch_Effect_Generator_Name> OrlockTypePreSwitchVisualGenerator </Pre_Switch_Effect_Generator_Name>
+         <Post_Switch_Effect_Generator_Name> OrlockTypePostSwitchVisualGenerator </Post_Switch_Effect_Generator_Name>
+         <Wait_For_Generators>YEs</Wait_For_Generators>
+         
+      </BehaviorType>
 	</X10_Alien_Heroes>
 
 
