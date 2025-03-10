@@ -1149,7 +1149,7 @@
                <Effect_Name> AlienScienceShieldRechargeEffect </Effect_Name>
                <Duration> -1.0 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Target_Filter_C> Alien_Science_Shield_Recharge_Targeting </Target_Filter_C>
+               <Target_Filter_C> Proto_Science_Shield_Recharge_Targeting </Target_Filter_C>
                <Area_Effect_Radius> 25 </Area_Effect_Radius>
             </Effect_Generator_Entry>
          </Effect_Generator>
