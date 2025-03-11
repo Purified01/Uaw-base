@@ -4838,6 +4838,19 @@
 	</Dependency>
 
 	<Dependency>
+		<!-- This is the scanning hardpoint -->
+		<Built_Object> Proto_Mini_Walker_Science_HP_Scanning_Node </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Science_Horn </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Mini_Walker_Science_HP_Heat_Sink </Built_Object>
 
 		<!-- Strategic requirements -->

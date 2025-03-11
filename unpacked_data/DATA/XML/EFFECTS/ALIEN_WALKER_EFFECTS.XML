@@ -365,6 +365,19 @@
 		</Effect_Component>
 
 	</Effect>
+
+	<Effect Name="MiniScienceFullFOWEffect">
+		<Effect_Class> WalkerVision </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<!-- max vision -->
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
 	
 	<!--=================================================================================================
 	== [10/20/2006] AlienWalkerScanningNodeEffect, increase sight range
@@ -380,6 +393,26 @@
          <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
          <!-- +25 x vision -->
          <Modifier_Value> 0.25 </Modifier_Value>
+      </Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Scan_Nodes </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="AlienMiniWalkerScanningNodeEffect">
+		<Effect_Class> WalkerVision </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+
+		<Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <!-- +30% x vision -->
+         <Modifier_Value> 0.3 </Modifier_Value>
       </Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">

@@ -415,6 +415,20 @@
 
 			</Effect_Generator>
 
+			<Effect_Generator Name="MiniScienceFullFOWGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+				<Effect_Name> MiniScienceFullFOWEffect </Effect_Name>
+				<Duration> 3.1 </Duration>
+				<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				<Target_Filter_C> Walker_Scan_Nodes </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\ALIEN_Sell_Generators.xml" -->
 			
@@ -2395,7 +2409,156 @@
 
 
 	<!-- ********************************************************************************************* -->
-	<!-- ****** HEAT SINK HARD POINT																				  ****** -->
+	<!-- ****** SCANNING RELAY HARD POINT																		  ****** -->
+	<!-- ********************************************************************************************* -->
+	
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Scanning_Node">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
+
+		<!-- don't want to point back to generic as this will mess up novus cascade -->
+		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
+
+		<!-- INTERFACE -->
+		<Text_ID> TEXT_ALIEN_HP_SCANNING_NODE </Text_ID>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 800 </Tactical_Health>
+		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Science_Scan_Relay.alo</Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- BEHAVIORS -->
+		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
+		<!-- Any object that is a hard point requires a Behavior entry with HARD_POINT -->
+		<Behavior>
+			SELECTABLE,
+			HARD_POINT
+
+		</Behavior>
+
+		<LandBehavior>
+         DAMAGE_TRACKING,
+         EFFECT_GENERATOR,
+         EFFECT_REGISTRY,
+         ATTRIBUTE_DIRECTORY,
+         TACTICAL_SELL,
+         ABILITY_COUNTDOWN,
+         IDLE
+		</LandBehavior>
+
+		<BehaviorType Name="HardPointBehaviorType">
+			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<!-- Maria 06.28.2006 - What is the 'object under construction' that is placed in lieu of this object -->
+			<Tactical_Under_Construction_Object_Type> Proto_Mini_Walker_Science_HP_Scanning_Node_Under_Construction </Tactical_Under_Construction_Object_Type>
+         <Tactical_UI_Build_Queue_Order> 3 </Tactical_UI_Build_Queue_Order>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_scanning_relay.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_SCANNING_RELAY </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> True </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+		<Effect_Generator_Data SubObjectList="Yes">
+
+			<Effect_Generator Name="AlienMiniWalkerScienceScanningNodeGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> AlienMiniWalkerScanningNodeEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> SelfHPParent </Target_Gathering_Mask>
+					<Target_Filter_Categories> Huge </Target_Filter_Categories>
+					<Target_Filter_C> Is_Scanning_Relay_Present </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+
+			<Effect_Generator Name="AlienWalkerScienceRevealCloakingGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> RevealCloakingEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 350 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
+					<Duration> 2.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Enemy </Target_Filter_C>
+					<Area_Effect_Radius> 300 </Area_Effect_Radius>
+				</Effect_Generator_Entry>				
+
+			</Effect_Generator>
+
+		</Effect_Generator_Data>
+
+	</HardPoint>
+
+	<!-- Scanning Relay Under Construction  -->
+	<HardPoint Name="Proto_Mini_Walker_Science_HP_Scanning_Node_Under_Construction">
+		<Variant_Of_Existing_Type>Proto_Mini_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
+		<Text_ID> TEXT_ALIEN_HP_SCANNING_NODE </Text_ID>
+
+		<!-- ART -->
+		<Land_Model_Name> ABHP_Science_Scan_Relay.alo </Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<!-- CONFLICT -->
+		<Tactical_Health> 600 </Tactical_Health>
+		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
+		
+		<!-- BEHAVIORS -->
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_icon_a_walker_hp_scanning_relay.tga </Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_SCANNING_RELAY </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Buildable_Constructed> Proto_Mini_Walker_Science_HP_Scanning_Node </Tactical_Buildable_Constructed>
+			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
+		</BehaviorType>
+
+		<!-- Maria 08.09.2006  We want this object to be buildable -->
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> No </Is_Research_Tech_Tree_Lockable>
+		</BehaviorType>
+
+	</HardPoint>
+
+
+
+	<!-- ********************************************************************************************* -->
+	<!-- ****** REAPER HARD POINT																				  ****** -->
 	<!-- ********************************************************************************************* -->
 
 	<HardPoint Name="Proto_Mini_Walker_Science_HP_Reaper">

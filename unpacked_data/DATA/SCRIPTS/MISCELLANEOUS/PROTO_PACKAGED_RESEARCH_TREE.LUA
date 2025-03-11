@@ -241,6 +241,7 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_SCANNING_RELAY",
 							IconName="i_icon_a_walker_hp_scanning_relay.tga"
 							},
+					[3] = { ObjectType=Find_Object_Type("Proto_Mini_Walker_Science_HP_Scanning_Node"), DescriptionTextID=nil, IconName=nil },
 
 				},
 				
