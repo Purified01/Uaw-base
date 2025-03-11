@@ -4763,6 +4763,19 @@
 	</Dependency>
 
 	<Dependency>
+		<!-- This is the Chain Gun -->
+		<Built_Object> Proto_Walker_Science_HP_Chain_Cannon </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Science </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Walker_Science_HP_Dark_Matter_Vent </Built_Object>
 
 		<!-- Strategic requirements -->
@@ -4886,6 +4899,18 @@
 		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
 	</Dependency>
 
+	<Dependency>
+		<!-- This is the Chain Gun -->
+		<Built_Object> Proto_Mini_Walker_Science_HP_Chain_Cannon </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Mini_Walker_Science_Horn </Tactical_Builder>
+	</Dependency>
 
 	<!-- ***********************************************************************
 ******** NOVUS BUILD ORDER DEPENDENCIES ************************************
