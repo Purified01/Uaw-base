@@ -375,6 +375,13 @@
             <Effect_Generator_Name> Masari_Architect_Rebuild_Effect_Generator  </Effect_Generator_Name>
          </Unit_Ability>
 
+         <Unit_Ability Name="Masari_Rebuild_Unit_Upgraded_Ability">
+            <Type>EFFECT_GENERATOR</Type>
+            <GUI_Activated_Ability_Name>Masari_Architect_Rebuild_Upgrade_Special_Ability</GUI_Activated_Ability_Name>
+            <Targeting_Type> ALLY_OBJECT </Targeting_Type>
+            <Effect_Generator_Name> Masari_Architect_Rebuild_Effect_Upgrade_Generator  </Effect_Generator_Name>
+         </Unit_Ability>
+
          <Unit_Ability Name="Enter_Sentry_Unit_Ability">
             <Targeting_Type> ALLY_OBJECT </Targeting_Type>
             <Type>EFFECT_GENERATOR</Type>
@@ -552,6 +559,26 @@
 				<!-- In case we get teleported a long way away-->
 				<Max_Channel_Range> 200.0 </Max_Channel_Range>
 				<Effect_Generator_Name> Masari_Architect_Rebuild_Effect_Generator </Effect_Generator_Name>
+            <Activation_Style> Special_Attack </Activation_Style>
+            <Can_Target_Enemies>No</Can_Target_Enemies>
+            <Can_Target_Allies>Yes</Can_Target_Allies>
+            <Can_Target_Neutral>No</Can_Target_Neutral>
+            <Generating_Anim_Type>ATTACK_SPECIAL_B</Generating_Anim_Type>
+
+
+            <!-- Any new move/attack order will cancel this ability -->
+            <Movement_Should_Cancel_Ability>No</Movement_Should_Cancel_Ability>
+
+            <Terminate_Effect_On_Move_Command> true </Terminate_Effect_On_Move_Command>
+            <Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
+         </Effect_Generator_Ability>
+
+         <Effect_Generator_Ability Name="Masari_Architect_Rebuild_Upgrade_Special_Ability">
+            <Activation_Min_Range> 0 </Activation_Min_Range>
+            <Activation_Max_Range> 100 </Activation_Max_Range>
+				<!-- In case we get teleported a long way away-->
+				<Max_Channel_Range> 200.0 </Max_Channel_Range>
+				<Effect_Generator_Name> Masari_Architect_Rebuild_Effect_Upgrade_Generator </Effect_Generator_Name>
             <Activation_Style> Special_Attack </Activation_Style>
             <Can_Target_Enemies>No</Can_Target_Enemies>
             <Can_Target_Allies>Yes</Can_Target_Allies>
@@ -924,11 +951,41 @@
 
 
          <Effect_Generator Name="Masari_Architect_Rebuild_Effect_Generator">
-            <Is_Independent_Generator> No </Is_Independent_Generator>
-            <Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+            <Starts_Active> true </Starts_Active>
+
 
             <Effect_Generator_Entry Name="Entry1">
                <Effect_Name> Masari_Architect_Rebuild_Effect </Effect_Name>
+               <Duration> 30.0 </Duration>
+               <Target_Gathering_Mask> Target </Target_Gathering_Mask>
+               <Target_Filter_C> Is_Rebuildable_Avenger </Target_Filter_C>
+               <Deactivate_Parent_If_Idle> true </Deactivate_Parent_If_Idle>
+               <Source_SFX_Event> SFX_Masari_ReBuild_Loop </Source_SFX_Event>
+               <Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
+               <Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
+               
+               <!-- Due to pop-cap issues, we need to immediately de-activate when target is invalid. - Oksana-->
+               <Frames_Between_Remove_Invalid_Targets>1</Frames_Between_Remove_Invalid_Targets>
+            </Effect_Generator_Entry>
+
+				<!--<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> MasariArchitectBuildVisualEffect </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>-->
+
+         </Effect_Generator>
+
+         <Effect_Generator Name="Masari_Architect_Rebuild_Effect_Upgrade_Generator">
+            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+            <Is_Independent_Generator> true </Is_Independent_Generator>
+            <Starts_Active> true </Starts_Active>
+
+
+            <Effect_Generator_Entry Name="Entry1">
+               <Effect_Name> Masari_Architect_Rebuild_Upgraded_Effect </Effect_Name>
                <Duration> 10.0 </Duration>
                <Target_Gathering_Mask> Target </Target_Gathering_Mask>
                <Target_Filter_C> Is_Rebuildable_Avenger </Target_Filter_C>

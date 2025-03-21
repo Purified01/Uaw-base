@@ -495,6 +495,57 @@
       
    </Effect>
 
+<Effect Name="Masari_Architect_Rebuild_Upgraded_Effect">
+      <Effect_Class> PreAvengerRebuild </Effect_Class>
+      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+      <!-- Target can't attack while being rebuilt-->
+      <Effect_Component Type="DisableBehavior">
+         <Behaviors> TEAM_TARGETING, TARGETING, WEAPON, TURRET </Behaviors>
+      </Effect_Component>
+
+      <!-- Target can't move while being rebuilt-->
+      <Effect_Component Type="DisableBehavior">
+         <Behaviors> SLAVE_TO_PARENT_LOCOMOTOR, CIVILIAN_LOCOMOTOR, ALIEN_TANK_AIR_LOCOMOTOR, VTOL_LOCOMOTOR, LAND_TEAM_CONTAINER_LOCOMOTOR, LAND_TEAM_INFANTRY_LOCOMOTOR, WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR</Behaviors>
+      </Effect_Component>
+
+      <!-- Target can't use any abilities while being rebuilt -->
+      <Effect_Component Type="DisableAbility">
+         <Abilities/>
+      </Effect_Component>
+
+
+      <Effect_Component Type="ApplyEffectOnRemove">
+         <Effect_Name> Rebuild_Avenger_Effect </Effect_Name>
+         <Apply_On_Expiration_Only> true </Apply_On_Expiration_Only>
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> ZI_Architect_Rebuild_Target </Particle_System_Type>
+      </Effect_Component>
+
+      <!-- Effect_Component Type="Lightning">
+         <Lightning_Effect_Name> Masari_Architect_Structure_Build_Beam </Lightning_Effect_Name>
+         <Source_Target_Type> SourceToTarget </Source_Target_Type>
+         <Source_Bone_Name> MuzzleA_00 </Source_Bone_Name>
+      </Effect_Component -->
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>ZI_Architect_Rebuild_flow</Particle_System_Type>
+
+         <Position_Type>AtSource</Position_Type>
+         <Attachment_Bone_Name>MuzzleA_00</Attachment_Bone_Name>
+
+         <Attractor_Type>AtTarget</Attractor_Type>
+         <Attractor_Bone_Name/>
+
+      </Effect_Component>
+
+      <Effect_Component Type="Animate">
+         <Animation_Type> Anim_Build </Animation_Type>
+      </Effect_Component>
+      
+   </Effect>
 
    <Effect Name="Rebuild_Avenger_Effect">
       <Effect_Class> AvengerRebuild </Effect_Class>
