@@ -2800,7 +2800,7 @@
 			<Targeting_Priority_Set> Alien_Assembly_Walker_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 280.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 380.0 </Targeting_Max_Attack_Distance>
 			<Muzzle_Bone_Name> ALT1 </Muzzle_Bone_Name>
 		</BehaviorType>
 
@@ -2818,30 +2818,14 @@
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 		</BehaviorType>
 
-		<Unit_Abilities_Data SubObjectList="Yes">
-
-			<Unit_Ability Name="Walker_Artillery_Cannon_Attack">
-				<Type>ATTACK_POSITION</Type>
-				<Expiration_Seconds> 0.0 </Expiration_Seconds>
-				<Recharge_Seconds>15.0</Recharge_Seconds>
-				<Targeting_Fire_Inaccuracy_Fixed_Radius_Override>0</Targeting_Fire_Inaccuracy_Fixed_Radius_Override>
-				<Area_Effect_Decal_Distance> 100.0 </Area_Effect_Decal_Distance>
-				<GUI_Activated_Ability_Name> Proto_Walker_Grenade_Attack_Ability </GUI_Activated_Ability_Name>
-				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
-				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
-
-            <Is_Only_Good_Against_Enemy>Yes</Is_Only_Good_Against_Enemy>
-			</Unit_Ability>
-
-		</Unit_Abilities_Data>
 
 		<Abilities SubObjectList="Yes">
 			<Generic_Attack_Ability Name="Proto_Walker_Grenade_Attack_Ability">
 				<Disable_Special_Ability_Attribute> Is_Mind_Controlled </Disable_Special_Ability_Attribute>
 				<Activation_Chance>1.0</Activation_Chance>
 				<Activation_Min_Range>0.0</Activation_Min_Range>
-				<Activation_Max_Range>200.0</Activation_Max_Range>
-				<Activation_Recharge_Time> 4.0 </Activation_Recharge_Time>
+				<Activation_Max_Range>350.0</Activation_Max_Range>
+				<Activation_Recharge_Time> 5.0 </Activation_Recharge_Time>
 				<!-- <Attack_Animation>ATTACK_SPECIAL_B</Attack_Animation>
 				<Attack_Animation_Speedup>1.3</Attack_Animation_Speedup>
 				<Damage_Frame_Number>10</Damage_Frame_Number> -->
@@ -2849,16 +2833,16 @@
 				<Damage_Frame_Number>0</Damage_Frame_Number>
 
             	<Attack_Animation>Anim_Build</Attack_Animation>
-				<Applicable_Unit_Categories>Piloted, Huge, HardPoint, DummyTarget</Applicable_Unit_Categories>
+				<Applicable_Unit_Categories> Piloted | Stationary | Small | Medium | Flying | Large | Hardpoint</Applicable_Unit_Categories>
 
 				<Only_Appropriate_When_In_Range> false </Only_Appropriate_When_In_Range>
 				<Only_Appropriate_When_Ready> true </Only_Appropriate_When_Ready>
 				<Projectile_Type> Proj_Walker_Grenade </Projectile_Type>
-				<Is_Looping_Attack> false </Is_Looping_Attack>
+				<Is_Looping_Attack> true </Is_Looping_Attack>
 				<Projectile_Spawn_Bone_Name> ALT1 </Projectile_Spawn_Bone_Name>
 				<Face_Target_Before_Firing> false </Face_Target_Before_Firing>
-				<Activated_By_User> true </Activated_By_User>
-				<Activation_Style> User_Input </Activation_Style>
+				<!-- <Activated_By_User> false </Activated_By_User> -->
+				<!-- <Activation_Style> User_Input </Activation_Style> -->
             	<SFXEvent_Apply_Damage></SFXEvent_Apply_Damage>
 			</Generic_Attack_Ability>
 		</Abilities>
@@ -2894,8 +2878,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Proto_Walker_Habitat_HP_Grenade_Chamber </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign> 800 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 800 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 900 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 900 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 20 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
@@ -2941,7 +2925,7 @@
 			<Projectile_Max_Lifetime>900.0</Projectile_Max_Lifetime>
 			<!-- Oksana: give it a few minutes... generally, it will die of collision. -->
 			<Projectile_Damage>0.0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage>20.0</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>40.0</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>40.0</Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
