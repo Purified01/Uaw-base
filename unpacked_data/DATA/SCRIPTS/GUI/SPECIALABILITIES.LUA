@@ -868,6 +868,18 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 12 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	   
 			},
 			
+		["Walker_Artillery_Cannon_Attack"] = 
+		{ 
+			action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+			max_range = 1000.0,
+			icon="i_icon_a_sa_Launch_warhead.tga",  
+			
+			-- TOOLTIP RELATED DATA
+			text_id = "TEXT_ABILITY_ALIEN_LAUNCH_RADIATION_WARHEAD",
+			tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_TERRAIN_CONDITIONER",
+			tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
+			sort_order = 13 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	   
+		},
 		["Assembly_Scarn_Beam"] = 
 			{ 
 				special_ability_name="Assembly_Scarn_Beam_Ability",    

@@ -4175,6 +4175,18 @@
 	</Dependency>
 
 	<Dependency>
+		<Built_Object> Proto_Walker_Habitat_HP_Grenade_Chamber </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly </Tactical_Required_Objects>
+		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
 		<Built_Object> Proto_Walker_Habitat_HP_Armor_Leg </Built_Object>
 
 		<!-- Strategic requirements -->
