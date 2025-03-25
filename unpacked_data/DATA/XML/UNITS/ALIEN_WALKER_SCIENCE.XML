@@ -981,6 +981,9 @@
          Alien_Walker_Science_Horn_HP00, HP_Attach_horn_00
          Alien_Walker_Science_Horn_HP01, HP_Attach_horn_01
          Alien_Walker_Science_Horn_HP02, HP_Attach_horn_02
+         Alien_Walker_Science_Addon_Horn, HP_Attach_horn_00
+         Alien_Walker_Science_Addon_Horn, HP_Attach_horn_01
+         Alien_Walker_Science_Addon_Horn, HP_Attach_horn_02
       </Attached_Hard_Points>
 
       <!-- EFFECT GENERATORS -->
@@ -2838,6 +2841,26 @@
 	<!-- ****** RADIATION CASCADE HARD POINT																	  ****** -->
 	<!-- ********************************************************************************************* -->
 	
+   <Hardpoint Name="Alien_Walker_Science_Addon_Horn">
+		<!-- ART -->
+		<Land_Model_Name>ABHP_Science_Radiation.alo</Land_Model_Name>
+      <AssetBank> BANK_ALIEN </AssetBank>
+
+		<Scale_Factor> 1.7 </Scale_Factor>
+		<CategoryMask> HardPoint </CategoryMask>
+		<Victory_Relevant> No </Victory_Relevant>
+      
+      <Behavior>
+			HARD_POINT
+		</Behavior>
+
+		<Is_Attackable> False </Is_Attackable>
+		<Collidable_By_Projectile_Living> True </Collidable_By_Projectile_Living>
+		<Collidable_By_Projectile_Dead> No </Collidable_By_Projectile_Dead>
+		<Target_Bones> </Target_Bones>
+		<HP_Is_Immune_To_Damage>Yes</HP_Is_Immune_To_Damage>
+   </Hardpoint>
+
 	<HardPoint Name="Alien_Walker_Science_HP_Radiation_Wake">
 		<Variant_Of_Existing_Type>Alien_Walker_Science_Generic_Upgrade_Hardpoint</Variant_Of_Existing_Type>
 
