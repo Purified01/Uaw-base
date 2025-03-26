@@ -23,7 +23,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_UNIT_GIANT_ASSEMBLY_SPIDER </Text_ID>
+      <Text_ID> TEXT_UNIT_MINI_ASSEMBLY_SPIDER </Text_ID>
 
       <!-- 
 			Maria 12.11.2006 - Removing the Health bar from the walkers.  Showing their health bars is 
@@ -235,7 +235,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_PRODUCTION_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
          <Researched_Upgrades>
@@ -3590,7 +3590,7 @@
    <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Assembly_Glyph">
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_UNIT_ALIEN_WALKER_ASSEMBLY_GLYPH </Text_ID>
+      <Text_ID> TEXT_UNIT_PROTO_PRODUCTION_WALKER_ASSEMBLY_GLYPH </Text_ID>
 
       <!-- ART -->
       <Land_Model_Name> WO_Glyph_Assembly.alo </Land_Model_Name>
@@ -3714,7 +3714,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_PRODUCTION_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
          <Researched_Upgrades>
@@ -3767,7 +3767,7 @@
       <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
       <Select_Box_Scale>50</Select_Box_Scale>
       <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-      <Text_ID> TEXT_UNIT_ALIEN_WALKER_ASSEMBLY_BEACON </Text_ID>
+      <Text_ID> TEXT_UNIT_PROTO_PRODUCTION_WALKER_ASSEMBLY_BEACON </Text_ID>
 
       <!-- ATTRIBUTES -->
       <CategoryMask> TacticalBuildableStructure, Small, Stationary </CategoryMask>

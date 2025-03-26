@@ -21,7 +21,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_UNIT_GIANT_SCIENCE_SPIDER </Text_ID>
+      <Text_ID> TEXT_UNIT_MINI_SCIENCE_SPIDER </Text_ID>
       <Select_Box_Scale> 120 </Select_Box_Scale>
       <Select_Box_Z_Adjust> 3.0f </Select_Box_Z_Adjust>
       <Selection_Blob_Material_Name>Selection_Alien_Land_Large</Selection_Blob_Material_Name>
@@ -245,7 +245,7 @@
       </BehaviorType>
 
 	<BehaviorType Name="TooltipBehaviorType">
-		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_SCIENCE </Tooltip_Description_Text_ID>
+		<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_SCIENCE </Tooltip_Description_Text_ID>
 		<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
       <Researched_Upgrades>
@@ -1627,7 +1627,7 @@
    <X10_Proto_Mini_Walkers Name="Proto_Mini_Walker_Science_Glyph">
 
       <!-- ART -->
-      <Text_ID> TEXT_UNIT_ALIEN_WALKER_SCIENCE_GLYPH </Text_ID>
+      <Text_ID> TEXT_UNIT_PROTO_UTILITY_WALKER_SCIENCE_GLYPH </Text_ID>
       <Land_Model_Name> WO_Glyph_Science.alo </Land_Model_Name>
       <Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
       <Scale_Factor> 0.65 </Scale_Factor>
@@ -1747,7 +1747,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_SCIENCE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_SCIENCE </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
          <Researched_Upgrades>
@@ -1799,7 +1799,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		<Select_Box_Scale>50</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-		<Text_ID> TEXT_UNIT_ALIEN_WALKER_SCIENCE_BEACON </Text_ID>
+		<Text_ID> TEXT_UNIT_PROTO_UTILITY_WALKER_SCIENCE_BEACON </Text_ID>
 
 	   <!-- ATTRIBUTES -->
       <CategoryMask> TacticalBuildableStructure, Small, Stationary </CategoryMask>
@@ -3605,7 +3605,7 @@
       <Scale_Factor> 0.4 </Scale_Factor>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_CHAIN_TURRET </Text_ID>
       <Select_Box_Scale>75</Select_Box_Scale>
       <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
       <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -3680,7 +3680,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_STRATEGIC_UPGRADE_BASIC_DEFENSE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_CHAIN_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>
@@ -3706,7 +3706,7 @@
    <!-- PlasmaCannon Under Construction -->
    <HardPoint Name="Proto_Mini_Walker_Science_HP_Chain_Cannon_Under_Construction">
       <Variant_Of_Existing_Type>Proto_Mini_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_CHAIN_TURRET </Text_ID>
       <Scale_Factor> 0.4 </Scale_Factor>
 
       <!-- ART -->
@@ -3723,7 +3723,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_STRATEGIC_UPGRADE_BASIC_DEFENSE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_CHAIN_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>

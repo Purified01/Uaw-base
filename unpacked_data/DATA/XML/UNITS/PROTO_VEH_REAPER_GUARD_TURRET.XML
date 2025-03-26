@@ -21,7 +21,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 		
 		<!-- INTERFACE -->
-		<Text_ID>TEXT_ALIEN_REAPER_TURRET</Text_ID>
+		<Text_ID>TEXT_ALIEN_GUARD_REAPER_TURRET</Text_ID>
 		<Select_Box_Scale>80</Select_Box_Scale>
 		<Select_Box_Z_Adjust>4.0f</Select_Box_Z_Adjust>
 		
@@ -243,7 +243,7 @@
 		</BehaviorType>
 		
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_REAPER_DRONE </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_GUARD_REAPER_DRONE </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
          <Researched_Upgrades>
             TEXT_ALIEN_RESEARCH_TITLE_VOLATILE_REACTORS
@@ -1048,7 +1048,7 @@
 		<Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
 
 		<!-- INTERFACE -->
-		<Text_ID>TEXT_ALIEN_REAPER_TURRET_GLYPH</Text_ID>
+		<Text_ID>TEXT_ALIEN_GUARD_REAPER_TURRET_GLYPH</Text_ID>
 		<Icon_Name>i_icon_ab_reaper_drone.tga</Icon_Name>
 
 		<Select_Box_Scale>120</Select_Box_Scale>
@@ -1167,7 +1167,7 @@
 		
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_REAPER_DRONE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_GUARD_REAPER_DRONE </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
       </BehaviorType>
 
@@ -1211,7 +1211,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		<Select_Box_Scale>50</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-		<Text_ID>TEXT_ALIEN_REAPER_TURRET_BEACON</Text_ID>
+		<Text_ID>TEXT_ALIEN_GUARD_REAPER_TURRET_BEACON</Text_ID>
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> TacticalBuildableStructure, Small, Stationary </CategoryMask>

@@ -241,7 +241,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_HABITAT </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_HABITAT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
 			<Researched_Upgrades>
@@ -2751,7 +2751,7 @@
       <Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_GRENADE_CHAMBER </Text_ID>
 
       <!-- CONFLICT -->
       <Tactical_Health> 850 </Tactical_Health>
@@ -2809,7 +2809,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_FOO_CHAMBER </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_GRENADE_CHAMBER </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
 		</BehaviorType>
 
@@ -2855,7 +2855,7 @@
 		<Variant_Of_Existing_Type>Proto_Walker_Habitat_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
 
 		<!-- INTERFACE -->
-		<Text_ID> TEXT_ALIEN_HP_FOO_CHAMBER </Text_ID>
+		<Text_ID> TEXT_ALIEN_HP_GRENADE_CHAMBER </Text_ID>
 
 		<!-- CONFLICT -->
 		<Tactical_Health> 850 </Tactical_Health>
@@ -2872,7 +2872,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_FOO_CHAMBER </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_GRENADE_CHAMBER </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT_UNDER_CONSTRUCTION </Tooltip_Category>
 		</BehaviorType>
 
@@ -4899,7 +4899,7 @@
 		</BehaviorType>
       
       <BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_HABITAT </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_HABITAT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 			<Researched_Upgrades>
 				TEXT_ALIEN_RESEARCH_TITLE_WALKER_SPEED

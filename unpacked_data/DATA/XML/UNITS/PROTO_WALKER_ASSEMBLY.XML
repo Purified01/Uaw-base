@@ -235,7 +235,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
          <Researched_Upgrades>
@@ -3346,7 +3346,7 @@
       <Scale_Factor> 0.9 </Scale_Factor>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_LASER_CANNON </Text_ID>
       <Select_Box_Scale>75</Select_Box_Scale>
       <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
       <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -3423,7 +3423,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LASER_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>
@@ -3466,7 +3466,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_PLASMA_CANNON </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_HP_LASER_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>
@@ -4398,7 +4398,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_WALKER_ASSEMBLY </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
          <Researched_Upgrades>

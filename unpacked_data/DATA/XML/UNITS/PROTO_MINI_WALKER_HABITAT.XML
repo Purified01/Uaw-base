@@ -21,7 +21,7 @@
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- INTERFACE -->
-		<Text_ID> TEXT_UNIT_GIANT_HABITAT_SPIDER </Text_ID>
+		<Text_ID> TEXT_UNIT_MINI_HABITAT_SPIDER </Text_ID>
 
 
 		<!-- 
@@ -243,7 +243,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_HABITAT </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_PRODUCTION_WALKER_HABITAT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 
 			<Researched_Upgrades>
@@ -4464,7 +4464,7 @@
 	<!-- Crop circle that will act as "walker under construction" object -->
 	<X10_Alien_Walkers Name="Proto_Mini_Walker_Habitat_Glyph">
 		<!-- ART -->
-		<Text_ID> TEXT_UNIT_ALIEN_WALKER_HABITAT_GLYPH </Text_ID>
+		<Text_ID> TEXT_UNIT_PROTO_PRODUCTION_WALKER_HABITAT_GLYPH </Text_ID>
 		<Land_Model_Name> WO_Glyph_Habitat.alo </Land_Model_Name>
 		<Exclude_From_Distance_Fade> true </Exclude_From_Distance_Fade>
 		<Scale_Factor> 0.6 </Scale_Factor>
@@ -4585,7 +4585,7 @@
 		</BehaviorType>
       
       <BehaviorType Name="TooltipBehaviorType">
-			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_WALKER_HABITAT </Tooltip_Description_Text_ID>
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_PROTO_PRODUCTION_WALKER_HABITAT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
 			<Researched_Upgrades>
 				TEXT_ALIEN_RESEARCH_TITLE_WALKER_SPEED
@@ -4636,7 +4636,7 @@
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 		<Select_Box_Scale>50</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
-		<Text_ID> TEXT_UNIT_ALIEN_WALKER_HABITAT_BEACON </Text_ID>
+		<Text_ID> TEXT_UNIT_PROTO_PRODUCTION_WALKER_HABITAT_BEACON </Text_ID>
 
 		<!-- ATTRIBUTES -->
 		<CategoryMask> TacticalBuildableStructure, Small, Stationary </CategoryMask>

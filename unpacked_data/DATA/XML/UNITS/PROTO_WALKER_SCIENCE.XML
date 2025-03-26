@@ -3579,7 +3579,7 @@
       <Scale_Factor> 0.7 </Scale_Factor>
 
       <!-- INTERFACE -->
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_CHAIN_TURRET </Text_ID>
       <Select_Box_Scale>75</Select_Box_Scale>
       <Select_Box_Z_Adjust>10.0f</Select_Box_Z_Adjust>
       <Use_Space_Mode_Selection_Circle> true </Use_Space_Mode_Selection_Circle>
@@ -3654,7 +3654,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_STRATEGIC_UPGRADE_BASIC_DEFENSE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_CHAIN_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>
@@ -3680,7 +3680,7 @@
    <!-- PlasmaCannon Under Construction -->
    <HardPoint Name="Proto_Walker_Science_HP_Chain_Cannon_Under_Construction">
       <Variant_Of_Existing_Type>Proto_Walker_Science_HP_Generic_Under_Construction</Variant_Of_Existing_Type>
-      <Text_ID> TEXT_ALIEN_HP_PLASMA_CANNON </Text_ID>
+      <Text_ID> TEXT_ALIEN_HP_CHAIN_TURRET </Text_ID>
       <Scale_Factor> 0.7 </Scale_Factor>
 
       <!-- ART -->
@@ -3697,7 +3697,7 @@
       </BehaviorType>
 
       <BehaviorType Name="TooltipBehaviorType">
-         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_STRATEGIC_UPGRADE_BASIC_DEFENSE </Tooltip_Description_Text_ID>
+         <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_CHAIN_CANNON </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
          <Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Good_Against>
       </BehaviorType>
