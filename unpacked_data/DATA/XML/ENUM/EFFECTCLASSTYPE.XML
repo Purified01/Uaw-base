@@ -12,6 +12,7 @@
 	<SFX2/>
 	<SFX3/>
 	<Fire/>
+	<HumanNukeFire/>
 	<NovusSignal/>
 	<NovusSingalConnectionVisual/>
 	<Radiation/>
@@ -48,13 +49,17 @@
 	<RevealCloaking/>
 	<RevealCloakingConduit/>
 	<NegateRevealCloaking/>
+	<ImmuneToTornado/>
 	<DefilerRadiation/>
+	<HumanRadiation/>
 	<NovusVirus/>
 	<NovusVirusBomb/>
 	<NovusVirusBombSplash/>
 	<TacticalBuild/>
    <TacticalUpgradedBuild/>
    <TacticalBuildSingleBuilder/>
+   <Nuke/>
+   <MedicHealing/>
    <Healing/>
    <HealingSeeker/>
 	<HealingSentry/>
@@ -109,6 +114,7 @@
 	<SightLink/>
    <SightLinkVisual/>
 	<BurningSight/>
+	<BurningSightUpgraded/>	
 	<FireDamage/>
 	<AreaEffectMod1/>
 	<ElectroPulse/>
@@ -137,7 +143,6 @@
 	<Teleportation_Finish/>
 	<PatchBackupSystems/>
 	<PatchExtrapolation/>
-	<PatchExtrapolationUpgrade/>
 	<PatchOptimizedAssembly/>
 	<PatchOverclock/>
 	<PatchEmergencyPower/>
@@ -153,6 +158,7 @@
 	<NovusVirusAuraGenerators/>
 	<DeactivateNovusVirusAuraGenerators/>
 	<ResearchRapidRebuildBlock/>
+	<ResearchNaniteRepairBlock/>
 	<ResearchAdvancedFlow/>
 	<FlowSpeed/>
 	<PowerTransmissionRadius/>
@@ -188,7 +194,6 @@
    <AchievementAssaultSpecialist/>
    <AchievementMutagenSpecialist/>
    <AchievementQuantumSpecialist/>
-<!--   <QuantumSpecialist/>   -->
    <AchievementSocketEmblem/>
    <AchievementInsigniaOfCorruption/>
    <AchievementKamalsBlessing/>
@@ -209,21 +214,9 @@
 	<MasariVortex/>
 	<ResearchFieryFury/>
 	<PurifyingLight/>
-	<PurifyingLightTemplar/>
-	<PurifyingLightSkyLord/>	
-	<PhosphorAftershock/>		
-	<PurifyingLightPhosphor/>	
-	<PurifyingLightPhosphorStackable/>		
-	<PurifyingLightPhosphorStackableUpgraded/>			
-	<PurifyingLightPhosphorStackableTwenty/>		
-	<PurifyingLightPhosphorStackableUpgradedThirty/>				
-	<PurifyingLightPhosphorStackableLight/>			
+	<PurifyingLightSkyLord/>		
    <PurifyingLightVisual/>
-   <PurifyingLightVisualPhosphor/>   
-   <PurifyingLightVisualPhosphorLong/>      
-   <PurifyingLightVisualPhosphorLonger/>         
    <CripplingShots/>
-   <CripplingShotsTemplar/>   
 	<CripplingShotsVisual/>
    <UpgradingStructure/>
 	<MasariCleanse/>
@@ -296,6 +289,7 @@
 
 	<BlazeOfGlory/>
 	<IceCrystals/>
+	<IceCrystalsDamage/>
 
 	<LockIceCrystals/>
 	<LockBlazeOfGlory/>
@@ -368,7 +362,7 @@
 	<Incignificance/>
 
 	<MatterEngineLeech/>
-	<MatterEngineLeechTemplar/>
+
    <LightBeam/>
    <UpgradedLightBeam/>
 

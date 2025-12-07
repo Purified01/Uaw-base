@@ -283,6 +283,31 @@
 		</Effect_Component>
 
 	</Effect>
+	
+	<Effect Name="RadiationSpitterFieldHealEffectHero">
+		<!-- effect class reuse is intentional -->
+		<Effect_Class> Healing </Effect_Class>
+		<Duration> 5.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second> 0.033 </Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Alien_Heal </Apply_Effect>
+			<SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Radiation_Healing_Glow </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
 
 	<!--=================================================================================================
 	== [11/09/2006] RadiationSpitterFieldVisualEffect 
@@ -349,7 +374,31 @@
       </Effect_Component>
 
    </Effect>
+   
+	<Effect Name="RadiationSpitterFieldHealEffectHeroGamma">
+		<!-- effect class reuse is intentional -->
+		<Effect_Class> Healing </Effect_Class>
+		<Duration> 5.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+      <Percentage_Per_Second> 0.05 </Percentage_Per_Second>
+		</Effect_Component>
+
+		<Effect_Component Type="Sound">
+			<Apply_Effect> SFX_Alien_Heal </Apply_Effect>
+			<SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</SFX_Loop_Type>
+			<Stop_On_Remove>yes</Stop_On_Remove>
+		</Effect_Component>
+
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Radiation_Healing_Glow </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>	
    <!--=================================================================================================
 	== [11/09/2006] RadiationSpitterGamaFieldVisualEffect 
 	================================================================================================== -->

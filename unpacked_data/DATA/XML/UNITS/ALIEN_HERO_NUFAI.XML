@@ -89,9 +89,9 @@
 		<!-- CONFLICT -->
 		<Is_Attackable>true</Is_Attackable>
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
-		<Tactical_Health> 850 </Tactical_Health>
+		<Tactical_Health> 750 </Tactical_Health>
 		<Land_FOW_Reveal_Range>220</Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>	
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>	
 				
 		<!-- BEHAVIORS-->
 		<Behavior>
@@ -156,7 +156,7 @@
 			<Tactical_Build_Cost_Multiplayer> 1400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
-      <Skirmish_Build_Hero_Cooldown_Seconds> 110 </Skirmish_Build_Hero_Cooldown_Seconds>
+      <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
 
     <BehaviorType name="AIBehaviorType">
@@ -385,7 +385,7 @@
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
 				<Applicable_Unit_Categories> Organic | Small | Stationary | LegSocketHP | Hero </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Flying | Bridge | Resource | Resource_INST | DeathCloneResource </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Flying | Bridge | Resource+~Organic | Resource_INST+~Organic | DeathCloneResource </Excluded_Unit_Categories>
             
       </Effect_Generator_Ability>
 			
@@ -396,7 +396,8 @@
 				<Activation_Style> Special_Attack </Activation_Style>
 				<Face_Target> true </Face_Target>
 				<Applicable_Unit_Categories> Piloted </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Organic | Small | Flying | Stationary | Bridge | Huge | Hero </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Organic | Small | Flying | Stationary | Bridge | Huge | Hero | Large + Piloted + CanAttack + RadiationHelps + Male</Excluded_Unit_Categories>
+				<Excluded_Unit_Types> Alien_Superweapon_Reaper_Turret </Excluded_Unit_Types>							
 
 				<!-- Put visuals here-->
 				<Effect_Generator_Name>AlienNufaiConsumptionAbilityGenerator</Effect_Generator_Name>
@@ -469,7 +470,6 @@
 					<Effect_Name> NufaiPhaseClawEffect </Effect_Name>
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
@@ -481,7 +481,6 @@
 					<Effect_Name> NufaiPhaseClawEffect </Effect_Name>
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
@@ -493,7 +492,6 @@
 					<Effect_Name> NufaiPhaseClawDamage </Effect_Name>
 					<Duration> 0.31 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
@@ -505,7 +503,6 @@
 					<Effect_Name> NufaiPhaseClawDamage </Effect_Name>
 					<Duration> 0.61 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
@@ -630,11 +627,6 @@
 
 
 
-	<X10_Alien_Heroes Name="Proto_Hero_Nufai">
-		<Variant_Of_Existing_Type>Alien_Hero_Nufai</Variant_Of_Existing_Type>
-      	<AssetBank> BANK_ALIEN </AssetBank>
-		<Affiliation> Proto </Affiliation>
-	</X10_Alien_Heroes>
 
 
 

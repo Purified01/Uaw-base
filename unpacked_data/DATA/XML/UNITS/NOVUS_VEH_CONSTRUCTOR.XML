@@ -30,7 +30,7 @@
 
 		<!-- ATTRIBUTES -->
         <LOD_Bias>15.0</LOD_Bias>
-		<CategoryMask> Small, CanAttack, RadiationHurts </CategoryMask>
+		<CategoryMask> Small, RadiationHurts </CategoryMask>
 		<Affiliation>Novus</Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 		<Weather_Category>Infantry</Weather_Category>
@@ -474,35 +474,35 @@
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes">
-		
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
 
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>		-->
 		
-      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+      		<Effect_Generator Name="NovusResearchNaniteRepairEffect">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat_Blade </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Effect_Name> NovusResearchNaniteRepairEffect_Builder </Effect_Name>
+					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-			</Effect_Generator>		
+			</Effect_Generator>
+
+			<!-- This effect generator blocks the Nanite Repair healing pulses for a few seconds when the unit takes damage. -->
+			<Effect_Generator Name="NovusResearchNaniteRepairBlockEffect_builder">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchNaniteRepairBlockEffect_Builder </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+				
+			</Effect_Generator>
 
 			<Effect_Generator Name="Novus_Constructor_Build_Effect_Generator">
 				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>

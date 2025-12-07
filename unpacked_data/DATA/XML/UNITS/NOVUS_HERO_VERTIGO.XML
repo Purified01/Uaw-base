@@ -138,13 +138,13 @@
 		<Is_Attackable> true </Is_Attackable>
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead> Yes </Collidable_By_Projectile_Dead>
-		<Land_FOW_Reveal_Range> 275.0 </Land_FOW_Reveal_Range>
+		<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
 		<Ground_Vehicle_Turret_Target> Yes </Ground_Vehicle_Turret_Target>
 
 		<Tactical_Health> 775 </Tactical_Health>
 
-		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -219,7 +219,7 @@
 			<Targeting_Priority_Set> Novus_Vertigo_Target_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 50.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 200.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Novus_Vertigo_Railgun</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.5</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
@@ -298,8 +298,8 @@
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
 			<Tactical_Build_Cost_Campaign> 1600 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 1600 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 55 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Multiplayer> 1700 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 60 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 2 </Tactical_UI_Build_Queue_Order>
          <Skirmish_Build_Hero_Cooldown_Seconds> 120 </Skirmish_Build_Hero_Cooldown_Seconds>
       </BehaviorType>
@@ -663,6 +663,11 @@
 					<Duration> -1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> HeroPerksEffectHeal </Effect_Name>
+					<Duration> -1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>								
 			</Effect_Generator>
 
 		</Effect_Generator_Data>
@@ -777,7 +782,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1200 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>

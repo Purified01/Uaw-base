@@ -870,32 +870,8 @@
    </Effect>
 
 
-   <Effect Name="FooAntiJammingEffect">
-      <Effect_Class> Reformat </Effect_Class>
-      <Duration> -1 </Duration>
-      <Extends_Existing_Duration> true </Extends_Existing_Duration>
-	  
-      <Effect_Component Type="RemoveEffect">
-         <Remove_Effect_Class> ResonanceLockdown </Remove_Effect_Class>
-      </Effect_Component>	  
-	  
-      <Effect_Component Type="BlockEffect">
-         <Block_Effect_Class> ResonanceLockdown </Block_Effect_Class>
-      </Effect_Component>	  
 
-   </Effect>
-   <Effect Name="FooAreaHealEffect">
-      <Effect_Class> Healing </Effect_Class>
-      <Duration> -1 </Duration>
-      <Extends_Existing_Duration> true </Extends_Existing_Duration>
-	  
-      <Effect_Component Type="HealOverTime">
-        <Amount_Per_Second> 6.0 </Amount_Per_Second>
-        <Percentage_Per_Second>0.0</Percentage_Per_Second>
-      </Effect_Component>	  
 
-   </Effect>   
-	
 
    <!--*************************************************************************************************
 	************************************************************************************************** 
@@ -936,6 +912,14 @@
 
       <Duration> 5 </Duration>
       <Effect_Class> Transparent </Effect_Class>
+
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> ViralControl </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+         <Block_Effect_Class> ViralControl </Block_Effect_Class>
+      </Effect_Component>
 
       <Effect_Component Type="RemoveEffect">
          <Remove_Effect_Class> MindControl </Remove_Effect_Class>
@@ -1014,6 +998,13 @@
       <Duration> -1 </Duration>
       <Extends_Existing_Duration> Yes </Extends_Existing_Duration>
 
+      <Effect_Component Type="RemoveEffect">
+         <Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+      </Effect_Component>
+
+      <Effect_Component Type="BlockEffect">
+         <Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+      </Effect_Component>
 
       <Effect_Component Type="RemoveEffect">
          <Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -1051,11 +1042,11 @@
 		<Extends_Existing_Duration> Yes </Extends_Existing_Duration>
 
 		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
 		</Effect_Component>
 
 		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> Cloaking </Block_Effect_Class>
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
 		</Effect_Component>
 
 		<Effect_Component Type="ApplyGenerator">
@@ -1107,7 +1098,7 @@
 
       <Effect_Component Type="Damage">
          <Damage_Type> Damage_Fire </Damage_Type>
-         <Damage_Amount> 6.6 </Damage_Amount>
+         <Damage_Amount> 5.0 </Damage_Amount>
       </Effect_Component>
 
       <Effect_Component Type="ParticleSystem">
@@ -1117,6 +1108,22 @@
 
    </Effect>
 
+   <Effect Name="Burning_Sight_Fire_Damage_Upgraded">
+
+      <Duration> 1 </Duration>
+      <Effect_Class> BurningSightUpgraded </Effect_Class>
+
+      <Effect_Component Type="Damage">
+         <Damage_Type> Damage_Fire </Damage_Type>
+         <Damage_Amount> 6.6 </Damage_Amount>
+      </Effect_Component>
+
+<!--      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+         <Particle_System_Type> Masari_Seer_Burning_Sight_Target </Particle_System_Type>
+      </Effect_Component>-->
+
+   </Effect>
 
    <!--=================================================================================================
     == [10/12/2006] Cloaking effect placed on allies - MLL
@@ -1189,7 +1196,7 @@
 
       <Effect_Component Type="AttributeModifier">
          <Attribute> Spy_Increase_FOW_Range </Attribute>
-         <Modifier_Value> 60.0 </Modifier_Value>
+         <Modifier_Value> 50.0 </Modifier_Value>
       </Effect_Component>
 
       <!-- This makes the reveal behavior refresh -->
@@ -1208,7 +1215,7 @@
 
       <Effect_Component Type="AttributeModifier">
          <Attribute> Spy_Increase_FOW_Range </Attribute>
-         <Modifier_Value> 60.0 </Modifier_Value>
+         <Modifier_Value> 50.0 </Modifier_Value>
       </Effect_Component>
 
       <!-- This makes the reveal behavior refresh -->

@@ -26,7 +26,7 @@
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 
 		<!-- ATTRIBUTES -->
-		<Affiliation> Neutral, Masari, Novus, Alien, Military, Proto </Affiliation>
+		<Affiliation> Neutral, Masari, Novus, Alien, Military </Affiliation>
 		<CategoryMask> Large, Stationary, Insignificant</CategoryMask>
 		<Victory_Relevant>no</Victory_Relevant>
 
@@ -200,7 +200,7 @@
 				<Recharge_Seconds>24.0</Recharge_Seconds>
 				<GUI_Activated_Ability_Name> Detection_Array_Scan_Pulse_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> DetectionArrayScanPulseGenerator </Effect_Generator_Name>
-				<Area_Effect_Decal_Distance> 175.0 </Area_Effect_Decal_Distance>
+				<Area_Effect_Decal_Distance> 200.0 </Area_Effect_Decal_Distance>
 				<Should_Targeting_Ignore_Objects> true </Should_Targeting_Ignore_Objects>
 				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
 
@@ -249,7 +249,7 @@
 					<Effect_Name> DetectionArrayScanPulseEnemyEffect </Effect_Name>
 					<Duration> 7.0 </Duration>
 					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 175.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 200.0 </Area_Effect_Radius>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
 
@@ -257,7 +257,7 @@
 					<Effect_Name> DetectionArrayScanPulseFriendlyEffect </Effect_Name>
 					<Duration> 7.5 </Duration>
 					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 175.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 200.0 </Area_Effect_Radius>
 					<Target_Filter_C> Is_Same_Owner </Target_Filter_C>
 				</Effect_Generator_Entry>
 

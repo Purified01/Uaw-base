@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
 
 --
 -- (C) Petroglyph Games, Inc.
@@ -155,13 +162,6 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_n_research_upgrade_stealth_upgrades.tga" 
 						},
 					[2] = { EffectName="NovusReflexTrooperCloakEffectGenerator", DescriptionTextID=nil, IconName=nil },
-					[3] = { 
-							EffectName="NovusNotOnRadarUpgradeEffectGenerator", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil 
-						},									
-					[4] = { EffectName="ShadowShiftHot", DescriptionTextID=nil, IconName=nil },								
 				},
 				
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
@@ -173,12 +173,6 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_n_research_upgrade_spectrum_cycle_patch.tga" 
 						},
 				},
-				UnlocksEffects =
-				{
-					[1] = { EffectName="BestCloakInTheGameUpgraded", DescriptionTextID=nil, IconName=nil },
-				},					
-				
-
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 55,
@@ -230,7 +224,7 @@ function Init_Research_Tree(tactical_only_game)
 							EffectName="NovusResearchAdvancedFlowEffectGenerator", 
 							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_FLOW_EFFECT",
 							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_FLOW_EFFECT", 
-							IconName="I_ICON_N_RESEARCH_SIGNAL_BRANCH.TGA" 
+							IconName="i_icon_n_research_upgrade_advanced_flow.tga" 
 						},
 						
 					[2] = { 
@@ -314,15 +308,14 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_NOVUS_RESEARCH_EMERGENCY_POWER_PATCH", 
 							IconName="i_icon_n_research_upgrade_emergency_power_patch.tga" 
 						},
+						
 					[2] = { 	
 							ObjectType=Find_Object_Type("Novus_Patch_Overclocking"), 
 							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_OVERCLOCKING",
 							DescriptionTextID="TEXT_NOVUS_PATCH_DESCRIPTION_OVERCLOCKING", 
 							IconName="i_icon_n_patch_overclock.tga" 
-						},										
+						},
 				},
-				
-
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
@@ -379,18 +372,6 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
 				UnlocksSpecialAbilities = {
---					[1] = { 
---							ObjectType=Find_Object_Type("Rosie_Evictor"), 
---							AbilityName="Evictor_Antimatter_Hardpoint", 
---							TitleTextID="TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_WEAPONS",
---							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_WEAPONS",
---							IconName="i_icon_n_research_upgrade_advanced_weaponry.tga" 
---						},
---					[2] = { ObjectType=Find_Object_Type("Rosie_Evictor"), AbilityName="Evictor_Antimatter_Small", DescriptionTextID=nil, IconName=nil },
---					[2] = { ObjectType=Find_Object_Type("Rosie_Evictor"), AbilityName="Evictor_Antimatter_Normal", DescriptionTextID=nil, IconName=nil },					
---					[3] = { ObjectType=Find_Object_Type("Rosie_Evictor"), AbilityName="Evictor_Antimatter_Structure", DescriptionTextID=nil, IconName=nil },							
---					[4] = { ObjectType=Find_Object_Type("Rosie_Evictor"), AbilityName="Evictor_Antimatter_Flying", DescriptionTextID=nil, IconName=nil },							
---					[6] = { ObjectType=Find_Object_Type("Rosie_Evictor_Strat"), AbilityName="Evictor_Double_Antimatter_Strat", DescriptionTextID=nil, IconName=nil },													
 				},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -473,34 +454,24 @@ function Init_Research_Tree(tactical_only_game)
 						IconName="i_icon_n_research_upgrade_collector_speed.tga" 
 					},		
 					[2] = { 
-						EffectName="NovusResearchRapidRebuildEffectGenerator",
-						TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_RAPID_REBUILD_EFFECT",
-						DescriptionTextID="TEXT_NOVUS_RESEARCH_RAPID_REBUILD_EFFECT_FIXED", 
-						IconName="i_icon_n_research_upgrade_rapid_rebuild.tga" 
+							EffectName="NovusResearchRapidRebuildEffectGenerator",
+							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_RAPID_REBUILD_EFFECT",
+							DescriptionTextID="TEXT_NOVUS_RESEARCH_RAPID_REBUILD_EFFECT", 
+							IconName="i_icon_n_research_upgrade_rapid_rebuild.tga" 
 					},
 
 					[3] = { EffectName="NovusResearchRapidRebuildBlockEffectGenerator", DescriptionTextID=nil, IconName=nil },						
 												
 				},
 
-
-
-				LocksEffects = {
-	
+				LocksEffects =
+				{
 					[1] = { EffectName="NovusCollectorGatherResourcesVisualEffect", DescriptionTextID=nil, IconName=nil },
 				},
 
-
 				UnlocksEffects =
 				{
-
 					[1] = { EffectName="NovusCollectorGatherUpgradeVisualEffect", DescriptionTextID=nil, IconName=nil },
-					[2] = { EffectName="NovusPatchBackupSystemsRegenEffectInfantry", DescriptionTextID=nil, IconName=nil },
-					[3] = { EffectName="NovusPatchBackupSystemsRegenEffectStructure", DescriptionTextID=nil, IconName=nil },			
-					[4] = { EffectName="NovusPatchBackupSystemsRegenEffectMediumVehicle", DescriptionTextID=nil, IconName=nil },	
-					[5] = { EffectName="NovusPatchBackupSystemsRegenEffectLargeVehicle", DescriptionTextID=nil, IconName=nil },						
-				
-
 				},
 
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
@@ -529,11 +500,11 @@ function Init_Research_Tree(tactical_only_game)
 				-- TO BE DETERMINED BY DESIGN ---- BEGIN
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- List of types that will be unlocked when research of this suite is completed!
-				UnlocksTypes = {										
+				UnlocksTypes = {
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {				
+				UnlocksUnitAbilities = {
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -542,23 +513,6 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!
 				UnlocksSpecialAbilities = {
---					[1] = { 
---							ObjectType=Find_Object_Type("Rosie_Evictor"), 
---							AbilityName="Evictor_Structure_Pierce", 
---							TitleTextID="TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_FLECHETTES",
---							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_FLECHETTES",
---							IconName="i_icon_n_research_upgrade_advanced_flechettes.tga" 
---						},					
-					[1] = { 
-							ObjectType=Find_Object_Type("Novus_Robotic_Infantry"), 
-							AbilityName="Ohm_Advanced_Flechettes", 
-							TitleTextID="TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_FLECHETTES",
-							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_FLECHETTES",
-							IconName="i_icon_n_research_upgrade_advanced_flechettes.tga" 
-						},											
---					[2] = { ObjectType=Find_Object_Type("Rosie_Evictor"), AbilityName="Evictor_Double_Antimatter", DescriptionTextID=nil, IconName=nil },																											
-					[2] = { ObjectType=Find_Object_Type("Novus_Variant"), AbilityName="Variant_Advanced_Flechettes", DescriptionTextID=nil, IconName=nil },									
---					[3] = { ObjectType=Find_Object_Type("Novus_Variant"), AbilityName="Variant_Advanced_Flechettes_2", DescriptionTextID=nil, IconName=nil },							
 				},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -574,12 +528,14 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_n_research_upgrade_matter_conversion_ability.tga" 
 						},
 
+					[2] = {
+                            EffectName="FlechetteUpgrade", 
+							TitleTextID="TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_FLECHETTES",
+							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_FLECHETTES",
+							IconName="i_icon_n_research_upgrade_advanced_flechettes.tga" 
+                        },
 					
 				},
-
-					
-
-
 				
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
 				UnlocksPatches = {		
@@ -616,15 +572,7 @@ function Init_Research_Tree(tactical_only_game)
 				-- TO BE DETERMINED BY DESIGN ---- BEGIN
 				-- -----------------------------------------------------------------------------------------------------------------
 				-- List of types that will be unlocked when research of this suite is completed!
-				UnlocksTypes =
-				{
---					[1] = { 
---							ObjectType=Find_Object_Type("Rosie_Incinerator"), 
---							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_DESTRUCTOR",
---							DescriptionTextID="TEXT_NOVUS_RESEARCH_DESTRUCTOR", 
---							IconName="i_icon_n_research_destructor.tga" 
---							},
---
+				UnlocksTypes = {
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
@@ -645,6 +593,7 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_n_research_upgrade_destructor.tga" 
 						},
 				},
+				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {
 				},
@@ -655,37 +604,27 @@ function Init_Research_Tree(tactical_only_game)
 							EffectName="NovusResearchNaniteRefinementEffectGenerator", 
 							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY",
 							DescriptionTextID="TEXT_NOVUS_RESEARCH_NANITE_REFINEMENT_ABILITY", 
-							IconName="I_ICON_N_RESEARCH_UPGRADE_NANITE_REFINEMENT_ABILITY.TGA" 
+							IconName="i_icon_n_research_upgrade_nanite_refinement_ability.tga" 
 						},
 					[2] = { 
-								EffectName="Alien_Brute_Regenerate_Effect_Generator_Flat",
-								TitleTextID = nil,
-								DescriptionTextID=nil, 
-								IconName=nil 
-						},							
-					[3] = { 
-								EffectName="Alien_Brute_Regenerate_Effect_Generator_Flat_Blade",
-								TitleTextID = nil,
-								DescriptionTextID=nil, 
-								IconName=nil 
-						},										
+							EffectName="NovusResearchNaniteRepairEffect",
+							TitleTextID = nil,
+							DescriptionTextID=nil, 
+							IconName=nil 
+						},	
+
+					[3] = { EffectName="NovusResearchNaniteRepairBlockEffect", DescriptionTextID=nil, IconName=nil },											
 				},
-				
---[[				LocksGenerators = 
-				{
-					[1] = { EffectName="NovusResearchRapidRebuildBlockEffectGenerator", DescriptionTextID=nil, IconName=nil },
-				},				--]]
 				
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
 				UnlocksPatches = {
 					[1] = { 
 							ObjectType=Find_Object_Type("Novus_Patch_Optimized_Assembly"), 
 							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_OPTIMIZED_ASSEMBLY",
-							DescriptionTextID="TEXT_NOVUS_PATCH_OPTIMIZED_ASSEMBLY_DESCRIPTION", 
+							DescriptionTextID="TEXT_NOVUS_PATCH_DESCRIPTION_OPTIMIZED_ASSEMBLY", 
 							IconName="i_icon_n_patch_optimized_assembly.tga" 
 						},
 				},
-
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
@@ -886,19 +825,7 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
-				UnlocksGenerators = {
-					[1] = { 
-							EffectName="MasariStationaryRevelationGeneratorMonitor", 
-							TitleTextID = "TEXT_NOVUS_RESEARCH_TITLE_ADVANCED_OPTICS",
-							DescriptionTextID="TEXT_NOVUS_RESEARCH_ADVANCED_OPTICS", 
-							IconName="ABILITY_MONITOR_RADAR.TGA" 
-						},			
-					[2] = { 
-							EffectName="MasariStationaryRevelationGeneratorDetectionConduit", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil 
-						},																	
+				UnlocksGenerators = {																
 				},
 				
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
@@ -912,22 +839,6 @@ function Init_Research_Tree(tactical_only_game)
 						},
 						
 				},
-				UnlocksEffects =
-				{				
-					[1] = { EffectName="NovusHackerFirewallCleanseEnemyUpgraded", DescriptionTextID=nil, IconName=nil },
-					[2] = { EffectName="NovusHackerFirewallCleanseVirusUpgraded", DescriptionTextID=nil, IconName=nil },
-					[3] = { EffectName="NovusHackerFirewallCleanseMindControlUpgraded", DescriptionTextID=nil, IconName=nil },			
-					[4] = { EffectName="NovusPatchExtrapolationEffectUnits", DescriptionTextID=nil, IconName=nil },					
---					[4] = { EffectName="NovusAmplifierCleanseMindControl", DescriptionTextID=nil, IconName=nil },																
-
-
-				
-
-				},												
-
-
-
-
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
@@ -955,14 +866,7 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {
-					[1] = { 
-							TypeName = "Novus_Corruptor", 
-							AbilityName="Novus_Corruptor_Viral_Bomb_Unit_Ability", 
-							TitleTextID="TEXT_NOVUS_RESEARCH_TITLE_VIRAL_INTERDICTION",
-							DescriptionTextID="TEXT_NOVUS_RESEARCH_VIRAL_INTERDICTION",
-							IconName="ABILITY_CORRUPTOR_BOMB.TGA" 
-						},												
+				UnlocksUnitAbilities = {											
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -979,7 +883,7 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="I_ICON_N_RESEARCH_UPGRADE_IMPROVED_MANIPULATION.TGA" 
 						},					
 				},
-
+				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {
 				},
@@ -992,23 +896,7 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of PATCHES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksPatches = {
-
-				},
-				
-				UnlocksEffects =
-				{					
-					[1] = { 
-							EffectName="NovusAmplifierHarmonicPulseAircraftEffect", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil 
-						},								
-
-				
-
-				},		
-
+				UnlocksPatches = {},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 90,
@@ -1056,3 +944,47 @@ function Initialize_Branch_Data()
 	PathToBranchMap["B"] = Branch_NANOTECH
 	PathToBranchMap["C"] = Branch_COMPUTING 
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Research_Complete = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Offline_Achievement = nil
+	Update_Research_Progress = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

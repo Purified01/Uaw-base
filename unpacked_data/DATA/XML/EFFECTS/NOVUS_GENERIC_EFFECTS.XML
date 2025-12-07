@@ -106,6 +106,14 @@
          <Attribute> Unit_Build_Rate_Multiplier </Attribute>
          <Modifier_Value> -0.5 </Modifier_Value>
 		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -172,6 +180,14 @@
 			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
 			<Modifier_Value> -0.5 </Modifier_Value>
 		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>		
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -223,7 +239,7 @@
 		</Effect_Component>
 
 		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> Blackout_Area </Particle_System_Type>
+			<Particle_System_Type> Blackout_Area_Reflex </Particle_System_Type>
 		</Effect_Component>
 
 	</Effect>
@@ -249,8 +265,13 @@
 		<!-- Slow target down -->
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
-			<Modifier_Value> -0.99 </Modifier_Value>
+			<Modifier_Value> -0.96 </Modifier_Value>
 		</Effect_Component>
+		
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+         <Modifier_Value> -0.99 </Modifier_Value>
+      </Effect_Component>		
 
 	</Effect>
 

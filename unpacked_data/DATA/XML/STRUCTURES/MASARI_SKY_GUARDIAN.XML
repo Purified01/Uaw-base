@@ -461,7 +461,7 @@
          <Tactical_Buildable_Constructed> Masari_Sky_Guardian </Tactical_Buildable_Constructed>
          <Tactical_Build_Cost_Multiplayer> 60 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Cost_Campaign> 60 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 34 </Tactical_Build_Time_Seconds>
          <Tactical_UI_Build_Queue_Order> 8 </Tactical_UI_Build_Queue_Order>
          <Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
       </BehaviorType>
@@ -530,6 +530,7 @@
          <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_SKY_GUARDIAN_LIGHT </Tooltip_Description_Text_ID>
          <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
         <Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
+        <Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_VEHICLES </Tooltip_Vulnerable_To>
       </BehaviorType>
       
       <Effect_Generator_Data SubObjectList="Yes">
@@ -1005,9 +1006,9 @@
 
       <BehaviorType Name="BuildableObjectBehaviorType">
          <Tactical_Buildable_Constructed>Masari_Sky_Guardian_Wind_Screen</Tactical_Buildable_Constructed>
-         <Tactical_Build_Cost_Multiplayer> 45 </Tactical_Build_Cost_Multiplayer>
+         <Tactical_Build_Cost_Multiplayer> 50 </Tactical_Build_Cost_Multiplayer>
          <Tactical_Build_Cost_Campaign> 50 </Tactical_Build_Cost_Campaign>
-         <Tactical_Build_Time_Seconds> 27 </Tactical_Build_Time_Seconds>
+         <Tactical_Build_Time_Seconds> 40 </Tactical_Build_Time_Seconds>
       </BehaviorType>
 
       <Attributes SubObjectList="Yes">
@@ -1173,7 +1174,7 @@
                <Effect_Name> MasariResearchBurningAuraEffect </Effect_Name>
                <Duration> 1.8 </Duration>
                <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-               <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
+               <Target_Filter_Categories> ~DeathCloneResource + ~Resource + ~Resource_INST + ~Stationary | ~DeathCloneResource + ~Resource + ~Resource_INST + ~Insignificant </Target_Filter_Categories>
                <Target_Filter_C> Is_Enemy </Target_Filter_C>
                <Area_Effect_Radius> 100.0 </Area_Effect_Radius>
             </Effect_Generator_Entry>
@@ -1291,14 +1292,15 @@
 			HIDE_WHEN_FOGGED,
 		</LandBehavior>
 
-		<BehaviorType Name="RedirectProjectileBehaviorType">
-			<Starting_Mode> Redirection </Starting_Mode>
-			<Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
-			<Absorption_Terminal_Velocity> 17.0 </Absorption_Terminal_Velocity>
-			<Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
-			<Max_Redirected_Projectiles> 4 </Max_Redirected_Projectiles>
-			<Redirection_Velocity> 7.0 </Redirection_Velocity>
-		</BehaviorType>
+      <BehaviorType Name="RedirectProjectileBehaviorType">
+         <Starting_Mode> Reflection </Starting_Mode>
+         <Absorption_Gravitational_Constant> 25000 </Absorption_Gravitational_Constant>
+         <Absorption_Terminal_Velocity> 10.0 </Absorption_Terminal_Velocity>
+         <Absorption_Dampening_Coefficient> .9 </Absorption_Dampening_Coefficient>
+         <Max_Redirected_Projectiles> 3 </Max_Redirected_Projectiles>
+         <Redirection_Velocity> 15.0 </Redirection_Velocity>
+         <Reflection_Chance> 0.7 </Reflection_Chance>
+      </BehaviorType>
 
    </X13_Masari_Structures>
 

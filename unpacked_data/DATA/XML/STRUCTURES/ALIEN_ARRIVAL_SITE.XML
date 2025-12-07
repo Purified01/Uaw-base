@@ -295,7 +295,7 @@
 		</Attributes>
 
 		<CategoryMask> Large, Stationary, TacticalBuildableStructure, Female </CategoryMask>
-		<Affiliation> Alien, Proto, Alien_ZM06_KamalRex </Affiliation>
+		<Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
 		<Victory_Relevant> No </Victory_Relevant>
 
 		<!-- MOVEMENT -->
@@ -572,4 +572,8 @@
 	</X10_Alien_Structures>
 
 
+
+
+
 </Alien_Arrival_Site_XML>
+

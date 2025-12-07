@@ -398,13 +398,15 @@
       <Tactical_Builder> null </Tactical_Builder>
    </Dependency>
 
-
+   <!-- TACTICAL STRUCTURE: Masari Neophyte's Lab -->
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
+		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
+		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Atlatea, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -412,10 +414,11 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-
+		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
+		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Will_Processor, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -423,11 +426,11 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-
+		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-
+		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -435,11 +438,11 @@
 	<Dependency>
 		<Built_Object> Masari_Inventors_Lab </Built_Object>
 
-
+		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-
+		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Element_Magnet, Masari_Elemental_Collector, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
@@ -574,68 +577,23 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects><!-- Masari_Foundation, -->Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Foundation, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 	
-<!--	<Dependency>
-		<Built_Object> Rosie_Light_Bomb_Guardian </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Masari_Foundation, Masari_Architect </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>-->
 	
 	<!-- TACTICAL STRUCTURE: Masari Ground Inspiration -->
-<!--	<Dependency>
+	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
 
-
+		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
 
-
+		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Atlatea, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
-
-	<Dependency>
-		<Built_Object> Masari_Ground_Inspiration </Built_Object>
-
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-
-		<Tactical_Required_Objects> Masari_Will_Processor, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Masari_Ground_Inspiration </Built_Object>
-
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-
-		<Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Masari_Ground_Inspiration </Built_Object>
-
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-
-		<Tactical_Required_Objects> Masari_Element_Magnet, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>-->
 
 	<Dependency>
 		<Built_Object> Masari_Ground_Inspiration </Built_Object>
@@ -645,7 +603,43 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Will_Processor, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Masari_Ground_Inspiration </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Key_Inspiration, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Masari_Ground_Inspiration </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Element_Magnet, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Masari_Ground_Inspiration </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Masari_Foundation, Masari_Infantry_Inspiration, Masari_Architect </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -1157,19 +1151,7 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
 	</Dependency>
-
-	<!-- UNIT: Masari_Stomper -->
-	<!--	<Dependency>
-		<Built_Object> rOSIE_stomper </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
-	</Dependency>-->
-	
-	<!-- UNIT: Masari_Greatsword -->
+	<!-- UNIT: Rosie_Masari_Scout -->
 	<Dependency>
 		<Built_Object> Masari_Stormchaser </Built_Object>
 
@@ -1180,48 +1162,15 @@
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Masari_Stormchaser </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
 	</Dependency>	
-	
-<!--	<Dependency>
-		<Built_Object> Rosie_Strix </Built_Object>
 
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects>  </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Foundation </Tactical_Builder>
-	</Dependency>	-->
-	
-	<!-- UNIT: Masari_Templar -->
-	<Dependency>
-		<Built_Object> Rosie_Landlord </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Masari_Guardian </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Infantry_Inspiration</Tactical_Builder>
-	</Dependency>	
-	
 	<Dependency>
 		<Built_Object> Masari_Stormchaser </Built_Object>
 
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
 		<Strategic_Builder> Null </Strategic_Builder>
 
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Will_Processor </Tactical_Builder>
 	</Dependency>			
 	
@@ -1231,7 +1180,7 @@
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
 		<Strategic_Builder> Null </Strategic_Builder>
 
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Atlatea </Tactical_Builder>
 	</Dependency>				
 	
@@ -1241,7 +1190,7 @@
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
 		<Strategic_Builder> Null </Strategic_Builder>
 
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Key_Inspiration </Tactical_Builder>
 	</Dependency>				
 	
@@ -1251,73 +1200,9 @@
 		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
 		<Strategic_Builder> Null </Strategic_Builder>
 
-		<Tactical_Required_Objects> Masari_Infantry_Inspiration </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Masari_Elemental_Collector </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Element_Magnet </Tactical_Builder>
 	</Dependency>		
-	
-	<Dependency>
-		<Built_Object> Rosie_Winged_Collector </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Central_Processor </Tactical_Builder>
-	</Dependency>					
-	
-	<Dependency>
-		<Built_Object> Rosie_Winged_Collector </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Material_Center </Tactical_Builder>
-	</Dependency>					
-	
-	<Dependency>
-		<Built_Object> Rosie_Winged_Collector </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Nanocenter </Tactical_Builder>
-	</Dependency>					
-		
-	<Dependency>
-		<Built_Object> Rosie_Winged_Collector </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Research_Center </Tactical_Builder>
-	</Dependency>					
-			
-	
-<!--	<Dependency>
-		<Built_Object> Rosie_Landlord </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Masari_Natural_Interpreter_of_Hostility, Masari_Sky_Guardian_Wind_Screen </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
-	</Dependency>		-->
-	
-	<Dependency>
-		<Built_Object> Rosie_Landlord </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Hero_Charos </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
-	</Dependency>	
-	
 	<!-- UNIT: Masari_Disciple -->
 	<Dependency>
 		<Built_Object> Masari_Disciple </Built_Object>
@@ -1391,19 +1276,6 @@
 		<Tactical_Required_Objects> Masari_Inventors_Lab </Tactical_Required_Objects>
 		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
 	</Dependency>
-	
-	<!-- UNIT: Masari_Seer -->
-	<Dependency>
-		<Built_Object> Masari_Seer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Masari_Natural_Interpreter </Tactical_Required_Objects>
-		<Tactical_Builder> Masari_Infantry_Inspiration </Tactical_Builder>
-	</Dependency>	
 
 	<Dependency>
 		<Built_Object> Masari_Seer </Built_Object>
@@ -1952,28 +1824,6 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
-	<!-- TACTICAL STRUCTURE: Teleporter -->
-	<Dependency>
-		<Built_Object> Alien_Relocator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-<!--	<Dependency>
-		<Built_Object> Rosie_Signal_Walker </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Alien_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>-->
 	
 	<!-- TACTICAL STRUCTURE: Alien scan drone -->
 	<Dependency>
@@ -1985,18 +1835,6 @@
 
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Alien_Superweapon_Reaper_Turret, Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Scan_Drone </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects>  Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -2063,6 +1901,21 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
+
+	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
+	<Dependency>
+		<Built_Object> Alien_Radiation_Spitter </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+
 	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
 	<Dependency>
 		<Built_Object> Alien_Radiation_Spitter </Built_Object>
@@ -2076,9 +1929,11 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
-	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
+
+
+	<!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
 	<Dependency>
-		<Built_Object> Alien_Radiation_Spitter </Built_Object>
+		<Built_Object> Alien_Gravitic_Manipulator </Built_Object>
 
 		<!-- Strategic requirements -->
 		<Strategic_Required_Objects> null </Strategic_Required_Objects>
@@ -2087,7 +1942,20 @@
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>	
+	</Dependency>
+
+  <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
+  <Dependency>
+    <Built_Object> Alien_Gravitic_Manipulator </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
 
   <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
   <Dependency>
@@ -2102,33 +1970,7 @@
     <Tactical_Builder> null </Tactical_Builder>
   </Dependency>
 
-  <!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
-  <Dependency>
-    <Built_Object> Alien_Gravitic_Manipulator </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> Alien_Walker_Assembly, Alien_Glyph_Carver </Tactical_Required_Objects>
-    <Tactical_Builder> null </Tactical_Builder>
-  </Dependency>
-  
-	<!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
-	<Dependency>
-		<Built_Object> Alien_Gravitic_Manipulator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Scan_Drone, Alien_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
+	<!-- TACTICAL SUPERWEAPON PURIFIER -->
 	<Dependency>
 		<Built_Object> Alien_Superweapon_Purifier </Built_Object>
 
@@ -2137,7 +1979,9 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<!-- <Tactical_Required_Objects> Alien_Walker_Science, Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects> -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -2189,7 +2033,66 @@
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
-	
+	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
+	<Dependency>
+		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Arrival_Site, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Hierarchy_Core, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> Alien_Creation_Core </Strategic_Required_Objects>
+		<Strategic_Builder> Alien_Creation_Core </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Creation_Core, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Theory_Core, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>
+
+	<Dependency>
+		<Built_Object> Alien_Superweapon_Mass_Drop </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> Alien_Walker_Science, Alien_Abduction_Core, Alien_Glyph_Carver </Tactical_Required_Objects>
+		<Tactical_Builder> null </Tactical_Builder>
+	</Dependency>	
 	
 	<!-- TACTICAL STRUCTURE: Alien Reaper Glyph -->
 	<Dependency>
@@ -2530,6 +2433,18 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Assembly_Body_Socket </Tactical_Builder>
 	</Dependency>	
+	
+	<Dependency>
+		<Built_Object> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
+
+		<!-- Strategic requirements -->
+		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Builder> null </Strategic_Builder>
+
+		<!-- Tactical requirements -->
+		<Tactical_Required_Objects> null </Tactical_Required_Objects>
+		<Tactical_Builder> Alien_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
+	</Dependency>		
 
 	<Dependency>
 		<Built_Object> Alien_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
@@ -3353,30 +3268,6 @@
 <!--************************************************************************
 ******** HIERARCHY UNITS *************************************************-->
 
-	<!-- UNIT: Alien Revenant -->
-	<Dependency>
-		<Built_Object> Rosie_Shade </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Alien_Arrival_Site </Tactical_Builder>
-	</Dependency>
-
-	<!-- UNIT: Alien Glyph Carver -->
-<!--	<Dependency>
-		<Built_Object> Rosie_Cipher </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Alien_Arrival_Site </Tactical_Builder>
-	</Dependency>-->
-
 	<!-- UNIT: Alien Glyph Carver -->
 	<Dependency>
 		<Built_Object> Alien_Glyph_Carver </Built_Object>
@@ -3437,17 +3328,6 @@
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Abduction_Core </Tactical_Builder>
 	</Dependency>
-	
-		<!-- UNIT: Alien Invasion Transport -->
-<!--	<Dependency>
-		<Built_Object> ALIEN_Air_Invasion_Transport_Rosie_2 </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
-  	</Dependency>	-->
 
 		<!-- UNIT: Alien Gunship Saucer -->
 	<Dependency>
@@ -3473,7 +3353,6 @@
 		<Tactical_Required_Objects> Alien_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Required_Objects>
 		<Tactical_Builder> Alien_Walker_Assembly </Tactical_Builder>
   	</Dependency>
-
 
 	<!-- UNIT: Alien Grunt -->
 	<Dependency>
@@ -3686,1243 +3565,6 @@
 		<Tactical_Builder> Alien_Hierarchy_Core </Tactical_Builder>
 	</Dependency>
 
-<!-- ***********************************************************************
-******** PROTO BUILD ORDER DEPENDENCIES ********************************
-**************************************************************************-->
-
-	<Dependency>
-		<Built_Object> Proto_Arrival_Site </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Glyph_Carver </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Cylinder </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Reaper_Turret </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Reaper_Guard_Turret </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Scan_Drone </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<!-- TACTICAL STRUCTURE: Alien Gravitic Manipulator -->
-	<Dependency>
-		<Built_Object> Proto_Gravitic_Manipulator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Scan_Drone, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<Dependency>
-		<Built_Object> Proto_Gravitic_Manipulator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<Dependency>
-		<Built_Object> Proto_Gravitic_Manipulator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<!-- TACTICAL STRUCTURE: Alien Radiation Spitter -->
-	<Dependency>
-		<Built_Object> Proto_Radiation_Spitter </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Scan_Drone, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<Dependency>
-		<Built_Object> Proto_Radiation_Spitter </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-	<Dependency>
-		<Built_Object> Proto_Radiation_Spitter </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>  
-
-
-	<!-- TACTICAL SUPERWEAPON: Alien Mass Drop -->
-	<Dependency>
-		<Built_Object> Proto_Superweapon_Purifier </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Science, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-
-<!--************************************************************************
-******** HIERARCHY STRUCTURAL HARDPOINTS *********************************-->
-
-	<!-- HARDPOINT: Desolator Turret -->
-	<Dependency>
-		<Built_Object> Proto_Radiation_Spitter_HP_Desolator_Turret </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Radiation_Spitter </Tactical_Builder>
-	</Dependency>
-
-	<!-- HARDPOINT: Gravitic Controller -->
-	<Dependency>
-		<Built_Object> Proto_Gravitic_Manipulator_HP_Gravitic_Controller </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Gravitic_Manipulator </Tactical_Builder>
-	</Dependency>
-
-<!--************************************************************************
-******** HIERARCHY HEROS *********************************-->
-
-
-	<Dependency>
-		<Built_Object> Proto_Hero_Kamal_Rex </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
-		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Hero_Nufai </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
-		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
-	</Dependency>
-	
-	<!-- HERO: Orlok -->
-	<Dependency>
-		<Built_Object> Proto_Hero_Orlok </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Alien_Hierarchy_Core </Strategic_Required_Objects>
-		<Strategic_Builder> Alien_Hierarchy_Core </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Arrival_Site </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat, Proto_Scan_Drone, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat, Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Scan_Drone, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Reaper_Turret, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Science </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly, Proto_Arrival_Site, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Scan_Drone, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Reaper_Turret, Proto_Glyph_Carver </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>
-
-
-
-	<!-- UNIT: Alien Grunt -->
-	<Dependency>
-		<Built_Object> Proto_Grunt </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
-	</Dependency>
-
-
-	<!-- UNIT: Alien Lost One -->
-	<Dependency>
-		<Built_Object> Proto_Lost_One </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
-	</Dependency>
-
-	<!-- UNIT: Alien Brute -->
-	<Dependency>
-		<Built_Object> Proto_Brute </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Habitat_HP_Brute_Mutator </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat </Tactical_Builder>
-	</Dependency>
-
-	<!-- UNIT: Alien Recon Tank -->
-	<Dependency>
-		<Built_Object> Proto_Recon_Tank </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
-	</Dependency>
-	
-	<!-- UNIT: Alien Saucer -->
-	<Dependency>
-		<Built_Object> Proto_Foo_Core </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
-	</Dependency>
-
-	<!-- UNIT: Alien Defiler -->
-	<Dependency>
-		<Built_Object> Proto_Defiler </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Defiler_Assembly_Pod </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
-	</Dependency>
-
-	<!-- UNIT: Alien Aggressor -->
-
-	<Dependency>
-		<Built_Object> Proto_Heavy_Gunship </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly </Tactical_Builder>
-  	</Dependency>
-
-	<!-- HARDPOINTS: Habitat Walker -->
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Armor_Crown </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Terrain_Conditioner </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Grenade_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Armor_Leg </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Plasma_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Arc_Trigger </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Habitat_Leg </Tactical_Builder>
-	</Dependency>
-
-	<!-- HARDPOINTS: Mini Habitat Walker -->
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Lost_One_Mutator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Brute_Mutator </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Body </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Habitat </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Terrain_Conditioner </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Habitat_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Habitat_Leg </Tactical_Builder>
-	</Dependency>
-
-  <Dependency>
-    <Built_Object> Proto_Mini_Walker_Habitat_HP_Material_Optimizer </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> null </Tactical_Required_Objects>
-    <Tactical_Builder> Proto_Mini_Walker_Habitat_Leg </Tactical_Builder>
-  </Dependency>
-
-  <Dependency>
-    <Built_Object> Proto_Mini_Walker_Habitat_HP_Teleport_Accelerator_Leg </Built_Object>
-
-    <!-- Strategic requirements -->
-    <Strategic_Required_Objects> null </Strategic_Required_Objects>
-    <Strategic_Builder> null </Strategic_Builder>
-
-    <!-- Tactical requirements -->
-    <Tactical_Required_Objects> null </Tactical_Required_Objects>
-    <Tactical_Builder> Proto_Mini_Walker_Habitat_Leg </Tactical_Builder>
-  </Dependency>
-
-	<!-- HARDPOINTS: Assembly Walker -->
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Armor_Crown </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Face_Cap_Armor_Crown </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Mass_Driver </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Mass_Driver </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Scarn_Beam </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Scarn_Beam </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Armor_Leg </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Plasma_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Arc_Trigger </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Laser_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Science </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Assembly_HP_Laser_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Science </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<!-- HARDPOINTS: Mini Assembly Walker -->
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Defiler_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Defiler_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-	
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Phase_Tank_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>	
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Aggressor_Assembly_Pod </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>	
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Face_Cap_Armor_Crown </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Body_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_FaceCap_Socket </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Material_Optimizer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Assembly_HP_Teleport_Accelerator_Leg </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Assembly_Leg </Tactical_Builder>
-	</Dependency>
-		
-
-
-	<!-- HARDPOINTS: Science Walker -->
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Habitat_HP_Shield_Node </Built_Object>
-		
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-		<!-- Tactical requirements -->
-
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	  </Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Mind_Magnet </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_AI_Magnet </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<!-- Radiation Cascade Generator-->
-		<Built_Object> Proto_Walker_Science_HP_Radiation_Wake </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<!-- This is the Scanning Relay -->
-		<Built_Object> Proto_Walker_Science_HP_Scanning_Node </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Scan_Drone </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<!-- This is the Chain Gun -->
-		<Built_Object> Proto_Walker_Science_HP_Chain_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Mini_Walker_Science </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Dark_Matter_Vent </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Walker_Science_HP_Arc_Trigger </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<!-- HARDPOINTS: Science Mini Walker -->
-
-	<Dependency>
-		<!-- This is the reaper hardpoint -->
-		<Built_Object> Proto_Mini_Walker_Science_HP_Reaper </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<!-- This is the scanning hardpoint -->
-		<Built_Object> Proto_Mini_Walker_Science_HP_Scanning_Node </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Science_HP_Heat_Sink </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Science_HP_Foo_Chamber </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Proto_Walker_Assembly </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<Built_Object> Proto_Mini_Walker_Science_HP_Range_Enhancer </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Leg </Tactical_Builder>
-	</Dependency>
-
-	<Dependency>
-		<!-- This is the Chain Gun -->
-		<Built_Object> Proto_Mini_Walker_Science_HP_Chain_Cannon </Built_Object>
-
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Proto_Mini_Walker_Science_Horn </Tactical_Builder>
-	</Dependency>
 
 	<!-- ***********************************************************************
 ******** NOVUS BUILD ORDER DEPENDENCIES ************************************
@@ -5418,18 +4060,6 @@
 		<Tactical_Required_Objects> Novus_Remote_Terminal, Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
-	
-	<!-- TACTICAL STRUCTURE: Novus Robotic Assembly -->
-<!--	<Dependency>
-		<Built_Object> NOVUS_repair_pad </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Constructor </Tactical_Required_Objects>
-		<Tactical_Builder> null </Tactical_Builder>
-	</Dependency>	-->
-
 	<!-- TACTICAL STRUCTURE: Novus Robotic Assembly -->
 	<Dependency>
 		<Built_Object> NOVUS_Detection_Conduit </Built_Object>
@@ -5439,7 +4069,7 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Novus_Signal_Tower, Novus_Input_Station, Novus_Constructor </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Input_Station, Novus_Power_Router, Novus_Constructor </Tactical_Required_Objects>
 		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
@@ -5810,39 +4440,7 @@
 <!--************************************************************************
 ******** NOVUS UNITS *****************************************************-->
 
-	<!-- UNIT: Novus_Dervish_Incinerator -->
-<!--	<Dependency>
-		<Built_Object> Rosie_Dervish_Gunship </Built_Object>
 
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Remote_Terminal </Tactical_Builder>
-	</Dependency>-->
-	
-	<!-- UNIT: Novus_Evictor -->
-<!--	<Dependency>
-		<Built_Object> Rosie_Evictor </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Signal_Tower, NOVUS_Detection_Conduit </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
-	</Dependency>-->
-	
-	<!-- UNIT: Novus_Incinerator -->
-<!--	<Dependency>
-		<Built_Object> Rosie_Incinerator </Built_Object>
-
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Robotic_Assembly_Instance_Generator </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
-	</Dependency>	-->
-	
 	<!-- UNIT: Novus_Constructor -->
 	<Dependency>
 		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
@@ -5852,9 +4450,54 @@
 		<Strategic_Builder> null </Strategic_Builder>
 
 		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> Novus_Input_Station, Novus_Signal_Tower </Tactical_Required_Objects>
+		<Tactical_Required_Objects> Novus_Input_Station </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Remote_Terminal </Tactical_Builder>
 	</Dependency>	
+
+
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Central_Processor </Tactical_Builder>
+	</Dependency>					
+	
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Material_Center </Tactical_Builder>
+	</Dependency>					
+	
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Nanocenter </Tactical_Builder>
+	</Dependency>					
+		
+	<Dependency>
+		<Built_Object> Rosie_Winged_Collector_Two </Built_Object>
+
+		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
+		<Strategic_Builder> Null </Strategic_Builder>
+
+		<Tactical_Required_Objects> Novus_Input_Station </Tactical_Required_Objects>
+		<Tactical_Builder> Novus_Research_Center </Tactical_Builder>
+	</Dependency>
+
+
+
+
 
 	<!-- UNIT: Novus_Constructor -->
 	<Dependency>
@@ -6014,17 +4657,6 @@
 		<Tactical_Required_Objects> Novus_Robotic_Assembly_Instance_Generator </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
 	</Dependency>
-	
-	<!-- UNIT: Novus_Reflex_Trooper -->
-<!--	<Dependency>
-		<Built_Object> Novus_Reflex_Trooper </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Hero_Founder </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
-	</Dependency>	-->
 
 	<Dependency>
 		<Built_Object> Novus_Reflex_Trooper </Built_Object>
@@ -6050,16 +4682,6 @@
 		<Tactical_Required_Objects> Novus_Science_Lab </Tactical_Required_Objects>
 		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
 	</Dependency>
-	
-<!--	<Dependency>
-		<Built_Object> Novus_Hacker </Built_Object>
-
-		<Strategic_Required_Objects> Null </Strategic_Required_Objects>
-		<Strategic_Builder> Null </Strategic_Builder>
-
-		<Tactical_Required_Objects> Novus_Hero_Founder </Tactical_Required_Objects>
-		<Tactical_Builder> Novus_Robotic_Assembly </Tactical_Builder>
-	</Dependency>	-->
 
 	<Dependency>
 		<Built_Object> Novus_Hacker </Built_Object>
@@ -7006,151 +5628,908 @@
 	</Dependency>	
 	
 
-	<!-- ***********************************************************************
+<!-- ***********************************************************************
 ******** MILITARY BUILD ORDER DEPENDENCIES *********************************
 **************************************************************************-->
 
-	<!-- UNIT: Military_Apache -->
 	<Dependency>
-		<Built_Object> Military_Apache </Built_Object>
-
+		<Built_Object> Military_Nanocenter </Built_Object>
+	
 		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
+		<Strategic_Required_Objects> Military_Central_Processor </Strategic_Required_Objects>
 		<Strategic_Builder> null </Strategic_Builder>
-
+	
 		<!-- Tactical requirements -->
 		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
+		<Tactical_Builder> null </Tactical_Builder>
 	</Dependency>
 
-	<!-- UNIT: Military_Dragonfly_UAV -->
-	<Dependency>
-		<Built_Object> Military_Dragonfly_UAV </Built_Object>
+  <!-- TACTICAL SUPERWEAPON: Military Missile Launcher -->
+  <Dependency>
+    <Built_Object> Military_Superweapon_Missile </Built_Object>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
-	</Dependency>
+    <!-- Tactical requirements -->
+	<!--
+    <Tactical_Required_Objects> Military_Nuclear_Reactor, Military_Machine_Factory </Tactical_Required_Objects>
+	-->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Superweapon_Missile </Built_Object>
 
-	<!-- UNIT: Military_Maverick_Jet -->
-	<Dependency>
-		<Built_Object> Military_Maverick_Jet </Built_Object>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Tactical requirements -->
+	<!--
+    <Tactical_Required_Objects> Military_Nuclear_Reactor, Military_Machine_Factory </Tactical_Required_Objects>
+	-->
+	<Tactical_Required_Objects> null </Tactical_Required_Objects>
+	<Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Machine_Factory </Built_Object>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
-	</Dependency>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-	<!-- UNIT: Military_Team_Flamethrower -->
-	<Dependency>
-		<Built_Object> Military_Team_Flamethrower </Built_Object>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply, Military_Motor_Pool </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Machine_Factory </Built_Object>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Barracks </Tactical_Builder>
-	</Dependency>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply, Military_Aircraft_Pad </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Nuclear_Reactor </Built_Object>
 
-	<!-- UNIT: Military_Team_Marines -->
-	<Dependency>
-		<Built_Object> Military_Team_Marines </Built_Object>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Barracks </Tactical_Builder>
-	</Dependency>
+  <!-- UNIT: Military_Apache -->
+  <Dependency>
+    <Built_Object> Military_Apache </Built_Object>
 
-	<!-- UNIT: Military_Medic -->
-	<Dependency>
-		<Built_Object> Military_Medic </Built_Object>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Apache </Built_Object>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Barracks </Tactical_Builder>
-	</Dependency>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Air_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
 
-	<!-- UNIT: Military_Team_Rocketlauncher -->
-	<Dependency>
-		<Built_Object> Military_Team_Rocketlauncher </Built_Object>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+  <!-- UNIT: Military_Dragonfly_UAV -->
+  <Dependency>
+    <Built_Object> Military_Dragonfly_UAV </Built_Object>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Barracks </Tactical_Builder>
-	</Dependency>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Central_Processor </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
 
-	<!-- UNIT: Military_Team_Science -->
-	<Dependency>
-		<Built_Object> Military_Team_Science </Built_Object>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Dragonfly_UAV </Built_Object>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Barracks </Tactical_Builder>
-	</Dependency>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Dragonfly_UAV </Built_Object>
 
-	<!-- UNIT: Military_AbramsM2_Tank -->
-	<Dependency>
-		<Built_Object> Military_AbramsM2_Tank </Built_Object>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Dragonfly_UAV </Built_Object>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
-	</Dependency>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-	<!-- UNIT: Military_Defender_APC -->
-	<Dependency>
-		<Built_Object> Military_Defender_APC </Built_Object>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Nanocenter </Tactical_Builder>
+  </Dependency>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+  <!-- UNIT: Military_Maverick_Jet -->
+  <Dependency>
+    <Built_Object> Military_Maverick_Jet </Built_Object>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
-	</Dependency>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
 
-	<!-- UNIT: Military_Hummer -->
-	<Dependency>
-		<Built_Object> Military_Hummer </Built_Object>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Aircraft_Pad </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Maverick_Jet </Built_Object>
 
-		<!-- Strategic requirements -->
-		<Strategic_Required_Objects> null </Strategic_Required_Objects>
-		<Strategic_Builder> null </Strategic_Builder>
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Air_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
 
-		<!-- Tactical requirements -->
-		<Tactical_Required_Objects> null </Tactical_Required_Objects>
-		<Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
-	</Dependency>
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <!-- UNIT: Military_Team_Medic -->
+  <Dependency>
+    <Built_Object> Military_Medic </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Central_Processor </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Military_Medic </Built_Object>
+
+    <Strategic_Required_Objects> Null </Strategic_Required_Objects>
+    <Strategic_Builder> Null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Barracks2 </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Military_Medic </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Team_Flamethrower -->
+  <Dependency>
+    <Built_Object> Military_Team_Flamethrower </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Barracks2 </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Team_Flamethrower_Spawner </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Infantry_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Team_Marines -->
+  <Dependency>
+    <Built_Object> Military_Team_Marines </Built_Object>
+
+    <Strategic_Required_Objects> Null </Strategic_Required_Objects>
+    <Strategic_Builder> Null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Barracks2 </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+  <Built_Object> Military_Team_Marines_Spawner </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Central_Processor </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+
+  <Dependency>
+    <Built_Object> Military_Team_Marines_Spawner </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Team_Marines </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Null </Strategic_Required_Objects>
+    <Strategic_Builder> Null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Nanocenter </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Team_Rocketlauncher -->
+  <Dependency>
+    <Built_Object> Military_Team_Rocketlauncher </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Barracks2 </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Team_Rocketlauncher_Spawner </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Infantry_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_AbramsM2_Tank -->
+  <Dependency>
+    <Built_Object> Military_AbramsM2_Tank </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_AbramsM2_Tank </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Vehicle_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Defender_APC -->
+  <Dependency>
+    <Built_Object> Military_Defender_APC </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Defender_APC </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Vehicle_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Hummer -->
+  <Dependency>
+    <Built_Object> Military_Hummer </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Hummer </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Central_Processor </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Hummer </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Hummer </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Nanocenter </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Barracks2 -->
+  <Dependency>
+    <Built_Object> Military_Barracks2 </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply</Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Turret_Ground -->
+  <Dependency>
+    <Built_Object> Military_Turret_Ground </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <!-- UNIT: Military_Turret_Laser -->
+  <Dependency>
+    <Built_Object> Military_Laser_Turret </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Nuclear_Reactor, Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Laser_Turret </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Material_Center, Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Motor_Pool -->
+  <Dependency>
+    <Built_Object> Military_Motor_Pool </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Dragoon_MTRV -->
+  <Dependency>
+    <Built_Object> Military_Dragoon_MTRV </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Machine_Factory </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Motor_Pool </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Dragoon_MTRV </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> Military_Nanocenter_Advanced_Production_Vehicle_Upgrade </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Hero_Tank -->
+  <Dependency>
+    <Built_Object> Military_Hero_Tank </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects>  </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Bunker </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Hero_Randal_Moore -->
+  <Dependency>
+    <Built_Object> Military_Hero_Randal_Moore </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Bunker </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Supply -->
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Bunker </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Nanocenter </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Research_Center </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Central_Processor </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Megaweapon </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Supply </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Material_Center </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+
+
+  <!-- UNIT: Military_Aircraft_Pad -->
+  <Dependency>
+    <Built_Object> Military_Aircraft_Pad </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> Military_Build_Bot, Military_Supply </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Build_Bot </Tactical_Builder>
+  </Dependency>
+
+  <!-- UNIT: Military_Build_Bot -->
+  <Dependency>
+    <Built_Object> Military_Build_Bot </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Central_Processor </Tactical_Builder>
+  </Dependency>
+  
+  <!-- UNIT: Military_Build_Bot -->
+  <Dependency>
+    <Built_Object> Military_Build_Bot </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Bunker </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Build_Bot </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Nanocenter </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Hero_Jet </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> null </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> Military_Bunker </Tactical_Builder>
+  </Dependency>
+  
+  <!-- Global Structures -->
+  
+  <!--//////////////////////// Military Material Center Sockets ////////////////////////-->
+  <Dependency>
+    <Built_Object> Military_Material_Center_Basic_Defense_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Material_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Material_Center_Block_Spying_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Material_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Material_Center_Megaweapon_Countermeasure_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Material_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Material_Center_Stealth_Detection_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Material_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <!--//////////////////////// Military Nanocenter Sockets ////////////////////////-->
+  
+  <Dependency>
+    <Built_Object> Military_Nanocenter_Advanced_Production_Infantry_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Nanocenter_Advanced_Production_Vehicle_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Nanocenter_Advanced_Production_Air_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Nanocenter_Basic_Defense_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Nanocenter_Block_Spying_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Nanocenter </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <!--//////////////////////// Military_Central_Processor Sockets ////////////////////////-->
+  
+  <Dependency>
+    <Built_Object> Military_Megacorp_Center_Basic_Defense_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Megacorp_Center_Block_Spying_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Megacorp_Center_Command_And_Control_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Megacorp_Center_Megaweapon_Countermeasure_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_Megacorp_Center_Repair_Superweapon </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Central_Processor </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <!--//////////////////////// Military_Research_Center Sockets ////////////////////////-->
+  
+  <Dependency>
+    <Built_Object> Military_R_and_D_Center_Spy_System_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Research_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_R_and_D_Center_Block_Spying_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Research_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_R_and_D_Center_Basic_Defense_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Research_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_R_and_D_Center_Megaweapon_Countermeasure_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Research_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
+  
+  <Dependency>
+    <Built_Object> Military_R_and_D_Center_Stealth_Detection_Upgrade </Built_Object>
+
+    <!-- Strategic requirements -->
+    <Strategic_Required_Objects> null </Strategic_Required_Objects>
+    <Strategic_Builder> Military_Research_Center </Strategic_Builder>
+
+    <!-- Tactical requirements -->
+    <Tactical_Required_Objects> null </Tactical_Required_Objects>
+    <Tactical_Builder> null </Tactical_Builder>
+  </Dependency>
 
 </ProductionDependencies>

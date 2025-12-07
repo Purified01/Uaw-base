@@ -2,6 +2,22 @@
 
 <MilitaryGameEventNotification>
 
+   <GameEvent Name="Tactical_Structure_Build_Start" ReceivedFrom="Military">
+      
+      <GameEventNotification Category="All">
+         <Stacks>No</Stacks>
+         <Expiration_Time>2.0</Expiration_Time>
+         <Service_Delay_Time>0.0</Service_Delay_Time>
+
+         <Notifications SubObjectList="Yes">
+            <Notification_Description>
+               <Broadcast_To>Owner</Broadcast_To>
+               <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
+               <SFX_Notification> COM_START_TACTICAL_STRUCTURE_BUILD </SFX_Notification>
+            </Notification_Description>
+         </Notifications>
+      </GameEventNotification>
+   </GameEvent>
 
    <!-- ======================================================================= -->
    <!-- OBJECT DESTROYED EVENTS                             						  -->
@@ -42,8 +58,6 @@
                <Min_Magnitude>10</Min_Magnitude>
                <Radar_Map_Event>Game_Event_Combat_High_Importance</Radar_Map_Event>
                <SFX_Notification>COM_MASSIVE_LOSS_OF_UNITS</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>            
          </Notifications>
 
@@ -62,8 +76,6 @@
                <Expiration_Time>3</Expiration_Time>
                <Radar_Map_Event>Game_Event_Combat_Medium_Importance</Radar_Map_Event>
                <SFX_Notification>COM_LOST_HERO</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
             </Notification_Description>
          </Notifications>
 
@@ -161,14 +173,14 @@
       <!-- UNIT SOLD -->
       <GameEventNotification Category="All">
          <Stacks>No</Stacks>
-         <Expiration_Time>3.0</Expiration_Time>
+         <Expiration_Time>5.0</Expiration_Time>
          <Service_Delay_Time>0.0</Service_Delay_Time>
 
          <Notifications SubObjectList="Yes">
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <Radar_Map_Event>Game_Event_Info_Low_Importance</Radar_Map_Event>
-               <SFX_Notification>GUI_SOLD_UNIT</SFX_Notification>
+               <SFX_Notification>COM_SOLD_UNIT</SFX_Notification>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -176,14 +188,14 @@
       <!-- STRUCTURE SOLD -->
       <GameEventNotification Category="Structure">
          <Stacks>No</Stacks>
-         <Expiration_Time>3.0</Expiration_Time>
+         <Expiration_Time>5.0</Expiration_Time>
          <Service_Delay_Time>0.0</Service_Delay_Time>
 
          <Notifications SubObjectList="Yes">
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
                <Radar_Map_Event>Game_Event_Info_Low_Importance</Radar_Map_Event>
-               <SFX_Notification>GUI_SOLD_UNIT</SFX_Notification>
+               <SFX_Notification>COM_SOLD_UNIT</SFX_Notification>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -206,8 +218,9 @@
          <Notifications SubObjectList="Yes">
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
-               <Radar_Map_Event>Game_Event_Info_Low_Importance</Radar_Map_Event>
-               <SFX_Notification></SFX_Notification>
+               <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
+               <Radar_Map_Event>Game_Event_Info_Medium_Importance</Radar_Map_Event>
+               <SFX_Notification>COM_BUILD_STRUCTURE_COMPLETE</SFX_Notification>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -221,8 +234,9 @@
          <Notifications SubObjectList="Yes">
             <Notification_Description>
                <Broadcast_To>Owner</Broadcast_To>
+               <Broadcast_Only_If_In_Frustum> false </Broadcast_Only_If_In_Frustum>
                <Radar_Map_Event>Game_Event_Info_Medium_Importance</Radar_Map_Event>
-               <SFX_Notification></SFX_Notification>
+               <SFX_Notification>COM_BUILD_STRUCTURE_COMPLETE</SFX_Notification>
             </Notification_Description>
          </Notifications>
       </GameEventNotification>
@@ -312,8 +326,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification>TEST_1</SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>
@@ -359,8 +371,6 @@
 					<Broadcast_To>Owner</Broadcast_To>
 					<Radar_Map_Event>Game_Event_Info_High_Importance</Radar_Map_Event>
 					<SFX_Notification> COM_REINFORCEMENTS_1 </SFX_Notification>
-					<!-- jdg 11/09/07 new vibration stuff ... NOTIFICATION -->
-					<Vibration_Event> Vibration_GameEvent_HighPriority </Vibration_Event>
 				</Notification_Description>
 			</Notifications>
 		</GameEventNotification>

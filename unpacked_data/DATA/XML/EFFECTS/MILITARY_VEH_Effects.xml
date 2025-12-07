@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effects>
+
+  <!--*************************************************************************************************
+	************************************************************************************************** 
+	************************************************************************************************** 
+	**	
+	**												Builder Rig
+	**	
+	************************************************************************************************** 
+	************************************************************************************************** 
+	************************************************************************************************** -->
+
+  <Effect Name="Military_Builder_Build_Effect">
+    <Duration> 0.0 </Duration>
+    <Effect_Class> TacticalBuild </Effect_Class>
+
+    <!-- The more builders per object, the faster the build -->
+    <!-- max of 10 builders 0.2 x (11-1) = 2 can help -->
+    <Effect_Component Type="AttributeModifier">
+      <Attribute> Number_Of_Assigned_Builders </Attribute>
+      <Modifier_Value> 1 </Modifier_Value>
+    </Effect_Component>
+
+    <Effect_Component Type="AttributeModifier">
+      <Attribute> Structure_Upgrade_Rate </Attribute>
+      <Modifier_Value> 1.0 </Modifier_Value>
+    </Effect_Component>
+
+    <Effect_Component Type="AttributeModifier">
+      <Attribute> Structure_Upgrade_Rate_Max </Attribute>
+      <Modifier_Value> 2.0 </Modifier_Value>
+    </Effect_Component>
+  </Effect>
+
+  <!-- Military Builder Repair Spray efsect -->
+  <Effect Name="Military_Constructor_Repair_Spray_Effect">
+        <Duration> 5.0 </Duration>
+        <Effect_Class> Healing </Effect_Class>
+        <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+	 
+        <Effect_Component Type="Transfer">
+            <Flow_Direction> SourceToTarget </Flow_Direction>
+            <Target_Effect> HealthHeal </Target_Effect>
+            <Source_Effect> ResourceUnits </Source_Effect>
+            <Amount_Per_Second> -5.0 </Amount_Per_Second>
+            <Transfer_Multiplicative> 2.3 </Transfer_Multiplicative>
+            <Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
+            <Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
+            <Transfer_Fail_On_Target_Full> true </Transfer_Fail_On_Target_Full>
+         <Show_Transfer_Text_Visual>No</Show_Transfer_Text_Visual>
+        </Effect_Component>
+
+    </Effect>
+	
+	<Effect Name="Disable_Tank_Gunner_Effect">
+		<Duration> 3.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+		
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WEAPON, TARGETING </Behaviors>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="Disable_APC_Squad_Effect">
+		<Duration> 3.1 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
+		
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> GARRISONABLE </Behaviors>
+		</Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="JETTransportStealth">
+		<Effect_Class> Cloaking </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="Cloak">
+			<Break_Mask> Attack | Damage </Break_Mask>
+		</Effect_Component>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="WoolardToggleWeaponsEffect">
+		<Effect_Class> Transparent </Effect_Class>
+		<Duration> -1.0 </Duration>
+
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WEAPON, TARGETING, TURRET, HARD_POINT_MANAGER </Behaviors>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="Woolard_Repair_Heal_Effect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Transparent </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 15.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0.1</Percentage_Per_Second>
+		</Effect_Component>
+		
+		<Effect_Component Type="DisableBehavior">
+			<Behaviors> WEAPON, TARGETING, TURRET, HARD_POINT_MANAGER </Behaviors>
+		</Effect_Component>
+		
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Unit_Healed_Particles </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryTurretAccuracyBoostEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryTurretAccuracyBoostEffect">
+		<Effect_Class> WalkerSpeed </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Increases Accuracy by %25 -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Accuracy_Increase_Multiplier </Attribute>
+			<Modifier_Value> 0.25 </Modifier_Value>
+		</Effect_Component>	
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryVehicleBoostArmorEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryVehicleBoostArmorEffect">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to armor boost -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryInfrantryBoostArmorEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryInfrantryBoostArmorEffect">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to armor boost -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.2 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryStructureBoostArmorEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryStructureBoostArmorEffect">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to armor boost -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.10 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryDamageIncreaseEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryDamageIncreaseEffect">
+		<Effect_Class> WalkerArmor </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Boosts Damage -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Cast_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.15 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitarySpeedIncreaseEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryUAVSpeedBoostEffect">
+		<Effect_Class> WalkerSpeed </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Movement Speed Increase by %25-->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Speed_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.25 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryFireRateBoostEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryFireRateBoostEffect">
+		<Effect_Class> WalkerSpeed </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Increases Fire Rate by %50 -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Rate_Multiplier </Attribute>
+			<Modifier_Value> 0.5 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- ************************************************************** -->
+	<!-- MilitaryAccuracyBoostEffect effect -->
+	<!-- ************************************************************** -->
+	<Effect Name="MilitaryAccuracyBoostEffect">
+		<Effect_Class> WalkerSpeed </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Increases Accuracy by %25 -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Weapon_Accuracy_Increase_Multiplier </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>		
+	</Effect>
+	
+	<!-- Test Effects -->
+	
+	<Effect Name="JetRadiationBleedVisualExpandTwoEffect">
+
+		<Duration> -1.0 </Duration>
+		<Effect_Class> DefilerBleedVisual </Effect_Class>
+		<Priority> 3.0 </Priority>
+      <Extends_Existing_Duration> true </Extends_Existing_Duration>
+      <Should_Remove_If_Moving> true </Should_Remove_If_Moving>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Defiler_Bleed_Glow_Aura </Particle_System_Type>
+         <Attachment_Bone_Name>TARGET</Attachment_Bone_Name>
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Defiler_Bleed_ground_2 </Particle_System_Type>
+		 <Attachment_Bone_Name>TARGET</Attachment_Bone_Name>
+         <!--
+			<Attachment_Bone_Name>B_OZZE_GROUND</Attachment_Bone_Name>
+			-->
+      </Effect_Component>
+
+   </Effect>
+	
+	<Effect Name="JetRadiationBleedVisualExpandOneEffect">
+
+		<Duration> 5.0 </Duration>
+		<Effect_Class> DefilerBleedVisual </Effect_Class>
+		<Priority> 2.0 </Priority>
+      <Extends_Existing_Duration> true </Extends_Existing_Duration>
+      <Should_Remove_If_Moving> true </Should_Remove_If_Moving>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Defiler_Bleed_Glow_Aura </Particle_System_Type>
+         <Attachment_Bone_Name>TARGET</Attachment_Bone_Name>
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Defiler_Bleed_ground_1 </Particle_System_Type>
+         <Attachment_Bone_Name>TARGET</Attachment_Bone_Name>
+         <!--
+			<Attachment_Bone_Name>B_OZZE_GROUND</Attachment_Bone_Name>
+					-->
+      </Effect_Component>
+
+   </Effect>
+	
+	<Effect Name="JetRadiationBleedMovedEffect">
+        <Duration> 0.1 </Duration>
+        <Effect_Class> BleedMoved </Effect_Class>
+        <Priority> 1.0 </Priority>
+              
+        <Effect_Component Type="CreateObject">
+            <Create_Object_Type> Defiler_Bleed_damage_only </Create_Object_Type>
+            <Destroy_On_Remove> false </Destroy_On_Remove>
+            <Position_Type> AtSource </Position_Type>
+            <Use_Source_Player_ID> true </Use_Source_Player_ID>
+            <Check_Pop_Cap> false </Check_Pop_Cap>
+            <Number_To_Create> 1 </Number_To_Create>
+        </Effect_Component>
+
+    </Effect>
+	
+	<Effect Name="JetRadiationBleedVisualEffect">
+
+		<Duration> 1.0 </Duration>
+		<Effect_Class> DefilerExpandBleedRadius </Effect_Class>
+		<Priority> 1.0 </Priority>
+      <Extends_Existing_Duration> false </Extends_Existing_Duration>
+	  
+	  <Effect_Component Type="Damage">
+			<Damage_Type>Damage_Default</Damage_Type>
+			<Damage_Amount>10</Damage_Amount>
+			<Damage_Percentage>1.0f</Damage_Percentage>
+			<Source_Z_Offset>200</Source_Z_Offset>
+			<!-- instant kill -->
+		</Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type> Tank_Ground_Hit </Particle_System_Type>
+         <Attachment_Bone_Name>TARGET</Attachment_Bone_Name>
+      </Effect_Component>
+
+   </Effect>
+   
+	<Effect Name="JetRadiationBleedExpandOneEffect">
+		<Duration> 5.0 </Duration>
+		<Effect_Class> DefilerExpandBleedRadius </Effect_Class>
+		<Priority> 1.0 </Priority>
+		<Should_Remove_If_Moving> true </Should_Remove_If_Moving>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Generator_Area_Effect_Radius_Add_Coeff_1 </Attribute>
+			<Modifier_Value> 50.0 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
+
+	<!--Stage two spread -->
+	<Effect Name="JetRadiationBleedExpandTwoEffect">
+
+		<Duration> -1.0 </Duration>
+		<Effect_Class> DefilerExpandBleedRadius </Effect_Class>
+		<Priority> 2.0 </Priority>
+		<Should_Remove_If_Moving> true </Should_Remove_If_Moving>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Generator_Area_Effect_Radius_Add_Coeff_1 </Attribute>
+			<Modifier_Value> 100.0 </Modifier_Value>
+		</Effect_Component>
+
+	</Effect>
+
+	<Effect Name="JetAlienDefilerDisableTargetingEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> DisableAutoTargeting </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="DisableAutonomousTargeting">
+		</Effect_Component>
+
+	</Effect>
+	
+	<!-- Oksana [8/02/2006]: Novus Constructor Target Build efsect -->
+   <Effect Name="Military_Constructor_Build_Target_Effect">
+      <Duration> 0.0 </Duration>
+      <Effect_Class> TacticalBuild </Effect_Class>
+
+      <!-- The more builders per object, the faster the build -->
+      <!-- max of 2 builders 0.5 x (3-1) = 1.0 can help -->
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Number_Of_Assigned_Builders </Attribute>
+         <Modifier_Value> 1 </Modifier_Value>
+      </Effect_Component>
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Structure_Upgrade_Rate </Attribute>
+         <Modifier_Value> 0.25 </Modifier_Value>
+      </Effect_Component>
+
+      <Effect_Component Type="AttributeModifier">
+         <Attribute> Structure_Upgrade_Rate_Max </Attribute>
+         <Modifier_Value> 1.5 </Modifier_Value>
+      </Effect_Component>
+
+      <!-- particle on the target -->
+      <Effect_Component Type="ParticleSystem">
+         <Application_Probability> 1 </Application_Probability>
+         <Particle_System_Type>Bullets_hit_Large</Particle_System_Type>
+         <Attachment_Bone_Name>Lightning_emitter_B_00</Attachment_Bone_Name>
+      </Effect_Component>
+
+      <Effect_Component Type="Lightning">
+         <Lightning_Effect_Name>Military_Constructor_Repair_Beam </Lightning_Effect_Name>
+         <Source_Target_Type> SourceToTarget </Source_Target_Type>
+         <Source_Bone_Name> MuzzleA_00 </Source_Bone_Name>
+         <Target_Bone_Names>Lightning_emitter_B_00</Target_Bone_Names>
+      </Effect_Component>
+	  
+	  <Effect_Component Type="Lightning">
+         <Lightning_Effect_Name>Military_Constructor_Repair_Beam </Lightning_Effect_Name>
+         <Source_Target_Type> SourceToTarget </Source_Target_Type>
+         <Source_Bone_Name> MuzzleA_01 </Source_Bone_Name>
+         <Target_Bone_Names>Lightning_emitter_B_00</Target_Bone_Names>
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>MuzzleFlash50cal</Particle_System_Type>
+
+         <Position_Type>AtSource</Position_Type>
+         <Attachment_Bone_Name>FlashBone_00</Attachment_Bone_Name>
+
+         <Attractor_Type>AtTarget</Attractor_Type>
+         <Attractor_Bone_Name>Lightning_emitter_B_00</Attractor_Bone_Name>
+
+      </Effect_Component>
+
+      <Effect_Component Type="ParticleSystem">
+         <Particle_System_Type>MuzzleFlash50cal</Particle_System_Type>
+
+         <Position_Type>AtSource</Position_Type>
+         <Attachment_Bone_Name>FlashBone_01</Attachment_Bone_Name>
+
+         <Attractor_Type>AtTarget</Attractor_Type>
+         <Attractor_Bone_Name>Lightning_emitter_B_00</Attractor_Bone_Name>
+
+      </Effect_Component>
+
+	</Effect>
+	
+	<Effect Name="MTRVScanPulseFriendlyEffect">
+		<Duration> 10.0 </Duration>
+		<Effect_Class> ScanPulseFriendly </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirus </Block_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> NovusVirusAuraGenerators </Block_Effect_Class>
+		</Effect_Component>
+		
+		<Effect_Component Type="ParticleSystem">
+			<Particle_System_Type> Singularity_Lightning_Bolt_Strike </Particle_System_Type>
+		</Effect_Component>
+
+	</Effect>
+  
+</Effects>

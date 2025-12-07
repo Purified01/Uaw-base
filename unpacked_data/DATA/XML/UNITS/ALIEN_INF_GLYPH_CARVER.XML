@@ -76,7 +76,7 @@
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
 		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 
-		<Tactical_Health> 325 </Tactical_Health>
+		<Tactical_Health> 270 </Tactical_Health>
 
 		<Land_FOW_Reveal_Range>125.0</Land_FOW_Reveal_Range>
 		<Attack_Category_Restrictions> Flying | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
@@ -100,6 +100,7 @@
          FORMATION,
          IDLE,
          TARGETING,
+		 SQUASH,
          REVEAL,
          HIDE_WHEN_FOGGED,
          UNIT_AI,
@@ -113,7 +114,7 @@
       </LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Infantry_Glyph </Armor_Type>
+			<Armor_Type> Armor_Alien_Infantry_Light </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -138,8 +139,8 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 550 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 550 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 700 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 700 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Time_Seconds> 22 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
@@ -258,7 +259,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 30 </Crush_Defense>
-			<Crush_Power> 4 </Crush_Power>
+			<Crush_Power> 11 </Crush_Power>
 		</BehaviorType>
       
       <BehaviorType Name="LuaScriptBehaviorType">
@@ -553,13 +554,5 @@
       <AssetBank> BANK_ALIEN </AssetBank>
    </X10_Alien_Units>
    
-
-    <X10_Alien_Units Name="Proto_Glyph_Carver">
-      <Variant_Of_Existing_Type> Alien_Glyph_Carver </Variant_Of_Existing_Type>
-      <AssetBank> BANK_ALIEN </AssetBank>
-		<Affiliation> Proto </Affiliation>
-		<Scale_Factor>1.2</Scale_Factor>
-		<Tactical_Health> 375 </Tactical_Health>
-    </X10_Alien_Units>
 
 </Alien_INF_Glyph_Carver_XML>

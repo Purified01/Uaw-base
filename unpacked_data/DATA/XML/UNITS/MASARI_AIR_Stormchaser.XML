@@ -31,7 +31,7 @@
 			<Regenerate_Type>Masari_Avenger_Stormchaser</Regenerate_Type>
 			<Is_Immune_To_Amplifier_Lockdown> false </Is_Immune_To_Amplifier_Lockdown>
 <!--			<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>-->
-			<DMA_Max> 470 </DMA_Max>
+			<DMA_Max> 450 </DMA_Max>
 			<DMA_Regen_Rate> 9 </DMA_Regen_Rate>
 		</Attributes>
 
@@ -70,7 +70,7 @@
 
 		<FormationSpacing> 1.5 </FormationSpacing>
 		<FormationOrder> 9 </FormationOrder>
-		<FormationGrouping> Solo </FormationGrouping>
+		<FormationGrouping> Standard </FormationGrouping>
 		<FormationRaggedness> .6 </FormationRaggedness>
 		<Formation_Maximum_Side_Error> 150 </Formation_Maximum_Side_Error>
 
@@ -90,7 +90,7 @@
 		<Close_Enough_Angle_For_Move_Start> 90.0 </Close_Enough_Angle_For_Move_Start>
 		<Spin_Away_On_Death> No </Spin_Away_On_Death>
 		<Should_Move_At_Water_Level> true </Should_Move_At_Water_Level>
-
+		<Should_Move_Anim_Lockout_Attack_Anim> false </Should_Move_Anim_Lockout_Attack_Anim>
 
 		<!-- CONFLICT -->
 		<Is_Attackable> true </Is_Attackable>
@@ -144,7 +144,7 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_STORM_CHASER_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS  TEXT_TYPE_VERSUS_STRUCTURES </Tooltip_Good_Against>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
 			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>			
 		</BehaviorType>
 
@@ -174,7 +174,7 @@
 		<BehaviorType Name="ProductionBehaviorType">
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 55 </Build_Cost_Credits>
-			<Build_Time_Seconds> 29 </Build_Time_Seconds>
+			<Build_Time_Seconds> 18 </Build_Time_Seconds>
 			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
@@ -212,14 +212,14 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue>Tactical_Units</Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 65 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 65 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 35 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 35 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 19.5 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range> 280.0 </Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range> 390.0 </Land_FOW_Reveal_Range>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -302,7 +302,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="SFXBehaviorType">
@@ -457,7 +457,7 @@
 		<Land_Model_Name> Masari_Stormchaser_Fire.ALO </Land_Model_Name>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 		<CategoryMask> Large, Flying, Piloted, CanAttack </CategoryMask>
-		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge | Female </Attack_Category_Restrictions>		
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | Female+Stationary </Attack_Category_Restrictions>		
 		<Space_Layer> Air </Space_Layer>
 		<!-- The following will start VTOL behavior units hovering above the ground upon creation -->
 		<Layer_Z_Adjust> 10.0 </Layer_Z_Adjust>
@@ -504,7 +504,7 @@
 			<SFXEvent_Build_Cancelled>GUI_BUILD_Infantry_Canceled</SFXEvent_Build_Cancelled>
 		</BehaviorType>
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range> 280.0 </Land_FOW_Reveal_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -514,8 +514,8 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_STORM_CHASER_LIGHT </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_GROUND_UNITS </Tooltip_Vulnerable_To>			
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
+			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>			
 		</BehaviorType>
 	
 		<BehaviorType name="AIBehaviorType">
@@ -558,22 +558,7 @@
 
 		</BehaviorType>
 
-		<Effect_Generator_Data SubObjectList="Yes" Replace="No">
-
-			<Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Storm">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Storm </Effect_Name>
-					<Duration> 5.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
-				</Effect_Generator_Entry>
-				
-
-			</Effect_Generator>					
+		<Effect_Generator_Data SubObjectList="Yes" Replace="No">					
 
 		</Effect_Generator_Data>
 
@@ -610,7 +595,7 @@
 		<Min_Flight_Elevation> 0 </Min_Flight_Elevation>
 		<Max_Flight_Elevation> 0 </Max_Flight_Elevation>
 		<CategoryMask> Large, Piloted, CanAttack </CategoryMask>
-		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge | Female </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | Bridge | Female+Stationary | Flying </Attack_Category_Restrictions>
 
 		<LandBehavior>
       STUNNABLE,
@@ -662,7 +647,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="RevealBehaviorType">
-			<Land_FOW_Reveal_Range> 195.0 </Land_FOW_Reveal_Range>
+			<Land_FOW_Reveal_Range> 260.0 </Land_FOW_Reveal_Range>
 		</BehaviorType>
 
 		<BehaviorType Name="ProductionBehaviorType">
@@ -677,8 +662,8 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_STORM_CHASER_DARK </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_VEHICLE </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_GROUND_UNITS </Tooltip_Vulnerable_To>
+			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_VEHICLES TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
+			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_INFANTRY TEXT_TYPE_VERSUS_TURRETS </Tooltip_Vulnerable_To>
 		</BehaviorType>
 
 		<BehaviorType name="AIBehaviorType">
@@ -846,7 +831,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 850 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>
@@ -1103,7 +1088,7 @@
 			<Projectile_Post_Collision_Travel_Distance>150</Projectile_Post_Collision_Travel_Distance>						
 			<Projectile_Damage>0</Projectile_Damage>
 			<Projectile_Blast_Area_Damage> 5 </Projectile_Blast_Area_Damage>
-			<Projectile_Blast_Area_Range> 19 </Projectile_Blast_Area_Range>
+			<Projectile_Blast_Area_Range> 8 </Projectile_Blast_Area_Range>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Target_Point_On_Terrain> True </Projectile_Target_Point_On_Terrain>
@@ -1157,7 +1142,7 @@
 			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 			<Projectile_Category>ROCKET</Projectile_Category>
 			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Damage>4.8</Projectile_Damage>
+			<Projectile_Damage>5.9</Projectile_Damage>
 			<Projectile_Does_Shield_Damage>True</Projectile_Does_Shield_Damage>
 			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
 			<Projectile_Target_Point_On_Terrain> True </Projectile_Target_Point_On_Terrain>
@@ -1173,7 +1158,8 @@
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Masari_Small_Damage_Detonation_Light </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<SFXEvent_Projectile_Flying_Loop>  SFX_Masari_Missile_Loop </SFXEvent_Projectile_Flying_Loop>
 			<SFXEvent_Projectile_Start_Flight> Storm_Gun_Light_Two </SFXEvent_Projectile_Start_Flight>
-			<Impact_Effect_Generator_Name> PurifyingLightImpactGeneratorSkyLord </Impact_Effect_Generator_Name>
+			<!-- Rosie's Burn Projectile -->
+			<!-- <Impact_Effect_Generator_Name> PurifyingLightImpactGeneratorSkyLord </Impact_Effect_Generator_Name> -->
 		</BehaviorType>
 
       <Effect_Generator_Data SubObjectList="Yes">

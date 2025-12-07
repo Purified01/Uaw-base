@@ -13,8 +13,8 @@
 		<Is_UI_Relevant> false </Is_UI_Relevant>
 		<Is_Placed_By_Editor> false </Is_Placed_By_Editor>
 
-		<!--<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
-		<Space_Layer> LandStatic </Space_Layer>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
+		<Space_Layer> LandStatic </Space_Layer>
 
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
@@ -418,19 +418,18 @@
 
 		<!-- ART -->
 		<Land_Model_Name>WO_NA_Fence_Corner.alo</Land_Model_Name>
-		<Scale_Factor> 1.0 </Scale_Factor>
-
-		<!-- INTERFACE -->
-
+		<Scale_Factor>1.0</Scale_Factor>
+		<Custom_Hard_XExtent_Offset> -19.0 </Custom_Hard_XExtent_Offset>
+		<Is_UI_Relevant> false </Is_UI_Relevant>
 
 		<!-- ATTRIBUTES -->
 		<Affiliation> Hostile </Affiliation>
 		<CategoryMask> Stationary, Insignificant </CategoryMask>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
@@ -438,17 +437,9 @@
 
 		<Tactical_Health> 20 </Tactical_Health>
 
-		<!-- ATTRIBUTES -->
-		<Attributes SubObjectList="Yes">
-			<Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
-			<Is_Immune_To_Virus> true </Is_Immune_To_Virus>
-		</Attributes>
-
 		<!-- BEHAVIORS -->
 		<LandBehavior>
-			EFFECT_REGISTRY,
-			ATTRIBUTE_DIRECTORY,
-			DAMAGE_TRACKING,
+			RESOURCE
 		</LandBehavior>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -579,6 +570,11 @@
 		<Should_Check_Faction_On_Crush> false </Should_Check_Faction_On_Crush>
 		<Collidable_By_Projectile_Living>No</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>No</Collidable_By_Projectile_Dead>
+
+		<LandBehavior>
+			RESOURCE
+		</LandBehavior>
+
 	</X40_Props_Rural>
 
 	

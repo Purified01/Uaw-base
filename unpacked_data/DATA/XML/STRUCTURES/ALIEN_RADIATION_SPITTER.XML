@@ -886,7 +886,7 @@
 					<Duration> 5.1 </Duration>
 					<!-- Sync with Modal Refresh -->
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Organic + RadiationHelps </Target_Filter_Categories>
+					<Target_Filter_Categories> Organic + RadiationHelps + ~Hero </Target_Filter_Categories>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
 					<Area_Effect_Radius> 135 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
@@ -913,7 +913,7 @@
 					<Effect_Name> RadiationSpitterGamaFieldHealEffect </Effect_Name>
 					<Duration> 5.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_Categories> Organic + RadiationHelps </Target_Filter_Categories>
+					<Target_Filter_Categories> Organic + RadiationHelps + ~Hero </Target_Filter_Categories>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
 					<Area_Effect_Radius> 135 </Area_Effect_Radius>
 					<Source_SFX_Event> SFX_Alien_Heal </Source_SFX_Event>
@@ -926,6 +926,26 @@
 					<Source_SFX_Event> SFX_Alien_Descolator_Idle_Engine_Loop </Source_SFX_Event>
 					<SFX_Loop_Type>ENGINE_IDLING</SFX_Loop_Type>
 				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry7">
+					<Effect_Name> RadiationSpitterFieldHealEffectHero </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_Categories> Organic + RadiationHelps + Hero </Target_Filter_Categories>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 145 </Area_Effect_Radius>
+					<Source_SFX_Event> SFX_Alien_Heal </Source_SFX_Event>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry8">
+					<Effect_Name> RadiationSpitterFieldHealEffectHeroGamma </Effect_Name>
+					<Duration> 5.1 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_Categories> Organic + RadiationHelps + Hero </Target_Filter_Categories>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 145 </Area_Effect_Radius>
+					<Source_SFX_Event> SFX_Alien_Heal </Source_SFX_Event>
+				</Effect_Generator_Entry>				
 
 			</Effect_Generator>
 
@@ -957,9 +977,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Alien_Radiation_Spitter_HP_Desolator_Turret </Tactical_Buildable_Constructed>
-			<Tactical_Build_Cost_Campaign>200</Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer>100</Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 14 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign>300</Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer>300</Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -1048,3 +1068,4 @@
 
 
 </Alien_Radiation_Spitter_XML>
+

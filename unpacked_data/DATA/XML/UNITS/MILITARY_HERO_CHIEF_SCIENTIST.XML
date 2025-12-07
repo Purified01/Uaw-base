@@ -6,9 +6,10 @@
 
 	<X11_Military_Heroes Name="Military_Hero_Chief_Scientist_PIP_Only">
 	
+		<Text_ID> TEXT_HERO_CHIEF_SCIENTIST_PIP_ONLY </Text_ID>
 		<Variant_Of_Existing_Type>Marker_Generic</Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<CategoryMask>Untargetable</CategoryMask>
+		<CategoryMask>NonCombatHero</CategoryMask>
 		
 		<Affiliation>Military</Affiliation>
 		
@@ -18,16 +19,14 @@
 			<Lua_Script_Data> 
 				HERO_ICON = {}
 				HERO_ICON.PRIORITY = 1
-				HERO_ICON.TEXTURE = "icon_hero_tech.tga"
+				HERO_ICON.TEXTURE = "i_logo_military.tga"
 				NOT_TACTICALLY_PRESENT = true
 				IS_SCIENTIST = true
 			</Lua_Script_Data>
 		</BehaviorType>
+		<Icon_Name>i_logo_military.tga</Icon_Name>
 		
-	
-		<BehaviorType Name="EncyclopediaBehaviorType">
-			<Icon_Name>icon_hero_tech.tga</Icon_Name>
-		</BehaviorType></X11_Military_Heroes>
+	</X11_Military_Heroes>
 
 </UEA_HERO_Chief_Scientist_XML>
 

@@ -7,7 +7,6 @@
 		<Novus_Aircraft_Assembly>0.0 100.0</Novus_Aircraft_Assembly>
 		<Novus_Vehicle_Assembly>0.0 -100.0</Novus_Vehicle_Assembly>
 		<Novus_Input_Station>100.0 100.0</Novus_Input_Station>
-		<Novus_Detection_Conduit>200.0 200.0</Novus_Detection_Conduit>
 	</Base_Layout>
 
 	<Base_Layout Name="Novus_Layout_2" Absolute="false" Faction="Novus">
@@ -17,7 +16,54 @@
 		<Novus_Aircraft_Assembly>0.0 200.0</Novus_Aircraft_Assembly>
 		<Novus_Vehicle_Assembly>200.0 -100.0</Novus_Vehicle_Assembly>
 		<Novus_Input_Station>100.0 100.0</Novus_Input_Station>
-		<Novus_Detection_Conduit>200.0 200.0</Novus_Detection_Conduit>		
+	</Base_Layout>
+	
+	<!--<Base_Layout Name="Military_Layout_1" Absolute="false" Faction="Military">
+		<Military_Nuclear_Reactor>100.0 0.0</Military_Nuclear_Reactor>
+		<Military_Machine_Factory>100.0 100.0</Military_Machine_Factory>
+		<Military_Barracks2>-100.0 0.0</Military_Barracks2>
+		<Military_Aircraft_Pad>0.0 100.0</Military_Aircraft_Pad>
+		<Military_Motor_Pool>0.0 -100.0</Military_Motor_Pool>
+		<Military_Bunker>0.0 0.0</Military_Bunker>
+	</Base_Layout>
+	
+	<Base_Layout Name="Military_Layout_2" Absolute="false" Faction="Military">
+		<Military_Nuclear_Reactor>200.0 100.0</Military_Nuclear_Reactor>
+		<Military_Machine_Factory>100.0 100.0</Military_Machine_Factory>
+		<Military_Barracks2>-100.0 100.0</Military_Barracks2>
+		<Military_Aircraft_Pad>0.0 200.0</Military_Aircraft_Pad>
+		<Military_Motor_Pool>200.0 -100.0</Military_Motor_Pool>
+		<Military_Bunker>0.0 0.0</Military_Bunker>
+	</Base_Layout>-->
+	
+	<Base_Layout Name="Military_Layout_1" Absolute="false" Faction="Military">
+		<Military_Supply ZAngle="0.00"> -497.65, 193.85 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -488.40, -203.17 </Military_Supply>		
+		<Military_Aircraft_Pad ZAngle="0.00"> -106.41, -143.69 </Military_Aircraft_Pad>
+		<Military_Barracks2 ZAngle="0.00"> 47.00, -81.08 </Military_Barracks2>
+		<Military_Machine_Factory ZAngle="90.00"> -43.27, 102.48 </Military_Machine_Factory>
+		<Military_Nuclear_Reactor ZAngle="90.00"> -104.18, -54.11 </Military_Nuclear_Reactor>
+		<Military_Bunker ZAngle="0.00"> -22.56, 32.53 </Military_Bunker>
+		<Military_Supply ZAngle="0.00"> -173.34, -400.83 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 218.40, -412.96 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 480.22, -203.14 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 545.39, 218.56 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 265.17, 446.37 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -241.21, 448.72 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -343.62, -347.79 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 417.16, -375.42 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 467.32, 380.31 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -420.75, 346.81 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -489.50, -4.86 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 7.23, -420.43 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> 522.59, 15.64 </Military_Supply>
+		<Military_Supply ZAngle="0.00"> -0.38, 483.24 </Military_Supply>		
+		<!--<MASARI_WILL_PROCESSOR ZAngle="0.00"> -22.56, 32.53 </MASARI_WILL_PROCESSOR>
+		<Masari_Atlatea ZAngle="0.00"> -22.56, 32.53 </Masari_Atlatea>
+		<Masari_Key_Inspiration ZAngle="0.00"> -22.56, 32.53 </Masari_Key_Inspiration>
+		<Masari_Element_Magnet ZAngle="0.00"> -22.56, 32.53 </Masari_Element_Magnet>
+		<Masari_Megaweapon ZAngle="0.00"> -22.56, 32.53 </Masari_Megaweapon>
+		<MASARI_INFANTRY_INSPIRATION ZAngle="0.00"> 71.48, -191.56 </MASARI_INFANTRY_INSPIRATION>-->
 	</Base_Layout>
 
 	<Base_Layout Name="Alien_Layout_1" Absolute="false" Faction="Alien">

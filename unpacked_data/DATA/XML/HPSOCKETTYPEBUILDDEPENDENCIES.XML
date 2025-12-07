@@ -270,6 +270,51 @@
 	=====================		NOVUS SOCKETS END		=====================
 	===================================================================== -->
 	
+	<!-- ====================================================================
+	=====================		Military SOCKETS BEGIN		=====================
+	===================================================================== -->
+	<HP_Socket_Type Name="Military_Material_Center_Socket">
+		<Buildable_Types_List Faction="Military">
+			Military_Material_Center_Basic_Defense_Upgrade,
+			Military_Material_Center_Block_Spying_Upgrade,
+			Military_Material_Center_Megaweapon_Countermeasure_Upgrade,
+			Military_Material_Center_Stealth_Detection_Upgrade
+		</Buildable_Types_List>
+	</HP_Socket_Type>
+	
+	<HP_Socket_Type Name="Military_Nanocenter_Socket">
+		<Buildable_Types_List Faction="Military">
+			Military_Nanocenter_Advanced_Production_Infantry_Upgrade,
+			Military_Nanocenter_Advanced_Production_Vehicle_Upgrade,
+			Military_Nanocenter_Advanced_Production_Air_Upgrade,
+			Military_Nanocenter_Basic_Defense_Upgrade,
+			Military_Nanocenter_Block_Spying_Upgrade
+		</Buildable_Types_List>
+	</HP_Socket_Type>
+	
+	<HP_Socket_Type Name="Military_Megacorp_Center_Socket">
+		<Buildable_Types_List Faction="Military">
+			Military_Megacorp_Center_Basic_Defense_Upgrade,
+			Military_Megacorp_Center_Block_Spying_Upgrade,
+			Military_Megacorp_Center_Command_And_Control_Upgrade,
+			Military_Megacorp_Center_Megaweapon_Countermeasure_Upgrade,
+			Military_Megacorp_Center_Repair_Superweapon
+		</Buildable_Types_List>
+	</HP_Socket_Type>
+	
+	<HP_Socket_Type Name="Military_R_and_D_Center_Socket">
+		<Buildable_Types_List Faction="Military">
+			Military_R_and_D_Center_Spy_System_Upgrade,
+			Military_R_and_D_Center_Block_Spying_Upgrade,
+			Military_R_and_D_Center_Basic_Defense_Upgrade,
+			Military_R_and_D_Center_Megaweapon_Countermeasure_Upgrade,
+			Military_R_and_D_Center_Stealth_Detection_Upgrade
+		</Buildable_Types_List>
+	</HP_Socket_Type>
+	
+	<!-- ====================================================================
+	=====================		Military SOCKETS END		=====================
+	===================================================================== -->
 	
 	<!-- ====================================================================
 	=====================		Masari SOCKETS BEGIN		=====================

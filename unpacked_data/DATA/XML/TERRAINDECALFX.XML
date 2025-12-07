@@ -97,8 +97,21 @@
 		<Permanent>true</Permanent>
 		<Random_Rotate>Yes</Random_Rotate>
 	 </Decal>
+
+    <Decal Name="EXPLOSION_SCORCH_NUKE">
+		<Category>Footprints</Category>	
+		<Render_Mode>DECAL_BUMP_ALPHA</Render_Mode>
+		<Intensity>1.0</Intensity>
+		<Scale>270,270</Scale>
+		<Z_Angle>0</Z_Angle>
+		<UV_Slot>12,4</UV_Slot>
+		<Slot_Scale>4</Slot_Scale>
+		<Random_Size_Offset>0.2</Random_Size_Offset>
+		<Fadeout_Time>210</Fadeout_Time>
+		<Permanent>true</Permanent>
+		<Random_Rotate>Yes</Random_Rotate>
+	 </Decal>
    
-	
 	<Decal Name="Generic_Ground_Hit_point_decal">
 		<Category>Footprints</Category>	
 		<Render_Mode>DECAL_BUMP_ALPHA</Render_Mode>
@@ -902,5 +915,37 @@
 		<Random_Size_Offset>0.3</Random_Size_Offset>
 		<Permanent>false</Permanent>
 	</Decal>
+
+
+	<!-- ==========================================================================================================  -->
+	<!-- ====================================    CIVILIANS  =======================================================  -->
+	<!-- ==========================================================================================================  -->
+
+    <Decal Name="Human_Blood_Splat">
+      <Category>Footprints</Category>
+      <Render_Mode>ALPHA</Render_Mode>
+      <Intensity>0.6</Intensity>
+      <Scale>13,13</Scale>
+      <Z_Angle>0</Z_Angle> 
+      <UV_Slot>10,2</UV_Slot>
+      <Slot_Scale>2</Slot_Scale>
+      <Random_Size_Offset>0.5</Random_Size_Offset>
+      <Fadeout_Time>150</Fadeout_Time>
+      <Random_Rotate>Yes</Random_Rotate>
+    </Decal>
+
+    <Decal Name="Human_Blood_Explode">
+      <Category>Footprints</Category>
+      <Render_Mode>ALPHA</Render_Mode>
+      <Intensity>0.5</Intensity>
+      <Scale>20,20</Scale>
+      <Z_Angle>0</Z_Angle> 
+      <UV_Slot>12,2</UV_Slot>
+      <Slot_Scale>2</Slot_Scale>
+      <Random_Size_Offset>0.5</Random_Size_Offset>
+      <Fadeout_Time>150</Fadeout_Time>
+      <Random_Rotate>Yes</Random_Rotate>
+    </Decal>
+
 	
 </TerrainDecals>

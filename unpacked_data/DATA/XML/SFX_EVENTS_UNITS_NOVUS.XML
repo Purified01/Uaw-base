@@ -166,6 +166,30 @@
 
 
 
+	<!-- Monitor SFX -->
+    <SFXEvent Name="Monitor_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        Monitor_Attack_02.wav
+        Monitor_Attack_03.wav
+        Monitor_Attack_04.wav
+        Monitor_Attack_01.wav                                    
+        </Samples>
+        <Play_Sequentially> no </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>
+	
+    <SFXEvent Name="Monitor_Priority_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        Monitor_Attack_04.wav                            
+        </Samples>
+        <Play_Sequentially> no </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>	
+
+
+
 
 	<SFXEvent Name="Unit_Select_Novus_Antimatter_Tank">
 		<Use_Preset>Preset_UR</Use_Preset>

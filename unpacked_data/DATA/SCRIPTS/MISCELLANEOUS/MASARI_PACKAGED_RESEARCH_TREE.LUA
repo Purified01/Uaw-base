@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -107,14 +114,7 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_REMOTE_HARM",
 							DescriptionTextID="TEXT_MASARI_RESEARCH_REMOTE_HARM", 
 							IconName="i_icon_m_research_upgrade_remote_harm.tga" 
-						},
-					[3] = 
-						{ 
-							EffectName="RemoteTemplarGenerator", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},				
+						},						
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -157,7 +157,7 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_BURNING_FURY",
 							DescriptionTextID="TEXT_MASARI_RESEARCH_BURNING_FURY", 
 							IconName="i_icon_m_research_upgrade_burning_fury.tga" 
-						},
+						},						
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -172,15 +172,7 @@ function Init_Research_Tree(tactical_only_game)
 						{Find_Object_Type("Novus_Hero_Mech"), "Special_Ability_Mech_Minirocket_Barrage"}
 				
 				]]--				
-				UnlocksSpecialAbilities = {
-					[1] = { 
-							ObjectType=Find_Object_Type("Masari_Disciple_Fire"), 
-							AbilityName="Burst_Instability_Researched_Upgrade_Disciple", 
-							TitleTextID="TEXT_MASARI_RESEARCH_TITLE_BURST_INSTABILITY",
-							DescriptionTextID="TEXT_MASARI_RESEARCH_BURST_INSTABILITY",
-							IconName="I_ICON_M_RESEARCH_PURIFYING_LIGHT.TGA" 
-						},									
-				},
+				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				--[[ SAME AS ABOVE ]]--
@@ -193,125 +185,10 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				UnlocksEffects = 
-				{					
---[[					[1] = { 
-							EffectName="MasariPurifyingLightEffectTemplarLightThree", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},											
-					[2] = { 
-							EffectName="MasariPurifyingLightVisualEffectSmallLightThree", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},														
-					[3] = { 
-							EffectName="MasariPurifyingLightVisualEffectMediumLightThree", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[4] = { 
-							EffectName="MasariPurifyingLightVisualEffectLargeLightThree", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},										]]
-					[1] = { 
-							EffectName="MasariPurifyingLightEffectSkyLord", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[2] = { 
-							EffectName="MasariPurifyingLightVisualEffectSmallSkylord", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},										
-					[3] = { 
-							EffectName="MasariPurifyingLightVisualEffectMediumSkylord", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[4] = { 
-							EffectName="MasariPurifyingLightVisualEffectLargeSkylord", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[5] = { 
-							EffectName="MasariPurifyingLightEffectSuperTemplar", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},															
-					[6] = { 
-							EffectName="MasariPurifyingLightVisualEffectPhosphorLong", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},																
-					[7] = { 
-							EffectName="MasariPurifyingLightEffectSuperTemplarInitial", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},											
-					[8] = { 
-							EffectName="MasariPurifyingLightEffectSuperTemplarLight", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},						
-					[9] = { 
-							EffectName="MasariPurifyingLightVisualEffectPhosphorLonger", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},														
-				},				
---[[				LocksEffects = 
-				{					
-					[1] = { 
-							EffectName="MasariPurifyingLightEffectTemplar", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},											
-					[2] = { 
-							EffectName="MasariPurifyingLightVisualEffectSmallTemplar", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},														
-					[3] = { 
-							EffectName="MasariPurifyingLightVisualEffectMediumTemplar", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[4] = { 
-							EffectName="MasariPurifyingLightVisualEffectLargeTemplar", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},																			
-					[5] = { 
-							EffectName="MasariPurifyingLightEffectTemplarBlastFirst", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil		
-						},								
-					[6] = { 
-							EffectName="MasariPurifyingLightVisualEffectPhosphor", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil		
-						},		
-				},		]]
+				{
+				
+				},
+			
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 55,
 				ResearchCost = 150,
@@ -340,20 +217,13 @@ function Init_Research_Tree(tactical_only_game)
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
 				UnlocksUnitAbilities =
 				{
-						[1] = { 
+					[1] = { 
 							TypeName = "Masari_Peacebringer", 
 							AbilityName="Masari_Peacebringer_Disintegrate_Unit_Ability", 
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_MOLECULAR_INSTABILITY",
 							DescriptionTextID="TEXT_MASARI_RESEARCH_MOLECULAR_INSTABILITY", 
 							IconName="i_icon_m_research_upgrade_burst_instability.tga" 
-						},				
---[[						[2] = { 
-							TypeName = "Rosie_Landlord_Fire", 
-							AbilityName="Unit_Ability_Phosphor_Rocket", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},							]]								
+						},
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -368,12 +238,10 @@ function Init_Research_Tree(tactical_only_game)
 						{Find_Object_Type("Novus_Hero_Mech"), "Special_Ability_Mech_Minirocket_Barrage"}
 				
 				]]--				
-				UnlocksSpecialAbilities = {
-
---					[2] = { ObjectType=Find_Object_Type("Masari_Enforcer_Fire"), AbilityName="Burst_Instability_Researched_Upgrade_Enforcer", DescriptionTextID=nil, IconName=nil },	
---					[3] = { ObjectType=Find_Object_Type("Rosie_Landlord_Fire"), AbilityName="Burst_Instability_Researched_Upgrade_Templar", DescriptionTextID=nil, IconName=nil },		
-					
-				},					
+				UnlocksSpecialAbilities = {},
+				
+				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
+				--[[ SAME AS ABOVE ]]--
 				LocksSpecialAbilities = {},
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
@@ -396,34 +264,18 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = nil,
 							DescriptionTextID=nil, 
 							IconName=nil
-						},						
+						},							
 					[4] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Generator_Seer", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},										
-					[5] = { 
 							EffectName="MasariResearchBurningAuraEffectGeneratorSkyLord", 
 							TitleTextID = nil,
 							DescriptionTextID=nil, 
 							IconName=nil
-						},					
-					[6] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Generator_Storm", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},									
-					[7] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Generator_Fig", 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},							
---					[8] = { EffectName="IronWillTemplar", DescriptionTextID=nil, IconName=nil },														
+						},																		
 				},
-
+				UnlocksEffects = 
+				{					
+																			
+				},									
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
 				ResearchCost = 200,
@@ -460,7 +312,6 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_m_piercing_gaze.tga" 
 						},
 					[2] = { TypeName = "Masari_Natural_Interpreter", AbilityName="Oracle_Piercing_Gaze_Dark_Beam", DescriptionTextID=nil, IconName=nil },
-
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -484,6 +335,21 @@ function Init_Research_Tree(tactical_only_game)
 				--[[ SAME AS ABOVE ]]--
 				LocksSpecialAbilities = {},
 				
+				UnlocksEffects = 
+				{													
+					[1] = { 
+							EffectName="MasariDEFCONCloakingEffectSeer", 
+							TitleTextID =nil,
+							DescriptionTextID=nil, 
+							IconName=nil
+						},												
+					[2] = { 
+							EffectName="Burning_Sight_Fire_Damage_Upgraded", 
+							TitleTextID =nil,
+							DescriptionTextID=nil, 
+							IconName=nil
+						},												
+				},								
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
 				UnlocksGenerators =
 				{
@@ -547,14 +413,7 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_UNSEEN_BARRIER",
 							DescriptionTextID="TEXT_MASARI_RESEARCH_UNSEEN_BARRIER_BROKEN_TEXT", 
 							IconName="i_icon_m_research_upgrade_unseen_barrier.tga" 
-						},					
---					[2] = { 
---							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
---							AbilityName="Landlord_Air_Attack", 
---							TitleTextID="TEXT_MASARI_RESEARCH_TITLE_PURIFYING_DARK",
---							DescriptionTextID="TEXT_MASARI_RESEARCH_PURIFYING_DARK",
---							IconName="I_ICON_M_RESEARCH_PURIFYING_DARK.TGA" 
---						},										
+						},
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -587,25 +446,11 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_MASARI_RESEARCH_ADVANCED_DARK_MATTER_ARMOR", 
 							IconName="i_icon_m_research_advanced_dark_matter_armor.tga" 
 						},
-					[2] = { 
-							EffectName="MasariSeerAE_DMARegenGenerator", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},													
-
 				},
 				
 				UnlocksEffects = 
 				{
-
-
-					[1] = { 
-							EffectName="MasariFullArmorEffectInfantry", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},					
+					
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -725,29 +570,7 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {				
-					[1] = { 
-							TypeName = "Rosie_Landlord_Fire", 
-							AbilityName="Unit_Ability_Zeale", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},										
-					[2] = { 
-							TypeName = "Rosie_Landlord_Ice", 
-							AbilityName="Unit_Ability_Zeale", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},									
---					[3] = { 
---							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
---							AbilityName="Landlord_Air_Attack", 
---							TitleTextID="TEXT_MASARI_RESEARCH_TITLE_PURIFYING_DARK",
---							DescriptionTextID="TEXT_MASARI_RESEARCH_PURIFYING_DARK",
---							IconName="I_ICON_M_RESEARCH_PURIFYING_DARK.TGA" 
---						},															
-				},
+				UnlocksUnitAbilities = {},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
 				LocksUnitAbilities = {},
@@ -761,153 +584,12 @@ function Init_Research_Tree(tactical_only_game)
 						{Find_Object_Type("Novus_Hero_Mech"), "Special_Ability_Mech_Minirocket_Barrage"}
 				
 				]]--				
-				UnlocksSpecialAbilities = {
-					[1] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Researched_Upgrade", 
-							TitleTextID="TEXT_MASARI_RESEARCH_TITLE_ZEAL",
-							DescriptionTextID="TEXT_MASARI_RESEARCH_ZEAL",
-							IconName="I_ICON_M_RESEARCH_ZEAL_OMAE_WA_MOU_SHINDEIRU.TGA" 
-						},		
-					[2] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Researched_Upgrade", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},						
-					[3] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Researched_Upgrade_Piloted", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},								
-					[4] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Hero_Attack_Upgraded", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},											
---[[					[4] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Researched_Upgrade_Reaper", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},							
-					[5] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Researched_Upgrade_Medium", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},							
-					[6] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Researched_Upgrade_Medium_Turret", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},							
-					[7] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Researched_Upgrade_Redirection_Turret", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},					
-					[8] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Researched_Upgrade_Piloted_Medium", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},				]]								
---					[3] = { 
---							ObjectType=Find_Object_Type("Masari_Stormchaser_Ice"), 
---							AbilityName="Stormchaser_Ice_Attack_Air_Zeal", 
---							TitleTextID=nil,
---							DescriptionTextID=nil,
---							IconName=nil 
---						},												
-				},						
+				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				--[[ SAME AS ABOVE ]]--
-				LocksSpecialAbilities = {
-					[1] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},		
-					[2] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},									
-					[3] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Piloted", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},						
-					[4] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Hero_Attack", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},											
---[[					[4] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Reaper", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},						
-					[5] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Medium", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},										
-					[6] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Medium_Turret", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},					
-					[7] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Structure_Attack_Redirection_Turret", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},					
-					[8] = { 
-							ObjectType=Find_Object_Type("Rosie_LANDLORD_Ice"), 
-							AbilityName="Landlord_Melee_Attack_Piloted_Medium", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},										
-					[3] = { 
-							ObjectType=Find_Object_Type("Masari_Stormchaser_Ice"), 
-							AbilityName="Stormchaser_Ice_Attack_Air", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},			]]											
-				},			
+				LocksSpecialAbilities = {},
+				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
 				UnlocksGenerators =
 				{
@@ -916,27 +598,26 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_BROKEN_TEXT",							
 							DescriptionTextID="TEXT_MASARI_RESEARCH_FACILITATED_GROWTH", 
 							IconName="i_icon_m_facilitated_growth.tga" 
-						},
-					[2] = { EffectName="ZealTemplar", DescriptionTextID=nil, IconName=nil },			
-					[3] = { 
+						},	
+					[2] = { 
 							EffectName="MasariExtraHealthGenerator", 
 							TitleTextID =nil,
 							DescriptionTextID=nil, 
 							IconName=nil
 						},							
-					[4] = { 
+					[3] = { 
 							EffectName="Masari_Sentry_With_Architect_Effect_Generator_Seeker", 
 							TitleTextID =nil,
 							DescriptionTextID=nil, 
 							IconName=nil
 						},											
-					[5] = 
+					[4] = 
 						{ 
 							EffectName="AffinityDefenceGenerator", 
 							TitleTextID = nil,
 							DescriptionTextID=nil, 
 							IconName=nil
-						},										
+						},												
 				},
 				
 				UnlocksEffects = 
@@ -947,25 +628,8 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_MASARI_RESEARCH_DARK_MATTER_AFINITY", 
 							IconName="i_icon_m_research_dark_matter_afinity.tga" 
 						},
---[[					[2] = { 
-							EffectName="MasariTemplarElementalFuryEffectUpgraded", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},						
-					[3] = { 
-							EffectName="MasariTemplarElementalFuryEffectDarkUpgraded", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},								]]										
 				},
 				
-				LocksEffects=
-				{
---					[1] = { EffectName="MasariTemplarElementalFuryEffect", DescriptionTextID=nil, IconName=nil },
---					[2] = { EffectName="MasariTemplarElementalFuryEffectDark", DescriptionTextID=nil, IconName=nil },
-				},				
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 70,
@@ -994,37 +658,13 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {
-					[1] = { 
-							TypeName = "Rosie_Landlord_Ice", 
-							AbilityName="Unit_Ability_Dark_Shield", 
-							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_DARK_SHIELD",
-							DescriptionTextID="TEXT_MASARI_RESEARCH_DARK_SHIELD", 
-							IconName="ABILITY_TEMPLAR_GLOW_CIRCLE.TGA" 
-						},						
-					[2] = { 
-							TypeName = "Rosie_Landlord_Fire", 
-							AbilityName=nil, 
-							TitleTextID = nil,
-							DescriptionTextID=nil, 
-							IconName=nil 
-						},							
-				},
+				UnlocksUnitAbilities = {},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
 				LocksUnitAbilities = {
 				
 				},
-				
-				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
-				--[[
-					IMPORTANT : when determining which special ability to add to the table, do not forget to specify the 
-					Object Type that special ability will affect!
-					Eg. If we wanted to cancel the Special Ab.S pecial_Ability_Mech_Minirocket_Barrage then the entry 
-					for that will look like:
-						{Find_Object_Type("Novus_Hero_Mech"), "Special_Ability_Mech_Minirocket_Barrage"}
-				
-				]]--				
+			
 				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
@@ -1063,51 +703,6 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksEffects =
 				{
 					[1] = { EffectName="ThermalVacuumFriendlyAEEffect", DescriptionTextID=nil, IconName=nil },
-					[2] = { EffectName="DarkWeaponFriendlyHealEffect", DescriptionTextID=nil, IconName=nil },		
-					[3] = { EffectName="MasariCripplingShotsEffectTemplarInfantryUpgraded", DescriptionTextID=nil, IconName=nil },				
-					[4] = { EffectName="MasariCripplingShotsEffectTemplarBruteUpgraded", DescriptionTextID=nil, IconName=nil },						
---[[					[3] = { 
-							EffectName="MasariCripplingShotsEffectTemplarStunLonger", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},												
-					[4] = { 
-							EffectName="MasariCripplingShotsEffectTemplarStunEvenLonger", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},															
-					[5] = { 
-							EffectName="MasariCripplingShotsVisualEffectSmallStun", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},											
-					[6] = { 
-							EffectName="MasariCripplingShotsVisualEffectMediumStun", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},									
-					[7] = { 
-							EffectName="MasariCripplingShotsVisualEffectLargeStun", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},													
-					[8] = { 
-							EffectName="MasariCripplingShotsEffectTemplarDisable", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},									
-					[9] = { 
-							EffectName="MasariCripplingShotsEffectTemplarDamage", 
-							TitleTextID =nil,
-							DescriptionTextID=nil, 
-							IconName=nil
-						},							]]										
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -1189,10 +784,7 @@ function Init_Research_Tree(tactical_only_game)
 				
 				LocksGenerators ={},
 				
-				UnlocksEffects ={
-					[1] = { EffectName="MasariTemplarShadowshiftDeception", DescriptionTextID=nil, IconName=nil },			
-					[2] = { EffectName="MasariTemplarShadowshiftDarkDeception", DescriptionTextID=nil, IconName=nil },							
-				},
+				UnlocksEffects ={},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
 				TotalResearchTime = 40,
@@ -1334,9 +926,6 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_MASARI_RESEARCH_UNREGULATED_CONVERSION", 
 							IconName="i_icon_research_unregulated_conversion.tga" 
 						},
-					[2] = { EffectName="ShadowShiftTemplar", DescriptionTextID=nil, IconName=nil },			
-					[3] = { EffectName="ShadowShiftTemplarDark", DescriptionTextID=nil, IconName=nil },		
-					[4] = { EffectName="MasariShadowshiftUpgraded", DescriptionTextID=nil, IconName=nil },								
 				},
 
 				LocksGenerators =
@@ -1352,38 +941,6 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_MASARI_RESEARCH_CLEANSING_ENERGY", 
 							IconName="i_icon_m_research_cleansing_energy.tga" 
 						},
-					[2] = { 
-							EffectName="Researched_Masari_Seer_Sight_Link_Cloaking_Effect", 
-							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_SHADOWED_PERCEPTION",														
-							DescriptionTextID="TEXT_MASARI_RESEARCH_SHADOWED_PERCEPTION_FIXED", 
-							IconName="i_icon_m_research_upgrade_shadowed_perception.tga" 
-						},						
-					[3] = { EffectName="MasariTemplarShadowshift", DescriptionTextID=nil, IconName=nil },						
-					[4] = { EffectName="MasariTemplarShadowshiftDark", DescriptionTextID=nil, IconName=nil },		
-					[5] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Switch_Templar", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},									
-					[6] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Switch", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},								
-					[7] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Switch_Seer", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},									
-					[8] = { 
-							EffectName="Alien_Brute_Regenerate_Effect_Switch_Two", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},														
 				},
 
 				-- elemental mode now changes 2x as fast
@@ -1444,7 +1001,7 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_ENERGY_STREAM",														
 							DescriptionTextID="TEXT_MASARI_RESEARCH_ENERGY_STREAM", 
 							IconName="i_icon_research_energy_stream.tga" 
-						},			
+						},		
 				},
 				
 				LocksGenerators =
@@ -1455,23 +1012,13 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksEffects =
 				{
 					[1] = { 
-							EffectName="Masari_Seer_Cloaking_Effect", 
-							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_SIGHT_UNSEEN",														
-							DescriptionTextID="TEXT_MASARI_RESEARCH_SIGHT_UNSEEN", 
-							IconName="i_icon_m_research_upgrade_sight_unseen_fixed.tga" 
+							EffectName="Researched_Masari_Seer_Sight_Link_Cloaking_Effect", 
+							TitleTextID = "TEXT_MASARI_RESEARCH_TITLE_SHADOWED_PERCEPTION",														
+							DescriptionTextID="TEXT_MASARI_RESEARCH_SHADOWED_PERCEPTION", 
+							IconName="i_icon_m_research_upgrade_shadowed_perception.tga" 
 						},
-					[2] = { 
-							EffectName="MasariShadowshiftSwitch", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},						
-					[3] = { 
-							EffectName="MasariShadowshiftTemplarUndamaged", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},												
+					[2] = { EffectName="Masari_Seer_Cloaking_Effect", DescriptionTextID=nil, IconName=nil },
+					[3] = { EffectName="DarkWeaponFriendlyHealEffect", DescriptionTextID=nil, IconName=nil },
 				},
 				
 
@@ -1520,3 +1067,47 @@ function Initialize_Branch_Data()
 	PathToBranchMap["B"] = Branch_ICE
 	PathToBranchMap["C"] = Branch_BALANCE 
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Research_Complete = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Offline_Achievement = nil
+	Update_Research_Progress = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

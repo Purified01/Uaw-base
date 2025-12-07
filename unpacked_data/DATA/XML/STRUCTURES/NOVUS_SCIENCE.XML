@@ -57,7 +57,7 @@
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 
 		<AI_Combat_Power> 1 </AI_Combat_Power>
-		<Tactical_Health> 1200 </Tactical_Health>
+		<Tactical_Health> 1000 </Tactical_Health>
 		<Land_FOW_Reveal_Range>300.0</Land_FOW_Reveal_Range>
 		<Land_Damage_Thresholds>1, 0.66, 0.33, 0</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -387,7 +387,7 @@
 		<Select_Box_Scale>110</Select_Box_Scale>
 		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+
 		<!-- ATTRIBUTES -->
 		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
 		<Affiliation>Novus</Affiliation>

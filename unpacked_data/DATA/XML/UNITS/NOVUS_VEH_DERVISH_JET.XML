@@ -134,7 +134,7 @@
 
 		<Tactical_Health> 325 </Tactical_Health>
 
-		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | DeathCloneResource </Attack_Category_Restrictions>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -344,7 +344,6 @@
 			<!-- Activates Dervish_Spin_Attack special ability below -->
 			<Unit_Ability Name="Unit_Ability_Dervish_Spin_Attack">
 				<Type> DERVISH_SPIN_ATTACK </Type>
-                <Active_By_Default> false </Active_By_Default>
 				<Is_Modal>yes</Is_Modal>
 				<Expiration_Seconds> 10.0 </Expiration_Seconds>
 				<Recharge_Seconds> 35.0 </Recharge_Seconds>
@@ -357,7 +356,7 @@
 				<!-- the -4 is not an error, when required targets is < 0 then it needs abs(req_targets) regardless of any high value targets -->
 				<Unit_Ability_AI_Required_Targets> -4 </Unit_Ability_AI_Required_Targets>
 				<Unit_Ability_AI_Unit_Categories> CanAttack </Unit_Ability_AI_Unit_Categories>
-				<Unit_Ability_AI_Range> 202.0 </Unit_Ability_AI_Range>
+				<Unit_Ability_AI_Range> 135.0 </Unit_Ability_AI_Range>
 			</Unit_Ability>
 
 		</Unit_Abilities_Data>
@@ -374,27 +373,13 @@
 				<Attack_Animation> Attack_Special_A </Attack_Animation>
 				<SFXEvent_Activate> SFX_Novus_Dervish_Spin_Attack </SFXEvent_Activate>
 				<Effect_Generator> DervishSpinAttackEffectGenerator </Effect_Generator>
-				<Excluded_Unit_Categories>  Resource, Resource_INST </Excluded_Unit_Categories>
-				<Damage_Type> Damage_Novus_Dervish_Weapon </Damage_Type>
+				<Excluded_Unit_Categories> Resource+~Organic+~DeathCloneResource, Resource_INST+~Organic+~DeathCloneResource </Excluded_Unit_Categories>
+				<Damage_Type> Damage_Novus_Dervish_PBAE_Attack </Damage_Type>
 			</Dervish_Spin_Attack_Ability>
 
 		</Abilities>
 
 		<Effect_Generator_Data SubObjectList="Yes" Replace="False">
-		
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>		-->
 
 			<!-- Researched ability for this unit to Flow. It just dynamically adds the FLOW behavior to this unit. -->
 			<Effect_Generator Name="NovusResearchAdvancedFlowEffectGenerator">
@@ -414,20 +399,34 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 			
-      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+     		<!-- Regeneration Effect -->
+			<Effect_Generator Name="NovusResearchNaniteRepairEffect">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Effect_Name> NovusResearchNaniteRepairEffect_Dervish </Effect_Name>
+					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-			</Effect_Generator>			
+			</Effect_Generator>		
+
+      		<!-- This effect generator blocks the Nanite Repair healing pulses for a few seconds when the unit takes damage. -->
+			<Effect_Generator Name="NovusResearchNaniteRepairBlockEffect_Dervish">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchNaniteRepairBlockEffect_Dervish </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+				
+			</Effect_Generator>		
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -541,7 +540,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 400 </Resource_Units>
-         <Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
          <Is_Single_Resource> false </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -818,7 +817,7 @@
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
 			<Projectile_Damage>0</Projectile_Damage>
-			<Projectile_Blast_Area_Damage> 8 </Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage> 6.6 </Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range> 15 </Projectile_Blast_Area_Range>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>

@@ -90,7 +90,7 @@
       <Projectile_Fire_Pulse_Delay_Seconds>.3</Projectile_Fire_Pulse_Delay_Seconds>
       <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
 
-      <Attack_Category_Restrictions> Resource | DeathCloneResource | Resource_INST </Attack_Category_Restrictions>
+      <Attack_Category_Restrictions> Resource+~Organic | DeathCloneResource | Resource_INST+~Organic </Attack_Category_Restrictions>
 
       <!-- BEHAVIORS -->
       <!-- BEHAVIORS -->
@@ -433,7 +433,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 150 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>
@@ -656,19 +656,5 @@
 
 	</Projectile>
 
-	<X10_Alien_Units Name="Proto_Lost_One">
-		<Variant_Of_Existing_Type> Alien_Lost_One </Variant_Of_Existing_Type>
-		<Affiliation> Proto </Affiliation>
-		<AssetBank> BANK_ALIEN </AssetBank>
-
-      <Projectile_Types>Proj_Proto_Lost_One_Laser</Projectile_Types>
-      <Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
-      <Projectile_Fire_Pulse_Delay_Seconds>.3</Projectile_Fire_Pulse_Delay_Seconds>
-      <Projectile_Fire_Recharge_Seconds>2.0</Projectile_Fire_Recharge_Seconds>
-	</X10_Alien_Units>
-
-	<Projectile Name="Proj_Proto_Lost_One_Laser">
-		<Variant_Of_Existing_Type> Proj_Lost_One_Laser </Variant_Of_Existing_Type>
-	</Projectile>
 
 </Alien_INF_Lost_One_XML>

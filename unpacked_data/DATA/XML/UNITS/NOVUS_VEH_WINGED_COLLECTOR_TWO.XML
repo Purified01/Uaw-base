@@ -12,7 +12,7 @@
 		<Use_Base_Type_By_Default> false </Use_Base_Type_By_Default>
 
 		<!-- ART -->
-		<Land_Model_Name> Rosie_Winged_Collector_Dart.ALO </Land_Model_Name>
+		<Land_Model_Name> NV_Monitor.alo </Land_Model_Name>
 		<Scale_Factor> 0.77 </Scale_Factor>
 		<No_Reflection_Below_Detail_Level> 1 </No_Reflection_Below_Detail_Level>
 		<Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>
@@ -134,7 +134,7 @@
 
 		<Tactical_Health> 255 </Tactical_Health>
 
-		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge | Female </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | Female+Stationary </Attack_Category_Restrictions>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -235,7 +235,7 @@
 			<Muzzle_Bone_Name>MuzzleA</Muzzle_Bone_Name>
 			<Targeting_Stickiness_Time_Threshold>5.0</Targeting_Stickiness_Time_Threshold>
 			<Targeting_Priority_Set> Masari_Inquisitor_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 1.2 </Targeting_Fire_Inaccuracy>
+			<Targeting_Fire_Inaccuracy> 3.5 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 10.0 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 180.0 </Targeting_Max_Attack_Distance>
 			<Projectile_Types>Proj_Winged_Shot</Projectile_Types>
@@ -414,35 +414,7 @@
 			
 		</Abilities>		
 		
-		<Effect_Generator_Data SubObjectList="Yes" Replace="False">		
-		
-			<Effect_Generator Name="MasariStationaryRevelationGeneratorMonitor">
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Is_Independent_Generator>Yes</Is_Independent_Generator>
-				<Modal_Refresh_Frequency> 0.5 </Modal_Refresh_Frequency>
-				<Starts_Active> yes </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Duration> 0.6 </Duration>
-					<Effect_Name> MasariStationaryRevelationEffectMonitor </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>						
-		
-         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>
+		<Effect_Generator_Data SubObjectList="Yes" Replace="False">				
 		 
 			<!-- This generator will cleanse any harmful effects from this unit whenever it enters flow. Unlocked via research. -->
 			<Effect_Generator Name="NovusResearchNanitePurificationEffectGenerator">
@@ -468,20 +440,34 @@
 				</Effect_Generator_Entry>
 			</Effect_Generator>
 			
-      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+     		<!-- Regeneration Effect -->
+			<Effect_Generator Name="NovusResearchNaniteRepairEffect">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Effect_Name> NovusResearchNaniteRepairEffect_Monitor </Effect_Name>
+					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-			</Effect_Generator>			
+			</Effect_Generator>		
+
+      		<!-- This effect generator blocks the Nanite Repair healing pulses for a few seconds when the unit takes damage. -->
+			<Effect_Generator Name="NovusResearchNaniteRepairBlockEffect_Monittor">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchNaniteRepairBlockEffect_Monitor </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+				
+			</Effect_Generator>
 
 			<Effect_Generator Name="Novus_Constructor_Consumption_Spray_Effect_Generator">
 				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
@@ -633,7 +619,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 55 </Resource_Units>
-         <Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>

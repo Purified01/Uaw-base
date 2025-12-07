@@ -322,6 +322,21 @@
 		</Effect_Component>
 	</Effect>
 
+
+
+	<!--=================================================================================================
+    == [10/10/2025] Change whether a unit can be seen on enemy radar for the detection drone only- UAN
+    ================================================================================================== -->
+	<Effect Name="Disable_On_Enemy_Radar_Drone">
+		<Effect_Class> DisableOnEnemyRadar </Effect_Class>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Duration> 5 </Duration>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Dont_Show_On_Enemy_Radar </Attribute>
+			<Modifier_Value> 1.0 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
 	
 
 
@@ -392,6 +407,27 @@
 	</Effect>
 
 	
+	<Effect Name="HeroPerksEffectHeal">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0.006</Percentage_Per_Second>
+		</Effect_Component>
+
+	</Effect>	
+
+	<Effect Name="HeroPerksEffectHealFounder">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="HealOverTime">
+			<Amount_Per_Second> 0.0 </Amount_Per_Second>
+			<Percentage_Per_Second>0.007</Percentage_Per_Second>
+		</Effect_Component>
+
+	</Effect>						
 	
 	<!-- jdg col moore tut01 balance stuff -->
 	<Effect Name="Col_Moore_HeroPerksEffect">
@@ -586,17 +622,7 @@
 	</Effect>
 
 
-	<Effect Name="MooreMedpacEffectMirabelAI">
-		<Effect_Class> Healing </Effect_Class>
-		<Duration> 0.2 </Duration>
-		<CategoryMask> CanBeRemovedByAbility </CategoryMask>
-
-		<Effect_Component Type="Heal">
-			<!-- heal to full -->
-			<Percent_Heal> 0.18 </Percent_Heal>
-		</Effect_Component>
-
-	</Effect>	
+	
 	
 	
 

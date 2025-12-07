@@ -471,7 +471,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -758,7 +758,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -908,7 +908,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 6500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1004,7 +1004,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 7500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1299,7 +1299,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 7500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1462,7 +1462,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 7500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1680,7 +1680,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1790,7 +1790,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 6500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -1933,7 +1933,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2047,7 +2047,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2097,7 +2097,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2202,7 +2202,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 5000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2251,7 +2251,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2276,7 +2276,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2344,7 +2344,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 15000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2453,7 +2453,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 18000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2511,7 +2511,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 18000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2624,7 +2624,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -2874,10 +2874,32 @@
 			<IsDeathCloneObstacle> true </IsDeathCloneObstacle>
 			<Damage_Terrain_On_Death> true </Damage_Terrain_On_Death>
 		</BehaviorType>
+
+		<!--Poppy's Test Building for Civilian Spawns-->
+		<!--
+		<BehaviorType Name="CivilianSpawnerBehaviorType">
+			<Is_Civilian_Spawner> True </Is_Civilian_Spawner>
+			<Is_Civilian_Despawner> False </Is_Civilian_Despawner>
+
+			<Civilian_Spawn_Types>
+				American_Civilian_Urban_01
+			</Civilian_Spawn_Types>
+
+			<Civilian_Spawn_On_Death_Min_Count> 5 </Civilian_Spawn_On_Death_Min_Count>
+			<Civilian_Spawn_On_Death_Max_Count> 10 </Civilian_Spawn_On_Death_Max_Count>
+			<Civilian_Spawn_On_Resource_Tiers> 30 </Civilian_Spawn_On_Resource_Tiers>
+			<Civilian_Spawn_On_Resource_First_Tier_Min_Count> 5 </Civilian_Spawn_On_Resource_First_Tier_Min_Count>
+			<Civilian_Spawn_On_Resource_First_Tier_Max_Count> 10 </Civilian_Spawn_On_Resource_First_Tier_Max_Count>
+			<Civilian_Spawn_On_Resource_Last_Tier_Min_Count> 5 </Civilian_Spawn_On_Resource_Last_Tier_Min_Count>
+			<Civilian_Spawn_On_Resource_Last_Tier_Max_Count> 10 </Civilian_Spawn_On_Resource_Last_Tier_Max_Count>
+			<Civilian_Maximum_Loiter> 1 </Civilian_Maximum_Loiter>
+			<Civilian_Create_Loiter_Seconds> 5 </Civilian_Create_Loiter_Seconds>
+		</BehaviorType>
+		-->
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 11000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3006,7 +3028,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 18000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3239,7 +3261,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3264,7 +3286,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3283,7 +3305,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3302,7 +3324,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3325,7 +3347,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3348,7 +3370,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 400 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3372,7 +3394,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3395,7 +3417,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3419,7 +3441,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3443,7 +3465,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3462,7 +3484,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 1800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3491,7 +3513,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3548,7 +3570,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3642,7 +3664,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3700,7 +3722,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3759,7 +3781,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -3905,7 +3927,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4051,7 +4073,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4158,7 +4180,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4180,7 +4202,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 3800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4196,7 +4218,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 6500 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4226,7 +4248,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4256,7 +4278,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4275,7 +4297,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4312,7 +4334,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4349,7 +4371,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4386,7 +4408,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4434,9 +4456,38 @@
 			AI_TARGET
 		</LandBehavior>
 
+		<BehaviorType Name="CivilianSpawnerBehaviorType">
+			<Is_Civilian_Spawner> True </Is_Civilian_Spawner>
+			<Is_Civilian_Despawner> False </Is_Civilian_Despawner>
+
+			<Civilian_Spawn_Types> 
+			Asian_Civilian_Rural_01_Wartime_Spawned, 
+			Asian_Civilian_Rural_02_Wartime_Spawned, 
+			Asian_Civilian_Rural_01_Wartime_Spawned, 
+			Asian_Civilian_Rural_02_Wartime_Spawned,
+			Asian_Civilian_Rural_01_Wartime_Spawned, 
+			Asian_Civilian_Rural_02_Wartime_Spawned,
+			Asian_Civilian_Rural_01_Wartime_Spawned, 
+			Asian_Civilian_Rural_02_Wartime_Spawned,
+			Asian_Civilian_Rural_01_Wartime_Spawned, 
+			Asian_Civilian_Rural_02_Wartime_Spawned,
+			American_Civilian_Urban_04_Wartime_Spawned 
+			</Civilian_Spawn_Types>
+
+			<Civilian_Spawn_On_Death_Min_Count> 0 </Civilian_Spawn_On_Death_Min_Count>
+			<Civilian_Spawn_On_Death_Max_Count> 2 </Civilian_Spawn_On_Death_Max_Count>
+			<Civilian_Spawn_On_Resource_Tiers> 4 </Civilian_Spawn_On_Resource_Tiers>
+			<Civilian_Spawn_On_Resource_First_Tier_Min_Count> 1 </Civilian_Spawn_On_Resource_First_Tier_Min_Count>
+			<Civilian_Spawn_On_Resource_First_Tier_Max_Count> 1 </Civilian_Spawn_On_Resource_First_Tier_Max_Count>
+			<Civilian_Spawn_On_Resource_Last_Tier_Min_Count> 1 </Civilian_Spawn_On_Resource_Last_Tier_Min_Count>
+			<Civilian_Spawn_On_Resource_Last_Tier_Max_Count> 1 </Civilian_Spawn_On_Resource_Last_Tier_Max_Count>
+			<Civilian_Maximum_Loiter> 1 </Civilian_Maximum_Loiter>
+			<Civilian_Create_Loiter_Seconds> 5 </Civilian_Create_Loiter_Seconds>
+		</BehaviorType>
+
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 		
@@ -4445,7 +4496,7 @@
 
 
 	<X20_Structures_Generic Name="Asian_Hut_02">
-		<Variant_Of_Existing_Type> American_House_Suburban_01 </Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type> Asian_Hut_01 </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>true</Is_Placed_By_Editor>
 		<Text_ID>TEXT_NONE</Text_ID>
 		<Land_Model_Name>WB_AS_Hut01.alo</Land_Model_Name>
@@ -4465,7 +4516,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 		
@@ -4473,7 +4524,7 @@
 
 
 	<X20_Structures_Generic Name="Asian_Hut_03">
-		<Variant_Of_Existing_Type> American_House_Suburban_01 </Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type> Asian_Hut_01 </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>true</Is_Placed_By_Editor>
 		<Text_ID>TEXT_NONE</Text_ID>
 		<Land_Model_Name>WB_AS_Hut02.alo</Land_Model_Name>
@@ -4493,7 +4544,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 		
@@ -4501,7 +4552,7 @@
 
 
 	<X20_Structures_Generic Name="Asian_Hut_04">
-		<Variant_Of_Existing_Type> American_House_Suburban_01 </Variant_Of_Existing_Type>
+		<Variant_Of_Existing_Type> Asian_Hut_01 </Variant_Of_Existing_Type>
 		<Is_Placed_By_Editor>true</Is_Placed_By_Editor>
 		<Text_ID>TEXT_NONE</Text_ID>
 		<Land_Model_Name>WB_AS_Hut03.alo</Land_Model_Name>
@@ -4521,7 +4572,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4634,7 +4685,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4803,7 +4854,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 700 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4935,7 +4986,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4957,7 +5008,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -4987,7 +5038,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 10000 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -5002,7 +5053,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 	</X20_Structures_Generic>
@@ -5016,7 +5067,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4600 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 	</X20_Structures_Generic>
@@ -5132,7 +5183,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 4200 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -5338,7 +5389,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 
@@ -5389,7 +5440,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 800 </Resource_Units>
-			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Novus, Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>
 

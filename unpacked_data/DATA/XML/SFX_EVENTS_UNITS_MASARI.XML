@@ -460,6 +460,191 @@
 
 
 
+	<!-- Stormchaser SFX -->
+    <SFXEvent Name="Ice_Flight_Loop_Storm">
+        <Use_Preset>Preset_GUNV_Loop</Use_Preset>
+        <Samples>
+        EGL_MASARI_Ice_FLY_1.WAV
+        </Samples>
+		<Min_Pitch>90</Min_Pitch>
+		<Max_Pitch>95</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Gun_Light">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        Storm_Gun_Light.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+		<Min_Volume>50</Min_Volume>
+		<Max_Volume>55</Max_Volume>				
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Gun_Dark">
+        <Use_Preset>Preset_GUN</Use_Preset>
+        <Samples>
+        Storm_Gun_Dark.wav			
+        </Samples>
+		<Min_Pitch>100</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>		
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+    </SFXEvent>			
+
+    <SFXEvent Name="Storm_SelectedA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>	
+        SCA_SELECT_1.WAV			
+        SCA_SELECT_2.WAV			
+        SCA_SELECT_3.WAV			
+        SCA_SELECT_4.WAV			
+        SCA_SELECT_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>				
+    </SFXEvent>	
+
+    <SFXEvent Name="Storm_MoveA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        SCA_MOVE_1.WAV			
+        SCA_MOVE_2.WAV			
+        SCA_MOVE_3.WAV			
+        SCA_MOVE_4.WAV			
+        SCA_MOVE_5.WAV						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_MoveA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        SCA_PRIORITY_MOVE_1.WAV			
+        SCA_PRIORITY_MOVE_2.WAV			
+        SCA_PRIORITY_MOVE_3.WAV			
+        SCA_PRIORITY_MOVE_4.WAV			
+        SCA_PRIORITY_MOVE_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_AttackA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        SCA_ATTACK_1.WAV			
+        SCA_ATTACK_2.WAV			
+        SCA_ATTACK_3.WAV			
+        SCA_ATTACK_4.WAV		
+        SCA_ATTACK_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_AttackA">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>		
+        SCA_PRIORITY_ATTACK_1.WAV			
+        SCA_PRIORITY_ATTACK_2.WAV			
+        SCA_PRIORITY_ATTACK_3.WAV			
+        SCA_PRIORITY_ATTACK_4.WAV			
+		SCA_PRIORITY_ATTACK_5.WAV			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser_Avenger </Overlap_Test>		
+    </SFXEvent>				
+
+    <SFXEvent Name="Storm_Selected">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>	
+        LSC_SELECT_1.wav			
+        LSC_SELECT_2.wav			
+        LSC_SELECT_3.wav			
+        LSC_SELECT_4.wav			
+        LSC_SELECT_5.wav			
+        LSC_SELECT_7.wav			
+        LSC_SELECT_8.wav			
+        LSC_SELECT_6.wav						
+        LSC_SELECT_9.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>				
+    </SFXEvent>	
+
+    <SFXEvent Name="Storm_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        LSC_MOVE_1.wav			
+        LSC_MOVE_2.wav			
+        LSC_MOVE_3.wav			
+        LSC_MOVE_4.wav			
+        LSC_MOVE_5.wav						
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_Move">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        LSC_PRIORITY_MOVE_1.wav			
+        LSC_PRIORITY_MOVE_2.wav			
+        LSC_PRIORITY_MOVE_3.wav			
+        LSC_PRIORITY_MOVE_4.wav			
+        LSC_PRIORITY_MOVE_5.wav			
+        LSC_PRIORITY_MOVE_6.wav					
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>		
+	
+    <SFXEvent Name="Storm_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>
+        LSC_ATTACK_1.wav			
+        LSC_ATTACK_2.wav			
+        LSC_ATTACK_3.wav			
+        LSC_ATTACK_4.wav			
+        LSC_ATTACK_5.wav			
+        LSC_ATTACK_6.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>	
+	
+    <SFXEvent Name="Storm_Priority_Attack">
+        <Use_Preset>Preset_UR</Use_Preset>
+        <Samples>		
+        LSC_PRIORITY_ATTACK_1.wav			
+        LSC_PRIORITY_ATTACK_2.wav			
+        LSC_PRIORITY_ATTACK_3.wav			
+        LSC_PRIORITY_ATTACK_4.wav			
+        </Samples>
+        <Play_Sequentially> Yes </Play_Sequentially>
+        <Localize> Yes </Localize>
+		<Overlap_Test> Unit_Masari_Stormchaser </Overlap_Test>		
+    </SFXEvent>				
+
+
+
+
+
 
 
 
@@ -1353,30 +1538,6 @@
 	</SFXEvent>
 
 
-
-<!--	<SFXEvent Name="Light_Templar_Selected">
-		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>LT_SUMMON_1.wav, LT_SELECT_1.wav, LT_SELECT_2.wav, LT_SELECT_3.wav, LT_SELECT_4.wav, LT_SELECT_5.wav, LT_SELECT_6.wav, LT_SELECT_7.wav, LT_SELECT_8.wav, LT_SELECT_9.wav</Samples>
-		<Play_Sequentially> Yes </Play_Sequentially>
-		<Localize> Yes </Localize>
-		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
-	</SFXEvent>
-
-	<SFXEvent Name="Light_Templar_Move">
-		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>LT_MOVE_1.wav, LT_MOVE_2.wav, LT_MOVE_3.wav, LT_MOVE_5.wav, LT_MOVE_6.wav</Samples>
-		<Play_Sequentially> Yes </Play_Sequentially>
-		<Localize> Yes </Localize>
-		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
-	</SFXEvent>
-
-	<SFXEvent Name="Light_Templar_Priority_Move">
-		<Use_Preset>Preset_UR</Use_Preset>
-		<Samples>LT_PRIORITY_MOVE_3.wav, LT_PRIORITY_MOVE_2.wav, LT_PRIORITY_MOVE_4.wav, LT_PRIORITY_MOVE_5.wav, LT_PRIORITY_MOVE_6.wav, LT_PRIORITY_MOVE_7.wav</Samples>
-		<Play_Sequentially> Yes </Play_Sequentially>
-		<Localize> Yes </Localize>
-		<Overlap_Test> Unit_Rosie_Landlord </Overlap_Test>
-	</SFXEvent>-->
 
 
 

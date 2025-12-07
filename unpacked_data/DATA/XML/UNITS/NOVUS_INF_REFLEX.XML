@@ -40,6 +40,9 @@
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
 		<Importance> 0.3 </Importance>
 		<Shot_Type> Infantry </Shot_Type>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+        <Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
+
 
 		<Attributes SubObjectList="Yes">
 			<!-- <Can_Garrison_Buildings> true </Can_Garrison_Buildings> --> <!-- Oksana: not currently used -->
@@ -53,7 +56,7 @@
 		<!-- MOVEMENT -->
 		<MovementClass> WaterWalker </MovementClass>
 		<Should_Move_At_Water_Level>True</Should_Move_At_Water_Level>
-		<Max_Speed> 2.0 </Max_Speed>
+		<Max_Speed> 1.3 </Max_Speed>
 		<Max_Rate_Of_Turn> 25.0 </Max_Rate_Of_Turn>
 		<Stopped_Rate_Of_Turn> 20.0 </Stopped_Rate_Of_Turn>
 		<Custom_Soft_Footprint_Radius> 8.5 </Custom_Soft_Footprint_Radius>
@@ -83,9 +86,9 @@
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 		<Land_FOW_Reveal_Range> 155.0 </Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Flying | Resource | Resource_INST | BodySocketHP </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Flying | Resource+~Organic | Resource_INST+~Organic | BodySocketHP </Attack_Category_Restrictions>
 
-		<Tactical_Health> 420 </Tactical_Health>
+		<Tactical_Health> 280 </Tactical_Health>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -162,7 +165,7 @@
 			<Size_Value> 10 </Size_Value>
 			<Build_Cost_Credits> 325 </Build_Cost_Credits>
 			<Build_Time_Seconds> 9 </Build_Time_Seconds>
-			<Is_Research_Tech_Tree_Lockable> no</Is_Research_Tech_Tree_Lockable>
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
 			<Extra_Enablers_Increase_Build_Rate> 1.0 </Extra_Enablers_Increase_Build_Rate>
 			<!-- 
 				Maria 11.07.2006 
@@ -256,9 +259,9 @@
          <Researched_Upgrades>
             TEXT_NOVUS_RESEARCH_TITLE_RAPID_FLOW
             TEXT_NOVUS_RESEARCH_TITLE_STEALTH_UPGRADES
+            TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION			
             TEXT_NOVUS_RESEARCH_TITLE_SPAWN_CLONES_ABILITY
             TEXT_NOVUS_RESEARCH_TITLE_NANITE_REFINEMENT_ABILITY
-            TEXT_NOVUS_RESEARCH_TITLE_NANITE_PURIFICATION
          </Researched_Upgrades>
 		</BehaviorType>
 		
@@ -355,7 +358,7 @@
 				<GUI_Activated_Ability_Name> Blackout_Bomb_Attack_Ability </GUI_Activated_Ability_Name>
 				<SFXEvent_GUI_Unit_Ability_Activated />
 				<Targeting_Type> LAND_ANY_LOCATION </Targeting_Type>
-				<Area_Effect_Decal_Distance> 130.0 </Area_Effect_Decal_Distance>
+				<Area_Effect_Decal_Distance> 77.0 </Area_Effect_Decal_Distance>
 			</Unit_Ability>
 
 			<Unit_Ability Name="NovusReflexTrooperEnergyBlade">
@@ -380,7 +383,7 @@
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
 				
-				<Excluded_Unit_Categories> Flying, Resource, Resource_INST,  </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Flying, Resource+~Organic, Resource_INST+~Organic </Excluded_Unit_Categories>
 
 			</Effect_Generator_Ability>
 
@@ -403,35 +406,34 @@
 
 		<!-- EFFECTS -->
 		<Effect_Generator_Data SubObjectList="Yes">
-		
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
 
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>		-->
-		
-      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat_Blade">
+      		<Effect_Generator Name="NovusResearchNaniteRepairEffect">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Effect_Name> NovusResearchNaniteRepairEffect_BladeTrooper </Effect_Name>
+					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>		
+
+			<!-- This effect generator blocks the Nanite Repair healing pulses for a few seconds when the unit takes damage. -->
+			<Effect_Generator Name="NovusResearchNaniteRepairBlockEffect_BladeTrooper">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> NovusResearchNaniteRepairBlockEffect_BladeTrooper </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+				
+			</Effect_Generator>
 
 			<Effect_Generator Name="NovusReflexTrooperEnergyBladeGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
@@ -530,20 +532,6 @@
             </Effect_Generator_Entry>
 
          </Effect_Generator>
-		 
-<!--			<Effect_Generator Name="Alien_Blade_Regenerate_Effect_Generator">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Blade </Effect_Name>
-					<Duration> 5.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>		-->			 
 
 			<!-- Standard Sell generator  - 06/28/2007 -->
 			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
@@ -589,6 +577,9 @@
 		<Weather_Category> Infantry </Weather_Category>
 		<Create_Team> Yes </Create_Team>
 		<Can_Fall_From_Bridge> true </Can_Fall_From_Bridge>
+	    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+        <Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
+	
 
 		<Attributes SubObjectList="Yes">
 			<Tactical_Build_Cost_Credits />
@@ -626,9 +617,9 @@
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
 		<Ranged_Target_Z_Adjust> 7.0 </Ranged_Target_Z_Adjust>
 		<Land_FOW_Reveal_Range> 180.0 </Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Flying | Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 
-		<Tactical_Health> 350 </Tactical_Health>
+		<Tactical_Health> 245 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -673,7 +664,7 @@
 		<BehaviorType Name="LocomotorBehaviorType">
 		  <Passability_Generators> DeepWater, ReflexBoostGenerator </Passability_Generators>
 		  <Passability_Generators> ShallowWater, ReflexBoostGenerator </Passability_Generators>
-		  <Path_Distance_Generator_Min_Distance> 40.0 </Path_Distance_Generator_Min_Distance>
+		  <Path_Distance_Generator_Min_Distance> 140.0 </Path_Distance_Generator_Min_Distance>
 		  <Path_Distance_Effect_Generator> ReflexBoostGenerator </Path_Distance_Effect_Generator>
 		</BehaviorType>
 
@@ -830,9 +821,8 @@
 				<Effect_Generator_Name> NovusReflexTrooperEnergyBladeGenerator </Effect_Generator_Name>
 				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
 				<Face_Target> true </Face_Target>
-				<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 
-				<Excluded_Unit_Categories> Flying, Resource, Resource_INST </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Flying, Resource+~Organic, Resource_INST+~Organic </Excluded_Unit_Categories>
 
 			</Effect_Generator_Ability>
 
@@ -848,12 +838,11 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
-					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -861,12 +850,11 @@
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 20.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 40.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 135.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
-					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry3">
@@ -879,7 +867,6 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.3 </Base_Delay>
-					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry4">
@@ -892,7 +879,6 @@
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
 					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
 					<Base_Delay>.6 </Base_Delay>
-					<Attack_Category_Restrictions> Stationary | Resource | Resource_INST | TacticalBuildableStructure </Attack_Category_Restrictions>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -1099,12 +1085,13 @@
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> DisruptionEffect </Effect_Name>
 					<Base_Delay> 1.5 </Base_Delay>
-					<Duration> 8.0 </Duration>
+					<Duration> 8 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 130 </Area_Effect_Radius>
+					<Area_Effect_Radius> 91 </Area_Effect_Radius>
 					<Target_SFX_Event> SFX_Novus_BlackOut_Bomb_Detonation </Target_SFX_Event>
 					<Frames_Between_Remove_Invalid_Targets> 1 </Frames_Between_Remove_Invalid_Targets>
+					<Target_Filter_Categories> ~Huge + ~flying </Target_Filter_Categories>
 				</Effect_Generator_Entry>
 
 				<Effect_Generator_Entry Name="Entry2">
@@ -1112,6 +1099,7 @@
 					<Duration> 8.0 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
+
 			</Effect_Generator>
 
 		</Effect_Generator_Data>

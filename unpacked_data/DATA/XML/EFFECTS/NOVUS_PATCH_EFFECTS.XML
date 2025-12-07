@@ -172,7 +172,7 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
 			<!-- +100% build rate -->
-			<Modifier_Value> 2.0 </Modifier_Value>
+			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
 
@@ -205,60 +205,12 @@
 		</Effect_Component>-->
    </Effect>
 
-   <Effect Name="NovusPatchBackupSystemsRegenEffectStructure">
-      <Effect_Class> PatchBackupSystems</Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Effect_Class> Healing </Effect_Class>
-
-		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 0.0 </Amount_Per_Second>
-      <Percentage_Per_Second>0.0132</Percentage_Per_Second>
-		</Effect_Component>	
-   </Effect>
-   
-   <Effect Name="NovusPatchBackupSystemsRegenEffectInfantry">
-      <Effect_Class> PatchBackupSystems</Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Effect_Class> Healing </Effect_Class>
-
-		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 16 </Amount_Per_Second>
-      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
-		</Effect_Component>	
-   </Effect>   
-   
-   <Effect Name="NovusPatchBackupSystemsRegenEffectMediumVehicle">
-      <Effect_Class> PatchBackupSystems</Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Effect_Class> Healing </Effect_Class>
-
-		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 5.48 </Amount_Per_Second>
-      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
-		</Effect_Component>	
-   </Effect>      
-
-   <Effect Name="NovusPatchBackupSystemsRegenEffectLargeVehicle">
-      <Effect_Class> PatchBackupSystems</Effect_Class>
-      <Duration> -1.0 </Duration>
-      <CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Effect_Class> Healing </Effect_Class>
-
-		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 4.8 </Amount_Per_Second>
-      <Percentage_Per_Second>0.0<!--132 for 33%--></Percentage_Per_Second>
-		</Effect_Component>	
-   </Effect>      
-
 	
-	
+		
 	<!-- Emergency Power: Instantly brings all structures on-line regardless of current powered state for the duration. -->
 	<Effect Name="NovusPatchEmergencyPowerEffect">
 		<Effect_Class> PatchEmergencyPower </Effect_Class>
-		<Duration> 30.0 </Duration>
+		<Duration> 55.0 </Duration>
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Is_Powered </Attribute>
 			<!-- A bitwise Or with value 1 will force the attribute to "true" for the duration. -->
@@ -287,8 +239,6 @@
 			<Modifier_Value> 0.25 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
-
-	
 	
 	<!-- Spectrum Cycle: All units and structures gain cloaking detection at their sight range for the duration. -->
 	<Effect Name="NovusPatchSpectrumCycleEffect">
@@ -332,6 +282,14 @@
 		<Duration> 2.0 </Duration>
 		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>

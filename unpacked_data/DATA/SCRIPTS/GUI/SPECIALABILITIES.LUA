@@ -1,4 +1,11 @@
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/GUI/SpecialAbilities.lua#232 $
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[187] = true
+LuaGlobalCommandLinks[52] = true
+LUA_PREP = true
+
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/SpecialAbilities.lua#32 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -25,17 +32,17 @@
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/GUI/SpecialAbilities.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/GUI/SpecialAbilities.lua $
 --
 --    Original Author: Chris Brooks
 --
---            $Author: Mike_Lytle $
+--            $Author: Brian_Hayes $
 --
---            $Change: 89085 $
+--            $Change: 92565 $
 --
---          $DateTime: 2007/12/05 11:48:37 $
+--          $DateTime: 2008/02/05 18:21:36 $
 --
---          $Revision: #232 $
+--          $Revision: #32 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,7 +60,6 @@ function Initialize_Special_Abilities(init_key_mappings)
 	ALIEN_FACTION_ID = Declare_Enum(0)
 	NOVUS_FACTION_ID = Declare_Enum()
 	MASARI_FACTION_ID = Declare_Enum()
-	PROTO_FACTION_ID = Declare_Enum()
 	
 	SpecialAbilities = 
 	{
@@ -91,6 +97,22 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "",
 				sort_order = 3	
 			},
+			
+		-- Dragoon Scan Large
+		["Dragoon_Scan_Large"] = 
+			{ 
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+				-- Maria 08.29.2006	- Discarding the target entry because I added field in the XML specs of the unit ability so that the targeting type can be accessed
+				-- from code!.  Thus, when activating the special ability from LUA, the inovked function in code will take care of
+				-- retrieving the ability's targeting type!
+				--target="LAND_ANY_LOCATION",
+				icon="i_icon_dragoon_scan.tga",  
+				-- TOOLTIP RELATED DATA
+				text_id = "",
+				tooltip_description_text_id = "",
+				tooltip_category_id = "",
+				sort_order = 3	
+			},
 
 		-- Dragoon Deploy	
 		["Dragoon_Deploy"] = 
@@ -105,6 +127,78 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 4	
 			},
 			
+		-- APC Unload Troops
+		["Military_APC_Marine_Ability"] = 
+			{ 
+				action=SPECIALABILITYACTION_INSTANT,    
+				icon="i_button_uea_marine.tga",  
+				
+				-- changing this one from hide_without_behavior to disable_without_behavior since
+				-- this ability doesn't have a load counterpart.  Hence, we want to show the button
+				-- but disabled.
+				--hide_without_behavior = 147,  
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_APC_RESEARCH_MARINES_TITLE",
+				tooltip_description_text_id = "TEXT_ABILITY_APC_RESEARCH_MARINES",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE", 
+				priority = 1,
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
+			},
+		
+		["Military_Spawn_Builder_Rig"] = 
+			{ 
+				action=SPECIALABILITYACTION_INSTANT,    
+				icon="i_button_uea_marine.tga",  
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_APC_RESEARCH_MARINES_TITLE",
+				tooltip_description_text_id = "TEXT_ABILITY_APC_RESEARCH_MARINES",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE", 
+				priority = 1,
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
+			},		
+			
+		-- Jet Tests
+		["Unit_Ability_Jet_Missile_Barrage"] = 
+			{ 
+				special_ability_name="Ability_Jet_Missile_Barrage",
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,				
+				icon="i_icon_saturate_area.tga", 
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_MILITARY_SATURATE_AREA",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_HERO_JET_MISSILE_ABILITY",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 2	
+			},
+			
+		["Unit_Maverick_Jet_Bomb_Ability"] = 
+			{ 
+				special_ability_name="Unit_Maverick_Jet_Bomb_Ability",
+				action=SPECIALABILITYACTION_INSTANT,				
+				icon="i_icon_saturate_area.tga", 
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_MILITARY_SATURATE_AREA",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_HERO_JET_MISSILE_ABILITY",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 2	
+			},
+			
+		["Rail_Gun_Air_Raid_Attack"] = 
+			{
+				special_ability_name="Rail_Gun_Air_Raid_Attack",
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+				icon="i_icon_saturate_area.tga", 
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_MILITARY_SATURATE_AREA",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MILITARY_SATURATE_AREA",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 2	
+			},
+		
+			
 		-- Tank Hero barrage
 		["Thumper_Saturate_Area"] = 
 			{ 
@@ -114,7 +208,62 @@ function Initialize_Special_Abilities(init_key_mappings)
 				text_id = "TEXT_ABILITY_MILITARY_SATURATE_AREA",
 				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MILITARY_SATURATE_AREA",
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
-				sort_order = 2	
+				sort_order = 1
+			},
+			
+		-- Tank Hero Repair
+		["Woolard_Auto_Repair"] = 
+			{ 
+				action=SPECIALABILITYACTION_INSTANT,    
+				icon="I_ICON_BUILD.tga", 
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_MILITARY_REPAIR_TANK",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MILITARY_REPAIR_TANK",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 1
+			},
+			
+		-- Tank Hero: retreat from tactical ability
+		["Military_Hero_Tank_Retreat_From_Tactical_Ability"] = 
+			{ 
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+				icon="I_ICON_BUILD_UPGRADE.tga",
+				campaign_game_only = true,
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_NOVUS_HERO_RETREAT",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_MIRABEL_RETREAT",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_INITIATE",
+				priority = 3,	-- NOTE: this determines the order in which to display the abilities of each unit (whenever specified)
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.
+				
+			},
+		
+		-- Jet Hero: retreat from tactical ability
+		["Military_Hero_Jet_Retreat_From_Tactical_Ability"] = 
+			{ 
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+				icon="I_ICON_BUILD_UPGRADE.tga",
+				campaign_game_only = true,
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_NOVUS_HERO_RETREAT",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_MIRABEL_RETREAT",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_INITIATE",
+				priority = 3,	-- NOTE: this determines the order in which to display the abilities of each unit (whenever specified)
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.
+				
+			},
+			
+		["Military_Unload_Transport_Ability"] = 
+			{ 
+				action=SPECIALABILITYACTION_TOGGLE,            
+				icon="I_ARROW_LEFT.tga",       
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ID_UNIT_ABILITY_UNLOAD_TRANSPORT",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_UNLOAD_TRANSPORT",
+				tooltip_category_id = "",
+				sort_order = 0
 			},
 			
 		-- Add Medic
@@ -154,7 +303,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 1		
 			},
 
-		-- Randal Moore Grenade Attack
+		-- Aggressor Grenade Attack
 		["Aggressor_Grenade_Attack_Ability"] = 
 			{ 
 				special_ability_name="Aggressor_Grenade_Attack_Special_Ability",   
@@ -166,6 +315,37 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
 				sort_order = 18		
 			},
+
+		-- Randal Moore: retreat from tactical ability
+		["Randal_Moore_Retreat_From_Tactical_Ability"] = 
+			{ 
+				action=SPECIALABILITYACTION_TARGET_TERRAIN,    
+				icon="I_ICON_BUILD_UPGRADE.tga",
+				campaign_game_only = true,
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_NOVUS_HERO_RETREAT",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_MIRABEL_RETREAT",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_INITIATE",
+			    priority = 3,	-- NOTE: this determines the order in which to display the abilities of each unit (whenever specified)
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.				
+			},	
+			
+		-- Randal Moore Capture Structure
+		["Randal_Capture"] = 
+			{
+				special_ability_name="Randal_Disciple_Capture_Ability", 
+				action=SPECIALABILITYACTION_TARGET_OBJECT,   
+				max_range=2000.0,
+				icon="I_ICON_MILITARY_FLAG.TGA",  
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_ALIEN_CAPTURE",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MILITARY_CAPTURE",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 1 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	     
+			},
+
 
 		-- Apache Helicopter Rocket Barrage
 		["Unit_Ability_Apache_Rocket_Barrage"] = 	
@@ -363,37 +543,18 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 6 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
 			},	
 
-		-- Novus Variant toggle weapon ability
-		["Variant_Variant_Mode"] =
-			{ 
-				action=SPECIALABILITYACTION_TOGGLE,
-				icon="i_icon_n_sa_weapon_off.tga", 
-				alt_icon="i_icon_n_sa_weapon_on.tga",
-				
+		-- Variant Phase Self ability
+		["Variant_Phase_Self_Ability"] = 
+			{
+				action=SPECIALABILITYACTION_INSTANT,    
+				icon="Scattered_Variant.tga",
 				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_NOVUS_WEAPON_OFF",
-				alt_text_id = "TEXT_ABILITY_NOVUS_WEAPON_ON",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_WEAPON_OFF",
-				alt_tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_WEAPON_ON_FIXED",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_TOGGLE",
-				sort_order = 6 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
-			},	
-			
-		-- Novus Variant toggle weapon ability
-		["Variant_Mode"] =
-			{ 
-				action=SPECIALABILITYACTION_TOGGLE,
-				icon="i_icon_n_sa_weapon_on.tga", 
-				alt_icon="i_icon_n_sa_weapon_off.tga",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_NOVUS_WEAPON_ON",
-				alt_text_id = "TEXT_ABILITY_NOVUS_WEAPON_ON",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_WEAPON_ON_FIXED",
-				alt_tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_WEAPON_ON_FIXED",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_TOGGLE",
-				sort_order = 6 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
-			},				
+				text_id = "TEXT_ABILITY_NOVUS_SCATTER",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_SCATTER",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				sort_order = 7
+			},
+
 
 		-- Novus Dervish Jet: Dervish Spin Attack
 		["Unit_Ability_Dervish_Spin_Attack"] =
@@ -452,7 +613,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_SPAWN",	   
 				types_to_spawn = {"Novus_Reflex_Trooper_Clone"},
 				sort_order = 9 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},			
+			},
 		
 		-- Novus Field Invertor: toggle between modes
 		["Novus_Inverter_Toggle_Shield_Mode"] =
@@ -485,22 +646,6 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 11 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
 			},
 			
-		-- Novus Hacker: Viral Bomb	
-		["Novus_Corruptor_Viral_Bomb_Unit_Ability"] = 
-			{
-				special_ability_name="Novus_Corruptor_Viral_Bomb_Special_Ability",
-				action=SPECIALABILITYACTION_TARGET_OBJECT,
-				max_range=300.0,
-				icon="i_icon_n_sa_viral_bomb.tga",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_NOVUS_VIRAL_BOMB",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_VIRAL_BOMB",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
-				sort_order = 11 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
-			},
-						
-			
 			
 			-- Novus Hacker: Firewall Blast	
 		["Novus_Hacker_Firewall"] = 
@@ -516,20 +661,6 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
 				sort_order = 12 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
 			},
-			
-		-- Novus Evictor: Spawn Flow
-		["Unit_Ability_Spawn_Flow"] =
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,
-				icon="I_ICON_N_RESEARCH_SIGNAL_BRANCH.TGA",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_NOVUS_HOTSPOT",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_NOVUS_SPAWN_FLOW",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_SPAWN",	   
-				types_to_spawn = {"Novus_Signal_Tower_Evictor"},
-				sort_order = 12 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},						
 			
 		-- Novus Vertigo upload ability
 		["Upload_Unit_Ability"] = 
@@ -691,7 +822,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_TOGGLE",
 				sort_order = 6 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	  
 			},
-		
+			
 		-- Kamal Re'x abilities
 		["Kamal_Rex_Abduction_Unit_Ability"] = 
 			{
@@ -868,18 +999,6 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 12 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	   
 			},
 			
-		["Walker_Artillery_Cannon_Attack"] = 
-		{ 
-			action=SPECIALABILITYACTION_TARGET_TERRAIN,    
-			max_range = 1000.0,
-			icon="i_icon_a_sa_Launch_warhead.tga",  
-			
-			-- TOOLTIP RELATED DATA
-			text_id = "TEXT_ABILITY_ALIEN_LAUNCH_RADIATION_WARHEAD",
-			tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_TERRAIN_CONDITIONER",
-			tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
-			sort_order = 13 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	   
-		},
 		["Assembly_Scarn_Beam"] = 
 			{ 
 				special_ability_name="Assembly_Scarn_Beam_Ability",    
@@ -1258,20 +1377,8 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
 				priority = 2,
 				sort_order = 3 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
-			},					
-		-- Masari Hero Zessus: Heal
-		["Masari_Zessus_Explode_Unit_Ability_Heal"] = 
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,    
-				icon="i_icon_m_sa_blizzard.tga",  
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_TRANSFUSION",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_TRANSFUSION",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
-				priority = 2,
-				sort_order = 3 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
-			},			
+			},
+
 		-- Masari Hero Zessus: Teleportation ability
 		["Masari_Zessus_Teleportation_Unit_Ability"] = 
 		    { 
@@ -1303,6 +1410,19 @@ function Initialize_Special_Abilities(init_key_mappings)
 				sort_order = 3 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
 			},
 
+		-- Masari Hero Zessus: Heal
+		["Masari_Zessus_Explode_Unit_Ability_Heal"] = 
+			{ 
+				action=SPECIALABILITYACTION_INSTANT,    
+				icon="i_icon_m_sa_blizzard.tga",  
+				
+				-- TOOLTIP RELATED DATA
+				text_id = "TEXT_ABILITY_MASARI_TRANSFUSION",
+				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_TRANSFUSION",
+				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
+				priority = 2,
+				sort_order = 3 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 
+			},			
 		-- Masari Hero Zessus: Retreat from tactical ability
 		["Masari_Zessus_Retreat_From_Tactical_Unit_Ability"] = 
 			{ 
@@ -1365,90 +1485,6 @@ function Initialize_Special_Abilities(init_key_mappings)
 				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",
 				sort_order = 13 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	  
 			},
-			
-		-- Masari Templar: Sprinting ability
-		["Unit_Ability_Zeal"] =
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,
-				icon="ABILITY_SPRINT_YELLOW.TGA",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_FLASH",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_FLASH",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",	   
-				types_to_spawn = {"Invisible_Redirection_Field"},
-				sort_order = 13 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},											
-			
-		["Unit_Ability_Zeale"] =
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,
-				icon="ABILITY_SPRINT_YELLOW.TGA",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_FLASH",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_FLASH",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",	   
-				types_to_spawn = {"Invisible_Redirection_Field"},
-				priority = 2,								
-				sort_order = 15 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},									
-			
-		-- Masari Templar: Impervious Bubble Shield ability
-		["Unit_Ability_Dark_Shield"] =
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,
-				icon="ABILITY_TEMPLAR_SHIELD_GLOW.TGA",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_DARK_SHIELD",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_DARK_SHIELD",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",	   
-				types_to_spawn = {"Invisible_Redirection_Field"},
-				priority = 3,								
-				sort_order = 14 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},										
-		["Unit_Ability_Stun_Shot"] =
-			{ 
-				special_ability_name="Stun_Shot_Special_Ability",   
-				action=SPECIALABILITYACTION_TARGET_OBJECT,  
-				icon="ARREST.TGA", 
-				max_range=400.0,				
-
-				text_id = "TEXT_ABILITY_MASARI_STUN_SHOT",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_SNARE",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
-				priority = 1,				
-				sort_order = 1		
-			},									
---[[		["Unit_Ability_Flashpoint"] =
-			{ 
-				action=SPECIALABILITYACTION_INSTANT,
-				icon="ABILITY_FLASHPOINT.TGA",
-				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_FLASHPOINT",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_FLASHPOINT",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_ACTIVATE",	   
-				types_to_spawn = {"Invisible_Redirection_Field"},
-				sort_order = 16 -- NOTE: sort order determines the order in which to place the abilities for the unit type associated to them.	 		
-			},										]]									
-			
-		["Unit_Ability_Phosphor_Shot"] =
-			{ 
-				special_ability_name="Phosphor_Shot_Special_Ability",   
-				action=SPECIALABILITYACTION_TARGET_OBJECT,  
-				icon="ABILITY_OVERKILL.tga", 
-				max_range=400.0,				
-				-- TOOLTIP RELATED DATA
-				text_id = "TEXT_ABILITY_MASARI_PHOSPHOR_ROCKET",
-				tooltip_description_text_id = "TEXT_TOOLTIP_DESCRIPTION_ABILITY_MASARI_PHOSPHOR_ROCKET",
-				tooltip_category_id = "TEXT_TOOLTIP_CATEGORY_LAUNCH",
-				sort_order = 17		
-			},								
-
-					
-						
 			
 		-- Masari Hero Alatea: Unmake ability
 		["Masari_Alatea_Unmake_Ability"] = 
@@ -1651,6 +1687,7 @@ function Initialize_Special_Abilities(init_key_mappings)
 	if init_key_mappings then
 		Init_Abilities_Key_Mappings()
 	end	
+	
 end
 
 
@@ -1676,8 +1713,6 @@ function Init_Abilities_Key_Mappings()
 		Init_Alien_Abilities_Key_Mappings()
 	elseif  faction_id == NOVUS_FACTION_ID then
 		Init_Novus_Abilities_Key_Mappings()
-	elseif  faction_id == PROTO_FACTION_ID then
-		Init_Proto_Abilities_Key_Mappings()
 	elseif faction_id == MASARI_FACTION_ID then
 		Init_Masari_Abilities_Key_Mappings()
 	end	
@@ -1691,8 +1726,6 @@ function Get_Player_Faction_ID(player)
 		return ALIEN_FACTION_ID
 	elseif Is_Player_Of_Faction(player, "NOVUS") then
 		return NOVUS_FACTION_ID	
-	elseif Is_Player_Of_Faction(player, "PROTO") then
-		return PROTO_FACTION_ID	
 	elseif Is_Player_Of_Faction(player, "MASARI") then
 		return MASARI_FACTION_ID
 	end	
@@ -1799,8 +1832,7 @@ function Init_Alien_Abilities_Key_Mappings()
 		["Tank_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_11", 1),					
 		
 		-- Foo Core/Foo Fighter abilities
-		["Unit_Ability_Foo_Core_Heal_Attack_Toggle"] =  Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_12", 1),	
-		["Alien_Ship_Toggle_Fire_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_28", 1),			
+		["Unit_Ability_Foo_Core_Heal_Attack_Toggle"] =  Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_12", 1),				
 		
 		-- Brute abilities
 		["Brute_Leap_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_13", 1),	 
@@ -1900,89 +1932,13 @@ function Init_Masari_Abilities_Key_Mappings()
 		["Masari_Alatea_Retreat_From_Tactical_Ability"] =  Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_20", 1),
 		
 		-- Masari Seeker destabilize ability
-		["Inquisitor_Destabilize_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_21", 1),
-		
-		-- Masari Seeker destabilize ability
-		["Unit_Ability_Dark_Shield"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_23", 1), 		
-		["Unit_Ability_Phosphor_Shot"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_24", 1), 		
-		["Unit_Ability_Zeal"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_22", 1), 				
+		["Inquisitor_Destabilize_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_21", 1) 
 	}		
 end
-
--- ----------------------------------------------------------------
--- Init_Alien_Abilities_Key_Mappings
--- ----------------------------------------------------------------
-function Init_Proto_Abilities_Key_Mappings()
-	SANameToKeyMappingList[PROTO_FACTION_ID] = 	
-	{
-		----------------------------------------
-		-- Universal Special Abilities
-		----------------------------------------
-		["Alien_Unload_Transport_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_GENERIC_LAND_ABILITY_1", 1),
-		
-		-- Kamal Re'x abilities			
-		["Kamal_Rex_Abduction_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_1", 1),
-		["Kamal_Rex_Force_Wall_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_2", 1),				
-		["Kamal_Rex_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_3", 1),
-		
-		-- Alien Orlok Hero
-		["Alien_Orlok_Switch_To_Siege_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_4", 1),	
-		["Alien_Orlok_Switch_To_Endure_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_5", 1),	
-		["Alien_Orlok_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_6", 1),	
-		
-		-- Alien hero Nufai
-		["Alien_Nufai_Paranoia_Field_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_7", 1),	
-		["Alien_Nufai_Tendrils_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_8", 1),	
-		["Alien_Nufai_Retreat_From_Tactical_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_9", 1),	
-		
-		-- Alien reaper turret abilities
-		["Reaper_Auto_Gather_Resources"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_10", 1),	
-		
-		-- Phase Tank personal phasing.
-		["Tank_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_11", 1),					
-		
-		-- Foo Core/Foo Fighter abilities
-		["Unit_Ability_Foo_Core_Heal_Attack_Toggle"] =  Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_12", 1),	
-		["Alien_Ship_Toggle_Fire_Mode"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_28", 1),			
-		
-		-- Brute abilities
-		["Brute_Leap_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_13", 1),	 
-		["Brute_Death_From_Above"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_14", 1),	 
-		["Brute_Tackle_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_15", 1),	 
-		
-		-- Alien Grunt abilities KDB 01-25-2007
-		["Grunt_Capture"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_16", 1),	
-			
-		-- Alien scan drone abilities KDB 02-07-2007
-		["Scan_Drone_Scan_Pulse"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_17", 1),		
-			
-		-- Alien detection array abilities KDB 07-10-2007 (this is a capturable structure and therefore needs to have art available from all factions)
-		--["Detection_Array_Scan_Pulse_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_23", 1)		
-		
-		-- Alien Defiler KDB 08-08-2006
-		["Defiler_Radiation_Bleed"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_18", 1),	
-		["Defiler_Radiation_Charge"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_19", 1),	
-		
-		-- Artillery cannon
-		["Radiation_Artillery_Cannon_Attack"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_20", 1),	
-		
-		["Assembly_Scarn_Beam"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_21", 1),	
-
-		-- Walker science HP abilities
-		-- Alien radiation wave
-		["Alien_Radiation_Cascade_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_22", 1),		
-		["Alien_Walker_Science_Dark_Matter_Vent"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_23", 1),	
-		
-		-- Alien Glyph Carver ability
-		["Alien_Tactical_Build_Structure_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_24", 1),	
-		
-		-- ALIEN Lost Ones plasma bomb.
-		["Lost_One_Plasma_Bomb_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_25", 1),	
-		["Grey_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_26", 1),	
-		
-		-- ALIEN Monolith personal phasing.
-		["Monolith_Phase_Unit_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_27", 1),	
-		
-		["Aggressor_Grenade_Attack_Ability"] = Get_Game_Command_Mapped_Key_Text("COMMAND_LAND_ABILITY_29", 1)			
-	}
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Get_Ability_Key_Mapping_Text = nil
+	Initialize_Special_Abilities = nil
+	Kill_Unused_Global_Functions = nil
 end
+

@@ -51,13 +51,13 @@
 		<!-- MOVEMENT -->
 		<MovementClass>Flying</MovementClass>
 		<OccupationStyle>1x1</OccupationStyle>
-		<Max_Speed> 1.2</Max_Speed>
+		<Max_Speed> 0.8</Max_Speed>
 		<Min_Speed> 0.5 </Min_Speed>
 		<OverrideAcceleration> .05 </OverrideAcceleration>
 		<OverrideDeceleration> .025 </OverrideDeceleration>
 		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
-		<ROT_Acceleration> .33 </ROT_Acceleration>
-		<ROT_Deceleration> .15 </ROT_Deceleration>
+		<ROT_Acceleration> .66 </ROT_Acceleration>
+		<ROT_Deceleration> .35 </ROT_Deceleration>
 		<Max_Thrust> 1.5 </Max_Thrust>
 		<Thrust_Acceleration> .02 </Thrust_Acceleration>
 		<Thrust_Deceleration> .075 </Thrust_Deceleration>
@@ -120,7 +120,7 @@
 		<Land_FOW_Reveal_Range> 100.0 </Land_FOW_Reveal_Range>
 		<Ranged_Target_Z_Adjust> 15.0 </Ranged_Target_Z_Adjust>
 
-		<Attack_Category_Restrictions> Female | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Female+Stationary | Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -222,9 +222,9 @@
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Production_Queue> Tactical_Units </Tactical_Production_Queue>
-			<Tactical_Build_Cost_Campaign> 675 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Cost_Multiplayer> 650 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 24 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Cost_Campaign> 750 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Multiplayer> 750 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Time_Seconds> 23 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
 
@@ -353,7 +353,7 @@
 
             <Face_Target>Yes</Face_Target>
             
-				<Excluded_Unit_Categories> DummyTarget, Resource, Resource_INST </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> DummyTarget, Resource+~Organic, Resource_INST+~Organic </Excluded_Unit_Categories>
 				<Deactivate_On_User_Attack_Order> true </Deactivate_On_User_Attack_Order>
 				<Deactivate_On_User_Move_Order> true </Deactivate_On_User_Move_Order>
 				<Terminate_Effect_On_Move_Command> true </Terminate_Effect_On_Move_Command>
@@ -391,43 +391,21 @@
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
-
-<!--      <Effect_Generator Name="QuantumSpecialist">
-				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> QuantumSpecialist </Effect_Name>
-					<Duration> 5.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>	  -->
 			
 			<Effect_Generator Name="CylinderRadiationBeamGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
 				
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> CylinderGamaRadiationBeamEffect </Effect_Name>
+					<Effect_Name> CylinderGammaRadiationBeamEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 					<Source_SFX_Event> SFX_Alien_Radiation_2_Fire_Loop </Source_SFX_Event>
 					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-<!--				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> ResonanceBeamDisableTargetEffect </Effect_Name>
-					<Duration>-1</Duration>
-					<Target_Gathering_Mask> Target | TargetHardpoints </Target_Gathering_Mask>
-					<Target_Filter_C> Novus_Amplifier_Resonance_Beam_Disable_Target  </Target_Filter_C>
-						<Max_Targets> 1 </Max_Targets>
-				</Effect_Generator_Entry>-->
-
-				<Effect_Generator_Entry Name="Entry3">
+				<Effect_Generator_Entry Name="Entry2">
 					<Effect_Name> CylinderRadiationBeamEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
@@ -435,14 +413,13 @@
 					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
 					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
 					<Target_SFX_Event> SFX_Alien_Radiation_Detonation_1 </Target_SFX_Event>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
 
-				<Effect_Generator_Entry Name="Entry4">
+				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> CylinderRadiationBeamStructureEffect </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-          <Target_Filter_Categories> Stationary </Target_Filter_Categories>
+          			<Target_Filter_Categories> Stationary </Target_Filter_Categories>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -641,10 +618,5 @@
 	</X10_Alien_Units>
 
 
-	<X10_Alien_Units Name="Proto_Cylinder">
-      <Variant_Of_Existing_Type> Alien_Cylinder </Variant_Of_Existing_Type>
-		<Affiliation> Proto </Affiliation>
-		<AssetBank> BANK_ALIEN </AssetBank>
-	</X10_Alien_Units>
 
 </Alien_VEH_Cylinder_XML>

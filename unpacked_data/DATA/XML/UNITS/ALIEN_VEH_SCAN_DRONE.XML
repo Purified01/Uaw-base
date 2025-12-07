@@ -194,7 +194,6 @@
 		<BehaviorType Name="TooltipBehaviorType">
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_SCAN_DRONE </Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_WALKER </Tooltip_Category>
-			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_STEALTH_UNITS </Tooltip_Good_Against>			
          <Researched_Upgrades>
             TEXT_ALIEN_RESEARCH_TITLE_VOLATILE_REACTORS
             TEXT_ALIEN_RESEARCH_TITLE_MENTAL_FREQUENCY
@@ -284,7 +283,7 @@
 
 		<BehaviorType Name="FleetBehaviorType">
 			<!-- Maria 05.24.2006 - How much space does the unit take up -->
-			<Unit_Pop_Cap> 2 </Unit_Pop_Cap>
+			<Unit_Pop_Cap> 3 </Unit_Pop_Cap>
 		</BehaviorType>
 
 		<BehaviorType Name="GroundStructureBehaviorType">
@@ -338,6 +337,36 @@
 		<!-- EFFECT GENERATORS -->
 		<Effect_Generator_Data SubObjectList="Yes">
 
+			<Effect_Generator Name="ScanDroneArmorEffect">
+
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> SmallWalkerArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> SmallWalkerArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> SmallWalkerArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+
+         	</Effect_Generator>
+
 			<Effect_Generator Name="AlienScanDroneRadarEffectsGenerator">
 				<Should_Deactivate_Manually>Yes</Should_Deactivate_Manually>
 				<Starts_Active> true </Starts_Active>
@@ -380,13 +409,6 @@
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
-				<Effect_Generator_Entry Name="Entry2">
-					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
-					<Duration> 2.1 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
-				</Effect_Generator_Entry>				
 			</Effect_Generator>
 
 			<Effect_Generator Name="ScanDroneScanPulseGenerator">
@@ -430,6 +452,30 @@
 					<Target_Gathering_Mask> TargetAE </Target_Gathering_Mask>
 					<Area_Effect_Radius> 175.0 </Area_Effect_Radius>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
+				</Effect_Generator_Entry>
+
+			</Effect_Generator>
+
+				<Effect_Generator Name="Jamming_Aura_Drone">
+				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 5.1 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> Disable_On_Enemy_Radar_Drone </Effect_Name>
+					<Duration> 10 </Duration>
+					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 300 </Area_Effect_Radius>
+				</Effect_Generator_Entry>
+
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> Disable_On_Enemy_Radar_Drone </Effect_Name>
+					<Duration> 10 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Target_Filter_C> Is_Ally </Target_Filter_C>
+					<Area_Effect_Radius> 300 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>
@@ -848,7 +894,7 @@
 
     <BehaviorType Name="ResourceBehaviorType">
       <Resource_Units> 700 </Resource_Units>
-      <Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+      <Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
       <Is_Single_Resource> false </Is_Single_Resource>
     </BehaviorType>
 
@@ -997,6 +1043,5 @@
       <Land_Model_Name> AB_Reaper_turret_debri_J.alo </Land_Model_Name>
       <AssetBank> BANK_ALIEN </AssetBank>
     </X10_Alien_Units>
-
 
 </Alien_Veh_Scan_Drone_XML>

@@ -102,7 +102,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Novus_Structure_Turret </Armor_Type>
+			<Armor_Type> Armor_Novus_Structure_Light </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
@@ -122,20 +122,6 @@
 			<!-- used to show the radius of the power transmission -->
 			<Buildable_Placement_Power_Blob_Material_Name>Novus_Radius</Buildable_Placement_Power_Blob_Material_Name>
 		</BehaviorType>
-
-<!--		<BehaviorType Name="WeaponBehaviorType">
-			<Targeting_Priority_Set> Novus_Redirection_Turret_Target_Priority </Targeting_Priority_Set>
-			<Targeting_Fire_Inaccuracy> 3.0 </Targeting_Fire_Inaccuracy>
-			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 295.0 </Targeting_Max_Attack_Distance>
-			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
-			<Attack_Category_Restrictions> Small | Medium | Large | Huge | Flying | HardPoint | Resource | Resource_INST | Bridge </Attack_Category_Restrictions>
-			<Projectile_Types>Proj_Novus_Antimatter_Cannon_Tower_D</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>2.5</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>11</Projectile_Fire_Pulse_Count>
-			<Projectile_Fire_Pulse_Delay_Seconds>0.5</Projectile_Fire_Pulse_Delay_Seconds>
-		</BehaviorType>-->
-	
 		
 		<BehaviorType Name="TurretBehaviorType">
 			<Is_Turret_Entire_Body> false </Is_Turret_Entire_Body>
@@ -256,69 +242,10 @@
 				<Effect_Generator_Name> Gravity_Overload_Generator </Effect_Generator_Name>
 			</Unit_Ability>
 			
-<!--			<Unit_Ability Name="Novus_Constructor_Consumption_Spray_Ability_Generator">
-				<Type>EFFECT_GENERATOR</Type>
-				<Recharge_Seconds>2.0</Recharge_Seconds>
-				<Expiration_Seconds>3.0</Expiration_Seconds>
-				<Is_Modal>No</Is_Modal>
-				<GUI_Activated_Ability_Name> Novus_Constructor_Consumption_Spray_Attack </GUI_Activated_Ability_Name>
-				<Effect_Generator_Name> Novus_Constructor_Consumption_Spray_Effect_Generator </Effect_Generator_Name>
-				<Terminate_Effect_On_Move_Command> true </Terminate_Effect_On_Move_Command>
-				<Targeting_Type> ENEMY_OBJECT </Targeting_Type>
-            <Usable_While_Garrisoned> TRUE </Usable_While_Garrisoned>
-            <Disable_Unit_Ability_Attribute> Is_Mind_Controlled </Disable_Unit_Ability_Attribute>
-
-         </Unit_Ability>			-->
 		</Unit_Abilities_Data>
 		
-<!--		<Abilities SubObjectList="Yes">
-		
-			<Effect_Generator_Ability Name="Novus_Constructor_Consumption_Spray_Attack">
-				<Activation_Min_Range> 0.0  </Activation_Min_Range>
-				<Activation_Max_Range> 180.0 </Activation_Max_Range>
-				<Can_Target_Enemies>True</Can_Target_Enemies>
-				<Effect_Generator_Name> Novus_Constructor_Consumption_Spray_Effect_Generator </Effect_Generator_Name>
-				<Activation_Style> SPECIAL_ATTACK </Activation_Style>
-				<Face_Target> true </Face_Target>
-			</Effect_Generator_Ability>		
-			
-		</Abilities>				-->
 
-		<Effect_Generator_Data SubObjectList="Yes">
-		
-			<Effect_Generator Name="MasariStationaryRevelationGeneratorDetectionConduit">
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Is_Independent_Generator>Yes</Is_Independent_Generator>
-				<Modal_Refresh_Frequency> 7.0 </Modal_Refresh_Frequency>
-				<Starts_Active> yes </Starts_Active>
-
-				<Effect_Generator_Entry Name="Entry1">
-					<Duration> 7.1 </Duration>
-					<Effect_Name> MasariStationaryRevelationEffectDetectionConduit </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>								
-		
-<!--			<Effect_Generator Name="Novus_Constructor_Consumption_Spray_Effect_Generator">
-				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
-				<Is_Independent_Generator>No</Is_Independent_Generator>
-            <Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Novus_Constructor_Consumption_Spray_Effect </Effect_Name>
-					<Duration> 3.0 </Duration>
-					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Source_SFX_Event> SFX_Novus_Consumption_Spray_Loop </Source_SFX_Event>
-					<Source_SFX_Loop_Type>ResonanceBeamWeaponEffectSFX</Source_SFX_Loop_Type>
-					<Stop_Source_SFX_On_Deactivate> true </Stop_Source_SFX_On_Deactivate>
-					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
-					<Should_Add_Team_Container_As_Target> false </Should_Add_Team_Container_As_Target>
-					<Linked_Effect_Names> ConstructorRepairBeamVisualEffect </Linked_Effect_Names>
-				</Effect_Generator_Entry>
-
-			</Effect_Generator>			-->			
+		<Effect_Generator_Data SubObjectList="Yes">								
 		
 			<Effect_Generator Name="NovusCommandCoreRadarEffectsGenerator">
 				<Should_Deactivate_Manually>Yes</Should_Deactivate_Manually>
@@ -701,63 +628,5 @@
 		</BehaviorType>
 		
 	</X12_Novus_Structures>
-
-
-
-
-	<!-- **************************************************************************************** -->
-	<!-- *** PROJECTILES ************************************************************************ -->
-	<!-- **************************************************************************************** -->
-
-	<Projectile Name="Proj_Novus_Antimatter_Cannon_Tower_D">
-
-		<!-- ART -->
-		<Land_Model_Name>PP_ZH_ZESSUS_WHIP_BLUE.ALO</Land_Model_Name> <!-- Defined in LASERBEAMS.XML -->
-      <AssetBank> BANK_NOVUS </AssetBank>
-		<Scale_Factor>0.1</Scale_Factor>
-		<!-- INTERFACE -->
-		<Text_ID>TEXT_NONE</Text_ID>
-		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
-
-		<!-- ATTRIBUTES -->
-		<Max_Speed>19.0</Max_Speed>
-		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
-
-		<!-- CONFLICT -->
-		<AI_Combat_Power> 1 </AI_Combat_Power>
-
-		<!-- BEHAVIORS-->
-		<Behavior>PROJECTILE, HIDE_WHEN_FOGGED</Behavior>
-
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Damage_Type> Damage_Novus_Evictor_Flechette_Cannon </Damage_Type>
-		</BehaviorType>
-
-		<BehaviorType Name="ProjectileBehaviorType">
-			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
-			<Projectile_Category>DEFAULT</Projectile_Category>
-
-			<Projectile_Max_Flight_Distance>1000.0</Projectile_Max_Flight_Distance>
-			<Projectile_Post_Collision_Travel_Distance>300</Projectile_Post_Collision_Travel_Distance>							
-			<Projectile_Damage>2.8</Projectile_Damage>						
-			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>
-			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-			<Projectile_Object_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Detonation_Particle>
-			<Projectile_Object_Armor_Reduced_Detonation_Particle>Novus_Small_projectile</Projectile_Object_Armor_Reduced_Detonation_Particle>
-			<Projectile_Ground_Detonation_Particle></Projectile_Ground_Detonation_Particle>
-         <Projectile_Lifetime_Detonation_Particle/>
-			<Projectile_Absorbed_By_Shields_Particle />
-			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
-			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
-		</BehaviorType>
-
-		<Effect_Generator_Data SubObjectList="Yes">
-
-      		<!-- Standard Crippling Shots - Jeff P 06/13/2007 -->
-      		<!--INCLUDE ".\Data\XML\Includes\Masari_Impact_Generators\MASARI_Crippling_Shots_Generator.xml" -->
-
-    	</Effect_Generator_Data>
-
-	</Projectile>   
 
 </Novus_Signal_Tower_XML>

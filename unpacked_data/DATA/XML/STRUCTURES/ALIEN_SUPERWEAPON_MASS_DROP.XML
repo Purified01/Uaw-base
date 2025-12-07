@@ -97,7 +97,7 @@
       </BehaviorType>
 
       <BehaviorType Name="GroundStructureBehaviorType">
-         <Is_Buildable_By_Constructor> No </Is_Buildable_By_Constructor>
+         <Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
          <!-- Maria 01.31.2007 - This value is used to determine the facing of the ghost structure when in 
 				  building placement mode.  It must be a value between 0.0 - 359.0	-->
          <Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
@@ -295,7 +295,7 @@
          <Tactical_Sell_Time_Seconds>0.5</Tactical_Sell_Time_Seconds>
       </Attributes>
 
-      <CategoryMask> Large, Stationary, TacticalBuildableStructure, Female  </CategoryMask>
+      <CategoryMask> Large, Stationary, TacticalBuildableStructure, Female </CategoryMask>
       <Affiliation> Alien, Alien_ZM06_KamalRex </Affiliation>
       <Victory_Relevant> No </Victory_Relevant>
 

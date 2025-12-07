@@ -260,7 +260,7 @@
 		</BehaviorType>
 
 		<BehaviorType Name="CrushBehaviorType">
-			<Crush_Defense>40</Crush_Defense>
+			<Crush_Defense>30</Crush_Defense>
 			<Crush_Power> 30 </Crush_Power>
 		</BehaviorType>
 
@@ -310,8 +310,11 @@
 				<Activation_Max_Range> 100 </Activation_Max_Range>
 				<Effect_Generator_Name> ReaperAttackSmallUnitGenerator </Effect_Generator_Name>
 				<Applicable_Unit_Categories> Organic + Medium | Small  </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Piloted, Stationary, Flying </Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank </Excluded_Unit_Types>
+				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Piloted, Stationary, Flying, Male, Female + !Stationary </Excluded_Unit_Categories>
+                <Excluded_Unit_Types>
+					Military_Hero_Randal_Moore, 
+					Military_Hero_Tank
+                </Excluded_Unit_Types>
 				<Max_Channel_Range> 150.0 </Max_Channel_Range>
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
@@ -324,8 +327,11 @@
 				<Activation_Max_Range> 100 </Activation_Max_Range>
 				<Effect_Generator_Name> ReaperAttackPilotedUnitGenerator </Effect_Generator_Name>
 				<Applicable_Unit_Categories> Piloted  </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Stationary, Flying, Small </Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank </Excluded_Unit_Types>
+				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Huge, Stationary, Flying, Small, Male, Female + !Stationary </Excluded_Unit_Categories>
+                <Excluded_Unit_Types>
+					Military_Hero_Randal_Moore, 
+					Military_Hero_Tank
+                </Excluded_Unit_Types>
 				<Max_Channel_Range> 150.0 </Max_Channel_Range>
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
@@ -338,8 +344,12 @@
 				<Activation_Max_Range> 100 </Activation_Max_Range>
 				<Effect_Generator_Name> ReaperAttackBigUnitGenerator </Effect_Generator_Name>
 				<Applicable_Unit_Categories> Piloted | Huge | Stationary </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Small, Flying </Excluded_Unit_Categories>
-				<Excluded_Unit_Types> Military_Hero_Randal_Moore, Military_Hero_Tank, Neutral_Refinery </Excluded_Unit_Types>
+				<Excluded_Unit_Categories> Resource, Resource_INST, HardPoint, Small, Flying, Male, Female + !Stationary </Excluded_Unit_Categories>
+                <Excluded_Unit_Types>
+					Military_Hero_Randal_Moore, 
+					Military_Hero_Tank,
+					Neutral_Refinery
+                </Excluded_Unit_Types>
 				<Max_Channel_Range> 200.0 </Max_Channel_Range>
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
@@ -351,8 +361,11 @@
 				<Activation_Max_Range> 100 </Activation_Max_Range>
 				<Effect_Generator_Name> ReaperAttackHardPointGenerator </Effect_Generator_Name>
 				<Applicable_Unit_Categories> HardPoint </Applicable_Unit_Categories>
-				<Excluded_Unit_Categories> Resource, Resource_INST </Excluded_Unit_Categories>
+				<Excluded_Unit_Categories> Resource, Resource_INST, Male, Female + !Stationary </Excluded_Unit_Categories>
+                <Excluded_Unit_Types>
 
+
+                </Excluded_Unit_Types>
 				<Max_Channel_Range> 125.0 </Max_Channel_Range>
 				<Is_Channeling_Independent_Generator>Yes</Is_Channeling_Independent_Generator>
 
@@ -392,7 +405,11 @@
 				<!-- Turret_Points_At_Target> true </Turret_Points_At_Target -->
 
 				<Effect_Generator_Name> AlienHarvestInstantResourceGenerator </Effect_Generator_Name>
-				<Applicable_Unit_Categories> Resource_INST </Applicable_Unit_Categories>
+				<Applicable_Unit_Categories> Resource_INST, Male, Female + !Stationary </Applicable_Unit_Categories>
+                <Applicable_Unit_Types>
+
+
+                </Applicable_Unit_Types>
 
 				<Can_Target_Allies>yes</Can_Target_Allies>
 				<Can_Target_Enemies>Yes</Can_Target_Enemies>
@@ -418,9 +435,23 @@
 				<Is_Self_Targeted> true </Is_Self_Targeted>
 
 				<!-- Any new move/attack order will cancel this ability -->
-				<Deactivate_On_User_Attack_Order>yes</Deactivate_On_User_Attack_Order>
-				<Deactivate_On_User_Move_Order>yes</Deactivate_On_User_Move_Order>
+				<Deactivate_On_User_Attack_Order>No</Deactivate_On_User_Attack_Order>
+				<Deactivate_On_User_Move_Order>No</Deactivate_On_User_Move_Order>
 			</Effect_Generator_Ability>
+			
+			<Effect_Generator_Ability Name="Reaper_Toggle_Auto_Harvest_Special_Ability_Duplicate">
+				<Activation_Min_Range> 0 </Activation_Min_Range>
+				<Activation_Max_Range> 100 </Activation_Max_Range>
+				<Effect_Generator_Name> DummyEffectForReaperGenerator </Effect_Generator_Name>
+				<Activation_Style> User_Input </Activation_Style>
+				<Face_Target> false </Face_Target>
+				<Can_Target_Allies>Yes</Can_Target_Allies>
+				<Is_Self_Targeted> true </Is_Self_Targeted>
+
+				<!-- Any new move/attack order will cancel this ability -->
+				<Deactivate_On_User_Attack_Order>Yes</Deactivate_On_User_Attack_Order>
+				<Deactivate_On_User_Move_Order>Yes</Deactivate_On_User_Move_Order>
+			</Effect_Generator_Ability>			
 		</Abilities>
 
 
@@ -428,6 +459,37 @@
 
 		<!-- EFFECT GENERATORS -->
 		<Effect_Generator_Data SubObjectList="Yes">
+
+
+			<Effect_Generator Name="ReaperDroneArmorEffect">
+
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> SmallWalkerArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> SmallWalkerArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> SmallWalkerArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+
+         	</Effect_Generator>
 
 			<!-- Default attack on non-resource units -->
 			<Effect_Generator Name="ReaperAttackSmallUnitGenerator">
@@ -476,7 +538,7 @@
 					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Female + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
@@ -491,7 +553,7 @@
 					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Male + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 					<Should_Add_All_Team_Members_As_Targets> No </Should_Add_All_Team_Members_As_Targets>
@@ -687,7 +749,7 @@
 					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Female + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 
@@ -704,7 +766,7 @@
 					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Male + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 
@@ -764,7 +826,7 @@
 					<Effect_Name> AlienHarvestResourcesFemaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Female + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Female + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 				</Effect_Generator_Entry>
@@ -773,7 +835,7 @@
 					<Effect_Name> AlienHarvestResourcesMaleSFX </Effect_Name>
 					<Duration> -1.0 </Duration>
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
-					<Target_Filter_Categories> Male + Organic </Target_Filter_Categories>
+					<Target_Filter_Categories> Male + Organic + ~Medium + ~Stationary</Target_Filter_Categories>
 					<Can_Target_Alive_Objects>Yes</Can_Target_Alive_Objects>
 					<Can_Target_Dead_Objects> No </Can_Target_Dead_Objects>
 				</Effect_Generator_Entry>
@@ -803,6 +865,17 @@
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 			</Effect_Generator>
+			
+			<!-- Enable Auto-Harvesting -->
+			<Effect_Generator Name="DummyEffectForReaperGenerator">
+				<Should_Deactivate_Manually> Yes </Should_Deactivate_Manually>
+				<Is_Independent_Generator> Yes </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> DummyEffectForReaper </Effect_Name>
+					<Duration> -1.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>	
 
 
          <Effect_Generator Name="PostConstructionEffectGenerator">
@@ -890,9 +963,21 @@
 				<Active_By_Default>Yes</Active_By_Default>
 				<GUI_Activated_Ability_Name> Reaper_Toggle_Auto_Harvest_Special_Ability </GUI_Activated_Ability_Name>
 				<Effect_Generator_Name> EnableAutoHarvestingGenerator </Effect_Generator_Name>
-            <SFXEvent_GUI_Unit_Ability_Activated>SFX_Alien_Infantry_Fire</SFXEvent_GUI_Unit_Ability_Activated> 
-				<SFXEvent_GUI_Unit_Ability_Deactivated>SFX_Alien_Grunt_Fire</SFXEvent_GUI_Unit_Ability_Deactivated>
+				<!-- STUPID FLIPING SOUND EFECTS THAT REVEAL YOUR LOCATION-->
+            	<!--<SFXEvent_GUI_Unit_Ability_Activated>SFX_Alien_Infantry_Fire</SFXEvent_GUI_Unit_Ability_Activated> --> 
+				<!--<SFXEvent_GUI_Unit_Ability_Deactivated>SFX_Alien_Grunt_Fire</SFXEvent_GUI_Unit_Ability_Deactivated> -->
 			</Unit_Ability>
+			
+			<!-- poopoo peepee -->
+			<Unit_Ability Name="Reaper_Auto_Gather_Resources_Duplicate">
+				<Type>EFFECT_GENERATOR</Type>
+				<Active_By_Default>Yes</Active_By_Default>
+				<GUI_Activated_Ability_Name> Reaper_Toggle_Auto_Harvest_Special_Ability_Duplicate </GUI_Activated_Ability_Name>
+				<Effect_Generator_Name> DummyEffectForReaperGenerator </Effect_Generator_Name>
+				<!-- STUPID FLIPING SOUND EFECTS THAT REVEAL YOUR LOCATION-->
+            	<!--<SFXEvent_GUI_Unit_Ability_Activated>SFX_Alien_Infantry_Fire</SFXEvent_GUI_Unit_Ability_Activated> --> 
+				<!--<SFXEvent_GUI_Unit_Ability_Deactivated>SFX_Alien_Grunt_Fire</SFXEvent_GUI_Unit_Ability_Deactivated> -->
+			</Unit_Ability>			
 		</Unit_Abilities_Data>
 
 
@@ -1046,7 +1131,7 @@
 			<Tactical_Buildable_Constructed> Alien_Superweapon_Reaper_Turret </Tactical_Buildable_Constructed>
 			<Tactical_Buildable_Beacon_Type> Alien_Reaper_Turret_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Build_Cost_Multiplayer> 1200 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Cost_Campaign> 1200 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 			<Required_Pre_Build_Time_In_Secs> 20 </Required_Pre_Build_Time_In_Secs>
@@ -1361,7 +1446,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 1000 </Resource_Units>
-         <Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> false </Is_Single_Resource>
       </BehaviorType>
 
@@ -1540,3 +1625,4 @@
 -->
 	
 </Alien_Veh_Reaper_Turret_XML>
+

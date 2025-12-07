@@ -24,9 +24,14 @@
 		<Samples>TEST_3.wav</Samples>
 	</SFXEvent>
 
-
-
-<!--  
+   <SFXEvent Name="COM_START_TACTICAL_STRUCTURE_BUILD">
+      <Use_Preset>Preset_UR</Use_Preset>
+      <Samples>I000_COM0102_ENG.wav I000_COM0103_ENG.wav</Samples>
+      <Localize> Yes </Localize>
+      <Play_Sequentially> Yes </Play_Sequentially>
+      <Text_ID>TEXT_SFX_CON_ABILITY_A_1</Text_ID>
+      <Overlap_Test> COM </Overlap_Test>
+   </SFXEvent>
 
 	<SFXEvent Name="COM_BUILD_INFANTRY">
 		<Use_Preset>Preset_UR</Use_Preset>
@@ -190,9 +195,6 @@
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
 
--->
-
-
 
 
 	<SFXEvent Name="COM_LOST_UNIT">
@@ -213,7 +215,7 @@
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
 
-<!--  
+
 	<SFXEvent Name="COM_LOST_WALKER">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>I000_COM0203_ENG.wav</Samples>
@@ -222,7 +224,7 @@
 		<Text_ID>TEXT_SFX_COM_LOST_3</Text_ID>
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
--->
+
 	<SFXEvent Name="COM_LOST_HERO">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>I000_COM0204_ENG.wav</Samples>
@@ -254,7 +256,7 @@
 		<Text_ID>TEXT_SFX_COM_UNDER_ATTACK_2</Text_ID>
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
-<!--  
+
 	<SFXEvent Name="COM_UNDER_ATTACK_WALKER">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>I000_COM0303_ENG.wav</Samples>
@@ -263,7 +265,7 @@
 		<Text_ID>TEXT_SFX_COM_UNDER_ATTACK_3</Text_ID>
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
--->
+
 	<SFXEvent Name="COM_UNDER_ATTACK_HERO">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>I000_COM0304_ENG.wav</Samples>
@@ -273,21 +275,14 @@
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
 
-
-
-
-
-<!--  
 	<SFXEvent Name="COM_SOLD_UNIT">
 		<Use_Preset>Preset_UR</Use_Preset>
 		<Samples>I000_COM0401_ENG.wav</Samples>
 		<Localize> Yes </Localize>
 		<Play_Sequentially> Yes </Play_Sequentially>
-		<Text_ID>TEXT_SFX_COM_SOLD_1</Text_ID>
+		<Text_ID>TEXT_SFX_MCO_SOLD_1</Text_ID>
 		<Overlap_Test> COM </Overlap_Test>
 	</SFXEvent>
--->
-
 
 
    <SFXEvent Name="COM_SUPER_WEAPON_BUILT">

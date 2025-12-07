@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effects>
+	
+	<!-- Reduce unit build costs by 25% -->
+	<Effect Name="MilitaryManufactoringImprovementsEffect">
+		<Duration> 1.0 </Duration>
+		<Effect_Class> MilitaryManufactoringImprovements </Effect_Class>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Tactical_Build_Cost_Multiplier </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value> <!--25% Price Reduction-->
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="CreateSlaveZombie">
+		<Effect_Class> ResearchAdvancedFlow </Effect_Class>
+		<Duration> -1.0 </Duration>
+		<Effect_Component Type="AddBehavior">
+			<Behavior_Name> EFFECT_REGISTRY </Behavior_Name>
+			<Type>DeathFXBehaviorType</Type>
+			<Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave </Death_Spawn>
+			<Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_02 </Death_Spawn>
+			<Death_Spawn> Damage_Alien_AE_Radiation, Alien_Mutant_Slave_03 </Death_Spawn>
+			<Death_Spawn> Damage_Alien_Mutant_Slave_Claws, Alien_Mutant_Slave </Death_Spawn>
+			<Death_Spawn> Damage_Alien_Mutant_Slave_Claws, Alien_Mutant_Slave_02 </Death_Spawn>
+			<Death_Spawn> Damage_Alien_Mutant_Slave_Claws, Alien_Mutant_Slave_03 </Death_Spawn>
+		</Effect_Component>
+	</Effect>
+
+	<Effect Name="MilitaryStationaryRevelationEffect">
+		<Duration> 4.0 </Duration>
+		<Effect_Class> SightRange </Effect_Class>
+
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.25 </Modifier_Value>
+		</Effect_Component>
+	</Effect>
+
+	<!-- Reduce unit build costs by 25% -->
+	<Effect Name="MilitaryResearchNaniteRefinementEffect">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> ResearchNaniteRefinement </Effect_Class>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Unit_Tactical_Build_Cost_Multiplier </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value> <!--25% Price Reduction-->
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="MilitaryResearchRapidRebuildEffect">
+		<Effect_Class> Healing </Effect_Class>
+		<Duration> 0.1 </Duration>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+
+		<Effect_Component Type="Heal">
+			<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+	
+	<Effect Name="MilitaryResearchRapidRebuildBlockEffect">
+		<Effect_Class> ResearchRapidRebuildBlock </Effect_Class>
+		<Duration> 5.0 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Name> MilitaryResearchRapidRebuildEffect </Block_Effect_Name>
+		</Effect_Component>
+	</Effect>
+	
+</Effects>

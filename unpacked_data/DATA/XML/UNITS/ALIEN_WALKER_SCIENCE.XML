@@ -114,7 +114,7 @@
 		<Projectile_Fire_Pulse_Delay_Seconds> 2.0 </Projectile_Fire_Pulse_Delay_Seconds>
 		<Projectile_Fire_Recharge_Seconds> 5.0 </Projectile_Fire_Recharge_Seconds>
 
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER -->
@@ -379,7 +379,7 @@
          <Unit_Ability Name="Alien_Radiation_Cascade_Unit_Ability">
             <Type>EFFECT_GENERATOR</Type>
             <Expiration_Seconds>1.0</Expiration_Seconds>
-            <Recharge_Seconds>150.0</Recharge_Seconds>
+            <Recharge_Seconds>188.0</Recharge_Seconds>
             <GUI_Activated_Ability_Name>Alien_Radiation_Cascade_Special_Ability</GUI_Activated_Ability_Name>
             <Effect_Generator_Name>ScienceRadiationCascadeGenerator</Effect_Generator_Name>
             <Should_Targeting_Ignore_Objects>true</Should_Targeting_Ignore_Objects>
@@ -397,6 +397,36 @@
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
+
+         <Effect_Generator Name="ScienceWalkerHardPointArmorGenerator">
+
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+            
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry2">
+					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+				
+				<Effect_Generator_Entry Name="Entry3">
+					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+				</Effect_Generator_Entry>
+
+         </Effect_Generator>
 
 			<Effect_Generator Name="AlienWalkerScienceMindMagnetGenerator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
@@ -531,24 +561,6 @@
 					<Target_Gathering_Mask> Target </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
 
-			</Effect_Generator>
-
-                
-			<Effect_Generator Name="ScienceWalkerHardPointArmorGenerator">
-				
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Effect_Generator_Entry Name="Entry1">
-					
-					<Effect_Name> WalkerHardPointArmorEffect </Effect_Name>
-					<Duration> 3.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
-					
-				</Effect_Generator_Entry>
-				
 			</Effect_Generator>
 
 			<Effect_Generator Name="ScienceWalkerSpeedIncreaseGenerator">
@@ -763,7 +775,7 @@
 		
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2400 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
       
@@ -902,7 +914,7 @@
       <Projectile_Fire_Recharge_Seconds> 3.0 </Projectile_Fire_Recharge_Seconds>
       <Targeting_Priority_Set> Alien_Science_Walker_Target_Priority </Targeting_Priority_Set>
       <Targeting_Max_Attack_Distance> 270.0 </Targeting_Max_Attack_Distance>
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
       <!-- BEHAVIORS -->
       <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER, and an <Attached_Hard_Points> list  -->
@@ -1470,7 +1482,7 @@
 
 
       <BehaviorType Name="ArmorAndDamageBehaviorType">
-         <Armor_Type> Armor_Alien_Walker_Leg </Armor_Type>
+         <Armor_Type> Armor_Alien_Walker </Armor_Type>
          <Damage_Type> Damage_Default </Damage_Type>
       </BehaviorType>
 
@@ -2051,7 +2063,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2100,7 +2112,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 2300 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2149,7 +2161,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 30 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2198,7 +2210,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 30 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2247,7 +2259,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 30 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2296,7 +2308,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 30 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2345,7 +2357,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 30 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 		</BehaviorType>	
 
@@ -2561,7 +2573,7 @@
       </Attributes>
 
       <!-- CONFLICT -->
-      <Tactical_Health> 1100 </Tactical_Health>
+      <Tactical_Health> 1200 </Tactical_Health>
       <CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
       <!-- ART -->
@@ -2944,7 +2956,7 @@
 		</BehaviorType>
 
 		<!-- Conflict -->
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Alien_Walker_Science_HP_Mind_Magnet </Tactical_Buildable_Constructed>
@@ -2979,7 +2991,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 690 </Tactical_Health>
+		<Tactical_Health> 700 </Tactical_Health>
 		<CategoryMask> HardPoint, CanAttack, BodySocketHP </CategoryMask>
 
 		<!-- INTERFACE -->
@@ -2989,7 +3001,7 @@
 		<Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
 
 		<!-- Conflict -->
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<Behavior>
@@ -3072,7 +3084,7 @@
       <AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- CONFLICT -->
-		<Tactical_Health> 690 </Tactical_Health>
+		<Tactical_Health> 700 </Tactical_Health>
 		<CategoryMask> HardPoint, BodySocketHP </CategoryMask>
 
 		<!-- BEHAVIORS -->
@@ -3087,13 +3099,13 @@
 		</BehaviorType>
 
 		<!-- Conflict -->
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<BehaviorType Name="BuildableObjectBehaviorType">
 			<Tactical_Buildable_Constructed> Alien_Walker_Science_HP_AI_Magnet </Tactical_Buildable_Constructed>
 			<Tactical_Build_Cost_Campaign> 1000 </Tactical_Build_Cost_Campaign>
 			<Tactical_Build_Cost_Multiplayer> 1000 </Tactical_Build_Cost_Multiplayer>
-			<Tactical_Build_Time_Seconds> 37 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 30 </Tactical_Build_Time_Seconds>
 		</BehaviorType>
 
 		<!-- Maria 08.09.2006  We want this object to be buildable -->
@@ -3406,7 +3418,7 @@
 		<AssetBank> BANK_ALIEN </AssetBank>
 
 		<!-- Conflict -->
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 		<Tactical_Health> 800 </Tactical_Health>
 		<Ranged_Target_Z_Adjust> 1.0 </Ranged_Target_Z_Adjust>
 		<CategoryMask> HardPoint, LegSocketHP </CategoryMask>
@@ -3428,9 +3440,7 @@
          TACTICAL_SELL,
          ABILITY_COUNTDOWN
 		</LandBehavior>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
+
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3500,22 +3510,8 @@
 					<Duration> 20.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Ally </Target_Filter_C>
-					<Area_Effect_Radius> 300.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 150.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
-			</Effect_Generator>				
-				
-		<Effect_Generator Name="NovusShiftFieldGenerator">
-			<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-			<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-			<Starts_Active> true </Starts_Active>
-
-			<Effect_Generator_Entry Name="Entry1">
-				<Effect_Name> Shift_Field_Effect </Effect_Name>
-				<Duration> 3.2 </Duration>
-				<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            
-
-			</Effect_Generator_Entry>				
 
 			</Effect_Generator>
 
@@ -3601,9 +3597,7 @@
          TACTICAL_SELL,
          ABILITY_COUNTDOWN
 		</LandBehavior>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
+
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3738,9 +3732,7 @@
 			<Tactical_Under_Construction_Object_Type> Alien_Walker_Science_HP_Foo_Chamber_Under_Construction </Tactical_Under_Construction_Object_Type>
          <Tactical_UI_Build_Queue_Order> 1 </Tactical_UI_Build_Queue_Order>
 		</BehaviorType>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
+
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3842,9 +3834,7 @@
          ATTRIBUTE_DIRECTORY,
          TACTICAL_SELL
 		</LandBehavior>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
+
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -3960,7 +3950,7 @@
 		<Selection_Blob_Material_Name> Selection_Alien_Hardpoint_Land </Selection_Blob_Material_Name>
 
 		<!-- Conflict -->
-		<Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<!-- BEHAVIORS -->
 		<!-- Overriding the generic upgrade hardpoint behavior definition to remove the weapoin behavior; lightning is a special ability. -->
@@ -3981,9 +3971,7 @@
 			<Turret_Rotate_Extent_Degrees> 360.0 </Turret_Rotate_Extent_Degrees>
 			<Turret_Elevate_Extent_Degrees> 360.0 </Turret_Elevate_Extent_Degrees>
 		</BehaviorType>
-		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Walker_Hardpoint_Leg </Armor_Type>
-		</BehaviorType>
+
 		<BehaviorType Name="HardPointBehaviorType">
 			<HP_Type> HARD_POINT_WEAPON_LASER </HP_Type>
 		</BehaviorType>
@@ -4462,7 +4450,7 @@
 		<BehaviorType Name="MovingEffectObjectBehaviorType">
 			<Movement_Speed> 2.0 </Movement_Speed>
 			<Self_Destruct_Time> 20.0 </Self_Destruct_Time>
-			<Movement_Destruct_Distance> 1500.0 </Movement_Destruct_Distance>
+			<Movement_Destruct_Distance> 1000.0 </Movement_Destruct_Distance>
 			<Nap_Height> 10.0 </Nap_Height>
 			<Mark_For_Effect> true </Mark_For_Effect>
 			<Effect_Width> 50.0 </Effect_Width>
@@ -4680,7 +4668,7 @@
     <Projectile_Fire_Pulse_Delay_Seconds> 2.0 </Projectile_Fire_Pulse_Delay_Seconds>
     <Projectile_Fire_Recharge_Seconds> 5.0 </Projectile_Fire_Recharge_Seconds>
 
-    <Attack_Category_Restrictions> Resource, Resource_INST </Attack_Category_Restrictions>
+    <Attack_Category_Restrictions> Resource+~Organic, Resource_INST+~Organic </Attack_Category_Restrictions>
 
     <!-- BEHAVIORS -->
     <!-- Any unit that has hard points requires a Behavior entry with HARD_POINT_MANAGER -->
@@ -5041,54 +5029,41 @@
           <Base_Delay> 2.0 </Base_Delay>
           <Effect_Name> ScienceRadiationCascadeObjectEffect </Effect_Name>
           <Remove_On_Death> false </Remove_On_Death>
-          <Duration> 5.0 </Duration>
+          <Duration> 3.0 </Duration>
           <Target_Gathering_Mask> Target </Target_Gathering_Mask>
         </Effect_Generator_Entry>
 
       </Effect_Generator>
 
-			<Effect_Generator Name="HabitatWalkerHardPointArmorGenerator">
+      <Effect_Generator Name="ScienceWalkerHardPointArmorGenerator">
 
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Effect_Generator_Entry Name="Entry1">
+         <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+         <Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+         <Starts_Active> true </Starts_Active>
+         <Is_Independent_Generator> true </Is_Independent_Generator>
+         
+         <Effect_Generator_Entry Name="Entry1">
+            <Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
+            <Duration> 3.1 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+         </Effect_Generator_Entry>
+         
+         <Effect_Generator_Entry Name="Entry2">
+            <Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
+            <Duration> 3.1 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+         </Effect_Generator_Entry>
+         
+         <Effect_Generator_Entry Name="Entry3">
+            <Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
+            <Duration> 3.1 </Duration>
+            <Target_Gathering_Mask> Self </Target_Gathering_Mask>
+            <Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+         </Effect_Generator_Entry>
 
-					<Effect_Name> WalkerHardPointArmorEffectA3 </Effect_Name>
-					<Duration> 3.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
-
-				</Effect_Generator_Entry>
-				
-								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Effect_Generator_Entry Name="Entry2">
-
-					<Effect_Name> WalkerHardPointArmorEffectM3 </Effect_Name>
-					<Duration> 3.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
-
-				</Effect_Generator_Entry>
-				
-								<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
-				<Is_Independent_Generator> true </Is_Independent_Generator>
-				<Effect_Generator_Entry Name="Entry3">
-
-					<Effect_Name> WalkerHardPointArmorEffectQ3 </Effect_Name>
-					<Duration> 3.1 </Duration>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
-
-				</Effect_Generator_Entry>
-
-         </Effect_Generator>
+      </Effect_Generator>
 
       <Effect_Generator Name="ScienceWalkerSpeedIncreaseGenerator">
 

@@ -27,6 +27,13 @@
             <Decal_Name>EXPLOSION_SCORCH_WALKER_LARGE</Decal_Name>           
         </Surface_Settings>      
     </SurfaceFX>
+
+
+    <SurfaceFX name="EXPLOSION_SCORCH_NUKE">
+        <Surface_Settings name="default">
+            <Decal_Name>EXPLOSION_SCORCH_NUKE</Decal_Name>           
+        </Surface_Settings>      
+    </SurfaceFX>
     
     
     
@@ -142,14 +149,14 @@
 	<SurfaceFX name="APC_MILITARY_TIRE">
 		<Surface_Settings name="default">
 			<Dynamic_Track_Name>APC_Tire_Bump_Half</Dynamic_Track_Name>
-			<Dynamic_Track_Left_Bone>B_Tire_L03</Dynamic_Track_Left_Bone>
-			<Dynamic_Track_Right_Bone>B_Tire_R03</Dynamic_Track_Right_Bone>
+			<Dynamic_Track_Left_Bone>B_WheelNT_03</Dynamic_Track_Left_Bone>
+			<Dynamic_Track_Right_Bone>B_WheelNT_07</Dynamic_Track_Right_Bone>
 		</Surface_Settings>
 
 		<Surface_Settings name="concrete">
 			<Dynamic_Track_Name>NONE</Dynamic_Track_Name>
-			<Dynamic_Track_Left_Bone>Tread_L</Dynamic_Track_Left_Bone>
-			<Dynamic_Track_Right_Bone>Tread_R</Dynamic_Track_Right_Bone>
+			<Dynamic_Track_Left_Bone>B_WheelNT_03</Dynamic_Track_Left_Bone>
+			<Dynamic_Track_Right_Bone>B_WheelNT_07</Dynamic_Track_Right_Bone>
 		</Surface_Settings>
 
 		<Surface_Settings name="water">
@@ -1862,6 +1869,49 @@
         <SoundFX_Name>SFX_Anim_Concrete_Infantry_Foot_Plant</SoundFX_Name>
 		</Surface_Settings>
 	</SurfaceFX>
+
+	<SurfaceFX name="CIVILIAN_BLOOD_SPLAT">
+
+        <Surface_Settings name="default">
+        <SoundFX_Name>SFX_Anim_Dirt_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>Human_Blood_Splat</Decal_Name>
+        </Surface_Settings>
+
+		<Surface_Settings name="snow">
+        <SoundFX_Name>SFX_Anim_Snow_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>Human_Blood_Splat</Decal_Name>
+		</Surface_Settings>
+
+        <Surface_Settings name="grass">
+        <SoundFX_Name>SFX_Anim_Grass_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>Human_Blood_Splat</Decal_Name>
+		</Surface_Settings>
+
+        <Surface_Settings name="dirt">
+        <SoundFX_Name>SFX_Anim_Dirt_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>Human_Blood_Splat</Decal_Name>
+		</Surface_Settings>
+
+        <Surface_Settings name="water">
+        <SoundFX_Name>SFX_Anim_Water_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>NONE</Decal_Name>
+		</Surface_Settings>
+		
+		<Surface_Settings name="concrete">
+        <SoundFX_Name>SFX_Anim_Concrete_Infantry_Body_Fall</SoundFX_Name>
+		<Decal_Name>Human_Blood_Splat</Decal_Name>
+		</Surface_Settings>
+	</SurfaceFX>
+
+   <SurfaceFX name="CIVILIAN_BLOOD_EXPLODE">
+      <Surface_Settings name="default">
+         <Decal_Name>Human_Blood_Explode</Decal_Name>
+      </Surface_Settings>
+
+	  <Surface_Settings name="water">
+		 <Decal_Name>NONE</Decal_Name>
+	  </Surface_Settings>
+   </SurfaceFX>
 
 	<SurfaceFX name="GENERIC_IMPACT">
         <Surface_Settings name="default">

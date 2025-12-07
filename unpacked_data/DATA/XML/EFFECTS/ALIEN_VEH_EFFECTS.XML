@@ -107,7 +107,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_Monolith_Beam </Damage_Type>
-			<Amount_Per_Second> 8 </Amount_Per_Second>
+			<Amount_Per_Second> 8.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0.0</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -150,7 +150,7 @@
 	</Effect>
 
 	<!-- KDB 08-03-2006 Cylinder radiation -->
-	<Effect Name="CylinderGamaRadiationBeamEffect">
+	<Effect Name="CylinderGammaRadiationBeamEffect">
 		<Duration> 10.0 </Duration>
 		<Effect_Class> Transparent </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
@@ -158,14 +158,14 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_Monolith_Beam </Damage_Type>
-			<Amount_Per_Second> 15 </Amount_Per_Second>
+			<Amount_Per_Second> 12.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
          <!-- 10% decrease in build rate -->
-         <Modifier_Value> -0.2 </Modifier_Value>
+         <Modifier_Value> -0.1 </Modifier_Value>
 		</Effect_Component>
 
 		<Effect_Component Type="ParticleSystem">
@@ -734,7 +734,7 @@
 
 		<Effect_Component Type="DamageOverTime">
 			<Damage_Type> Damage_Alien_AE_Radiation </Damage_Type>
-			<Amount_Per_Second> 50.0 </Amount_Per_Second>
+			<Amount_Per_Second> 35.0 </Amount_Per_Second>
 			<Percentage_Per_Second>0</Percentage_Per_Second>
 		</Effect_Component>
 
@@ -961,6 +961,12 @@
 	************************************************************************************************** 
 	************************************************************************************************* -->
 
+	<Effect Name="DummyEffectForReaper">
+		<Duration> -1.0 </Duration>
+		<!-- No components means it does nothing -->
+	</Effect>
+
+
 	<!-- *************************************************************** -->
 	<!-- * ReaperTurret EnableAutoHarvesting Effect								-->
 	<!-- * OKSANA 03-10-2007															-->
@@ -1044,68 +1050,6 @@
 		</Effect_Component>
 	</Effect>
 
-	<Effect Name="ProtoHarvestResourcesEffect">
-		<Duration> 10.0 </Duration>
-		<Effect_Class> AlienHarvest </Effect_Class>
-
-		<Effect_Component Type="Transfer">
-			<Flow_Direction> TargetToSource </Flow_Direction>
-			<Target_Effect>  ResourceUnits	</Target_Effect>
-			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> -20.0 </Amount_Per_Second>
-			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
-			<Transfer_Multiplicative> 1 </Transfer_Multiplicative>
-         
-         <!-- Achievement increases gathered amount per second -->
-         <Source_Attribute_Per_Second_Coefficient>-18.0</Source_Attribute_Per_Second_Coefficient>
-         <Source_Attribute_Per_Second>Harvest_Material_Add</Source_Attribute_Per_Second>
-         
-         <Apply_Effect_Generator_On_Source_Out>ReaperDissolveTargetEffectGenerator</Apply_Effect_Generator_On_Source_Out>
-			<Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
-		</Effect_Component>
-	</Effect>
-
-	<Effect Name="ProtoGuardHarvestResourcesEffect">
-		<Duration> 10.0 </Duration>
-		<Effect_Class> AlienHarvest </Effect_Class>
-
-		<Effect_Component Type="Transfer">
-			<Flow_Direction> TargetToSource </Flow_Direction>
-			<Target_Effect>  ResourceUnits	</Target_Effect>
-			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> -30.0 </Amount_Per_Second>
-			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
-			<Transfer_Multiplicative> 1 </Transfer_Multiplicative>
-         
-         <!-- Achievement increases gathered amount per second -->
-         <Source_Attribute_Per_Second_Coefficient>-18.0</Source_Attribute_Per_Second_Coefficient>
-         <Source_Attribute_Per_Second>Harvest_Material_Add</Source_Attribute_Per_Second>
-         
-         <Apply_Effect_Generator_On_Source_Out>ReaperDissolveTargetEffectGenerator</Apply_Effect_Generator_On_Source_Out>
-			<Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
-		</Effect_Component>
-	</Effect>
-
-	<Effect Name="ProtoHardpointHarvestResourcesEffect">
-		<Duration> 10.0 </Duration>
-		<Effect_Class> AlienHarvest </Effect_Class>
-
-		<Effect_Component Type="Transfer">
-			<Flow_Direction> TargetToSource </Flow_Direction>
-			<Target_Effect>  ResourceUnits	</Target_Effect>
-			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> -15.0 </Amount_Per_Second>
-			<Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
-			<Transfer_Multiplicative> 1 </Transfer_Multiplicative>
-         
-         <!-- Achievement increases gathered amount per second -->
-         <Source_Attribute_Per_Second_Coefficient>-18.0</Source_Attribute_Per_Second_Coefficient>
-         <Source_Attribute_Per_Second>Harvest_Material_Add</Source_Attribute_Per_Second>
-         
-         <Apply_Effect_Generator_On_Source_Out>ReaperDissolveTargetEffectGenerator</Apply_Effect_Generator_On_Source_Out>
-			<Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
-		</Effect_Component>
-	</Effect>
 
 	<!-- ************************************************************** -->
 	<!-- * ReaperTurret AlienHarvestResources visual effect				  -->
@@ -1670,6 +1614,14 @@
 		<Effect_Class> ScanPulse </Effect_Class>
 		<Extends_Existing_Duration> true </Extends_Existing_Duration>
 		<Priority> 10.0 </Priority>
+
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>

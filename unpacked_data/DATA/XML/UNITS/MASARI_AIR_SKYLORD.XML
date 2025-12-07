@@ -23,10 +23,11 @@
 		<Occlusion_Silhouette_Enabled> 1 </Occlusion_Silhouette_Enabled>
 		<Importance> 0.4 </Importance>
 		<Shot_Type> Floating </Shot_Type>
+		<Attack_Category_Restrictions> Flying | Resource+~Organic | Resource_INST+~Organic | DeathCloneResource </Attack_Category_Restrictions>
 
 		<Attributes SubObjectList="Yes">
 			<Tactical_Sell_Percent_Modifier> -0.5 </Tactical_Sell_Percent_Modifier>
-			<Tactical_Sell_Time_Seconds> 1.9 </Tactical_Sell_Time_Seconds>
+			<Tactical_Sell_Time_Seconds> 2.0 </Tactical_Sell_Time_Seconds>
 			<Regenerate_Type>Masari_Avenger_Skylord</Regenerate_Type>
 			<Is_Immune_To_Amplifier_Lockdown> true </Is_Immune_To_Amplifier_Lockdown>
 			<Phoenix_Type>Masari_Aspirant_Fire</Phoenix_Type>
@@ -69,7 +70,7 @@
 
 		<FormationSpacing> 1.5 </FormationSpacing>
 		<FormationOrder> 9 </FormationOrder>
-		<FormationGrouping> Solo </FormationGrouping>
+		<FormationGrouping> SameOrder </FormationGrouping>
 		<FormationRaggedness> .6 </FormationRaggedness>
 		<Formation_Maximum_Side_Error> 150 </Formation_Maximum_Side_Error>
 
@@ -293,7 +294,7 @@
 
 		<BehaviorType Name="CrushBehaviorType">
 			<Crush_Defense> 60 </Crush_Defense>
-      <Crush_Power>6</Crush_Power>
+      <Crush_Power>25</Crush_Power>
 		</BehaviorType>
 
 		<BehaviorType Name="FleetBehaviorType">
@@ -315,7 +316,7 @@
 
 			<Unit_Ability Name="Masari_Skylord_Screech_Attack">
 				<Type>EFFECT_GENERATOR</Type>
-				<Recharge_Seconds>10.0</Recharge_Seconds>
+				<Recharge_Seconds>30.0</Recharge_Seconds>
 				<Expiration_Seconds> 5.0 </Expiration_Seconds>
 				<Effect_Generator_Name> Masari_Skylord_Screech_Attack_Generator </Effect_Generator_Name>
 				<Is_Modal>No</Is_Modal>
@@ -353,7 +354,7 @@
 					<Effect_Name> SkylordScreechStunEffect </Effect_Name>
 					<Duration> 6.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 200.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 120.0 </Area_Effect_Radius>
 					<Target_Filter_Categories>Flying</Target_Filter_Categories>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
@@ -362,7 +363,7 @@
 					<Effect_Name> SkylordScreechEffect </Effect_Name>
 					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 200.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 120.0 </Area_Effect_Radius>
 					<Target_Filter_Categories>Flying</Target_Filter_Categories>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 				</Effect_Generator_Entry>
@@ -387,7 +388,7 @@
 					<Duration> 1.1 </Duration>
 					<Effect_Name> MasariPhoenixEffect </Effect_Name>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Application_Probability>0.001</Target_Application_Probability>
+					<Target_Application_Probability>0.5</Target_Application_Probability>
 					<Target_Filter_C> Can_Create_Phoenix </Target_Filter_C>
 					<Remove_On_Death>No</Remove_On_Death>
 				</Effect_Generator_Entry>
@@ -548,13 +549,13 @@
 
 			<Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Skylord">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> Alien_Brute_Regenerate_Effect_Skylord </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Duration> 3.0 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
@@ -568,28 +569,29 @@
             <Starts_Active> true </Starts_Active>
 				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>			
 
-            <Effect_Generator_Entry Name="Entry1">
-					<Land_Behavior>HIDE_WHEN_FOGGED</Land_Behavior>
+            	<Effect_Generator_Entry Name="Entry1">
 					<Effect_Name> MasariResearchBurningAuraEffectSkyLord </Effect_Name>
 					<Duration> 1.0 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-          <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
+               		<Target_Filter_Categories> ~DeathCloneResource + ~Resource + ~Resource_INST + ~Stationary | ~DeathCloneResource + ~Resource + ~Resource_INST + ~Insignificant </Target_Filter_Categories>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 230.0 </Area_Effect_Radius>
+					<Area_Effect_Radius> 180.0 </Area_Effect_Radius>
 				</Effect_Generator_Entry>
 
+				<!-- UNUSED VISUAL EFFECT MADE BY ROSIE THAT DIDN'T WORK, BUT WE COULD REPLACE IN THE FUTURE
 				<Effect_Generator_Entry Name="Entry2">
 					<Effect_Name> MasariResearchBurningAuraSelfEffectSkylord </Effect_Name>
 					<Duration> 1.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
-				
+				-->
+
 				<Effect_Generator_Entry Name="Entry3">
 					<Effect_Name> RevealCloakingConduitEffect </Effect_Name>
 					<Duration> 1.1 </Duration>
 					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
 					<Target_Filter_C> Is_Enemy </Target_Filter_C>
-					<Area_Effect_Radius> 230 </Area_Effect_Radius>
+					<Area_Effect_Radius> 180 </Area_Effect_Radius>
 				</Effect_Generator_Entry>							
 
 			</Effect_Generator>			
@@ -620,16 +622,16 @@
 		<Max_Speed> 2.0 </Max_Speed>
 		<Min_Speed> .1 </Min_Speed>
 		<Stopped_Rate_Of_Turn> 6 </Stopped_Rate_Of_Turn>
-		<Max_Rate_Of_Turn> 20.0 </Max_Rate_Of_Turn>
+		<Max_Rate_Of_Turn> 10.0 </Max_Rate_Of_Turn>
 		<Custom_Hard_XExtent> 8.0 </Custom_Hard_XExtent>
 		<Custom_Hard_YExtent> 10.0 </Custom_Hard_YExtent>
 		<Custom_Hard_XExtent_Offset> -4.0 </Custom_Hard_XExtent_Offset>
-
+		<FormationGrouping> Standard </FormationGrouping>
 		<Can_Fly_In_Alternative_Walk_State>Yes</Can_Fly_In_Alternative_Walk_State>
 		<Min_Flight_Elevation> 0 </Min_Flight_Elevation>
 		<Max_Flight_Elevation> 0 </Max_Flight_Elevation>
 		<CategoryMask> Large, Piloted, CanAttack </CategoryMask>
-		<Attack_Category_Restrictions> HardPoint+BodySocketHP | Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> HardPoint+BodySocketHP | Flying | Resource+~Organic | Resource_INST+~Organic | DeathCloneResource </Attack_Category_Restrictions>
 
 		<LandBehavior>
       STUNNABLE,
@@ -664,7 +666,7 @@
 
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Min_Attack_Distance> 0.0 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 240.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 230.0 </Targeting_Max_Attack_Distance>
 			<Can_Attack_Without_Weapon_Behavior> no </Can_Attack_Without_Weapon_Behavior>
 			<Is_Attack_Anim_Looped> no </Is_Attack_Anim_Looped>
 			<Is_Stationary_When_Attacking> Yes </Is_Stationary_When_Attacking>
@@ -673,8 +675,8 @@
 			<Muzzle_Bone_Name>MuzzleA</Muzzle_Bone_Name>
 
 			<Projectile_Types>Proj_Masary_Skylord_Dark_Fissure</Projectile_Types>
-			<Projectile_Fire_Recharge_Seconds>3.0</Projectile_Fire_Recharge_Seconds>
-			<Projectile_Fire_Pulse_Count>10</Projectile_Fire_Pulse_Count>
+			<Projectile_Fire_Recharge_Seconds>1.6</Projectile_Fire_Recharge_Seconds>
+			<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
 			<Projectile_Fire_Pulse_Delay_Seconds>0.0</Projectile_Fire_Pulse_Delay_Seconds>
 		</BehaviorType>
 
@@ -688,7 +690,7 @@
 
     <BehaviorType Name="CrushBehaviorType">
       <Crush_Defense> 60 </Crush_Defense>
-      <Crush_Power>6</Crush_Power>
+      <Crush_Power>25</Crush_Power>
     </BehaviorType>
 
 		<BehaviorType Name="TooltipBehaviorType">
@@ -863,8 +865,8 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ResourceBehaviorType">
-			<Resource_Units> 850 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+			<Resource_Units> 600 </Resource_Units>
+			<Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
 			<Is_Single_Resource> false </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>
@@ -972,8 +974,8 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>16.0</Max_Speed>
-		<Max_Rate_Of_Turn>30.0</Max_Rate_Of_Turn>
+		<Max_Speed>24.0</Max_Speed>
+		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
 		<AI_Combat_Power> 1 </AI_Combat_Power>
@@ -986,31 +988,18 @@
 		</BehaviorType>
 
 		<BehaviorType Name="ProjectileBehaviorType">
-			<Projectile_Category>PSIONIC_BLAST</Projectile_Category>
+			<Projectile_Category>DEFAULT</Projectile_Category>
 
-			<!-- attributes -->
-			<Projectile_Texture_Slot>1, 0</Projectile_Texture_Slot>
-			<Projectile_Width>0.8</Projectile_Width>
-			<Projectile_Length>4</Projectile_Length>
-			<Use_Owner_Attack_Range_As_Max_Flight_Distance>No</Use_Owner_Attack_Range_As_Max_Flight_Distance>
+			<!-- Attributes (straight tracer, no rocket curve -->
+			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
+			<Use_Owner_Attack_Range_As_Max_Flight_Distance>Yes</Use_Owner_Attack_Range_As_Max_Flight_Distance>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Destroy_On_Object_Collision>True</Projectile_Destroy_On_Object_Collision>
 
-			<!-- rocket controls-->
-			<Projectile_Rocket_Straight_Distance>10</Projectile_Rocket_Straight_Distance>
-			<Projectile_Rocket_Curve_Distance>20</Projectile_Rocket_Curve_Distance>
-			<Projectile_Rocket_Curve_Offset>30</Projectile_Rocket_Curve_Offset>
-			<Projectile_Rocket_Target_Point_Z_Offset>2.5</Projectile_Rocket_Target_Point_Z_Offset>
-			<Projectile_Target_Point_On_Terrain> True </Projectile_Target_Point_On_Terrain>
-
-			<!-- damage definitions -->
-			<Projectile_Does_Hitpoint_Damage>Yes</Projectile_Does_Hitpoint_Damage>
-			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>
-			<Projectile_Damages_Random_Hard_Points>No</Projectile_Damages_Random_Hard_Points>
 
 			<!-- area blast -->
-			<Projectile_Blast_Area_Damage>12</Projectile_Blast_Area_Damage>
-			<Projectile_Blast_Area_Range>30</Projectile_Blast_Area_Range>
+			<Projectile_Blast_Area_Damage>50</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Range>6</Projectile_Blast_Area_Range>
 
 			<!-- ballistic -->
 			<Projectile_Causes_Knockback_To_Enemy_Units>False</Projectile_Causes_Knockback_To_Enemy_Units>
@@ -1110,7 +1099,7 @@
 			<Projectile_Category>DEFAULT</Projectile_Category>
 			<Projectile_Max_Flight_Distance>400.0</Projectile_Max_Flight_Distance>
 
-			<Projectile_Blast_Area_Damage>40</Projectile_Blast_Area_Damage>
+			<Projectile_Blast_Area_Damage>30</Projectile_Blast_Area_Damage>
 			<Projectile_Blast_Area_Range>40</Projectile_Blast_Area_Range>
 
 			<Projectile_Does_Shield_Damage>Yes</Projectile_Does_Shield_Damage>

@@ -15,7 +15,7 @@
 		<Text_ID>TEXT_NEUTRAL_FAUNA_COW</Text_ID>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Organic, Insignificant, Resource_INST </CategoryMask>
+		<CategoryMask> Male, Medium, Organic, Resource_INST, Insignificant </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 		<Can_Be_Miraged>Yes</Can_Be_Miraged>
 
@@ -31,7 +31,7 @@
 		<Is_Valid_Target>True</Is_Valid_Target>
 		<Is_Attackable>true</Is_Attackable>
 
-		<Tactical_Health> 100 </Tactical_Health>
+		<Tactical_Health> 10 </Tactical_Health>
 
 		<!-- BEHAVIORS -->
 
@@ -43,7 +43,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -88,7 +88,7 @@
 		<Text_ID>TEXT_NEUTRAL_FAUNA_COW</Text_ID>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Organic, Insignificant, Resource_INST </CategoryMask>
+		<CategoryMask> Male, Medium, Organic, Resource_INST, Insignificant </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 		<Can_Be_Miraged>Yes</Can_Be_Miraged>
 
@@ -104,7 +104,7 @@
 		<Is_Valid_Target>True</Is_Valid_Target>
 		<Is_Attackable>true</Is_Attackable>
 		
-		<Tactical_Health> 100 </Tactical_Health>
+		<Tactical_Health> 10 </Tactical_Health>
 		
 		<!-- BEHAVIORS -->
 		
@@ -116,7 +116,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 
@@ -137,8 +137,6 @@
 			<Death_Spawn> Damage_Alien_Mutant_Slave_Grenade, Alien_Mutant_Slave_Cow </Death_Spawn>
 			<Death_Spawn> Damage_Alien_Mutant_Slave_Claws, Alien_Mutant_Slave_Cow </Death_Spawn>
 			<Death_Spawn> Damage_Alien_Mutant_Slave_Knockback, Alien_Mutant_Slave_Cow </Death_Spawn>
-			<Death_Fade_Time> 0.25 </Death_Fade_Time>
-			<Death_Persistence_Duration> 120 </Death_Persistence_Duration>
 		</BehaviorType>
 		
 	</X60_Neutral_Fauna>
@@ -154,7 +152,7 @@
 		<Text_ID>TEXT_NEUTRAL_FAUNA_COW</Text_ID>
 
 		<!-- ATTRIBUTES -->
-		<CategoryMask> Medium, Organic, Insignificant, Resource_INST </CategoryMask>
+		<CategoryMask> Resource_INST, Insignificant </CategoryMask>
 		<Affiliation>CIVILIAN</Affiliation>
 
 		<!-- MOVEMENT -->
@@ -171,7 +169,8 @@
 		
 		<!-- BEHAVIORS -->
 		
-		<LandBehavior> RESOURCE, EFFECT_REGISTRY, ATTRIBUTE_DIRECTORY </LandBehavior>
+		<Affiliation>CIVILIAN</Affiliation>
+		<LandBehavior> RESOURCE, EFFECT_REGISTRY, ATTRIBUTE_DIRECTORY, Resource_INST </LandBehavior>
 				
 		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
 		<Collidable_By_Projectile_Dead>Yes</Collidable_By_Projectile_Dead>
@@ -179,7 +178,7 @@
 		<!-- Harvestable Resource Object Support: BEGIN -->
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 

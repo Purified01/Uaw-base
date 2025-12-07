@@ -99,7 +99,7 @@
 		
 	</Effect>
 	
-	<Effect Name="WalkerHardPointArmorEffectQ3">
+	<Effect Name="SmallWalkerArmorEffectQ3">
 		<Effect_Class> WalkerArmorQ3 </Effect_Class>
 		<Priority> 10.0 </Priority>
 		<Duration> 3.1 </Duration>
@@ -112,6 +112,48 @@
 		</Effect_Component>
 		
 	</Effect>	
+	
+	<Effect Name="SmallWalkerArmorEffectA3">
+		<Effect_Class> WalkerArmorA3 </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>
+
+	<Effect Name="SmallWalkerArmorEffectM3">
+		<Effect_Class> WalkerArmorM3 </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>
+	
+	<Effect Name="SmallWalkerArmorEffectQ3">
+		<Effect_Class> WalkerArmorQ3 </Effect_Class>
+		<Priority> 10.0 </Priority>
+		<Duration> 3.1 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<!-- Takes less damage due to molecular armor -->
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Damage_Taken_Mult_Coeff </Attribute>
+			<Modifier_Value> -0.25 </Modifier_Value>
+		</Effect_Component>
+		
+	</Effect>		
    <!-- ************************************************************** -->
    <!-- WalkerStage1PostConstructionEffect effect -->
    <!-- ************************************************************** -->
@@ -365,19 +407,6 @@
 		</Effect_Component>
 
 	</Effect>
-
-	<Effect Name="MiniScienceFullFOWEffect">
-		<Effect_Class> WalkerVision </Effect_Class>
-		<Duration> -1.0 </Duration>
-		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
-			<!-- max vision -->
-			<Modifier_Value> 1.0 </Modifier_Value>
-		</Effect_Component>
-
-	</Effect>
 	
 	<!--=================================================================================================
 	== [10/20/2006] AlienWalkerScanningNodeEffect, increase sight range
@@ -393,26 +422,6 @@
          <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
          <!-- +25 x vision -->
          <Modifier_Value> 0.25 </Modifier_Value>
-      </Effect_Component>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Scan_Nodes </Attribute>
-			<Modifier_Value> 1.0 </Modifier_Value>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="AlienMiniWalkerScanningNodeEffect">
-		<Effect_Class> WalkerVision </Effect_Class>
-		<Duration> -1.0 </Duration>
-		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
-
-		<Effect_Component Type="AttributeModifier">
-         <Attribute> Max_Land_FOW_Reveal_Mult_Coeff </Attribute>
-         <!-- +30% x vision -->
-         <Modifier_Value> 0.3 </Modifier_Value>
       </Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
@@ -640,21 +649,10 @@
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
 			<!-- +12% build speed -->
-			<Modifier_Value> 0.69 </Modifier_Value>
+			<Modifier_Value> 1.0 </Modifier_Value>
 		</Effect_Component>
 	</Effect>
 
-	<Effect Name="WalkerSideBuildFasterEffect">
-		<Effect_Class> IncreaseBuildSpeed </Effect_Class>
-		<CategoryMask> CanBeRemovedByAbility</CategoryMask>
-		<Duration> -1.0 </Duration>
-
-		<Effect_Component Type="AttributeModifier">
-			<Attribute> Unit_Build_Rate_Multiplier </Attribute>
-			<!-- +12% build speed -->
-			<Modifier_Value> 0.3 </Modifier_Value>
-		</Effect_Component>
-	</Effect>
 
 
 	<!--*************************************************************************************************
@@ -682,7 +680,7 @@
 
 		<Effect_Component Type="Damage">
 			<Damage_Type>Damage_Alien_Spitter_Particle_Beam</Damage_Type>
-			<Damage_Amount>100.0</Damage_Amount>
+			<Damage_Amount>120.0</Damage_Amount>
 			<Damage_Percentage>0.0</Damage_Percentage>
 		</Effect_Component>
 
@@ -966,23 +964,6 @@
 		</Effect_Component>
 	</Effect>
 
-	<Effect Name="AlienWalkerReverseScaleEffect">
-		<Effect_Class> Scale </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-		<Effect_Component Type="ScaleOverTime">
-			<Start_Scale>450</Start_Scale>
-			<End_Scale>.01</End_Scale>
-			<Use_World_Scale>true</Use_World_Scale>
-			<Bone_Name>b_Shield</Bone_Name>
-		</Effect_Component>
-
-	  <!-- Frank TODO: shield power down-->
-	  <Effect_Component Type="Sound">
-		<Apply_Effect> SFX_Novus_Shield_Power_Down </Apply_Effect>
-	  </Effect_Component>
-	</Effect>
-
    <!-- ************************************************************** -->
    <!-- ScienceRadiationCascadeNotReadyEffect: visual on Walker -->
    <!-- ************************************************************** -->
@@ -1176,8 +1157,8 @@
 
 		<Duration> 0.1 </Duration>
 		<Effect_Class> Transparent </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only> false </Extends_Same_Source_Duration_Only>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+		<Extends_Same_Source_Duration_Only> true </Extends_Same_Source_Duration_Only>
 
 		<Effect_Component Type="ResetAllAbilities">
 		</Effect_Component>

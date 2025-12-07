@@ -23,7 +23,6 @@
 		</Effect_Component>
 	</Effect>
 
-
 	<!-- Add the FLOW behavior to the target. -->
 	<Effect Name="NovusResearchAdvancedFlowEffect">
 		<Effect_Class> ResearchAdvancedFlow </Effect_Class>
@@ -48,6 +47,10 @@
 	<Effect Name="NovusResearchPowerEfficiencyEffect">
 		<Effect_Class>PowerTransmissionRadius</Effect_Class>
 		<Duration> -1.0 </Duration>
+		<Effect_Component Type="AttributeModifier">
+			<Attribute> Novus_Power_Powerup_Radius_Mult_Coeff </Attribute>
+			<Modifier_Value> 0.75 </Modifier_Value>	<!-- 75% -->
+		</Effect_Component>
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Novus_Power_Transmission_Radius_Mult_Coeff </Attribute>
 			<Modifier_Value> 0.75 </Modifier_Value> <!-- 75% -->
@@ -110,11 +113,6 @@
 		</Effect_Component>
 	</Effect>
 	
-	<Effect_Component Type="HealOverTime">
-		<Amount_Per_Second> 1.0 </Amount_Per_Second>
-  <Percentage_Per_Second>.01</Percentage_Per_Second>
-	</Effect_Component>
-
 	<!-- Increase movement speed and rate of material collection. -->
 	<Effect Name="NovusResearchCollectionEfficiencyEffect">
 		<Duration> -1.0 </Duration>
@@ -155,12 +153,7 @@
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Burden </Remove_Effect_Class>
 		</Effect_Component>
-		
-		<Effect_Component Type="HealOverTime">
-			<Amount_Per_Second> 0 </Amount_Per_Second>
-			<Percentage_Per_Second>0.036</Percentage_Per_Second>	
-		</Effect_Component>	  
-
+		 
 		<!-- other bad things to be removed here -->
 		<!-- Visual -->
 
@@ -169,4 +162,245 @@
 		</Effect_Component>
 	</Effect>
 
+	<!-- Block/remove the InfRobot's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_InfRobot">
+		<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+		<Duration> 5.0 </Duration>
+		<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Name> NovusResearchNaniteRepairEffect_InfRobot </Block_Effect_Name>
+		</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Builder's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Builder">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Builder </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Blade Trooper's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_BladeTrooper">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_BladeTrooper </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Hacker's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Hacker">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Hacker </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Variant's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Variant">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Variant </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Anti-Matter Tank's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_AntiMatterTank">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_AntiMatterTank </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Field Inverter's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_FieldInverter">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_FieldInverter </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Amplifier's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Amplifier">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<!-- Note: keep the spelling in sync with the heal effect name -->
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Apmlifier </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Monitor's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Monitor">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Monitor </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Corruptor's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Corruptor">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Corruptor </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Dervish's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Dervish">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Dervish </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<!-- Block/remove the Collector's Nanite Repair effect. -->
+	<Effect Name="NovusResearchNaniteRepairBlockEffect_Collector">
+	<Effect_Class> ResearchNaniteRepairBlock </Effect_Class>
+	<Duration> 5.0 </Duration>
+	<Extends_Existing_Duration> true </Extends_Existing_Duration>
+
+	<Effect_Component Type="BlockEffect">
+		<Block_Effect_Name> NovusResearchNaniteRepairEffect_Collector </Block_Effect_Name>
+	</Effect_Component>
+	</Effect>
+
+	<Effect Name="NovusResearchNaniteRepairEffect_Builder">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="NovusResearchNaniteRepairEffect_InfRobot">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 5.0 </Percent_Heal>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="NovusResearchNaniteRepairEffect_BladeTrooper">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>						
+	
+	<Effect Name="NovusResearchNaniteRepairEffect_Hacker">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>																														
+	
+	<Effect Name="NovusResearchNaniteRepairEffect_Variant">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_AntiMatterTank">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_FieldInverter">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_Apmlifier">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_Monitor">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_Corruptor">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_Dervish">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+
+		<Effect Name="NovusResearchNaniteRepairEffect_Collector">
+		<Duration> -1.0 </Duration>
+		<Effect_Class> Healing </Effect_Class>
+
+		<Effect_Component Type="Heal">
+		<Percent_Heal> 0.003 </Percent_Heal>
+		</Effect_Component>
+	</Effect>
+	
 </Effects>

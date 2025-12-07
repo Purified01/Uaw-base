@@ -253,6 +253,14 @@
 			<Damage_Type> Damage_Novus_EMP_Superweapon </Damage_Type>
 			<Damage_Percentage> 0.0 </Damage_Percentage>
 		</Effect_Component>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>		
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -341,7 +349,7 @@
 
 	<!-- Organic units can't attack for a while -->
 	<Effect Name="Novus_EMP_Superweapon_Disable_Weapons_Effect">
-		<Duration> 10.0 </Duration>
+		<Duration> 20.0 </Duration>
 		<Effect_Class> Stun </Effect_Class>
 		<Extends_Existing_Duration> false </Extends_Existing_Duration>
 

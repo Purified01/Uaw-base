@@ -85,7 +85,7 @@
     <Ranged_Target_Z_Adjust>7.0</Ranged_Target_Z_Adjust>
     <Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
     <Land_FOW_Reveal_Range>120.0</Land_FOW_Reveal_Range>
-    <Attack_Category_Restrictions> Flying | Resource | Resource_INST </Attack_Category_Restrictions>
+    <Attack_Category_Restrictions> Flying | Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 
     <Tactical_Health> 190 </Tactical_Health>
 
@@ -336,35 +336,11 @@
           <Effect_Generator_Entry Name="Entry2">
              <Duration> 0.5 </Duration>
              <Base_Delay> 0.4 </Base_Delay>
-             <Effect_Name> MasariFullArmorEffectInfantry </Effect_Name>
+             <Effect_Name> MasariFullArmorEffect </Effect_Name>
              <Target_Gathering_Mask> Self </Target_Gathering_Mask>
              <!-- only in ice mode -->
              <Target_Filter_C> In_Ice_Mode </Target_Filter_C>
           </Effect_Generator_Entry>
-		  
-				<Effect_Generator_Entry Name="Entry3">
-					<Duration> 15.1 </Duration>
-					<Base_Delay> 0.4 </Base_Delay>
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>
-				</Effect_Generator_Entry>					  
-				
-				<Effect_Generator_Entry Name="Entry4">
-					<Duration> 17.1 </Duration>
-					<Base_Delay> 0.8 </Base_Delay>
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch_Two </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> In_Fire_Mode </Target_Filter_C>					
-				</Effect_Generator_Entry>				
-
-				<!-- Apply effects -->
-            <Effect_Generator_Entry Name="Entry5">
-               <Effect_Name> MasariShadowshiftSwitch </Effect_Name>
-               <Duration> 16.0 </Duration>
-               <Base_Delay>0.0</Base_Delay>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>								
 
        </Effect_Generator>
 
@@ -378,21 +354,6 @@
           </Effect_Generator_Entry>
 
        </Effect_Generator>
-	   
-         <Effect_Generator Name="AffinityDefenceGenerator">
-            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 4.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> AffinityDefenceEffect </Effect_Name>
-               <Duration> -1.0 </Duration>
-<!--               <Base_Delay>1.5</Base_Delay>-->
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-
-         </Effect_Generator>				   
     </Effect_Generator_Data>
 
  </X13_Masari_Units>
@@ -545,7 +506,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-    <Max_Speed>1.8</Max_Speed>
+
  </X13_Masari_Units>
 
    <X13_Masari_Units Name="Masari_Avenger_Figment_Death_Clone_Resource">
@@ -564,7 +525,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 8 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -653,7 +614,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-    <Max_Speed>1.8</Max_Speed>
+
   </X13_Masari_Units>
 
 
@@ -674,7 +635,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 10 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -764,7 +725,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-    <Max_Speed>1.8</Max_Speed>
+
   </X13_Masari_Units>
 
 
@@ -784,7 +745,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 10 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -877,7 +838,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-    <Max_Speed>1.8</Max_Speed>
+
   </X13_Masari_Units>
 
 
@@ -897,7 +858,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 10 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -987,7 +948,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-     <Max_Speed>1.8</Max_Speed>    
+     
   </X13_Masari_Units>
 
 
@@ -1007,7 +968,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 10 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -1025,7 +986,7 @@
   <X13_Masari_Units Name="Masari_Avenger_Stormchaser">
      <Variant_Of_Existing_Type> Masari_Female_Avenger </Variant_Of_Existing_Type>
 	 
-		<Attack_Category_Restrictions> Resource | Resource_INST | Bridge | Female </Attack_Category_Restrictions>			 
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic | Bridge | Female+Stationary </Attack_Category_Restrictions>			 
 
      <!-- TEXT -->
      <Text_ID>TEXT_UNIT_MASARI_AVENGER_STORM_CHASER </Text_ID>
@@ -1125,7 +1086,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 11 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -1214,7 +1175,7 @@
 
     <!-- All avengers share this setup, so we'll include it - Oksana 05/21/2007 -->
     <!--INCLUDE ".\Data\XML\Includes\Masari_Avenger\MASARI_INF_Avenger_Dark.xml" -->
-    <Max_Speed>1.8</Max_Speed>
+
   </X13_Masari_Units>
 
 
@@ -1234,7 +1195,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 10 </Resource_Units>
-         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
          <Is_Single_Resource> true </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -1315,7 +1276,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>10.0</Max_Speed>
+		<Max_Speed>9.0</Max_Speed>
 		<Max_Rate_Of_Turn>0.0</Max_Rate_Of_Turn>
 		<AI_Combat_Power>200</AI_Combat_Power>
 

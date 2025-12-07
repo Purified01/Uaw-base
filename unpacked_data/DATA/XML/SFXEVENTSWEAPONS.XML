@@ -77,14 +77,53 @@
 		<Samples>GUN_Gatling_1.wav</Samples>
 	</SFXEvent>	
 
+	<SFXEvent Name="SFX_Military_Stationary_Turret_Fire">
+		<Use_Preset>Preset_GUNV</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MB_Turret\Military_Turret_Loop.wav                                    
+        </Samples>
+		<Min_Volume>80</Min_Volume>
+		<Max_Volume>80</Max_Volume>
+		<Volume_Saturation_Distance>200.0</Volume_Saturation_Distance>
+	</SFXEvent>
+
+	<SFXEvent Name="SFX_Military_Stationary_Turret_Rev">
+		<Use_Preset>Preset_GUNV</Use_Preset>
+		<Samples>EXP_Alien_Radiation_2.wav EXP_Alien_Radiation_3.wav</Samples>      
+    </SFXEvent>
+
 	<SFXEvent Name="SFX_Military_Tank_Fire">
 		<Use_Preset>Preset_GUNV</Use_Preset>
 		<Samples>GUN_Tank_1.wav</Samples>
+		<Min_Volume>100</Min_Volume>
+		<Max_Volume>100</Max_Volume>
+	</SFXEvent>
+
+	<SFXEvent Name="SFX_Military_Tank_Turret_Fire">
+		<Use_Preset>Preset_GUNV</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MV_Tank\Military_Tank_Gun.wav                                
+        </Samples>
+		<Min_Volume>80</Min_Volume>
+		<Max_Volume>80</Max_Volume>
+		<Min_Pitch>90</Min_Pitch>
+		<Max_Pitch>100</Max_Pitch>
 	</SFXEvent>
 
 	<SFXEvent Name="SFX_Military_Hummer_Fire">
 		<Use_Preset>Preset_GUNV</Use_Preset>
 		<Samples>GUN_Hummer_1.wav GUN_Hummer_2.wav GUN_Hummer_3.wav</Samples>
+	</SFXEvent>
+
+	<SFXEvent Name="SFX_Military_Hummer_Fire_ALT">
+		<Use_Preset>Preset_GUNV</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MV_Hummer\Military_Hummer_Gun.wav                                  
+        </Samples>
+		<Min_Volume>80</Min_Volume>
+		<Max_Volume>80</Max_Volume>
+		<Min_Pitch>90</Min_Pitch>
+		<Max_Pitch>100</Max_Pitch>
 	</SFXEvent>
 	
 	<SFXEvent Name="SFX_Military_Hero_Tank_Fire">
@@ -163,7 +202,25 @@
 		<Samples>GUI_Select_2.wav</Samples>
 	</SFXEvent>
 
+	  <SFXEvent Name="SFX_Geiger_Counter_Radation_Loop">
+		<Use_Preset>Preset_EGL_Idle</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MV_Nuke\Geiger_Counter.wav                                   
+        </Samples>
+		<Min_Pitch>110</Min_Pitch>
+		<Max_Pitch>110</Max_Pitch>
+		<Min_Volume>10</Min_Volume>
+		<Max_Volume>10</Max_Volume>
+	  </SFXEvent>
 
+	<SFXEvent Name="SFX_Nuke_Explode">
+	    <Use_Preset>Preset_EXP_INSANE</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MV_Nuke\Nuke_Explosion.wav                                  
+        </Samples>
+		<Min_Volume>100</Min_Volume>
+		<Max_Volume>100</Max_Volume>      
+    </SFXEvent>
 
 	<!-- ======================================= -->
 	<!--  		    ALIEN WEAPON SFX		 	 -->
@@ -778,10 +835,10 @@
 		<Samples>EGB_Novus_Ability_Rebuild_1.wav</Samples>
 	</SFXEvent>
 
-	  <SFXEvent Name="SFX_Novus_Gather_Resources_Loop">
+<!--	  <SFXEvent Name="SFX_Novus_Gather_Resources_Loop">
 		 <Use_Preset>Preset_GUNV_Loop</Use_Preset>
 		 <Samples>GUN_Amplifier_2.wav</Samples>
-     </SFXEvent>
+     </SFXEvent>-->
 
     <SFXEvent Name="SFX_Novus_Mimic">
 		<Use_Preset>Preset_GUNV</Use_Preset>

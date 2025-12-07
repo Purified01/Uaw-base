@@ -84,10 +84,10 @@
 
 		<Influences_Capture_Point> True </Influences_Capture_Point>
 
-		<Tactical_Health> 350 </Tactical_Health>
+		<Tactical_Health> 300 </Tactical_Health>
 
 		<Land_FOW_Reveal_Range>180.0</Land_FOW_Reveal_Range>
-		<Attack_Category_Restrictions> Flying | Resource | DeathCloneResource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Flying | Resource+~Organic | DeathCloneResource | Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<Projectile_Types>Proj_Grunt_Shotgun_Pellet</Projectile_Types>
 		<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
@@ -130,7 +130,7 @@
 		</LandBehavior>
 
 		<BehaviorType Name="ArmorAndDamageBehaviorType">
-			<Armor_Type> Armor_Alien_Infantry_Grunt </Armor_Type>
+			<Armor_Type> Armor_Alien_Infantry_Heavy </Armor_Type>
 		</BehaviorType>
 
 		<BehaviorType Name="TacticalSellBehaviorType">
@@ -480,7 +480,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 12 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>
@@ -680,24 +680,5 @@
 
 	</X99_Test_Objects>
 	  -->
-
-	<X10_Alien_Units Name="Proto_Grunt">
-		<Variant_Of_Existing_Type> Alien_Grunt </Variant_Of_Existing_Type>
-		<Affiliation> Proto </Affiliation>
-		<AssetBank> BANK_ALIEN </AssetBank>
-
-		
-		<Projectile_Types>Proj_Proto_Grunt_Shotgun_Pellet</Projectile_Types>
-		<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
-		<Projectile_Fire_Pulse_Delay_Seconds>0.02</Projectile_Fire_Pulse_Delay_Seconds>
-		<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>
-		<Projectile_Fire_Spread_Amount> 5 </Projectile_Fire_Spread_Amount>
-		<Projectile_Fire_Spread_Angle> 25 </Projectile_Fire_Spread_Angle>
-
-	</X10_Alien_Units>
-
-	<Projectile Name="Proj_Proto_Grunt_Shotgun_Pellet">
-		<Variant_Of_Existing_Type> Proj_Grunt_Shotgun_Pellet </Variant_Of_Existing_Type>
-	</Projectile>
 
 </Alien_INF_Grunt_XML>

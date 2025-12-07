@@ -1,0 +1,586 @@
+<?xml version="1.0"?>
+<Military_Bunker_XML>
+
+	<!-- **************************************************************************************** -->
+	<!-- *** STRUCTURE ************************************************************************** -->
+	<!-- **************************************************************************************** -->
+
+	<X11_Military_Structures Name="Military_Bunker">
+
+		<!-- ART -->
+		<Land_Model_Name>MB_HANGAR_COMMAND_2.alo</Land_Model_Name>
+		<Scale_Factor>0.7</Scale_Factor>
+		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
+		<No_Refraction_Below_Detail_Level>1</No_Refraction_Below_Detail_Level>
+		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
+		<Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
+		<Loop_Idle_Anim_00> Yes </Loop_Idle_Anim_00>
+		<AssetBank> BANK_MILITARY </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_STRUCTURE_MILITARY_HANGAR</Text_ID>
+		<Icon_Name> I_ICON_MILITARY_BUNKER.TGA </Icon_Name>
+		<Select_Box_Scale>350</Select_Box_Scale>
+		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+
+		<!-- ATTRIBUTES -->
+		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
+		<Affiliation>Military</Affiliation>
+		<Victory_Relevant> True </Victory_Relevant>
+		<Importance> 0.1 </Importance>
+		<Shot_Type> Circle </Shot_Type>
+
+		<Attributes SubObjectList="Yes">
+			<!--<Novus_Power_Transmission_Radius> 0.01 </Novus_Power_Transmission_Radius>
+			<Novus_Power_Powerup_Radius> 0 </Novus_Power_Powerup_Radius>
+			<Novus_Flow_Radius> 90.0 </Novus_Flow_Radius>
+			<Max_Structure_Build_Rate>4.0</Max_Structure_Build_Rate>
+			<Patch_Cooldown_Time_Modifier />
+			<Tactical_Sell_Time_Seconds>5.0</Tactical_Sell_Time_Seconds>-->
+		</Attributes>
+		
+		<!-- MOVEMENT -->
+		<Space_Layer> LandDynamic | LandGiant </Space_Layer>
+		<MovementClass>Building</MovementClass>
+		<UnitCollisionClass> High Obstacle </UnitCollisionClass>
+		<Custom_Hard_XExtent> 104.0 </Custom_Hard_XExtent>
+		<Custom_Hard_YExtent> 104.0 </Custom_Hard_YExtent>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
+
+		<!-- CONFLICT -->
+		<Is_Attackable> true </Is_Attackable>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+		<Ranged_Target_Z_Adjust> 5.0 </Ranged_Target_Z_Adjust>
+
+		<AI_Combat_Power> 1 </AI_Combat_Power>
+		<Tactical_Health> 3500 </Tactical_Health>
+		<Land_FOW_Reveal_Range>325.0</Land_FOW_Reveal_Range>
+		<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
+		<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
+		<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, null</Land_Damage_SFX>
+
+		<!-- BEHAVIORS -->
+		<Behavior>
+			GROUND_STRUCTURE,
+			SELECTABLE,
+			TACTICAL_ENABLER
+		</Behavior>
+
+		<LandBehavior>
+			<!--TACTICAL_BUILD_OBJECTS,-->
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
+			ATTRIBUTE_DIRECTORY,
+			GUI,
+			RADAR_MAP_VISIBLE,
+			REVEAL,
+			<!--HARD_POINT_MANAGER-->,
+			HIDE_WHEN_FOGGED,
+			UNIT_AI,
+			IDLE,
+			TERRAFORM,
+			AI_TARGET,
+			AI_RECRUITABLE,
+			<!--POWERED,-->
+			TACTICAL_SELL,
+			TACTICAL_PRODUCTION_TELEPORT_VISUAL,
+			<!--CREATE_CHILDREN-->
+		</LandBehavior>
+
+		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
+			<Visible_To_Enemies_When_Empty>true</Visible_To_Enemies_When_Empty>
+		</BehaviorType>
+
+		<BehaviorType Name="TacticalSellBehaviorType">
+         <Sell_Effect_Generator_Name>MilitarySellGenerator</Sell_Effect_Generator_Name>
+      </BehaviorType>
+
+		<BehaviorType Name="TacticalEnablerBehaviorType">
+			<Tactical_Enabler_Bones>SPAWN_00</Tactical_Enabler_Bones>
+			<Enables_Reinforcements> true </Enables_Reinforcements>
+		</BehaviorType>		
+
+		<BehaviorType Name="GameEventSourceBehaviorType">
+			<Game_Event_Source_Category> Structure </Game_Event_Source_Category>
+		</BehaviorType>
+
+		<BehaviorType name="AIBehaviorType">
+			<AI_Target_Level>Individual</AI_Target_Level>
+			<Allow_Multiple_Recruitment>True</Allow_Multiple_Recruitment>
+		</BehaviorType>
+
+		<BehaviorType Name="TerraformBehaviorType">
+			<Bib_X_Extent> 90 </Bib_X_Extent>
+			<Bib_Y_Extent> 130 </Bib_Y_Extent>
+		</BehaviorType>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Novus_Structure_Heavy </Armor_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>			
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Under_Construction_Object_Type> Military_Bunker_Construction </Tactical_Under_Construction_Object_Type>
+			<Tactical_Buildable_Beacon_Type> Military_Bunker_Beacon </Tactical_Buildable_Beacon_Type>
+			<!-- used to show the radius of the power transmission -->
+		</BehaviorType>
+
+		<BehaviorType Name="TacticalSellBehaviorType">
+			<Sell_Effect_Generator_Name>MilitarySellGenerator</Sell_Effect_Generator_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="GroundStructureBehaviorType">
+			<Is_Buildable_By_Constructor> Yes </Is_Buildable_By_Constructor>
+         <Is_Command_Center> Yes </Is_Command_Center>
+			<!-- Maria 01.31.2007 - This value is used to determine the facing of the ghost structure when in 
+				  building placement mode.  It must be a value between 0.0 - 359.0	-->
+			<Default_Building_Placement_Rotation>225</Default_Building_Placement_Rotation>
+		</BehaviorType>
+
+		<BehaviorType Name="ResourceDepot">
+			<Resource_Depot_Active_Drones>2</Resource_Depot_Active_Drones>
+			<Resource_Depot_Seconds_To_Build_Drone>2</Resource_Depot_Seconds_To_Build_Drone>
+			<Resource_Depot_Seconds_Between_Drone_Launch>2</Resource_Depot_Seconds_Between_Drone_Launch>
+			<Resource_Depot_Collection_Radius>500</Resource_Depot_Collection_Radius>
+		</BehaviorType>
+
+		<BehaviorType Name="DeathFXBehaviorType">
+			<Death_Clone>Damage_Default, Military_Bunker_Default_Death_Clone</Death_Clone>
+			<Death_Explosions>Novus_Large_Explosion_Tower</Death_Explosions>
+			<Death_Clone_Keep_Behaviors> EFFECT_REGISTRY </Death_Clone_Keep_Behaviors>
+			<Death_Fade_Time> 0.25 </Death_Fade_Time>
+			<Death_Persistence_Duration> 5 </Death_Persistence_Duration>
+			<IsDeathCloneObstacle> true </IsDeathCloneObstacle>
+		</BehaviorType>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name> I_ICON_MILITARY_BUNKER.TGA</Icon_Name>
+			<Building_Queue_Type> Command </Building_Queue_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_HANGAR_B </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
+			<Production_Tooltip_Category> Command_Center </Production_Tooltip_Category>
+
+      </BehaviorType>
+		
+		<BehaviorType Name="RadarMapBehaviorType">
+			<Radar_Icon_Size>0.05 0.05</Radar_Icon_Size>
+		</BehaviorType>
+
+		<BehaviorType Name="LuaScriptBehaviorType">
+			<Lua_Land_Behaviors> PatchBehavior </Lua_Land_Behaviors>
+		</BehaviorType>
+
+		<!-- no hard points at this time on model
+		<BehaviorType Name="TacticalBuildObjectsBehaviorType">
+		
+			<HP_Socket_Type> Novus_Robotic_Assembly_Socket </HP_Socket_Type>
+			<Tactical_Build_Hard_Point_Attachment_Bone>HP_Attach_00</Tactical_Build_Hard_Point_Attachment_Bone>
+			<Minimum_Time_Before_Pad_Can_Build_Again>5</Minimum_Time_Before_Pad_Can_Build_Again>
+			<Visible_To_Enemies_When_Empty>Yes</Visible_To_Enemies_When_Empty>
+			<Hides_When_Built_On>No</Hides_When_Built_On>
+			<Destroy_When_Child_Dies>No</Destroy_When_Child_Dies>
+
+		</BehaviorType>
+		-->
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> NOVUS_Tactical_Upgrades_Menu </GUI_Scene_Name>
+         <!-- Maria: this structure needs this scene to properly display its health bar and nopower icon.
+            However, since it cannot be upgraded it will never display its upgrades menu.  Hence, we 
+            don't need the scene to be checking for input. -->
+         <GUI_Receives_Input> no </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
+			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
+			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+		</BehaviorType>
+		
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> Gamepad_Tactical_Progress_Bar </GUI_Scene_Name>
+			<GUI_Min_Scale> 0.3 </GUI_Min_Scale>
+			<GUI_Max_Scale> 2.5 </GUI_Max_Scale>
+			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+		</BehaviorType>
+
+		<BehaviorType Name="CrushBehaviorType">
+			<Crush_Defense>90</Crush_Defense>
+			<Crush_Power>55</Crush_Power>
+      </BehaviorType>
+
+      <BehaviorType Name="SFXBehaviorType">
+         <SFXEvent_Select>SFX_Structure_Select_Novus_Remote_Terminal</SFXEvent_Select>
+         <SFXEvent_Ambient_Loop> SFX_Structure_EGL_Novus_Remote_Terminal </SFXEvent_Ambient_Loop>
+         <Death_SFXEvent_Start_Die> SFX_Novus_Large_Structure_Death </Death_SFXEvent_Start_Die>
+         <SFXEvent_Unit_Lost />
+         <SFXEvent_Tactical_Build_Started>GUI_BUILD_Structure</SFXEvent_Tactical_Build_Started>
+         <SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Novus_Remote_Terminal</SFXEvent_Tactical_Build_Complete>
+         <SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
+
+      </BehaviorType>
+	  
+		<!--APC Troop Carry Ability-->
+		<!--<Unit_Abilities_Data SubObjectList="Yes">
+			<Unit_Ability Name="Military_APC_Marine_Ability">
+				<Type>EFFECT_GENERATOR</Type>
+				<Only_In_Tactical_Mode> true </Only_In_Tactical_Mode>
+				<Is_Modal>Yes</Is_Modal>
+				<Effect_Generator_Name>Military_APC_Unload_Marines_Effect_Generator</Effect_Generator_Name>
+			</Unit_Ability>
+        </Unit_Abilities_Data>-->
+	  
+	  <Effect_Generator_Data SubObjectList="Yes">
+			
+				<!--<Effect_Generator Name="Military_APC_Unload_Marines_Effect_Generator">
+				<Should_Deactivate_Manually> No </Should_Deactivate_Manually>
+
+				<Effect_Generator_Entry Name="Entry1">
+						<Effect_Name> Spawn_Builder_Rig_Effect </Effect_Name>
+						<Target_Gathering_Mask> Self </Target_Gathering_Mask>           
+				</Effect_Generator_Entry>
+            
+			</Effect_Generator>-->
+			
+			<Effect_Generator Name="MilitaryStructureBoostArmorEffectGenerator">
+				<!-- 5% Armor Boost --> 
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> true </Starts_Active>
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Effect_Generator_Entry Name="Entry1">
+		
+					<Effect_Name> MilitaryStructureBoostArmorEffect </Effect_Name>
+					<Duration> 3.1 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					<Should_Add_Hardpoints_As_Targets> true </Should_Add_Hardpoints_As_Targets>
+		
+				</Effect_Generator_Entry>
+	
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryResearchRapidRebuildEffectGenerator">
+					<Is_Independent_Generator> true </Is_Independent_Generator>
+					<Starts_Active> true </Starts_Active>
+					<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+					<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
+	
+					<Effect_Generator_Entry Name="Entry1">
+						<Effect_Name> MilitaryResearchRapidRebuildEffect </Effect_Name>
+						<Duration> 0.1 </Duration>
+						<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+					</Effect_Generator_Entry>
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryResearchRapidRebuildBlockEffectGenerator">
+				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
+
+				<Effect_Generator_Entry Name="Entry1">
+					<Effect_Name> MilitaryResearchRapidRebuildBlockEffect </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+			</Effect_Generator>
+			
+			<Effect_Generator Name="MilitaryStationaryRevelationGenerator">
+				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
+				<Is_Independent_Generator>Yes</Is_Independent_Generator>
+				<Modal_Refresh_Frequency> 3.0 </Modal_Refresh_Frequency>
+				<Starts_Active> yes </Starts_Active>
+	
+				<Effect_Generator_Entry Name="Entry1">
+				<Duration> 3.1 </Duration>
+				<Effect_Name> MilitaryStationaryRevelationEffect </Effect_Name>
+				<Target_Gathering_Mask> Self </Target_Gathering_Mask>
+				</Effect_Generator_Entry>
+	
+			</Effect_Generator>
+		</Effect_Generator_Data>
+
+	</X11_Military_Structures>
+
+
+	<!-- **************************************************************************************** -->
+	<!-- *** CONSTRUCTION VERSION *************************************************************** -->
+	<!-- **************************************************************************************** -->
+
+	<X11_Military_Structures Name="Military_Bunker_Construction">
+
+		<!-- ART -->
+		<Land_Model_Name>MB_HANGAR_COMMAND_2.alo</Land_Model_Name>
+		<Scale_Factor>0.7</Scale_Factor>
+		<No_Reflection_Below_Detail_Level>1</No_Reflection_Below_Detail_Level>
+		<Multisample_FOW_Check>Yes</Multisample_FOW_Check>
+		<Last_State_Visible_Under_FOW> Yes </Last_State_Visible_Under_FOW>
+      <AssetBank> BANK_MILITARY </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_STRUCTURE_MILITARY_HANGAR</Text_ID>
+		<Select_Box_Scale>350</Select_Box_Scale>
+		<Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<CategoryMask> Large, Stationary, TacticalBuildableStructure </CategoryMask>
+		<Affiliation>Military</Affiliation>
+		<Victory_Relevant> No </Victory_Relevant>
+
+		<Attributes SubObjectList="Yes">
+			<Tactical_Sell_Percent_Modifier> 0.0 </Tactical_Sell_Percent_Modifier>
+			<Tactical_Sell_Time_Seconds>0.5</Tactical_Sell_Time_Seconds>
+		</Attributes>
+		
+		<!-- MOVEMENT -->
+		<Space_Layer> LandDynamic </Space_Layer>
+		<MovementClass>Building</MovementClass>
+		<UnitCollisionClass> HighObstacle </UnitCollisionClass>
+		<Custom_Hard_XExtent> 32.0 </Custom_Hard_XExtent>
+		<Custom_Hard_YExtent> 32.0 </Custom_Hard_YExtent>
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+		<Tornado_Movement_Factor>0.00001</Tornado_Movement_Factor>
+
+		<!-- CONFLICT -->
+		<Is_Attackable> true </Is_Attackable>
+		<Ranged_Target_Z_Adjust> 20.0 </Ranged_Target_Z_Adjust>
+		<Collidable_By_Projectile_Living>Yes</Collidable_By_Projectile_Living>
+
+		<Tactical_Health> 4200 </Tactical_Health>
+
+		<Land_FOW_Reveal_Range>30.0</Land_FOW_Reveal_Range>
+		<Dense_FOW_Reveal_Range_Multiplier> 0.0 </Dense_FOW_Reveal_Range_Multiplier>
+		<Land_Damage_Thresholds>1, .5, 0</Land_Damage_Thresholds>
+		<Land_Damage_Alternates>0, 1, 2 </Land_Damage_Alternates>
+		<Land_Damage_SFX>null,SFX_GENERIC_DETONATION, null</Land_Damage_SFX>
+
+		<!-- BEHAVIORS -->
+		<!-- NOTE: TACTICAL_UNDER_CONSTRUCTION does not work as a Land_Behavior, since the type - > Behaves_Like() fails for some reason when it should not - need to fix -->
+		<Behavior>
+			EFFECT_REGISTRY,
+			ATTRIBUTE_DIRECTORY,
+			TACTICAL_UNDER_CONSTRUCTION,
+			SELECTABLE,
+			REVEAL,
+			HIDE_WHEN_FOGGED,
+			RADAR_MAP_VISIBLE,
+			TERRAFORM,
+			TACTICAL_SELL,
+			GUI,
+			IDLE
+		</Behavior>
+
+		<BehaviorType Name="EncyclopediaBehaviorType">
+			<Icon_Name>i_logo_military.tga</Icon_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="TooltipBehaviorType">
+			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MILITARY_HANGAR_B </Tooltip_Description_Text_ID>
+			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
+		</BehaviorType>
+		
+		<BehaviorType Name="GameEventSourceBehaviorType">
+			<Game_Event_Source_Category> StructureUnderConstruction </Game_Event_Source_Category>
+		</BehaviorType>
+
+		<BehaviorType Name="TerraformBehaviorType">
+			<Bib_X_Extent> 100 </Bib_X_Extent>
+			<Bib_Y_Extent> 260 </Bib_Y_Extent>
+		</BehaviorType>
+
+		<BehaviorType Name="ArmorAndDamageBehaviorType">
+			<Armor_Type> Armor_Novus_Structure_Heavy </Armor_Type>
+		</BehaviorType>
+
+		<BehaviorType Name="ProductionBehaviorType">
+			<Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+			<Build_Limit_Current_Per_Player>1</Build_Limit_Current_Per_Player>
+		</BehaviorType>
+
+		<BehaviorType Name="BuildableObjectBehaviorType">
+			<Tactical_Buildable_Constructed> Military_Bunker </Tactical_Buildable_Constructed>
+			<Tactical_Buildable_Beacon_Type> Military_Bunker_Beacon </Tactical_Buildable_Beacon_Type>
+			<Tactical_Build_Cost_Multiplayer> 2400 </Tactical_Build_Cost_Multiplayer>
+			<Tactical_Build_Cost_Campaign> 2400 </Tactical_Build_Cost_Campaign>
+			<Tactical_Build_Time_Seconds> 65 </Tactical_Build_Time_Seconds>
+			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
+			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
+		</BehaviorType>
+
+		<BehaviorType Name="TacticalSellBehaviorType">
+			<Sell_Effect_Generator_Name>MilitarySellGenerator</Sell_Effect_Generator_Name>
+		</BehaviorType>
+
+		<BehaviorType Name="SFXBehaviorType">
+			<SFXEvent_Select>SFX_Structure_Select_Novus_Remote_Terminal</SFXEvent_Select>
+			<SFXEvent_Ambient_Loop> SFX_Structure_EGL_Novus_Remote_Terminal </SFXEvent_Ambient_Loop>
+			<Death_SFXEvent_Start_Die> SFX_Novus_Large_Structure_Death </Death_SFXEvent_Start_Die>
+			<SFXEvent_Unit_Lost />
+			<SFXEvent_Tactical_Build_Started>GUI_BUILD_Structure</SFXEvent_Tactical_Build_Started>
+			<SFXEvent_Tactical_Build_Complete>SFX_Structure_Select_Novus_Remote_Terminal</SFXEvent_Tactical_Build_Complete>
+			<SFXEvent_Tactical_Build_Cancelled>GUI_BUILD_Structure_Canceled</SFXEvent_Tactical_Build_Cancelled>
+			
+		</BehaviorType>
+
+		<BehaviorType Name="DeathFXBehaviorType">
+			<Remove_Upon_Death>true</Remove_Upon_Death>
+			<Death_Clone_Is_Obstacle> false </Death_Clone_Is_Obstacle>
+			<Death_Explosions>Large_Explosion_Land</Death_Explosions>
+		</BehaviorType>
+
+		<BehaviorType Name="RadarMapBehaviorType">
+			<Radar_Icon_Size>0.05  0.05</Radar_Icon_Size>
+		</BehaviorType>
+
+		<BehaviorType Name="BlobShadowBehaviorType">
+			<No_Reflection_Below_Detail_Level> 1 </No_Reflection_Below_Detail_Level>
+			<No_Refraction_Below_Detail_Level> 1 </No_Refraction_Below_Detail_Level>
+		</BehaviorType>
+
+		<BehaviorType Name="GUIBehaviorType">
+			<GUI_Scene_Name> HealthBar_Scene_Large </GUI_Scene_Name>
+			<GUI_Receives_Input> no </GUI_Receives_Input>
+			<GUI_Min_Scale> 0.8 </GUI_Min_Scale>
+			<GUI_Max_Scale> 3.0 </GUI_Max_Scale>
+			<GUI_Default_Scale> 1.0 </GUI_Default_Scale>
+		</BehaviorType>
+
+		<BehaviorType Name="CrushBehaviorType">
+			<Crush_Defense>60</Crush_Defense>
+			<Crush_Power>55</Crush_Power>
+		</BehaviorType>
+
+      <Effect_Generator_Data SubObjectList="Yes">
+
+			<!-- Standard Sell generator  - 06/28/2007 -->
+			<!--INCLUDE ".\Data\XML\Includes\Sell_Effect_Generators\NOVUS_Sell_Generators.xml" -->
+
+		</Effect_Generator_Data>
+		
+	</X11_Military_Structures>
+
+	<!-- **************************************************************************************** -->
+	<!-- ****DEATH CLONE(S)********************************************************************** -->
+	<!-- **************************************************************************************** -->
+
+	<X11_Military_Structures Name="Military_Bunker_Default_Death_Clone">
+
+		<!-- ART -->
+		<Land_Model_Name>WB_Hangar02_DC.ALO</Land_Model_Name>
+		<Scale_Factor>0.7</Scale_Factor>
+      <AssetBank> BANK_MILITARY </AssetBank>
+
+		<!-- INTERFACE -->
+		<Text_ID>TEXT_NONE</Text_ID>
+		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
+
+		<!-- ATTRIBUTES -->
+		<Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+
+		<!-- CONFLICT -->
+		<Ranged_Target_Z_Adjust>0.1</Ranged_Target_Z_Adjust>
+
+		<LandBehavior>
+			EFFECT_REGISTRY,
+			EFFECT_GENERATOR,
+			ATTRIBUTE_DIRECTORY,
+			PARTICLE
+		</LandBehavior>
+
+		<BehaviorType Name="SFXBehaviorType">
+			<Death_SFXEvent_End_Die />
+			<Death_SFXEvent_Start_Die> SFX_Novus_Large_Structure_Death </Death_SFXEvent_Start_Die>
+		</BehaviorType>
+
+		<BehaviorType Name="DeathFXBehaviorType">
+			<Specific_Death_Anim_Type> Die </Specific_Death_Anim_Type>
+			<Death_Fade_Time> 0.25 </Death_Fade_Time>
+			<Death_Persistence_Duration> 0.0 </Death_Persistence_Duration>
+		</BehaviorType>
+
+
+	</X11_Military_Structures>
+
+
+	<!-- **************************************************************************************** -->
+	<!-- ***  BEACON **************************************************************************** -->
+	<!-- **************************************************************************************** -->
+
+	<!-- Oksana: beacon for building the structure. You'll need a builder unit to build from beacon -->
+	<X11_Military_Structures Name="Military_Bunker_Beacon">
+
+    <!-- ART -->
+    <!-- STUB FOR ELIE -->
+    <Land_Model_Name>W_flag_rally_military.alo</Land_Model_Name>
+    <Scale_Factor>1.0</Scale_Factor>
+    <Is_Decoration>No</Is_Decoration>
+    <AssetBank> BANK_MILITARY </AssetBank>
+
+    <!-- INTERFACE -->
+    <Is_Placed_By_Editor> false </Is_Placed_By_Editor>
+    <Text_ID>TEXT_STRUCTURE_MILITARY_BUNKER</Text_ID>
+
+    <!-- ATTRIBUTES -->
+    <Attributes SubObjectList="Yes">
+      <Is_Immune_To_Mind_Control> true </Is_Immune_To_Mind_Control>
+      <Is_Immune_To_Virus> true </Is_Immune_To_Virus>
+    </Attributes>
+
+    <CategoryMask> TacticalBuildableStructure </CategoryMask>
+    <Is_Immune_To_Tornado>true</Is_Immune_To_Tornado>
+    <Affiliation>Military</Affiliation>
+
+    <!-- CONFLICT -->
+    <Is_Attackable>Yes</Is_Attackable>
+    <Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
+    <Ranged_Target_Z_Adjust> 0.0 </Ranged_Target_Z_Adjust>
+    <Tactical_Health>1</Tactical_Health>
+
+    <!-- BEHAVIORS -->
+    <Behavior>
+      ATTRIBUTE_DIRECTORY,
+      EFFECT_REGISTRY,
+      TACTICAL_BUILDABLE_BEACON,
+      INVULNERABLE,
+      CLOAKED,
+      TACTICAL_SELL,
+      SELECTABLE
+    </Behavior>
+
+    <BehaviorType Name="GameEventSourceBehaviorType">
+      <Game_Event_Source_Category> TacticalBuildBeacon </Game_Event_Source_Category>
+    </BehaviorType>
+
+    <BehaviorType Name="ProductionBehaviorType">
+      <Is_Research_Tech_Tree_Lockable> Yes </Is_Research_Tech_Tree_Lockable>
+    </BehaviorType>
+
+    <BehaviorType Name="BuildableObjectBehaviorType">
+      <Tactical_Buildable_Constructed> Military_Bunker_Construction </Tactical_Buildable_Constructed>
+    </BehaviorType>
+
+    <BehaviorType Name="TacticalBuildableBeaconBehaviorType">
+    </BehaviorType>
+
+    <BehaviorType Name="SFXBehaviorType">
+      <SFXEvent_Fire> SFX_Alien_Radiation_Detonation_1 </SFXEvent_Fire>
+    </BehaviorType>
+
+    <BehaviorType Name="CrushBehaviorType">
+      <Crush_Defense>90</Crush_Defense>
+    </BehaviorType>
+
+    <BehaviorType Name="SelectableBehaviorType">
+      <Select_Box_Scale>160</Select_Box_Scale>
+      <Select_Box_Z_Adjust>3.0f</Select_Box_Z_Adjust>
+    </BehaviorType>
+
+  </X11_Military_Structures>
+
+
+
+</Military_Bunker_XML>
+

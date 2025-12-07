@@ -33,7 +33,7 @@ LuaGlobalCommandLinks[20] = true
 LuaGlobalCommandLinks[51] = true
 LUA_PREP = true
 
--- $Id: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultLandScript.lua#137 $
+-- $Id: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultLandScript.lua#44 $
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -60,17 +60,17 @@ LUA_PREP = true
 -- C O N F I D E N T I A L   S O U R C E   C O D E -- D O   N O T   D I S T R I B U T E
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
---              $File: //depot/Projects/Invasion/Run/Data/Scripts/Story/DefaultLandScript.lua $
+--              $File: //depot/Projects/Invasion_360/Run/Data/Scripts/Story/DefaultLandScript.lua $
 --
 --    Original Author: Eric Yiskis
 --
---            $Author: Joe_Howes $
+--            $Author: Brian_Hayes $
 --
---            $Change: 90634 $
+--            $Change: 94190 $
 --
---          $DateTime: 2008/01/09 14:38:51 $
+--          $DateTime: 2008/02/27 16:41:49 $
 --
---          $Revision: #137 $
+--          $Revision: #44 $
 --
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -97,10 +97,6 @@ function Define_Starting_Forces()
 		["ALIEN"] = {
 			"ALIEN_ARRIVAL_SITE",
 			"ALIEN_GLYPH_CARVER",
-		},
-		["PROTO"] = {
-			"PROTO_ARRIVAL_SITE",
-			"PROTO_GLYPH_CARVER"
 		},
 		["NOVUS"] = {
 			"NOVUS_REMOTE_TERMINAL",
@@ -294,7 +290,7 @@ function Network_Game_Setup()
 	for i = 0, max_players-1 do
 		local player = Find_Player(i)
 		if player == nil or (player.Is_Human() == false and player.Is_AI_Player() == false) then break end
-		if Is_Player_Of_Faction(player, "alien") or Is_Player_Of_Faction(player, "proto") then found_alien = true end
+		if Is_Player_Of_Faction(player, "alien") then found_alien = true end
 		players[i] = player
 	end
 
@@ -503,7 +499,7 @@ function State_Init(message)
 		end
 	
 		Initialize_Game()
-		
+
 		Sleep(0.01)
 		if (DEFCONEnabled) then
 			if (not DEFCONRunning) then
@@ -723,7 +719,7 @@ function Initialize_Medals()
 	--[[ JOE DELETE:::  Obsolete
 	-- Send off the complete list of all player's multiplayer buffs to the achievement buff window.
 	--local model = Get_Achievement_Buff_Display_Model()
-	--Get_Game_Mode_GUI_Scene().Raise_Event("Set_Achievement_Buff_Display_Model", nil, {model})
+	--Get_Game_Mode_GUI_Scene().Raise_Event_Immediate("Set_Achievement_Buff_Display_Model", nil, {model})
 	-- ***** ACHIEVEMENT_AWARD_HUD *****
 	--]]
 
@@ -781,7 +777,6 @@ function Apply_Medal_Effects(client)
 	end
 		
 end
-
 
 -------------------------------------------------------------------------------
 -- JLH 05-09-2007
@@ -902,6 +897,7 @@ function Service_DEFCON()
 	end	
 end
 
+
 -- -------------------------------------------------------------------------------------------------
 -- 
 -- -------------------------------------------------------------------------------------------------
@@ -999,6 +995,7 @@ function End_Mission(player)
 			--during shutdown and causing the mouse cursor to be gone when
 			--returning to the main menu
 			GameOver = true
+			UI_On_Mission_End()
 			Create_Thread("Announce_Game_End_Thread", player)
 		end
 	else
@@ -1696,7 +1693,6 @@ end
 
 ---------------------------------------------------------------------------------------------------
 -- EOF
-
 
 function Kill_Unused_Global_Functions()
 	-- Automated kill list.

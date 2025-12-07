@@ -368,7 +368,7 @@
           <Effect_Name> MasariResearchBurningAuraEffect </Effect_Name>
           <Duration> 1.8 </Duration>
           <Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-          <Target_Filter_Categories>~DeathCloneResource</Target_Filter_Categories>
+          <Target_Filter_Categories> ~DeathCloneResource + ~Resource + ~Resource_INST + ~Stationary | ~DeathCloneResource + ~Resource + ~Resource_INST + ~Insignificant </Target_Filter_Categories>
           <Target_Filter_C> Is_Enemy </Target_Filter_C>
           <Area_Effect_Radius> 125.0 </Area_Effect_Radius>
         </Effect_Generator_Entry>
@@ -598,7 +598,7 @@
 	  </BehaviorType>
 
 	  <BehaviorType Name="TooltipBehaviorType">
-		  <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_STRATEGIC_UPGRADE_ADVANCED_INFANTRY </Tooltip_Description_Text_ID>
+		  <Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_MASARI_STRATEGIC_UPGRADE_ADVANCED_INFANTRY_BROKEN_TEXT </Tooltip_Description_Text_ID>
 		  <Tooltip_Category> TEXT_TOOLTIP_CATEGORY_HARD_POINT </Tooltip_Category>
 	  </BehaviorType>
 

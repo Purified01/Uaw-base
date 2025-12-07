@@ -1,73 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Effects>
-
-	<!--*************************************************************************************************
-	************************************************************************************************** 
-	************************************************************************************************** 
-	**	
-	**												PROXY
-	**	
-	************************************************************************************************** 
-	************************************************************************************************** 
-	************************************************************************************************* -->
-	
-	<Effect Name="NovusArcShotsEffect">
-
-		<Duration> 6.0 </Duration>
-		<Effect_Class> CripplingShots </Effect_Class>
-		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
-		<Extends_Same_Source_Duration_Only>yes</Extends_Same_Source_Duration_Only>
-
-		<Effect_Component Type="DamageOverTime">
-			<Damage_Type> Damage_Novus_Evictor_Flechette_Arc </Damage_Type>
-			<Amount_Per_Second> 7.0 </Amount_Per_Second>
-			<Percentage_Per_Second>0</Percentage_Per_Second>
-		</Effect_Component>
-
-		<Effect_Component Type="Sound">
-			<Apply_Effect> SFX_Alien_Cylinder_Moving_Engine_Loop </Apply_Effect>
-			<SFX_Loop_Type>MasariImpactGeneratorSFX</SFX_Loop_Type>
-			<Stop_On_Remove>yes</Stop_On_Remove>
-		</Effect_Component>
-
-	</Effect>
-	
-	<Effect Name="NovusArcVisualEffectSmall">
-
-		<Duration> 5.0 </Duration>
-		<Effect_Class> CripplingShotsVisual </Effect_Class>
-		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
-		
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> SPARKS </Particle_System_Type>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="NovusArcVisualEffectMedium">
-
-		<Duration> 5.0 </Duration>
-		<Effect_Class> CripplingShotsVisual </Effect_Class>
-		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
-
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> SPARKS </Particle_System_Type>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="NovusArcVisualEffectLarge">
-
-		<Duration> 5.0 </Duration>
-		<Effect_Class> CripplingShotsVisual </Effect_Class>
-		<Extends_Existing_Duration> yes </Extends_Existing_Duration>
-
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> SPARKS </Particle_System_Type>
-		</Effect_Component>
-
-	</Effect>	
-
 	<!--*************************************************************************************************
 	************************************************************************************************** 
 	************************************************************************************************** 
@@ -326,35 +258,6 @@
       </Effect_Component>
 
    </Effect>
-   
-   <Effect Name="NovusAmplifierHarmonicPulseAircraftEffect">
-      <Duration> 0.5 </Duration>
-      <Effect_Class> KnockBack </Effect_Class>
-      <Extends_Existing_Duration> false </Extends_Existing_Duration>
-      <Extends_Same_Source_Duration_Only> false </Extends_Same_Source_Duration_Only>
-
-      <Effect_Component Type="KnockBack">
-         <Knock_Back_Strength> 90.0 </Knock_Back_Strength>
-         <Dampening_Fraction> 0.7 </Dampening_Fraction>
-         <Gravity_Fraction>0</Gravity_Fraction>
-         <XY_Knock_Back_Only> true </XY_Knock_Back_Only>
-      </Effect_Component>
-
-      <Effect_Component Type="CreateObject">
-         <Create_Object_Type> Knockback_Hand</Create_Object_Type>
-         <Position_Type> AttachToTarget </Position_Type>
-         <Destroy_On_Remove> yes </Destroy_On_Remove>
-         <Use_Source_Player_ID> yes </Use_Source_Player_ID>
-         <Attachment_Bone_Name>root</Attachment_Bone_Name>
-         <Attach_To_Empty_Bone_Only>No</Attach_To_Empty_Bone_Only>
-      </Effect_Component>
-
-      <Effect_Component Type="Damage">
-         <Damage_Type> Damage_Novus_Amplifier_Harmonic_Pulse </Damage_Type>
-         <Damage_Amount> 14 </Damage_Amount>
-      </Effect_Component>
-
-   </Effect>   
 
 
    <Effect Name="NovusAmplifierHarmonicPulseStructureEffect">
@@ -365,7 +268,7 @@
 
       <Effect_Component Type="Damage">
          <Percentage_Per_Second>0</Percentage_Per_Second>
-         <Damage_Amount> 74 </Damage_Amount>
+         <Damage_Amount> 75 </Damage_Amount>
          <Damage_Type> Damage_Novus_Amplifier_Harmonic_Pulse </Damage_Type>
       </Effect_Component>
 
@@ -510,8 +413,8 @@
 			<Target_Effect> HealthDamage </Target_Effect>
 			<Target_Damage> Damage_Novus_Monitor_Beam </Target_Damage>
 			<Source_Effect> ResourceUnits </Source_Effect>
-			<Amount_Per_Second> 14 </Amount_Per_Second>
-			<Transfer_Multiplicative> 2.0 <!--1.375 for 8 into 11--> </Transfer_Multiplicative>
+			<Amount_Per_Second> 5 </Amount_Per_Second>
+			<Transfer_Multiplicative> 2.4 </Transfer_Multiplicative>
 		</Effect_Component>
 
 	</Effect>
@@ -578,6 +481,27 @@
         </Effect_Component>
 
     </Effect>
+	
+    <Effect Name="Novus_Constructor_Repair_Spray_Effect">
+        <Duration> 5.0 </Duration>
+        <Effect_Class> Healing </Effect_Class>
+        <CategoryMask> CanBeRemovedByAbility</CategoryMask>
+	 
+        <Effect_Component Type="Transfer">
+            <Flow_Direction> SourceToTarget </Flow_Direction>
+            <Target_Effect> HealthHeal </Target_Effect>
+            <Source_Effect> ResourceUnits </Source_Effect>
+            <Amount_Per_Second> -5.0 </Amount_Per_Second>
+            <Transfer_Multiplicative> 2.3 </Transfer_Multiplicative>
+            <Cancel_Effect_If_Transfer_Failed> true </Cancel_Effect_If_Transfer_Failed>
+            <Transfer_Fail_On_Source_Out> true </Transfer_Fail_On_Source_Out>
+            <Transfer_Fail_On_Target_Full> true </Transfer_Fail_On_Target_Full>
+         <Show_Transfer_Text_Visual>No</Show_Transfer_Text_Visual>
+        </Effect_Component>
+
+    </Effect>	
+	
+<!-- i was going to add this-->
 
 	<Effect Name="Novus_Constructor_Repair_Bridge_Pre_Effect">
 		<Duration> 5.0 </Duration>

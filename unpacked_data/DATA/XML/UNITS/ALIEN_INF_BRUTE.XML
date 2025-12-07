@@ -197,7 +197,7 @@
 		<BehaviorType Name="WeaponBehaviorType">
 			<Targeting_Priority_Set> Alien_Brute_Target_Priority </Targeting_Priority_Set>
 			<Can_Attack_Without_Weapon_Behavior>Yes</Can_Attack_Without_Weapon_Behavior>
-			<Attack_Category_Restrictions> Flying | Resource | Resource_INST+~Organic | Resource_INST+Organic+Medium | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>
+			<Attack_Category_Restrictions> Flying | Resource+~Organic | Resource_INST+~Organic | DeathCloneResource | BodySocketHP </Attack_Category_Restrictions>
 			<Targeting_Max_Attack_Distance> 15.0 </Targeting_Max_Attack_Distance>
 		</BehaviorType>
 
@@ -540,7 +540,6 @@
 					<Effect_Name> BruteSmashAttackDamage </Effect_Name>
 					<Duration> 1.2 </Duration>
 					<Target_Gathering_Mask> Target | SelfAE </Target_Gathering_Mask>
-					<Target_Filter_C> Is_Enemy </Target_Filter_C>
 					<Area_Effect_Radius> 30.0 </Area_Effect_Radius>
 					<Arc_Of_Effect> 90.0 </Arc_Of_Effect>
 					<Should_Add_All_Team_Members_As_Targets> false </Should_Add_All_Team_Members_As_Targets>
@@ -587,7 +586,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 500 </Resource_Units>
-			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Alien, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 			<Use_Death_Behavior> true </Use_Death_Behavior>
 		</BehaviorType>
@@ -695,10 +694,5 @@
 
 	</Projectile>
 
-	<X10_Alien_Units Name="Proto_Brute">
-		<Variant_Of_Existing_Type> Alien_Brute </Variant_Of_Existing_Type>
-		<Affiliation> Proto </Affiliation>
-		<AssetBank> BANK_ALIEN </AssetBank>
-	</X10_Alien_Units>
 
 </Alien_INF_Brute_XML>

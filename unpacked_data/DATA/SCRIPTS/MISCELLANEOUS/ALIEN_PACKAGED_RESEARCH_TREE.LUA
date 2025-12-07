@@ -1,3 +1,10 @@
+if (LuaGlobalCommandLinks) == nil then
+	LuaGlobalCommandLinks = {}
+end
+LuaGlobalCommandLinks[128] = true
+LuaGlobalCommandLinks[19] = true
+LUA_PREP = true
+
 --/////////////////////////////////////////////////////////////////////////////////////////////////
 --
 -- (C) Petroglyph Games, Inc.
@@ -164,7 +171,7 @@ function Init_Research_Tree(tactical_only_game)
 				LocksUnitAbilities =
 				{
 				
---					[1] = { TypeName = "Alien_Brute", AbilityName="Brute_Leap_Ability", DescriptionTextID=nil, IconName=nil },
+					[1] = { TypeName = "Alien_Brute", AbilityName="Brute_Leap_Ability", DescriptionTextID=nil, IconName=nil },
 				
 				},
 				
@@ -262,6 +269,12 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_MOLECULAR_ARMOR_BROKEN_TEXT", 
 							IconName="i_icon_a_research_walker_molecular_armor.tga" 
 						},					
+					[2] = { 
+							EffectName="SmallWalkerArmorEffectA3", 
+							TitleTextID = nil,
+							DescriptionTextID=nil, 
+							IconName=nil 
+						},											
 				},
 
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -298,18 +311,16 @@ function Init_Research_Tree(tactical_only_game)
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
-				UnlocksUnitAbilities = {
-				},
+				UnlocksUnitAbilities = {},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
-				LocksUnitAbilities = {					
-				},
+				LocksUnitAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
 				UnlocksSpecialAbilities = {
 					[1] = { 
 							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
-							AbilityName="Aggressor_Vehicle_Attack", 
+							AbilityName="Aggressor_Grenade_Attack_Special_Ability", 
 							TitleTextID="TEXT_ALIEN_RESEARCH_TITLE_SMART_PLASMA",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_SMART_PLASMA",
 							IconName="i_icon_a_research_smart_plasma_TWO.tga" 
@@ -378,8 +389,7 @@ function Init_Research_Tree(tactical_only_game)
 				LocksUnitAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
-				UnlocksSpecialAbilities = {
-				},
+				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
 				LocksSpecialAbilities = {},
@@ -545,7 +555,7 @@ function Init_Research_Tree(tactical_only_game)
 							LockThisEffect="AlienRadiatedShotsImpactEffect"
 						},
 						
-					[2] = { EffectName="CylinderGamaRadiationBeamEffect", DescriptionTextID=nil, IconName=nil },
+					[2] = { EffectName="CylinderGammaRadiationBeamEffect", DescriptionTextID=nil, IconName=nil },
 					[3] = { EffectName="MutantSlowDyingEffect", DescriptionTextID=nil, IconName=nil },
 
 					-- Defiler's Bleed
@@ -564,23 +574,30 @@ function Init_Research_Tree(tactical_only_game)
 					[13] = { EffectName="RadiationSpitterGamaFieldDamageEffect", DescriptionTextID=nil, IconName=nil },
 					[14] = { EffectName="RadiationSpitterGamaFieldHealEffect", DescriptionTextID=nil, IconName=nil },
 					[15] = { EffectName="RadiationSpitterGamaFieldVisualEffect", DescriptionTextID=nil, IconName=nil },
+					[16] = { EffectName="RadiationSpitterFieldHealEffectHeroGamma", DescriptionTextID=nil, IconName=nil },					
 
 					-- Walker Habitat's terrain conditioner HP
-					[16] = { EffectName="AlienWalkerGamaTerrainConditionerEffect", DescriptionTextID=nil, IconName=nil },
-					[17] = { EffectName="AlienWalkerGamaTerrainConditionerSelfEffect", DescriptionTextID=nil, IconName=nil },
+					[17] = { EffectName="AlienWalkerGamaTerrainConditionerEffect", DescriptionTextID=nil, IconName=nil },
+					[18] = { EffectName="AlienWalkerGamaTerrainConditionerSelfEffect", DescriptionTextID=nil, IconName=nil },
 
-					[18] = { 
+					[19] = { 
 							EffectName="RadiationChargeRaiseDeadEffect", 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_ADVANCED_MUTAGENS",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_ADVANCED_MUTAGENS",
 							IconName="i_icon_a_research_advanced_mutagens.tga" 
 						},
-					[19] = { 
+					[20] = { 
 							EffectName="WalkerHardPointArmorEffectM3", 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_MOLECULAR_ARMOR",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_MOLECULAR_ARMOR_BROKEN_TEXT", 
 							IconName="i_icon_a_research_walker_molecular_armor.tga" 
 						},					
+					[21] = { 
+							EffectName="SmallWalkerArmorEffectM3", 
+							TitleTextID = nil,
+							DescriptionTextID=nil, 
+							IconName=nil 
+						},									
 				},
 
 				LocksEffects=
@@ -603,10 +620,11 @@ function Init_Research_Tree(tactical_only_game)
 					[11] = { EffectName="RadiationSpitterFieldDamageEffect", DescriptionTextID=nil, IconName=nil },
 					[12] = { EffectName="RadiationSpitterFieldHealEffect", DescriptionTextID=nil, IconName=nil },
 					[13] = { EffectName="RadiationSpitterFieldVisualEffect", DescriptionTextID=nil, IconName=nil },
+					[14] = { EffectName="RadiationSpitterFieldHealEffectHero", DescriptionTextID=nil, IconName=nil },					
 					
 					-- Walker Habitat's terrain conditioner HP
-					[14] = { EffectName="AlienWalkerTerrainConditionerEffect", DescriptionTextID=nil, IconName=nil },
-					[15] = { EffectName="AlienWalkerTerrainConditionerSelfEffect", DescriptionTextID=nil, IconName=nil },
+					[15] = { EffectName="AlienWalkerTerrainConditionerEffect", DescriptionTextID=nil, IconName=nil },
+					[16] = { EffectName="AlienWalkerTerrainConditionerSelfEffect", DescriptionTextID=nil, IconName=nil },
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -634,11 +652,11 @@ function Init_Research_Tree(tactical_only_game)
 				UnlocksTypes =
 				{
 					[1] = { 
-						ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"), 
-						TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_RADIATION_CASCADE",
-						DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_RADIATION_CASCADE", 
-						IconName="i_icon_a_research_walker_hp_radiation_cascade.tga" 
-					},
+							ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Radiation_Wake"), 
+							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_RADIATION_CASCADE",
+							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_RADIATION_CASCADE", 
+							IconName="i_icon_a_research_walker_hp_radiation_cascade.tga" 
+						},
 				},
 				
 				-- List of UNIT ABILITIES that will be UNLOCKED when research of this suite is completed!				
@@ -648,36 +666,14 @@ function Init_Research_Tree(tactical_only_game)
 				LocksUnitAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
-				UnlocksSpecialAbilities = {
---					[1] = { 
---							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
---							AbilityName="Aggressor_Vehicle_Attack_Researched_Upgrade", 
---							TitleTextID="TEXT_ALIEN_RESEARCH_TITLE_SMART_PLASMA_TWO",
---							DescriptionTextID="TEXT_ALIEN_RESEARCH_SMART_PLASMA_TWO",
---							IconName="i_icon_a_research_smart_plasma_TWO.tga" 
---						},				
-				},
+				UnlocksSpecialAbilities = {},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
-				LocksSpecialAbilities = {
---					[1] = { 
---							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
---							AbilityName="Aggressor_Vehicle_Attack", 
---							TitleTextID=nil,
---							DescriptionTextID=nil,
---							IconName=nil 
---						},						
-				},
+				LocksSpecialAbilities = {},
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
 				UnlocksGenerators = 
 				{
---					[1] = {
---							EffectName="DefilerOnDeathExplosionGeneratorUpgrade", 
---							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_NEUTRON_HEMORRHAGE",
---							DescriptionTextID="TEXT_ALIEN_RESEARCH_NEUTRON_HEMORRHAGE", 
---							IconName="I_ICON_A_RESEARCH_NEUTRON_HEMORRHAGING.TGA" 
---						},
 					[1] = {
 							EffectName="Alien_Grunt_Regenerate_Effect_Generator", 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_GENESIS_ARMOR",
@@ -752,6 +748,7 @@ function Init_Research_Tree(tactical_only_game)
 							IconName="i_icon_a_sa_phase_self.tga" 
 						},
 					[2] = {  TypeName = "Alien_Cylinder", AbilityName="Monolith_Phase_Unit_Ability", DescriptionTextID=nil, IconName=nil },
+				
 				},
 				
 				-- List of UNIT ABILITIES that will be LOCKED when research of this suite is completed!				
@@ -830,12 +827,13 @@ function Init_Research_Tree(tactical_only_game)
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
 				UnlocksGenerators ={
-					[1] = { 
-							EffectName="ScanDroneScanPulseEnemyUpgradeEffect", 
-							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_MENTAL_FREQUENCY",
-							DescriptionTextID="TEXT_ALIEN_RESEARCH_MENTAL_FREQUENCY", 
-							IconName="i_icon_a_research_mental_frequency.tga" 
-						},
+				
+				[1] = { 
+						EffectName="ScanDroneScanPulseEnemyUpgradeEffect", 
+						TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_MENTAL_FREQUENCY",
+						DescriptionTextID="TEXT_ALIEN_RESEARCH_MENTAL_FREQUENCY", 
+						IconName="i_icon_a_research_mental_frequency.tga" 
+					},
 				
 				},					
 	
@@ -871,30 +869,24 @@ function Init_Research_Tree(tactical_only_game)
 				LocksUnitAbilities = {},
 		
 				-- List of SPECIAL ABILITIES that will be UNLOCKED when research of this suite is completed!	
-				UnlocksSpecialAbilities = {
-					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
-							AbilityName="Aggressor_Aircraft_Attack_Quantum", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},				
+				UnlocksSpecialAbilities = {			
 				},
 				
 				-- List of SPECIAL ABILITIES that will be LOCKED when research of this suite is completed!
-				LocksSpecialAbilities = {
-					[1] = { 
-							ObjectType=Find_Object_Type("Alien_Heavy_Gunship"), 
-							AbilityName="Aggressor_Aircraft_Attack", 
-							TitleTextID=nil,
-							DescriptionTextID=nil,
-							IconName=nil 
-						},						
+				LocksSpecialAbilities = {						
 				},
 				
 				-- List of EEFECTS that will be UNLOCKED when research of this suite is completed!				
-				UnlocksGenerators ={},
---				
+				UnlocksGenerators ={
+
+					[1] = { 
+						EffectName="Jamming_Aura_Drone", 
+						TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_VISUAL_JAMMER",
+						DescriptionTextID="TEXT_ALIEN_RESEARCH_VISUAL_JAMMER", 
+						IconName="I_ICON_A_SA_RELOCATE.TGA" 
+					},
+				},
+						
 				UnlocksEffects = 
 				{
 					[1] = { 
@@ -929,7 +921,12 @@ function Init_Research_Tree(tactical_only_game)
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_MOLECULAR_ARMOR_BROKEN_TEXT", 
 							IconName="i_icon_a_research_walker_molecular_armor.tga" 
 						},					
-				
+					[17] = { 
+							EffectName="SmallWalkerArmorEffectQ3", 
+							TitleTextID = nil,
+							DescriptionTextID=nil, 
+							IconName=nil 
+						},									
 				},
 				
 				-- DO NOT FORGET TO SET THE TIME IT WILL TAKE TO RESEARCH THIS SUITE
@@ -961,7 +958,8 @@ function Init_Research_Tree(tactical_only_game)
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_DARK_MATTER",
 							DescriptionTextID="TEXT_ALIEN_RESEARCH_WALKER_HP_DARK_MATTER", 
 							IconName="i_icon_a_research_walker_hp_dark_matter_vent.tga" 
-						},					
+						},
+					
 					[2] = {
 							ObjectType=Find_Object_Type("Alien_Walker_Science_HP_Mind_Magnet"), 
 							TitleTextID = "TEXT_ALIEN_RESEARCH_TITLE_HP_CONTROL_MAGNETS",
@@ -1033,3 +1031,47 @@ function Initialize_Branch_Data()
 	PathToBranchMap["B"] = Branch_RADIOACTIVITY
 	PathToBranchMap["C"] = Branch_QUANTUM 
 end
+function Kill_Unused_Global_Functions()
+	-- Automated kill list.
+	Abs = nil
+	BlockOnCommand = nil
+	Clamp = nil
+	DebugBreak = nil
+	DebugPrintTable = nil
+	DesignerMessage = nil
+	Dirty_Floor = nil
+	Find_All_Parent_Units = nil
+	Get_Achievement_Buff_Display_Model = nil
+	Get_Faction_Numeric_Form = nil
+	Get_Faction_Numeric_Form_From_Localized = nil
+	Get_Faction_String_Form = nil
+	Get_Localized_Faction_Name = nil
+	Get_Locally_Applied_Medals = nil
+	Get_Player_By_Faction = nil
+	Is_Player_Of_Faction = nil
+	Max = nil
+	Min = nil
+	OutputDebug = nil
+	PGAchievementAward_Init = nil
+	Persist_Online_Achievements = nil
+	Player_Earned_Offline_Achievements = nil
+	Process_Research_Complete = nil
+	Remove_Invalid_Objects = nil
+	Set_Local_User_Applied_Medals = nil
+	Set_Online_Player_Info_Models = nil
+	Show_Earned_Offline_Achievements = nil
+	Show_Earned_Online_Achievements = nil
+	Simple_Mod = nil
+	Simple_Round = nil
+	Sleep = nil
+	Sort_Array_Of_Maps = nil
+	String_Split = nil
+	SyncMessageNoStack = nil
+	TestCommand = nil
+	Update_Offline_Achievement = nil
+	Update_Research_Progress = nil
+	Validate_Achievement_Definition = nil
+	WaitForAnyBlock = nil
+	Kill_Unused_Global_Functions = nil
+end
+

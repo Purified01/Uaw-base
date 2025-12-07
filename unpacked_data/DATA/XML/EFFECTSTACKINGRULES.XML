@@ -10,6 +10,7 @@
 	<MatterConversion> All </MatterConversion>
 	<MatterConversionBlock> HighestPriority </MatterConversionBlock>
 	<Fire> HighestPriority </Fire>
+	<HumanNukeFire> HighestPriority </HumanNukeFire>
 	<NovusSignal> HighestPriority </NovusSignal>
 	<NovusSingalConnectionVisual>All</NovusSingalConnectionVisual>
 	<Radiation> HighestPriority </Radiation>
@@ -47,6 +48,7 @@
 	<RevealCloaking> HighestPriority </RevealCloaking>
 	<RevealCloakingConduit> HighestPriority </RevealCloakingConduit>
 	<DefilerRadiation> All, 1 </DefilerRadiation>
+	<HumanRadiation> All, 1 </HumanRadiation>
 	<GruntShotgunRadiation> All </GruntShotgunRadiation>
 	<NovusVirus> HighestPriority </NovusVirus>
    <NovusVirusBomb> HighestPriority </NovusVirusBomb>
@@ -54,6 +56,8 @@
 	<TacticalBuild> All </TacticalBuild>   
    <TacticalUpgradedBuild>All</TacticalUpgradedBuild>
    <TacticalBuildSingleBuilder>Earliest</TacticalBuildSingleBuilder>
+   <Nuke> All </Nuke>
+   <MedicHealing> All, 1 </MedicHealing>
    <Healing> All </Healing>
    <HealingSentry> All, 1 </HealingSentry>
 	<HealingSeeker> All, 1 </HealingSeeker>
@@ -65,7 +69,7 @@
 	<MutantGlob> All </MutantGlob>
 	<DefilerRadiationReveal> All </DefilerRadiationReveal>
 	<DefilerRadiationVisualAttack> All </DefilerRadiationVisualAttack>
-	<DefilerRadiationDefile> All </DefilerRadiationDefile>
+	<DefilerRadiationDefile> All, 1 </DefilerRadiationDefile>
 	<MutantSlowDeath> All </MutantSlowDeath>
 	<Beckon> Earliest </Beckon>
 	<BeckonDamage> All </BeckonDamage>
@@ -99,6 +103,7 @@
 	<SightLink> All </SightLink>
    <SightLinkVisual>All</SightLinkVisual>
 	<BurningSight>All</BurningSight>
+	<BurningSightUpgraded>All</BurningSightUpgraded>	
 	<FireDamage> All </FireDamage>
 	<AreaEffectMod1> Earliest </AreaEffectMod1>
 	<AreaEffectMod2> Earliest </AreaEffectMod2>
@@ -128,7 +133,6 @@
 	<PatchBackupSystems> HighestPriority </PatchBackupSystems>
 	<PatchEmergencyPower>All</PatchEmergencyPower>
 	<PatchExtrapolation> HighestPriority </PatchExtrapolation>
-	<PatchExtrapolationUpgrade> HighestPriority </PatchExtrapolationUpgrade>	
 	<PatchOptimizedAssembly> HighestPriority </PatchOptimizedAssembly>
 	<PatchOverclock> HighestPriority </PatchOverclock>
 	<PatchRadiationCasing> HighestPriority </PatchRadiationCasing>
@@ -144,6 +148,7 @@
 	<DeactivateNovusVirusAuraGenerators>All</DeactivateNovusVirusAuraGenerators>
 	<PatchRapidPatching> All </PatchRapidPatching>
 	<ResearchRapidRebuildBlock> HighestPriority </ResearchRapidRebuildBlock>
+	<ResearchNaniteRepairBlock> HighestPriority </ResearchNaniteRepairBlock>
 	<ResearchAdvancedFlow> All </ResearchAdvancedFlow>
 	<FlowSpeed> All </FlowSpeed>
 	<PowerTransmissionRadius> All </PowerTransmissionRadius>
@@ -196,25 +201,9 @@
 	<ParanoiaUpgrade> All </ParanoiaUpgrade>
 	<MasariVortex>Earliest</MasariVortex>
 	<ResearchFieryFury>All</ResearchFieryFury>
-	<!--Templar Immolate Effects-->
-	<PurifyingLightPhosphor> ALL, 1 </PurifyingLightPhosphor>
-	<PhosphorAftershock> ALL, 1 </PhosphorAftershock>	
-	<PurifyingLightPhosphorStackable> ALL, 5 </PurifyingLightPhosphorStackable>	
-	<PurifyingLightPhosphorStackableUpgraded> ALL, 5 </PurifyingLightPhosphorStackableUpgraded>		
-	<PurifyingLightPhosphorStackableTwenty> ALL, 5 </PurifyingLightPhosphorStackableTwenty>	
-	<PurifyingLightPhosphorStackableUpgradedThirty> ALL, 5 </PurifyingLightPhosphorStackableUpgradedThirty>			
-	<PurifyingLightPhosphorStackableLight> ALL, 1 </PurifyingLightPhosphorStackableLight>		
-   <PurifyingLightVisualPhosphor> All </PurifyingLightVisualPhosphor>	
-    <PurifyingLightVisualPhosphorTwenty> All </PurifyingLightVisualPhosphorTwenty>	  
-   <PurifyingLightVisualPhosphorThirty> All </PurifyingLightVisualPhosphorThirty>		
-   <PurifyingLightVisualPhosphorLong> All </PurifyingLightVisualPhosphorLong>	   
-   <PurifyingLightVisualPhosphorLonger> All </PurifyingLightVisualPhosphorLonger>	      
-	<!-- ^^^ Templar Immolate Effects ^^^ -->   
-	<PurifyingLightSkyLord>  Earliest  </PurifyingLightSkyLord>   
-	<PurifyingLightTemplar> ALL, 4 </PurifyingLightTemplar>	
-	<PurifyingLight> ALL, 1 </PurifyingLight>
+	<PurifyingLightSkyLord> All, 1 </PurifyingLightSkyLord>   
+	<PurifyingLight> All, 1 </PurifyingLight>
    <PurifyingLightVisual> All </PurifyingLightVisual>
-   <CripplingShotsTemplar> All, 1 </CripplingShotsTemplar>   
    <CripplingShots> All, 6 </CripplingShots>
 	<CripplingShotsVisual> All </CripplingShotsVisual>
    <UpgradingStructure> All </UpgradingStructure>
@@ -379,7 +368,7 @@
    <Incignificance>Earliest</Incignificance>
 
    <MatterEngineLeech>All</MatterEngineLeech>
-   <MatterEngineLeechTemplar>All, 6</MatterEngineLeechTemplar>
+
    <FireVortex>All</FireVortex>
    <FireVortexVisual>Earliest</FireVortexVisual>
 

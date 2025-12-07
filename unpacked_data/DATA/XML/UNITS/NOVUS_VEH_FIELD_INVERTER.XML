@@ -73,7 +73,7 @@
 		<Land_FOW_Reveal_Range> 240.0 </Land_FOW_Reveal_Range>
 		<Tactical_Health> 600 </Tactical_Health>
 
-		<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
+		<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 
 		<Land_Damage_Thresholds>1, 0.66, 0.46,  0.25</Land_Damage_Thresholds>
 		<Land_Damage_Alternates>0, 1, 2, 3</Land_Damage_Alternates>
@@ -337,20 +337,6 @@
       </Unit_Abilities_Data>
 
       <Effect_Generator_Data SubObjectList="Yes">
-	  
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>	  -->
 	  
       <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -748,48 +734,34 @@
 		
 		<Effect_Generator_Data SubObjectList="Yes">
 		
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>	  		-->
-		
-      <Effect_Generator Name="Alien_Brute_Regenerate_Effect_Generator_Flat">
+      		<!-- Regeneration Effect -->
+			<Effect_Generator Name="NovusResearchNaniteRepairEffect">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.1 </Modal_Refresh_Frequency>
+				<Modal_Refresh_Frequency> 1.0 </Modal_Refresh_Frequency>
 				<Starts_Active> true </Starts_Active>
+				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>				
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Flat </Effect_Name>
-					<Duration> 5.1 </Duration>
+					<Effect_Name> NovusResearchNaniteRepairEffect_FieldInverter </Effect_Name>
+					<Duration> 0.1 </Duration>
 					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 					<Target_Filter_C> Can_Not_Create_Mutant </Target_Filter_C>
 				</Effect_Generator_Entry>
 
 			</Effect_Generator>		
 
-<!--			<Effect_Generator Name="FieldInverterNegateMindControlGenerator">
-				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 2.0 </Modal_Refresh_Frequency>
-				<Starts_Active> true </Starts_Active>
+      		<!-- This effect generator blocks the Nanite Repair healing pulses for a few seconds when the unit takes damage. -->
+			<Effect_Generator Name="NovusResearchNaniteRepairBlockEffect_FieldInverter">
 				<Is_Independent_Generator> true </Is_Independent_Generator>
+				<Application_Signals> OBJECT_DAMAGED </Application_Signals>
 
 				<Effect_Generator_Entry Name="Entry1">
-					<Effect_Name> Masari_Seer_Group_Clarity </Effect_Name>
-					<Duration> 5 </Duration>
-					<Target_Gathering_Mask> SelfAE </Target_Gathering_Mask>
-					<Area_Effect_Radius> 130 </Area_Effect_Radius>
-					<Target_Filter_C> Alatea_Beneficial_Target_Ally_Filter </Target_Filter_C>
+					<Effect_Name> NovusResearchNaniteRepairBlockEffect_FieldInverter </Effect_Name>
+					<Duration> 5.0 </Duration>
+					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
 				</Effect_Generator_Entry>
-			</Effect_Generator>		-->
+				
+			</Effect_Generator>		
 
 			<Effect_Generator Name="NovusShieldCloakEffectGenerator">
 				<Should_Deactivate_Manually> true </Should_Deactivate_Manually>
@@ -1009,7 +981,7 @@
 
       <BehaviorType Name="ResourceBehaviorType">
          <Resource_Units> 600 </Resource_Units>
-         <Resource_For_Faction> Military, Novus, Alien, Masari, Proto </Resource_For_Faction>
+         <Resource_For_Faction> Military, Novus, Alien, Masari </Resource_For_Faction>
          <Is_Single_Resource> false </Is_Single_Resource>
          <Use_Death_Behavior> true </Use_Death_Behavior>
       </BehaviorType>
@@ -1257,7 +1229,7 @@
 		<Is_Placed_By_Editor>false</Is_Placed_By_Editor>
 
 		<!-- MOVEMENT -->
-		<Max_Speed>52</Max_Speed>
+		<Max_Speed>55</Max_Speed>
 		<Max_Rate_Of_Turn>0</Max_Rate_Of_Turn>
 
 		<!-- CONFLICT -->
@@ -1283,7 +1255,7 @@
 			<Explosion_Jitter_Factor>0.25</Explosion_Jitter_Factor>
 			<Projectile_Max_Flight_Distance>500.0</Projectile_Max_Flight_Distance>
 			<Projectile_Max_Scan_Range>600.0</Projectile_Max_Scan_Range>
-			<Projectile_Damage>35</Projectile_Damage>
+			<Projectile_Damage>40</Projectile_Damage>
 			<Projectile_SFXEvent_Detonate>SFX_Novus_Detonation_1</Projectile_SFXEvent_Detonate>
 			<Projectile_SFXEvent_Detonate_Reduced_By_Armor> SFX_Novus_Small_Damage_Detonation </Projectile_SFXEvent_Detonate_Reduced_By_Armor>
 			<Projectile_Does_Shield_Damage>No</Projectile_Does_Shield_Damage>

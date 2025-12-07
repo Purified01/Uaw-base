@@ -495,7 +495,7 @@
 			<Tactical_Buildable_Beacon_Type> Novus_Remote_Terminal_Beacon </Tactical_Buildable_Beacon_Type>
 			<Tactical_Build_Cost_Multiplayer> 2400 </Tactical_Build_Cost_Multiplayer>
 			<Tactical_Build_Cost_Campaign> 2400 </Tactical_Build_Cost_Campaign>
-			<Tactical_Build_Time_Seconds> 60 </Tactical_Build_Time_Seconds>
+			<Tactical_Build_Time_Seconds> 65 </Tactical_Build_Time_Seconds>
 			<Tactical_UI_Build_Queue_Order> 0 </Tactical_UI_Build_Queue_Order>
 			<Tactical_Build_Requires_Builder> true </Tactical_Build_Requires_Builder>
 		</BehaviorType>

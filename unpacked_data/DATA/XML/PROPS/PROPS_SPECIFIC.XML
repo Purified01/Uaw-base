@@ -402,6 +402,11 @@
 
   <X45_Props_Specific Name="TUT03_Hummer_Insignificant">
     <Variant_Of_Existing_Type>MILITARY_HUMMER</Variant_Of_Existing_Type>
+	
+	<BehaviorType Name="ProductionBehaviorType">
+		<Is_Strategic_Buildable_Type> No </Is_Strategic_Buildable_Type>
+    </BehaviorType>
+	
     <CategoryMask>Insignificant</CategoryMask>
   </X45_Props_Specific>
   
@@ -1074,9 +1079,9 @@
 		<CategoryMask> Stationary, Insignificant </CategoryMask>
 		<Is_Attackable>Yes</Is_Attackable>
 
-		<!-- MOVEMENT
+		<!-- MOVEMENT -->
 		<Space_Layer> LandDynamic </Space_Layer>
-		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>-->
+		<UnitCollisionClass> Medium Obstacle </UnitCollisionClass>
 
 		<!-- CONFLICT -->
 		<Collidable_By_Projectile_Living> Yes </Collidable_By_Projectile_Living>
@@ -1086,9 +1091,7 @@
 
 		<!-- BEHAVIORS -->
 		<LandBehavior>
-			EFFECT_REGISTRY,
-			ATTRIBUTE_DIRECTORY,
-			DAMAGE_TRACKING,
+			RESOURCE
 		</LandBehavior>
 
 		<BehaviorType Name="DeathFXBehaviorType">
@@ -3341,7 +3344,7 @@
 			</BehaviorType>
 
 			<BehaviorType Name="SFXBehaviorType">
-				<Death_SFXEvent_Start_Die> SFX_Car_Death </Death_SFXEvent_Start_Die>
+				<Death_SFXEvent_Start_Die> SFX_Generic_Detonation_1 </Death_SFXEvent_Start_Die>
 			</BehaviorType>
 
 			<BehaviorType Name="ArmorAndDamageBehaviorType">
@@ -3350,7 +3353,7 @@
 
 			<BehaviorType Name="ResourceBehaviorType">
 				<Resource_Units> 8 </Resource_Units>
-				<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+				<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 				<Is_Single_Resource> true </Is_Single_Resource>
 			</BehaviorType>
 
@@ -6309,7 +6312,7 @@
 
 		<BehaviorType Name="ResourceBehaviorType">
 			<Resource_Units> 200 </Resource_Units>
-			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex, Proto </Resource_For_Faction>
+			<Resource_For_Faction> Military, Novus, Alien, Masari, Alien_ZM06_KamalRex </Resource_For_Faction>
 			<Is_Single_Resource> true </Is_Single_Resource>
 		</BehaviorType>
 

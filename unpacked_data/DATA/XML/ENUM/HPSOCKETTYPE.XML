@@ -46,6 +46,12 @@
 	<Masari_Element_Magnet_Socket>			30 </Masari_Element_Magnet_Socket>
 	<Masari_Key_Inspiration_Socket>			31 </Masari_Key_Inspiration_Socket>
 	<Masari_Matter_Engine_Socket>				32 </Masari_Matter_Engine_Socket>
+	
+	<!-- Military structure assembly sockets -->
+	<Military_Material_Center_Socket> 34 </Military_Material_Center_Socket>
+	<Military_Nanocenter_Socket> 35 </Military_Nanocenter_Socket>
+	<Military_Megacorp_Center_Socket> 36 </Military_Megacorp_Center_Socket>
+	<Military_R_and_D_Center_Socket> 37 </Military_R_and_D_Center_Socket>
 
 </EnumDefinition>
 

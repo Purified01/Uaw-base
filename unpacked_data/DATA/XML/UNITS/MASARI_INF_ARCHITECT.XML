@@ -519,7 +519,7 @@
             <Can_Target_Neutral>No</Can_Target_Neutral>
             <Generating_Anim_Type>ATTACK_SPECIAL_B</Generating_Anim_Type>
             <Face_Target> true </Face_Target>
-            <Applicable_Unit_Categories> Small + Organic | Medium + Organic <!--added for Templar healing - Rosie 11 27 2024--> | Piloted </Applicable_Unit_Categories>
+            <Applicable_Unit_Categories> Small + Organic | Piloted </Applicable_Unit_Categories>
 
 
             <!-- Any new move/attack order will cancel this ability -->
@@ -623,35 +623,11 @@
             <Effect_Generator_Entry Name="Entry2">
                <Duration> 0.5 </Duration>
                <Base_Delay> 0.4 </Base_Delay>
-               <Effect_Name> MasariFullArmorEffectInfantry </Effect_Name>
+               <Effect_Name> MasariFullArmorEffect </Effect_Name>
                <Target_Gathering_Mask> Self </Target_Gathering_Mask>
                <!-- only in ice mode -->
               <Target_Filter_C> In_Ice_Mode </Target_Filter_C>
             </Effect_Generator_Entry>
-			
-				<Effect_Generator_Entry Name="Entry3">
-					<Duration> 15.1 </Duration>
-					<Base_Delay> 0.4 </Base_Delay>
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> In_Ice_Mode </Target_Filter_C>
-				</Effect_Generator_Entry>						
-				
-				<Effect_Generator_Entry Name="Entry4">
-					<Duration> 17.1 </Duration>
-					<Base_Delay> 0.6 </Base_Delay>
-					<Effect_Name> Alien_Brute_Regenerate_Effect_Switch_Two </Effect_Name>
-					<Target_Gathering_Mask> Self </Target_Gathering_Mask>
-					<Target_Filter_C> In_Fire_Mode </Target_Filter_C>					
-				</Effect_Generator_Entry>					
-				
-				<!-- Apply effects -->
-            <Effect_Generator_Entry Name="Entry5">
-               <Effect_Name> MasariShadowshiftSwitch </Effect_Name>
-               <Duration> 16.0 </Duration>
-               <Base_Delay>0.0</Base_Delay>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>								
 
          </Effect_Generator>
 
@@ -1056,21 +1032,6 @@
       <Effect_Generator_Data SubObjectList="Yes" Replace="No">
          <!-- Standard DMA generator - Oksana 05/14/2007 -->
          <!--INCLUDE ".\Data\XML\Includes\Masari_DMA\MASARI_DMA_Dark_Mode_Generators.xml" -->
-		 
-         <Effect_Generator Name="AffinityDefenceGenerator">
-            <Should_Deactivate_Manually> true </Should_Deactivate_Manually>
-				<Modal_Refresh_Frequency> 4.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-				<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> AffinityDefenceEffect </Effect_Name>
-               <Duration> -1.0 </Duration>
-<!--               <Base_Delay>1.5</Base_Delay>-->
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-
-         </Effect_Generator>					 
 
 			<Effect_Generator Name="ArchitectDarkVisualGenerator">
 

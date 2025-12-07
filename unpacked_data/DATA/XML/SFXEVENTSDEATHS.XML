@@ -991,6 +991,16 @@
 
 
 
+	<SFXEvent Name="SFX_Nuclear_Warhead_Whoosh">
+		<Use_Preset>Preset_EGL_LARGE</Use_Preset>
+		<Samples>
+        DATA\Audio\SFX\MV_Nuke\Warhead_Woosh.wav                                  
+        </Samples>
+		<Min_Volume>90</Min_Volume>
+		<Max_Volume>90</Max_Volume>
+		<Volume_Saturation_Distance>200.0</Volume_Saturation_Distance>
+	</SFXEvent>
+
 
 
 	<SFXEvent Name="SFX_Pole_Topple_Start_1">

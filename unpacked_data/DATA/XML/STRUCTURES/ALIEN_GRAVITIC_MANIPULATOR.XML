@@ -164,7 +164,7 @@
 			<Targeting_Priority_Set> Alien_Gravity_Turret_Priority </Targeting_Priority_Set>
 			<Targeting_Fire_Inaccuracy> 1.0 </Targeting_Fire_Inaccuracy>
 			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
-			<Targeting_Max_Attack_Distance> 275.0 </Targeting_Max_Attack_Distance>
+			<Targeting_Max_Attack_Distance> 250.0 </Targeting_Max_Attack_Distance>
 			<Attack_Category_Restrictions> ~Flying </Attack_Category_Restrictions>
 		</BehaviorType>
 
@@ -918,13 +918,12 @@
 			<Tooltip_Description_Text_ID> TEXT_TOOLTIP_DESCRIPTION_ALIEN_GRAVITIC_CONTROL_TURRET</Tooltip_Description_Text_ID>
 			<Tooltip_Category> TEXT_TOOLTIP_CATEGORY_STRUCTURE </Tooltip_Category>
 			<Tooltip_Good_Against> TEXT_TYPE_VERSUS_AIR_UNITS </Tooltip_Good_Against>
-			<Tooltip_Vulnerable_To> TEXT_TYPE_VERSUS_GROUND_UNITS </Tooltip_Vulnerable_To>			
 		</BehaviorType>
 		
     <BehaviorType Name="BuildableObjectBehaviorType">
       <Tactical_Buildable_Constructed> Alien_Gravitic_Manipulator_HP_Gravitic_Controller </Tactical_Buildable_Constructed>
       <Tactical_Build_Cost_Campaign>400</Tactical_Build_Cost_Campaign>
-      <Tactical_Build_Cost_Multiplayer>300</Tactical_Build_Cost_Multiplayer>
+      <Tactical_Build_Cost_Multiplayer>400</Tactical_Build_Cost_Multiplayer>
       <Tactical_Build_Time_Seconds> 15 </Tactical_Build_Time_Seconds>
     </BehaviorType>
 

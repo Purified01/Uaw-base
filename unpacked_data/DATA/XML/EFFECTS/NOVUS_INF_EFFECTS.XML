@@ -134,7 +134,8 @@
 		</Effect_Component>-->
 
 		<Effect_Component Type="DisableBehavior">
-			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET </Behaviors>
+			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET, VTOL_LOCOMOTOR, WHEEL,
+      TURRET, WEAPON, TARGETING </Behaviors>
 		</Effect_Component>
 
 		<Effect_Component Type="Lightning">
@@ -215,7 +216,7 @@
 		</Effect_Component>-->
 
 		<Effect_Component Type="DisableBehavior">
-			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET </Behaviors>
+			<Behaviors> WALK_LOCOMOTOR, GIANT_WALK_LOCOMOTOR, TURRET, VTOL_LOCOMOTOR, WHEEL, WEAPON, TARGETING </Behaviors>
 		</Effect_Component>
 
 		<Effect_Component Type="Lightning">
@@ -311,65 +312,20 @@
         
 	</Effect>
 
-	<Effect Name="Novus_Corruptor_Viral_Bomb_Level_1_Effect">
-		<Duration> 0.5 </Duration>
-		<Effect_Class> NovusVirusBomb </Effect_Class>
 
-		<Effect_Component Type="Lightning">
-			<Lightning_Effect_Name> Hacker_Viral_Bomb_Activate_Lightning </Lightning_Effect_Name>
-			<Source_Target_Type> SourceToOriginalTarget </Source_Target_Type>
-			<Source_Bone_Name>MuzzleA_00</Source_Bone_Name>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="Damage">
-			<Damage_Type>Damage_Hacker_Viral_Bomb</Damage_Type>
-			<Damage_Amount>150.0</Damage_Amount>
-			<Damage_Percentage>0.0</Damage_Percentage>
-		</Effect_Component>
-
-		<Effect_Component Type="Sound">
-			<Apply_Effect> SFX_Novus_Hacker_Activate </Apply_Effect> 
-		</Effect_Component>
-
-		<Effect_Component Type="ApplyGenerator">
-			<Effect_Generator_Name> Novus_Corruptor_Viral_Bomb_Splash_Effect_Generator </Effect_Generator_Name>
-		</Effect_Component>
-
-		<Effect_Component Type="ApplyEffectOnRemove">
-			<Effect_Name> Novus_Corruptor_Viral_Bomb_Splash_Effect </Effect_Name>
-			<Apply_On_Expiration_Only> false </Apply_On_Expiration_Only>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="Novus_Corruptor_Viral_Bomb_Splash_Effect">
-		<Duration> 0.5 </Duration>
-		<Effect_Class> NovusVirusBombSplash </Effect_Class>
-
-		<Effect_Component Type="Damage">
-			<Damage_Type>Damage_Hacker_Viral_Bomb</Damage_Type>
-			<Damage_Amount>100.0</Damage_Amount>
-			<Damage_Percentage>0.0f</Damage_Percentage>
-		</Effect_Component>
-
-        <Effect_Component Type="ParticleSystem">
-            <Particle_System_Type> Novus_Large_Explosion_Land_No_Scorch </Particle_System_Type>
-        </Effect_Component>
-        
-	</Effect>
 
 
 	<Effect Name="NovusHackerFirewallCleanseEnemy">
 		<Duration> 8.0 </Duration>
 		<Effect_Class> Transparent </Effect_Class>
+		
+		<Effect_Component Type="RemoveEffect">
+			<Remove_Effect_Class> CloakingConduit </Remove_Effect_Class>
+		</Effect_Component>
+
+		<Effect_Component Type="BlockEffect">
+			<Block_Effect_Class> CloakingConduit </Block_Effect_Class>
+		</Effect_Component>		
 
 		<Effect_Component Type="RemoveEffect">
 			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
@@ -470,133 +426,6 @@
 
 	</Effect>
 	
-	<Effect Name="NovusHackerFirewallCleanseEnemyUpgraded">
-		<Duration> 8.0 </Duration>
-		<Effect_Class> Transparent </Effect_Class>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> Cloaking </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> Cloaking </Block_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> Phased </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> Phased </Block_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> AlienConsumption </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> AlienConsumption </Block_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> Mirage </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> Mirage </Block_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> Novus_Hacker_Purge_Enemy_Particle </Particle_System_Type>
-		</Effect_Component>
-
-	</Effect>
-
-	<Effect Name="NovusHackerFirewallCleanseVirusUpgraded">
-		<Duration> 8.0 </Duration>
-		<Effect_Class> EffectCleanse </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-
-		<Effect_Component Type="ParticleSystem">
-			<Particle_System_Type> Novus_Hacker_Purge_Target_Particle </Particle_System_Type>
-		</Effect_Component>
-		
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Remove_Effect_Class> NovusVirus </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Remove_Effect_Class> NovusVirusAuraGenerators </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> ViralControl </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> ViralControl </Block_Effect_Class>
-		</Effect_Component>
-
-	</Effect>
-
-
-	<Effect Name="NovusHackerFirewallCleanseMindControlUpgraded">
-		<Duration> 8.0 </Duration>
-		<Effect_Class> ClearMindControl </Effect_Class>
-		<Extends_Existing_Duration> false </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> MindControl </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> MindControl </Block_Effect_Class>
-		</Effect_Component>
-		
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
-		</Effect_Component>
-
-	</Effect>	
-	
-	<Effect Name="NovusAmplifierCleanseMindControl">
-		<Duration> 4.0 </Duration>
-		<Effect_Class> ClearMindControl </Effect_Class>
-		<Extends_Existing_Duration> true </Extends_Existing_Duration>
-		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
-
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> MindControl </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> MindControl </Block_Effect_Class>
-		</Effect_Component>
-		
-		<Effect_Component Type="RemoveEffect">
-			<Remove_Effect_Class> MindControlVisual </Remove_Effect_Class>
-		</Effect_Component>
-
-		<Effect_Component Type="BlockEffect">
-			<Block_Effect_Class> MindControlVisual </Block_Effect_Class>
-		</Effect_Component>
-
-	</Effect>	
-	
 	
 	
 	<Effect Name="NovusHackerFirewallSelfVisualEffect">
@@ -653,17 +482,7 @@
       <Effect_Class> Transparent </Effect_Class>
 
       <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Blackout_Area </Particle_System_Type>
-      </Effect_Component>
-
-   </Effect>
-   
-   <Effect Name="TemplarDisruptVisualEffect">
-      <Duration> 9.0 </Duration>
-      <Effect_Class> Transparent </Effect_Class>
-
-      <Effect_Component Type="ParticleSystem">
-         <Particle_System_Type> Masari_Templar_Disruptor_Blast </Particle_System_Type>
+         <Particle_System_Type> Blackout_Area_Reflex </Particle_System_Type>
       </Effect_Component>
 
    </Effect>   
@@ -701,7 +520,9 @@
 	<Effect Name="ReflexTrooperEnergyBladeDamage">
 		<Duration> .10 </Duration>
 		<Effect_Class> ElectricityDamage </Effect_Class>
-
+		<Extends_Same_Source_Duration_Only>false</Extends_Same_Source_Duration_Only>
+		<Extends_Existing_Duration> false </Extends_Existing_Duration>
+		<Allow_Same_Source_Stacking> true </Allow_Same_Source_Stacking>
 		<Effect_Component Type="Damage">
 			<Damage_Type> Damage_Novus_Reflex_Melee </Damage_Type>
 			<Damage_Amount> 12.0 </Damage_Amount>
@@ -735,7 +556,7 @@
 
 		<Effect_Component Type="AttributeModifier">
 			<Attribute> Max_Speed_Mult_Coeff </Attribute>
-			<Modifier_Value> 1.1 </Modifier_Value>
+			<Modifier_Value> 1.6 </Modifier_Value>
 		</Effect_Component>
 
 		<Effect_Component Type="AttributeModifier">
@@ -821,6 +642,35 @@
 	</Effect>
 
 
+	<!--=================================================================================================
+	== Nano Tech 3 Flechette Updrades
+	================================================================================================== -->
+
+  <!-- Increases flechette rate of fire by 10% -->
+  <Effect Name="NovusResearchRapidFireFlechetteEffect">
+     <Effect_Class> FireRateEffectClass </Effect_Class>
+     <Duration> -1.0 </Duration>
+     <CategoryMask> CanBeRemovedByAbility </CategoryMask>
+
+     <Effect_Component Type="AttributeModifier">
+        <Attribute> Weapon_Rate_Multiplier </Attribute>
+        <Modifier_Value> 0.10 </Modifier_Value>
+     </Effect_Component>
+  </Effect>
+
+  <!-- Increases flechette damage by 10% -->
+  <Effect Name="NovusResearchAddedDamageFlechetteEffect">
+     <Effect_Class> ImproveAttack </Effect_Class>
+     <Duration> -1.0 </Duration>
+     <CategoryMask> CanBeRemovedByAbility </CategoryMask>
+
+     <Effect_Component Type="AttributeModifier">
+        <Attribute> Damage_Cast_Mult_Coeff </Attribute>
+        <Modifier_Value> 0.10 </Modifier_Value>
+     </Effect_Component>
+  </Effect>
+
+
 	<!--*************************************************************************************************
 	************************************************************************************************** 
 	************************************************************************************************** 
@@ -900,21 +750,55 @@
 
 	
 	
-	
+    <!-- Variant Poppy's New Go Hide Ability -->
+    <Effect Name="SimpleTestGenerator">
+		<Duration> -1.0 </Duration>
+		<!-- No components means it does nothing -->
+	</Effect>
 	
 	
 	
 	
 	
 	<!-- OKSANA: Novus Variant's toggle weapons effect -->
-	<Effect Name="NovusToggleWeaponsEffect">
-		<Effect_Class> Transparent </Effect_Class>
-		<Duration> -1.0 </Duration>
+<Effect Name="NovusToggleWeaponsEffect">
+    <Effect_Class> Transparent </Effect_Class>
+    <Duration> 2.0 </Duration>
 
-		<Effect_Component Type="DisableBehavior">
-			<Behaviors> WEAPON, TARGETING </Behaviors>
-		</Effect_Component>
-	</Effect>
+    <Effect_Component Type="DisableBehavior">
+        <Behaviors> WEAPON, TARGETING </Behaviors>  <!-- Added AI_TARGET -->
+    </Effect_Component>
+
+    <Effect_Component Type="AttributeModifier">
+        <Attribute> Can_Attack </Attribute>
+        <Modifier_Value> -1.0 </Modifier_Value>  <!-- Disable attacking entirely -->
+    </Effect_Component>
+
+    <Effect_Component Type="AttributeModifier">
+        <Attribute> Can_Be_Targeted </Attribute>
+        <Modifier_Value> -1.0 </Modifier_Value>  <!-- Make it harder to target -->
+    </Effect_Component>
+
+    <Effect_Component Type="Mirage">
+        <Break_Mask> NonIdle | Movement | Ability | Attack </Break_Mask>
+    </Effect_Component>
+
+    <Effect_Component Type="Sound">
+        <Apply_Effect> SFX_Novus_Mimic </Apply_Effect>
+    </Effect_Component>
+
+    <Effect_Component Type="ParticleSystem">
+        <Particle_System_Type> Variant_Mirage_Field_Effect </Particle_System_Type>
+    </Effect_Component>
+
+    <Effect_Component Type="ApplyEffectOnRemove">
+        <Effect_Name> NovusRemoveMirageEffect </Effect_Name>
+        <Apply_On_Expiration_Only> false </Apply_On_Expiration_Only>
+    </Effect_Component>
+</Effect>
+
+
+
 
 	<Effect Name="GlobalVisualEffect">
 		<Effect_Class> Transparent </Effect_Class>

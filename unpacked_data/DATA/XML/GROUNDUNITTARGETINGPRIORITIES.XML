@@ -228,28 +228,8 @@
 
 		<Category_Exclusions> Insignificant </Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource  </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource  </Category_Restrictions>
 	</Priority_Set>
-	
-	
-	<Priority_Set Name="Dark_Templar_Target_Priority">
-		<Attack_Priorities>
-
-	  Stationary + CanAttack, 1,	  
-      Stationary, 2,   	  
-      Small, 3,	  
-      Hero, 4,
-      Medium, 5,   
-      Piloted, 6,	  
-
-    </Attack_Priorities>
-
-		<Type_Exclusions> Rosie_Monitor, Novus_Collector, Novus_Corruptor, Novus_Dervish_Jet, Novus_Hero_Vertigo, Alien_Cylinder, Alien_Foo_Core, Alien_Heavy_Gunship, Masari_Stormchaser, Masari_Seeker, Masari_Skylord, Masari_Elemental_Collector </Type_Exclusions>
-
-		<Category_Exclusions> Insignificant </Category_Exclusions>
-
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource  </Category_Restrictions>
-	</Priority_Set>	
 
 
 	<Priority_Set Name="Alien_Gray_Target_Priority">
@@ -272,7 +252,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Bridge, Resource, Resource_INST, DeathCloneResource </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -293,7 +273,7 @@
 		
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, BodySocketHP, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -311,12 +291,12 @@
     </Attack_Priorities>
 
 		<Category_Exclusions>
-			Insignificant, Resource, Resource_INST
+			Insignificant
 		</Category_Exclusions>
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 		
-		<Category_Restrictions> Flying, Bridge, Untargetable </Category_Restrictions>
+		<Category_Restrictions> Flying, Bridge, Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -338,7 +318,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -365,9 +345,33 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Resource_INST, Resource </Category_Restrictions>
+		<Category_Restrictions>  </Category_Restrictions>
 	</Priority_Set>
 
+	<Priority_Set Name="Alien_Aggressor_Target_Priority">
+		<Attack_Priorities>
+
+      Hero + Flying, 1,
+      Flying, 2,
+      Piloted, 3,
+      Hardpoint, 4,
+      Hero, 5,
+      Stationary + CanAttack, 6,
+      Small, 7,
+      Stationary, 8,
+      Novus_Collector, 9,
+      Bridge, 10,
+
+    </Attack_Priorities>
+
+		<Category_Exclusions>
+			Insignificant
+		</Category_Exclusions>
+
+		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
+
+		<Category_Restrictions> DeathCloneResource </Category_Restrictions>
+	</Priority_Set>
 
 	<Priority_Set Name="Alien_Cylinder_Target_Priority">
 		<Attack_Priorities>
@@ -388,7 +392,7 @@
 		</Category_Exclusions>
 		
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -404,7 +408,7 @@
 
     </Attack_Priorities>
 
-		<Category_Restrictions> Flying, Resource, Untargetable, Bridge, DeathCloneResource, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource, BodySocketHP </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Habitat_Walker_Target_Priority">
@@ -426,7 +430,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, DeathCloneResource, Resource+~Organic, Resource_INST+~Organic </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Habitat_Walker_With_Air_Spike_Target_Priority">
@@ -451,7 +455,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Assembly_Walker_Target_Priority">
@@ -473,7 +477,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Assembly_Walker_With_Air_Spike_Target_Priority">
@@ -492,13 +496,13 @@
 
     </Attack_Priorities>
 
-		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector </Type_Exclusions>
+		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector, DeathCloneResource </Type_Exclusions>
 
 		<Category_Exclusions>
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Assembly_Mass_Driver_Priority">
@@ -521,7 +525,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 		
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -546,7 +550,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
   </Priority_Set>
 
   <Priority_Set Name="Alien_Science_Walker_With_Air_Spike_Target_Priority">
@@ -570,7 +574,7 @@
 
 	  <Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-	  <Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+	  <Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Alien_Kamal_Rex_Target_Priority">
@@ -593,7 +597,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -641,7 +645,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, BodySocketHP, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -680,7 +684,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Bridge, Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Bridge, Untargetable, Resource+~Organic, Resource_INST+~Organic, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -711,7 +715,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -758,7 +762,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Resource, Bridge, Resource_INST, BodySocketHP, Untargetable </Category_Restrictions>
+		<Category_Restrictions> Flying, Bridge, BodySocketHP, Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -780,7 +784,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -803,7 +807,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 
 	</Priority_Set>
 
@@ -825,7 +829,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Resource+~Organic, Bridge, Resource_INST+~Organic, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -850,7 +854,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -872,7 +876,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource</Category_Restrictions>
 	</Priority_Set>
 
 
@@ -895,7 +899,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -921,7 +925,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -945,7 +949,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -965,7 +969,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 		
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, BodySocketHP </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -987,7 +991,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, BodySocketHP </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1012,7 +1016,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1050,7 +1054,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1073,7 +1077,7 @@
       Insignificant 
     </Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1095,7 +1099,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, Flying, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1119,7 +1123,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1141,7 +1145,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Flying, Resource, Resource_INST, Bridge </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, Flying, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	
@@ -1167,7 +1171,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	
@@ -1192,7 +1196,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1215,7 +1219,7 @@
 			Insignificant, Bridge
 		</Category_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Resource_INST, Flying </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Flying, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Masari_SkyLord_Ice_Target_Priority">
@@ -1236,7 +1240,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, Flying, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, Flying, BodySocketHP, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1258,7 +1262,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1284,7 +1288,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1307,7 +1311,7 @@
 
 		<Type_Exclusions> Masari_Elemental_Collector </Type_Exclusions>
 
-		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST, BodySocketHP </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Bridge, BodySocketHP, Resource+~Organic, Resource_INST+~Organic, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1323,7 +1327,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Bridge </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1343,7 +1347,7 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Resource_INST, Bridge </Category_Restrictions>
+		<Category_Restrictions> Flying, Untargetable, Resource+~Organic, Resource_INST+~Organic, Bridge, DeathCloneResource </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1488,17 +1492,19 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
 	</Priority_Set>
 
 
-	<Priority_Set Name="Military_Hummer_Target_Priority">
+	<Priority_Set Name="Military_Tank_Turret_Target_Priority">
 		<Attack_Priorities>
 
-			Small, 1,
+			Medium + Piloted, 1,
 			Organic, 2,
-			Medium + Piloted, 3,
-			Stationary + CanAttack, 4,
+			Small, 3,
+			Flying, 4,
+			HardPoint, 5,
+			Stationary + CanAttack, 6,
 
 		</Attack_Priorities>
 
@@ -1508,7 +1514,28 @@
 			Insignificant
 		</Category_Exclusions>
 
-		<Category_Restrictions> Flying, Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
+	</Priority_Set>
+
+
+	<Priority_Set Name="Military_Hummer_Target_Priority">
+		<Attack_Priorities>
+
+			Small, 1,
+			Organic, 2,
+			Flying, 3,
+			Medium + Piloted, 4,
+			Stationary + CanAttack, 5,
+
+		</Attack_Priorities>
+
+		<Type_Exclusions> Novus_Redirection_Turret, Masari_Elemental_Collector </Type_Exclusions>
+
+		<Category_Exclusions>
+			Insignificant
+		</Category_Exclusions>
+
+		<Category_Restrictions> Untargetable, Resource, Bridge, Resource_INST </Category_Restrictions>
 	</Priority_Set>
 
 
@@ -1520,6 +1547,9 @@
 			HardPoint, 3,
 			Medium + Piloted, 3,
 			Stationary, 4,
+			Hero, 5,
+			Small, 6,
+			Novus_Collector, 7,
 
 		</Attack_Priorities>
 
@@ -1551,7 +1581,16 @@
 	<Priority_Set Name="Military_Maverick_Target_Priority">
 		<Attack_Priorities>
 
-			Flying, 1,
+			Hero + Flying, 1,
+			Flying, 2,
+			Stationary + CanAttack, 3,
+			Medium + Piloted, 4,
+			Piloted, 5,
+			HardPoint, 6,
+			Hero, 7,
+			Small, 8,
+			Stationary, 9,
+			Novus_Collector, 10,
 
 		</Attack_Priorities>
 
@@ -1616,6 +1655,23 @@
 		</Category_Exclusions>
 
 		<Category_Restrictions> Resource_INST, Resource, Untargetable, Bridge </Category_Restrictions>
+	</Priority_Set>
+	
+	<!--Target Varients-->
+	<Priority_Set Name="Military_Turret_Target_Ground_Priority">
+		<Attack_Priorities>
+
+			Small, 1,
+			Piloted, 2,
+			HardPoint, 3,
+
+		</Attack_Priorities>
+
+		<Category_Exclusions>
+			Insignificant
+		</Category_Exclusions>
+
+		<Category_Restrictions> Flying, Resource_INST, Resource, Untargetable, Bridge </Category_Restrictions>
 	</Priority_Set>
 
 	<Priority_Set Name="Military_Defender_APC_Target_Priority">

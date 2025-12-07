@@ -129,7 +129,7 @@
 			<Targeting_Min_Attack_Distance> 1 </Targeting_Min_Attack_Distance>
 			<Targeting_Max_Attack_Distance> 260.0 </Targeting_Max_Attack_Distance>
 			<Targeting_Stickiness_Time_Threshold> 5.0 </Targeting_Stickiness_Time_Threshold>
-			<Attack_Category_Restrictions> Resource | Resource_INST </Attack_Category_Restrictions>
+			<Attack_Category_Restrictions> Resource+~Organic | Resource_INST+~Organic </Attack_Category_Restrictions>
 			<Projectile_Types>Proj_Novus_Antimatter_Cannon_Tower</Projectile_Types>
 			<Projectile_Fire_Recharge_Seconds>2.2</Projectile_Fire_Recharge_Seconds>
 			<Projectile_Fire_Pulse_Count>3</Projectile_Fire_Pulse_Count>
@@ -270,20 +270,6 @@
 
 
 		<Effect_Generator_Data SubObjectList="Yes">
-		
-<!--         <Effect_Generator Name="NovusNotOnRadarUpgradeEffectGenerator">
-            <Should_Deactivate_Manually> false </Should_Deactivate_Manually>
-            <Modal_Refresh_Frequency> 5.0 </Modal_Refresh_Frequency>
-            <Starts_Active> true </Starts_Active>
-            <Is_Independent_Generator> true </Is_Independent_Generator>
-			<Disable_Generator_Attribute> Is_Mind_Controlled </Disable_Generator_Attribute>
-
-            <Effect_Generator_Entry Name="Entry1">
-               <Effect_Name> Disable_On_Enemy_Radar </Effect_Name>
-               <Duration> 5 </Duration>
-               <Target_Gathering_Mask> Self </Target_Gathering_Mask>
-            </Effect_Generator_Entry>
-         </Effect_Generator>		-->
 
 			<Effect_Generator Name="Reveal_Enemy_Cloaking_Generator">
 				<Should_Deactivate_Manually> false </Should_Deactivate_Manually>
