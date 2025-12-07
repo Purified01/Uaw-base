@@ -681,4 +681,23 @@
 	</X99_Test_Objects>
 	  -->
 
+	<X10_Alien_Units Name="Proto_Grunt">
+		<Variant_Of_Existing_Type> Alien_Grunt </Variant_Of_Existing_Type>
+		<Affiliation> Proto </Affiliation>
+		<AssetBank> BANK_ALIEN </AssetBank>
+
+		
+		<Projectile_Types>Proj_Proto_Grunt_Shotgun_Pellet</Projectile_Types>
+		<Projectile_Fire_Pulse_Count>1</Projectile_Fire_Pulse_Count>
+		<Projectile_Fire_Pulse_Delay_Seconds>0.02</Projectile_Fire_Pulse_Delay_Seconds>
+		<Projectile_Fire_Recharge_Seconds>1.5</Projectile_Fire_Recharge_Seconds>
+		<Projectile_Fire_Spread_Amount> 5 </Projectile_Fire_Spread_Amount>
+		<Projectile_Fire_Spread_Angle> 25 </Projectile_Fire_Spread_Angle>
+
+	</X10_Alien_Units>
+
+	<Projectile Name="Proj_Proto_Grunt_Shotgun_Pellet">
+		<Variant_Of_Existing_Type> Proj_Grunt_Shotgun_Pellet </Variant_Of_Existing_Type>
+	</Projectile>
+
 </Alien_INF_Grunt_XML>

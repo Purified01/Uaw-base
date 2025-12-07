@@ -138,14 +138,9 @@ function On_Init()
 	this.Tab6.Set_User_Data({"MASARI", GAME_MODE_LAND, "MASARI"})
 	this.Tab6.Set_Text("TEXT_FACTION_MASARI")
 	
-	--this.Tab7.Set_User_Data({"MILITARY", GAME_MODE_LAND, "MILITARY"})
-	--this.Tab7.Set_Text("TEXT_FACTION_MASARI")
-	
-	--this.Tab8.Set_Text("")
-	--this.Tab8.Set_Hidden(true)
-	
-	this.Tab7.Set_Text("")
-	this.Tab7.Set_Hidden(true)
+	this.Tab7.Set_User_Data({"PROTO", GAME_MODE_LAND, "PROTO"})
+	this.Tab7.Set_Text("TEXT_FACTION_ALIEN")
+
 	
 	-- Commands that are re-assignable will be displayed in EnabledFont.
 	EnabledFont = "KeyboardConfigMenu_Enabled"
@@ -156,8 +151,7 @@ function On_Init()
 	
 	GameModeTypeToCommandListName = {}
 	GameModeTypeToCommandListName[GAME_MODE_NONE] = {"Generic_Interface"}
-	-- GameModeTypeToCommandListName[GAME_MODE_LAND] = {"Tactical_Interface", "Unit_Control", "ALIEN", "NOVUS", "MASARI", "MILITARY"}
-	GameModeTypeToCommandListName[GAME_MODE_LAND] = {"Tactical_Interface", "Unit_Control", "ALIEN", "NOVUS", "MASARI"}
+	GameModeTypeToCommandListName[GAME_MODE_LAND] = {"Tactical_Interface", "Unit_Control", "ALIEN", "NOVUS", "MASARI", "PROTO"}
 	GameModeTypeToCommandListName[GAME_MODE_STRATEGIC] = {"Strategic_Interface"}
 	
 	GameModeTypeToGameModeText = {}
@@ -182,6 +176,7 @@ function On_Init()
 	DisplayToDisplayTextID["MASARI"] = "TEXT_FACTION_MASARI"
 	DisplayToDisplayTextID["NOVUS"] = "TEXT_FACTION_NOVUS"
 	DisplayToDisplayTextID["ALIEN"] = "TEXT_FACTION_ALIEN"
+	DisplayToDisplayTextID["PROTO"] = "TEXT_FACTION_ALIEN"
 	DisplayToDisplayTextID["MILITARY"] = "TEXT_FACTION_MILITARY"
 	
 	KeyboardConfig.Set_Game_Mode_And_Faction_Modifier(CurrentGameModeType, CurrentFaction)
