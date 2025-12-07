@@ -628,11 +628,6 @@
 
 
 
-	<X10_Alien_Heroes Name="Proto_Hero_Nufai">
-		<Variant_Of_Existing_Type>Alien_Hero_Nufai</Variant_Of_Existing_Type>
-      	<AssetBank> BANK_ALIEN </AssetBank>
-		<Affiliation> Proto </Affiliation>
-	</X10_Alien_Heroes>
 
 
 <!-- **************************************************************************************** -->	

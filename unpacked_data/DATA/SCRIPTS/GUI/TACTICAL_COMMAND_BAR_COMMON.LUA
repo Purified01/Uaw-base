@@ -104,7 +104,6 @@ end
 -- Initialization
 -- ---------------------------------------------------------------------------------------------------------------------------
 function Init_Tactical_Command_Bar_Common(scene, owner)
-
 	if scene == nil or owner == nil then 
 		return
 	end
@@ -157,7 +156,6 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	ConstructorTypeToFlash = {}
 	last_time = nil
 	LastWalkerPop = nil
-	LastMiniWalkerPop = nil
 	
 	
 	DefaultAbilityClockTint = {0.0, 1.0, 0.0, 0.43137254} -- alpha = 110/255
@@ -439,12 +437,12 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 		SellButton = this.SellModeButton
 		SellButton.Set_Hidden(false)
 		
-		if Is_Player_Of_Faction(LocalPlayer, "Alien") or Is_Player_Of_Faction(LocalPlayer, "Proto") then
+		if Is_Player_Of_Faction(LocalPlayer, "Alien") then
 			SellButton.Set_Texture("i_icon_sell_alien.tga")
 		elseif Is_Player_Of_Faction(LocalPlayer, "Masari") then
 			SellButton.Set_Texture("i_icon_sell_masari.tga")
 		elseif Is_Player_Of_Faction(LocalPlayer, "Military") then
-			SellButton.Set_Texture("i_icon_sell.tga")		
+			SellButton.Set_Texture("i_icon_sell.tga")
 		end
 		
 		this.Register_Event_Handler("Selectable_Icon_Clicked", SellButton, On_Toggle_Sell_Mode)
@@ -548,7 +546,7 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 	end
 	
 	if TestValid(this.RadarZoomButton) then
-		-- this.RadarZoomButton.Set_Hidden(true)
+		this.RadarZoomButton.Set_Hidden(true)
 	end
 	
 	if TestValid(this.BattleCam) then
@@ -569,10 +567,6 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
  		this.WalkerPopText.Set_Hidden(not DisplayCreditsPop)
 	end
 
-	if TestValid(this.MiniWalkerPopText) then
-		this.MiniWalkerPopText.Set_Hidden(not DisplayCreditsPop)
-   end
-   
 	-- This is for designer's use!
 	this.Register_Event_Handler("UI_Set_Display_Credits_Pop", nil,UI_Set_Display_Credits_Pop)
 	
@@ -594,12 +588,6 @@ function Init_Tactical_Command_Bar_Common(scene, owner)
 		this.WalkerPopQuad.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY", false, "TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY_DESCRIPTION", true}})	
 	end
 	
-	if TestValid(this.MiniWalkerPopQuad) then
-		this.Register_Event_Handler("Mouse_On", this.MiniWalkerPopQuad, On_Mouse_Over_Credits_Pop_Cap_Display)
-		this.Register_Event_Handler("Mouse_Off", this.MiniWalkerPopQuad,On_Mouse_Off_Credits_Pop_Cap_Display)
-		this.MiniWalkerPopQuad.Set_Tooltip_Data({'ui', {"TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY", false, "TEXT_UI_TACTICAL_WALKER_POP_CAP_DISPLAY_DESCRIPTION", true}})	
-	end
-
 	CreditsPopCapDisplayMouseOverStartTime = nil
 	CreditsPopCapDisplayMouseOverComponent = nil
 	-- --------------------------------------------------------------------------------------------------------
@@ -626,6 +614,7 @@ end
 -- Set_Pip_Movie_Playing
 -- ------------------------------------------------------------------------------------------------------------------
 function Set_Pip_Movie_Playing(on_off)
+	MessageBox("INTERNAL ERROR: SCRIPT LOADED BITCH!.")
 	if PipMoviePlaying == on_off then
 		return
 	end
@@ -665,9 +654,6 @@ function UI_Set_Display_Credits_Pop(_, _, on_off)
 	Scene.RMIcon.Set_Hidden(not DisplayCreditsPop)
 	if TestValid(this.WalkerPopText) then
 		this.WalkerPopText.Set_Hidden(not DisplayCreditsPop)
-	end
-	if TestValid(this.MiniWalkerPopText) then
-		this.MiniWalkerPopText.Set_Hidden(not DisplayCreditsPop)
 	end
 	
 	if on_off then
@@ -871,7 +857,6 @@ end
 function Init_Battle_Cam_Textures()
 	FactionToBattleCamTextureMap = {}
 	FactionToBattleCamTextureMap["ALIEN"] = "i_button_battlecam_alien.tga"
-	FactionToBattleCamTextureMap["PROTO"] = "i_button_battlecam_alien.tga"
 	FactionToBattleCamTextureMap["NOVUS"] = "i_button_battlecam_novus.tga"
 	FactionToBattleCamTextureMap["MASARI"] = "i_button_battlecam_masari.tga"
 	FactionToBattleCamTextureMap["MILITARY"] = "i_button_battlecam_military.tga"
@@ -900,7 +885,6 @@ end
 function Init_Control_Group_Textures_Prefix_Map()
 	FactionToCtrlGpTexturePrefix = {}
 	FactionToCtrlGpTexturePrefix["ALIEN"] = "i_icon_a_ctrl_"
-	FactionToCtrlGpTexturePrefix["PROTO"] = "i_icon_a_ctrl_"
 	FactionToCtrlGpTexturePrefix["NOVUS"] = "i_icon_n_ctrl_"
 	FactionToCtrlGpTexturePrefix["MASARI"] = "i_icon_m_ctrl_"
 	FactionToCtrlGpTexturePrefix["MILITARY"] = "i_icon_m_ctrl_"
@@ -1343,7 +1327,7 @@ function Hide_Radar_Map()
 	end
 	
 	if TestValid(this.RadarZoomButton) then
-		-- this.RadarZoomButton.Set_Hidden(true)
+		this.RadarZoomButton.Set_Hidden(true)
 	end
 end
 
@@ -1861,12 +1845,6 @@ function Init_Queue_Textures()
 	PlayerToQueueTexturesMap["ALIEN"]['Infantry'] 	= 'i_icon_a_build_tab_infantry.tga' 
 	PlayerToQueueTexturesMap["ALIEN"]['Vehicle'] 		= 'i_icon_a_build_tab_vehicle.tga' 
 
-	PlayerToQueueTexturesMap["PROTO"] = {}
-	PlayerToQueueTexturesMap["PROTO"]['Command'] 	= 'i_icon_a_build_tab_command.tga' 
-	PlayerToQueueTexturesMap["PROTO"]['Air'] 		= 'i_icon_a_build_tab_air.tga' 
-	PlayerToQueueTexturesMap["PROTO"]['Infantry'] 	= 'i_icon_a_build_tab_infantry.tga' 
-	PlayerToQueueTexturesMap["PROTO"]['Vehicle'] 		= 'i_icon_a_build_tab_vehicle.tga' 
-
 	PlayerToQueueTexturesMap["MILITARY"] = {}
 	PlayerToQueueTexturesMap["MILITARY"]['Command'] 	= 'I_LOGO_MILITARY.TGA'
 	PlayerToQueueTexturesMap["MILITARY"]['Air'] 		= 'i_icon_ca.tga'
@@ -1909,9 +1887,9 @@ end
 function Init_Idle_Builder_Textures()
 	PlayerToIdleBuilderTexturesMap = {}
 	PlayerToIdleBuilderTexturesMap["ALIEN"] = "i_icon_a_idle_builder.tga"
-	PlayerToIdleBuilderTexturesMap["PROTO"] = "i_icon_a_idle_builder.tga"
 	PlayerToIdleBuilderTexturesMap["NOVUS"] = "i_icon_n_idle_builder.tga"
 	PlayerToIdleBuilderTexturesMap["MASARI"] = "i_icon_m_idle_builder.tga"
+	PlayerToIdleBuilderTexturesMap["MILITARY"] = "i_icon_srt.tga"
 end
 
 
@@ -2554,7 +2532,7 @@ function Update_UI_After_Selection_Change()
 	-- only open the new queue if we are not in letter box mode!.
 	if not IsLetterboxMode then 
 		-- note: we can only open the build queue if the blueprint menu is not up!.
-		if (not Is_Player_Of_Faction(LocalPlayer, "Alien") and not Is_Player_Of_Faction(LocalPlayer, "Proto")) or CustomizationModeOn == false then 
+		if not Is_Player_Of_Faction(LocalPlayer, "Alien") or CustomizationModeOn == false then 
 			if building_type and CommandBarEnabled == true and (not is_tree_open and not is_faction_specific_menu_open) then -- and BuildModeOn == true then 
 				local button = QueueButtonsByType[building_type]
 				if button then
@@ -3376,31 +3354,10 @@ function Update_Credits_Display()
 				LastWalkerPop = pop_cap_info.WalkerUsed
 			end			
 		end		
-		
-		if pop_cap_info.WalkerTotal and TestValid(this.MiniWalkerPopText) then
-			if this.MiniWalkerPopText.Get_Hidden() and DisplayCreditsPop then
-				this.MiniWalkerPopText.Set_Hidden(false)
-			end
-		
-			if not LastMiniWalkerPop or LastMiniWalkerPop ~= pop_cap_info.WalkerUsed then
-				local wstr_pop_cap = Get_Game_Text("TEXT_FRACTION")
-				Replace_Token(wstr_pop_cap, Get_Localized_Formatted_Number(pop_cap_info.MiniWalkerUsed), 0)
-				Replace_Token(wstr_pop_cap, Get_Localized_Formatted_Number(pop_cap_info.MiniWalkerTotal), 1)
-
-				local text = {}
-				for i,v in pairs(pop_cap_info) do 
-					text[#text+1] = i
-					text[#text+1] = v
-				end
-				this.DEBUG.Set_Text(table.concat(text,"\n"))
-
-				LastMiniWalkerPop = pop_cap_info.WalkerUsed
-			end			
-		end		
-		
 	end
 	return credits_changed -- did the amount of tactical money change?
 end
+
 
 -- ------------------------------------------------------------------------------------------------------------------
 -- Update_Mouse_Over

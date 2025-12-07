@@ -619,10 +619,4 @@
 
 
 
-	<X10_Alien_Units Name="Proto_Cylinder">
-      <Variant_Of_Existing_Type> Alien_Cylinder </Variant_Of_Existing_Type>
-		<Affiliation> Proto </Affiliation>
-		<AssetBank> BANK_ALIEN </AssetBank>
-	</X10_Alien_Units>
-
 </Alien_VEH_Cylinder_XML>
