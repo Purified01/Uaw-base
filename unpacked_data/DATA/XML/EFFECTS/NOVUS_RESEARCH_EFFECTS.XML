@@ -309,7 +309,7 @@
 		<Effect_Class> Healing </Effect_Class>
 
 		<Effect_Component Type="Heal">
-		<Percent_Heal> 5.0 </Percent_Heal>
+		<Percent_Heal> 0.003 </Percent_Heal>
 		</Effect_Component>
 	</Effect>						
 	
